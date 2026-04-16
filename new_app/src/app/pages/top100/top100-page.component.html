@@ -1,0 +1,52 @@
+<div class="top100-page">
+  <section class="section">
+    <h2>The top 100 of medieval castles</h2>
+    <p>
+      Sum of the original top 100 derived from references used by topcastles.com and the visitors top 100.
+    </p>
+    <app-castle-grid [castles]="top100()" [columns]="5" />
+  </section>
+
+  <section class="section">
+    <h3>The list</h3>
+    <div class="table-container">
+      <table mat-table [dataSource]="tableData" matSort (matSortChange)="onSortChange($event)">
+
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Position</th>
+          <td mat-cell *matCellDef="let castle">{{ castle.position }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="score_total">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Score</th>
+          <td mat-cell *matCellDef="let castle">{{ castle.score_total }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="castle_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Castle</th>
+          <td mat-cell *matCellDef="let castle">
+            <a [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="country">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
+          <td mat-cell *matCellDef="let castle">{{ castle.country }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="place">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Place</th>
+          <td mat-cell *matCellDef="let castle">{{ castle.place }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="region">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Region</th>
+          <td mat-cell *matCellDef="let castle">{{ castle.region }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </section>
+</div>
