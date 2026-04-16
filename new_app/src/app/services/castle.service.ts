@@ -37,6 +37,26 @@ export class CastleService {
       .slice(0, 100);
   }
 
+  getTopByScore(count: number): Castle[] {
+    return this.castles()
+      .slice()
+      .sort((a, b) => (b.score_total ?? 0) - (a.score_total ?? 0))
+      .slice(0, count);
+  }
+
+  getTopByVisitors(count: number): Castle[] {
+    return this.castles()
+      .slice()
+      .sort((a, b) => (b.score_visitors ?? 0) - (a.score_visitors ?? 0))
+      .slice(0, count);
+  }
+
+  getTopByCountry(country: string, count: number): Castle[] {
+    return this.castles()
+      .filter((c) => c.country?.toLowerCase() === country.toLowerCase())
+      .slice(0, count);
+  }
+
   getCastlesByCountry(country: string): Castle[] {
     return this.castles().filter((c) => c.country === country);
   }
