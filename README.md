@@ -1,40 +1,30 @@
-# For Claude/agent workflow (approval-gated)
+# topkastelen
+
+Migration of a legacy PHP castle-ranking website to a modern framework.
+
+## Agent workflow (approval-gated)
 
 ```bash
-# 1. Read docs first (required)
-# 2. Fetch and summarize feature/user stories
-# 3. Create LOCAL branch (do not push)
-# 4. Implement with local commits
-# 5. Update docs if behavior changed
-# 6. Build plugin
-[command, e.g.: pnpm turbo build]
-
-# 7. Publish to yalc (APPROVAL GATE)
-[command, e.g.: npx yalc publish]
-
-# 8. Run backend for validation
-[command, e.g.: pnpm dev]
-
-# 9. Agent stops and reports (no git push yet)
-# 10. Wait for explicit approval
-# 11. Only after approval: git push -u origin <branch>
+# 1. Read docs/ first (required)
+# 2. Create LOCAL branch — do not push to origin yet
+# 3. Implement with local commits
+# 4. Update docs if behavior or architecture changed
+# 5. Build and test (commands TBD once stack is chosen)
+# 6. Agent STOPS and reports — no git push yet
+# 7. Wait for explicit approval
+# 8. Only after approval: git push -u origin <branch>
 ```
-
-See [docs/development-workflow.md](docs/development-workflow.md) for full development details.
 
 ## Documentation
 
 - [docs/README.md](docs/README.md) — Documentation index
 - [docs/architecture.md](docs/architecture.md) — System design and package boundaries
-- [docs/development-workflow.md](docs/development-workflow.md) — Local development guide
-- [docs/testing.md](docs/testing.md) — Testing strategy
-- [docs/troubleshooting.md](docs/troubleshooting.md) — Common issues and debugging
-- [docs/deployment-architecture.md](docs/deployment-architecture.md) — Production deployment model (planned)
-- [docs/release-process.md](docs/release-process.md) — Release workflow
+- [docs/decisions.md](docs/decisions.md) — Architectural decisions
+- [docs/pipeline.md](docs/pipeline.md) — CI/CD pipeline
+- [docs/setup.md](docs/setup.md) — Stack and tooling
+- [plan/migration.md](plan/migration.md) — Migration plan
 
 ## Repository info
 
-- **Azure DevOps Organization:** `ORG`
-- **Azure DevOps Project:** `PROJECT`
-- **Repository:** `REPO`
 - **Default branch:** `main`
+- **Source application:** `old_app/` (PHP)

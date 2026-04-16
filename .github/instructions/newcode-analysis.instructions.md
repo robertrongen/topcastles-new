@@ -1,13 +1,13 @@
 ---
-description: "Use when analyzing the Python source, FastAPI endpoints, test_main.py, API behavior, response payloads, or migration parity from Python to C#."
-name: "Python API Analysis"
-applyTo: "src/python-app/**/*.py"
+description: "Use when analyzing PHP source files, form handlers, query logic, response behavior, or migration parity from PHP to the target framework."
+name: "PHP Source Analysis"
+applyTo: "old_app/**/*.php"
 ---
 
-# Python API Analysis Rules
+# PHP Source Analysis Rules
 
-- Treat the Python implementation as the behavioral source of truth.
-- Extract routes, query/path parameters, response shapes, and error behavior before proposing C# changes.
-- Read `test_main.py` before suggesting implementation order.
+- Treat the PHP implementation as the behavioral source of truth.
+- Extract routes (form actions, `$_GET`/`$_POST` parameters), response shapes (HTML output), database queries, and session/cookie usage before proposing new-code changes.
+- Read the relevant `old_app/forms/` and `old_app/functions/` files before suggesting implementation order.
 - Separate confirmed behavior from assumptions in summaries.
-- If behavior is unclear, point to the exact Python file and function that needs review.
+- If behavior is unclear, point to the exact PHP file and line that needs review.

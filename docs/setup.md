@@ -1,24 +1,21 @@
+# Setup
 
-## Project
-package manager: pnmp
-monorepo management: TurboRepo
-backend for frontend? : NestJS
-database: MongoDb?
+> Stack and tooling TBD. This document will be updated once the migration framework is chosen.
 
-## UI & Styling
-Styling: TailwindCSS
+## Known constraints
 
-## Tooling
-static code quality: Eslint
-static code formatting: Prettier
-type safety: TypeScript
-unit testing: Vitest?
-integration testing: Vitest?
-end-to-end testing: Playwright
-Component development & documentation: Storybook
+- Source application: PHP with MySQL
+- Source code location: `old_app/`
+- Target framework: TBD
 
-## Project structure
-src/app/pages
-src/app/core
-src/app/shared
-src/app/components
+## Tooling (provisional)
+
+| Concern | Choice |
+|---|---|
+| Type safety | TypeScript |
+| Linting | ESLint |
+| Formatting | Prettier |
+| E2E testing | Playwright |
+| Unit testing | TBD |
+| Package manager | TBD |
+| Framework | TBD |

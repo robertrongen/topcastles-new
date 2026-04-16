@@ -1,6 +1,6 @@
 # Documentation index
 
-This folder is the source of truth for architecture, contracts, workflows, and operational knowledge.
+This folder is the source of truth for architecture, decisions, pipeline, and tooling.
 
 ## Files
 
@@ -8,44 +8,32 @@ This folder is the source of truth for architecture, contracts, workflows, and o
   High-level system design and package boundaries.
 
 - `decisions.md`  
-  Important architectural and implementation decisions.
+  Architectural and implementation decisions (ADRs).
 
-- `development-workflow.md`  
-  How to work locally and how to keep docs in sync.
+- `pipeline.md`  
+  CI/CD pipeline stages.
 
-- `testing.md`  
-  Expected testing strategy and what should be covered.
+- `setup.md`  
+  Stack, tooling, and project structure.
 
-- `troubleshooting.md`  
-  Known failure modes and how to debug them.
-
-- `deployment-architecture.md`  
-  Production deployment model.
-
-- `release-process.md`  
-  How the backend and plugin should be versioned and deployed.
-
-- `prompts/`  
-  Instructions and prompts used to guide Claude.
+- `prompts/claude-doc-rules.md`  
+  Canonical agent guidance for PHP-source analysis, docs sync, and approval-gated workflow.
 
 ## Documentation rules
 
-When behavior, architecture, contracts, or operational assumptions change:
-1. update the relevant doc in the same task/commit as the code change
-2. update `decisions.md` if the change is architectural
-3. update `api-contract.md` if the plugin/backend contract changes
-4. update `troubleshooting.md` if a new failure mode is found
+When behavior, architecture, or operational assumptions change:
+1. Update the relevant doc in the same commit as the code change.
+2. Update `decisions.md` if the change is architectural.
+3. Update `setup.md` if tooling or stack choices change.
 
 Do not leave behavior changes undocumented.
 
-## Claude/agent workflow rules
+## Agent workflow rules
 
-**Before coding**: Read all relevant docs first, then fetch feature/user stories, then summarize.
+Use `prompts/claude-doc-rules.md` as the canonical workflow reference for:
 
-**During implementation**: Make local commits; update docs if behavior changes.
+- PHP source analysis baseline
+- docs-first implementation flow
+- documentation synchronization requirements
+- approval-gated push process
 
-**Approval gate**: After implementation, build plugin and run `npx yalc publish` from `packages/sanity-plugin-keyshot`, then STOP. Do not push to origin. Report summary and wait for explicit approval.
-
-**After approval**: Only then push the branch to origin.
-
-See `development-workflow.md` for the complete approval-gated workflow.
