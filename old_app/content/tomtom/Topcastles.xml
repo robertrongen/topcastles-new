@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<item>
+<poi idstr="Topcastles" version="1">
+<title xml:lang="en-GB" mimetype="text/plain">Castles of www.topcastles.com</title>
+  <title xml:lang="nl" mimetype="text/plain">Kastelen van www.topkastelen.nl</title>
+  <description xml:lang="en-GB" mimetype="text/plain">
+    Top 100 of medieval castles.
+  </description>
+  <description xml:lang="nl" mimetype="text/plain">
+    Top 100 van Nederlandse kastelen.
+  </description>
+  <image mimetype="image/jpeg" url="http://www.topcastles.com/content/tomtom/Topcastles.jpg" usage="icon" />
+<image mimetype="image/jpeg" url="http://www.topcastles.com/content/tomtom/Topcastles_preview.jpg" usage="preview" />
+  <size>45056</size>
+<download>
+    <url location="http://www.topcastles.com/content/tomtom/Topcastles.zip" content="main" size="21462"/>
+  </download>
+<size>65536</size>
+  <targetdevice models="all" />
+ <price free="true" />
+<supplier>
+  <name>Topcastles.com</name>
+    <image mimetype="image/jpg" url="http://www.topcastles.com/banner_topkastelen_nl.jpg" usage="icon" />
+  </supplier>
+</poi>
+</item>

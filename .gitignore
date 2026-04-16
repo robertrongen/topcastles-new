@@ -1,0 +1,33 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+build
+*.tsbuildinfo
+
+# Test coverage
+coverage
+
+# Turbo & pnpm
+.pnpm-store
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# yalc (local plugin publishing)
+.yalc
+yalc.lock
+
+# Logs
+*.log
+*.log.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea
+.vscode/settings.json

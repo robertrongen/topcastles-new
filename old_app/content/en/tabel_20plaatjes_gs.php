@@ -1,0 +1,43 @@
+<table border="0" cellpadding="0" cellspacing="0" id="AutoNumber1"> <?php
+	while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) 
+	{
+		if (($Teller >= $TellerVan) && ($Teller <= $TellerEind)) 
+		{
+			if (($Teller % 5)== 1) 
+			{ 
+			//	tabelrij toevoegen
+				?><tr><?php
+			}
+			$filename="images/small/". $line['castle']."_small.jpg";
+			//cel toevoegen
+			if (file_exists($filename))
+			{ 
+				?><td height="120" width="120" align="center">
+				<div class="graphics"><a href="javascript:document.form81.SelCastle.value='<?php echo $line['castle'] ?>';document.form81.submit();"
+					title="<?php echo $Teller.". ".$line['castle_name']." - ".$line['country'] ?>">
+					<Img width="110" border="0" height="110" SRC="<?php echo "images/small/".$line['castle']."_small.jpg" ?>" ALT=""></a>
+				</div>
+				</td><?php
+			}
+			else
+			{ 
+				?><td height="120" width="120" border="0" align="center">
+					<br><br><a href="javascript:document.form81.SelCastle.value='<?php echo $line['castle'] ?>';document.form81.submit();"
+					title="<?php echo $Teller.". ".$line['castle_name']." - ".$line['country'] ?>">
+					<?php
+					echo $Teller.". ".$line['castle_name']."<br>(".$line['country'].")"
+					?></a>
+				</td><?php
+			}
+			//aantal cellen in rij bereikt?
+			if (($Teller % 5) == 0) 
+			{ 
+				?></tr><?php
+			}
+		}
+		$Teller = $Teller + 1;
+	}
+	?>
+	</td>
+  </tr>
+</table>

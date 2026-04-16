@@ -1,0 +1,473 @@
+/***********************************************/
+/* HTML tag styles                             */
+/***********************************************/
+
+/* padding = top right bottom left 
+ * http://www.w3schools.com/css
+ * */
+
+body
+{
+	font-family: Verdana,sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	color: #000000;
+	margin: 0px;
+	padding: 0px
+}
+
+a:link, a:visited, a:active
+{
+	text-decoration: none;
+}
+
+a:hover 
+{
+	text-decoration: underline;
+	background-color:#CCCCFF;
+	padding: 1px 0px 1px 0px;
+}
+/* overrides decoration from previous rule for hovered links */
+
+img, a.img 
+{
+	float: left;
+	padding: 0px 0px 0px 0px;
+	margin: 5px 5px 5px 0;
+	border-width: 0;
+}
+
+h1, h2, h3, h4 
+{
+ font-family: Verdana,Arial,sans-serif;
+}
+
+h1
+{
+ font-size: 180%;
+}
+
+h2
+{
+ font-size: 140%;
+}
+
+h3{
+ font-size: 120%;
+}
+
+h4{
+ font-size: 100%;
+}
+
+ul {
+ list-style-type: square;
+}
+
+/*ul ul {
+ list-style-type: disc;
+}
+
+label{
+    font: bold 100% Verdana,sans-serif;
+}
+*/
+th {
+	background-color:#CCCCEB;
+	vertical-align: middle;
+	font-weight:bold;
+}
+
+td
+{
+	font-size:11px;
+	vertical-align: top;
+}
+
+input 
+{
+	color : #000000;
+	font: bold 11px Verdana, Arial, Helvetica, sans-serif;
+	border-color : #FFFFFF;
+	background-color: #E6E6F5;
+}
+
+input:hover
+{
+	background-color: #CCCCFF;
+}
+
+
+/***********************************************/
+/* Layout Divs                                 */
+/***********************************************/
+
+/*
+#Layer1, #Layer1 a 
+{
+	position: absolute; 
+	z-index:1; 
+	top: 0px; 	
+	background: url(../images/general/banner_en.gif) 
+	no-repeat 0 
+	border:none;
+	bottom; 
+	display:block; 
+	width: 255px;
+	height: 88px; 
+}
+
+
+#Layer1 a:hover 
+{
+	background: url(../images/general/banner_en_blue.gif) 
+}
+*/
+
+#content
+{
+    float:right;
+	width: 70%;
+	margin: 0;
+	padding: 0 3% 0 0;
+}
+
+#masthead
+{
+	margin: 20;
+	font-size:11px;
+	font-weight:bold;
+	color:#000000;
+	background-color:#FF9900;
+	padding-left:269px; padding-right:8px; padding-top:10px; padding-bottom:4px
+}
+
+#masthead a:link, #masthead a:visited, #masthead a:active
+{	
+	color:#000000;
+}
+
+#masthead a:hover
+{
+	color:#ffffff;
+    text-decoration: none;
+	background-color:#000099;
+	padding: 4px 0px 4px 0px;
+}
+
+#masthead img, #masthead a.img, #masthead script
+{
+	float: right;
+	padding: 6px 0px 0px 0px;
+	margin: 0px 0px 0px 0;
+	border-width: 0;
+    width: 22px;
+    height: 22px; 
+}
+
+#masthead a:hover img
+{
+	padding: 8px 0px 0px 0px;
+    width: 22px;
+    height: 18px; 
+}
+
+#right a:link, #right a:visited, #right a:active
+{
+	font-weight:normal;
+	color:#ffffff;
+}
+
+#right a:hover
+{
+	background-color:#CCCCFF;
+	color:#000099;
+	padding: 2px 0px 2px 2px;
+}
+
+/*
+.breadCrumb
+{
+	font-size:10px;
+	font-weight:normal;
+	color:#FFFFFF;
+	background-image:url('banner_blue.gif');
+ 	padding-left:4px; padding-right:8px; padding-top:8px; padding-bottom:10px
+}
+
+.breadCrumb a:link, .breadCrumb a:visited, .breadCrumb a:active
+{	color:#FFFFFF;
+	font-weight:normal;
+	text-decoration: none;
+}
+
+.breadCrumb a:hover
+{	text-decoration: underline;
+	color:#FFFFFF;
+}
+*/
+
+/***********************************************/
+/*Component Divs                               */
+/***********************************************/
+
+#siteName{
+	margin: 0px;
+	padding: 0px 0px 10px 10px;
+}
+
+
+/*************** #pageName styles **************/
+
+#pageName{
+	padding: 0px 0px 10px 10px;
+}
+
+/************* #globalNav styles **************/
+
+#globalNav{
+	color: #cccccc;
+	padding: 0px 0px 0px 10px;
+	white-space: nowrap;
+}
+
+#globalNav a{
+	font-size: 100%;
+	padding: 0px 4px 0px 0px;
+}
+
+/************** .feature styles **************/
+
+.feature {
+	font-size: 11px;
+	font-weight:normal;
+	padding: 6px 0px 5px 0px;
+}
+
+.feature h2{
+	margin-left: 0px;
+	background-color:#CCCCFF;
+	padding: 6px 0px 5px 0px;
+}
+
+.feature li 
+{
+	list-style-image:  url('arrow.gif'); 
+	padding: 2px 0px 0px 0px;
+	margin-left: 25px;
+}
+
+.feature a:link, .feature a:visited,  .feature a:active
+{	
+	text-decoration: underline;
+	color:#000099;
+}
+.feature h2 a:link, .feature h2 a:visited,  .feature h2 a:active
+{	
+	color: BLACK;
+	text-decoration: none;
+}
+
+.feature a:hover, .feature h2 a:hover
+{
+	text-decoration: underline;
+	color:#000099;
+}
+
+/************** tabellen met plaatjes **************/
+
+.graphics a:hover, .graphics a:hover img 
+{
+    width: 106px;
+    height: 106px; 
+	padding: 2px;
+	background: none;
+}
+
+.thumbnails a:hover, .thumbnails a:hover img 
+{
+    width: 106px;
+}
+
+.rowOdd 
+{
+	background-color:#ffffff;
+}
+
+.rowEven 
+{
+	background-color:#fff6de;
+}
+
+/************** .story styles *****************/
+
+.story
+{
+	clear: both;
+	padding: 10px 0px 0px 10px;
+	font-size: 90%;
+}
+
+.story p
+{
+	padding: 0px 0px 10px 0px;
+}
+
+
+/************* #siteInfo styles ***************/
+
+#siteInfo, #siteInfo td, #siteInfo a:link, #siteInfo a:visited
+{
+	clear: both;
+	font-size: 95%;
+	color: #000053;
+	font-weight:normal;
+}
+
+/************* #search styles ***************/
+
+#search
+{
+	padding: 5px 0px 5px 10px;
+	border-bottom: 1px solid #cccccc;
+	font-size: 90%;
+}
+
+#search form
+{
+ margin: 0px;
+ padding: 0px;
+}
+
+#search label
+{
+	display: block;
+	margin: 0px;
+	padding: 0px;
+}
+
+
+/*********** #navBar link styles ***********/
+
+#navBar
+{
+	margin: 17px 76% 0 17px;
+	padding: 0;
+	background-color: 	#E6E6F5;
+}
+
+#navBar ul a:link, #navBar ul a:visited 
+{
+	color: #000000; 
+	font-weight:normal; 
+	display: block;
+}
+
+#navBar ul 
+{
+	list-style: none; 
+	margin: 0; 
+	padding: 0px 0px 0px 0px; 
+}
+
+#navBarList li 
+{
+	margin-left: 15px;
+}
+
+#navBanner
+{
+	margin: 15px;
+	background-color: #ffffff;
+}
+
+/* hack to fix IE/Win's broken rendering of block-level anchors in lists 
+#navBar li {
+	border-bottom: 1px solid #EEE;
+}
+*/
+/* fix for browsers that don't need the hack 
+html>body #navBar li {
+	border-bottom: none;
+}
+*/
+
+/*********** #sectionLinks styles ***********/
+
+#sectionLinks
+{
+	position: relative;
+	margin: 0px;
+	padding: 0px 0px 2px 10px;
+	border-bottom: 2px solid #CCCCFF;
+}
+
+#sectionLinks h3
+{
+	margin: 0px;
+	padding: 5px 0px 2px 10px;
+}
+
+#sectionLinks a:link, #sectionLinks a:visited, #sectionLinks a:active 
+{
+	padding: 5px 0px 2px 10px;
+	width: 100%;
+	width: auto;
+}
+
+#sectionLinks a:hover, #sectionLinks li a:hover 
+{
+	background-color: #CCCCFF;
+	padding: 5px 0px 2px 10px;
+	color:#000099;
+}
+
+#sectionLinks
+{
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+	padding-top: 10px;
+	border-bottom: 1px solid #F5F5FB;
+}
+
+
+/*********** .relatedLinks styles ***********/
+
+.relatedLinks, .relatedLinks td 
+{
+	margin: 0px;
+	padding: 0px 0px 0px 5px; 
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight:100; 
+}
+
+.relatedLinks h3 a:link, .relatedLinks h3 a:visited, .relatedLinks h3 a:active
+{	
+	color:#000000;
+	text-decoration: none;
+}
+
+.relatedLinks a:link, .relatedLinks a:visited, .relatedLinks a:active
+{	
+	text-decoration: underline;
+	color:#000099;
+}
+
+.relatedLinks a:hover, .relatedLinks h3 a:hover
+{	
+	text-decoration: underline;
+	color:#000099;
+}
+
+.relatedLinks h3
+{
+	padding: 5px 0px 2px 0px;
+}
+
+.stem td
+{
+	padding: 0px 0px 0px 0px;
+	text-align: center;
+}
+

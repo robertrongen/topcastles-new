@@ -1,0 +1,188 @@
+<div id="content" style="z-index: 4"> 
+
+  <div class="feature">
+		<h2 id="top">Search castles in the database</h2> 
+	<table>
+		<FORM method="post" id=form61 action="zoeken.php">
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Name:</td>
+			<td><input type="text" size=34 name="SearchCastle"/>
+		</td></tr>
+		<tr>
+			<td>Description:</td>
+			<td><input type="text" size=34 name="SearchDesciption"/>
+		</td></tr>
+		<tr><td>
+			<h3>Location</h3>
+		</td></tr>
+		<tr><td>
+			Place:</td><td><input type="text" size=34 name="SearchPlace" />
+		</td></tr>
+		<tr><td>
+			Region (district):</td><td><input type="text" size=34 name="SearchRegion" />
+		</td></tr>
+		<tr>
+			<td>Country:</td>
+			<td>
+			<SELECT NAME="SearchCountry">
+			 <OPTION VALUE="Leeg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 <OPTION VALUE="Albani&euml;">Albania
+			 <OPTION VALUE="Algerije">Algeria
+			 <OPTION VALUE="Oostenrijk">Austria
+			 <OPTION VALUE="Belgi&euml;">Belgium
+			 <OPTION VALUE="Bosni&euml;">Bosnia
+			 <OPTION VALUE="Bulgarije">Bulgaria
+			 <OPTION VALUE="Kroati&euml;">Croatia
+			 <OPTION VALUE="Cyprus">Cyprus
+			 <OPTION VALUE="Tsjechi&euml;">Czechia
+			 <OPTION VALUE="Denemarken">Denmark
+			 <OPTION VALUE="Duitsland">Germany
+			 <OPTION VALUE="Egypte">Egypt
+			 <OPTION VALUE="Engeland">England
+			 <OPTION VALUE="Estland">Estonia
+			 <OPTION VALUE="Ethiopi&euml;">Ethiopia
+			 <OPTION VALUE="Finland">Finland
+			 <OPTION VALUE="Frankrijk">France
+			 <OPTION VALUE="Ghana">Ghana
+			 <OPTION VALUE="Griekenland">Greece
+			 <OPTION VALUE="Hongarije">Hungaria
+			 <OPTION VALUE="India">India
+			 <OPTION VALUE="Irak">Iraq
+			 <OPTION VALUE="Israel">Israel
+			 <OPTION VALUE="Itali&euml;">Italia
+			 <OPTION VALUE="Japan">Japan
+			 <OPTION VALUE="Jordani&euml;">Jordania
+			 <OPTION VALUE="Kroati&euml;">Kroatia
+			 <OPTION VALUE="Letland">Latvia
+			 <OPTION VALUE="Libanon">Libanon
+			 <OPTION VALUE="Liechtenstein">Liechtenstein
+			 <OPTION VALUE="Luxemburg">Luxemburg
+			 <OPTION VALUE="Marokko">Morocco
+			 <OPTION VALUE="Moldavi&euml;">Moldava
+			 <OPTION VALUE="Monaco">Monaco
+			 <OPTION VALUE="Nederland">Netherlands
+			 <OPTION VALUE="Noord-Ierland">Northern Ireland
+			 <OPTION VALUE="Noorwegen">Norway
+			 <OPTION VALUE="Polen">Poland
+			 <OPTION VALUE="Portugal">Portugal
+			 <OPTION VALUE="Ierland">Republic of Ireland
+			 <OPTION VALUE="Roemenië">Roemenia
+			 <OPTION VALUE="Rusland">Russia
+			 <OPTION VALUE="San Marino">San Marino
+			 <OPTION VALUE="Schotland">Scotland
+			 <OPTION VALUE="Servi&euml;">Serbia
+			 <OPTION VALUE="Sloveni&euml;">Slovenia
+			 <OPTION VALUE="Slowakije">Slowakia
+			 <OPTION VALUE="Spanje">Spain
+			 <OPTION VALUE="Zweden">Sweden
+			 <OPTION VALUE="Zwitserland">Switserland
+			 <OPTION VALUE="Syri&euml;">Syria
+			 <OPTION VALUE="Tunesi&euml;">Tunesia
+			 <OPTION VALUE="Turkije">Turkey
+			 <OPTION VALUE="Wales">Wales
+			 <OPTION VALUE="Wit-Rusland">White-Russia
+			</SELECT>
+		</td></tr>
+		<tr>
+			<td>Area:</td>
+			<td>
+			<SELECT NAME="SearchGebied">
+			 <OPTION VALUE="Leeg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 <OPTION VALUE="Alpen">Alps
+			 <OPTION VALUE="Benelux">Benelux
+			 <OPTION VALUE="Britse Eilanden">British Islands
+			 <OPTION VALUE="Kruistochten">Crusades
+			 <OPTION VALUE="Oost Europa">Eastern Europe
+			 <OPTION VALUE="Noord Europa">Nordic
+			 <OPTION VALUE="Buiten Europa">Outside Europe
+			 <OPTION VALUE="Scandinavi&euml;">Scandinavia
+			</SELECT>
+		</td></tr>
+		<tr><td>
+			<h3>Castle type</h3>
+		</td></tr>
+		<tr><td>
+			Location:</td><td><SELECT NAME="SearchCastleType">
+			 <OPTION VALUE="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 <OPTION VALUE="1">Mountain castle
+			 <OPTION VALUE="2">Rock castle
+			 <OPTION VALUE="3">Water castle
+			 <OPTION VALUE="4">Harbour castle
+			 <OPTION VALUE="5">City castle
+		   </SELECT>
+		</td></tr>
+		<tr>
+			<td>Building structure:&nbsp;</td>
+			<td><SELECT NAME="SearchCastleConcept">
+			 <OPTION VALUE="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 <OPTION VALUE="1">Motte-and-bailey castle
+			 <OPTION VALUE="2">Later norman castle
+			 <OPTION VALUE="3">Ringwork castle
+			 <OPTION VALUE="4">Tower castle
+			 <OPTION VALUE="5">Rectangular castle
+			 <OPTION VALUE="6">Donjon inside curtain
+			 <OPTION VALUE="7">Donjon in curtain
+			 <OPTION VALUE="8">Donjon outside curtain
+		   </SELECT>
+			</td>
+		</tr>
+		<tr>
+			<td><h3>History</h3></td>
+		</tr>
+		<tr>
+			<td>Founder:</td>
+			<td><input type="text" size=34 name="SearchFounder" />
+		</td></tr>
+		<tr>
+			<td>Era:&nbsp;</td>
+			<td><SELECT NAME="SearchEra">
+			 <OPTION VALUE="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 <OPTION VALUE="10">10th century
+			 <OPTION VALUE="11">11th century
+			 <OPTION VALUE="12">12th century
+			 <OPTION VALUE="13">13th century
+			 <OPTION VALUE="14">14th century
+			 <OPTION VALUE="15">15th century
+			 <OPTION VALUE="15">16th century
+			 <OPTION VALUE="15">17th century
+		   </SELECT>
+		</td></tr>
+		<tr>
+			<td>Condition:&nbsp;</td>
+			<td><SELECT NAME="SearchCondition">
+				 <OPTION VALUE="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				 <OPTION VALUE="1">Intact castles
+				 <OPTION VALUE="2">Rebuild or restored castles
+				 <OPTION VALUE="3">Damaged castles
+				 <OPTION VALUE="4">Ruinedor partly remained castles
+				 <OPTION VALUE="5">Destroyed castles
+			</SELECT>
+		</td></tr>
+		<tr>
+			<td>Sort key:</td>
+			<td>
+			<SELECT NAME="Sorteer">
+				<OPTION VALUE="position">Top 100 score
+				<OPTION VALUE="castle_code">Castle code
+				<OPTION VALUE="land">Country
+				<OPTION VALUE="region">Region
+				<OPTION VALUE="era">Era
+			</SELECT>
+		</td></tr>
+		<tr><td>&nbsp;
+			
+		</td></tr>
+		<tr><td>
+		</td><td>
+			<input type="hidden" size=34 name="SubMenu" value="resultaat">
+			<input type="submit" value="search">
+			<input type="reset" name="reset" value="reset">
+		   </FORM>
+		</td></tr>
+	</table>
+  </div>
+
+</div>

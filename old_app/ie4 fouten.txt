@@ -1,0 +1,6 @@
+mouse-over bij plaatjes werkt niet 
+bovenste balk rond topkastelen.nl logo is geheel wit
+lettertypes in menu en navigatie is onbekend/default
+navigatie is niet gekleurd 
+bij top 20 plaatjes niet strak tegen elkaar
+content frame springt helemaal naar rechts

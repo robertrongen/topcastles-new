@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /usage/
+Disallow: /webalizer/
+Disallow: /admin/
+Disallow: /awstats/
+Disallow: /forms/
+Disallow: /functions/
+Disallow: /style/
+Sitemap: http://www.topcastles.com/sitemap.xml

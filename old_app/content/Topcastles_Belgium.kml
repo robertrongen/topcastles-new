@@ -1,0 +1,972 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Topcastles_Belgium.kml</name>
+	<StyleMap id="Sheet1Map6">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#NormalSheet1Map6</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#HighlightSheet1Map6</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="NormalSheet1Map8">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://www.topcastles.com/topcastle-icon.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>00000000</color>
+		</LabelStyle>
+		<BalloonStyle>
+			<text>$[description]</text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff00ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>00ff00ff</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="HighlightSheet1Map4">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://www.topcastles.com/topcastle-icon.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>1.1</scale>
+		</LabelStyle>
+		<BalloonStyle>
+			<text>$[description]</text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff00ff</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>70ff00ff</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="Sheet1Map7">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#NormalSheet1Map7</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#HighlightSheet1Map7</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="Sheet1Map9">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#NormalSheet1Map9</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#HighlightSheet1Map9</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="NormalSheet1Map7">
+		<IconStyle>
+			<scale>0.9</scale>
+			<Icon>
+				<href>http://www.topcastles.com/topcastle-icon.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>00000000</color>
+		</LabelStyle>
+		<BalloonStyle>
+			<text>$[description]</text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff00ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>00ff00ff</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="NormalSheet1Map4">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://www.topcastles.com/topcastle-icon.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+		</LabelStyle>
+		<BalloonStyle>
+			<text>$[description]</text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff00ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>00ff00ff</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="HighlightSheet1Map7">
+		<IconStyle>
+			<Icon>
+				<href>http://www.topcastles.com/topcastle-icon.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+		</LabelStyle>
+		<BalloonStyle>
+			<text>$[description]</text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff00ff</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>70ff00ff</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="Sheet1Map4">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#NormalSheet1Map4</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#HighlightSheet1Map4</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="Sheet1Map8">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#NormalSheet1Map8</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#HighlightSheet1Map8</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="HighlightSheet1Map6">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://www.topcastles.com/topcastle-icon.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+		</LabelStyle>
+		<BalloonStyle>
+			<text>$[description]</text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff00ff</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>70ff00ff</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="Sheet1Map10">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#NormalSheet1Map10</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#HighlightSheet1Map10</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="NormalSheet1Map10">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>http://www.topcastles.com/topcastle-icon.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>00000000</color>
+		</LabelStyle>
+		<BalloonStyle>
+			<text>$[description]</text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff00ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>00ff00ff</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="HighlightSheet1Map10">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://www.topcastles.com/topcastle-icon.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+		</LabelStyle>
+		<BalloonStyle>
+			<text>$[description]</text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff00ff</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>70ff00ff</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="HighlightSheet1Map9">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://www.topcastles.com/topcastle-icon.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+		</LabelStyle>
+		<BalloonStyle>
+			<text>$[description]</text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff00ff</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>70ff00ff</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="HighlightSheet1Map8">
+		<IconStyle>
+			<scale>0.9</scale>
+			<Icon>
+				<href>http://www.topcastles.com/topcastle-icon.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+		</LabelStyle>
+		<BalloonStyle>
+			<text>$[description]</text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff00ff</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>70ff00ff</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="NormalSheet1Map9">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://www.topcastles.com/topcastle-icon.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>00000000</color>
+		</LabelStyle>
+		<BalloonStyle>
+			<text>$[description]</text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff00ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>00ff00ff</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="NormalSheet1Map6">
+		<IconStyle>
+			<Icon>
+				<href>http://www.topcastles.com/topcastle-icon.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>00000000</color>
+		</LabelStyle>
+		<BalloonStyle>
+			<text>$[description]</text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffff00ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>00ff00ff</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Folder>
+		<name>Belgium</name>
+		<description>Topcastles of Belgium according to http://www.topcastles.com. The bigger the icon the higher the score of the castle.</description>
+		<Placemark>
+			<name>Gravensteen</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=gravensteen<br><br>16. Gravensteen<br>Country: Belgium<br>Region: Oost Vlaanderen<br>Place: Gent]]></description>
+			<LookAt>
+				<longitude>3.7205555556</longitude>
+				<latitude>51.057222222</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map4</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>3.7205555556,51.05722222200001,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Kasteel Beersel</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=beersel<br><br>42. Kasteel Beersel<br>Country: Belgium<br>Region: Brabant<br>Place: Beersel]]></description>
+			<LookAt>
+				<longitude>4.3000836336</longitude>
+				<latitude>50.765622922</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map6</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.3000836336,50.765622922,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Château de Bouillon</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=bouillon<br><br>131. Château de Bouillon<br>Country: Belgium<br>Region: Luxemburg<br>Place: Bouillon sur Semois]]></description>
+			<LookAt>
+				<longitude>5.0649630118</longitude>
+				<latitude>49.792486676</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map7</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>5.0649630118,49.792486676,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Kasteel Laarne</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=laarne<br><br>156. Kasteel Laarne<br>Country: Belgium<br>Region: Oost Vlaanderen<br>Place: Laarne]]></description>
+			<LookAt>
+				<longitude>3.8383945914</longitude>
+				<latitude>51.027890938</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map8</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>3.8383945914,51.027890938,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Kasteel Horst (Rode)</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=horst<br><br>176. Kasteel Horst (Rode)<br>Country: Belgium<br>Region: Brabant<br>Place: Sint-Pieters-Rode]]></description>
+			<LookAt>
+				<longitude>4.8322189191</longitude>
+				<latitude>50.933567945</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map8</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.8322189191,50.933567945,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Kasteel de Borrekens (Vorselaar)</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=vorselaar<br><br>279. Kasteel de Borrekens (Vorselaar)<br>Country: Belgium<br>Region: Antwerpen<br>Place: Vorselaar]]></description>
+			<LookAt>
+				<longitude>4.7780066804</longitude>
+				<latitude>51.213272803</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map8</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.7780066804,51.213272803,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Kasteel Cleydael</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=cleydael<br><br>332. Kasteel Cleydael<br>Country: Belgium<br>Region: Antwerpen<br>Place: Aartselaar]]></description>
+			<LookAt>
+				<longitude>4.3639763647</longitude>
+				<latitude>51.138346746</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map8</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.3639763647,51.138346746,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Kasteel Turnhout</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=turnhout<br><br>381. Kasteel Turnhout<br>Country: Belgium<br>Region: Antwerpen<br>Place: Turnhout]]></description>
+			<LookAt>
+				<longitude>4.9458333333</longitude>
+				<latitude>51.324444444</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map9</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.9458333333,51.32444444400001,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Kasteel Wijnendale</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=wijnendale<br><br>388. Kasteel Wijnendale<br>Country: Belgium<br>Region: West Vlaanderen<br>Place: Wijnendale]]></description>
+			<LookAt>
+				<longitude>3.0591333253</longitude>
+				<latitude>51.078904089</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map9</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>3.0591333253,51.07890408899999,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Corroy le Chateau</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=corroy<br><br>390. Corroy le Chateau<br>Country: Belgium<br>Region: Namen<br>Place: Corroy]]></description>
+			<LookAt>
+				<longitude>4.6562048922</longitude>
+				<latitude>50.532844925</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map9</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.6562048922,50.53284492499999,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Kasteel Gaasbeek</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=gaasbeek<br><br>426. Kasteel Gaasbeek<br>Country: Belgium<br>Region: Brabant<br>Place: Gaasbeek]]></description>
+			<LookAt>
+				<longitude>4.1970130224</longitude>
+				<latitude>50.796449303</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map9</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.1970130224,50.796449303,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Château d&apos;Ecaussines-Lalaing</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=ecaussineslalaing<br><br>476. Château d'Ecaussines-Lalaing<br>Country: Belgium<br>Region: Henegouwen<br>Place:]]></description>
+			<LookAt>
+				<longitude>4.1767986543</longitude>
+				<latitude>50.568156451</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map9</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.1767986543,50.568156451,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Reinhardstein (Kasteel van Renaud Metternich)</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=reinhardstein<br><br>511. Reinhardstein (Kasteel van Renaud Metternich)<br>Country: Belgium<br>Region: Luik<br>Place: Waimes]]></description>
+			<LookAt>
+				<longitude>6.1024866745</longitude>
+				<latitude>50.452525883</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map9</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>6.1024866745,50.452525883,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Kasteel van Groot-Bijgaarden (Château de Grand-Bigard)</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=grootbijgaarden<br><br>520. Kasteel van Groot-Bijgaarden (Château de Grand-Bigard)<br>Country: Belgium<br>Region: Brabant<br>Place: Groot-Bijgaarden]]></description>
+			<LookAt>
+				<longitude>4.2642926548</longitude>
+				<latitude>50.873485317</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map9</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.2642926548,50.873485317,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Château de Vêves</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=veves<br><br>578. Château de Vêves<br>Country: Belgium<br>Region: Namen<br>Place: Celles (Houyet)]]></description>
+			<LookAt>
+				<longitude>4.9825239322</longitude>
+				<latitude>50.220719368</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map9</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.9825239322,50.22071936799999,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Château de la Roche En Ardenne</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=rocheenardenne<br><br>588. Château de la Roche En Ardenne<br>Country: Belgium<br>Region: Luxemburg<br>Place: Roche en Ardenne]]></description>
+			<LookAt>
+				<longitude>5.5763764332</longitude>
+				<latitude>50.181907905</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map9</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>5.5763764332,50.181907905,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Château de Lavaux-Sainte-Anne</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=lavaux<br><br>617. Château de Lavaux-Sainte-Anne<br>Country: Belgium<br>Region: Namen<br>Place: Lavaux-Ste-Anne]]></description>
+			<LookAt>
+				<longitude>5.0915638047</longitude>
+				<latitude>50.116076767</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map9</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>5.0915638047,50.116076767,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Kasteel Bossenstein</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=bossenstein<br><br>630. Kasteel Bossenstein<br>Country: Belgium<br>Region: Antwerpen<br>Place: Broechem]]></description>
+			<LookAt>
+				<longitude>4.5955780451</longitude>
+				<latitude>51.19281822</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map9</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.5955780451,51.19281822,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Château de Spontin</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=spontin<br><br>653. Château de Spontin<br>Country: Belgium<br>Region: Namen<br>Place: Spontin]]></description>
+			<LookAt>
+				<longitude>5.0079405244</longitude>
+				<latitude>50.323099994</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map9</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>5.0079405244,50.323099994,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Château de Fallais</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=fallais<br><br>662. Château de Fallais<br>Country: Belgium<br>Region: Luik<br>Place: Fallais]]></description>
+			<LookAt>
+				<longitude>5.1708613602</longitude>
+				<latitude>50.608053207</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map9</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>5.1708613602,50.608053207,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Château de Franchimont</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=franchimont<br><br>672. Château de Franchimont<br>Country: Belgium<br>Region: Luik<br>Place: Franchimont]]></description>
+			<LookAt>
+				<longitude>5.8239218997</longitude>
+				<latitude>50.527624346</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map9</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>5.8239218997,50.52762434600001,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Ruines de Montaigle</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=montaigle<br><br>685. Ruines de Montaigle<br>Country: Belgium<br>Region: Namen<br>Place: Falaen]]></description>
+			<LookAt>
+				<longitude>4.8157090535</longitude>
+				<latitude>50.293275831</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map9</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.8157090535,50.293275831,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Château de Carondelet (Crupet)</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=crupet<br><br>739. Château de Carondelet (Crupet)<br>Country: Belgium<br>Region: Namen<br>Place: Crupet]]></description>
+			<LookAt>
+				<longitude>4.9599236777</longitude>
+				<latitude>50.349880786</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map9</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.9599236777,50.34988078599999,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Château de Rixensart</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=rixensart<br><br>894. Château de Rixensart<br>Country: Belgium<br>Region: Waals Brabant<br>Place: Rixenhart]]></description>
+			<LookAt>
+				<longitude>4.5360868056</longitude>
+				<latitude>50.715191343</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map10</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.5360868056,50.71519134300001,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Kasteel Leefdaal</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=leefdaal<br><br>939. Kasteel Leefdaal<br>Country: Belgium<br>Region: Brabant<br>Place: Leefdaal]]></description>
+			<LookAt>
+				<longitude>4.5925736054</longitude>
+				<latitude>50.85111375</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map10</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.5925736054,50.85111375,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Château de Jehay-Bodegnée</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=jehay<br><br>946. Château de Jehay-Bodegnée<br>Country: Belgium<br>Region: Luik<br>Place: Jehay]]></description>
+			<LookAt>
+				<longitude>5.3232299273</longitude>
+				<latitude>50.577163701</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map10</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>5.3232299273,50.577163701,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Kasteel Merode (Westerlo)</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=westerlo<br><br>968. Kasteel Merode (Westerlo)<br>Country: Belgium<br>Region: Antwerpen<br>Place: Westerlo]]></description>
+			<LookAt>
+				<longitude>4.9171817547</longitude>
+				<latitude>51.083889914</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map10</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.9171817547,51.083889914,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Château de Chimay</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=chimay<br><br>980. Château de Chimay<br>Country: Belgium<br>Region: Henegouwen<br>Place: Chimay]]></description>
+			<LookAt>
+				<longitude>4.3129794366</longitude>
+				<latitude>50.048800188</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map10</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.3129794366,50.048800188,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Château de Sombreffe</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=sombreffe<br><br>990. Château de Sombreffe<br>Country: Belgium<br>Region: Brabant<br>Place: Sombreffe]]></description>
+			<LookAt>
+				<longitude>4.5965006486</longitude>
+				<latitude>50.531113507</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map10</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.5965006486,50.531113507,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Château de Walzin</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=walzin<br><br>1002. Château de Walzin<br>Country: Belgium<br>Region: Namen<br>Place: Dréhance (Dinant)]]></description>
+			<LookAt>
+				<longitude>4.9230807537</longitude>
+				<latitude>50.219580808</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map10</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.9230807537,50.219580808,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Landcommanderij Alden-Biesen</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=aldenbiesen<br><br>1023. Landcommanderij Alden-Biesen<br>Country: Belgium<br>Region: Limburg<br>Place: Rijkhoven (Bilzen)]]></description>
+			<LookAt>
+				<longitude>5.5206727663</longitude>
+				<latitude>50.841595472</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map10</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>5.5206727663,50.84159547200001,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Kasteel van Rumbeke</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=rumbeke<br><br>1037. Kasteel van Rumbeke<br>Country: Belgium<br>Region: West Vlaanderen<br>Place: Rumbeke]]></description>
+			<LookAt>
+				<longitude>3.1373697312</longitude>
+				<latitude>50.926499362</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map10</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>3.1373697312,50.926499362,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Château de Solre-sur-Sambre</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=solre<br><br>1061. Château de Solre-sur-Sambre<br>Country: Belgium<br>Region: Henegouwen<br>Place:]]></description>
+			<LookAt>
+				<longitude>4.155729546</longitude>
+				<latitude>50.309585453</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map10</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>4.155729546,50.309585453,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Château de Jemeppe (Hargimont)</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[Topcastle according to http://www.topcastles.com/kastelen.php?SubMenu=main&SelCastle=jemeppe<br><br>1082. Château de Jemeppe (Hargimont)<br>Country: Belgium<br>Region: Luxemburg<br>Place:]]></description>
+			<LookAt>
+				<longitude>5.3135978324</longitude>
+				<latitude>50.186207944</latitude>
+				<altitude>0</altitude>
+				<range>1000</range>
+				<tilt>0</tilt>
+				<heading>0</heading>
+			</LookAt>
+			<styleUrl>#Sheet1Map10</styleUrl>
+			<ExtendedData>
+			</ExtendedData>
+			<Point>
+				<coordinates>5.3135978324,50.186207944,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>
