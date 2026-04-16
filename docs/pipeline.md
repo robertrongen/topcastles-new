@@ -8,7 +8,7 @@
 |---|---|---|
 | dev | Local development | `http://localhost:4200` (ng serve) |
 | storybook | Component development | `http://localhost:6006` (npm run storybook) |
-| prod | Production build | TBD (static hosting or Node SSR) |
+| prod | Docker container on Synology NAS | `http://<synology-ip>:4000` (ADR-004) |
 
 ## Pipeline steps
 
@@ -59,10 +59,27 @@ npx playwright test
 **What this validates**: Full browser tests that verify migration parity against PHP baseline
 behavior (routes, content, query parameters). E2E tests run against the production build.
 
-### 8. Deploy
-TBD — depends on hosting choice. Options:
-- **Static hosting** (e.g., Azure Static Web Apps, Netlify): Deploy `dist/` output directly
-- **Node SSR** (e.g., Azure App Service): Deploy the SSR server bundle
+### 8. Docker build
+```bash
+docker build -t topkastelen:latest .    # Multi-stage: build + Node Alpine runtime
+```
+**What this produces**: A lightweight Docker image (~150-200 MB) containing the Angular SSR
+server and all prerendered static assets. Uses multi-stage build to keep the image small.
+
+### 9. Deploy to Synology
+```bash
+# Option A: Direct transfer
+docker save topkastelen:latest | gzip > topkastelen.tar.gz
+# Copy to Synology, then:
+docker load < topkastelen.tar.gz
+docker run -d -p 4000:4000 --name topkastelen --restart unless-stopped topkastelen:latest
+
+# Option B: Via Docker registry (if configured)
+docker push <registry>/topkastelen:latest
+# On Synology Container Manager: pull and run
+```
+**What this does**: Runs the Angular SSR app as a persistent container on the Synology NAS.
+The `--restart unless-stopped` flag ensures the container restarts after NAS reboots.
 
 ## Local development workflow
 
@@ -77,6 +94,6 @@ npx playwright test  →  validate parity with PHP baseline
 ## Data pipeline (one-time / on-demand)
 
 ```bash
-python scripts/export_data.py    # MySQL dump → JSON files in new_app/src/assets/data/
+python scripts/csv_to_json.py    # CSV → JSON files in new_app/src/assets/data/
 ```
 This is not part of CI — it runs manually when castle data changes. See ADR-003.

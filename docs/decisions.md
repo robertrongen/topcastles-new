@@ -32,7 +32,7 @@ Decision:
 - **Component docs**: Storybook 9 for component development, visual testing, and documentation.
 - **Language**: TypeScript 5.7+.
 - **Styling**: SCSS with CSS Custom Properties.
-- **Data layer**: Static JSON files generated from MySQL export at build time — no live database in production.
+- **Data layer**: Static JSON files converted from source CSV at build time — no database in build or production.
 - **Rendering**: Angular SSR with prerendering for SEO-critical public pages.
 - **Unit testing**: Karma + Jasmine (Angular default) or Vitest (to be confirmed during skeleton setup).
 
@@ -43,25 +43,55 @@ Consequences:
 - Storybook enables isolated component development — useful for building and reviewing UI slices before wiring data.
 - Angular Material provides accessible, pre-built components (tables, cards, navigation) that map well to castle listings and detail pages.
 
-## ADR-003: Static JSON Data Layer
+## ADR-003: Static JSON Data Layer from CSV
 Status: accepted
 
 Context:
 - The PHP app queries MySQL for castle data on every page load.
 - After ADR-001, all data is read-only static rankings (no runtime vote aggregation).
 - A live database adds operational complexity for no functional benefit.
+- The original CSV used to populate MySQL is available: `old_app/database/Topcastles export.csv` (1000 castles, 41 columns, semicolon-delimited, NL+EN fields).
 
 Decision:
-- Export castle data from MySQL to JSON files as a one-time build-time pipeline step.
-- The Angular app consumes these JSON files via Angular `HttpClient` or build-time imports.
+- Convert the CSV directly to JSON files — no MySQL dependency in the build pipeline.
+- A Python script (`scripts/csv_to_json.py`) reads the CSV source and produces EN-only JSON.
 - JSON files live in `new_app/src/assets/data/` and are versioned in the repository.
-- If data needs updating, re-run the export script against the MySQL dump.
+- The Angular app consumes these JSON files via Angular `HttpClient` or build-time imports.
+- If data needs updating, edit the CSV and re-run the conversion script.
+
+CSV column mapping (EN fields used in migration):
+- `position`, `castle_code`, `castle_name`, `country`, `area`, `place`, `region`
+- `Latitude`, `Longitude`, `founder`, `era`, `castle_type`, `castle_concept`, `condition`
+- `remarkable`, `description`, `website`, `score_total`, `score_visitors`, `visitors`
+- NL-only columns (`land`, `gebied`, `kasteel_type`, `kasteel_concept`, `conditie`, `opmerkelijk`, `beschrijving`) are excluded per ADR-001 (EN-only).
 
 Consequences:
-- Zero database dependency in production — deploy as static assets + SSR.
-- Data changes require re-export and rebuild (acceptable for infrequently changing castle data).
-- Simpler hosting: any static hosting or Node SSR server works.
-- Export script becomes a migration artifact in `tools/` or `scripts/`.
+- Zero database dependency in both build and production.
+- CSV → JSON is simpler and faster than MySQL → JSON (no DB install required).
+- Data changes require CSV edit + script re-run + rebuild.
+- Export script becomes a migration artifact in `scripts/`.
+
+## ADR-004: Docker Deployment on Synology NAS
+Status: accepted
+
+Context:
+- The application needs a hosting target for production.
+- The developer has a personal Synology NAS that supports Docker containers.
+- The site is read-only content with Angular SSR — lightweight resource requirements.
+
+Decision:
+- Package the Angular SSR application as a Docker container.
+- Use a multi-stage Dockerfile: Node build stage → lightweight Node runtime stage.
+- Deploy the container to Synology NAS via Docker (Synology Container Manager).
+- Expose the app on a configurable port (default `4000`).
+- Use `node dist/new_app/server/server.mjs` as the container entrypoint.
+
+Consequences:
+- Self-hosted, no cloud hosting costs.
+- Synology Docker has limited resources — keep the container image small (Node Alpine base).
+- No CI/CD pipeline to Synology initially — manual `docker build` + `docker load` or registry pull.
+- SSR serves prerendered HTML + handles dynamic routes; static assets served by Node/Express.
+- Future option: add a reverse proxy (Synology built-in or Nginx) for HTTPS/domain mapping.
 
 ---
 

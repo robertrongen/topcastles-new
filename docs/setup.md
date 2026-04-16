@@ -14,8 +14,9 @@
 | Unit testing | **Karma + Jasmine** | — | Angular CLI default; may evaluate Vitest later |
 | E2E testing | **Playwright** | — | Cross-browser E2E tests for migration parity validation |
 | Package manager | **npm** | — | Angular CLI default; keeps setup simple |
-| Data layer | **Static JSON** | — | MySQL → JSON export at build time (ADR-003); no live DB in prod |
+| Data layer | **Static JSON** | — | CSV → JSON conversion at build time (ADR-003); no DB anywhere |
 | Rendering | **Angular SSR** | — | `@angular/ssr` for server-side rendering + prerendering for SEO |
+| Containerization | **Docker** | — | Multi-stage build; Node Alpine runtime for Synology NAS (ADR-004) |
 
 ## Key Angular concepts to learn
 
@@ -128,7 +129,8 @@ export const Default: Story = {
 
 - Source application: PHP with MySQL (`old_app/`)
 - Migration scope: EN-only, read-only public pages (ADR-001)
-- Data: Static JSON exported from MySQL (ADR-003)
+- Data: Static JSON converted from CSV (ADR-003) — source: `old_app/database/Topcastles export.csv` (1000 castles, 41 columns)
+- Deployment: Docker container on Synology NAS (ADR-004)
 
 ## Project structure (planned)
 
@@ -150,6 +152,8 @@ new_app/
 │   └── index.html
 ├── .storybook/                  # Storybook configuration
 ├── angular.json                 # Angular CLI workspace config
+├── Dockerfile                   # Multi-stage Docker build
+├── .dockerignore                # Exclude node_modules, old_app, etc.
 ├── tsconfig.json
 └── package.json
 ```

@@ -35,7 +35,7 @@ The legacy application lives in `old_app/` and is a PHP website with:
 │           ▼                                         │
 │  ┌──────────────────┐                               │
 │  │  Static JSON      │  ← /assets/data/*.json       │
-│  │  (castle data)    │     built from MySQL export   │
+│  │  (castle data)    │     built from CSV export     │
 │  └──────────────────┘                               │
 └─────────────────────────────────────────────────────┘
 ```
@@ -82,10 +82,30 @@ AppComponent (shell: toolbar + sidenav + router-outlet)
 
 ### Data flow
 
-1. **Build time**: Python script reads MySQL dump → produces `castles.json`, `countries.json`, etc.
+1. **Build time**: Python script reads `old_app/database/Topcastles export.csv` → produces `castles.json`, `countries.json`, etc.
 2. **Runtime**: Angular services load JSON via `HttpClient` (or `fetch` for prerendering).
 3. **Signals**: Services expose data as `signal<T[]>()` → components react to changes.
-4. **No backend API**: The production app is fully static assets + prerendered HTML.
+4. **No backend API**: The production app runs as a Docker container with Angular SSR on Synology NAS (ADR-004).
+
+### Deployment architecture
+
+```
+┌──────────────────────────────────────────────┐
+│              Synology NAS                     │
+│  ┌────────────────────────────────────────┐  │
+│  │  Docker Container (Node Alpine)        │  │
+│  │  ┌──────────────────────────────────┐  │  │
+│  │  │  Angular SSR (Express/Node)      │  │  │
+│  │  │  - Prerendered HTML pages        │  │  │
+│  │  │  - Static assets (JS, CSS, JSON) │  │  │
+│  │  │  - SSR for dynamic routes        │  │  │
+│  │  └──────────────────────────────────┘  │  │
+│  │  Port 4000 (configurable)              │  │
+│  └────────────────────────────────────────┘  │
+│                                              │
+│  Optional: Reverse proxy (HTTPS/domain)      │
+└──────────────────────────────────────────────┘
+```
 
 ### SSR and prerendering strategy
 
