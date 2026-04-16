@@ -29,22 +29,6 @@
 		<ul>
 			<li><a href="javascript:document.form3.SubMenu.value='bronnen';document.form3.submit();">
 			&nbsp;&nbsp;<?php echo $MenuText_2_1; ?></a></li>
-			<li><a href="javascript:document.form3.SubMenu.value='bezoekers';document.form3.submit();">
-			&nbsp;&nbsp;<?php echo $MenuText_2_2 ?></a></li>
-		</ul>
-	</div> 
-
-	<div id="sectionLinks" style="z-index: 3">
-		<h3><?php echo $MenuText_2 ?></h3>
-		<ul>
-			<li><a href="javascript:document.form3.SubMenu.value='jump';document.form3.submit();">
-			&nbsp;&nbsp;<?php echo $MenuText_2_2a ?></a></li>
-			<li><a href="javascript:document.form3.SubMenu.value='preview';document.form3.submit();">
-			&nbsp;&nbsp;sneak preview</a></li>
-			<li><a href="javascript:document.form3.SubMenu.value='bezoekersaantal';document.form3.submit();">
-			&nbsp;&nbsp;<?php echo $MenuText_2_3 ?></a></li>
-			<li><a href="javascript:document.form3.SubMenu.value='bezoekerslaag';document.form3.submit();">
-			&nbsp;&nbsp;<?php echo $MenuText_2_5 ?></a></li>
 		</ul>
 	</div> 
 

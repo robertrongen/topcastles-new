@@ -46,7 +46,6 @@
 			$TellerEind = 100;
 	
 		//	Tabel opbouwen
-			include ("functions/hotornot.php");
 			include ("content/{$Language}/tabel_top100.php");
 		//  DataBase connectie sluiten
 		//	include ("includes/dbclose.php");

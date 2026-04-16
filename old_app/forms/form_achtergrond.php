@@ -17,10 +17,6 @@
 	<input type="Hidden" id="Answer" name="Answer" value="<?php echo $Answer ?>">
 	<input type="Hidden" id="SubMenu" name="SubMenu" value="<?php echo $SubMenu ?>">
 	<input type="Hidden" id="Enquete" name="Enquete" value="<?php echo $Enquete ?>">
-	<?php
-		include ("functions/enquete.php");
-		SchrijfAntwoord($Enquete,$Answer);
-	?>
 </FORM>
 
 <FORM method="post" action="achtergrond.php" id=form72 name=form72>

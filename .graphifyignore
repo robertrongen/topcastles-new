@@ -1,0 +1,4 @@
+# Folders to exclude from graphify scanning
+old_app/archive
+graphify-out
+.venv

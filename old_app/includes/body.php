@@ -7,6 +7,8 @@
 		include ("forms/form_kasteel.php");
 		$Menu = strtolower($Menu);
 		$SubMenu = strtolower($SubMenu);
+		if (!isset($Language) || $Language !== "en")
+			{$Language = "en";}
 		$FormExist = "forms/form_{$Menu}.php";
 		if (file_exists($FormExist))
 			{include ("forms/form_{$Menu}.php");}
@@ -18,14 +20,7 @@
 	
 		<!-- tabel voor positionering van pagina -->
 		<table cellspacing="0" id="Main" width="1000px" border="0" cellpadding="0" bgcolor="#FFFFFF" align="center">
-			<tr bgcolor="#00005C">
-				<td align="right" colspan="2">
-				<?php 
-					include ("includes/change_language.php"); 
-				?>
-				</td>
-			</tr>
-			<tr>
+				<tr>
 				<td colspan="2">
 					<a name="top"></a>
 					

@@ -42,35 +42,17 @@
 			</td>
 		<tr>
 			<td>
-				Total score now:&nbsp;
+				Top 100 score mode:&nbsp;
 			</td>
 			<td>
 				<strong>
-					<?php 
-						if (HotOrNot($line ['castle_code']) > 0) 
-						{
-							echo round($ScoreNew = (((HotOrNot($line ['castle_code']))*100 + Bezoekers($line ['castle_code'])/5 + 2*$line['score_ref'])/(21/10)), 0)."</strong> points" ;
-						}
-						else 
-						{
-							echo $ScoreNew = ($line['score_ref'])."</strong> points" ;
-						}
-					?>
+					<?php echo $line['score_total']; ?></strong> points
 			 </td>
 			<td>
-				Rating visitors now:&nbsp;
+				Visitors voting:&nbsp;
 			</td>
 				<td>
-					<?php 
-						if (HotOrNot($line ['castle_code']) > 0) 
-						{
-							echo "<strong>".HotOrNot($line ['castle_code'])."</strong> of ".Bezoekers($line ['castle_code'])." visitors." ;
-						}
-						else 
-						{
-							echo "No rating yet" ;
-						}
-					?>
+					Disabled (static ranking)
 				</td>
 		</tr>
 		<tr bgcolor="#fff6de">
