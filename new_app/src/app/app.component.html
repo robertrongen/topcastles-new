@@ -1,0 +1,49 @@
+﻿<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle navigation">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>{{ title }}</span>
+</mat-toolbar>
+
+<mat-sidenav-container class="app-container">
+  <mat-sidenav #sidenav mode="side" opened>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <mat-icon matListItemIcon>home</mat-icon>
+        <span matListItemTitle>Home</span>
+      </a>
+      <a mat-list-item routerLink="/castles" routerLinkActive="active">
+        <mat-icon matListItemIcon>castle</mat-icon>
+        <span matListItemTitle>Castles</span>
+      </a>
+      <a mat-list-item routerLink="/top100" routerLinkActive="active">
+        <mat-icon matListItemIcon>emoji_events</mat-icon>
+        <span matListItemTitle>Top 100</span>
+      </a>
+      <a mat-list-item routerLink="/countries" routerLinkActive="active">
+        <mat-icon matListItemIcon>public</mat-icon>
+        <span matListItemTitle>Countries</span>
+      </a>
+      <a mat-list-item routerLink="/types" routerLinkActive="active">
+        <mat-icon matListItemIcon>category</mat-icon>
+        <span matListItemTitle>Castle Types</span>
+      </a>
+      <a mat-list-item routerLink="/search" routerLinkActive="active">
+        <mat-icon matListItemIcon>search</mat-icon>
+        <span matListItemTitle>Search</span>
+      </a>
+      <a mat-list-item routerLink="/background" routerLinkActive="active">
+        <mat-icon matListItemIcon>info</mat-icon>
+        <span matListItemTitle>Background</span>
+      </a>
+      <a mat-list-item routerLink="/visitors" routerLinkActive="active">
+        <mat-icon matListItemIcon>people</mat-icon>
+        <span matListItemTitle>Visitors</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="main-content">
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>
