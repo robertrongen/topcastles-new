@@ -25,29 +25,8 @@ function Rated($RatedCastleCode)
 
 function SchrijfRating($CastleCode,$Rating)
 {
-//  verbinding maken met MySQL database
-	include ("includes/dbconnect.php");
-
-//  mysql_query("DELETE FROM stemmen WHERE FROM_UNIXTIME(time,'%d') != FROM_UNIXTIME(unix_timestamp(),'%d')");
-	$query = mysql_query("SELECT * FROM stemmen WHERE ip='".$_SERVER['REMOTE_ADDR']."' AND castle_code='".$CastleCode."'") or die(mysql_error());
-    $result = mysql_num_rows($query);
-
-//	Controle of nog niet gestemd is
-    if(!$result)
-	{
-		if(!empty($_SERVER['REMOTE_ADDR']))
-		{ 
-		mysql_query("INSERT INTO stemmen (ip, time, castle_code, Rating) VALUES ('".$_SERVER['REMOTE_ADDR']."', UNIX_TIMESTAMP(), '".$CastleCode."', '".$Rating."')");
-		}
-	}
-/* OUDE VERSIE
-//	Doorgeven dat al gestemd is
-	else
-	{
-	global $Rating;
-	$Rating = "al";
-	}
-*/
+	// Voting is intentionally disabled in static top-100 mode.
+	return;
 }
 
 function HotOrNot($RatingCastlecode)

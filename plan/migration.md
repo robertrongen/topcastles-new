@@ -58,6 +58,20 @@ Track every intentionally dropped part here.
 | `old_app/content/Topcastles_Netherlands.kmz` | Outdated map download artifact; approved for removal | User | 2026-04-16 | Moved to `old_app/archive/drop-scope-2026-04-16/content/Topcastles_Netherlands.kmz` |
 | `old_app/content/Topcastles_Netherlands.kml` | Outdated map download artifact; approved for removal | User | 2026-04-16 | Moved to `old_app/archive/drop-scope-2026-04-16/content/Topcastles_Netherlands.kml` |
 | `old_app/content/tomtom/` | Legacy navigator export package; related to outdated map downloads | User | 2026-04-16 | Moved to `old_app/archive/drop-scope-2026-04-16/content/tomtom/` |
+| `old_app/includes/counter.php` | Legacy visitor counter admin feature; not required in new product | User | 2026-04-16 | Moved to `old_app/archive/drop-scope-2026-04-16/includes/counter.php` |
+| `old_app/functions/enquete.php` | Poll management functions; voting disabled, full feature dropped | User | 2026-04-16 | Moved to `old_app/archive/drop-scope-2026-04-16/functions/enquete.php` |
+| `old_app/functions/ip.php` | IP lookup utility for admin visitor stats; admin feature dropped | User | 2026-04-16 | Moved to `old_app/archive/drop-scope-2026-04-16/functions/ip.php` |
+| `old_app/includes/change_language.php` | Language toggle UI; EN-only enforced, toggle no longer needed | User | 2026-04-16 | Moved to `old_app/archive/drop-scope-2026-04-16/includes/change_language.php` |
+| `old_app/includes/ct_achtergrond_resultaat.php` | Poll results display include; poll feature dropped | User | 2026-04-16 | Moved to `old_app/archive/drop-scope-2026-04-16/includes/ct_achtergrond_resultaat.php` |
+| `old_app/includes/ct_achtergrond_reageer.php` | Comments/reactions feature include; feature dropped | User | 2026-04-16 | Moved to `old_app/archive/drop-scope-2026-04-16/includes/ct_achtergrond_reageer.php` |
+| `old_app/includes/ct_bezoekers_reageer.php` | Visitor comments feature include; feature dropped | User | 2026-04-16 | Moved to `old_app/archive/drop-scope-2026-04-16/includes/ct_bezoekers_reageer.php` |
+| `old_app/includes/ct_bezoekers_stemmen.php` | Admin IP-based visitor stats page; admin feature dropped | User | 2026-04-16 | Moved to `old_app/archive/drop-scope-2026-04-16/includes/ct_bezoekers_stemmen.php` |
+| `old_app/includes/nb_index_enquete.php` | Poll widget in index sidebar; poll feature dropped | User | 2026-04-16 | Moved to `old_app/archive/drop-scope-2026-04-16/includes/nb_index_enquete.php` |
+| `old_app/content/en/nb_index_enquete.php` | EN poll widget in index sidebar; poll feature dropped | User | 2026-04-16 | Moved to `old_app/archive/drop-scope-2026-04-16/content/en/nb_index_enquete.php` |
+| `old_app/content/en/ct_achtergrond_resultaat.php` | EN poll results display page; poll feature dropped | User | 2026-04-16 | Moved to `old_app/archive/drop-scope-2026-04-16/content/en/ct_achtergrond_resultaat.php` |
+| `old_app/content/en/ct_achtergrond_enquetes.php` | EN poll voting page; poll feature dropped | User | 2026-04-16 | Moved to `old_app/archive/drop-scope-2026-04-16/content/en/ct_achtergrond_enquetes.php` |
+| `old_app/content/en/ct_bezoekers_resultaat.php` | EN visitor poll results page; poll feature dropped | User | 2026-04-16 | Moved to `old_app/archive/drop-scope-2026-04-16/content/en/ct_bezoekers_resultaat.php` |
+| `old_app/content/en/ct_bezoekers_enquetes.php` | EN visitor poll voting page; poll feature dropped | User | 2026-04-16 | Moved to `old_app/archive/drop-scope-2026-04-16/content/en/ct_bezoekers_enquetes.php` |
 
 ## Skeleton
 

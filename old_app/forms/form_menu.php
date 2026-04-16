@@ -6,6 +6,25 @@
 	 	{$SubMenu= $_GET['SubMenu'];}
 	 else if (!isset($SubMenu))
 	 	{$SubMenu="main";}
+
+	if ($Menu == "topkastelen")
+	{
+		$BlockedSubMenus = array("bezoekers", "jump", "preview", "bezoekersaantal", "bezoekerslaag", "evenveel", "zonder", "totaal");
+		if (in_array($SubMenu, $BlockedSubMenus))
+			{$SubMenu="main";}
+	}
+	if ($Menu == "top100" && $SubMenu == "totaal")
+		{$SubMenu="main";}
+	if ($Menu == "achtergrond") {
+		$BlockedSubMenus = array("enquetes", "resultaat", "reageer");
+		if (in_array($SubMenu, $BlockedSubMenus))
+			{$SubMenu="main";}
+	}
+	if ($Menu == "bezoekers") {
+		$BlockedSubMenus = array("enquetes", "resultaat", "stemmen");
+		if (in_array($SubMenu, $BlockedSubMenus))
+			{$SubMenu="main";}
+	}
 	?>
 	<input type="Hidden" id="Menu" name="Menu" value="<?php echo $Menu ?>">
 	<input type="Hidden" id="SubMenu3" name="SubMenu" value="<?php echo $SubMenu ?>">

@@ -3,12 +3,11 @@
 	<h2 id="top"><?php echo $FeatureTitel_1; ?></h2>
 	<br>
 		<?php
-			include ("functions/hotornot.php");
 		//  Query definieren
-			$SelectString = "(((((sum(Rating)+5)/(count(*)+1))-5)*100) + castles.score_total) AS score_all, castles.*, count(*) as aantal";
-			$Table = "stemmen, castles";
-			$WhereString = "WHERE castles.castle_code = stemmen.castle_code GROUP BY castles.castle_code";
-			$OrderbyString = "ORDER BY score_all DESC";
+			$SelectString = "castles.*, castles.score_total AS score_all";
+			$Table = "castles";
+			$WhereString = "WHERE position > 0";
+			$OrderbyString = "ORDER BY score_total DESC";
 		//  Query laden
 			PerformQuery($SelectString, $Table, $WhereString, $OrderbyString);
 	
@@ -26,21 +25,7 @@
 	
 	<div class="feature">
 		<br>
-		<?php 
-		//  Query definieren
-			$SelectString = "count(*) as aantal, count(DISTINCT ip) as unieke_bezoekers";
-			$Table = "stemmen";
-			$WhereString = "";
-			$OrderbyString = "";
-		//  Query laden
-			PerformQuery($SelectString, $Table, $WhereString, $OrderbyString);
-			$line = mysql_fetch_array($result, MYSQL_ASSOC);
-		//  Print statistieken
-			echo $line['aantal']."&nbsp;".$TextStemmenVan."&nbsp;";
-			echo $line['unieke_bezoekers']."&nbsp;".$TextBezoekers.".";
-		//  DataBase connectie sluiten
-		//	include ("includes/dbclose.php");
-		?>
+		Static ranking mode is enabled. Visitor votes are not used in top 100 calculations.
 	</div>
 	
 	<div class="feature">
@@ -48,10 +33,10 @@
 		<h3><?php echo $FeatureTitel_2; ?></h3><br>
 		<?php
 		//  Query definieren
-			$SelectString = "(((((sum(Rating)+5)/(count(*)+1))-5)*100) + castles.score_total) AS score_all, castles.*, count(*) as aantal";
-			$Table = "stemmen, castles";
-			$WhereString = "WHERE castles.castle_code = stemmen.castle_code GROUP BY castles.castle_code";
-			$OrderbyString = "ORDER BY score_all DESC";
+			$SelectString = "castles.*, castles.score_total AS score_all";
+			$Table = "castles";
+			$WhereString = "WHERE position > 0";
+			$OrderbyString = "ORDER BY score_total DESC";
 		//  Query laden
 			PerformQuery($SelectString, $Table, $WhereString, $OrderbyString);
 	

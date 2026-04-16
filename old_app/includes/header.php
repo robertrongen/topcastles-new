@@ -1,8 +1,3 @@
-<!-- start teller -->
-<?php	
-	include ("includes/counter.php");
-?>
- 
 <!-- start header -->
 <div id="masthead">
 	<?php 

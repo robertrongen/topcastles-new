@@ -98,12 +98,12 @@
         </ul>
     </div>
 
-<!-- STEM OP DIT KASTEEL -->
+<!-- STATIC SCORE INFO -->
     <div class="relatedLinks">
     <table>
         <tr>
             <td>
-            	<h3><?php echo $MenuText_3; ?></h3>
+	            	<h3>Top 100 scoring</h3>
 			</td>
 		</tr>
         <tr>
@@ -119,117 +119,12 @@
 				?>
 			</td>
 		</tr>
-		<?php
-        //	Controle of gestemd is
-			if (isset($HTTP_POST_VARS["Rating"]))
-			{
-				$Rating=$HTTP_POST_VARS["Rating"];
-				SchrijfRating($SelCastle,$Rating);
-				?>
-				<tr>
-					<td>
-						<li> 
-						<?php
-						echo $Text2 . "&nbsp;<STRONG>" . $Rating . "</STRONG>" . $Text4 ;
-						?>
-						</li> 
-						</td>
-					</tr>
-				</table>
-                <TABLE>			
-                     <tr>
-                        <td>
-                            <?php
-                            echo $MenuText_3_1; 
-                            ?>
-                        </td>
-                    </tr>
-                </TABLE>
-				<?php
-			}
-			else
-			{			
-				Rated($SelCastle);
-				if ($Rated == 1)
-				{
-				// rating weergeven
-					?>
-					<tr>
-						<td>
-							<li> 
-							<?php
-							echo $Text2 . "&nbsp;<STRONG>" . $Rating . "</STRONG>" . $Text4 ;
-							?>
-							</li> 
-							</td>
-						</tr>
-					</table>
-                <TABLE>			
-                    <tr>
-                        <td>
-                            <?php
-                            echo $MenuText_3_1; 
-                            ?>
-                        </td>
-                    </tr>
-                </TABLE>
-					<?php
-				}
-				else
-				{
-				// stemformulier
-				?>
-					<table>
-						<tr>
-							<td align="left">
-								<?php echo $MenuText_3_2; 
-								?>
-                            </td>
-						</tr>
- 						<tr>
-							<td>
-								<table class="stem" cellpadding="0" cellspacing="0" align="left" style="color:#000066">
-								<FORM method="post" action="kastelen.php" id=form83 name=form83>
-									<tr>
-										<td><input type="radio" name="Rating" value="1";></td>
-										<td><input type="radio" name="Rating" value="2";></td>
-										<td><input type="radio" name="Rating" value="3";></td>
-										<td><input type="radio" name="Rating" value="4";></td>
-										<td><input type="radio" name="Rating" value="5";></td>
-										<td><input type="radio" name="Rating" value="6";></td>
-										<td><input type="radio" name="Rating" value="7";></td>
-										<td><input type="radio" name="Rating" value="8";></td>
-										<td><input type="radio" name="Rating" value="9";></td>
-										<td><input type="radio" name="Rating" value="10";></td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>2</td>
-										<td>3</td>
-										<td>4</td>
-										<td>5</td>
-										<td>6</td>
-										<td>7</td>
-										<td>8</td>
-										<td>9</td>
-										<td>10</td>
-									</tr>
-									<tr>
-										<td align="left" colspan="10">
-											<input type="Hidden" id="SelCastle" name="SelCastle" value="<?php echo $SelCastle ?>">
-											<input type="Hidden" id="SelPosition" name="SelPosition" value="<?php echo $SelPosition ?>">
-											<input type="submit" style="width:18em;" value="<?php echo $MenuText_4; ?>">
-										</FORM>
-										</td>
-									</tr>
-								</TABLE>
-							</td>
-						</tr>
-					</TABLE>
-				<?php 
-				}
-			}
-			?>
+		<tr>
+			<td>
+				Static top 100 mode is enabled. Visitor voting is disabled.
+			</td>
+		</tr>
+		</table>
 
     </div>
 

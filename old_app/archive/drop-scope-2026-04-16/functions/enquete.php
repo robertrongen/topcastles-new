@@ -2,37 +2,8 @@
 
 function SchrijfAntwoord($Enquete,$Answer)
 {
-//  verbinding maken met MySQL database
-	$host = "localhost";
-	$user = "topkastelen";
-	$pass = "9kowbh6g";
-	$dbname = "topkastelen_nl_-_topkastelen";
-	$tblname = "enquetes";
-	$link = mysql_connect($host,$user,$pass) or die("Could not connect : " . mysql_error()."<BR>");
-	mysql_select_db($dbname) or die("Could not select database");
-
-	$query = mysql_query("SELECT * FROM enquetes WHERE ip='".$_SERVER['REMOTE_ADDR']."' AND enquete='".$Enquete."'") or die(mysql_error());
-	if ($Answer > 0)
-    {
-		$result = mysql_num_rows($query);
-		if(!$result)
-		{
-			if(!empty($_SERVER['REMOTE_ADDR']))
-			{ 
-				mysql_query("INSERT INTO enquetes (ip, time, enquete, answer) VALUES ('".$_SERVER['REMOTE_ADDR']."', UNIX_TIMESTAMP(), '".$Enquete."', '".$Answer."')");
-			}
-		}
-		else
-		{
-		global $Answer;
-		$Answer = "al";
-		}
-	}
-	else
-	{
-	global $Answer;
-	$Answer = "niet";
-	}
+	// Poll voting is intentionally disabled in static mode.
+	return;
 }
 
 function Enquete($Enquete,$Answer)
