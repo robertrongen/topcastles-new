@@ -1,7 +1,22 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx ng *)"
+      "Bash(npx ng *)",
+      "Bash(gh api *)",
+      "WebFetch(domain:github.com)",
+      "Bash(claude mcp *)",
+      "Bash(npm install *)",
+      "Bash(npm search *)",
+      "Bash(npm info *)",
+      "Bash(git -C c:/github/topcastles-new log --oneline --all)",
+      "Bash(git -C c:/github/topcastles-new show 32738a0 --stat)",
+      "Bash(git -C c:/github/topcastles-new show 0bf6439 --stat)",
+      "Bash(git -C c:/github/topcastles-new show 0bf6439 -- .graphifyignore)",
+      "Bash(git -C c:/github/topcastles-new show 6d98d14 --stat)",
+      "Bash(git -C c:/github/topcastles-new show 0bf6439 -- .github/copilot-instructions.md)",
+      "Bash(graphify-ts --version)",
+      "Bash(graphify-ts --help)",
+      "Bash(graphify-ts install *)"
     ]
   }
 }
