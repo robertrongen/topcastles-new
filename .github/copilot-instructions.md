@@ -62,3 +62,9 @@ When I ask you to implement a feature, always follow this workflow:
 14. Do not merge, create a PR, update Azure DevOps items, or close stories unless I explicitly ask.
 
 If the feature, project, or repo is ambiguous, use the current workspace repository.
+
+## graphify
+
+Before answering architecture or codebase questions, read `graphify-out/GRAPH_REPORT.md` if it exists.
+If `graphify-out/wiki/index.md` exists, navigate it for deep questions.
+Type `/graphify` in Copilot Chat to build or update the knowledge graph.

@@ -1,4 +1,11 @@
 # Folders to exclude from graphify scanning
 old_app/archive
+old_app/images
+old_app/graphify-out
 graphify-out
 .venv
+node_modules
+dist
+build
+coverage
+.git
