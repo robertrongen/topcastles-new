@@ -156,6 +156,6 @@ a:link, a:visited { color: $tk-link; }
 a:hover { background-color: $tk-link-hover; }
 ```
 
-Key assets from `old_app/style/` now live in `new_app/public/`:
-- `logo_topkastelen_nl.jpg` — rendered in the orange masthead toolbar
+Key assets from `old_app/` now live in `new_app/public/`:
+- `banner_en.gif` — English "Topcastles.com" scroll banner, rendered full-height in the orange masthead toolbar
 - `favicon.ico` (replaced with `tk-shield.ico`)

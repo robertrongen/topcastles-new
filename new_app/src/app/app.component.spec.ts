@@ -23,11 +23,12 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('Top Castles');
   });
 
-  it('should render title in toolbar', () => {
+  it('should render the banner image in the toolbar without a text title span', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('mat-toolbar')?.textContent).toContain('Top Castles');
+    const toolbar = fixture.nativeElement.querySelector('mat-toolbar');
+    expect(toolbar?.querySelector('img.tk-logo')).toBeTruthy();
+    expect(toolbar?.querySelector('.tk-title')).toBeNull();
   });
 
   it('should render the logo image in the masthead', () => {
@@ -35,7 +36,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const logo = fixture.nativeElement.querySelector('mat-toolbar img.tk-logo') as HTMLImageElement;
     expect(logo).toBeTruthy();
-    expect(logo.src).toContain('logo_topkastelen_nl.jpg');
+    expect(logo.src).toContain('banner_en.gif');
     expect(logo.alt).toBe('Topcastles logo');
   });
 
