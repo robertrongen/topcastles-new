@@ -1,0 +1,573 @@
+<div class="background-page">
+  <h1>Background</h1>
+
+  <mat-tab-group [selectedIndex]="selectedIndex()" (selectedIndexChange)="onTabChange($event)">
+
+    <!-- TAB: Definition -->
+    <mat-tab label="Definition">
+      <div class="tab-content">
+        <h2>What is a castle?</h2>
+
+        <h3>Definition</h3>
+        <p>
+          This site is about "real" medieval castles, synonym for <strong>strongholds</strong>,
+          in German <strong>Burg</strong>, in French <strong>Château fort</strong> and in Dutch <strong>burcht</strong>.
+        </p>
+        <p>
+          To be able to make out the real castles we need a good definition. The book
+          "1000 jaar kastelen in Nederland" [1] gives a useful definition of a castle:
+        </p>
+        <blockquote>
+          "A castle is a medieval building that combines defensive with domestic functions by providing
+          a living space and a defence to a limited group of persons differing of a noble family with a
+          few servants to a small court and a military garrison up to a maximum of approximately fifty
+          persons. Essential hereby is that this group depends on a relation to one person or institution."
+        </blockquote>
+        <p>Summarised, a real castle meets these criteria:</p>
+        <ul>
+          <li>It is built in the middle ages (appr. 500–1500)</li>
+          <li>It provides a living space to a limited group of persons</li>
+          <li>It provides a defence to a limited group of persons</li>
+          <li>The group depends on a relation to one person or institution</li>
+        </ul>
+
+        <h3>City castles</h3>
+        <p>
+          A special case is the city castle. When is such a castle qualified as castle and when as a walled city?
+          Sir Oman [2] gives a useful definition of a city castle:
+        </p>
+        <blockquote>
+          "A castle is a military structure larger than a tower but smaller than a fortified town,
+          it is residential but is also defensible in character. However complicated internally it
+          must be a complete unit unto itself and not part of a town. A castle may exist inside a
+          town but must be able to be cut off by the closing of a gate or the raising of a drawbridge."
+        </blockquote>
+        <p>
+          To be qualified as a castle, a city castle must be able to defend itself independently of
+          the city and the city walls. Two famous examples:
+        </p>
+        <div class="image-row">
+          <a [routerLink]="['/castles', 'caernarfon']" title="Caernarfon Castle (Wales)">
+            <img src="/images/castles/small/caernarfon_small.jpg" alt="Caernarfon Castle" loading="lazy">
+          </a>
+          <a [routerLink]="['/castles', 'carcassonne']" title="Carcassonne (France)">
+            <img src="/images/castles/small/carcassonne_small.jpg" alt="Carcassonne" loading="lazy">
+          </a>
+        </div>
+
+        <h2>Which castles do not qualify?</h2>
+
+        <h3>Categories</h3>
+        <p>Some famous castles do not qualify following the definition. Four categories:</p>
+        <ul>
+          <li>Renaissance-, romantic- and new castles</li>
+          <li>Imperial, royal and noble palaces</li>
+          <li>Fortifications</li>
+          <li>Walled cities</li>
+        </ul>
+
+        <h3>Renaissance-, romantic- and new castles</h3>
+        <p>
+          After the invention of gun powder many castles lost their defensive function.
+          New castles were built with the emphasis on comfort and splendour.
+          These renaissance castles often have the ground plan of a rectangular castle but the
+          structure is not based on defense.
+        </p>
+        <p>Examples of renaissance castles:</p>
+        <ul>
+          <li>Château de Chambord (France)</li>
+          <li>Château de Chenonceaux (France)</li>
+          <li>Château de d'Ussé (France)</li>
+        </ul>
+        <p>Romantic castles are built in the 19th century and reflect a nostalgic longing to an idealised image of the medieval court life:</p>
+        <ul>
+          <li>Schloß Neuschwanstein (Germany)</li>
+          <li>Schloß Liechtenstein (Germany)</li>
+          <li>Balmoral Castle (Scotland)</li>
+        </ul>
+        <div class="image-row">
+          <a [routerLink]="['/nocastle', 'chambord']" title="Château de Chambord">
+            <img src="/images/castles/small/chambord_small.jpg" alt="Chambord" loading="lazy">
+          </a>
+          <a [routerLink]="['/nocastle', 'chenonceaux']" title="Château de Chenonceaux">
+            <img src="/images/castles/small/chenonceaux_small.jpg" alt="Chenonceaux" loading="lazy">
+          </a>
+          <a [routerLink]="['/nocastle', 'neuschwanstein']" title="Schloß Neuschwanstein">
+            <img src="/images/castles/small/neuschwanstein_small.jpg" alt="Neuschwanstein" loading="lazy">
+          </a>
+          <a [routerLink]="['/nocastle', 'lichtenstein']" title="Schloß Liechtenstein">
+            <img src="/images/castles/small/liechtenstein_small.jpg" alt="Liechtenstein" loading="lazy">
+          </a>
+          <a [routerLink]="['/nocastle', 'almere']" title="Castle of Almere">
+            <img src="/images/castles/small/almere_small.jpg" alt="Almere" loading="lazy">
+          </a>
+        </div>
+
+        <h3>Imperial, royal and noble palaces</h3>
+        <p>
+          The emperors of the holy roman empire but also kings and other noblemen built palaces
+          ("Pfalzen") that had residential, administrative or representative function, but did not
+          have a defensive function.
+        </p>
+        <ul>
+          <li>The Ridderzaal of the Binnenhof in the Hague (Netherlands)</li>
+          <li>Pfalz Goslar (Germany)</li>
+          <li>Westminster Hall (England)</li>
+        </ul>
+        <div class="image-row">
+          <a [routerLink]="['/nocastle', 'binnenhof']" title="Binnenhof (Ridderzaal)">
+            <img src="/images/castles/small/binnenhof_small.jpg" alt="Binnenhof" loading="lazy">
+          </a>
+          <a [routerLink]="['/nocastle', 'goslar']" title="Kaiserpfalz Goslar">
+            <img src="/images/castles/small/goslar_small.jpg" alt="Goslar" loading="lazy">
+          </a>
+        </div>
+
+        <h3>Fortifications</h3>
+        <p>
+          Forts and bastions are in fact defensive outposts of a city or an area. They are built
+          mainly after the middle ages and are not inhabited like a castle.
+        </p>
+        <ul>
+          <li>St. Mawes Castle (England)</li>
+          <li>Pendennis Castle (England)</li>
+          <li>Agra Fort (India)</li>
+          <li>Lal Qilah (Red Fort, India)</li>
+        </ul>
+        <div class="image-row">
+          <a [routerLink]="['/nocastle', 'pendennis']" title="Pendennis Castle">
+            <img src="/images/castles/small/pendennis_small.jpg" alt="Pendennis" loading="lazy">
+          </a>
+          <a [routerLink]="['/nocastle', 'agra']" title="Agra Fort">
+            <img src="/images/castles/small/agra_small.jpg" alt="Agra Fort" loading="lazy">
+          </a>
+        </div>
+
+        <h3>Walled cities</h3>
+        <p>Walled cities include city gates, watch towers and fortified bridges.</p>
+        <ul>
+          <li>Citadel of Cairo (Egypt)</li>
+          <li>Mont Saint Michel (France)</li>
+          <li>The city walls of Constantinople (Istanbul, Turkey)</li>
+        </ul>
+        <div class="image-row">
+          <a [routerLink]="['/nocastle', 'cairo']" title="Citadel of Cairo">
+            <img src="/images/castles/small/cairo_small.jpg" alt="Cairo" loading="lazy">
+          </a>
+          <a [routerLink]="['/nocastle', 'montstmichel']" title="Mont Saint Michel">
+            <img src="/images/castles/small/montstmichel_small.jpg" alt="Mont Saint Michel" loading="lazy">
+          </a>
+        </div>
+
+        <h2>Literature</h2>
+        <h3>Books</h3>
+        <ul>
+          <li>[1] Janssen, H.L. e.a., "1000 jaar kastelen in Nederland", Utrecht, 1996</li>
+          <li>[2] Oman, C., Sir, "Castles", New York, 1978</li>
+        </ul>
+      </div>
+    </mat-tab>
+
+    <!-- TAB: Scores -->
+    <mat-tab label="Scores">
+      <div class="tab-content">
+        <h2>Attempt to create a neutral rating for a castle top 100</h2>
+        <p>
+          What makes a castle a Top Castle? First: The "charisma" of a castle, a combination of its
+          strategic location, through which the castle appears to dominate the landscape, the design
+          that pairs beauty to an awe inspiring deterrence and the used materials through which the
+          castle appears to dissolve its surroundings. Ditches with drawbridges, towers with
+          battlements, halls with crosses and swords and dungeons and secret courses stand symbol
+          for jurisdiction and protection but also for oppression and cruelty. A top castle recalls
+          memories of sieges and conquests, famous inhabitants and prisoners, destruction and
+          reconstruction and affirms its myths and ghost stories.
+        </p>
+        <p>
+          The proposition of topcastles.com is that the extent in which a castle meets this
+          description is proportional to the attention that castle gets in books about castles
+          and on the internet. A beautiful castle, a turbulent history or a remarkable military
+          architecture inspires authors and photographers. In a nutshell, a top castle can be
+          measured by the amount of stories and photographs it appears in. The authors and editors
+          of books and websites make a virtual jury through their selection of castles and photographs
+          and lay the basis for this castle top 100.
+        </p>
+
+        <h2>Calculation of the top 100 scores</h2>
+        <p>Topcastles.com uses two ratings to calculate the top 100 score:</p>
+        <ul>
+          <li>The appearance of the castle in specific sources</li>
+          <li>The rating of the castle given by visitors of topcastles.com</li>
+        </ul>
+        <p>The final score of a castle is the sum of the sources score plus the visitors rating.</p>
+
+        <h3>Calculation of the sources scores</h3>
+        <p>
+          The scores of the castles top 100 is calculated by simply counting how often a castle is
+          described in books about castles (approximately 40 books, they generate 70% of the entire score).
+        </p>
+        <img class="content-image" src="/images/general/kastelenboeken.jpg" alt="Selection of castle books" loading="lazy">
+
+        <h3>Calculation of the score for the Visitors Top 100</h3>
+        <p>
+          Each castle gets an initial score of 5. Upon the first score the average rating is calculated.
+          A first score of 10 results then in a rating of (5+10)/2 = 7.5. The average score is
+          recalculated automatically on every vote.
+        </p>
+
+        <h3>Calculation of the total score</h3>
+        <p>
+          On January 1st of each year the visitor rating of a castle is added to the sources score
+          to calculate the new top 100 for that year. Relatively in the end score, the sources score
+          weighs twice as much as the visitors rating.
+        </p>
+      </div>
+    </mat-tab>
+
+    <!-- TAB: Resources -->
+    <mat-tab label="Resources">
+      <div class="tab-content">
+        <h2>Castle books used to calculate the sources scores</h2>
+        <p><em>* = Added in 2010</em></p>
+
+        <h3>General castle books</h3>
+        <ul class="book-list">
+          <li>Coppin, B., "Castles, Defending King and Country", Harpenden, 2006</li>
+          <li>Zeune, J., "Burgen, Symbole der Macht", Regensburg, 1997</li>
+          <li>Böhme, H. W. e.a., "Burgen in Mitteleuropa", Stuttgart, 1999</li>
+          <li>Schüerl, H., "Burgen und Schlösser in Deutschland", Frankfurt am Main, 1994</li>
+          <li>Brice, M., "Forts and Fortresses", London, 1990</li>
+          <li>Piper, O., "Burgenkunde", München, 1967</li>
+          <li>Toy, S., "Castles, their construction and history", New York, 1985</li>
+          <li>Oggins, R. S., "Castles and fortresses", New York, 1995</li>
+          <li>Kemp, A., "Castles in colour", Dorset, 1977</li>
+          <li>Paluzíe, A., "Great medieval castles of Spain", Barcelona, 2002</li>
+          <li>Hindley, G., "Castles of Europe", London, 1968</li>
+          <li>Ebhardt, B., "Der Wehrbau Europas im Mittelalter", Berlin, 1939</li>
+          <li>Schuchhardt, C., "Die Burg im Wandel der Weltgeschichte", Wildpark-Potsdam, 1931</li>
+          <li>Brown, R. Allen, "Castles, a history and guide", Poole, 1980</li>
+          <li>Gravett, C., "Castle", London (DK eyewitness), 2000</li>
+          <li>Gravett, C., "The History of Castles", Guilford, 2001</li>
+          <li>Libál, D., "Castles of the World", London, 1998</li>
+          <li>Cairns, C., "Castle of the West Highlands", Edinburgh, 2004</li>
+          <li>Mostard, E. and Heus, M. de, "Burchten en Kastelen", Lisse, 1999</li>
+          <li>Atrium cultuur gids "Kastelen", Alphen aan de Rijn, 1991</li>
+          <li>Barnes, I., "The historical atlas of knights and castles", London, 2007*</li>
+          <li>Kaufmann, J.E. and H.W., "The medieval fortress", Cambridge, 2001*</li>
+        </ul>
+
+        <h3>Castle books about a specific country or area</h3>
+
+        <h4>Asia</h4>
+        <ul class="book-list">
+          <li>Turnbull, S., "Japanese Castles 1540–1640", Oxford, 2003*</li>
+          <li>Hein, D., "Festungen des Johanniterordens im Mittelmeer", Darmstadt, 2008*</li>
+        </ul>
+
+        <h4>Austria and Switzerland</h4>
+        <ul class="book-list">
+          <li>Krahe, F.W., "Burgen des Deutschen Mittelalters", Augsburg, 1998</li>
+          <li>Clam, M., "Burgen und Schlösser in Österreich", Wien, 1991</li>
+          <li>Clasen, K.H., "Die mittelalterliche Kunst im Gebiete des Deutschordensstaates Preussen", 1927*</li>
+        </ul>
+
+        <h4>Benelux</h4>
+        <ul class="book-list">
+          <li>Janssen, H.L. e.a., "1000 jaar kastelen in Nederland", Utrecht, 1996</li>
+          <li>Tromp, H., "Langs Nederlandse kastelen", Baarn, 1972</li>
+          <li>Haaren, P. van, "Kastelen in Zuid Holland en Zeeland", Rijswijk, 1999</li>
+          <li>Kransberg, D. and Mills, H., "Kastelen in Nederland", Amsterdam, 1980</li>
+          <li>De Groene Vakantiegids – Kastelen, 1990</li>
+          <li>Tromp, H., "Langs Belgische kastelen, van Motte tot Paleis", Baarn, 1980</li>
+          <li>Martens, J., "101 Belgische kastelen", Brussel, 1974</li>
+          <li>Meulenkamp, W. e.a., "Huizen van Stand", Alphen aan de Rijn, 1992*</li>
+        </ul>
+
+        <h4>Crusader castles</h4>
+        <ul class="book-list">
+          <li>Müller-Wiener, W., "Castles of the Crusaders", London, 1966</li>
+          <li>Fedden, R., "Crusader Castles", London, 1950</li>
+          <li>Kennedy, H., "Crusader Castles", Cambridge, 1994</li>
+          <li>Boas, A.J., "Archaeology of the military orders", Abington, 2006*</li>
+        </ul>
+
+        <h4>Eastern Europe</h4>
+        <ul class="book-list">
+          <li>Haris, A. e.a., "Historische Baudenkmäler in Ungarn", Budapest, 1999</li>
+          <li>Bodo, S., "Castles and Palaces of Hungary", Budapest, 1984</li>
+          <li>Fialová, V. e.a., "Hrady a Zámky", Praha, 1962</li>
+          <li>Vukadin, V. e.a., "Castles and Palaces of Slovenia", Ljubljana, 2002</li>
+          <li>Gotz, W. e.a., "Citadels of Transylvania", 1998*</li>
+          <li>Turnbull, S., "Crusader Castles of the Teutonic Knights", 2003*</li>
+          <li>Plaschka, R. e.a., "Österreichisches Ost- und Südosteuropa-Institut", 1986*</li>
+        </ul>
+
+        <h4>France</h4>
+        <ul class="book-list">
+          <li>Erlande-Brandenburg, A., "L'Art Gothique", Liège, 2004</li>
+          <li>Mesqui, J., "Châteaux forts et fortifications en France", Paris, 1997</li>
+          <li>Salch, C.L., "Dictionnaire des Châteaux de l'Alsace médiévale", Strasbourg, 1978*</li>
+          <li>Poisson, M., "Châteaux de la Loire", Paris, 2005*</li>
+        </ul>
+
+        <h4>Germany</h4>
+        <ul class="book-list">
+          <li>Krahe, F.W., "Burgen des Deutschen Mittelalters", Augsburg, 1998</li>
+          <li>Bingenheimer, K., "Die Luftschutzanlagen der Stadt Trier", Trier, 1996*</li>
+          <li>Mrusek, H.J., "Romanik", Leipzig, 1972*</li>
+        </ul>
+
+        <h4>Great Britain</h4>
+        <ul class="book-list">
+          <li>Brown, R.A., "English Castles", London, 1954</li>
+          <li>Platt, C., "The Castle in Medieval England and Wales", London, 1982</li>
+          <li>Johnson, P., "Castles of England, Scotland and Wales", London, 1989</li>
+          <li>Cairns, C., "Castles of the West Highlands", Edinburgh, 2004</li>
+          <li>Bradbury, J., "The Medieval Siege", Suffolk, 1992*</li>
+        </ul>
+
+        <h4>Italy</h4>
+        <ul class="book-list">
+          <li>Settia, A., "Rapine, assedi, battaglie", Bari, 2002*</li>
+          <li>De Vita, R., "Castelli, torri ed opere fortificate di Puglia", Bari, 1974*</li>
+          <li>Fedden, R. and Thompson, J., "Crusader Castles", London, 1957*</li>
+        </ul>
+
+        <h4>Spain</h4>
+        <ul class="book-list">
+          <li>Paluzíe, A., "Great medieval castles of Spain", Barcelona, 2002</li>
+          <li>Martín, J.L. and Serrano-Piedecasas, L., "Tratado de Arquitectura Hispanomusulmana", Madrid, 2004*</li>
+        </ul>
+
+        <h3>Historical books and miscellaneous sources</h3>
+        <ul class="book-list">
+          <li>Runciman, S., "A History of the Crusades", 3 vols, Cambridge, 1951–54</li>
+          <li>Riley-Smith, J., "The Atlas of the Crusades", London, 1991</li>
+          <li>Barber, M., "The Two Cities: Medieval Europe 1050-1320", 1992*</li>
+          <li>UNESCO World Heritage Site list</li>
+          <li>Game: Stronghold (FireFly Studios, 2001)</li>
+        </ul>
+      </div>
+    </mat-tab>
+
+    <!-- TAB: Castle types -->
+    <mat-tab label="Castle types">
+      <div class="tab-content">
+        <h2>Castle types</h2>
+
+        <h3>Location types</h3>
+        <p>
+          The location of a castle is an important factor in its defensiveness. Ebhardt [3] distinguishes five types:
+        </p>
+        <table class="type-table">
+          <thead>
+            <tr><th>Type</th><th>Description</th><th>Example</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mountain castles (Höhenburgen)</td>
+              <td>Built on a high position</td>
+              <td><a [routerLink]="['/castles', 'vaduz']">Schloß Vaduz</a></td>
+            </tr>
+            <tr>
+              <td>Rock castles (Felsenburgen)</td>
+              <td>Built on mountain rock</td>
+              <td><a [routerLink]="['/castles', 'hautkoeningsbourg']">Haut-Kœnigsbourg</a></td>
+            </tr>
+            <tr>
+              <td>Water castles (Wasserburgen)</td>
+              <td>Surrounded by moat or lake</td>
+              <td><a [routerLink]="['/castles', 'bodiam']">Bodiam Castle</a></td>
+            </tr>
+            <tr>
+              <td>Harbour castles (Hafenburgen)</td>
+              <td>One side defended by river or sea</td>
+              <td><a [routerLink]="['/castles', 'chillon']">Château de Chillon</a></td>
+            </tr>
+            <tr>
+              <td>City castles (Stadtburgen)</td>
+              <td>Defend or control a town</td>
+              <td><a [routerLink]="['/castles', 'limerick']">Castle Limerick</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Building structure types</h3>
+        <p>
+          From Janssen [1] and Toy [2]. Eight building concepts varying by tower use, donjon
+          presence, and donjon position:
+        </p>
+        <table class="type-table">
+          <thead>
+            <tr><th>#</th><th>Concept</th><th>Description</th><th>Example</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td><td>Motte-and-bailey</td><td>Central tower on artificial hill</td>
+              <td><a [routerLink]="['/castles', 'gisors']">Gisors</a></td>
+            </tr>
+            <tr>
+              <td>2</td><td>Later Norman</td><td>Motte enclosed by new curtain wall</td>
+              <td><a [routerLink]="['/castles', 'arundel']">Arundel</a>, <a [routerLink]="['/castles', 'windsor']">Windsor</a></td>
+            </tr>
+            <tr>
+              <td>3</td><td>Ringwork / shell keep</td><td>Round, no separate tower</td>
+              <td><a [routerLink]="['/castles', 'restormel']">Restormel</a></td>
+            </tr>
+            <tr>
+              <td>4</td><td>Tower or compact castle</td><td>Stand-alone tower</td>
+              <td><a [routerLink]="['/castles', 'threave']">Threave</a></td>
+            </tr>
+            <tr>
+              <td>5</td><td>Rectangular or polygonal</td><td>Flanking towers, no donjon</td>
+              <td><a [routerLink]="['/castles', 'egeskov']">Egeskov</a>, <a [routerLink]="['/castles', 'harlech']">Harlech</a></td>
+            </tr>
+            <tr>
+              <td>6</td><td>Donjon inside curtain wall</td><td>Donjon inside walls</td>
+              <td><a [routerLink]="['/castles', 'dover']">Dover</a>, <a [routerLink]="['/castles', 'tower']">Tower of London</a></td>
+            </tr>
+            <tr>
+              <td>7</td><td>Donjon in curtain wall</td><td>Donjon integrated in wall</td>
+              <td><a [routerLink]="['/castles', 'kenilworth']">Kenilworth</a></td>
+            </tr>
+            <tr>
+              <td>8</td><td>Donjon outside curtain wall</td><td>Donjon outside walls</td>
+              <td><a [routerLink]="['/castles', 'bellver']">Bellver</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>The present condition of the castle</h3>
+        <table class="type-table">
+          <thead>
+            <tr><th>Condition</th><th>Description</th><th>Example</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Intact</td><td>All parts intact and accessible</td>
+              <td><a [routerLink]="['/castles', 'corroy']">Corroy le Château</a></td>
+            </tr>
+            <tr>
+              <td>Rebuild / Restored</td><td>Appears intact but rebuilt</td>
+              <td><a [routerLink]="['/castles', 'pierrefonds']">Pierrefonds</a></td>
+            </tr>
+            <tr>
+              <td>Damaged</td><td>Not intact but recognizable</td>
+              <td><a [routerLink]="['/castles', 'teylingen']">Kasteel Teylingen</a></td>
+            </tr>
+            <tr>
+              <td>Ruined / Partly remained</td><td>Some parts lost</td>
+              <td><a [routerLink]="['/castles', 'brederode']">Ruïne van Brederode</a></td>
+            </tr>
+            <tr>
+              <td>Destroyed</td><td>All parts lost</td>
+              <td><a [routerLink]="['/castles', 'bastille']">Château de Bastille</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Literature</h3>
+        <ul>
+          <li>[1] Janssen, H.L. e.a., "1000 jaar kastelen in Nederland", Utrecht, 1996</li>
+          <li>[2] Toy, S., "Castles, their construction and history", New York, 1985</li>
+          <li>[3] Ebhardt, B., "Der Wehrbau Europas im Mittelalter", Berlin, 1939</li>
+        </ul>
+      </div>
+    </mat-tab>
+
+    <!-- TAB: Websites -->
+    <mat-tab label="Websites">
+      <div class="tab-content">
+        <h2>Websites about castles</h2>
+
+        <h3>Per country</h3>
+        <table class="type-table">
+          <thead>
+            <tr><th>Country</th><th>Website</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Belgium</td><td><a href="https://www.kastelenbelgie.be" target="_blank" rel="noopener">kastelenbelgie.be</a></td></tr>
+            <tr><td>Czech Republic</td><td><a href="https://www.hrady.cz" target="_blank" rel="noopener">hrady.cz</a></td></tr>
+            <tr><td>England</td><td><a href="https://www.castles-abbeys.co.uk" target="_blank" rel="noopener">castles-abbeys.co.uk</a></td></tr>
+            <tr><td>France</td><td><a href="https://www.richesheures.net" target="_blank" rel="noopener">richesheures.net</a></td></tr>
+            <tr><td>Germany</td><td><a href="https://www.burgenwelt.de" target="_blank" rel="noopener">burgenwelt.de</a></td></tr>
+            <tr><td>Hungary</td><td><a href="https://www.civertan.hu" target="_blank" rel="noopener">civertan.hu</a></td></tr>
+            <tr><td>Ireland</td><td><a href="https://www.castles.nl/irish-castles" target="_blank" rel="noopener">castles.nl/irish-castles</a></td></tr>
+            <tr><td>Netherlands</td><td><a href="https://www.kasteleninnederland.nl" target="_blank" rel="noopener">kasteleninnederland.nl</a></td></tr>
+            <tr><td>Scotland</td><td><a href="https://www.aboutscotland.co.uk" target="_blank" rel="noopener">aboutscotland.co.uk</a></td></tr>
+            <tr><td>Wales</td><td><a href="https://www.castlewales.com" target="_blank" rel="noopener">castlewales.com</a></td></tr>
+          </tbody>
+        </table>
+
+        <h3>General castle sites</h3>
+        <ul>
+          <li><a href="https://www.kasteleninnederland.nl" target="_blank" rel="noopener">kasteleninnederland.nl</a></li>
+          <li><a href="https://www.castles.org" target="_blank" rel="noopener">castles.org</a></li>
+        </ul>
+      </div>
+    </mat-tab>
+
+    <!-- TAB: Books -->
+    <mat-tab label="Books">
+      <div class="tab-content">
+        <h2>Castle books</h2>
+
+        <h3>General</h3>
+        <ul class="book-list">
+          <li>Coppin, B., "Castles, Defending King and Country", Harpenden, 2006</li>
+          <li>Zeune, J., "Burgen, Symbole der Macht", Regensburg, 1997</li>
+          <li>Gravett, C., "The History of Castles", Guilford, 2001</li>
+          <li>Brown, R. Allen, "Castles, a history and guide", Poole, 1980</li>
+          <li>Toy, S., "Castles, their construction and history", New York, 1985</li>
+        </ul>
+
+        <h3>Per country</h3>
+        <ul class="book-list">
+          <li>Johnson, P., "Castles of England, Scotland and Wales", London, 1989</li>
+          <li>Mesqui, J., "Châteaux forts et fortifications en France", Paris, 1997</li>
+          <li>Janssen, H.L. e.a., "1000 jaar kastelen in Nederland", Utrecht, 1996</li>
+          <li>Tromp, H., "Langs Belgische kastelen, van Motte tot Paleis", Baarn, 1980</li>
+          <li>Paluzíe, A., "Great medieval castles of Spain", Barcelona, 2002</li>
+        </ul>
+      </div>
+    </mat-tab>
+
+    <!-- TAB: Photographers -->
+    <mat-tab label="Photographers">
+      <div class="tab-content">
+        <h2>Contributed pictures</h2>
+        <h3>Photographers</h3>
+        <p>Many thanks to these photographers who have contributed their castle pictures to this site:</p>
+        <ul class="photographer-list">
+          <li><a href="http://www.bartflos.com" target="_blank" rel="noopener">Bart Flos</a> (Nicola)</li>
+          <li>Toine Caarls (Bunratty, Limerick)</li>
+          <li>Nicole van den Wildenberg (Agra, Fatehpur, Jaipur, Rhodes)</li>
+          <li>Kristiaan de Vries (Almere)</li>
+          <li>Jan-Willem van Helvoirt (Brodick, Edinburgh, Eilean Donan)</li>
+          <li>Frans Maas (Malbork)</li>
+          <li>Max Donk (Saumur, Rosendaal en Doesburg)</li>
+          <li>Rob Verschoor (Bodrum, Eilean Donan, Urquhart)</li>
+          <li><a href="http://www.kasteleninnederland.nl" target="_blank" rel="noopener">John Wennips</a> (Krak, Oostvoorne, Dunnotar, Chastel Rouge, Balduinseck)</li>
+          <li>Bram Meijer (Carcassonne)</li>
+          <li>Mariska Rongen (Oystermouth)</li>
+          <li><a href="http://www.richesheures.net" target="_blank" rel="noopener">Stéphane William Gondoin</a> (Plessis-Bourré, Dijon, Sully, Foix, Arques-la-Bataille, Ussé)</li>
+          <li>Françoise Collignon (Fougères)</li>
+          <li>Jeroen Vos (Kalmar, Örebro, Gripsholm, Olavsborg, Gruyères, Tavastehus, Luck Slott, Tower)</li>
+          <li>Tonny Lie (Bran)</li>
+          <li><a href="http://www.yorkcastle.com" target="_blank" rel="noopener">Castle Area Campaign</a> (Clifford)</li>
+          <li>Jos Schreur (Almodóvar, Alhambra, Castillo de Baños de la Encina)</li>
+          <li>Vincent van Rooij (Valkenburg)</li>
+          <li><a href="http://www.great-castles.com" target="_blank" rel="noopener">Ron Lyons</a> (Alnwick, Bodiam, Hever, Middleham, and many more)</li>
+          <li>Jaap van der Lijn (Alnwick, Bamburgh, Braemar, Doune, Urquhart)</li>
+          <li>Hevesi Zoltán (Diósgyőr, Csesznek, Nagyvázson)</li>
+          <li>Csonti Csilla (Sümeg)</li>
+          <li>Pinkert László (Oravský hrad, Ľubovniansky hrad)</li>
+          <li><a href="http://www.civertan.hu" target="_blank" rel="noopener">László János</a> (Csesznek, Diósgyőr, Salgó, Sárospatak, Sümeg, Visegrád)</li>
+        </ul>
+        <p>
+          Want to contribute? <a href="mailto:robert&#64;topkastelen.nl">Send us a message</a>.
+        </p>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>
