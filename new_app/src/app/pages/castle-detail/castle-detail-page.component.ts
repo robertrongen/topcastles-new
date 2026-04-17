@@ -1,20 +1,57 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, computed, inject, OnInit, signal, effect } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { DecimalPipe } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { CastleService } from '../../services/castle.service';
+import { Castle } from '../../models/castle.model';
 
 @Component({
   selector: 'app-castle-detail-page',
   standalone: true,
-  template: `
-    <h1>Castle Detail</h1>
-    <p>Castle detail page — implementation coming soon.</p>
-  `,
+  imports: [RouterLink, DecimalPipe, MatCardModule, MatButtonModule, MatIconModule],
+  templateUrl: './castle-detail-page.component.html',
+  styleUrl: './castle-detail-page.component.scss',
 })
 export class CastleDetailPageComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private castleService = inject(CastleService);
 
+  code = signal('');
+  loading = this.castleService.loading;
+
+  castle = computed<Castle | undefined>(() =>
+    this.castleService.getCastleByCode(this.code())
+  );
+
+  prevCastle = computed(() => this.castleService.getPreviousCastle(this.code()));
+  nextCastle = computed(() => this.castleService.getNextCastle(this.code()));
+  prevInCountry = computed(() => this.castleService.getPreviousCastleInCountry(this.code()));
+  nextInCountry = computed(() => this.castleService.getNextCastleInCountry(this.code()));
+
+  constructor() {
+    effect(() => {
+      const castle = this.castle();
+      if (castle) {
+        document.title = `${castle.castle_name} — Top Castles`;
+      }
+    });
+  }
+
   ngOnInit(): void {
     this.castleService.loadCastles();
+    this.route.params.subscribe((params) => {
+      this.code.set(params['code'] ?? '');
+    });
+  }
+
+  googleMapsUrl(): string {
+    const c = this.castle();
+    if (!c?.latitude || !c?.longitude) return '';
+    const lat = c.latitude;
+    const lon = c.longitude;
+    const name = c.castle_name?.split('(')[0]?.trim() ?? '';
+    return `https://maps.google.com/maps?q=${lat},${lon}+(${encodeURIComponent(name)})&t=k&z=16`;
   }
 }

@@ -1,0 +1,150 @@
+@if (loading()) {
+  <div class="loading">Loading castle data…</div>
+} @else if (!castle()) {
+  <div class="not-found">
+    <h2>Castle not found</h2>
+    <p>The castle code "{{ code() }}" was not found.</p>
+    <a mat-button routerLink="/top100">Back to Top 100</a>
+  </div>
+} @else {
+  <div class="castle-detail">
+    <!-- Navigation bar -->
+    <nav class="castle-nav">
+      <div class="nav-group">
+        <span class="nav-label">Browse Top 100:</span>
+        @if (prevCastle(); as prev) {
+          <a mat-button [routerLink]="['/castles', prev.castle_code]">
+            <mat-icon>arrow_back</mat-icon> Previous ({{ prev.position }})
+          </a>
+        }
+        @if (nextCastle(); as next) {
+          <a mat-button [routerLink]="['/castles', next.castle_code]">
+            Next ({{ next.position }}) <mat-icon>arrow_forward</mat-icon>
+          </a>
+        }
+      </div>
+      @if (prevInCountry() || nextInCountry()) {
+        <div class="nav-group">
+          <span class="nav-label">Browse {{ castle()!.country }}:</span>
+          @if (prevInCountry(); as prev) {
+            <a mat-button [routerLink]="['/castles', prev.castle_code]">
+              <mat-icon>arrow_back</mat-icon> Previous ({{ prev.position }})
+            </a>
+          }
+          @if (nextInCountry(); as next) {
+            <a mat-button [routerLink]="['/castles', next.castle_code]">
+              Next ({{ next.position }}) <mat-icon>arrow_forward</mat-icon>
+            </a>
+          }
+        </div>
+      }
+    </nav>
+
+    <!-- Castle name -->
+    <h1>{{ castle()!.castle_name }}</h1>
+
+    <!-- Metadata card -->
+    <mat-card class="metadata-card">
+      <mat-card-content>
+        <table class="detail-table">
+          <tr>
+            <td class="label">Top 100:</td>
+            <td>position <strong>{{ castle()!.position }}</strong></td>
+            <td class="label">Total score:</td>
+            <td><strong>{{ castle()!.score_total | number:'1.0-0' }}</strong> points</td>
+          </tr>
+          <tr>
+            <td class="label">Rating visitors:</td>
+            <td>
+              @if ((castle()!.visitors ?? 0) > 0) {
+                <strong>{{ castle()!.score_visitors | number:'1.1-1' }}</strong> of {{ castle()!.visitors }} visitors
+              } @else {
+                No rating
+              }
+            </td>
+            <td class="label">Country:</td>
+            <td>
+              <a [routerLink]="['/castles']" [queryParams]="{ country: castle()!.country }">
+                <strong>{{ castle()!.country }}</strong>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">Founder:</td>
+            <td><strong>{{ castle()!.founder || '—' }}</strong></td>
+            <td class="label">Region:</td>
+            <td><strong>{{ castle()!.region || '—' }}</strong></td>
+          </tr>
+          <tr>
+            <td class="label">Building structure:</td>
+            <td><strong>{{ castle()!.castle_concept || '—' }}</strong></td>
+            <td class="label">Castle type:</td>
+            <td><strong>{{ castle()!.castle_type || '—' }}</strong></td>
+          </tr>
+          <tr>
+            <td class="label">Place:</td>
+            <td><strong>{{ castle()!.place || '—' }}</strong></td>
+            <td class="label">Area:</td>
+            <td><strong>{{ castle()!.area || '—' }}</strong></td>
+          </tr>
+          <tr>
+            <td class="label">Era:</td>
+            <td>
+              @if (castle()!.era && castle()!.era! > 1) {
+                <strong>{{ castle()!.era }}th century</strong>
+              } @else {
+                —
+              }
+            </td>
+            <td class="label">Condition:</td>
+            <td><strong>{{ castle()!.condition || '—' }}</strong></td>
+          </tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Description -->
+    @if (castle()!.description) {
+      <mat-card class="section-card">
+        <mat-card-content>
+          <h3>Description</h3>
+          <p>{{ castle()!.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    }
+
+    <!-- Remarkable -->
+    @if (castle()!.remarkable) {
+      <mat-card class="section-card">
+        <mat-card-content>
+          <h3>Remarkable</h3>
+          <p>{{ castle()!.remarkable }}</p>
+        </mat-card-content>
+      </mat-card>
+    }
+
+    <!-- External links -->
+    <mat-card class="section-card">
+      <mat-card-content>
+        <h3>External links</h3>
+        <div class="external-links">
+          @if (castle()!.website) {
+            <a mat-button [href]="castle()!.website" target="_blank" rel="noopener noreferrer">
+              <mat-icon>language</mat-icon> Official website
+            </a>
+          }
+          @if (castle()!.latitude != null && castle()!.longitude != null) {
+            <a mat-button [href]="googleMapsUrl()" target="_blank" rel="noopener noreferrer">
+              <mat-icon>map</mat-icon> Google Maps
+            </a>
+          }
+        </div>
+        @if (castle()!.latitude != null && castle()!.longitude != null) {
+          <p class="geo-text">
+            Latitude: {{ castle()!.latitude }}, Longitude: {{ castle()!.longitude }}
+          </p>
+        }
+      </mat-card-content>
+    </mat-card>
+  </div>
+}

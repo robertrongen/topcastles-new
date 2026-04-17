@@ -74,4 +74,46 @@ export class CastleService {
     );
     return [...types].sort();
   }
+
+  /** Get the previous castle in the top-100 ranking (lower position number). */
+  getPreviousCastle(code: string): Castle | undefined {
+    const sorted = this.getTop100();
+    const idx = sorted.findIndex((c) => c.castle_code === code);
+    return idx > 0 ? sorted[idx - 1] : undefined;
+  }
+
+  /** Get the next castle in the top-100 ranking (higher position number). */
+  getNextCastle(code: string): Castle | undefined {
+    const sorted = this.getTop100();
+    const idx = sorted.findIndex((c) => c.castle_code === code);
+    return idx >= 0 && idx < sorted.length - 1 ? sorted[idx + 1] : undefined;
+  }
+
+  /** Get the previous castle within the same country (by position). */
+  getPreviousCastleInCountry(code: string): Castle | undefined {
+    const castle = this.getCastleByCode(code);
+    if (!castle) return undefined;
+    const countryCastles = this.castles()
+      .filter((c) => c.country === castle.country && (c.score_total ?? 0) > 0)
+      .sort((a, b) => (a.position ?? 999) - (b.position ?? 999));
+    const idx = countryCastles.findIndex((c) => c.castle_code === code);
+    return idx > 0 ? countryCastles[idx - 1] : undefined;
+  }
+
+  /** Get the next castle within the same country (by position). */
+  getNextCastleInCountry(code: string): Castle | undefined {
+    const castle = this.getCastleByCode(code);
+    if (!castle) return undefined;
+    const countryCastles = this.castles()
+      .filter((c) => c.country === castle.country && (c.score_total ?? 0) > 0)
+      .sort((a, b) => (a.position ?? 999) - (b.position ?? 999));
+    const idx = countryCastles.findIndex((c) => c.castle_code === code);
+    return idx >= 0 && idx < countryCastles.length - 1 ? countryCastles[idx + 1] : undefined;
+  }
+
+  /** Search castles by name (case-insensitive substring match). */
+  searchByName(query: string): Castle[] {
+    const q = query.toLowerCase();
+    return this.castles().filter((c) => c.castle_name?.toLowerCase().includes(q));
+  }
 }

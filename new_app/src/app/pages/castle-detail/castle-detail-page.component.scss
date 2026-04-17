@@ -1,0 +1,90 @@
+.castle-detail {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.castle-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-bottom: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.nav-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-label {
+  font-size: 0.85em;
+  color: rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+}
+
+h1 {
+  margin: 0 0 16px;
+}
+
+.metadata-card {
+  margin-bottom: 16px;
+}
+
+.detail-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  td {
+    padding: 6px 8px;
+    vertical-align: top;
+  }
+
+  tr:nth-child(even) {
+    background: #fff6de;
+  }
+
+  .label {
+    width: 140px;
+    color: rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+  }
+}
+
+.section-card {
+  margin-bottom: 16px;
+
+  h3 {
+    margin: 0 0 8px;
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.6;
+  }
+}
+
+.external-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.geo-text {
+  font-size: 0.85em;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.loading {
+  padding: 48px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.not-found {
+  padding: 48px;
+  text-align: center;
+}
