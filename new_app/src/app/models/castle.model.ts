@@ -20,3 +20,16 @@ export interface Castle {
   score_visitors: number | null;
   visitors: number | null;
 }
+
+export interface CountrySummary {
+  country: string;
+  castleCount: number;
+  totalScore: number;
+}
+
+export interface RegionSummary {
+  region: string;
+  country: string;
+  castleCount: number;
+  totalScore: number;
+}

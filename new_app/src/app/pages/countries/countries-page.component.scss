@@ -1,0 +1,24 @@
+.countries-page {
+  padding: 16px;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}
+
+td a {
+  color: #000099;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

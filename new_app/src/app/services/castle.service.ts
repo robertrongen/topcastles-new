@@ -1,6 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Castle } from '../models/castle.model';
+import { Castle, CountrySummary, RegionSummary } from '../models/castle.model';
 
 @Injectable({ providedIn: 'root' })
 export class CastleService {
@@ -115,5 +115,37 @@ export class CastleService {
   searchByName(query: string): Castle[] {
     const q = query.toLowerCase();
     return this.castles().filter((c) => c.castle_name?.toLowerCase().includes(q));
+  }
+
+  getCountrySummaries(): CountrySummary[] {
+    const map = new Map<string, { count: number; totalScore: number }>();
+    for (const c of this.castles()) {
+      if (!c.country) continue;
+      const entry = map.get(c.country) ?? { count: 0, totalScore: 0 };
+      entry.count++;
+      entry.totalScore += c.score_total ?? 0;
+      map.set(c.country, entry);
+    }
+    return [...map.entries()]
+      .map(([country, { count, totalScore }]) => ({ country, castleCount: count, totalScore }))
+      .sort((a, b) => b.totalScore - a.totalScore);
+  }
+
+  getRegionSummaries(): RegionSummary[] {
+    const map = new Map<string, { country: string; count: number; totalScore: number }>();
+    for (const c of this.castles()) {
+      if (!c.region) continue;
+      const entry = map.get(c.region) ?? { country: c.country, count: 0, totalScore: 0 };
+      entry.count++;
+      entry.totalScore += c.score_total ?? 0;
+      map.set(c.region, entry);
+    }
+    return [...map.entries()]
+      .map(([region, { country, count, totalScore }]) => ({ region, country, castleCount: count, totalScore }))
+      .sort((a, b) => b.totalScore - a.totalScore);
+  }
+
+  getCastlesByRegion(region: string): Castle[] {
+    return this.castles().filter((c) => c.region === region);
   }
 }
