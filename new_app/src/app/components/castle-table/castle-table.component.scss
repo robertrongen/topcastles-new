@@ -5,7 +5,11 @@
 
   table {
     flex: 0 0 auto;
-    width: auto; // override mat-table's default width: 100%
+    width: auto !important; // override mat-table's default width: 100%
+  }
+
+  th, td {
+    white-space: nowrap; // columns size to content, no browser space distribution
   }
 
   .table-thumb {
