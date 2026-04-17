@@ -82,6 +82,12 @@ td {
   vertical-align: top;
 }
 
+// ── List bullets ─────────────────────────────────────────────────────────────
+
+ul {
+  list-style-image: url('/arrow.gif');
+}
+
 // ── Angular Material overrides ───────────────────────────────────────────────
 
 // Toolbar → orange masthead

@@ -45,4 +45,11 @@ describe('VisitorsPageComponent', () => {
     const rows = fixture.nativeElement.querySelectorAll('tbody tr');
     expect(rows.length).toBeGreaterThan(0);
   });
+
+  it('should not contain a mailto contact link', () => {
+    const fixture = TestBed.createComponent(VisitorsPageComponent);
+    fixture.detectChanges();
+    const links = fixture.nativeElement.querySelectorAll('a[href^="mailto:"]');
+    expect(links.length).toBe(0);
+  });
 });
