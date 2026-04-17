@@ -1,4 +1,4 @@
-<div class="castle-grid" [style.grid-template-columns]="'repeat(' + columns + ', 1fr)'">
+<div class="castle-grid">
   @for (castle of castles; track castle.castle_code) {
     <a class="castle-tile" [routerLink]="['/castles', castle.castle_code]"
        [title]="castle.castle_name + ' - ' + castle.country">

@@ -17,7 +17,7 @@
 
         @if (filteredByType().length) {
           <p class="result-count">{{ filteredByType().length }} castles found</p>
-          <app-castle-grid [castles]="filteredByType().slice(0, 20)" [columns]="5"></app-castle-grid>
+          <app-castle-grid [castles]="filteredByType().slice(0, 20)"></app-castle-grid>
 
           <h3>The list</h3>
           <app-castle-table [castles]="filteredByType()" [columns]="typeColumns" />
@@ -39,7 +39,7 @@
 
         @if (filteredByConcept().length) {
           <p class="result-count">{{ filteredByConcept().length }} castles found</p>
-          <app-castle-grid [castles]="filteredByConcept().slice(0, 20)" [columns]="5"></app-castle-grid>
+          <app-castle-grid [castles]="filteredByConcept().slice(0, 20)"></app-castle-grid>
 
           <h3>The list</h3>
           <app-castle-table [castles]="filteredByConcept()" [columns]="conceptColumns" />
@@ -61,7 +61,7 @@
 
         @if (filteredByCondition().length) {
           <p class="result-count">{{ filteredByCondition().length }} castles found</p>
-          <app-castle-grid [castles]="filteredByCondition().slice(0, 20)" [columns]="5"></app-castle-grid>
+          <app-castle-grid [castles]="filteredByCondition().slice(0, 20)"></app-castle-grid>
 
           <h3>The list</h3>
           <app-castle-table [castles]="filteredByCondition()" [columns]="conditionColumns" />

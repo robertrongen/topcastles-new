@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Top100PageComponent } from './top100-page.component';
+import { ViewModeService } from '../../services/view-mode.service';
 import { Castle } from '../../models/castle.model';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
@@ -40,6 +41,7 @@ describe('Top100PageComponent', () => {
   let fixture: ComponentFixture<Top100PageComponent>;
   let component: Top100PageComponent;
   let httpTesting: HttpTestingController;
+  let viewModeService: ViewModeService;
 
   const castles: Castle[] = [
     makeCastle({ castle_code: 'c1', castle_name: 'Alpha', position: 1, score_total: 100, country: 'france', place: 'Lyon', region: 'Rhone' }),
@@ -48,6 +50,8 @@ describe('Top100PageComponent', () => {
   ];
 
   beforeEach(async () => {
+    localStorage.removeItem('castle-view-mode');
+
     await TestBed.configureTestingModule({
       imports: [Top100PageComponent, NoopAnimationsModule],
       providers: [
@@ -58,6 +62,7 @@ describe('Top100PageComponent', () => {
     }).compileComponents();
 
     httpTesting = TestBed.inject(HttpTestingController);
+    viewModeService = TestBed.inject(ViewModeService);
     fixture = TestBed.createComponent(Top100PageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -69,6 +74,7 @@ describe('Top100PageComponent', () => {
 
   afterEach(() => {
     httpTesting.verify();
+    localStorage.removeItem('castle-view-mode');
   });
 
   it('should create', () => {
@@ -76,25 +82,39 @@ describe('Top100PageComponent', () => {
   });
 
   it('should display the heading', () => {
-    const el: HTMLElement = fixture.nativeElement;
-    const heading = el.querySelector('h2');
+    const heading = fixture.nativeElement.querySelector('h2');
     expect(heading?.textContent).toContain('top 100 of medieval castles');
   });
 
-  it('should render a castle grid', () => {
-    const el: HTMLElement = fixture.nativeElement;
-    expect(el.querySelector('app-castle-grid')).toBeTruthy();
+  it('should render the view toggle', () => {
+    expect(fixture.nativeElement.querySelector('app-view-toggle')).toBeTruthy();
   });
 
-  it('should render table with 3 data rows', () => {
-    const el: HTMLElement = fixture.nativeElement;
-    const rows = el.querySelectorAll('tr.mat-mdc-row');
+  it('should show table in list mode (default)', () => {
+    viewModeService.setMode('list');
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('app-castle-table')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('app-castle-grid')).toBeNull();
+  });
+
+  it('should show grid when mode is grid', () => {
+    viewModeService.setMode('grid');
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('app-castle-grid')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('app-castle-table')).toBeNull();
+  });
+
+  it('should render table with 3 data rows in list mode', () => {
+    viewModeService.setMode('list');
+    fixture.detectChanges();
+    const rows = fixture.nativeElement.querySelectorAll('tr.mat-mdc-row');
     expect(rows.length).toBe(3);
   });
 
   it('should show castle names as links in the table', () => {
-    const el: HTMLElement = fixture.nativeElement;
-    const links = el.querySelectorAll('td.mat-column-castle_name a');
+    viewModeService.setMode('list');
+    fixture.detectChanges();
+    const links = fixture.nativeElement.querySelectorAll('td.mat-column-castle_name a');
     expect(links.length).toBeGreaterThanOrEqual(3);
     expect(links[0].textContent?.trim()).toBe('Alpha');
   });
@@ -105,6 +125,4 @@ describe('Top100PageComponent', () => {
     expect(top[1].castle_code).toBe('c2');
     expect(top[2].castle_code).toBe('c3');
   });
-
-
 });

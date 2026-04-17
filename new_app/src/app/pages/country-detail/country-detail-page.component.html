@@ -9,7 +9,7 @@
     <h2>Castles in {{ country() }}</h2>
     <p>{{ castles().length }} castles found</p>
 
-    <app-castle-grid [castles]="castles()" [columns]="6"></app-castle-grid>
+    <app-castle-grid [castles]="castles()"></app-castle-grid>
 
     <app-castle-table [castles]="castles()" [columns]="displayedColumns" />
   }

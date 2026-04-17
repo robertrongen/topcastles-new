@@ -1,19 +1,30 @@
+$card-width: 130px;
+$card-height: 185px;
+
 .castle-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fill, $card-width);
   gap: 12px;
+  justify-content: start;
 }
 
 .castle-tile {
+  width: $card-width;
+  height: $card-height;
   text-decoration: none;
   color: inherit;
 
   mat-card {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     cursor: pointer;
-    padding: 4px 4px 8px;
+    padding: 6px 6px 8px;
+    overflow: hidden;
     transition: box-shadow 0.2s;
 
     &:hover {
@@ -27,29 +38,26 @@
     object-fit: cover;
     border-radius: 4px;
     margin-bottom: 6px;
+    flex-shrink: 0;
   }
 
   .castle-name {
     font-weight: 500;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     line-height: 1.2;
     margin-bottom: 4px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   .castle-country {
     font-size: 0.75rem;
     opacity: 0.7;
-  }
-}
-
-@media (max-width: 768px) {
-  .castle-grid {
-    grid-template-columns: repeat(3, 1fr) !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .castle-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
   }
 }

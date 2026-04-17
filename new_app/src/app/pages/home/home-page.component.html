@@ -10,7 +10,7 @@
       this can be helpful for planning your holiday castle trips.
       These are the top twelve of the <a routerLink="/top100">list</a>:
     </p>
-    <app-castle-grid [castles]="top12()" [columns]="6" />
+    <app-castle-grid [castles]="top12()"/>
   </section>
 
   <section class="section">
@@ -21,7 +21,7 @@
       <a routerLink="/top100">visitors top 100</a>.
       The pictures below represent the top twelve castles of this list:
     </p>
-    <app-castle-grid [castles]="topVisitors12()" [columns]="6" />
+    <app-castle-grid [castles]="topVisitors12()"/>
   </section>
 
   <section class="section">
@@ -33,6 +33,6 @@
       The menu "<a routerLink="/types">per type</a>" lists the topcastles per castle type.
       The pictures below represent the top twelve castles of the Netherlands:
     </p>
-    <app-castle-grid [castles]="topNetherlands12()" [columns]="6" />
+    <app-castle-grid [castles]="topNetherlands12()"/>
   </section>
 </div>

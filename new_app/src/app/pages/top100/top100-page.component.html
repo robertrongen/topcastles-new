@@ -4,11 +4,11 @@
     <p>
       Sum of the original top 100 derived from references used by topcastles.com and the visitors top 100.
     </p>
-    <app-castle-grid [castles]="top100()" [columns]="5" />
-  </section>
-
-  <section class="section">
-    <h3>The list</h3>
-    <app-castle-table [castles]="top100()" [columns]="displayedColumns" />
+    <app-view-toggle />
+    @if (viewModeService.mode() === 'grid') {
+      <app-castle-grid [castles]="top100()" />
+    } @else {
+      <app-castle-table [castles]="top100()" [columns]="displayedColumns" />
+    }
   </section>
 </div>
