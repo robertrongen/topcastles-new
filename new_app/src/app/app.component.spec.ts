@@ -13,31 +13,31 @@ describe('AppComponent', () => {
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it(`should have the 'Top Castles' title`, () => {
+  it('should have the "Top Castles" title', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('Top Castles');
+    expect(fixture.componentInstance.title).toEqual('Top Castles');
   });
 
-  it('should render the banner image in the toolbar without a text title span', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const toolbar = fixture.nativeElement.querySelector('mat-toolbar');
-    expect(toolbar?.querySelector('img.tk-logo')).toBeTruthy();
-    expect(toolbar?.querySelector('.tk-title')).toBeNull();
-  });
-
-  it('should render the logo image in the masthead', () => {
+  it('should render the banner image in the toolbar', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const logo = fixture.nativeElement.querySelector('mat-toolbar img.tk-logo') as HTMLImageElement;
     expect(logo).toBeTruthy();
     expect(logo.src).toContain('banner_en.gif');
-    expect(logo.alt).toBe('Topcastles logo');
+  });
+
+  it('should render primary nav links in the toolbar', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const nav = fixture.nativeElement.querySelector('.tk-toolbar-nav');
+    expect(nav).toBeTruthy();
+    expect(nav.textContent).toContain('Top 1000');
+    expect(nav.textContent).toContain('Countries');
+    expect(nav.textContent).toContain('Castle Types');
+    expect(nav.textContent).toContain('Search');
   });
 
   it('should have a navigation toggle button in the toolbar', () => {

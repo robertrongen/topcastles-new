@@ -1,43 +1,49 @@
-﻿<mat-toolbar class="tk-masthead">
-  <img src="banner_en.gif" alt="Topcastles logo" class="tk-logo" />
+<mat-toolbar class="tk-masthead">
+  <a routerLink="/" class="tk-logo-link">
+    <img src="banner_en.gif" alt="Topcastles" class="tk-logo" />
+  </a>
+
+  <nav class="tk-toolbar-nav">
+    <a mat-button routerLink="/top100" routerLinkActive="tk-nav-active">Top 1000</a>
+
+    <button mat-button [matMenuTriggerFor]="countriesMenu" class="tk-nav-menu-btn">
+      Countries <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #countriesMenu="matMenu">
+      <a mat-menu-item routerLink="/countries">Browse by Country</a>
+      <mat-divider />
+      <a mat-menu-item routerLink="/top-countries">Top Countries</a>
+      <a mat-menu-item routerLink="/top-regions">Top Regions</a>
+    </mat-menu>
+
+    <a mat-button routerLink="/types" routerLinkActive="tk-nav-active">Castle Types</a>
+    <a mat-button routerLink="/search" routerLinkActive="tk-nav-active">Search</a>
+  </nav>
+
   <span class="tk-spacer"></span>
+
   <button type="button" mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle navigation">
     <mat-icon>menu</mat-icon>
   </button>
 </mat-toolbar>
 
 <mat-sidenav-container class="app-container">
-  <mat-sidenav #sidenav mode="side" opened>
+  <mat-sidenav #sidenav mode="over">
     <mat-nav-list>
-      <a mat-list-item routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <a mat-list-item routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="sidenav.close()">
         <mat-icon matListItemIcon>home</mat-icon>
         <span matListItemTitle>Home</span>
       </a>
-      <a mat-list-item routerLink="/castles" routerLinkActive="active">
+      <a mat-list-item routerLink="/castles" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>castle</mat-icon>
-        <span matListItemTitle>Castles</span>
+        <span matListItemTitle>All Castles</span>
       </a>
-      <a mat-list-item routerLink="/top100" routerLinkActive="active">
-        <mat-icon matListItemIcon>emoji_events</mat-icon>
-        <span matListItemTitle>Top 1000</span>
-      </a>
-      <a mat-list-item routerLink="/countries" routerLinkActive="active">
-        <mat-icon matListItemIcon>public</mat-icon>
-        <span matListItemTitle>Countries</span>
-      </a>
-      <a mat-list-item routerLink="/types" routerLinkActive="active">
-        <mat-icon matListItemIcon>category</mat-icon>
-        <span matListItemTitle>Castle Types</span>
-      </a>
-      <a mat-list-item routerLink="/search" routerLinkActive="active">
-        <mat-icon matListItemIcon>search</mat-icon>
-        <span matListItemTitle>Search</span>
-      </a>
-      <a mat-list-item routerLink="/background" routerLinkActive="active">
+      <mat-divider />
+      <a mat-list-item routerLink="/background" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>info</mat-icon>
         <span matListItemTitle>Background</span>
       </a>
-      <a mat-list-item routerLink="/visitors" routerLinkActive="active">
+      <a mat-list-item routerLink="/visitors" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>people</mat-icon>
         <span matListItemTitle>Visitors</span>
       </a>
