@@ -23,6 +23,14 @@
     width: 100%;
   }
 
+  .table-thumb {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 2px;
+    vertical-align: middle;
+  }
+
   a {
     color: #1565c0;
     text-decoration: none;

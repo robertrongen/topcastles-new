@@ -13,4 +13,8 @@ import { Castle } from '../../models/castle.model';
 export class CastleGridComponent {
   @Input({ required: true }) castles: Castle[] = [];
   @Input() columns = 6;
+
+  onImgError(event: Event): void {
+    (event.target as HTMLImageElement).style.display = 'none';
+  }
 }

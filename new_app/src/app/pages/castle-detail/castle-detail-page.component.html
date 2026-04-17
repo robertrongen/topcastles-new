@@ -47,6 +47,7 @@
     <mat-card class="metadata-card">
       <mat-card-content>
         <table class="detail-table">
+          <tbody>
           <tr>
             <td class="label">Top 100:</td>
             <td>position <strong>{{ castle()!.position }}</strong></td>
@@ -99,6 +100,7 @@
             <td class="label">Condition:</td>
             <td><strong>{{ castle()!.condition || '—' }}</strong></td>
           </tr>
+          </tbody>
         </table>
       </mat-card-content>
     </mat-card>
@@ -122,6 +124,16 @@
         </mat-card-content>
       </mat-card>
     }
+
+    <!-- Images -->
+    <div class="castle-images">
+      @for (url of imageUrls(); track $index) {
+        <img [src]="url"
+             [alt]="castle()!.castle_name"
+             (error)="onImageError($event)"
+             loading="lazy" />
+      }
+    </div>
 
     <!-- External links -->
     <mat-card class="section-card">

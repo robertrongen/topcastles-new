@@ -66,6 +66,19 @@ h1 {
   }
 }
 
+.castle-images {
+  margin-bottom: 16px;
+
+  img {
+    display: block;
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 8px;
+    border-radius: 4px;
+  }
+}
+
 .external-links {
   display: flex;
   flex-wrap: wrap;

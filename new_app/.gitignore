@@ -43,3 +43,6 @@ Thumbs.db
 
 *storybook.log
 storybook-static
+
+# Castle images (copied from old_app/images/ at build time)
+/public/images/castles/

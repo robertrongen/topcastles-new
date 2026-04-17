@@ -3,6 +3,11 @@
     <a class="castle-tile" [routerLink]="['/castles', castle.castle_code]"
        [title]="castle.castle_name + ' - ' + castle.country">
       <mat-card>
+        <img class="castle-thumb"
+             [src]="'/images/castles/small/' + castle.castle_code + '_small.jpg'"
+             [alt]="castle.castle_name"
+             (error)="onImgError($event)"
+             loading="lazy" />
         <div class="castle-name">{{ castle.castle_name }}</div>
         <div class="castle-country">{{ castle.country }}</div>
       </mat-card>

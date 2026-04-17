@@ -1,4 +1,5 @@
-import { Component, computed, inject, OnInit, signal, effect } from '@angular/core';
+import { Component, computed, inject, OnInit, signal, effect, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -17,6 +18,7 @@ import { Castle } from '../../models/castle.model';
 export class CastleDetailPageComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private castleService = inject(CastleService);
+  private platformId = inject(PLATFORM_ID);
 
   code = signal('');
   loading = this.castleService.loading;
@@ -30,10 +32,23 @@ export class CastleDetailPageComponent implements OnInit {
   prevInCountry = computed(() => this.castleService.getPreviousCastleInCountry(this.code()));
   nextInCountry = computed(() => this.castleService.getNextCastleInCountry(this.code()));
 
+  /** Candidate image URLs: {code}.jpg, {code}2.jpg … {code}25.jpg */
+  imageUrls = computed(() => {
+    const c = this.code();
+    if (!c) return [];
+    return Array.from({ length: 25 }, (_, i) =>
+      `/images/castles/${c}${i === 0 ? '' : i + 1}.jpg`
+    );
+  });
+
+  onImageError(event: Event): void {
+    (event.target as HTMLImageElement).style.display = 'none';
+  }
+
   constructor() {
     effect(() => {
       const castle = this.castle();
-      if (castle) {
+      if (castle && isPlatformBrowser(this.platformId)) {
         document.title = `${castle.castle_name} — Top Castles`;
       }
     });

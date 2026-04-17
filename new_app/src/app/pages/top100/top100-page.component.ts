@@ -19,11 +19,15 @@ export class Top100PageComponent implements OnInit {
   top100 = computed(() => this.castleService.getTop100());
   loading = this.castleService.loading;
 
-  displayedColumns = ['position', 'score_total', 'castle_name', 'country', 'place', 'region'];
+  displayedColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'country', 'place', 'region'];
   sortedData: Castle[] = [];
 
   ngOnInit(): void {
     this.castleService.loadCastles();
+  }
+
+  onImgError(event: Event): void {
+    (event.target as HTMLImageElement).style.display = 'none';
   }
 
   onSortChange(sort: Sort): void {

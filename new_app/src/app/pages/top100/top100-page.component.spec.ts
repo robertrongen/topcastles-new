@@ -93,7 +93,7 @@ describe('Top100PageComponent', () => {
 
   it('should show castle names as links in the table', () => {
     const el: HTMLElement = fixture.nativeElement;
-    const links = el.querySelectorAll('td a');
+    const links = el.querySelectorAll('td.mat-column-castle_name a');
     expect(links.length).toBeGreaterThanOrEqual(3);
     expect(links[0].textContent?.trim()).toBe('Alpha');
   });
