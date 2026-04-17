@@ -34,3 +34,18 @@ export interface RegionSummary {
   castleCount: number;
   totalScore: number;
 }
+
+export interface SearchCriteria {
+  name?: string;
+  description?: string;
+  place?: string;
+  region?: string;
+  country?: string;
+  area?: string;
+  castleType?: string;
+  castleConcept?: string;
+  founder?: string;
+  era?: number | null;
+  condition?: string;
+  sortKey?: string;
+}

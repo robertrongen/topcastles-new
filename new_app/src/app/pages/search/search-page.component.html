@@ -1,0 +1,135 @@
+<div class="search-page">
+  <h2>Search castles in the database</h2>
+
+  <div class="search-form">
+    <!-- Name section -->
+    <div class="form-section">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input matInput [(ngModel)]="description" />
+      </mat-form-field>
+    </div>
+
+    <!-- Location section -->
+    <h3>Location</h3>
+    <div class="form-section">
+      <mat-form-field appearance="outline">
+        <mat-label>Place</mat-label>
+        <input matInput [(ngModel)]="place" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Region (district)</mat-label>
+        <input matInput [(ngModel)]="region" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Country</mat-label>
+        <mat-select [(ngModel)]="country">
+          <mat-option value="">— Any —</mat-option>
+          @for (c of countries(); track c) {
+            <mat-option [value]="c">{{ c }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Area</mat-label>
+        <mat-select [(ngModel)]="area">
+          <mat-option value="">— Any —</mat-option>
+          @for (a of areas(); track a) {
+            <mat-option [value]="a">{{ a }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Castle type section -->
+    <h3>Castle type</h3>
+    <div class="form-section">
+      <mat-form-field appearance="outline">
+        <mat-label>Location type</mat-label>
+        <mat-select [(ngModel)]="castleType">
+          <mat-option value="">— Any —</mat-option>
+          @for (t of castleTypes(); track t) {
+            <mat-option [value]="t">{{ t }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Building structure</mat-label>
+        <mat-select [(ngModel)]="castleConcept">
+          <mat-option value="">— Any —</mat-option>
+          @for (c of castleConcepts(); track c) {
+            <mat-option [value]="c">{{ c }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- History section -->
+    <h3>History</h3>
+    <div class="form-section">
+      <mat-form-field appearance="outline">
+        <mat-label>Founder</mat-label>
+        <input matInput [(ngModel)]="founder" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Era</mat-label>
+        <mat-select [(ngModel)]="era">
+          <mat-option [value]="null">— Any —</mat-option>
+          @for (e of eras(); track e) {
+            <mat-option [value]="e">{{ e }}th century</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Condition</mat-label>
+        <mat-select [(ngModel)]="condition">
+          <mat-option value="">— Any —</mat-option>
+          @for (c of castleConditions(); track c) {
+            <mat-option [value]="c">{{ c }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Sort and buttons -->
+    <div class="form-section form-actions">
+      <mat-form-field appearance="outline">
+        <mat-label>Sort key</mat-label>
+        <mat-select [(ngModel)]="sortKey">
+          @for (opt of sortOptions; track opt.value) {
+            <mat-option [value]="opt.value">{{ opt.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <div class="buttons">
+        <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
+        <button mat-stroked-button (click)="onReset()">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results -->
+  @if (searched()) {
+    <div class="results-section">
+      <h3>Search results</h3>
+      @if (results().length) {
+        <p class="result-count">{{ results().length }} castles found (max 100)</p>
+        <app-castle-table [castles]="results()" [columns]="displayedColumns" />
+      } @else {
+        <p>No castles found matching your criteria.</p>
+      }
+    </div>
+  }
+</div>

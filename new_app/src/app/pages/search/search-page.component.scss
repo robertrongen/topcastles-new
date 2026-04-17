@@ -1,0 +1,40 @@
+.search-page {
+  padding: 16px;
+}
+
+.search-form {
+  max-width: 700px;
+
+  h3 {
+    margin: 16px 0 8px;
+  }
+}
+
+.form-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  mat-form-field {
+    flex: 1 1 280px;
+    min-width: 200px;
+  }
+}
+
+.form-actions {
+  align-items: center;
+
+  .buttons {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 22px; // align with form field
+  }
+}
+
+.results-section {
+  margin-top: 24px;
+}
+
+.result-count {
+  margin-bottom: 8px;
+}

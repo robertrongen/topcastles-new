@@ -1,6 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Castle, CountrySummary, RegionSummary } from '../models/castle.model';
+import { Castle, CountrySummary, RegionSummary, SearchCriteria } from '../models/castle.model';
 
 @Injectable({ providedIn: 'root' })
 export class CastleService {
@@ -183,5 +183,60 @@ export class CastleService {
 
   getCastlesByRegion(region: string): Castle[] {
     return this.castles().filter((c) => c.region === region);
+  }
+
+  getAreas(): string[] {
+    const areas = new Set<string>();
+    for (const c of this.castles()) {
+      if (c.area) {
+        for (const part of c.area.split(',')) {
+          const trimmed = part.trim();
+          if (trimmed) areas.add(trimmed);
+        }
+      }
+    }
+    return [...areas].sort();
+  }
+
+  getEras(): number[] {
+    const eras = new Set(
+      this.castles()
+        .map((c) => c.era)
+        .filter((e): e is number => e != null && e > 0)
+    );
+    return [...eras].sort((a, b) => a - b);
+  }
+
+  search(criteria: SearchCriteria): Castle[] {
+    const like = (field: string | undefined, query: string): boolean =>
+      !!field && field.toLowerCase().includes(query.toLowerCase());
+
+    let results = this.castles().filter((c) => {
+      if (criteria.name && !like(c.castle_name, criteria.name)) return false;
+      if (criteria.description && !like(c.description, criteria.description) && !like(c.remarkable, criteria.description)) return false;
+      if (criteria.place && !like(c.place, criteria.place)) return false;
+      if (criteria.region && !like(c.region, criteria.region)) return false;
+      if (criteria.country && c.country !== criteria.country) return false;
+      if (criteria.area && !like(c.area, criteria.area)) return false;
+      if (criteria.castleType && c.castle_type !== criteria.castleType) return false;
+      if (criteria.castleConcept && c.castle_concept !== criteria.castleConcept) return false;
+      if (criteria.founder && !like(c.founder, criteria.founder)) return false;
+      if (criteria.era != null && c.era !== criteria.era) return false;
+      if (criteria.condition && c.condition !== criteria.condition) return false;
+      return true;
+    });
+
+    const sortKey = criteria.sortKey || 'score_total';
+    results = results.slice().sort((a, b) => {
+      const va = a[sortKey as keyof Castle];
+      const vb = b[sortKey as keyof Castle];
+      if (va == null && vb == null) return 0;
+      if (va == null) return 1;
+      if (vb == null) return -1;
+      if (sortKey === 'score_total') return (vb as number) - (va as number);
+      return va < vb ? -1 : va > vb ? 1 : 0;
+    });
+
+    return results.slice(0, 100);
   }
 }
