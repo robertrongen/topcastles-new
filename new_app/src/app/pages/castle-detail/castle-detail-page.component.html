@@ -4,14 +4,14 @@
   <div class="not-found">
     <h2>Castle not found</h2>
     <p>The castle code "{{ code() }}" was not found.</p>
-    <a mat-button routerLink="/top100">Back to Top 100</a>
+    <a mat-button routerLink="/top100">Back to Top 1000</a>
   </div>
 } @else {
   <div class="castle-detail">
     <!-- Navigation bar -->
     <nav class="castle-nav">
       <div class="nav-group">
-        <span class="nav-label">Browse Top 100:</span>
+        <span class="nav-label">Browse Top 1000:</span>
         @if (prevCastle(); as prev) {
           <a mat-button [routerLink]="['/castles', prev.castle_code]">
             <mat-icon>arrow_back</mat-icon> Previous ({{ prev.position }})
@@ -49,7 +49,7 @@
         <table class="detail-table">
           <tbody>
           <tr>
-            <td class="label">Top 100:</td>
+            <td class="label">Ranking:</td>
             <td>position <strong>{{ castle()!.position }}</strong></td>
             <td class="label">Total score:</td>
             <td><strong>{{ castle()!.score_total | number:'1.0-0' }}</strong> points</td>

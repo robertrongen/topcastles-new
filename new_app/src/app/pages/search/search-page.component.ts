@@ -53,7 +53,7 @@ export class SearchPageComponent implements OnInit {
   displayedColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'country', 'place', 'region', 'castle_type'];
 
   sortOptions = [
-    { value: 'score_total', label: 'Top 100 score' },
+    { value: 'score_total', label: 'Total score' },
     { value: 'castle_code', label: 'Castle code' },
     { value: 'country', label: 'Country' },
     { value: 'region', label: 'Region' },

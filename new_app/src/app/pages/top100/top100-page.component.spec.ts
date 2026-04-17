@@ -83,7 +83,7 @@ describe('Top100PageComponent', () => {
 
   it('should display the heading', () => {
     const heading = fixture.nativeElement.querySelector('h2');
-    expect(heading?.textContent).toContain('top 100 of medieval castles');
+    expect(heading?.textContent).toContain('top 1000 of medieval castles');
   });
 
   it('should render the view toggle', () => {

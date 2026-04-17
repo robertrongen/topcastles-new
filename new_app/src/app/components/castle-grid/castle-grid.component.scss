@@ -41,6 +41,13 @@ $card-height: 185px;
     flex-shrink: 0;
   }
 
+  .castle-rank {
+    font-size: 0.7rem;
+    opacity: 0.65;
+    white-space: nowrap;
+    margin-bottom: 2px;
+  }
+
   .castle-name {
     font-weight: 500;
     font-size: 0.8rem;

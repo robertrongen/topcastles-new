@@ -30,11 +30,10 @@ export class CastleService {
     return this.castles().find((c) => c.castle_code === code);
   }
 
-  getTop100(): Castle[] {
+  getAllByScore(): Castle[] {
     return this.castles()
       .slice()
-      .sort((a, b) => (b.score_total ?? 0) - (a.score_total ?? 0))
-      .slice(0, 100);
+      .sort((a, b) => (b.score_total ?? 0) - (a.score_total ?? 0));
   }
 
   getTopByScore(count: number): Castle[] {
@@ -113,14 +112,14 @@ export class CastleService {
 
   /** Get the previous castle in the top-100 ranking (lower position number). */
   getPreviousCastle(code: string): Castle | undefined {
-    const sorted = this.getTop100();
+    const sorted = this.getAllByScore();
     const idx = sorted.findIndex((c) => c.castle_code === code);
     return idx > 0 ? sorted[idx - 1] : undefined;
   }
 
   /** Get the next castle in the top-100 ranking (higher position number). */
   getNextCastle(code: string): Castle | undefined {
-    const sorted = this.getTop100();
+    const sorted = this.getAllByScore();
     const idx = sorted.findIndex((c) => c.castle_code === code);
     return idx >= 0 && idx < sorted.length - 1 ? sorted[idx + 1] : undefined;
   }

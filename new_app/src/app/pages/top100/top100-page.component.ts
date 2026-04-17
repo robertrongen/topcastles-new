@@ -16,7 +16,7 @@ export class Top100PageComponent implements OnInit {
   private castleService = inject(CastleService);
   protected viewModeService = inject(ViewModeService);
 
-  top100 = computed(() => this.castleService.getTop100());
+  top100 = computed(() => this.castleService.getAllByScore());
   loading = this.castleService.loading;
 
   displayedColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'country', 'place', 'region', 'castle_type'];

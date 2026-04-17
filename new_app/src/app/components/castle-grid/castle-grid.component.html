@@ -8,6 +8,9 @@
              [alt]="castle.castle_name"
              (error)="onImgError($event)"
              loading="lazy" />
+        @if (castle.position != null) {
+          <div class="castle-rank">{{ castle.position }} &mdash; {{ castle.score_total | number:'1.0-0' }} pts</div>
+        }
         <div class="castle-name">{{ castle.castle_name }}</div>
         <div class="castle-country">{{ castle.country }}</div>
       </mat-card>

@@ -78,7 +78,7 @@ describe('HomePageComponent', () => {
   it('should display top 12 section heading', () => {
     const el: HTMLElement = fixture.nativeElement;
     const headings = el.querySelectorAll('h2');
-    expect(headings[0].textContent).toContain('top 100 of medieval castles');
+    expect(headings[0].textContent).toContain('top 1000 of medieval castles');
   });
 
   it('should render top castles grid', () => {
