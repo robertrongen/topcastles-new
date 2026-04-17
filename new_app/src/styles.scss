@@ -1,19 +1,130 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
+
+// Old-app palette variables
+$tk-orange:      #FF9900; // masthead / toolbar background
+$tk-dark-blue:   #00005C; // page body background
+$tk-link:        #000099; // primary link colour
+$tk-link-hover:  #CCCCFF; // link hover background
+$tk-nav-bg:      #E6E6F5; // left nav / sidenav background
+$tk-th-bg:       #CCCCEB; // table header background
+$tk-section-bg:  #CCCCFF; // feature/section header background
+$tk-row-even:    #FFF6DE; // alternating table row (even)
+$tk-divider:     #CCCCFF; // section divider colour
 
 html {
   @include mat.theme((
     color: (
       theme-type: light,
-      primary: mat.$azure-palette,
+      primary: mat.$orange-palette,
       tertiary: mat.$blue-palette,
     ),
     typography: Roboto,
     density: 0,
   ));
-}/* You can add global styles to this file, and also import other style files */
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// ── Base reset ──────────────────────────────────────────────────────────────
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #000000;
+  background-color: $tk-dark-blue;
+}
+
+// ── Typography ──────────────────────────────────────────────────────────────
+
+h1, h2, h3, h4 {
+  font-family: Verdana, Arial, sans-serif;
+}
+
+h1 { font-size: 180%; }
+h2 { font-size: 140%; }
+h3 { font-size: 120%; }
+h4 { font-size: 100%; }
+
+p, li, td, span, div {
+  font-weight: normal;
+}
+
+// ── Global link styles ──────────────────────────────────────────────────────
+
+a:link, a:visited, a:active {
+  color: $tk-link;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $tk-link;
+  text-decoration: underline;
+  background-color: $tk-link-hover;
+}
+
+// ── Table styles ─────────────────────────────────────────────────────────────
+
+th {
+  background-color: $tk-th-bg;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+td {
+  font-size: 11px;
+  vertical-align: top;
+}
+
+// ── Angular Material overrides ───────────────────────────────────────────────
+
+// Toolbar → orange masthead
+.mat-toolbar {
+  background-color: $tk-orange !important;
+  color: #000000 !important;
+}
+
+.mat-toolbar a,
+.mat-toolbar button {
+  color: #000000 !important;
+}
+
+// Sidenav → pale lavender
+mat-sidenav.mat-sidenav {
+  background-color: $tk-nav-bg !important;
+}
+
+// Nav list links inside sidenav: inherit dark text, blue on active
+.mat-nav-list a,
+.mat-mdc-list-item {
+  color: #000000 !important;
+  font-weight: normal;
+}
+
+.mat-mdc-list-item.active,
+.mat-mdc-list-item:hover {
+  background-color: $tk-link-hover !important;
+  color: $tk-link !important;
+}
+
+// Section/feature h2 headers
+.section h2,
+.tab-content h2,
+.feature h2 {
+  background-color: $tk-section-bg;
+  padding: 6px 8px 5px;
+  margin-left: 0;
+}
+
+// Section dividers
+.section {
+  border-bottom: 2px solid $tk-divider;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}

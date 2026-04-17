@@ -82,4 +82,17 @@ describe('BackgroundPageComponent', () => {
     component.onTabChange(3);
     expect(component.selectedIndex()).toBe(3);
   });
+
+  it('should not contain an email or contribute link', () => {
+    const { fixture } = setup({ sub: 'bijdragen' });
+    fixture.detectChanges();
+    const links: NodeListOf<HTMLAnchorElement> = fixture.nativeElement.querySelectorAll('a[href^="mailto:"]');
+    expect(links.length).toBe(0);
+  });
+
+  it('should not contain "Want to contribute" text', () => {
+    const { fixture } = setup({ sub: 'bijdragen' });
+    fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).not.toContain('Want to contribute');
+  });
 });

@@ -1,19 +1,49 @@
+.tk-masthead {
+  background-color: #FF9900 !important;
+  color: #000000 !important;
+  padding-left: 8px;
+  gap: 12px;
+}
+
+.tk-logo {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
+.tk-title {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.tk-spacer {
+  flex: 1 1 auto;
+}
+
 .app-container {
   position: absolute;
   top: 64px;
   bottom: 0;
   left: 0;
   right: 0;
+  background-color: #00005C;
 }
 
 mat-sidenav {
   width: 220px;
+  background-color: #E6E6F5 !important;
+  border-right: 1px solid #CCCCFF;
 }
 
 .main-content {
   padding: 24px;
+  background-color: #ffffff;
 }
 
+// Active nav item
 .active {
-  font-weight: 500;
+  background-color: #CCCCFF !important;
+  font-weight: bold;
 }

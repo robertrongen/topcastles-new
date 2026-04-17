@@ -32,11 +32,12 @@
   }
 
   a {
-    color: #1565c0;
+    color: #000099;
     text-decoration: none;
 
     &:hover {
       text-decoration: underline;
+      background-color: #CCCCFF;
     }
   }
 

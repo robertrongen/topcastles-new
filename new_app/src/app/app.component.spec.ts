@@ -29,4 +29,20 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('mat-toolbar')?.textContent).toContain('Top Castles');
   });
+
+  it('should render the logo image in the masthead', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const logo = fixture.nativeElement.querySelector('mat-toolbar img.tk-logo') as HTMLImageElement;
+    expect(logo).toBeTruthy();
+    expect(logo.src).toContain('logo_topkastelen_nl.jpg');
+    expect(logo.alt).toBe('Topcastles logo');
+  });
+
+  it('should have a navigation toggle button in the toolbar', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const btn = fixture.nativeElement.querySelector('mat-toolbar button[aria-label="Toggle navigation"]');
+    expect(btn).toBeTruthy();
+  });
 });
