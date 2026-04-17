@@ -5,6 +5,7 @@
 
   table {
     flex: 0 0 auto;
+    width: auto; // override mat-table's default width: 100%
   }
 
   .table-thumb {
@@ -31,7 +32,30 @@
     }
   }
 
+  td {
+    vertical-align: middle;
+  }
+
   tr:nth-child(even) {
     background-color: #fff6de;
+  }
+
+  // Tablet: hide secondary columns to keep the table readable
+  @media (max-width: 1199px) {
+    .mat-column-score_visitors,
+    .mat-column-era,
+    .mat-column-condition { display: none; }
+  }
+
+  // Mobile: show only the essentials, shrink thumbnail
+  @media (max-width: 767px) {
+    .mat-column-place,
+    .mat-column-region,
+    .mat-column-castle_type { display: none; }
+
+    .table-thumb {
+      width: 55px;
+      height: 55px;
+    }
   }
 }

@@ -3,6 +3,7 @@
   color: #000000 !important;
   padding-left: 4px;
   gap: 0;
+  flex-shrink: 0;
 }
 
 .tk-logo-link {
@@ -79,4 +80,14 @@ mat-sidenav {
 .active {
   background-color: #CCCCFF !important;
   font-weight: bold;
+}
+
+@media (max-width: 767px) {
+  .tk-toolbar-nav {
+    display: none; // hidden on mobile; use hamburger + sidenav instead
+  }
+
+  .main-content {
+    padding: 8px;
+  }
 }
