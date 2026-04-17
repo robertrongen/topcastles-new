@@ -9,6 +9,7 @@ export const routes: Routes = [
   { path: 'countries/:country', loadComponent: () => import('./pages/country-detail/country-detail-page.component').then(m => m.CountryDetailPageComponent) },
   { path: 'types', loadComponent: () => import('./pages/types/types-page.component').then(m => m.TypesPageComponent) },
   { path: 'search', loadComponent: () => import('./pages/search/search-page.component').then(m => m.SearchPageComponent) },
+  { path: 'nocastle/:code', loadComponent: () => import('./pages/nocastle-detail/nocastle-detail-page.component').then(m => m.NoCastleDetailPageComponent) },
   { path: 'background', loadComponent: () => import('./pages/background/background-page.component').then(m => m.BackgroundPageComponent) },
   { path: 'visitors', loadComponent: () => import('./pages/visitors/visitors-page.component').then(m => m.VisitorsPageComponent) },
   { path: '**', redirectTo: '' },
