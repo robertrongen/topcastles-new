@@ -153,6 +153,7 @@ describe('CastleTableComponent', () => {
     const cell = fixture.nativeElement.querySelector('td.mat-column-castle_type');
     expect(cell.textContent.trim()).toBe('Water castle');
   });
+<<<<<<< HEAD
 
   it('should link country to country detail page', () => {
     component.castles = [makeCastle({ country: 'Germany' })];
@@ -173,4 +174,6 @@ describe('CastleTableComponent', () => {
     expect(link).toBeTruthy();
     expect(link.getAttribute('href')).toContain('/types');
   });
+=======
+>>>>>>> 818ff53fefcaae0e9f2cc51b40d76c5a7cc51aa4
 });

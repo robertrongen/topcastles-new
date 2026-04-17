@@ -89,7 +89,12 @@ describe('CastlesPageComponent', () => {
 
   it('should display castle names as links', () => {
     setup();
+<<<<<<< HEAD
     const nameLinks = fixture.nativeElement.querySelectorAll('td.mat-column-castle_name a');
+=======
+    const links = Array.from(fixture.nativeElement.querySelectorAll('td a')) as HTMLAnchorElement[];
+    const nameLinks = links.filter((a) => !a.querySelector('img'));
+>>>>>>> 818ff53fefcaae0e9f2cc51b40d76c5a7cc51aa4
     expect(nameLinks.length).toBe(4);
     expect(nameLinks[0].textContent?.trim()).toContain('Krak des Chevaliers');
   });

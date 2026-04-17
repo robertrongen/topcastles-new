@@ -1,5 +1,8 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
+<<<<<<< HEAD
 import { ActivatedRoute } from '@angular/router';
+=======
+>>>>>>> 818ff53fefcaae0e9f2cc51b40d76c5a7cc51aa4
 import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,6 +26,33 @@ import { CastleTableComponent } from '../../components/castle-table/castle-table
 export class TypesPageComponent implements OnInit {
   private castleService = inject(CastleService);
   private route = inject(ActivatedRoute);
+
+  castleTypes = computed(() => this.castleService.getCastleTypes());
+  castleConcepts = computed(() => this.castleService.getCastleConcepts());
+  castleConditions = computed(() => this.castleService.getCastleConditions());
+
+  selectedType = signal('');
+  selectedConcept = signal('');
+  selectedCondition = signal('');
+
+  filteredByType = computed<Castle[]>(() => {
+    const t = this.selectedType();
+    return t ? this.castleService.getCastlesByType(t) : [];
+  });
+
+  filteredByConcept = computed<Castle[]>(() => {
+    const c = this.selectedConcept();
+    return c ? this.castleService.getCastlesByConcept(c) : [];
+  });
+
+  filteredByCondition = computed<Castle[]>(() => {
+    const c = this.selectedCondition();
+    return c ? this.castleService.getCastlesByCondition(c) : [];
+  });
+
+  typeColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'country', 'place', 'region'];
+  conceptColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'country', 'place', 'region', 'castle_type'];
+  conditionColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'country', 'place', 'region', 'castle_type'];
 
   castleTypes = computed(() => this.castleService.getCastleTypes());
   castleConcepts = computed(() => this.castleService.getCastleConcepts());
