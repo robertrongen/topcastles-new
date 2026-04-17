@@ -50,7 +50,7 @@ export class SearchPageComponent implements OnInit {
   results = signal<Castle[]>([]);
   searched = signal(false);
 
-  displayedColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'country', 'place', 'region', 'castle_type'];
+  displayedColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'castle_type'];
 
   sortOptions = [
     { value: 'score_total', label: 'Total score' },

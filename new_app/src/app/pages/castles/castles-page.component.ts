@@ -31,7 +31,7 @@ export class CastlesPageComponent implements OnInit {
   filterName = signal('');
   filterCountry = signal('');
 
-  displayedColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'country', 'place', 'region', 'castle_type'];
+  displayedColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'castle_type'];
 
   filteredCastles = computed(() => {
     let castles = this.castleService.castles()

@@ -15,32 +15,3 @@
   }
 }
 
-.table-container {
-  overflow-x: auto;
-
-  table {
-    width: 100%;
-  }
-
-  .table-thumb {
-    width: 55px;
-    height: 55px;
-    object-fit: cover;
-    border-radius: 2px;
-    vertical-align: middle;
-  }
-
-  a {
-    color: #000099;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-      background-color: #CCCCFF;
-    }
-  }
-
-  tr:nth-child(even) {
-    background-color: #fff6de;
-  }
-}

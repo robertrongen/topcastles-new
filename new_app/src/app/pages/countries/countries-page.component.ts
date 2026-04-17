@@ -27,7 +27,7 @@ export class CountriesPageComponent implements OnInit {
 
   castles = computed(() => this.castleService.getCastlesByCountry(this.selectedCountry()));
 
-  columns = ['position', 'score_total', 'thumbnail', 'castle_name', 'place', 'region', 'castle_type'];
+  columns = ['position', 'score_total', 'thumbnail', 'castle_name', 'era', 'place', 'region', 'castle_type'];
 
   ngOnInit(): void {
     this.castleService.loadCastles();

@@ -39,6 +39,14 @@ export class CastleTableComponent {
     });
   }
 
+  eraLabel(era: number | null): string {
+    if (era == null) return '';
+    const n = era % 100;
+    const m = era % 10;
+    const suffix = (n >= 11 && n <= 13) ? 'th' : (m === 1 ? 'st' : m === 2 ? 'nd' : m === 3 ? 'rd' : 'th');
+    return `${era}${suffix} c.`;
+  }
+
   onImgError(event: Event): void {
     (event.target as HTMLImageElement).style.display = 'none';
   }

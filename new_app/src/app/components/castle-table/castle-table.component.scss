@@ -1,8 +1,10 @@
 .table-container {
   overflow-x: auto;
+  display: flex;
+  justify-content: center;
 
   table {
-    width: 100%;
+    flex: 0 0 auto;
   }
 
   .table-thumb {
