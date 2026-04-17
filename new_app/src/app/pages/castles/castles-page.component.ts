@@ -6,13 +6,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { CastleService } from '../../services/castle.service';
 import { CastleTableComponent } from '../../components/castle-table/castle-table.component';
+import { CastleGridComponent } from '../../components/castle-grid/castle-grid.component';
+import { ViewToggleComponent } from '../../components/view-toggle/view-toggle.component';
+import { ViewModeService } from '../../services/view-mode.service';
 
 @Component({
   selector: 'app-castles-page',
   standalone: true,
   imports: [
     MatFormFieldModule, MatInputModule, MatSelectModule, FormsModule,
-    CastleTableComponent,
+    CastleTableComponent, CastleGridComponent, ViewToggleComponent,
   ],
   templateUrl: './castles-page.component.html',
   styleUrl: './castles-page.component.scss',
@@ -20,6 +23,7 @@ import { CastleTableComponent } from '../../components/castle-table/castle-table
 export class CastlesPageComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private castleService = inject(CastleService);
+  protected viewModeService = inject(ViewModeService);
 
   loading = this.castleService.loading;
   countries = computed(() => this.castleService.getCountries());

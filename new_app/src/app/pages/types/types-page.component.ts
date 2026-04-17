@@ -8,6 +8,8 @@ import { CastleService } from '../../services/castle.service';
 import { Castle } from '../../models/castle.model';
 import { CastleGridComponent } from '../../components/castle-grid/castle-grid.component';
 import { CastleTableComponent } from '../../components/castle-table/castle-table.component';
+import { ViewToggleComponent } from '../../components/view-toggle/view-toggle.component';
+import { ViewModeService } from '../../services/view-mode.service';
 
 @Component({
   selector: 'app-types-page',
@@ -15,7 +17,7 @@ import { CastleTableComponent } from '../../components/castle-table/castle-table
   imports: [
     FormsModule,
     MatTabsModule, MatFormFieldModule, MatSelectModule,
-    CastleGridComponent, CastleTableComponent,
+    CastleGridComponent, CastleTableComponent, ViewToggleComponent,
   ],
   templateUrl: './types-page.component.html',
   styleUrl: './types-page.component.scss',
@@ -23,6 +25,7 @@ import { CastleTableComponent } from '../../components/castle-table/castle-table
 export class TypesPageComponent implements OnInit {
   private castleService = inject(CastleService);
   private route = inject(ActivatedRoute);
+  protected viewModeService = inject(ViewModeService);
 
   castleTypes = computed(() => this.castleService.getCastleTypes());
   castleConcepts = computed(() => this.castleService.getCastleConcepts());

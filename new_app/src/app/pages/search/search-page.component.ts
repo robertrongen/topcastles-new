@@ -7,6 +7,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { CastleService } from '../../services/castle.service';
 import { Castle, SearchCriteria } from '../../models/castle.model';
 import { CastleTableComponent } from '../../components/castle-table/castle-table.component';
+import { CastleGridComponent } from '../../components/castle-grid/castle-grid.component';
+import { ViewToggleComponent } from '../../components/view-toggle/view-toggle.component';
+import { ViewModeService } from '../../services/view-mode.service';
 
 @Component({
   selector: 'app-search-page',
@@ -14,13 +17,14 @@ import { CastleTableComponent } from '../../components/castle-table/castle-table
   imports: [
     FormsModule,
     MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule,
-    CastleTableComponent,
+    CastleTableComponent, CastleGridComponent, ViewToggleComponent,
   ],
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.scss',
 })
 export class SearchPageComponent implements OnInit {
   private castleService = inject(CastleService);
+  protected viewModeService = inject(ViewModeService);
 
   countries = computed(() => this.castleService.getCountries());
   areas = computed(() => this.castleService.getAreas());

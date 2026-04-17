@@ -5,11 +5,13 @@ import { CastleService } from '../../services/castle.service';
 import { Castle } from '../../models/castle.model';
 import { CastleGridComponent } from '../../components/castle-grid/castle-grid.component';
 import { CastleTableComponent } from '../../components/castle-table/castle-table.component';
+import { ViewToggleComponent } from '../../components/view-toggle/view-toggle.component';
+import { ViewModeService } from '../../services/view-mode.service';
 
 @Component({
   selector: 'app-country-detail-page',
   standalone: true,
-  imports: [RouterLink, CastleGridComponent, CastleTableComponent],
+  imports: [RouterLink, CastleGridComponent, CastleTableComponent, ViewToggleComponent],
   templateUrl: './country-detail-page.component.html',
   styleUrl: './country-detail-page.component.scss',
 })
@@ -17,6 +19,7 @@ export class CountryDetailPageComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private castleService = inject(CastleService);
   private platformId = inject(PLATFORM_ID);
+  protected viewModeService = inject(ViewModeService);
 
   country = signal('');
   loading = this.castleService.loading;

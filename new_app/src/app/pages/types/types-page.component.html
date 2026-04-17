@@ -17,10 +17,12 @@
 
         @if (filteredByType().length) {
           <p class="result-count">{{ filteredByType().length }} castles found</p>
-          <app-castle-grid [castles]="filteredByType().slice(0, 20)"></app-castle-grid>
-
-          <h3>The list</h3>
-          <app-castle-table [castles]="filteredByType()" [columns]="typeColumns" />
+          <app-view-toggle />
+          @if (viewModeService.mode() === 'grid') {
+            <app-castle-grid [castles]="filteredByType()" />
+          } @else {
+            <app-castle-table [castles]="filteredByType()" [columns]="typeColumns" />
+          }
         }
       </div>
     </mat-tab>
@@ -39,10 +41,12 @@
 
         @if (filteredByConcept().length) {
           <p class="result-count">{{ filteredByConcept().length }} castles found</p>
-          <app-castle-grid [castles]="filteredByConcept().slice(0, 20)"></app-castle-grid>
-
-          <h3>The list</h3>
-          <app-castle-table [castles]="filteredByConcept()" [columns]="conceptColumns" />
+          <app-view-toggle />
+          @if (viewModeService.mode() === 'grid') {
+            <app-castle-grid [castles]="filteredByConcept()" />
+          } @else {
+            <app-castle-table [castles]="filteredByConcept()" [columns]="conceptColumns" />
+          }
         }
       </div>
     </mat-tab>
@@ -61,10 +65,12 @@
 
         @if (filteredByCondition().length) {
           <p class="result-count">{{ filteredByCondition().length }} castles found</p>
-          <app-castle-grid [castles]="filteredByCondition().slice(0, 20)"></app-castle-grid>
-
-          <h3>The list</h3>
-          <app-castle-table [castles]="filteredByCondition()" [columns]="conditionColumns" />
+          <app-view-toggle />
+          @if (viewModeService.mode() === 'grid') {
+            <app-castle-grid [castles]="filteredByCondition()" />
+          } @else {
+            <app-castle-table [castles]="filteredByCondition()" [columns]="conditionColumns" />
+          }
         }
       </div>
     </mat-tab>

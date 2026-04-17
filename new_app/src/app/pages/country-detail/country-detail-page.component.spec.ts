@@ -92,9 +92,9 @@ describe('CountryDetailPageComponent', () => {
     expect(el.textContent).toContain('2 castles found');
   });
 
-  it('should render a castle grid', () => {
+  it('should render the view toggle', () => {
     const el: HTMLElement = fixture.nativeElement;
-    expect(el.querySelector('app-castle-grid')).toBeTruthy();
+    expect(el.querySelector('app-view-toggle')).toBeTruthy();
   });
 
   it('should render table with only French castles', () => {

@@ -24,7 +24,11 @@
     <p>Loading castles…</p>
   } @else {
     <p class="result-count">{{ filteredCastles().length }} castles found</p>
-
-    <app-castle-table [castles]="filteredCastles()" [columns]="displayedColumns" />
+    <app-view-toggle />
+    @if (viewModeService.mode() === 'grid') {
+      <app-castle-grid [castles]="filteredCastles()" />
+    } @else {
+      <app-castle-table [castles]="filteredCastles()" [columns]="displayedColumns" />
+    }
   }
 </div>

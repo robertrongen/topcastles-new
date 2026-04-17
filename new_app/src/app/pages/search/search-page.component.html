@@ -125,8 +125,13 @@
     <div class="results-section">
       <h3>Search results</h3>
       @if (results().length) {
-        <p class="result-count">{{ results().length }} castles found (max 100)</p>
-        <app-castle-table [castles]="results()" [columns]="displayedColumns" />
+        <p class="result-count">{{ results().length }} castles found</p>
+        <app-view-toggle />
+        @if (viewModeService.mode() === 'grid') {
+          <app-castle-grid [castles]="results()" />
+        } @else {
+          <app-castle-table [castles]="results()" [columns]="displayedColumns" />
+        }
       } @else {
         <p>No castles found matching your criteria.</p>
       }

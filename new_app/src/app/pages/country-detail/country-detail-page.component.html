@@ -8,9 +8,11 @@
   } @else {
     <h2>Castles in {{ country() }}</h2>
     <p>{{ castles().length }} castles found</p>
-
-    <app-castle-grid [castles]="castles()"></app-castle-grid>
-
-    <app-castle-table [castles]="castles()" [columns]="displayedColumns" />
+    <app-view-toggle />
+    @if (viewModeService.mode() === 'grid') {
+      <app-castle-grid [castles]="castles()" />
+    } @else {
+      <app-castle-table [castles]="castles()" [columns]="displayedColumns" />
+    }
   }
 </div>
