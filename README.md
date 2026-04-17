@@ -24,7 +24,64 @@ Migration of a legacy PHP castle-ranking website to a modern framework.
 - [docs/setup.md](docs/setup.md) — Stack and tooling
 - [plan/migration.md](plan/migration.md) — Migration plan
 
+## New App — Build, Test & Run
+
+The Angular application lives in `new_app/`. All commands below assume you are in that directory.
+
+```bash
+cd new_app
+npm install
+```
+
+### Build
+
+```bash
+# Production build (SSR + prerender)
+npm run build
+
+# Development build with file watching
+npm run watch
+```
+
+Output goes to `new_app/dist/new_app/`.
+
+### Test
+
+```bash
+# Unit tests (Karma + Jasmine, opens Chrome)
+npm test
+```
+
+### Run
+
+```bash
+# Development server (http://localhost:4200)
+npm start
+
+# Production SSR server (after build)
+npm run serve:ssr:new_app
+```
+
+### Storybook
+
+```bash
+# Launch Storybook component explorer
+npm run storybook
+
+# Build static Storybook site
+npm run build-storybook
+```
+
+### PHP baseline tests (Python)
+
+From the repository root (requires a Python venv with `pytest`):
+
+```bash
+pytest tests/
+```
+
 ## Repository info
 
 - **Default branch:** `main`
 - **Source application:** `old_app/` (PHP)
+- **New application:** `new_app/` (Angular 19 + SSR)

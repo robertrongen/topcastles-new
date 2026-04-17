@@ -31,3 +31,4 @@ yalc.lock
 Thumbs.db
 .idea
 .vscode/settings.json
+graphify-out/graph.json
