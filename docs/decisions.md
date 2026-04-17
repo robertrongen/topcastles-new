@@ -93,6 +93,42 @@ Consequences:
 - SSR serves prerendered HTML + handles dynamic routes; static assets served by Node/Express.
 - Future option: add a reverse proxy (Synology built-in or Nginx) for HTTPS/domain mapping.
 
+## ADR-005: Visual Parity — Old-App Brand Applied via CSS Overrides
+Status: accepted
+
+Context:
+- Step 10 of the migration plan requires the Angular app to replicate the old app's visual identity
+  so it feels like a refresh rather than a redesign.
+- The old app's canonical palette is defined in `old_app/style/2col_leftNav.css`.
+- Angular Material 19 (M3) uses a generated colour system. Rebuilding a full custom M3 palette
+  (hue/tone curves) to hit the specific legacy hex values adds complexity with no functional gain.
+- The key brand values are: orange masthead (`#FF9900`), dark-blue body (`#00005C`),
+  lavender nav (`#E6E6F5`), dark-blue links (`#000099`), lavender hover (`#CCCCFF`),
+  cream alternating rows (`#FFF6DE`), lavender table headers (`#CCCCEB`), Verdana typography.
+
+Decision:
+- Apply the old-app palette through two layers:
+  1. Switch the Angular Material primary palette to `mat.$orange-palette` (closest standard
+     palette to `#FF9900`) so Material-managed surfaces pick up a warm primary tone.
+  2. Override specific surfaces — toolbar, sidenav, links, table rows, section headings — with
+     exact legacy hex values in `styles.scss` and `app.component.scss` using CSS class selectors
+     and `!important` where Material encapsulation requires it.
+- Replace the Google Fonts Roboto import with the system-available Verdana stack
+  (`Verdana, Arial, sans-serif`) at 11 px bold, matching the old app body font.
+- Copy `logo_topkastelen_nl.jpg` and `tk-shield.ico` from `old_app/style/` into
+  `new_app/public/` and wire them into the masthead and favicon.
+- Remove the email contact link ("Want to contribute?") from the Photographers tab
+  as a confirmed drop-scope item (no contact form in new product).
+
+Consequences:
+- The app is visually familiar to users of the old site with minimal structural changes.
+- Material M3 internal surfaces (focus rings, ripples, selection indicators) retain M3
+  defaults and do not perfectly match the old app — acceptable given the migration goal
+  is a refresh, not a pixel-perfect clone.
+- The CSS override approach is simpler to maintain than a full M3 custom theme; any future
+  full rebrand can replace `styles.scss` variable values in one place.
+- 4 new tests guard the logo presence, nav toggle, and removal of the email link.
+
 ---
 
 Use this format when adding a new decision:

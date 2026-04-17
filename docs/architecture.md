@@ -120,19 +120,42 @@ Pages to prerender (static routes known at build time):
 
 ### Theming approach
 
-Angular Material's theming system uses SCSS and CSS Custom Properties:
+Angular Material's theming system is configured in `new_app/src/styles.scss` using the M3 `mat.theme()` mixin, with the old-app brand applied on top via CSS overrides (ADR-005).
 
 ```scss
-// _theme.scss — custom castle-site theme
+// styles.scss — actual implementation
 @use '@angular/material' as mat;
 
-$castle-theme: mat.define-theme((
-  color: (
-    primary: mat.$azure-palette,    // adjust to brand
-    tertiary: mat.$orange-palette,
-  ),
-  typography: mat.define-typography-config(),
-));
+// Step 1: M3 theme — orange primary aligns Material internals with the brand
+html {
+  @include mat.theme((
+    color: (
+      theme-type: light,
+      primary: mat.$orange-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+// Step 2: old-app palette variables
+$tk-orange:     #FF9900;  // masthead / toolbar
+$tk-dark-blue:  #00005C;  // page body background
+$tk-link:       #000099;  // primary link colour
+$tk-link-hover: #CCCCFF;  // link hover background
+$tk-nav-bg:     #E6E6F5;  // sidenav background
+$tk-th-bg:      #CCCCEB;  // table header background
+$tk-row-even:   #FFF6DE;  // alternating table row (even)
+
+// Step 3: targeted overrides applied on top of M3 defaults
+body { font-family: Verdana, Arial, sans-serif; font-size: 11px; font-weight: bold; }
+.mat-toolbar { background-color: $tk-orange !important; }
+mat-sidenav  { background-color: $tk-nav-bg !important; }
+a:link, a:visited { color: $tk-link; }
+a:hover { background-color: $tk-link-hover; }
 ```
 
-This gives you a consistent design system across all Material components without manual CSS per element.
+Key assets from `old_app/style/` now live in `new_app/public/`:
+- `logo_topkastelen_nl.jpg` — rendered in the orange masthead toolbar
+- `favicon.ico` (replaced with `tk-shield.ico`)
