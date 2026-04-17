@@ -8,8 +8,21 @@
     width: auto !important; // override mat-table's default width: 100%
   }
 
-  th, td {
-    white-space: nowrap; // columns size to content, no browser space distribution
+  th {
+    white-space: nowrap;
+  }
+
+  // pin compact columns to their content width
+  .mat-column-position,
+  .mat-column-score_total,
+  .mat-column-score_visitors,
+  .mat-column-era {
+    white-space: nowrap;
+  }
+
+  // cap name so one very long entry doesn't blow out the column
+  .mat-column-castle_name {
+    max-width: 220px;
   }
 
   .table-thumb {
