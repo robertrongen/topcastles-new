@@ -1,5 +1,5 @@
 $card-width: 130px;
-$card-height: 185px;
+$card-height: 205px;
 
 .castle-grid {
   display: grid;
@@ -56,6 +56,7 @@ $card-height: 185px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    min-height: calc(1.2em * 2);
     -webkit-box-orient: vertical;
   }
 
