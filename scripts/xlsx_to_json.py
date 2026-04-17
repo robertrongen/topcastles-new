@@ -1,7 +1,12 @@
 """Convert the castle XLSX source to clean EN-only JSON for the Angular app.
 
-Source: old_app/database/Topcastles export.xlsx (1000 castles, 42 columns, Unicode)
-Output: new_app/src/assets/data/castles.json (EN-only, 20 fields, UTF-8)
+Source: old_app/database/Topcastles export.xlsx
+  Sheet 1 (topkastelen_nl): 1000 castles, 42 columns, Unicode
+  Sheet 2 (No_Castles): ~59 entries that don't qualify as castles
+
+Output:
+  new_app/src/assets/data/castles.json (EN-only, 21 fields, UTF-8)
+  new_app/src/assets/data/no_castles.json (EN-only, 14 fields, UTF-8)
 
 Decisions applied:
 - ADR-001: EN-only (drop NL columns: land, gebied, stichter, kasteel_type, etc.)
@@ -10,6 +15,7 @@ Decisions applied:
 - Strips trailing whitespace from all string fields
 - Removes Unicode control characters (e.g. LRM \u200e)
 - Outputs proper JSON with floats/ints (no comma decimals)
+- No_Castles sheet uses data_only mode to resolve VLOOKUP formulas
 
 Usage:
     python scripts/xlsx_to_json.py
@@ -31,6 +37,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 XLSX_PATH = REPO_ROOT / "old_app" / "database" / "Topcastles export.xlsx"
 OUTPUT_DIR = REPO_ROOT / "new_app" / "src" / "assets" / "data"
 OUTPUT_PATH = OUTPUT_DIR / "castles.json"
+NO_CASTLES_OUTPUT_PATH = OUTPUT_DIR / "no_castles.json"
 
 # Column index → JSON field name (EN-only, useful columns)
 COLUMNS = {
@@ -41,6 +48,7 @@ COLUMNS = {
     7: "area",
     8: "place",
     9: "region",
+    10: "region_code",
     11: "latitude",
     12: "longitude",
     15: "founder",
@@ -61,6 +69,33 @@ INT_FIELDS = {"position", "era", "visitors"}
 
 # Fields that should be floats
 FLOAT_FIELDS = {"latitude", "longitude", "score_total", "score_visitors"}
+
+# No_Castles sheet (Sheet 2): column index → JSON field name (EN-only)
+# Uses data_only=True to resolve VLOOKUP formulas for castle_type, castle_concept,
+# condition, and nocastle_type.
+NO_CASTLES_COLUMNS = {
+    0: "castle_code",
+    1: "castle_name",
+    2: "country",
+    5: "area",
+    6: "place",
+    7: "region",
+    8: "region_code",
+    10: "founder",
+    11: "era",
+    13: "castle_type",      # VLOOKUP resolved via data_only
+    16: "castle_concept",   # VLOOKUP resolved via data_only
+    19: "condition",        # VLOOKUP resolved via data_only
+    22: "remarkable",
+    24: "description",
+    25: "website",
+    27: "nocastle_type",    # VLOOKUP resolved via data_only
+    29: "score_visitors",
+    30: "visitors",
+}
+
+NO_CASTLES_INT_FIELDS = {"era", "visitors"}
+NO_CASTLES_FLOAT_FIELDS = {"score_visitors"}
 
 # Regex to strip Unicode control characters (LRM, RLM, zero-width spaces, etc.)
 CONTROL_CHAR_RE = re.compile(r"[\u200e\u200f\u200b\u200c\u200d\ufeff]")
@@ -95,13 +130,18 @@ def convert_numeric(value, field_name: str) -> int | float | None:
     return value
 
 
-def process_row(row_values: tuple, columns: dict) -> dict:
+def process_row(row_values: tuple, columns: dict,
+                 int_fields: set = None, float_fields: set = None) -> dict:
     """Extract and clean the selected columns from a row."""
+    if int_fields is None:
+        int_fields = INT_FIELDS
+    if float_fields is None:
+        float_fields = FLOAT_FIELDS
     castle = {}
     for col_idx, field_name in columns.items():
         raw = row_values[col_idx] if col_idx < len(row_values) else None
 
-        if field_name in INT_FIELDS or field_name in FLOAT_FIELDS:
+        if field_name in int_fields or field_name in float_fields:
             castle[field_name] = convert_numeric(raw, field_name)
         else:
             castle[field_name] = clean_string(raw)
@@ -156,6 +196,39 @@ def main():
     # Print a sample
     print(f"\nSample (first castle):")
     print(json.dumps(castles[0], ensure_ascii=False, indent=2))
+
+    # --- No_Castles sheet (requires data_only for VLOOKUP resolution) ---
+    print(f"\n{'='*60}")
+    print(f"Reading No_Castles sheet (data_only mode): {XLSX_PATH}")
+    wb2 = openpyxl.load_workbook(XLSX_PATH, data_only=True)
+    ws2 = wb2["No_Castles"]
+
+    no_castles = []
+    for i, row in enumerate(ws2.iter_rows(min_row=2, values_only=True)):
+        entry = process_row(row, NO_CASTLES_COLUMNS,
+                            NO_CASTLES_INT_FIELDS, NO_CASTLES_FLOAT_FIELDS)
+
+        # Skip rows without a castle code (safety check)
+        if not entry.get("castle_code"):
+            print(f"  WARNING: No_Castles row {i + 2} has no castle_code, skipping")
+            continue
+
+        no_castles.append(entry)
+
+    wb2.close()
+
+    print(f"Processed: {len(no_castles)} no_castle entries")
+
+    # Write no_castles output
+    with open(NO_CASTLES_OUTPUT_PATH, "w", encoding="utf-8") as f:
+        json.dump(no_castles, f, ensure_ascii=False, indent=2)
+
+    file_size = NO_CASTLES_OUTPUT_PATH.stat().st_size
+    print(f"Written: {NO_CASTLES_OUTPUT_PATH} ({file_size:,} bytes)")
+    print(f"Fields per entry: {len(NO_CASTLES_COLUMNS)}")
+
+    print(f"\nSample (first no_castle):")
+    print(json.dumps(no_castles[0], ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

@@ -75,6 +75,42 @@ export class CastleService {
     return [...types].sort();
   }
 
+  getCastleConcepts(): string[] {
+    const concepts = new Set(
+      this.castles()
+        .map((c) => c.castle_concept)
+        .filter(Boolean)
+    );
+    return [...concepts].sort();
+  }
+
+  getCastleConditions(): string[] {
+    const conditions = new Set(
+      this.castles()
+        .map((c) => c.condition)
+        .filter(Boolean)
+    );
+    return [...conditions].sort();
+  }
+
+  getCastlesByType(type: string): Castle[] {
+    return this.castles()
+      .filter((c) => c.castle_type === type)
+      .sort((a, b) => (b.score_total ?? 0) - (a.score_total ?? 0));
+  }
+
+  getCastlesByConcept(concept: string): Castle[] {
+    return this.castles()
+      .filter((c) => c.castle_concept === concept)
+      .sort((a, b) => (b.score_total ?? 0) - (a.score_total ?? 0));
+  }
+
+  getCastlesByCondition(condition: string): Castle[] {
+    return this.castles()
+      .filter((c) => c.condition === condition)
+      .sort((a, b) => (b.score_total ?? 0) - (a.score_total ?? 0));
+  }
+
   /** Get the previous castle in the top-100 ranking (lower position number). */
   getPreviousCastle(code: string): Castle | undefined {
     const sorted = this.getTop100();

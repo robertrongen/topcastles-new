@@ -19,6 +19,7 @@ function makeCastle(overrides: Partial<Castle> = {}): Castle {
     area: '',
     place: 'Paris',
     region: '',
+    region_code: '',
     latitude: 0,
     longitude: 0,
     founder: '',
@@ -88,9 +89,9 @@ describe('CastlesPageComponent', () => {
 
   it('should display castle names as links', () => {
     setup();
-    const links = fixture.nativeElement.querySelectorAll('td a');
-    expect(links.length).toBeGreaterThanOrEqual(4);
-    expect(links[0].textContent?.trim()).toContain('Krak des Chevaliers');
+    const nameLinks = fixture.nativeElement.querySelectorAll('td.mat-column-castle_name a');
+    expect(nameLinks.length).toBe(4);
+    expect(nameLinks[0].textContent?.trim()).toContain('Krak des Chevaliers');
   });
 
   it('should filter by country from query params', () => {
@@ -125,11 +126,5 @@ describe('CastlesPageComponent', () => {
     expect(countries).toContain('Syria');
     expect(countries).toContain('Poland');
     expect(countries).toContain('England');
-  });
-
-  it('should handle sort changes', () => {
-    setup();
-    component.onSortChange({ active: 'castle_name', direction: 'asc' });
-    expect(component.tableData[0].castle_code).toBe('bodiam');
   });
 });

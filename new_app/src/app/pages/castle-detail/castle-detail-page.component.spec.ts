@@ -19,6 +19,7 @@ function makeCastle(overrides: Partial<Castle> = {}): Castle {
     area: 'Asia, Outside Europe, Crusades',
     place: 'Homs',
     region: 'Homs Governorate',
+    region_code: 'homs-governorate',
     latitude: 34.7575,
     longitude: 36.2937,
     founder: 'Knights Hospitaller',

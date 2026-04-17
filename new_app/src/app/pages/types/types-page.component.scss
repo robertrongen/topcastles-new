@@ -1,0 +1,36 @@
+.types-page {
+  padding: 16px;
+}
+
+.tab-content {
+  padding: 16px 0;
+}
+
+.result-count {
+  margin-bottom: 8px;
+}
+
+.table-container {
+  margin-top: 16px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.table-thumb {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+td a {
+  color: #000099;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

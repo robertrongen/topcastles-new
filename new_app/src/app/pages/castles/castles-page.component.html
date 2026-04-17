@@ -25,44 +25,6 @@
   } @else {
     <p class="result-count">{{ filteredCastles().length }} castles found</p>
 
-    <div class="table-container">
-      <table mat-table [dataSource]="tableData" matSort (matSortChange)="onSortChange($event)">
-
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Position</th>
-          <td mat-cell *matCellDef="let castle">{{ castle.position }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="castle_name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Castle</th>
-          <td mat-cell *matCellDef="let castle">
-            <a [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="country">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
-          <td mat-cell *matCellDef="let castle">{{ castle.country }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="place">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Place</th>
-          <td mat-cell *matCellDef="let castle">{{ castle.place }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="castle_type">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
-          <td mat-cell *matCellDef="let castle">{{ castle.castle_type }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="score_total">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Score</th>
-          <td mat-cell *matCellDef="let castle">{{ castle.score_total | number:'1.0-0' }}</td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-    </div>
+    <app-castle-table [castles]="filteredCastles()" [columns]="displayedColumns" />
   }
 </div>
