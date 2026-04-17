@@ -20,6 +20,7 @@ function makeCastle(overrides: Partial<Castle> = {}): Castle {
     area: '',
     place: 'Paris',
     region: 'Ile-de-France',
+    region_code: 'ile-de-france',
     latitude: 0,
     longitude: 0,
     founder: '',
@@ -113,11 +114,5 @@ describe('CountryDetailPageComponent', () => {
     const data = component.castles();
     expect(data.length).toBe(2);
     expect(data.every(c => c.country === 'France')).toBeTrue();
-  });
-
-  it('should sort data when onSortChange is called', () => {
-    component.onSortChange({ active: 'castle_name', direction: 'asc' });
-    expect(component.sortedData[0].castle_name).toBe('Château de Chambord');
-    expect(component.sortedData[1].castle_name).toBe('Mont Saint-Michel');
   });
 });

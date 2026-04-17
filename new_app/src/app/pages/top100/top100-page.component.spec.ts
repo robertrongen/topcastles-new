@@ -18,6 +18,7 @@ function makeCastle(overrides: Partial<Castle> = {}): Castle {
     area: '',
     place: 'Paris',
     region: 'Ile-de-France',
+    region_code: 'ile-de-france',
     latitude: 0,
     longitude: 0,
     founder: '',
@@ -105,16 +106,5 @@ describe('Top100PageComponent', () => {
     expect(top[2].castle_code).toBe('c3');
   });
 
-  it('should sort data when onSortChange is called', () => {
-    component.onSortChange({ active: 'castle_name', direction: 'asc' });
-    expect(component.sortedData[0].castle_name).toBe('Alpha');
-    expect(component.sortedData[2].castle_name).toBe('Gamma');
-  });
 
-  it('should reset sortedData when sort is cleared', () => {
-    component.onSortChange({ active: 'castle_name', direction: 'asc' });
-    expect(component.sortedData.length).toBe(3);
-    component.onSortChange({ active: '', direction: '' });
-    expect(component.sortedData.length).toBe(0);
-  });
 });

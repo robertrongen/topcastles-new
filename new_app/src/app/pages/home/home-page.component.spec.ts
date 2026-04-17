@@ -18,6 +18,7 @@ function makeCastle(overrides: Partial<Castle> = {}): Castle {
     area: '',
     place: '',
     region: '',
+    region_code: '',
     latitude: 0,
     longitude: 0,
     founder: '',

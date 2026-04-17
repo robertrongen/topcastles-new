@@ -18,6 +18,7 @@ function makeCastle(overrides: Partial<Castle> = {}): Castle {
     area: '',
     place: 'Paris',
     region: 'Ile-de-France',
+    region_code: 'ile-de-france',
     latitude: 0,
     longitude: 0,
     founder: '',

@@ -6,6 +6,7 @@ export interface Castle {
   area: string;
   place: string;
   region: string;
+  region_code: string;
   latitude: number | null;
   longitude: number | null;
   founder: string;

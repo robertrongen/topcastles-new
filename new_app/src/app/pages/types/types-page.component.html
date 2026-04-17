@@ -1,0 +1,72 @@
+<div class="types-page">
+  <h2>Castle Types</h2>
+  <p>Browse castles by location type, building concept, or condition.</p>
+
+  <mat-tab-group>
+    <!-- Location Type tab -->
+    <mat-tab label="Location Type">
+      <div class="tab-content">
+        <mat-form-field appearance="outline">
+          <mat-label>Select location type</mat-label>
+          <mat-select [ngModel]="selectedType()" (ngModelChange)="selectedType.set($event)">
+            @for (type of castleTypes(); track type) {
+              <mat-option [value]="type">{{ type }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        @if (filteredByType().length) {
+          <p class="result-count">{{ filteredByType().length }} castles found</p>
+          <app-castle-grid [castles]="filteredByType().slice(0, 20)" [columns]="5"></app-castle-grid>
+
+          <h3>The list</h3>
+          <app-castle-table [castles]="filteredByType()" [columns]="typeColumns" />
+        }
+      </div>
+    </mat-tab>
+
+    <!-- Building Concept tab -->
+    <mat-tab label="Building Concept">
+      <div class="tab-content">
+        <mat-form-field appearance="outline">
+          <mat-label>Select building concept</mat-label>
+          <mat-select [ngModel]="selectedConcept()" (ngModelChange)="selectedConcept.set($event)">
+            @for (concept of castleConcepts(); track concept) {
+              <mat-option [value]="concept">{{ concept }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        @if (filteredByConcept().length) {
+          <p class="result-count">{{ filteredByConcept().length }} castles found</p>
+          <app-castle-grid [castles]="filteredByConcept().slice(0, 20)" [columns]="5"></app-castle-grid>
+
+          <h3>The list</h3>
+          <app-castle-table [castles]="filteredByConcept()" [columns]="conceptColumns" />
+        }
+      </div>
+    </mat-tab>
+
+    <!-- Condition tab -->
+    <mat-tab label="Condition">
+      <div class="tab-content">
+        <mat-form-field appearance="outline">
+          <mat-label>Select condition</mat-label>
+          <mat-select [ngModel]="selectedCondition()" (ngModelChange)="selectedCondition.set($event)">
+            @for (cond of castleConditions(); track cond) {
+              <mat-option [value]="cond">{{ cond }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        @if (filteredByCondition().length) {
+          <p class="result-count">{{ filteredByCondition().length }} castles found</p>
+          <app-castle-grid [castles]="filteredByCondition().slice(0, 20)" [columns]="5"></app-castle-grid>
+
+          <h3>The list</h3>
+          <app-castle-table [castles]="filteredByCondition()" [columns]="conditionColumns" />
+        }
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

@@ -155,3 +155,41 @@ Not required:
 - admin pages
 - non-EN language content (including `old_app/content/nl/`)
 - outdated map/navigation download files (`*.kmz`, `*.kml`, `*.gpx`, `*.ov2`, `old_app/content/tomtom/`)
+
+## Post-migration features
+
+### Discogs-style list/card view toggle
+
+**Inspiration:** [Discogs collection view](https://www.discogs.com/user/hobunror/collection) — a toggle that switches between a compact list and a visual card grid.
+
+**Scope:** All castle-listing pages (top 100, countries, search results, etc.) should support two presentation modes with a view selector toggle.
+
+**List view** (default — the tabular format already built during migration):
+- Corresponds to the bottom table in `old_app/includes/ct_top100_main.php`
+  which includes `content/en/tabel_top100.php`.
+- Compact rows: position, name, country, rating, etc.
+
+**Card view** (visual grid):
+- Corresponds to the top table in `old_app/includes/ct_top100_main.php`
+  which includes `content/en/tabel_20plaatjes.php`.
+- Castle image (110×110 in old app) prominently displayed per card.
+- Additional info overlaid or below the image: name, country, position/rating.
+- Cards fill the full page width using a responsive CSS grid (not the old 5-column fixed table).
+- Cards link to the castle detail page.
+
+**View selector UI:**
+- A toggle control (icon buttons or segmented control) placed above the castle listing.
+- Two states: list icon / grid icon, similar to Discogs.
+- Selected view preference persisted in `localStorage` so it survives page navigation.
+
+**Implementation notes:**
+- Reuse the same data source (`CastleService`) for both views.
+- The list view component already exists from migration.
+- New work: a `CastleCardComponent` (single card) and a `CastleCardGridComponent` (responsive grid wrapper).
+- Parent pages wrap both views and conditionally show one based on the toggle state.
+- Responsive breakpoints: ≥5 cards/row on desktop, 3 on tablet, 2 on mobile.
+
+**PHP source reference:**
+- `old_app/content/en/tabel_20plaatjes.php` — card layout (5-column image grid, 120×120 cells).
+- `old_app/content/en/tabel_top100.php` — list layout (tabular rows).
+- `old_app/includes/ct_top100_main.php` — page that renders both (top = cards, bottom = list).

@@ -1,0 +1,45 @@
+import { Component, Input } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule, Sort } from '@angular/material/sort';
+import { Castle } from '../../models/castle.model';
+
+@Component({
+  selector: 'app-castle-table',
+  standalone: true,
+  imports: [DecimalPipe, RouterLink, MatTableModule, MatSortModule],
+  templateUrl: './castle-table.component.html',
+  styleUrl: './castle-table.component.scss',
+})
+export class CastleTableComponent {
+  @Input({ required: true }) castles: Castle[] = [];
+  @Input({ required: true }) columns: string[] = [];
+
+  sortedData: Castle[] = [];
+
+  get tableData(): Castle[] {
+    return this.sortedData.length ? this.sortedData : this.castles;
+  }
+
+  onSortChange(sort: Sort): void {
+    if (!sort.active || sort.direction === '') {
+      this.sortedData = [];
+      return;
+    }
+    this.sortedData = [...this.castles].sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      const key = sort.active as keyof Castle;
+      const valA = a[key];
+      const valB = b[key];
+      if (valA == null && valB == null) return 0;
+      if (valA == null) return isAsc ? -1 : 1;
+      if (valB == null) return isAsc ? 1 : -1;
+      return (valA < valB ? -1 : valA > valB ? 1 : 0) * (isAsc ? 1 : -1);
+    });
+  }
+
+  onImgError(event: Event): void {
+    (event.target as HTMLImageElement).style.display = 'none';
+  }
+}

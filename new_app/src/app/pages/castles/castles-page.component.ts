@@ -1,21 +1,18 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { MatTableModule } from '@angular/material/table';
-import { MatSortModule, Sort } from '@angular/material/sort';
+import { ActivatedRoute } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-import { DecimalPipe } from '@angular/common';
 import { CastleService } from '../../services/castle.service';
-import { Castle } from '../../models/castle.model';
+import { CastleTableComponent } from '../../components/castle-table/castle-table.component';
 
 @Component({
   selector: 'app-castles-page',
   standalone: true,
   imports: [
-    RouterLink, DecimalPipe, MatTableModule, MatSortModule,
     MatFormFieldModule, MatInputModule, MatSelectModule, FormsModule,
+    CastleTableComponent,
   ],
   templateUrl: './castles-page.component.html',
   styleUrl: './castles-page.component.scss',
@@ -30,8 +27,7 @@ export class CastlesPageComponent implements OnInit {
   filterName = signal('');
   filterCountry = signal('');
 
-  displayedColumns = ['position', 'castle_name', 'country', 'place', 'castle_type', 'score_total'];
-  sortedData: Castle[] = [];
+  displayedColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'country', 'place', 'region', 'castle_type'];
 
   filteredCastles = computed(() => {
     let castles = this.castleService.castles()
@@ -56,27 +52,5 @@ export class CastlesPageComponent implements OnInit {
         this.filterCountry.set(params['country']);
       }
     });
-  }
-
-  onSortChange(sort: Sort): void {
-    const data = this.filteredCastles().slice();
-    if (!sort.active || sort.direction === '') {
-      this.sortedData = [];
-      return;
-    }
-    this.sortedData = data.sort((a, b) => {
-      const isAsc = sort.direction === 'asc';
-      const key = sort.active as keyof Castle;
-      const valA = a[key];
-      const valB = b[key];
-      if (valA == null && valB == null) return 0;
-      if (valA == null) return isAsc ? -1 : 1;
-      if (valB == null) return isAsc ? 1 : -1;
-      return (valA < valB ? -1 : valA > valB ? 1 : 0) * (isAsc ? 1 : -1);
-    });
-  }
-
-  get tableData(): Castle[] {
-    return this.sortedData.length ? this.sortedData : this.filteredCastles();
   }
 }

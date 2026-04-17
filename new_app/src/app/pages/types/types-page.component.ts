@@ -1,16 +1,53 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { CastleService } from '../../services/castle.service';
+import { Castle } from '../../models/castle.model';
+import { CastleGridComponent } from '../../components/castle-grid/castle-grid.component';
+import { CastleTableComponent } from '../../components/castle-table/castle-table.component';
 
 @Component({
   selector: 'app-types-page',
   standalone: true,
-  template: `
-    <h1>Castle Types</h1>
-    <p>Castle types page — implementation coming soon.</p>
-  `,
+  imports: [
+    FormsModule,
+    MatTabsModule, MatFormFieldModule, MatSelectModule,
+    CastleGridComponent, CastleTableComponent,
+  ],
+  templateUrl: './types-page.component.html',
+  styleUrl: './types-page.component.scss',
 })
 export class TypesPageComponent implements OnInit {
   private castleService = inject(CastleService);
+
+  castleTypes = computed(() => this.castleService.getCastleTypes());
+  castleConcepts = computed(() => this.castleService.getCastleConcepts());
+  castleConditions = computed(() => this.castleService.getCastleConditions());
+
+  selectedType = signal('');
+  selectedConcept = signal('');
+  selectedCondition = signal('');
+
+  filteredByType = computed<Castle[]>(() => {
+    const t = this.selectedType();
+    return t ? this.castleService.getCastlesByType(t) : [];
+  });
+
+  filteredByConcept = computed<Castle[]>(() => {
+    const c = this.selectedConcept();
+    return c ? this.castleService.getCastlesByConcept(c) : [];
+  });
+
+  filteredByCondition = computed<Castle[]>(() => {
+    const c = this.selectedCondition();
+    return c ? this.castleService.getCastlesByCondition(c) : [];
+  });
+
+  typeColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'country', 'place', 'region'];
+  conceptColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'country', 'place', 'region', 'castle_type'];
+  conditionColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'country', 'place', 'region', 'castle_type'];
 
   ngOnInit(): void {
     this.castleService.loadCastles();

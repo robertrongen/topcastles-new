@@ -41,6 +41,7 @@ COLUMNS = {
     7: "area",
     8: "place",
     9: "region",
+    10: "region_code",
     11: "latitude",
     12: "longitude",
     15: "founder",
