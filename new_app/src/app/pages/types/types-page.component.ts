@@ -50,9 +50,9 @@ export class TypesPageComponent implements OnInit {
     return c ? this.castleService.getCastlesByCondition(c) : [];
   });
 
-  typeColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region'];
-  conceptColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'castle_type'];
-  conditionColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'castle_type'];
+  typeColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'condition'];
+  conceptColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'castle_type', 'condition'];
+  conditionColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'castle_type'];
 
   ngOnInit(): void {
     this.castleService.loadCastles();

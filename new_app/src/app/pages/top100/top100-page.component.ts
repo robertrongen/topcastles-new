@@ -19,7 +19,7 @@ export class Top100PageComponent implements OnInit {
   top100 = computed(() => this.castleService.getAllByScore());
   loading = this.castleService.loading;
 
-  displayedColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'castle_type'];
+  displayedColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'castle_type', 'condition'];
 
   ngOnInit(): void {
     this.castleService.loadCastles();

@@ -28,7 +28,7 @@ export class CountryDetailPageComponent implements OnInit {
     this.castleService.getCastlesByCountry(this.country())
   );
 
-  displayedColumns = ['position', 'score_total', 'thumbnail', 'castle_name', 'era', 'place', 'region', 'castle_type'];
+  displayedColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'place', 'region', 'castle_type', 'condition'];
 
   constructor() {
     effect(() => {
