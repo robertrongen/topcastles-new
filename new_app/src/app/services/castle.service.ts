@@ -237,6 +237,6 @@ export class CastleService {
       return va < vb ? -1 : va > vb ? 1 : 0;
     });
 
-    return results.slice(0, 100);
+    return results;
   }
 }
