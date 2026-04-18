@@ -53,4 +53,17 @@ describe('TopRegionsPageComponent', () => {
     const rows = fixture.nativeElement.querySelectorAll('tbody tr');
     expect(rows.length).toBe(2); // Loire, Bavaria
   });
+
+  it('should show region cards in grid mode', () => {
+    TestBed.inject(ViewModeService).setMode('grid');
+    fixture.detectChanges();
+    const cards = fixture.nativeElement.querySelectorAll('mat-card.region-card');
+    expect(cards.length).toBe(2);
+  });
+
+  it('should hide table in grid mode', () => {
+    TestBed.inject(ViewModeService).setMode('grid');
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('tbody')).toBeNull();
+  });
 });

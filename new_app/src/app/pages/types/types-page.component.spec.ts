@@ -8,6 +8,7 @@ import {
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TypesPageComponent } from './types-page.component';
 import { Castle } from '../../models/castle.model';
+import { ViewModeService } from '../../services/view-mode.service';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
   return {
@@ -132,5 +133,43 @@ describe('TypesPageComponent', () => {
     const el: HTMLElement = fixture.nativeElement;
     const tabs = el.querySelectorAll('.mat-mdc-tab');
     expect(tabs.length).toBe(3);
+  });
+
+  it('should default to City Castle as the selected type', () => {
+    expect(component.selectedType()).toBe('City Castle');
+  });
+
+  it('should have description entries for known types', () => {
+    expect(component.typeDescriptions['City Castle']).toBeTruthy();
+    expect(component.typeDescriptions['City Castle'].description.length).toBeGreaterThan(0);
+    expect(component.typeDescriptions['Water Castle']).toBeTruthy();
+  });
+
+  it('should have description entries for known concepts', () => {
+    expect(component.conceptDescriptions['Motte-and-bailey castles (early norman castles)']).toBeTruthy();
+    expect(component.conceptDescriptions['Tower or compact castles']).toBeTruthy();
+  });
+
+  it('should not show description card for a type not in typeDescriptions', () => {
+    // test data uses 'Rock castle' (lowercase) which has no entry in typeDescriptions
+    component.selectedType.set('Rock castle');
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('mat-card.type-description')).toBeNull();
+  });
+
+  it('should show grid of castles when view mode is grid', () => {
+    TestBed.inject(ViewModeService).setMode('grid');
+    component.selectedType.set('Rock castle');
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('app-castle-grid')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('app-castle-table')).toBeNull();
+  });
+
+  it('should show table of castles when view mode is list', () => {
+    TestBed.inject(ViewModeService).setMode('list');
+    component.selectedType.set('Rock castle');
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('app-castle-table')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('app-castle-grid')).toBeNull();
   });
 });
