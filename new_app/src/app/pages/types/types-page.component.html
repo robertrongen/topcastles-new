@@ -18,16 +18,16 @@
          @if (filteredByType().length) {
            <p class="result-count">{{ filteredByType().length }} castles found</p>
 
-           @if (typeDescriptions[selectedType()]) {
+           @if (typeDescriptions[selectedType()]; as desc) {
              <mat-card class="type-description">
                <mat-card-content>
-                 @if (typeDescriptions[selectedType()]?.image) {
-                   <img [src]="'/assets/images/drawings/' + typeDescriptions[selectedType()]?.image"
+                 @if (desc.image) {
+                   <img [src]="'/assets/images/drawings/' + desc.image"
                         [alt]="selectedType()"
                         class="type-image" />
                  }
                  <h3>{{ selectedType() }}</h3>
-                 <p>{{ typeDescriptions[selectedType()]?.description }}</p>
+                 <p>{{ desc.description }}</p>
                </mat-card-content>
              </mat-card>
            }
@@ -57,16 +57,16 @@
          @if (filteredByConcept().length) {
            <p class="result-count">{{ filteredByConcept().length }} castles found</p>
 
-           @if (conceptDescriptions[selectedConcept()]) {
+           @if (conceptDescriptions[selectedConcept()]; as desc) {
              <mat-card class="type-description">
                <mat-card-content>
-                 @if (conceptDescriptions[selectedConcept()]?.image) {
-                   <img [src]="'/assets/images/drawings/' + conceptDescriptions[selectedConcept()]?.image"
+                 @if (desc.image) {
+                   <img [src]="'/assets/images/drawings/' + desc.image"
                         [alt]="selectedConcept()"
                         class="type-image" />
                  }
                  <h3>{{ selectedConcept() }}</h3>
-                 <p>{{ conceptDescriptions[selectedConcept()]?.description }}</p>
+                 <p>{{ desc.description }}</p>
                </mat-card-content>
              </mat-card>
            }
