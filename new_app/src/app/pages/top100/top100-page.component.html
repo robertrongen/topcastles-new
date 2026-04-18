@@ -5,6 +5,27 @@
       All castles ranked by score, derived from references used by topcastles.com and the visitors rating.
     </p>
     <app-castle-filter #cf [castles]="top100()" [fields]="filterFields" />
+    @if (typeDescriptions[cf.getFilter('castle_type')]; as desc) {
+      <mat-card class="type-description">
+        <mat-card-content>
+          <h3>{{ cf.getFilter('castle_type') }}</h3>
+          <p>{{ desc.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    }
+    @if (conceptDescriptions[cf.getFilter('castle_concept')]; as desc) {
+      <mat-card class="type-description">
+        <mat-card-content>
+          @if (desc.image) {
+            <img [src]="'/assets/images/drawings/' + desc.image"
+                 [alt]="cf.getFilter('castle_concept')"
+                 class="type-image" />
+          }
+          <h3>{{ cf.getFilter('castle_concept') }}</h3>
+          <p>{{ desc.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    }
     <app-view-toggle />
     @if (viewModeService.mode() === 'grid') {
       <app-castle-grid [castles]="cf.filtered()" />
