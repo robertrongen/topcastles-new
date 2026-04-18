@@ -62,17 +62,20 @@ export class TypesPageComponent implements OnInit {
   conditionColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'castle_type'];
 
   typeDescriptions: Record<string, { description: string }> = {
-    'City castle': {
-      description: 'A special case is the city castle. When is such a castle qualified as castle and when as a walled city? Sir Oman gives a useful definition of a city castle: "A castle is a military structure larger than a tower but smaller than a fortified town, it is residential but is also defensible in character. However complicated internally it must be a complete unit unto itself and not part of a town. A castle may exist inside a town but must be able to be cut off by the closing of a gate or the raising of a drawbridge." To be qualified as a castle, a city castle must be able to defend itself independently of the city and the city walls.',
-    },
     'Mountain castle': {
-      description: 'Castles built on elevated terrain such as hills or mountains, providing natural defensive advantages through height and visibility.',
-    },
-    'Water castle': {
-      description: 'Castles constructed near or surrounded by water features like rivers, lakes, or moats, using water as a defensive element.',
+      description: 'Höhenburgen: The approach to the castle is hampered by its high position. Siege engines cannot reach the castle.',
     },
     'Rock castle': {
-      description: 'Fortresses built on rocky outcrops or cliffs, leveraging the natural terrain for impregnable defenses.',
+      description: 'Felsenburgen: Castles that are built on top of a mountain rock. Parts of the castle, including its main entrance, can be inside the rock. The Wasgau border region of France and Germany is famous for its rock castles. The rock defends the castle against sapping and is considered to be the strongest castle type.',
+    },
+    'Water castle': {
+      description: 'Wasserburgen: Surrounded by water in a moat or a lake. The water defends the castle against siege engines and sapping. In long sieges a moat can be filled with earth.',
+    },
+    'Harbour castle': {
+      description: 'Hafenburgen: One side is defended by water of a river or sea. Mostly used to defend a harbour.',
+    },
+    'City castle': {
+      description: 'Stadtburgen: Castles built to defend or control a town. The castle can be shut off from the town. Because of its location against a town only one or two sides of the castle can be defended by height or water. Sir Oman defines a city castle as: "A castle is a military structure larger than a tower but smaller than a fortified town, it is residential but is also defensible in character. However complicated internally it must be a complete unit unto itself and not part of a town. A castle may exist inside a town but must be able to be cut off by the closing of a gate or the raising of a drawbridge."',
     },
   };
 
@@ -98,16 +101,34 @@ export class TypesPageComponent implements OnInit {
       image: 'castle_concept3.jpg',
     },
     'Donjon inside curtain wall': {
-      description: 'Rectangular shaped classical castle with flanking towers in the curtain walls and a central tower or donjon positioned inside the curtain wall.',
+      description: 'Rectangular shaped classical castle with flanking towers in the curtain walls and a central tower or donjon positioned inside the curtain wall. The central tower or donjon cannot assist in defending the curtain walls directly and cannot be accessed from the curtain walls.',
       image: 'castle_concept5.jpg',
     },
     'Donjon in curtain wall': {
-      description: 'Rectangular shaped classical castle with flanking towers and a central tower or donjon positioned in the curtain wall.',
+      description: 'Rectangular shaped classical castle with flanking towers and a central tower or donjon positioned in the curtain wall. The central tower or donjon can assist in defending the curtain walls directly and can be accessed from the curtain walls.',
       image: 'concept_kenilworth.jpg',
     },
     'Donjon outside curtain wall': {
-      description: 'Rectangular shaped classical castle with flanking towers and a central tower or donjon positioned outside the curtain wall.',
+      description: 'Rectangular shaped classical castle with flanking towers and a central tower or donjon positioned outside the curtain wall. The central tower or donjon can assist in defending the curtain walls directly but cannot be accessed from the curtain walls.',
       image: 'concept_bellver.jpg',
+    },
+  };
+
+  conditionDescriptions: Record<string, { description: string }> = {
+    'Intact': {
+      description: 'The castle is mostly intact; all characteristic parts of the castle (gate, donjon, moat, defence works) are intact and accessible.',
+    },
+    'Rebuild/Restored': {
+      description: 'The castle appears intact but some or all characteristic parts of the castle have been rebuilt or restored.',
+    },
+    'Damaged': {
+      description: 'The castle is not intact but the characteristic parts of the castle (gate, donjon, moat, defence works) are still recognisable.',
+    },
+    'Ruined/Partly remained': {
+      description: 'Some characteristic parts of the castle (gate, donjon, moat, defence works) are lost. Some parts like the donjon can still be intact, rebuilt or restored.',
+    },
+    'Destroyed': {
+      description: 'All characteristic parts of the castle (gate, donjon, moat, defence works) are lost.',
     },
   };
 

@@ -13,6 +13,14 @@
         </mat-card-content>
       </mat-card>
     }
+    @if (conditionDescriptions[cf.getFilter('condition')]; as desc) {
+      <mat-card class="type-description">
+        <mat-card-content>
+          <h3>{{ cf.getFilter('condition') }}</h3>
+          <p>{{ desc.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    }
     @if (conceptDescriptions[cf.getFilter('castle_concept')]; as desc) {
       <mat-card class="type-description">
         <mat-card-content>

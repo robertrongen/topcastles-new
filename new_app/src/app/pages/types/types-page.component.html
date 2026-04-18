@@ -92,6 +92,16 @@
 
         @if (filteredByCondition().length) {
           <p class="result-count">{{ filteredByCondition().length }} castles found</p>
+
+          @if (conditionDescriptions[selectedCondition()]; as desc) {
+            <mat-card class="type-description">
+              <mat-card-content>
+                <h3>{{ selectedCondition() }}</h3>
+                <p>{{ desc.description }}</p>
+              </mat-card-content>
+            </mat-card>
+          }
+
           <app-castle-filter #cfCond [castles]="filteredByCondition()" [fields]="typeFilterFields" />
           <app-view-toggle />
           @if (viewModeService.mode() === 'grid') {
