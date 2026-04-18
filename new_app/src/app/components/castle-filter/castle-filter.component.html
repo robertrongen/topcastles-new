@@ -6,7 +6,7 @@
         <mat-select [value]="getFilter(field.key)"
                     (valueChange)="setFilter(field.key, $event)">
           <mat-option value="">All</mat-option>
-          @for (opt of (allOptions()[field.key] ?? []); track opt) {
+          @for (opt of allOptions()[field.key]; track opt) {
             <mat-option [value]="opt">{{ opt }}</mat-option>
           }
         </mat-select>
