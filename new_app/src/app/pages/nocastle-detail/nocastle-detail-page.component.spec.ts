@@ -92,10 +92,10 @@ describe('NoCastleDetailPageComponent', () => {
     expect(text).toContain('Intact');
   });
 
-  it('should display description', () => {
+  it('should not display description section', () => {
     setup();
     const text = fixture.nativeElement.textContent;
-    expect(text).toContain('Renaissance chateau, not a castle.');
+    expect(text).not.toContain('Renaissance chateau, not a castle.');
   });
 
   it('should display remarkable text', () => {

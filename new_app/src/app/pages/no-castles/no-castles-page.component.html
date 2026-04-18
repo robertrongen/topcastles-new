@@ -10,19 +10,27 @@
       <table class="no-castles-table">
         <thead>
           <tr>
+            <th></th>
             <th>Name</th>
             <th>Country</th>
             <th>Type</th>
-            <th>Description</th>
           </tr>
         </thead>
         <tbody>
           @for (nc of noCastles(); track nc.castle_code) {
             <tr>
+              <td class="thumb-cell">
+                <a [routerLink]="['/nocastle', nc.castle_code]">
+                  <img class="table-thumb"
+                       [src]="'/images/castles/small/' + nc.castle_code + '_small.jpg'"
+                       [alt]="nc.castle_name"
+                       (error)="onImageError($event)"
+                       loading="lazy" />
+                </a>
+              </td>
               <td><a [routerLink]="['/nocastle', nc.castle_code]">{{ nc.castle_name }}</a></td>
               <td>{{ nc.country }}</td>
               <td>{{ nc.nocastle_type }}</td>
-              <td>{{ nc.description }}</td>
             </tr>
           }
         </tbody>

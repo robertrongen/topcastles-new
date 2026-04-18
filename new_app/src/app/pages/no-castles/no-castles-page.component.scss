@@ -34,6 +34,10 @@
     background-color: #fff6de;
   }
 
+  td {
+    vertical-align: middle;
+  }
+
   a {
     color: #000099;
     text-decoration: none;
@@ -45,7 +49,15 @@
     }
   }
 
-  td:last-child {
-    max-width: 400px;
+  .thumb-cell {
+    padding: 4px;
+    width: 110px;
+  }
+
+  .table-thumb {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    display: block;
   }
 }

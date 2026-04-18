@@ -55,9 +55,9 @@ describe('NoCastlesPageComponent', () => {
   });
 
   it('should show castle name as a link', () => {
-    const links = fixture.nativeElement.querySelectorAll('tbody tr td a');
-    expect(links.length).toBe(2);
-    expect(links[0].textContent.trim()).toBe('Versailles');
+    const nameLinks = fixture.nativeElement.querySelectorAll('tbody tr td:nth-child(2) a');
+    expect(nameLinks.length).toBe(2);
+    expect(nameLinks[0].textContent.trim()).toBe('Versailles');
   });
 
   it('should show the nocastle_type column', () => {

@@ -18,4 +18,8 @@ export class NoCastlesPageComponent implements OnInit {
   ngOnInit(): void {
     this.noCastleService.loadNoCastles();
   }
+
+  onImageError(event: Event): void {
+    (event.target as HTMLImageElement).style.visibility = 'hidden';
+  }
 }
