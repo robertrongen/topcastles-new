@@ -18,21 +18,14 @@
 .type-description {
   margin: 8px 0 16px;
 
-  mat-card-content {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-  }
-
   h3 { margin: 0 0 8px; }
   p  { margin: 0; line-height: 1.6; }
 }
 
-.type-image {
-  width: 110px;
-  height: 110px;
-  object-fit: cover;
+.concept-image {
+  display: block;
+  margin-top: 12px;
+  max-width: 100%;
   border-radius: 4px;
-  flex-shrink: 0;
 }
 

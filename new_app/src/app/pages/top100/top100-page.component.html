@@ -16,13 +16,13 @@
     @if (conceptDescriptions[cf.getFilter('castle_concept')]; as desc) {
       <mat-card class="type-description">
         <mat-card-content>
+          <h3>{{ cf.getFilter('castle_concept') }}</h3>
+          <p>{{ desc.description }}</p>
           @if (desc.image) {
             <img [src]="'/assets/images/drawings/' + desc.image"
                  [alt]="cf.getFilter('castle_concept')"
-                 class="type-image" />
+                 class="concept-image" />
           }
-          <h3>{{ cf.getFilter('castle_concept') }}</h3>
-          <p>{{ desc.description }}</p>
         </mat-card-content>
       </mat-card>
     }
