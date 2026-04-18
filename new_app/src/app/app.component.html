@@ -36,19 +36,45 @@
         <mat-icon matListItemIcon>home</mat-icon>
         <span matListItemTitle>Home</span>
       </a>
+      <mat-divider />
+      <a mat-list-item routerLink="/top1000" routerLinkActive="active" (click)="sidenav.close()">
+        <mat-icon matListItemIcon>leaderboard</mat-icon>
+        <span matListItemTitle>Top 1000</span>
+      </a>
       <a mat-list-item routerLink="/castles" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>castle</mat-icon>
         <span matListItemTitle>All Castles</span>
       </a>
       <mat-divider />
+      <a mat-list-item routerLink="/countries" routerLinkActive="active" (click)="sidenav.close()">
+        <mat-icon matListItemIcon>flag</mat-icon>
+        <span matListItemTitle>Browse by Country</span>
+      </a>
+      <a mat-list-item routerLink="/top-countries" routerLinkActive="active" (click)="sidenav.close()">
+        <mat-icon matListItemIcon>emoji_flags</mat-icon>
+        <span matListItemTitle>Top Countries</span>
+      </a>
+      <a mat-list-item routerLink="/top-regions" routerLinkActive="active" (click)="sidenav.close()">
+        <mat-icon matListItemIcon>map</mat-icon>
+        <span matListItemTitle>Top Regions</span>
+      </a>
+      <mat-divider />
+      <a mat-list-item routerLink="/types" routerLinkActive="active" (click)="sidenav.close()">
+        <mat-icon matListItemIcon>category</mat-icon>
+        <span matListItemTitle>Castle Types</span>
+      </a>
       <a mat-list-item routerLink="/no-castles" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>not_listed_location</mat-icon>
         <span matListItemTitle>No Castles</span>
       </a>
       <mat-divider />
-      <a mat-list-item routerLink="/visitors" routerLinkActive="active" (click)="sidenav.close()">
-        <mat-icon matListItemIcon>people</mat-icon>
-        <span matListItemTitle>Visitors</span>
+      <a mat-list-item routerLink="/background" routerLinkActive="active" (click)="sidenav.close()">
+        <mat-icon matListItemIcon>info</mat-icon>
+        <span matListItemTitle>Background</span>
+      </a>
+      <a mat-list-item routerLink="/search" routerLinkActive="active" (click)="sidenav.close()">
+        <mat-icon matListItemIcon>search</mat-icon>
+        <span matListItemTitle>Search</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>
