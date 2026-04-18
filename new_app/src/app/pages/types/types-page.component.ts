@@ -55,22 +55,18 @@ export class TypesPageComponent implements OnInit {
   conceptColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'castle_type', 'condition'];
   conditionColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'castle_type'];
 
-  typeDescriptions: Record<string, { description: string; image?: string }> = {
+  typeDescriptions: Record<string, { description: string }> = {
     'City castle': {
       description: 'A special case is the city castle. When is such a castle qualified as castle and when as a walled city? Sir Oman gives a useful definition of a city castle: "A castle is a military structure larger than a tower but smaller than a fortified town, it is residential but is also defensible in character. However complicated internally it must be a complete unit unto itself and not part of a town. A castle may exist inside a town but must be able to be cut off by the closing of a gate or the raising of a drawbridge." To be qualified as a castle, a city castle must be able to defend itself independently of the city and the city walls.',
-      image: 'concept_caernarfon.jpg',
     },
     'Mountain castle': {
       description: 'Castles built on elevated terrain such as hills or mountains, providing natural defensive advantages through height and visibility.',
-      image: 'concept_concentrisch.jpg',
     },
     'Water castle': {
       description: 'Castles constructed near or surrounded by water features like rivers, lakes, or moats, using water as a defensive element.',
-      image: 'concept_bellver.jpg',
     },
     'Rock castle': {
       description: 'Fortresses built on rocky outcrops or cliffs, leveraging the natural terrain for impregnable defenses.',
-      image: 'concept_skenfrith.jpg',
     },
   };
 

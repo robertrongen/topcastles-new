@@ -21,11 +21,6 @@
            @if (typeDescriptions[selectedType()]; as desc) {
              <mat-card class="type-description">
                <mat-card-content>
-                 @if (desc.image) {
-                   <img [src]="'/assets/images/drawings/' + desc.image"
-                        [alt]="selectedType()"
-                        class="type-image" />
-                 }
                  <h3>{{ selectedType() }}</h3>
                  <p>{{ desc.description }}</p>
                </mat-card-content>
