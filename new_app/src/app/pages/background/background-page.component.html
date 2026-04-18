@@ -356,7 +356,8 @@
 
         <h3>Location types</h3>
         <p>
-          The location of a castle is an important factor in its defensiveness. Ebhardt [3] distinguishes five types:
+          Ebhardt [3] groups castles by the strategic advantages their location offers. The location
+          and available building materials determine the unique character of a castle.
         </p>
         <table class="type-table">
           <thead>
@@ -366,31 +367,31 @@
             <tr>
               <td><a [routerLink]="['/castles', 'vaduz']"><img class="type-photo" src="/images/castles/small/vaduz_small.jpg" alt="Schloß Vaduz"></a></td>
               <td>Mountain castles (Höhenburgen)</td>
-              <td>Built on a high position</td>
+              <td>The approach to the castle is hampered by its high position. Siege engines cannot reach the castle.</td>
               <td><a [routerLink]="['/castles', 'vaduz']">Schloß Vaduz</a></td>
             </tr>
             <tr>
               <td><a [routerLink]="['/castles', 'hautkoeningsbourg']"><img class="type-photo" src="/images/castles/small/hautkoeningsbourg_small.jpg" alt="Haut-Kœnigsbourg"></a></td>
               <td>Rock castles (Felsenburgen)</td>
-              <td>Built on mountain rock</td>
+              <td>Castles built on top of a mountain rock. Parts of the castle, including its main entrance, can be inside the rock. The rock defends the castle against sapping and is considered to be the strongest castle type.</td>
               <td><a [routerLink]="['/castles', 'hautkoeningsbourg']">Haut-Kœnigsbourg</a></td>
             </tr>
             <tr>
               <td><a [routerLink]="['/castles', 'bodiam']"><img class="type-photo" src="/images/castles/small/bodiam_small.jpg" alt="Bodiam Castle"></a></td>
               <td>Water castles (Wasserburgen)</td>
-              <td>Surrounded by moat or lake</td>
+              <td>Surrounded by water in a moat or a lake. The water defends the castle against siege engines and sapping. In long sieges a moat can be filled with earth.</td>
               <td><a [routerLink]="['/castles', 'bodiam']">Bodiam Castle</a></td>
             </tr>
             <tr>
               <td><a [routerLink]="['/castles', 'chillon']"><img class="type-photo" src="/images/castles/small/chillon_small.jpg" alt="Château de Chillon"></a></td>
               <td>Harbour castles (Hafenburgen)</td>
-              <td>One side defended by river or sea</td>
+              <td>One side is defended by water of a river or sea. Mostly used to defend a harbour.</td>
               <td><a [routerLink]="['/castles', 'chillon']">Château de Chillon</a></td>
             </tr>
             <tr>
               <td><a [routerLink]="['/castles', 'limerick']"><img class="type-photo" src="/images/castles/small/limerick_small.jpg" alt="Castle Limerick"></a></td>
               <td>City castles (Stadtburgen)</td>
-              <td>Defend or control a town</td>
+              <td>Castles built to defend or control a town. The castle can be shut off from the town. Because of its location against a town only one or two sides of the castle can be defended by height or water.</td>
               <td><a [routerLink]="['/castles', 'limerick']">Castle Limerick</a></td>
             </tr>
           </tbody>
@@ -398,8 +399,10 @@
 
         <h3>Building structure types</h3>
         <p>
-          From Janssen [1] and Toy [2]. Eight building concepts varying by tower use, donjon
-          presence, and donjon position:
+          Janssen [1] and Toy [2] both describe classifications of structure types. Eight building concepts
+          are distinguished, differing in three aspects: the use of separate towers to defend the curtain
+          walls; the presence of a donjon as a last defence tower; and the defensive position of the
+          donjon — inside, in, or outside the curtain wall.
         </p>
         <table class="type-table">
           <thead>
@@ -407,42 +410,50 @@
           </thead>
           <tbody>
             <tr>
-              <td>1</td><td>Motte-and-bailey</td><td>Central tower on artificial hill</td>
+              <td>1</td><td>Motte-and-bailey</td>
+              <td>A central tower or donjon on an artificial hill, defended by a curtain wall. Introduced by Scandinavian invaders in England and France in the 10th and 11th century.</td>
               <td><a [routerLink]="['/castles', 'gisors']">Gisors</a></td>
               <td><img class="type-drawing" src="/assets/images/drawings/concept_motte.jpg" alt="Motte-and-bailey drawing"></td>
             </tr>
             <tr>
-              <td>2</td><td>Later Norman</td><td>Motte enclosed by new curtain wall</td>
+              <td>2</td><td>Later Norman</td>
+              <td>A motte-and-bailey castle that is afterwards enclosed by or connected to a new curtain wall with flanking towers.</td>
               <td><a [routerLink]="['/castles', 'arundel']">Arundel</a>, <a [routerLink]="['/castles', 'windsor']">Windsor</a></td>
               <td><img class="type-drawing" src="/assets/images/drawings/concept_gisors.jpg" alt="Later Norman drawing"></td>
             </tr>
             <tr>
-              <td>3</td><td>Ringwork / shell keep</td><td>Round, no separate tower</td>
+              <td>3</td><td>Ringwork / shell keep</td>
+              <td>A round or multi-angular castle, located on a hill, without a separate tower or donjon and without towers in the curtain wall.</td>
               <td><a [routerLink]="['/castles', 'restormel']">Restormel</a></td>
               <td><img class="type-drawing" src="/assets/images/drawings/castle_concept2.jpg" alt="Ringwork drawing"></td>
             </tr>
             <tr>
-              <td>4</td><td>Tower or compact castle</td><td>Stand-alone tower</td>
+              <td>4</td><td>Tower or compact castle</td>
+              <td>Stand-alone tower or donjon, compact castles without a bailey, can be equipped with small flanking towers in the outer wall.</td>
               <td><a [routerLink]="['/castles', 'threave']">Threave</a></td>
               <td><img class="type-drawing" src="/assets/images/drawings/castle_concept4.jpg" alt="Tower castle drawing"></td>
             </tr>
             <tr>
-              <td>5</td><td>Rectangular or polygonal</td><td>Flanking towers, no donjon</td>
+              <td>5</td><td>Rectangular or polygonal</td>
+              <td>Rectangular or polygonal shaped castle with flanking towers in the curtain walls but without a central tower or donjon.</td>
               <td><a [routerLink]="['/castles', 'egeskov']">Egeskov</a>, <a [routerLink]="['/castles', 'harlech']">Harlech</a></td>
               <td><img class="type-drawing" src="/assets/images/drawings/castle_concept3.jpg" alt="Rectangular castle drawing"></td>
             </tr>
             <tr>
-              <td>6</td><td>Donjon inside curtain wall</td><td>Donjon inside walls</td>
+              <td>6</td><td>Donjon inside curtain wall</td>
+              <td>Rectangular shaped classical castle with flanking towers and a donjon positioned inside the curtain wall. The donjon cannot assist in defending the curtain walls directly and cannot be accessed from the curtain walls.</td>
               <td><a [routerLink]="['/castles', 'dover']">Dover</a>, <a [routerLink]="['/castles', 'tower']">Tower of London</a></td>
               <td><img class="type-drawing" src="/assets/images/drawings/castle_concept5.jpg" alt="Donjon inside drawing"></td>
             </tr>
             <tr>
-              <td>7</td><td>Donjon in curtain wall</td><td>Donjon integrated in wall</td>
+              <td>7</td><td>Donjon in curtain wall</td>
+              <td>Rectangular shaped classical castle with flanking towers and a donjon positioned in the curtain wall. The donjon can assist in defending the curtain walls directly and can be accessed from the curtain walls.</td>
               <td><a [routerLink]="['/castles', 'kenilworth']">Kenilworth</a></td>
               <td><img class="type-drawing" src="/assets/images/drawings/concept_kenilworth.jpg" alt="Donjon in wall drawing"></td>
             </tr>
             <tr>
-              <td>8</td><td>Donjon outside curtain wall</td><td>Donjon outside walls</td>
+              <td>8</td><td>Donjon outside curtain wall</td>
+              <td>Rectangular shaped classical castle with flanking towers and a donjon positioned outside the curtain wall. The donjon can assist in defending the curtain walls directly but cannot be accessed from the curtain walls.</td>
               <td><a [routerLink]="['/castles', 'bellver']">Bellver</a></td>
               <td><img class="type-drawing" src="/assets/images/drawings/concept_bellver.jpg" alt="Donjon outside drawing"></td>
             </tr>
@@ -456,23 +467,28 @@
           </thead>
           <tbody>
             <tr>
-              <td>Intact</td><td>All parts intact and accessible</td>
+              <td>Intact</td>
+              <td>The castle is mostly intact; all characteristic parts (gate, donjon, moat, defence works) are intact and accessible.</td>
               <td><a [routerLink]="['/castles', 'corroy']">Corroy le Château</a></td>
             </tr>
             <tr>
-              <td>Rebuild / Restored</td><td>Appears intact but rebuilt</td>
+              <td>Rebuild / Restored</td>
+              <td>The castle appears intact but some or all characteristic parts have been rebuilt or restored.</td>
               <td><a [routerLink]="['/castles', 'pierrefonds']">Pierrefonds</a></td>
             </tr>
             <tr>
-              <td>Damaged</td><td>Not intact but recognizable</td>
+              <td>Damaged</td>
+              <td>The castle is not intact but the characteristic parts (gate, donjon, moat, defence works) are still recognisable.</td>
               <td><a [routerLink]="['/castles', 'teylingen']">Kasteel Teylingen</a></td>
             </tr>
             <tr>
-              <td>Ruined / Partly remained</td><td>Some parts lost</td>
+              <td>Ruined / Partly remained</td>
+              <td>Some characteristic parts (gate, donjon, moat, defence works) are lost. Some parts like the donjon can still be intact, rebuilt or restored.</td>
               <td><a [routerLink]="['/castles', 'brederode']">Ruïne van Brederode</a></td>
             </tr>
             <tr>
-              <td>Destroyed</td><td>All parts lost</td>
+              <td>Destroyed</td>
+              <td>All characteristic parts (gate, donjon, moat, defence works) are lost.</td>
               <td><a [routerLink]="['/castles', 'bastille']">Château de Bastille</a></td>
             </tr>
           </tbody>
