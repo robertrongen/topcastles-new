@@ -5,27 +5,28 @@
   @if (loading()) {
     <p>Loading...</p>
   } @else {
-    <table class="no-castles-table">
-      <thead>
-        <tr>
-          <th>Code</th>
-          <th>Name</th>
-          <th>Country</th>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (nc of noCastles(); track nc.castle_code) {
+    <p class="result-count">{{ noCastles().length }} entries</p>
+    <div class="table-container">
+      <table class="no-castles-table">
+        <thead>
           <tr>
-            <td>{{ nc.castle_code }}</td>
-            <td><a [routerLink]="['/nocastle', nc.castle_code]">{{ nc.castle_name }}</a></td>
-            <td>{{ nc.country }}</td>
-            <td>{{ nc.nocastle_type }}</td>
-            <td>{{ nc.description }}</td>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Type</th>
+            <th>Description</th>
           </tr>
-        }
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          @for (nc of noCastles(); track nc.castle_code) {
+            <tr>
+              <td><a [routerLink]="['/nocastle', nc.castle_code]">{{ nc.castle_name }}</a></td>
+              <td>{{ nc.country }}</td>
+              <td>{{ nc.nocastle_type }}</td>
+              <td>{{ nc.description }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
   }
 </div>

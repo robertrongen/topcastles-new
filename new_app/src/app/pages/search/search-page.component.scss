@@ -10,12 +10,6 @@
   }
 }
 
-@media (min-width: 1200px) {
-  .search-form {
-    max-width: none;
-  }
-}
-
 .form-section {
   display: flex;
   flex-wrap: wrap;
@@ -33,7 +27,7 @@
   .buttons {
     display: flex;
     gap: 8px;
-    padding-bottom: 22px; // align with form field
+    padding-bottom: 22px; // align with form field baseline
   }
 }
 
@@ -43,4 +37,29 @@
 
 .result-count {
   margin-bottom: 8px;
+}
+
+// Wide screen: form left, results right — no scrolling to see results
+@media (min-width: 1200px) {
+  .search-page {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    grid-template-rows: auto 1fr;
+    column-gap: 32px;
+    align-items: start;
+
+    h2 {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .search-form {
+    max-width: none;
+    position: sticky;
+    top: 16px;
+  }
+
+  .results-section {
+    margin-top: 0;
+  }
 }

@@ -1,14 +1,9 @@
-<div class="tk-header">
-  <a routerLink="/" class="tk-logo-link tk-logo-mobile">
+<mat-toolbar class="tk-masthead">
+  <a routerLink="/" class="tk-logo-link">
     <img src="banner_en.gif" alt="Topcastles" class="tk-logo" />
   </a>
 
-  <mat-toolbar class="tk-masthead">
-    <a routerLink="/" class="tk-logo-link tk-logo-desktop">
-      <img src="banner_en.gif" alt="Topcastles" class="tk-logo" />
-    </a>
-
-    <nav class="tk-toolbar-nav">
+  <nav class="tk-toolbar-nav">
     <a mat-button routerLink="/top1000" routerLinkActive="tk-nav-active">Top 1000</a>
 
     <button mat-button [matMenuTriggerFor]="countriesMenu" class="tk-nav-menu-btn">
@@ -21,9 +16,9 @@
       <a mat-menu-item routerLink="/top-regions">Top Regions</a>
     </mat-menu>
 
-     <a mat-button routerLink="/types" routerLinkActive="tk-nav-active">Castle Types</a>
-     <a mat-button routerLink="/background" routerLinkActive="tk-nav-active">Background</a>
-     <a mat-button routerLink="/search" routerLinkActive="tk-nav-active">Search</a>
+    <a mat-button routerLink="/types" routerLinkActive="tk-nav-active">Castle Types</a>
+    <a mat-button routerLink="/background" routerLinkActive="tk-nav-active">Background</a>
+    <a mat-button routerLink="/search" routerLinkActive="tk-nav-active">Search</a>
   </nav>
 
   <span class="tk-spacer"></span>
@@ -31,8 +26,7 @@
   <button type="button" mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle navigation">
     <mat-icon>menu</mat-icon>
   </button>
-  </mat-toolbar>
-</div>
+</mat-toolbar>
 
 <mat-sidenav-container class="app-container">
   <mat-sidenav #sidenav mode="over">
@@ -46,10 +40,11 @@
         <span matListItemTitle>All Castles</span>
       </a>
       <mat-divider />
-      <a mat-list-item routerLink="/background" routerLinkActive="active" (click)="sidenav.close()">
-        <mat-icon matListItemIcon>info</mat-icon>
-        <span matListItemTitle>Background</span>
+      <a mat-list-item routerLink="/no-castles" routerLinkActive="active" (click)="sidenav.close()">
+        <mat-icon matListItemIcon>not_listed_location</mat-icon>
+        <span matListItemTitle>No Castles</span>
       </a>
+      <mat-divider />
       <a mat-list-item routerLink="/visitors" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>people</mat-icon>
         <span matListItemTitle>Visitors</span>

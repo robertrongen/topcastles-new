@@ -83,8 +83,15 @@ mat-sidenav {
 }
 
 @media (max-width: 767px) {
+  // Center the logo in the toolbar; hamburger stays on the right
+  .tk-logo-link {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .tk-toolbar-nav {
-    display: none; // hidden on mobile; use hamburger + sidenav instead
+    display: none;
   }
 
   .main-content {
