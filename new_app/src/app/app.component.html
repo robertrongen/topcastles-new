@@ -16,8 +16,15 @@
       <a mat-menu-item routerLink="/top-regions">Top Regions</a>
     </mat-menu>
 
-    <a mat-button routerLink="/types" routerLinkActive="tk-nav-active">Castle Types</a>
-    <a mat-button routerLink="/no-castles" routerLinkActive="tk-nav-active">No Castles</a>
+    <button mat-button [matMenuTriggerFor]="typesMenu" class="tk-nav-menu-btn">
+      Castle Types <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #typesMenu="matMenu">
+      <a mat-menu-item routerLink="/types">Castle Types</a>
+      <mat-divider />
+      <a mat-menu-item routerLink="/no-castles">No Castles</a>
+    </mat-menu>
+
     <a mat-button routerLink="/background" routerLinkActive="tk-nav-active">Background</a>
     <a mat-button routerLink="/search" routerLinkActive="tk-nav-active">Search</a>
   </nav>
