@@ -164,13 +164,13 @@ describe('CastleTableComponent', () => {
     expect(link.getAttribute('href')).toBe('/countries/Germany');
   });
 
-  it('should link castle_type to types page', () => {
+  it('should display castle_type as plain text', () => {
     component.castles = [makeCastle({ castle_type: 'Hilltop castle' })];
     component.columns = ['castle_type'];
     fixture.detectChanges();
 
-    const link = fixture.nativeElement.querySelector('td.mat-column-castle_type a');
-    expect(link).toBeTruthy();
-    expect(link.getAttribute('href')).toContain('/types');
+    const cell = fixture.nativeElement.querySelector('td.mat-column-castle_type');
+    expect(cell.textContent?.trim()).toBe('Hilltop castle');
+    expect(cell.querySelector('a')).toBeNull();
   });
 });

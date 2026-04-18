@@ -1,35 +1,130 @@
 <div class="castles-page">
-  <h2>Castles</h2>
-  <p>Browse all castles in the database, filtered by name or country.</p>
+  <h2>All Castles</h2>
 
-  <!-- Filters -->
-  <div class="filters">
-    <mat-form-field appearance="outline">
-      <mat-label>Search by name</mat-label>
-      <input matInput [ngModel]="filterName()" (ngModelChange)="filterName.set($event)" placeholder="e.g. Krak">
-    </mat-form-field>
+  <div class="search-form">
+    <div class="form-section">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput [ngModel]="name()" (ngModelChange)="name.set($event)" />
+      </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Country</mat-label>
-      <mat-select [ngModel]="filterCountry()" (ngModelChange)="filterCountry.set($event)">
-        <mat-option value="">All countries</mat-option>
-        @for (country of countries(); track country) {
-          <mat-option [value]="country">{{ country }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input matInput [ngModel]="description()" (ngModelChange)="description.set($event)" />
+      </mat-form-field>
+    </div>
+
+    <h3>Location</h3>
+    <div class="form-section">
+      <mat-form-field appearance="outline">
+        <mat-label>Place</mat-label>
+        <input matInput [ngModel]="place()" (ngModelChange)="place.set($event)" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Region</mat-label>
+        <input matInput [ngModel]="region()" (ngModelChange)="region.set($event)" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Country</mat-label>
+        <mat-select [ngModel]="country()" (ngModelChange)="country.set($event)">
+          <mat-option value="">— Any —</mat-option>
+          @for (c of countries(); track c) {
+            <mat-option [value]="c">{{ c }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Area</mat-label>
+        <mat-select [ngModel]="area()" (ngModelChange)="area.set($event)">
+          <mat-option value="">— Any —</mat-option>
+          @for (a of areas(); track a) {
+            <mat-option [value]="a">{{ a }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <h3>Castle type</h3>
+    <div class="form-section">
+      <mat-form-field appearance="outline">
+        <mat-label>Location type</mat-label>
+        <mat-select [ngModel]="castleType()" (ngModelChange)="castleType.set($event)">
+          <mat-option value="">— Any —</mat-option>
+          @for (t of castleTypes(); track t) {
+            <mat-option [value]="t">{{ t }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Building structure</mat-label>
+        <mat-select [ngModel]="castleConcept()" (ngModelChange)="castleConcept.set($event)">
+          <mat-option value="">— Any —</mat-option>
+          @for (c of castleConcepts(); track c) {
+            <mat-option [value]="c">{{ c }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Condition</mat-label>
+        <mat-select [ngModel]="condition()" (ngModelChange)="condition.set($event)">
+          <mat-option value="">— Any —</mat-option>
+          @for (c of conditions(); track c) {
+            <mat-option [value]="c">{{ c }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <h3>History</h3>
+    <div class="form-section">
+      <mat-form-field appearance="outline">
+        <mat-label>Founder</mat-label>
+        <input matInput [ngModel]="founder()" (ngModelChange)="founder.set($event)" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Era</mat-label>
+        <mat-select [ngModel]="era()" (ngModelChange)="era.set($event)">
+          <mat-option [value]="null">— Any —</mat-option>
+          @for (e of eras(); track e) {
+            <mat-option [value]="e">{{ e }}th century</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-section form-actions">
+      <mat-form-field appearance="outline">
+        <mat-label>Sort by</mat-label>
+        <mat-select [ngModel]="sortKey()" (ngModelChange)="sortKey.set($event)">
+          @for (opt of sortOptions; track opt.value) {
+            <mat-option [value]="opt.value">{{ opt.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      @if (hasFilters()) {
+        <button mat-stroked-button class="reset-btn" (click)="onReset()">Reset</button>
+      }
+    </div>
   </div>
 
-  @if (loading()) {
-    <p>Loading castles…</p>
-  } @else {
-    <p class="result-count">{{ filteredCastles().length }} castles found</p>
-    <app-castle-filter #cf [castles]="filteredCastles()" [fields]="filterFields" />
-    <app-view-toggle />
-    @if (viewModeService.mode() === 'grid') {
-      <app-castle-grid [castles]="cf.filtered()" />
+  <div class="results-section">
+    @if (loading()) {
+      <p>Loading castles…</p>
     } @else {
-      <app-castle-table [castles]="cf.filtered()" [columns]="displayedColumns" />
+      <p class="result-count">{{ filteredCastles().length }} castles found</p>
+      <app-view-toggle />
+      @if (viewModeService.mode() === 'grid') {
+        <app-castle-grid [castles]="filteredCastles()" />
+      } @else {
+        <app-castle-table [castles]="filteredCastles()" [columns]="displayedColumns" />
+      }
     }
-  }
+  </div>
 </div>

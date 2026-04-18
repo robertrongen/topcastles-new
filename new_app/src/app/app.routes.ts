@@ -8,7 +8,6 @@ export const routes: Routes = [
   { path: 'countries/:country', loadComponent: () => import('./pages/country-detail/country-detail-page.component').then(m => m.CountryDetailPageComponent) },
   { path: 'top-countries', loadComponent: () => import('./pages/top-countries/top-countries-page.component').then(m => m.TopCountriesPageComponent) },
   { path: 'top-regions', loadComponent: () => import('./pages/top-regions/top-regions-page.component').then(m => m.TopRegionsPageComponent) },
-  { path: 'search', loadComponent: () => import('./pages/search/search-page.component').then(m => m.SearchPageComponent) },
   { path: 'nocastle/:code', loadComponent: () => import('./pages/nocastle-detail/nocastle-detail-page.component').then(m => m.NoCastleDetailPageComponent) },
   { path: 'background', loadComponent: () => import('./pages/background/background-page.component').then(m => m.BackgroundPageComponent) },
   { path: '**', redirectTo: '' },

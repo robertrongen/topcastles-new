@@ -98,14 +98,14 @@ describe('CastlesPageComponent', () => {
 
   it('should filter by country from query params', () => {
     setup({ country: 'France' });
-    expect(component.filterCountry()).toBe('France');
+    expect(component.country()).toBe('France');
     const rows = fixture.nativeElement.querySelectorAll('tr.mat-mdc-row');
     expect(rows.length).toBe(1);
   });
 
   it('should filter by name', () => {
     setup();
-    component.filterName.set('malbork');
+    component.name.set('malbork');
     fixture.detectChanges();
     const rows = fixture.nativeElement.querySelectorAll('tr.mat-mdc-row');
     expect(rows.length).toBe(1);
