@@ -24,7 +24,8 @@ export class Top100PageComponent implements OnInit {
 
   filterFields: FilterField[] = [
     { key: 'country', label: 'Country' },
-    { key: 'castle_type', label: 'Castle Type' },
+    { key: 'castle_type', label: 'Location Type' },
+    { key: 'castle_concept', label: 'Building Concept' },
     { key: 'condition', label: 'Condition' },
   ];
 

@@ -35,8 +35,7 @@ describe('AppComponent', () => {
     const nav = fixture.nativeElement.querySelector('.tk-toolbar-nav');
     expect(nav).toBeTruthy();
     expect(nav.textContent).toContain('Top 1000');
-    expect(nav.textContent).toContain('Countries');
-    expect(nav.textContent).toContain('Castle Types');
+    expect(nav.textContent).toContain('Background');
     expect(nav.textContent).toContain('Search');
   });
 

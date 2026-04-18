@@ -6,26 +6,15 @@
   <nav class="tk-toolbar-nav">
     <a mat-button routerLink="/top1000" routerLinkActive="tk-nav-active">Top 1000</a>
 
-    <button mat-button [matMenuTriggerFor]="countriesMenu" class="tk-nav-menu-btn">
-      Countries <mat-icon>arrow_drop_down</mat-icon>
+    <button mat-button [matMenuTriggerFor]="backgroundMenu" class="tk-nav-menu-btn">
+      Background <mat-icon>arrow_drop_down</mat-icon>
     </button>
-    <mat-menu #countriesMenu="matMenu">
-      <a mat-menu-item routerLink="/countries">Browse by Country</a>
+    <mat-menu #backgroundMenu="matMenu">
+      <a mat-menu-item routerLink="/background">Background</a>
       <mat-divider />
       <a mat-menu-item routerLink="/top-countries">Top Countries</a>
       <a mat-menu-item routerLink="/top-regions">Top Regions</a>
     </mat-menu>
-
-    <button mat-button [matMenuTriggerFor]="typesMenu" class="tk-nav-menu-btn">
-      Castle Types <mat-icon>arrow_drop_down</mat-icon>
-    </button>
-    <mat-menu #typesMenu="matMenu">
-      <a mat-menu-item routerLink="/types">Castle Types</a>
-      <mat-divider />
-      <a mat-menu-item routerLink="/no-castles">No Castles</a>
-    </mat-menu>
-
-    <a mat-button routerLink="/background" routerLinkActive="tk-nav-active">Background</a>
     <a mat-button routerLink="/search" routerLinkActive="tk-nav-active">Search</a>
   </nav>
 
@@ -53,9 +42,9 @@
         <span matListItemTitle>All Castles</span>
       </a>
       <mat-divider />
-      <a mat-list-item routerLink="/countries" routerLinkActive="active" (click)="sidenav.close()">
-        <mat-icon matListItemIcon>flag</mat-icon>
-        <span matListItemTitle>Browse by Country</span>
+      <a mat-list-item routerLink="/background" routerLinkActive="active" (click)="sidenav.close()">
+        <mat-icon matListItemIcon>info</mat-icon>
+        <span matListItemTitle>Background</span>
       </a>
       <a mat-list-item routerLink="/top-countries" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>emoji_flags</mat-icon>
@@ -64,20 +53,6 @@
       <a mat-list-item routerLink="/top-regions" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>map</mat-icon>
         <span matListItemTitle>Top Regions</span>
-      </a>
-      <mat-divider />
-      <a mat-list-item routerLink="/types" routerLinkActive="active" (click)="sidenav.close()">
-        <mat-icon matListItemIcon>category</mat-icon>
-        <span matListItemTitle>Castle Types</span>
-      </a>
-      <a mat-list-item routerLink="/no-castles" routerLinkActive="active" (click)="sidenav.close()">
-        <mat-icon matListItemIcon>not_listed_location</mat-icon>
-        <span matListItemTitle>No Castles</span>
-      </a>
-      <mat-divider />
-      <a mat-list-item routerLink="/background" routerLinkActive="active" (click)="sidenav.close()">
-        <mat-icon matListItemIcon>info</mat-icon>
-        <span matListItemTitle>Background</span>
       </a>
       <a mat-list-item routerLink="/search" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>search</mat-icon>
