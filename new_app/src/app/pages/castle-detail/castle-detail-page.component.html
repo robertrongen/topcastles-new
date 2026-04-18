@@ -125,16 +125,6 @@
       </mat-card>
     }
 
-    <!-- Images -->
-    <div class="castle-images">
-      @for (url of imageUrls(); track $index) {
-        <img [src]="url"
-             [alt]="castle()!.castle_name"
-             (error)="onImageError($event)"
-             loading="lazy" />
-      }
-    </div>
-
     <!-- External links -->
     <mat-card class="section-card">
       <mat-card-content>
@@ -158,5 +148,15 @@
         }
       </mat-card-content>
     </mat-card>
+
+    <!-- Images -->
+    <div class="castle-images">
+      @for (url of imageUrls(); track $index) {
+        <img [src]="url"
+             [alt]="castle()!.castle_name"
+             (error)="onImageError($event)"
+             loading="lazy" />
+      }
+    </div>
   </div>
 }
