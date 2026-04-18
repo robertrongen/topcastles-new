@@ -14,6 +14,5 @@ export const routes: Routes = [
    { path: 'nocastle/:code', loadComponent: () => import('./pages/nocastle-detail/nocastle-detail-page.component').then(m => m.NoCastleDetailPageComponent) },
    { path: 'no-castles', loadComponent: () => import('./pages/no-castles/no-castles-page.component').then(m => m.NoCastlesPageComponent) },
   { path: 'background', loadComponent: () => import('./pages/background/background-page.component').then(m => m.BackgroundPageComponent) },
-  { path: 'visitors', loadComponent: () => import('./pages/visitors/visitors-page.component').then(m => m.VisitorsPageComponent) },
   { path: '**', redirectTo: '' },
 ];
