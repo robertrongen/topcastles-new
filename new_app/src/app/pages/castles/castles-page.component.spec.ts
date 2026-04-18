@@ -9,6 +9,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
 import { CastlesPageComponent } from './castles-page.component';
 import { Castle } from '../../models/castle.model';
+import { ViewModeService } from '../../services/view-mode.service';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
   return {
@@ -66,6 +67,7 @@ describe('CastlesPageComponent', () => {
     fixture = TestBed.createComponent(CastlesPageComponent);
     component = fixture.componentInstance;
     httpTesting = TestBed.inject(HttpTestingController);
+    TestBed.inject(ViewModeService).setMode('list');
 
     fixture.detectChanges();
     httpTesting.expectOne('/assets/data/castles.json').flush(mockCastles);

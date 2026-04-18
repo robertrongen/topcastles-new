@@ -6,18 +6,33 @@
     <!-- Location Type tab -->
     <mat-tab label="Location Type">
       <div class="tab-content">
-        <mat-form-field appearance="outline">
-          <mat-label>Select location type</mat-label>
-          <mat-select [ngModel]="selectedType()" (ngModelChange)="selectedType.set($event)">
-            @for (type of castleTypes(); track type) {
-              <mat-option [value]="type">{{ type }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
+         <mat-form-field appearance="outline">
+           <mat-label>Select location type</mat-label>
+           <mat-select [ngModel]="selectedType()" (ngModelChange)="selectedType.set($event)">
+             @for (type of castleTypes(); track type) {
+               <mat-option [value]="type">{{ type }}</mat-option>
+             }
+           </mat-select>
+         </mat-form-field>
 
-        @if (filteredByType().length) {
-          <p class="result-count">{{ filteredByType().length }} castles found</p>
-          <app-view-toggle />
+         @if (filteredByType().length) {
+           <p class="result-count">{{ filteredByType().length }} castles found</p>
+
+           @if (typeDescriptions[selectedType()]) {
+             <mat-card class="type-description">
+               <mat-card-content>
+                 @if (typeDescriptions[selectedType()]?.image) {
+                   <img [src]="'/assets/images/drawings/' + typeDescriptions[selectedType()]?.image"
+                        [alt]="selectedType()"
+                        class="type-image" />
+                 }
+                 <h3>{{ selectedType() }}</h3>
+                 <p>{{ typeDescriptions[selectedType()]?.description }}</p>
+               </mat-card-content>
+             </mat-card>
+           }
+
+           <app-view-toggle />
           @if (viewModeService.mode() === 'grid') {
             <app-castle-grid [castles]="filteredByType()" />
           } @else {
@@ -39,9 +54,24 @@
           </mat-select>
         </mat-form-field>
 
-        @if (filteredByConcept().length) {
-          <p class="result-count">{{ filteredByConcept().length }} castles found</p>
-          <app-view-toggle />
+         @if (filteredByConcept().length) {
+           <p class="result-count">{{ filteredByConcept().length }} castles found</p>
+
+           @if (conceptDescriptions[selectedConcept()]) {
+             <mat-card class="type-description">
+               <mat-card-content>
+                 @if (conceptDescriptions[selectedConcept()]?.image) {
+                   <img [src]="'/assets/images/drawings/' + conceptDescriptions[selectedConcept()]?.image"
+                        [alt]="selectedConcept()"
+                        class="type-image" />
+                 }
+                 <h3>{{ selectedConcept() }}</h3>
+                 <p>{{ conceptDescriptions[selectedConcept()]?.description }}</p>
+               </mat-card-content>
+             </mat-card>
+           }
+
+           <app-view-toggle />
           @if (viewModeService.mode() === 'grid') {
             <app-castle-grid [castles]="filteredByConcept()" />
           } @else {

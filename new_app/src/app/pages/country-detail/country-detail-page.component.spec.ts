@@ -10,6 +10,7 @@ import { CountryDetailPageComponent } from './country-detail-page.component';
 import { Castle } from '../../models/castle.model';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
+import { ViewModeService } from '../../services/view-mode.service';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
   return {
@@ -66,6 +67,7 @@ describe('CountryDetailPageComponent', () => {
     httpTesting = TestBed.inject(HttpTestingController);
     fixture = TestBed.createComponent(CountryDetailPageComponent);
     component = fixture.componentInstance;
+    TestBed.inject(ViewModeService).setMode('list');
     fixture.detectChanges();
 
     const req = httpTesting.expectOne('/assets/data/castles.json');

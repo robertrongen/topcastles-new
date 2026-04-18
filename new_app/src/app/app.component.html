@@ -1,10 +1,15 @@
-<mat-toolbar class="tk-masthead">
-  <a routerLink="/" class="tk-logo-link">
+<div class="tk-header">
+  <a routerLink="/" class="tk-logo-link tk-logo-mobile">
     <img src="banner_en.gif" alt="Topcastles" class="tk-logo" />
   </a>
 
-  <nav class="tk-toolbar-nav">
-    <a mat-button routerLink="/top100" routerLinkActive="tk-nav-active">Top 1000</a>
+  <mat-toolbar class="tk-masthead">
+    <a routerLink="/" class="tk-logo-link tk-logo-desktop">
+      <img src="banner_en.gif" alt="Topcastles" class="tk-logo" />
+    </a>
+
+    <nav class="tk-toolbar-nav">
+    <a mat-button routerLink="/top1000" routerLinkActive="tk-nav-active">Top 1000</a>
 
     <button mat-button [matMenuTriggerFor]="countriesMenu" class="tk-nav-menu-btn">
       Countries <mat-icon>arrow_drop_down</mat-icon>
@@ -16,8 +21,9 @@
       <a mat-menu-item routerLink="/top-regions">Top Regions</a>
     </mat-menu>
 
-    <a mat-button routerLink="/types" routerLinkActive="tk-nav-active">Castle Types</a>
-    <a mat-button routerLink="/search" routerLinkActive="tk-nav-active">Search</a>
+     <a mat-button routerLink="/types" routerLinkActive="tk-nav-active">Castle Types</a>
+     <a mat-button routerLink="/background" routerLinkActive="tk-nav-active">Background</a>
+     <a mat-button routerLink="/search" routerLinkActive="tk-nav-active">Search</a>
   </nav>
 
   <span class="tk-spacer"></span>
@@ -25,7 +31,8 @@
   <button type="button" mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle navigation">
     <mat-icon>menu</mat-icon>
   </button>
-</mat-toolbar>
+  </mat-toolbar>
+</div>
 
 <mat-sidenav-container class="app-container">
   <mat-sidenav #sidenav mode="over">

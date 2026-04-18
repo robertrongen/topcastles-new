@@ -5,6 +5,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TopRegionsPageComponent } from './top-regions-page.component';
 import { Castle } from '../../models/castle.model';
+import { ViewModeService } from '../../services/view-mode.service';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
   return {
@@ -33,6 +34,7 @@ describe('TopRegionsPageComponent', () => {
     }).compileComponents();
     httpTesting = TestBed.inject(HttpTestingController);
     fixture = TestBed.createComponent(TopRegionsPageComponent);
+    TestBed.inject(ViewModeService).setMode('list');
     fixture.detectChanges();
     httpTesting.expectOne('/assets/data/castles.json').flush(castles);
     fixture.detectChanges();
@@ -48,7 +50,7 @@ describe('TopRegionsPageComponent', () => {
   });
 
   it('should render one row per region', () => {
-    const rows = fixture.nativeElement.querySelectorAll('tr.mat-mdc-row');
+    const rows = fixture.nativeElement.querySelectorAll('tbody tr');
     expect(rows.length).toBe(2); // Loire, Bavaria
   });
 });

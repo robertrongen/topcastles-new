@@ -9,7 +9,7 @@ const STORAGE_KEY = 'castle-view-mode';
 export class ViewModeService {
   private platformId = inject(PLATFORM_ID);
 
-  private _mode = signal<ViewMode>('list');
+  private _mode = signal<ViewMode>('grid');
   readonly mode = this._mode.asReadonly();
 
   constructor() {

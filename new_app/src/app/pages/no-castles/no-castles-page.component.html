@@ -1,0 +1,31 @@
+<div class="no-castles-page">
+  <h2>No Castles</h2>
+  <p>This page lists entries that are not actual castles but are included for completeness.</p>
+
+  @if (loading()) {
+    <p>Loading...</p>
+  } @else {
+    <table class="no-castles-table">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Country</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (nc of noCastles(); track nc.castle_code) {
+          <tr>
+            <td>{{ nc.castle_code }}</td>
+            <td><a [routerLink]="['/nocastle', nc.castle_code]">{{ nc.castle_name }}</a></td>
+            <td>{{ nc.country }}</td>
+            <td>{{ nc.nocastle_type }}</td>
+            <td>{{ nc.description }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>

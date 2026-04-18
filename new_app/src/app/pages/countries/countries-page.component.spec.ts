@@ -5,6 +5,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CountriesPageComponent } from './countries-page.component';
 import { Castle } from '../../models/castle.model';
+import { ViewModeService } from '../../services/view-mode.service';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
   return {
@@ -35,6 +36,7 @@ describe('CountriesPageComponent', () => {
     httpTesting = TestBed.inject(HttpTestingController);
     fixture = TestBed.createComponent(CountriesPageComponent);
     component = fixture.componentInstance;
+    TestBed.inject(ViewModeService).setMode('list');
     fixture.detectChanges();
     httpTesting.expectOne('/assets/data/castles.json').flush(castles);
     fixture.detectChanges();

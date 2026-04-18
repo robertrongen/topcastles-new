@@ -31,6 +31,7 @@ export interface CountrySummary {
 export interface RegionSummary {
   region: string;
   country: string;
+  region_code: string;
   castleCount: number;
   totalScore: number;
 }

@@ -20,9 +20,9 @@ describe('ViewModeService', () => {
 
   afterEach(() => TestBed.resetTestingModule());
 
-  it('should default to list when nothing is stored', () => {
+  it('should default to grid when nothing is stored', () => {
     const service = createService(null);
-    expect(service.mode()).toBe('list');
+    expect(service.mode()).toBe('grid');
   });
 
   it('should read grid mode from localStorage on init', () => {
@@ -35,9 +35,9 @@ describe('ViewModeService', () => {
     expect(service.mode()).toBe('list');
   });
 
-  it('should ignore invalid localStorage values and default to list', () => {
+  it('should ignore invalid localStorage values and default to grid', () => {
     const service = createService('invalid');
-    expect(service.mode()).toBe('list');
+    expect(service.mode()).toBe('grid');
   });
 
   it('setMode should update signal and write to localStorage', () => {

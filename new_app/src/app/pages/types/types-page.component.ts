@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 import { CastleService } from '../../services/castle.service';
 import { Castle } from '../../models/castle.model';
 import { CastleGridComponent } from '../../components/castle-grid/castle-grid.component';
@@ -16,7 +17,7 @@ import { ViewModeService } from '../../services/view-mode.service';
   standalone: true,
   imports: [
     FormsModule,
-    MatTabsModule, MatFormFieldModule, MatSelectModule,
+    MatTabsModule, MatFormFieldModule, MatSelectModule, MatCardModule,
     CastleGridComponent, CastleTableComponent, ViewToggleComponent,
   ],
   templateUrl: './types-page.component.html',
@@ -31,7 +32,7 @@ export class TypesPageComponent implements OnInit {
   castleConcepts = computed(() => this.castleService.getCastleConcepts());
   castleConditions = computed(() => this.castleService.getCastleConditions());
 
-  selectedType = signal('');
+  selectedType = signal('City Castle');
   selectedConcept = signal('');
   selectedCondition = signal('');
 
@@ -53,6 +54,64 @@ export class TypesPageComponent implements OnInit {
   typeColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'condition'];
   conceptColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'castle_type', 'condition'];
   conditionColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'castle_type'];
+
+  typeDescriptions: Record<string, { description: string; image?: string }> = {
+    'City Castle': {
+      description: 'A special case is the city castle. When is such a castle qualified as castle and when as a walled city? Sir Oman gives a useful definition of a city castle: "A castle is a military structure larger than a tower but smaller than a fortified town, it is residential but is also defensible in character. However complicated internally it must be a complete unit unto itself and not part of a town. A castle may exist inside a town but must be able to be cut off by the closing of a gate or the raising of a drawbridge." To be qualified as a castle, a city castle must be able to defend itself independently of the city and the city walls.',
+      image: 'concept_caernarfon.jpg' // Example image for city castle
+    },
+    'Hill Castle': {
+      description: 'Castles built on elevated terrain such as hills or mountains, providing natural defensive advantages through height and visibility.',
+      image: 'concept_concentrisch.jpg'
+    },
+    'Water Castle': {
+      description: 'Castles constructed near or surrounded by water features like rivers, lakes, or moats, using water as a defensive element.',
+      image: 'concept_bellver.jpg'
+    },
+    'Rock Castle': {
+      description: 'Fortresses built on rocky outcrops or cliffs, leveraging the natural terrain for impregnable defenses.',
+      image: 'concept_skenfrith.jpg'
+    },
+    'Lowland Castle': {
+      description: 'Castles situated in flat or low-lying areas, often relying on artificial fortifications rather than natural elevation.',
+      image: 'concept_motte.jpg'
+    },
+  };
+
+  conceptDescriptions: Record<string, { description: string; image?: string }> = {
+    'Motte-and-bailey castles (early norman castles)': {
+      description: 'Een centrale toren of donjon op een heuvel, verdedigd door een weermuur. This castle type was introduced by Scandinavian invaders in England and France in the 10th and 11th century.',
+      image: 'concept_motte.jpg'
+    },
+    'Later norman castles': {
+      description: 'A motte-and-bailey castle that is afterwards enclosed by or connected to a new curtain wall with flanking towers.',
+      image: 'concept_gisors.jpg'
+    },
+    'Ringwork castles': {
+      description: 'Or shell keep: A round or multi-angular castle, located on a hill, without a separate tower or donjon without towers in the curtain wall.',
+      image: 'castle_concept2.jpg'
+    },
+    'Tower or compact castles': {
+      description: 'Stand-alone tower or donjon, compact castles without a bailey, can be equipped with small flanking towers in the outer wall.',
+      image: 'castle_concept4.jpg'
+    },
+    'Rectangular or polygonal castles': {
+      description: 'Rectangular or polygonal shaped castle with flanking towers in the curtain walls but without a central tower or donjon.',
+      image: 'castle_concept3.jpg'
+    },
+    'Castles with donjon inside curtain wall': {
+      description: 'Rectangular shaped classical castle with flanking towers in the curtain walls and a central tower or donjon positioned inside the curtain wall.',
+      image: 'castle_concept5.jpg'
+    },
+    'Castles with donjon in curtain wall': {
+      description: 'Rectangular shaped classical castle with flanking towers and a central tower or donjon positioned in the curtain wall.',
+      image: 'concept_kenilworth.jpg'
+    },
+    'Castles with donjon outside curtain wall': {
+      description: 'Rectangular shaped classical castle with flanking towers and a central tower or donjon positioned outside the curtain wall.',
+      image: 'concept_bellver.jpg'
+    },
+  };
 
   ngOnInit(): void {
     this.castleService.loadCastles();

@@ -9,3 +9,9 @@ dist
 build
 coverage
 .git
+new_app/node_modules
+new_app/dist
+new_app/.angular
+new_app/.storybook
+new_app/.vscode
+new_app/images

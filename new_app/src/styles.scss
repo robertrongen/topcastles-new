@@ -134,3 +134,73 @@ mat-sidenav.mat-sidenav {
   padding-bottom: 12px;
   margin-bottom: 16px;
 }
+
+// ── Dropdown styles ───────────────────────────────────────────────────────────
+
+.mat-mdc-select-panel {
+  background-color: $tk-nav-bg !important; // lavender background
+}
+
+.mat-mdc-option {
+  color: $tk-dark-blue !important; // dark blue text
+}
+
+.mat-mdc-option:hover,
+.mat-mdc-option.mat-mdc-option-active {
+  background-color: $tk-link-hover !important; // light blue hover
+}
+
+// ── Mobile responsiveness ─────────────────────────────────────────────────────
+
+@media (max-width: 767px) {
+  // Header layout for mobile
+  .tk-header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tk-logo-mobile {
+    display: block;
+    text-align: center;
+    padding: 8px;
+    background-color: $tk-orange;
+  }
+
+  .tk-logo-desktop {
+    display: none !important;
+  }
+
+  // Hide main nav on mobile, use sidenav
+  .tk-toolbar-nav {
+    display: none;
+  }
+
+  // Left-align elements on mobile
+  table, th, td {
+    text-align: left !important;
+  }
+
+  .section, .tab-content {
+    text-align: left;
+  }
+}
+
+@media (min-width: 768px) {
+  .tk-header {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .tk-logo-mobile {
+    display: none !important;
+  }
+
+  .tk-logo-desktop {
+    display: block;
+  }
+
+  // Hide hamburger menu button on large screens since nav is visible
+  .tk-spacer + button[mat-icon-button] {
+    display: none;
+  }
+}
