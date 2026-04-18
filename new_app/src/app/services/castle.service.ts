@@ -1,6 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Castle, CountrySummary, RegionSummary, SearchCriteria } from '../models/castle.model';
+import { Castle, CountrySummary, RegionSummary } from '../models/castle.model';
 
 @Injectable({ providedIn: 'root' })
 export class CastleService {
@@ -92,24 +92,6 @@ export class CastleService {
     return [...conditions].sort();
   }
 
-  getCastlesByType(type: string): Castle[] {
-    return this.castles()
-      .filter((c) => c.castle_type === type)
-      .sort((a, b) => (b.score_total ?? 0) - (a.score_total ?? 0));
-  }
-
-  getCastlesByConcept(concept: string): Castle[] {
-    return this.castles()
-      .filter((c) => c.castle_concept === concept)
-      .sort((a, b) => (b.score_total ?? 0) - (a.score_total ?? 0));
-  }
-
-  getCastlesByCondition(condition: string): Castle[] {
-    return this.castles()
-      .filter((c) => c.condition === condition)
-      .sort((a, b) => (b.score_total ?? 0) - (a.score_total ?? 0));
-  }
-
   /** Get the previous castle in the top-100 ranking (lower position number). */
   getPreviousCastle(code: string): Castle | undefined {
     const sorted = this.getAllByScore();
@@ -146,12 +128,6 @@ export class CastleService {
     return idx >= 0 && idx < countryCastles.length - 1 ? countryCastles[idx + 1] : undefined;
   }
 
-  /** Search castles by name (case-insensitive substring match). */
-  searchByName(query: string): Castle[] {
-    const q = query.toLowerCase();
-    return this.castles().filter((c) => c.castle_name?.toLowerCase().includes(q));
-  }
-
   getCountrySummaries(): CountrySummary[] {
     const map = new Map<string, { count: number; totalScore: number }>();
     for (const c of this.castles()) {
@@ -180,10 +156,6 @@ export class CastleService {
       .sort((a, b) => b.totalScore - a.totalScore);
   }
 
-  getCastlesByRegion(region: string): Castle[] {
-    return this.castles().filter((c) => c.region === region);
-  }
-
   getAreas(): string[] {
     const areas = new Set<string>();
     for (const c of this.castles()) {
@@ -206,36 +178,4 @@ export class CastleService {
     return [...eras].sort((a, b) => a - b);
   }
 
-  search(criteria: SearchCriteria): Castle[] {
-    const like = (field: string | undefined, query: string): boolean =>
-      !!field && field.toLowerCase().includes(query.toLowerCase());
-
-    let results = this.castles().filter((c) => {
-      if (criteria.name && !like(c.castle_name, criteria.name)) return false;
-      if (criteria.description && !like(c.description, criteria.description) && !like(c.remarkable, criteria.description)) return false;
-      if (criteria.place && !like(c.place, criteria.place)) return false;
-      if (criteria.region && !like(c.region, criteria.region)) return false;
-      if (criteria.country && c.country !== criteria.country) return false;
-      if (criteria.area && !like(c.area, criteria.area)) return false;
-      if (criteria.castleType && c.castle_type !== criteria.castleType) return false;
-      if (criteria.castleConcept && c.castle_concept !== criteria.castleConcept) return false;
-      if (criteria.founder && !like(c.founder, criteria.founder)) return false;
-      if (criteria.era != null && c.era !== criteria.era) return false;
-      if (criteria.condition && c.condition !== criteria.condition) return false;
-      return true;
-    });
-
-    const sortKey = criteria.sortKey || 'score_total';
-    results = results.slice().sort((a, b) => {
-      const va = a[sortKey as keyof Castle];
-      const vb = b[sortKey as keyof Castle];
-      if (va == null && vb == null) return 0;
-      if (va == null) return 1;
-      if (vb == null) return -1;
-      if (sortKey === 'score_total') return (vb as number) - (va as number);
-      return va < vb ? -1 : va > vb ? 1 : 0;
-    });
-
-    return results;
-  }
 }
