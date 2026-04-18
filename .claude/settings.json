@@ -1,4 +1,13 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(git commit -m ' *)",
+      "Bash(python3 -c ' *)",
+      "Bash(node -e ' *)",
+      "Bash(node_modules/.bin/ng build *)",
+      "Bash(new_app/node_modules/.bin/ng build *)"
+    ]
+  },
   "hooks": {
     "PreToolUse": [
       {
