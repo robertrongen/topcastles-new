@@ -135,24 +135,24 @@ describe('TypesPageComponent', () => {
     expect(tabs.length).toBe(3);
   });
 
-  it('should default to City Castle as the selected type', () => {
-    expect(component.selectedType()).toBe('City Castle');
+  it('should default to City castle as the selected type', () => {
+    expect(component.selectedType()).toBe('City castle');
   });
 
   it('should have description entries for known types', () => {
-    expect(component.typeDescriptions['City Castle']).toBeTruthy();
-    expect(component.typeDescriptions['City Castle'].description.length).toBeGreaterThan(0);
-    expect(component.typeDescriptions['Water Castle']).toBeTruthy();
+    expect(component.typeDescriptions['City castle']).toBeTruthy();
+    expect(component.typeDescriptions['City castle'].description.length).toBeGreaterThan(0);
+    expect(component.typeDescriptions['Water castle']).toBeTruthy();
   });
 
   it('should have description entries for known concepts', () => {
-    expect(component.conceptDescriptions['Motte-and-bailey castles (early norman castles)']).toBeTruthy();
-    expect(component.conceptDescriptions['Tower or compact castles']).toBeTruthy();
+    expect(component.conceptDescriptions['Motte-and-bailey']).toBeTruthy();
+    expect(component.conceptDescriptions['Tower or compact castle']).toBeTruthy();
   });
 
   it('should not show description card for a type not in typeDescriptions', () => {
-    // test data uses 'Rock castle' (lowercase) which has no entry in typeDescriptions
-    component.selectedType.set('Rock castle');
+    // 'Harbour castle' has no entry in typeDescriptions
+    component.selectedType.set('Harbour castle');
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('mat-card.type-description')).toBeNull();
   });
