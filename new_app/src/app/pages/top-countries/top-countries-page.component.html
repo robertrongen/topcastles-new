@@ -2,7 +2,7 @@
   <section class="section">
     <h2>The countries with the most top castles</h2>
     <div class="table-container">
-      <table mat-table [dataSource]="summaries()" matSort (matSortChange)="onSort($event)">
+      <table mat-table class="countries-table" [dataSource]="summaries()" matSort (matSortChange)="onSort($event)">
 
         <ng-container matColumnDef="rank">
           <th mat-header-cell *matHeaderCellDef>#</th>

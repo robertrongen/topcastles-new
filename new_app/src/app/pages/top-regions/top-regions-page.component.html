@@ -6,7 +6,7 @@
 
     @if (viewModeService.mode() === 'grid') {
       <div class="region-grid">
-        @for (summary of summaries(); track summary.region) {
+        @for (summary of summaries(); track summary.region; let i = $index) {
           <mat-card class="region-card">
             <mat-card-content>
               @if (summary.region_code) {
@@ -15,10 +15,10 @@
                      class="region-image"
                      (error)="onImageError($event)" />
               }
+              <span class="region-rank">#{{ i + 1 }}</span>
               <h3>{{ summary.region }}</h3>
-              <p><strong>Country:</strong> <a [routerLink]="['/countries', summary.country]">{{ summary.country }}</a></p>
-              <p><strong>Castles:</strong> {{ summary.castleCount }}</p>
-              <p><strong>Total Score:</strong> {{ summary.totalScore | number:'1.0-0' }}</p>
+              <p><a [routerLink]="['/countries', summary.country]">{{ summary.country }}</a></p>
+              <p>{{ summary.castleCount }} castles &middot; score {{ summary.totalScore | number:'1.0-0' }}</p>
             </mat-card-content>
           </mat-card>
         }
