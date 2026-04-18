@@ -59,7 +59,7 @@ describe('CountryDetailPageComponent', () => {
         provideHttpClientTesting(),
         {
           provide: ActivatedRoute,
-          useValue: { params: of({ country: 'France' }) },
+          useValue: { params: of({ country: 'France' }), queryParams: of({}) },
         },
       ],
     }).compileComponents();

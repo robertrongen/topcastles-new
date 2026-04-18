@@ -1,4 +1,4 @@
-import { Component, computed, input, signal } from '@angular/core';
+import { Component, computed, effect, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,8 +20,18 @@ export interface FilterField {
 export class CastleFilterComponent {
   castles = input<Castle[]>([]);
   fields = input<FilterField[]>([]);
+  initialFilters = input<Record<string, string>>({});
 
   private activeFilters = signal<Record<string, string>>({});
+
+  constructor() {
+    effect(() => {
+      const init = this.initialFilters();
+      if (Object.values(init).some(v => v !== '')) {
+        this.activeFilters.set({ ...init });
+      }
+    });
+  }
 
   allOptions = computed<Record<string, string[]>>(() => {
     const result: Record<string, string[]> = {};

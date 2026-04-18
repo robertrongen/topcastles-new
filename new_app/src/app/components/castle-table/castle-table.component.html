@@ -51,7 +51,7 @@
     <ng-container matColumnDef="region">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Region</th>
       <td mat-cell *matCellDef="let castle">
-        {{ castle.region }}
+        <a [routerLink]="['/countries', castle.country]" [queryParams]="{ region: castle.region }">{{ castle.region }}</a>
         @if (castle.region_code) {
           <br>
           <img class="region-map"

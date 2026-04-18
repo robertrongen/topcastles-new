@@ -23,15 +23,24 @@ export class CountryDetailPageComponent implements OnInit {
   protected viewModeService = inject(ViewModeService);
 
   country = signal('');
+  initialRegion = signal('');
   loading = this.castleService.loading;
 
   castles = computed<Castle[]>(() =>
     this.castleService.getCastlesByCountry(this.country())
   );
 
+  initialFilters = computed<Record<string, string>>(() => {
+    const r = this.initialRegion();
+    const result: Record<string, string> = {};
+    if (r) result['region'] = r;
+    return result;
+  });
+
   displayedColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'place', 'region', 'castle_type', 'condition'];
 
   filterFields: FilterField[] = [
+    { key: 'region', label: 'Region' },
     { key: 'castle_type', label: 'Castle Type' },
     { key: 'condition', label: 'Condition' },
   ];
@@ -49,6 +58,9 @@ export class CountryDetailPageComponent implements OnInit {
     this.castleService.loadCastles();
     this.route.params.subscribe((params) => {
       this.country.set(params['country'] ?? '');
+    });
+    this.route.queryParams.subscribe((params) => {
+      this.initialRegion.set(params['region'] ?? '');
     });
   }
 }
