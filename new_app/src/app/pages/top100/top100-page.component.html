@@ -4,11 +4,12 @@
     <p>
       All castles ranked by score, derived from references used by topcastles.com and the visitors rating.
     </p>
+    <app-castle-filter #cf [castles]="top100()" [fields]="filterFields" />
     <app-view-toggle />
     @if (viewModeService.mode() === 'grid') {
-      <app-castle-grid [castles]="top100()" />
+      <app-castle-grid [castles]="cf.filtered()" />
     } @else {
-      <app-castle-table [castles]="top100()" [columns]="displayedColumns" />
+      <app-castle-table [castles]="cf.filtered()" [columns]="displayedColumns" />
     }
   </section>
 </div>

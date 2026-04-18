@@ -3,6 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CastleService } from '../../services/castle.service';
 import { Castle } from '../../models/castle.model';
+import { CastleFilterComponent, FilterField } from '../../components/castle-filter/castle-filter.component';
 import { CastleGridComponent } from '../../components/castle-grid/castle-grid.component';
 import { CastleTableComponent } from '../../components/castle-table/castle-table.component';
 import { ViewToggleComponent } from '../../components/view-toggle/view-toggle.component';
@@ -11,7 +12,7 @@ import { ViewModeService } from '../../services/view-mode.service';
 @Component({
   selector: 'app-country-detail-page',
   standalone: true,
-  imports: [RouterLink, CastleGridComponent, CastleTableComponent, ViewToggleComponent],
+  imports: [RouterLink, CastleFilterComponent, CastleGridComponent, CastleTableComponent, ViewToggleComponent],
   templateUrl: './country-detail-page.component.html',
   styleUrl: './country-detail-page.component.scss',
 })
@@ -29,6 +30,11 @@ export class CountryDetailPageComponent implements OnInit {
   );
 
   displayedColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'place', 'region', 'castle_type', 'condition'];
+
+  filterFields: FilterField[] = [
+    { key: 'castle_type', label: 'Castle Type' },
+    { key: 'condition', label: 'Condition' },
+  ];
 
   constructor() {
     effect(() => {

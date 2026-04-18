@@ -7,6 +7,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { CastleService } from '../../services/castle.service';
 import { Castle } from '../../models/castle.model';
+import { CastleFilterComponent, FilterField } from '../../components/castle-filter/castle-filter.component';
 import { CastleGridComponent } from '../../components/castle-grid/castle-grid.component';
 import { CastleTableComponent } from '../../components/castle-table/castle-table.component';
 import { ViewToggleComponent } from '../../components/view-toggle/view-toggle.component';
@@ -18,7 +19,7 @@ import { ViewModeService } from '../../services/view-mode.service';
   imports: [
     FormsModule,
     MatTabsModule, MatFormFieldModule, MatSelectModule, MatCardModule,
-    CastleGridComponent, CastleTableComponent, ViewToggleComponent,
+    CastleFilterComponent, CastleGridComponent, CastleTableComponent, ViewToggleComponent,
   ],
   templateUrl: './types-page.component.html',
   styleUrl: './types-page.component.scss',
@@ -52,6 +53,11 @@ export class TypesPageComponent implements OnInit {
   });
 
   typeColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'condition'];
+
+  typeFilterFields: FilterField[] = [
+    { key: 'country', label: 'Country' },
+    { key: 'condition', label: 'Condition' },
+  ];
   conceptColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'castle_type', 'condition'];
   conditionColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'castle_type'];
 

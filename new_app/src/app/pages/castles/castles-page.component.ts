@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { CastleService } from '../../services/castle.service';
+import { CastleFilterComponent, FilterField } from '../../components/castle-filter/castle-filter.component';
 import { CastleTableComponent } from '../../components/castle-table/castle-table.component';
 import { CastleGridComponent } from '../../components/castle-grid/castle-grid.component';
 import { ViewToggleComponent } from '../../components/view-toggle/view-toggle.component';
@@ -15,7 +16,7 @@ import { ViewModeService } from '../../services/view-mode.service';
   standalone: true,
   imports: [
     MatFormFieldModule, MatInputModule, MatSelectModule, FormsModule,
-    CastleTableComponent, CastleGridComponent, ViewToggleComponent,
+    CastleFilterComponent, CastleTableComponent, CastleGridComponent, ViewToggleComponent,
   ],
   templateUrl: './castles-page.component.html',
   styleUrl: './castles-page.component.scss',
@@ -32,6 +33,11 @@ export class CastlesPageComponent implements OnInit {
   filterCountry = signal('');
 
   displayedColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'castle_type', 'condition'];
+
+  filterFields: FilterField[] = [
+    { key: 'castle_type', label: 'Castle Type' },
+    { key: 'condition', label: 'Condition' },
+  ];
 
   filteredCastles = computed(() => {
     let castles = this.castleService.castles()

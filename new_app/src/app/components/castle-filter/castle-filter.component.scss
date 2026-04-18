@@ -1,0 +1,15 @@
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.filter-field {
+  flex: 0 1 180px;
+}
+
+.clear-btn {
+  margin-bottom: 22px; // align with form-field baseline
+}
