@@ -2,6 +2,7 @@ import { Component, computed, inject, OnInit, OnDestroy, signal, effect, PLATFOR
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
+import { Meta, Title } from '@angular/platform-browser';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -29,6 +30,8 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private castleService = inject(CastleService);
   private platformId = inject(PLATFORM_ID);
+  private meta = inject(Meta);
+  private titleService = inject(Title);
 
   code = signal('');
   loading = this.castleService.loading;
@@ -124,8 +127,17 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
   constructor() {
     effect(() => {
       const castle = this.castle();
-      if (castle && isPlatformBrowser(this.platformId)) {
-        document.title = `${castle.castle_name} — Top Castles`;
+      if (!castle) return;
+      const pageTitle = `${castle.castle_name} — Top Castles`;
+      this.titleService.setTitle(pageTitle);
+      const description = castle.wikipedia_extract
+        ? castle.wikipedia_extract.slice(0, 160)
+        : `${castle.castle_name} — ranked #${castle.position} in the Top Castles list. Located in ${castle.country}.`;
+      this.meta.updateTag({ name: 'description', content: description });
+      this.meta.updateTag({ property: 'og:title', content: pageTitle });
+      this.meta.updateTag({ property: 'og:description', content: description });
+      if (castle.wikipedia_thumbnail) {
+        this.meta.updateTag({ property: 'og:image', content: castle.wikipedia_thumbnail });
       }
     });
 

@@ -6,6 +6,7 @@ import {
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { Meta, Title } from '@angular/platform-browser';
 import { of } from 'rxjs';
 import { CastleDetailPageComponent } from './castle-detail-page.component';
 import { Castle } from '../../models/castle.model';
@@ -223,5 +224,46 @@ describe('CastleDetailPageComponent', () => {
   it('should not show badge row when no enrichment data', () => {
     setupWithCode('krak');
     expect(fixture.nativeElement.querySelector('.badge-row')).toBeNull();
+  });
+
+  // ── Phase 4.1: breadcrumb ──────────────────────────────────────────────────
+
+  it('should show breadcrumb with Home, Castles, country and castle name', () => {
+    setupWithCode('krak');
+    const breadcrumb = fixture.nativeElement.querySelector('nav.breadcrumb');
+    expect(breadcrumb).toBeTruthy();
+    const text: string = breadcrumb.textContent ?? '';
+    expect(text).toContain('Home');
+    expect(text).toContain('Castles');
+    expect(text).toContain('Syria');
+    expect(text).toContain('Krak des Chevaliers');
+  });
+
+  // ── Phase 4.2: SEO meta tags ───────────────────────────────────────────────
+
+  it('should set page title from castle name', () => {
+    setupWithCode('krak');
+    const title = TestBed.inject(Title);
+    expect(title.getTitle()).toContain('Krak des Chevaliers');
+  });
+
+  it('should set og:title meta tag', () => {
+    setupWithCode('krak');
+    const meta = TestBed.inject(Meta);
+    expect(meta.getTag('property="og:title"')?.content).toContain('Krak des Chevaliers');
+  });
+
+  it('should set description from wikipedia_extract when present', () => {
+    const castles = [makeCastle({ castle_code: 'krak', wikipedia_extract: 'A famous Crusader fortress built in the 12th century.' })];
+    setupWithCode('krak', castles);
+    const meta = TestBed.inject(Meta);
+    expect(meta.getTag('name="description"')?.content).toContain('Crusader fortress');
+  });
+
+  it('should set og:image when wikipedia_thumbnail is present', () => {
+    const castles = [makeCastle({ castle_code: 'krak', wikipedia_thumbnail: 'https://example.com/img.jpg' })];
+    setupWithCode('krak', castles);
+    const meta = TestBed.inject(Meta);
+    expect(meta.getTag('property="og:image"')?.content).toBe('https://example.com/img.jpg');
   });
 });
