@@ -93,6 +93,110 @@ Expose the castle dataset for third-party developers, chatbots, and AI agents.
 
 ---
 
+---
+
+## Phase 6 — Detail Page Enhancements
+
+Items from `additional_improvements.md` not yet implemented.
+
+- [ ] **6.1** Clickable metadata on detail page
+  - Region, castle type, building structure, condition and era become links/buttons
+  - Clicking navigates to `/castles?country=…&castleType=…` (etc.) with the filter pre-applied
+  - Era link goes to `/castles?era=12` — reuses existing query-param support
+- [ ] **6.2** In-place scrollable image strip
+  - Replace the static thumbnail strip with a horizontally-scrollable carousel in the aside
+  - Clicking a thumbnail makes it the featured image *in place* (no overlay) without leaving the page
+  - Fullscreen lightbox remains available as an optional second action
+- [ ] **6.3** Extend nearby castles from 5 to 6
+  - One-line change in `nearbyCastles` computed (`slice(0, 6)`)
+  - Update spec assertions
+- [ ] **6.4** Thumbnail images in castle table and grid
+  - Show `wikipedia_thumbnail` (or a local `/images/castles/small/{code}_small.jpg`) as a 60×60 cell in the table and a card header in the grid
+  - Graceful fallback (castle icon) when no image is available
+
+---
+
+## Phase 7 — Regional & Country Maps
+
+Items from `additional_improvements.md`: "add a map of the country / region with all the castles marked on it".
+
+- [ ] **7.1** Country detail page map
+  - Embed `<app-castle-map>` on the country detail page (already has a Leaflet map effect — replace with the shared component)
+  - `autoFit=true` so it fits all castles in that country
+- [ ] **7.2** Region detail page map
+  - Add `<app-castle-map>` to the region detail page (currently has no map)
+  - Filtered to castles in that region, auto-fit bounds
+
+---
+
+## Phase 8 — Data Quality
+
+Item from `additional_improvements.md`: "further efforts to enrich data for castles that were not found by the script".
+
+- [ ] **8.1** Manual overrides file for Wikipedia misses
+  - Create `scripts/wikipedia_overrides.json` mapping `castle_code → wikipedia_title` for the ~215 unmatched castles
+  - Update `enrich_wikipedia.js` to consult overrides before network lookup
+  - Start with the top-50 unmatched by score (highest-impact misses first)
+- [ ] **8.2** Alternate-language Wikipedia fallback
+  - For castles not found in English Wikipedia, try `de.wikipedia.org` / `fr.wikipedia.org` (in the castle's country language)
+  - Flag with `wikipedia_lang` field so the UI can show "Source: German Wikipedia"
+
+---
+
+## Phase 9 — UX & Polish
+
+Suggested improvements to quality-of-life and discoverability.
+
+- [ ] **9.1** Dark mode
+  - Add CSS custom properties for all colours in `styles.scss`
+  - Auto-switch via `prefers-color-scheme: dark`; manual toggle in toolbar persisted to `localStorage`
+- [ ] **9.2** Castle name autocomplete
+  - Dropdown suggestion list while typing in the Name filter on the castles page
+  - Angular Material `MatAutocomplete` — data comes from `CastleService`
+- [ ] **9.3** Share button on detail page
+  - Native Web Share API with URL fallback (copy link to clipboard)
+  - Share castle name + URL; show confirmation toast
+- [ ] **9.4** Sitemap.xml generation
+  - Script `scripts/generate_sitemap.js` writes `new_app/public/sitemap.xml`
+  - One `<url>` per castle plus static pages; include `<lastmod>` from enrichment date
+  - Add `<link rel="sitemap">` to `index.html` for Google discovery
+
+---
+
+## Phase 10 — Performance
+
+- [ ] **10.1** Reduce initial bundle size (currently ~158 kB over 500 kB budget)
+  - Audit Material module imports — import only what each component uses
+  - Move `CastleMapComponent` behind a dynamic `import()` so Leaflet is never in the initial chunk
+- [ ] **10.2** Pre-compress JSON API files
+  - Add gzip compression to nginx config (or generate `.gz` sidecar files)
+  - `castles.json` is ~3 MB uncompressed; gzip brings it to ~400 kB
+- [ ] **10.3** PWA / service worker
+  - Add `@angular/pwa` — generates `ngsw-config.json` and registers service worker
+  - Cache `castles_enriched.json` and static assets for offline browsing
+  - Add web app manifest for "Add to home screen" on mobile
+
+---
+
+## Phase 11 — Advanced & Optional
+
+Larger or more speculative improvements.
+
+- [ ] **11.1** Castle comparison view
+  - Select 2–3 castles and view them side-by-side in a comparison table
+  - Pin comparison bar at bottom of the castles list page; accessible from any castle card/row
+- [ ] **11.2** Structured data (JSON-LD)
+  - Add `schema.org/LandmarksOrHistoricalBuildings` JSON-LD to each detail page
+  - Enables Google rich results (knowledge panel, image carousel in search)
+- [ ] **11.3** Accessibility audit
+  - WCAG 2.1 AA audit: keyboard navigation, focus indicators, ARIA roles on map markers, colour contrast
+  - Run `axe` or Lighthouse accessibility score ≥ 90 target
+- [ ] **11.4** "Castle of the week" on homepage
+  - Deterministic pick based on ISO week number + year (no server needed)
+  - Prominent featured card on the home page with image and score
+
+---
+
 ## Dependencies
 
 ```
@@ -104,3 +208,11 @@ Expose the castle dataset for third-party developers, chatbots, and AI agents.
 ```
 
 Independent (can be done in any order): 2.4, 2.5, 2.6, 3.1, 4.1, 4.2
+
+```text
+6.1 → 6.4        (clickable metadata needs filter query-param support already in place ✓)
+8.1 → re-run 1.1 (overrides file feeds the Wikipedia script)
+9.4 → submit to Google Search Console after deploy
+10.1 before 10.3 (reduce bundle first, then add PWA to avoid caching bloated chunks)
+11.2 pairs with 4.2 (both are SEO — do together)
+```
