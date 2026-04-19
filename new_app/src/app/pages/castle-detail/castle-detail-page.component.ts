@@ -36,6 +36,7 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
   mapContainer = viewChild<ElementRef<HTMLDivElement>>('mapContainer');
   private leafletMap: any = null;
   private leafletMarker: any = null;
+  private nearbyMarkersLayer: any = null;
   private keyHandler?: (e: KeyboardEvent) => void;
 
   castle = computed<Castle | undefined>(() =>
@@ -135,30 +136,36 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
       this.lightboxIndex.set(null);
     });
 
-    // Read both castle() and mapContainer() as dependencies so the effect
-    // re-runs once the view is initialised (mapContainer goes undefined → ElementRef).
+    // Read castle(), nearbyCastles(), and mapContainer() as dependencies so the
+    // effect re-runs once the view is initialised and when nearby data changes.
     effect(() => {
       const castle = this.castle();
       const container = this.mapContainer();
+      const nearby = this.nearbyCastles();
       if (!container || !castle?.latitude || !castle?.longitude) return;
       if (!isPlatformBrowser(this.platformId)) return;
-      this.initOrUpdateMap(castle.latitude, castle.longitude, castle.castle_name);
+      this.initOrUpdateMap(castle.latitude, castle.longitude, castle.castle_name, nearby);
     });
   }
 
-  private async initOrUpdateMap(lat: number, lon: number, name: string): Promise<void> {
+  private async initOrUpdateMap(
+    lat: number, lon: number, name: string,
+    nearby: { castle: Castle; distanceKm: number }[],
+  ): Promise<void> {
     const container = this.mapContainer()?.nativeElement;
     if (!container) return;
 
     const L = await import('leaflet');
 
     if (!this.leafletMap) {
-      this.leafletMap = L.map(container, { scrollWheelZoom: false }).setView([lat, lon], 14);
+      this.leafletMap = L.map(container, { scrollWheelZoom: false }).setView([lat, lon], 10);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         maxZoom: 19,
       }).addTo(this.leafletMap);
+
+      this.nearbyMarkersLayer = L.layerGroup().addTo(this.leafletMap);
 
       const iconDefault = L.icon({
         iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
@@ -175,8 +182,26 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
 
       setTimeout(() => this.leafletMap?.invalidateSize(), 0);
     } else {
-      this.leafletMap.setView([lat, lon], 14);
+      this.leafletMap.setView([lat, lon], 10);
       this.leafletMarker?.setLatLng([lat, lon]).bindPopup(name);
+    }
+
+    this.nearbyMarkersLayer.clearLayers();
+    for (const { castle, distanceKm } of nearby) {
+      if (castle.latitude == null || castle.longitude == null) continue;
+      L.circleMarker([castle.latitude, castle.longitude], {
+        radius: 7,
+        fillColor: '#ff7800',
+        color: '#fff',
+        weight: 1.5,
+        opacity: 1,
+        fillOpacity: 0.75,
+      })
+        .bindTooltip(
+          `<strong>${castle.castle_name}</strong><br>${distanceKm} km away`,
+          { direction: 'top', offset: [0, -4] },
+        )
+        .addTo(this.nearbyMarkersLayer);
     }
   }
 
@@ -200,6 +225,7 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.leafletMap?.remove();
     this.leafletMap = null;
+    this.nearbyMarkersLayer = null;
     if (this.keyHandler) document.removeEventListener('keydown', this.keyHandler);
   }
 

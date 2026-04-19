@@ -135,6 +135,10 @@
       <app-view-toggle />
       @if (viewModeService.mode() === 'grid') {
         <app-castle-grid [castles]="filteredCastles()" />
+      } @else if (viewModeService.mode() === 'map') {
+        <div class="map-view-container">
+          <app-castle-map [castles]="filteredCastles()" />
+        </div>
       } @else {
         <app-castle-table [castles]="filteredCastles()" [columns]="displayedColumns" />
       }

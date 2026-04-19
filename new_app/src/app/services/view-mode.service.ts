@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 
-export type ViewMode = 'list' | 'grid';
+export type ViewMode = 'list' | 'grid' | 'map';
 
 @Injectable({ providedIn: 'root' })
 export class ViewModeService {

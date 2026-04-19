@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CastleService } from '../../services/castle.service';
 import { CastleTableComponent } from '../../components/castle-table/castle-table.component';
 import { CastleGridComponent } from '../../components/castle-grid/castle-grid.component';
+import { CastleMapComponent } from '../../components/castle-map/castle-map.component';
 import { ViewToggleComponent } from '../../components/view-toggle/view-toggle.component';
 import { ViewModeService } from '../../services/view-mode.service';
 
@@ -20,7 +21,7 @@ import { ViewModeService } from '../../services/view-mode.service';
     FormsModule,
     MatFormFieldModule, MatInputModule, MatSelectModule,
     MatChipsModule, MatIconModule, MatButtonModule,
-    CastleTableComponent, CastleGridComponent, ViewToggleComponent,
+    CastleTableComponent, CastleGridComponent, CastleMapComponent, ViewToggleComponent,
   ],
   templateUrl: './castles-page.component.html',
   styleUrl: './castles-page.component.scss',

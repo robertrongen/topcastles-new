@@ -29,15 +29,16 @@ describe('ViewToggleComponent', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should render two mat-button-toggle elements', () => {
+  it('should render three mat-button-toggle elements', () => {
     const toggles = fixture.nativeElement.querySelectorAll('mat-button-toggle');
-    expect(toggles.length).toBe(2);
+    expect(toggles.length).toBe(3);
   });
 
-  it('should have list and grid toggle values', () => {
+  it('should have list, grid and map toggle values', () => {
     const toggles = fixture.nativeElement.querySelectorAll('mat-button-toggle');
     expect(toggles[0].getAttribute('value')).toBe('list');
     expect(toggles[1].getAttribute('value')).toBe('grid');
+    expect(toggles[2].getAttribute('value')).toBe('map');
   });
 
   it('setView should call viewModeService.setMode with grid', () => {
