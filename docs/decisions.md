@@ -1,147 +1,124 @@
 # Architectural decisions
 
-## ADR-001: Simplify Legacy Scope to EN-Only Static Top 100
+## ADR-001: Simplify legacy scope to EN-only static top 1000
+
 Status: accepted
 
 Context:
+
 - The legacy PHP application contains multilingual content and interactive voting/polling paths.
 - Migration is scoped to an English-only experience and lower operational complexity.
 
 Decision:
+
 - Enforce English-only runtime behavior.
 - Disable castle visitor voting interactions in the UI.
-- Use static `score_total` ranking for top 100 views instead of runtime vote aggregation.
+- Use static `score_total` ranking for top 1000 views instead of runtime vote aggregation.
 
 Consequences:
+
 - Simpler migration baseline with fewer dynamic dependencies.
 - Historic vote-driven behavior is no longer part of active user flows.
-- Some legacy vote/poll code remains in repository but is not reachable through primary navigation paths.
+- Some legacy vote/poll code remains in `old_app/` but is unreachable through primary navigation.
 
-## ADR-002: Angular 19 Target Stack
+## ADR-002: Angular 19 target stack
+
 Status: accepted
 
 Context:
-- The legacy PHP application needs a modern framework for the migration.
-- The developer's company uses Angular 19 + Material + Storybook as their standard stack.
-- Using the same stack provides professional skill development alongside the migration.
-- The site is read-only public content (no auth, no user writes after ADR-001 simplifications).
+
+- The legacy PHP application needed a modern framework.
+- Angular 19 + Material + Storybook is the developer's professional stack, providing skill development alongside the migration.
+- The site is read-only public content (no auth, no user writes after ADR-001).
 
 Decision:
+
 - **Framework**: Angular 19.2+ with Standalone Components and Signals.
 - **UI library**: Angular Material 19 as design foundation.
-- **Component docs**: Storybook 9 for component development, visual testing, and documentation.
+- **Component docs**: Storybook 9 for component development and documentation.
 - **Language**: TypeScript 5.7+.
 - **Styling**: SCSS with CSS Custom Properties.
 - **Data layer**: Static JSON files converted from source CSV at build time — no database in build or production.
 - **Rendering**: Angular SSR with prerendering for SEO-critical public pages.
-- **Unit testing**: Karma + Jasmine (Angular default) or Vitest (to be confirmed during skeleton setup).
+- **Unit testing**: Karma + Jasmine (Angular default).
 
 Consequences:
+
 - Heavier client-side framework than strictly necessary for a read-only site, but aligns with professional development goals.
 - Angular SSR/prerendering mitigates SEO concerns for a content-heavy public site.
 - Static JSON data layer keeps deployment simple (no database dependency in production).
-- Storybook enables isolated component development — useful for building and reviewing UI slices before wiring data.
-- Angular Material provides accessible, pre-built components (tables, cards, navigation) that map well to castle listings and detail pages.
+- Storybook enables isolated component development and visual review.
 
-## ADR-003: Static JSON Data Layer from CSV
+## ADR-003: Static JSON data layer from CSV
+
 Status: accepted
 
 Context:
+
 - The PHP app queries MySQL for castle data on every page load.
 - After ADR-001, all data is read-only static rankings (no runtime vote aggregation).
 - A live database adds operational complexity for no functional benefit.
 - The original CSV used to populate MySQL is available: `old_app/database/Topcastles export.csv` (1000 castles, 41 columns, semicolon-delimited, NL+EN fields).
 
 Decision:
+
 - Convert the CSV directly to JSON files — no MySQL dependency in the build pipeline.
 - A Python script (`scripts/csv_to_json.py`) reads the CSV source and produces EN-only JSON.
 - JSON files live in `new_app/src/assets/data/` and are versioned in the repository.
 - The Angular app consumes these JSON files via Angular `HttpClient` or build-time imports.
 - If data needs updating, edit the CSV and re-run the conversion script.
 
-CSV column mapping (EN fields used in migration):
-- `position`, `castle_code`, `castle_name`, `country`, `area`, `place`, `region`
-- `Latitude`, `Longitude`, `founder`, `era`, `castle_type`, `castle_concept`, `condition`
-- `remarkable`, `description`, `website`, `score_total`, `score_visitors`, `visitors`
-- NL-only columns (`land`, `gebied`, `kasteel_type`, `kasteel_concept`, `conditie`, `opmerkelijk`, `beschrijving`) are excluded per ADR-001 (EN-only).
-
 Consequences:
-- Zero database dependency in both build and production.
-- CSV → JSON is simpler and faster than MySQL → JSON (no DB install required).
-- Data changes require CSV edit + script re-run + rebuild.
-- Export script becomes a migration artifact in `scripts/`.
 
-## ADR-004: Docker Deployment on Synology NAS
+- Zero database dependency in both build and production.
+- CSV to JSON is simpler and faster than MySQL to JSON (no DB install required).
+- Data changes require CSV edit + script re-run + rebuild.
+
+## ADR-004: Docker deployment on Synology NAS
+
 Status: accepted
 
 Context:
+
 - The application needs a hosting target for production.
 - The developer has a personal Synology NAS that supports Docker containers.
 - The site is read-only content with Angular SSR — lightweight resource requirements.
 
 Decision:
+
 - Package the Angular SSR application as a Docker container.
-- Use a multi-stage Dockerfile: Node build stage → lightweight Node runtime stage.
-- Deploy the container to Synology NAS via Docker (Synology Container Manager).
-- Expose the app on a configurable port (default `4000`).
-- Use `node dist/new_app/server/server.mjs` as the container entrypoint.
+- Use a multi-stage Dockerfile: Node build stage then lightweight Node runtime stage.
+- Deploy to Synology NAS via Docker Hub and SSH (`deploy.sh`).
+- Expose the app on NAS port 8080 mapped to container port 80.
 
 Consequences:
+
 - Self-hosted, no cloud hosting costs.
 - Synology Docker has limited resources — keep the container image small (Node Alpine base).
-- No CI/CD pipeline to Synology initially — manual `docker build` + `docker load` or registry pull.
-- SSR serves prerendered HTML + handles dynamic routes; static assets served by Node/Express.
+- SSR serves prerendered HTML and handles dynamic routes; static assets served by Node/Express.
 - Future option: add a reverse proxy (Synology built-in or Nginx) for HTTPS/domain mapping.
 
-## ADR-005: Visual Parity — Old-App Brand Applied via CSS Overrides
+## ADR-005: Visual parity — old-app brand applied via CSS overrides
+
 Status: accepted
 
 Context:
-- Step 10 of the migration plan requires the Angular app to replicate the old app's visual identity
-  so it feels like a refresh rather than a redesign.
+
+- The Angular app should replicate the old app's visual identity so it feels like a refresh rather than a redesign.
 - The old app's canonical palette is defined in `old_app/style/2col_leftNav.css`.
-- Angular Material 19 (M3) uses a generated colour system. Rebuilding a full custom M3 palette
-  (hue/tone curves) to hit the specific legacy hex values adds complexity with no functional gain.
-- The key brand values are: orange masthead (`#FF9900`), dark-blue body (`#00005C`),
-  lavender nav (`#E6E6F5`), dark-blue links (`#000099`), lavender hover (`#CCCCFF`),
-  cream alternating rows (`#FFF6DE`), lavender table headers (`#CCCCEB`), Verdana typography.
+- Angular Material 19 (M3) uses a generated colour system. Rebuilding a full custom M3 palette to hit specific legacy hex values adds complexity with no functional gain.
 
 Decision:
+
 - Apply the old-app palette through two layers:
-  1. Switch the Angular Material primary palette to `mat.$orange-palette` (closest standard
-     palette to `#FF9900`) so Material-managed surfaces pick up a warm primary tone.
-  2. Override specific surfaces — toolbar, sidenav, links, table rows, section headings — with
-     exact legacy hex values in `styles.scss` and `app.component.scss` using CSS class selectors
-     and `!important` where Material encapsulation requires it.
-- Replace the Google Fonts Roboto import with the system-available Verdana stack
-  (`Verdana, Arial, sans-serif`) at 11 px bold, matching the old app body font.
-- Copy `logo_topkastelen_nl.jpg` and `tk-shield.ico` from `old_app/style/` into
-  `new_app/public/` and wire them into the masthead and favicon.
-- Remove the email contact link ("Want to contribute?") from the Photographers tab
-  as a confirmed drop-scope item (no contact form in new product).
+  1. Switch the Angular Material primary palette to `mat.$orange-palette` (closest standard palette to `#FF9900`) so Material-managed surfaces pick up a warm primary tone.
+  2. Override specific surfaces — toolbar, sidenav, links, table rows, section headings — with exact legacy hex values in `styles.scss` and `app.component.scss`.
+- Replace the Roboto import with the system-available Verdana stack (`Verdana, Arial, sans-serif`) at 11px bold, matching the old app body font.
+- Copy `logo_topkastelen_nl.jpg` and `tk-shield.ico` from `old_app/style/` into `new_app/public/`.
+- Remove the email contact link from the Photographers tab (confirmed drop-scope item).
 
 Consequences:
+
 - The app is visually familiar to users of the old site with minimal structural changes.
-- Material M3 internal surfaces (focus rings, ripples, selection indicators) retain M3
-  defaults and do not perfectly match the old app — acceptable given the migration goal
-  is a refresh, not a pixel-perfect clone.
-- The CSS override approach is simpler to maintain than a full M3 custom theme; any future
-  full rebrand can replace `styles.scss` variable values in one place.
-- 4 new tests guard the logo presence, nav toggle, and removal of the email link.
-
----
-
-Use this format when adding a new decision:
-
-## ADR-NNN: Decision title
-Status: proposed | accepted | superseded
-
-Context:
-- Why this decision is needed
-
-Decision:
-- What was decided
-
-Consequences:
-- Expected benefits
-- Trade-offs / risks
+- Material M3 internal surfaces retain M3 defaults and do not perfectly match the old app — acceptable given the goal is a refresh, not a pixel-perfect clone.
+- The CSS override approach is simpler to maintain than a full M3 custom theme.
