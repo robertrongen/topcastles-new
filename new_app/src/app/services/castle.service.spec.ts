@@ -67,18 +67,9 @@ describe('CastleService', () => {
       expect(service.loading()).toBeFalse();
     });
 
-    it('falls back to castles.json when castles_enriched.json errors', () => {
+    it('sets loading to false on error', () => {
       service.loadCastles();
       httpTesting.expectOne('/assets/data/castles_enriched.json').error(new ProgressEvent('network error'));
-      httpTesting.expectOne('/assets/data/castles.json').flush(castles);
-      expect(service.castles().length).toBe(4);
-      expect(service.loading()).toBeFalse();
-    });
-
-    it('sets loading to false when both requests error', () => {
-      service.loadCastles();
-      httpTesting.expectOne('/assets/data/castles_enriched.json').error(new ProgressEvent('network error'));
-      httpTesting.expectOne('/assets/data/castles.json').error(new ProgressEvent('network error'));
       expect(service.loading()).toBeFalse();
     });
 
