@@ -75,24 +75,21 @@ Foundation for Wikipedia/Wikidata display in Phase 2. Run scripts once, then re-
 
 Expose the castle dataset for third-party developers, chatbots, and AI agents.
 
-- [ ] **5.1** Static JSON API endpoints (zero infra cost)
-  - Serve `castles_enriched.json` and `no_castles.json` as public static files (already served via Angular's `assets/`)
-  - Add a `public/api/` folder with pre-sliced files: `castles.json`, `top100.json`, `by-country/{country}.json`
-  - Generate these slices as part of the enrichment pipeline
-- [ ] **5.2** `llms.txt` — AI-agent discovery file
-  - Create `/public/llms.txt` following the [llms.txt spec](https://llmstxt.org/)
-  - Describe the dataset, available endpoints, data schema, and usage intent
-  - This allows LLMs and agents to self-discover and understand the dataset without manual setup
-- [ ] **5.3** OpenAPI spec for the static API
-  - Write `public/api/openapi.yaml` describing the JSON endpoints (paths, response schemas)
-  - Enables any OpenAPI-aware tool or agent to auto-generate a client or explore the API
-- [ ] **5.4** MCP (Model Context Protocol) server — optional, highest AI-agent value
-  - Small Node.js MCP server (`scripts/mcp-server.js`) exposing tools:
-    - `search_castles(query, country?, era?, condition?)` → returns matching castles
-    - `get_castle(castle_code)` → returns full castle detail
-    - `list_countries()` → returns country list with castle counts
-  - Connects directly into Claude, Cursor, VS Code Copilot, and other MCP-compatible AI assistants
-  - Users can point their AI tool at the server and query the castle dataset conversationally
+- [x] **5.1** Static JSON API endpoints (zero infra cost)
+  - `scripts/generate_api.js` slices `castles_enriched.json` into `new_app/public/api/`
+  - Endpoints: `/api/castles.json`, `/api/top100.json`, `/api/by-country/{slug}.json`, `/api/index.json`
+  - 56 country files generated; re-run script after data refresh
+- [x] **5.2** `llms.txt` — AI-agent discovery file
+  - `new_app/public/llms.txt` served at `/llms.txt`
+  - Documents schema, endpoints, example agent queries, and data freshness
+- [x] **5.3** OpenAPI spec for the static API
+  - `new_app/public/api/openapi.yaml` served at `/api/openapi.yaml`
+  - Full Castle schema with all enrichment fields; all four endpoints described
+- [x] **5.4** MCP (Model Context Protocol) server
+  - `scripts/mcp-server.js` with `scripts/package.json` (`@modelcontextprotocol/sdk`, `zod`)
+  - Tools: `search_castles`, `get_castle`, `list_countries`, `nearby_castles`
+  - Run: `cd scripts && npm install && node ../scripts/mcp-server.js`
+  - Configure in Claude Desktop via `claude_desktop_config.json`
 
 ---
 

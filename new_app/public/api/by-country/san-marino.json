@@ -1,0 +1,31 @@
+[
+  {
+    "position": 137,
+    "castle_code": "sanmarino",
+    "castle_name": "San Marino (Mont Titan)",
+    "country": "San Marino",
+    "area": "Alps, Holy Roman Empire",
+    "place": "San Marino",
+    "region": "",
+    "region_code": "",
+    "latitude": null,
+    "longitude": null,
+    "founder": "",
+    "era": 15,
+    "castle_type": "Mountain castle",
+    "castle_concept": "Donjon inside curtain wall",
+    "condition": "Intact",
+    "remarkable": "",
+    "description": "",
+    "website": "",
+    "score_total": 551.588986,
+    "score_visitors": 8.310345,
+    "visitors": 28,
+    "wikipedia_extract": "San Marino, officially the Republic of San Marino (RSM), is a landlocked country in Southern Europe, completely surrounded by Italy. Located on the northeastern slopes of the Apennine Mountains, it is the larger of two microstates within Italy, the other being Vatican City. San Marino is the fifth-smallest country in the world, with a land area of just over 61 km2 and a population of 34,042 as of 2025. Its capital, the City of San Marino, sits atop Monte Titano, while its largest settlement is Dogana, in the municipality of Serravalle.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Flag_of_San_Marino.svg/330px-Flag_of_San_Marino.svg.png",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/San_Marino",
+    "wikidata_id": "Q238",
+    "inception_year": 301,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/View_of_Mount_Titano_-_San_Marino.jpg?width=800"
+  }
+]

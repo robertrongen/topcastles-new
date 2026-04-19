@@ -1,0 +1,10 @@
+{
+  "name": "topcastles-scripts",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Data enrichment and MCP server scripts for TopCastles",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.15.0",
+    "zod": "^3.24.0"
+  }
+}

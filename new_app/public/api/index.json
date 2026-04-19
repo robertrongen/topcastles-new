@@ -1,0 +1,361 @@
+{
+  "version": "1.0",
+  "generated": "2026-04-19",
+  "totalCastles": 1000,
+  "endpoints": {
+    "allCastles": {
+      "url": "/api/castles.json",
+      "description": "All castles sorted by score descending"
+    },
+    "top100": {
+      "url": "/api/top100.json",
+      "description": "Top 100 castles by score"
+    },
+    "byCountry": {
+      "url": "/api/by-country/{country-slug}.json",
+      "description": "Castles filtered by country"
+    },
+    "openApiSpec": {
+      "url": "/api/openapi.yaml",
+      "description": "OpenAPI 3.0 specification"
+    }
+  },
+  "countries": [
+    {
+      "country": "Albania",
+      "slug": "albania",
+      "count": 1,
+      "url": "/api/by-country/albania.json"
+    },
+    {
+      "country": "Austria",
+      "slug": "austria",
+      "count": 47,
+      "url": "/api/by-country/austria.json"
+    },
+    {
+      "country": "Belarus",
+      "slug": "belarus",
+      "count": 1,
+      "url": "/api/by-country/belarus.json"
+    },
+    {
+      "country": "Belgium",
+      "slug": "belgium",
+      "count": 32,
+      "url": "/api/by-country/belgium.json"
+    },
+    {
+      "country": "Bosnia",
+      "slug": "bosnia",
+      "count": 4,
+      "url": "/api/by-country/bosnia.json"
+    },
+    {
+      "country": "Bulgaria",
+      "slug": "bulgaria",
+      "count": 2,
+      "url": "/api/by-country/bulgaria.json"
+    },
+    {
+      "country": "Croatia",
+      "slug": "croatia",
+      "count": 19,
+      "url": "/api/by-country/croatia.json"
+    },
+    {
+      "country": "Cyprus",
+      "slug": "cyprus",
+      "count": 8,
+      "url": "/api/by-country/cyprus.json"
+    },
+    {
+      "country": "Czechia",
+      "slug": "czechia",
+      "count": 35,
+      "url": "/api/by-country/czechia.json"
+    },
+    {
+      "country": "Denmark",
+      "slug": "denmark",
+      "count": 6,
+      "url": "/api/by-country/denmark.json"
+    },
+    {
+      "country": "Egypt",
+      "slug": "egypt",
+      "count": 2,
+      "url": "/api/by-country/egypt.json"
+    },
+    {
+      "country": "England",
+      "slug": "england",
+      "count": 63,
+      "url": "/api/by-country/england.json"
+    },
+    {
+      "country": "Estonia",
+      "slug": "estonia",
+      "count": 3,
+      "url": "/api/by-country/estonia.json"
+    },
+    {
+      "country": "Ethiopia",
+      "slug": "ethiopia",
+      "count": 1,
+      "url": "/api/by-country/ethiopia.json"
+    },
+    {
+      "country": "Finland",
+      "slug": "finland",
+      "count": 6,
+      "url": "/api/by-country/finland.json"
+    },
+    {
+      "country": "France",
+      "slug": "france",
+      "count": 100,
+      "url": "/api/by-country/france.json"
+    },
+    {
+      "country": "Georgia",
+      "slug": "georgia",
+      "count": 1,
+      "url": "/api/by-country/georgia.json"
+    },
+    {
+      "country": "Germany",
+      "slug": "germany",
+      "count": 89,
+      "url": "/api/by-country/germany.json"
+    },
+    {
+      "country": "Greece",
+      "slug": "greece",
+      "count": 16,
+      "url": "/api/by-country/greece.json"
+    },
+    {
+      "country": "Hungary",
+      "slug": "hungary",
+      "count": 27,
+      "url": "/api/by-country/hungary.json"
+    },
+    {
+      "country": "India",
+      "slug": "india",
+      "count": 7,
+      "url": "/api/by-country/india.json"
+    },
+    {
+      "country": "Israel",
+      "slug": "israel",
+      "count": 6,
+      "url": "/api/by-country/israel.json"
+    },
+    {
+      "country": "Italy",
+      "slug": "italy",
+      "count": 72,
+      "url": "/api/by-country/italy.json"
+    },
+    {
+      "country": "Japan",
+      "slug": "japan",
+      "count": 15,
+      "url": "/api/by-country/japan.json"
+    },
+    {
+      "country": "Jordan",
+      "slug": "jordan",
+      "count": 2,
+      "url": "/api/by-country/jordan.json"
+    },
+    {
+      "country": "Latvia",
+      "slug": "latvia",
+      "count": 6,
+      "url": "/api/by-country/latvia.json"
+    },
+    {
+      "country": "Lebanon",
+      "slug": "lebanon",
+      "count": 3,
+      "url": "/api/by-country/lebanon.json"
+    },
+    {
+      "country": "Liechtenstein",
+      "slug": "liechtenstein",
+      "count": 2,
+      "url": "/api/by-country/liechtenstein.json"
+    },
+    {
+      "country": "Lithuania",
+      "slug": "lithuania",
+      "count": 2,
+      "url": "/api/by-country/lithuania.json"
+    },
+    {
+      "country": "Luxemburg",
+      "slug": "luxemburg",
+      "count": 10,
+      "url": "/api/by-country/luxemburg.json"
+    },
+    {
+      "country": "Macedonia",
+      "slug": "macedonia",
+      "count": 1,
+      "url": "/api/by-country/macedonia.json"
+    },
+    {
+      "country": "Moldova",
+      "slug": "moldova",
+      "count": 1,
+      "url": "/api/by-country/moldova.json"
+    },
+    {
+      "country": "Monaco",
+      "slug": "monaco",
+      "count": 1,
+      "url": "/api/by-country/monaco.json"
+    },
+    {
+      "country": "Morocco",
+      "slug": "morocco",
+      "count": 1,
+      "url": "/api/by-country/morocco.json"
+    },
+    {
+      "country": "Netherlands",
+      "slug": "netherlands",
+      "count": 30,
+      "url": "/api/by-country/netherlands.json"
+    },
+    {
+      "country": "Northern Ireland",
+      "slug": "northern-ireland",
+      "count": 3,
+      "url": "/api/by-country/northern-ireland.json"
+    },
+    {
+      "country": "Norway",
+      "slug": "norway",
+      "count": 3,
+      "url": "/api/by-country/norway.json"
+    },
+    {
+      "country": "Pakistan",
+      "slug": "pakistan",
+      "count": 1,
+      "url": "/api/by-country/pakistan.json"
+    },
+    {
+      "country": "Poland",
+      "slug": "poland",
+      "count": 34,
+      "url": "/api/by-country/poland.json"
+    },
+    {
+      "country": "Portugal",
+      "slug": "portugal",
+      "count": 20,
+      "url": "/api/by-country/portugal.json"
+    },
+    {
+      "country": "Republic of Ireland",
+      "slug": "republic-of-ireland",
+      "count": 19,
+      "url": "/api/by-country/republic-of-ireland.json"
+    },
+    {
+      "country": "Rumania",
+      "slug": "rumania",
+      "count": 11,
+      "url": "/api/by-country/rumania.json"
+    },
+    {
+      "country": "Russia",
+      "slug": "russia",
+      "count": 7,
+      "url": "/api/by-country/russia.json"
+    },
+    {
+      "country": "San Marino",
+      "slug": "san-marino",
+      "count": 1,
+      "url": "/api/by-country/san-marino.json"
+    },
+    {
+      "country": "Scotland",
+      "slug": "scotland",
+      "count": 41,
+      "url": "/api/by-country/scotland.json"
+    },
+    {
+      "country": "Serbia",
+      "slug": "serbia",
+      "count": 4,
+      "url": "/api/by-country/serbia.json"
+    },
+    {
+      "country": "Slovakia",
+      "slug": "slovakia",
+      "count": 10,
+      "url": "/api/by-country/slovakia.json"
+    },
+    {
+      "country": "Slovenia",
+      "slug": "slovenia",
+      "count": 27,
+      "url": "/api/by-country/slovenia.json"
+    },
+    {
+      "country": "Spain",
+      "slug": "spain",
+      "count": 72,
+      "url": "/api/by-country/spain.json"
+    },
+    {
+      "country": "Sweden",
+      "slug": "sweden",
+      "count": 18,
+      "url": "/api/by-country/sweden.json"
+    },
+    {
+      "country": "Switzerland",
+      "slug": "switzerland",
+      "count": 40,
+      "url": "/api/by-country/switzerland.json"
+    },
+    {
+      "country": "Syria",
+      "slug": "syria",
+      "count": 8,
+      "url": "/api/by-country/syria.json"
+    },
+    {
+      "country": "Tunisia",
+      "slug": "tunisia",
+      "count": 1,
+      "url": "/api/by-country/tunisia.json"
+    },
+    {
+      "country": "Turkey",
+      "slug": "turkey",
+      "count": 20,
+      "url": "/api/by-country/turkey.json"
+    },
+    {
+      "country": "Ukraine",
+      "slug": "ukraine",
+      "count": 7,
+      "url": "/api/by-country/ukraine.json"
+    },
+    {
+      "country": "Wales",
+      "slug": "wales",
+      "count": 31,
+      "url": "/api/by-country/wales.json"
+    }
+  ]
+}

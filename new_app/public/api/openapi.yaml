@@ -1,0 +1,244 @@
+openapi: 3.0.3
+info:
+  title: TopCastles API
+  description: >
+    Static JSON API for the TopCastles dataset — 1,000 ranked castles across
+    Europe and beyond, enriched with Wikipedia and Wikidata data.
+    All endpoints return pre-generated JSON files; no authentication required.
+  version: '1.0'
+  contact:
+    url: https://github.com/topcastles-new
+
+servers:
+  - url: /api
+    description: Static API (served from same origin)
+
+paths:
+  /castles.json:
+    get:
+      summary: All castles
+      description: Returns all 1,000 castles sorted by composite score descending.
+      operationId: getAllCastles
+      responses:
+        '200':
+          description: Array of castle objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Castle'
+
+  /top100.json:
+    get:
+      summary: Top 100 castles
+      description: Returns the top 100 castles by composite score.
+      operationId: getTop100
+      responses:
+        '200':
+          description: Array of castle objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Castle'
+
+  /index.json:
+    get:
+      summary: API index and country list
+      description: Returns metadata about the API, available endpoints, and the full list of country slugs.
+      operationId: getIndex
+      responses:
+        '200':
+          description: API index object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiIndex'
+
+  /by-country/{countrySlug}.json:
+    get:
+      summary: Castles by country
+      description: Returns all castles for a specific country, sorted by score descending.
+      operationId: getCastlesByCountry
+      parameters:
+        - name: countrySlug
+          in: path
+          required: true
+          description: >
+            Lowercase hyphenated country slug (e.g. "france", "germany", "england").
+            Full list available in /api/index.json.
+          schema:
+            type: string
+            example: france
+      responses:
+        '200':
+          description: Array of castle objects for the country
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Castle'
+        '404':
+          description: Country slug not found
+
+components:
+  schemas:
+    Castle:
+      type: object
+      required:
+        - castle_code
+        - castle_name
+        - country
+      properties:
+        castle_code:
+          type: string
+          description: Unique identifier and URL slug
+          example: krak-des-chevaliers
+        castle_name:
+          type: string
+          example: Krak des Chevaliers
+        position:
+          type: integer
+          nullable: true
+          description: Rank by composite score (1 = best)
+          example: 1
+        score_total:
+          type: number
+          nullable: true
+          description: Composite score
+          example: 952
+        score_visitors:
+          type: number
+          nullable: true
+          description: Visitor rating on a 0–10 scale
+          example: 8.5
+        visitors:
+          type: integer
+          nullable: true
+          description: Number of visitor ratings
+          example: 120
+        country:
+          type: string
+          example: Syria
+        region:
+          type: string
+          example: Homs Governorate
+        region_code:
+          type: string
+          example: homs-governorate
+        place:
+          type: string
+          example: Homs
+        area:
+          type: string
+          description: Comma-separated area/theme tags
+          example: 'Asia, Outside Europe, Crusades'
+        latitude:
+          type: number
+          nullable: true
+          example: 34.7575
+        longitude:
+          type: number
+          nullable: true
+          example: 36.2937
+        era:
+          type: integer
+          nullable: true
+          description: Century of construction (12 = 12th century)
+          example: 12
+        castle_type:
+          type: string
+          description: Location type
+          example: Hilltop castle
+        castle_concept:
+          type: string
+          description: Structural concept
+          example: Concentric castle
+        condition:
+          type: string
+          description: Preservation state
+          example: Damaged
+        founder:
+          type: string
+          example: Knights Hospitaller
+        remarkable:
+          type: string
+          description: Notable feature summary
+        description:
+          type: string
+        website:
+          type: string
+          format: uri
+        wikipedia_extract:
+          type: string
+          nullable: true
+          description: First paragraph from Wikipedia
+        wikipedia_url:
+          type: string
+          nullable: true
+          format: uri
+        wikipedia_thumbnail:
+          type: string
+          nullable: true
+          format: uri
+        wikidata_id:
+          type: string
+          nullable: true
+          description: Wikidata QID
+          example: Q23053
+        architectural_style:
+          type: string
+          nullable: true
+          description: Wikidata P149
+        heritage_status:
+          type: string
+          nullable: true
+          description: Wikidata P1435 heritage designation
+          example: UNESCO World Heritage Site
+        inception_year:
+          type: integer
+          nullable: true
+          description: Year of construction from Wikidata P571
+        wikidata_image:
+          type: string
+          nullable: true
+          format: uri
+
+    ApiIndex:
+      type: object
+      properties:
+        version:
+          type: string
+          example: '1.0'
+        generated:
+          type: string
+          format: date
+          example: '2026-04-19'
+        totalCastles:
+          type: integer
+          example: 1000
+        endpoints:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              url:
+                type: string
+              description:
+                type: string
+        countries:
+          type: array
+          items:
+            type: object
+            properties:
+              country:
+                type: string
+              slug:
+                type: string
+              count:
+                type: integer
+              url:
+                type: string

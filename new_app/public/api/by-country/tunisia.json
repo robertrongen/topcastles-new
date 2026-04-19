@@ -1,0 +1,31 @@
+[
+  {
+    "position": 688,
+    "castle_code": "kasbah",
+    "castle_name": "La Kasbah",
+    "country": "Tunisia",
+    "area": "Asia, Outside Europe",
+    "place": "Sousse",
+    "region": "",
+    "region_code": "",
+    "latitude": null,
+    "longitude": null,
+    "founder": "",
+    "era": null,
+    "castle_type": "",
+    "castle_concept": "",
+    "condition": "",
+    "remarkable": "",
+    "description": "",
+    "website": "",
+    "score_total": 355.533333,
+    "score_visitors": 6.666667,
+    "visitors": 2,
+    "wikipedia_extract": "The Kasbah Palace, also known as Dar al-Makhzen, Sultan's Palace or Governor's Palace and formerly as the Sharifian Palace, is a historical building and museum in the Kasbah or citadel of Tangier, Morocco. Its site has long been the main seat of political power in Tangier. The current structure was built in the early 18th century as the residence of the city's governor and home for the Sultan of Morocco when staying in the city, for example Hassan I in 1889. It has been repurposed as a museum since 1922, named the Kasbah Museum of Mediterranean Cultures since renovation in 2016, with the Kasbah Museum Contemporary Art Space added in late 2021.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Tangier_city_museum_enclave.jpg/330px-Tangier_city_museum_enclave.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Kasbah_Palace%2C_Tangier",
+    "wikidata_id": "Q5221954",
+    "heritage_status": "Moroccan cultural heritage",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Int%C3%A9rieur_Palais_du_Sultan.jpg?width=800"
+  }
+]

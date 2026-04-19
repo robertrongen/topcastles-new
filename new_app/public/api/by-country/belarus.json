@@ -1,0 +1,32 @@
+[
+  {
+    "position": 553,
+    "castle_code": "mir",
+    "castle_name": "Mir Castle",
+    "country": "Belarus",
+    "area": "Asia, Outside Europe",
+    "place": "Minsk",
+    "region": "Grodno Region, Korelichi District",
+    "region_code": "grodno",
+    "latitude": null,
+    "longitude": null,
+    "founder": "Dukes Radziwils",
+    "era": null,
+    "castle_type": "",
+    "castle_concept": "",
+    "condition": "",
+    "remarkable": "",
+    "description": "",
+    "website": "",
+    "score_total": 388.889717,
+    "score_visitors": 6.1,
+    "visitors": 9,
+    "wikipedia_extract": "The Mir Castle Complex is a historic fortified castle and a UNESCO World Heritage Site in Belarus. It is located in the town of Mir, in Karelichy District of Grodno Oblast, 29 kilometres (18 mi) north-west of another World Heritage site, Nesvizh Castle. Mir Castle Complex is 164 metres (538 ft) above sea level. Erected in the 16th century in the late Brick Gothic style, it is one of the few remaining architectural monuments of the former Polish–Lithuanian Commonwealth in contemporary Belarus.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/%D0%9A%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81_%D0%9C%D0%B8%D1%80%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%B7%D0%B0%D0%BC%D0%BA%D0%B0.JPG/330px-%D0%9A%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81_%D0%9C%D0%B8%D1%80%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%B7%D0%B0%D0%BC%D0%BA%D0%B0.JPG",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Mir_Castle_Complex",
+    "wikidata_id": "Q209643",
+    "architectural_style": "Gothic architecture",
+    "heritage_status": "Cultural heritage of Belarus",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mir_Castle_2018.jpg?width=800"
+  }
+]

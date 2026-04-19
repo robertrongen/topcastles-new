@@ -1,0 +1,31 @@
+[
+  {
+    "position": 350,
+    "castle_code": "fasilghebbi",
+    "castle_name": "Fasil Ghebbi",
+    "country": "Ethiopia",
+    "area": "Afrika, Outside Europe",
+    "place": "",
+    "region": "Gondar Region",
+    "region_code": "gondar",
+    "latitude": null,
+    "longitude": null,
+    "founder": "",
+    "era": null,
+    "castle_type": "",
+    "castle_concept": "",
+    "condition": "",
+    "remarkable": "",
+    "description": "",
+    "website": "",
+    "score_total": 443.80945,
+    "score_visitors": 7.285714,
+    "visitors": 6,
+    "wikipedia_extract": "The Fasil Ghebbi is a fortress located in Gondar, Amhara Region, Ethiopia. It was founded in the 17th century by Emperor Fasilides and was the home of Ethiopian emperors. Its unique architecture shows diverse influences including Portuguese, Hindu, and Arab characteristics. Because of its historical importance and architecture, the fortress was inscribed as a UNESCO World Heritage Site in 1979. Ghebbi is an Amharic word for a compound or enclosure.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Fasilides_Palace_01.jpg/330px-Fasilides_Palace_01.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Fasil_Ghebbi",
+    "wikidata_id": "Q464695",
+    "heritage_status": "World Heritage Site",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/ET_Gondar_asv2018-02_img02_Fasil_Ghebbi.jpg?width=800"
+  }
+]

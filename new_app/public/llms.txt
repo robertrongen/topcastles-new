@@ -1,0 +1,78 @@
+# TopCastles — Castle Dataset
+
+> A ranked dataset of 1,000 notable castles across Europe and beyond, with scores, metadata, and enrichment from Wikipedia and Wikidata.
+
+## What this is
+
+TopCastles ranks castles by a composite score that combines architectural significance, historical importance, visitor experience, and condition. The dataset covers 56 countries and includes coordinates, era, type, condition, heritage status, and Wikipedia extracts for most entries.
+
+## Data access
+
+All data is served as static JSON — no authentication required.
+
+- [All castles](/api/castles.json) — 1,000 castles sorted by score descending
+- [Top 100](/api/top100.json) — top 100 castles by composite score
+- [By country](/api/index.json) — index of all country endpoints
+- [OpenAPI spec](/api/openapi.yaml) — machine-readable API description
+
+### Country endpoints
+
+Pattern: `/api/by-country/{slug}.json`
+
+Examples:
+- `/api/by-country/france.json`
+- `/api/by-country/germany.json`
+- `/api/by-country/england.json`
+- `/api/by-country/spain.json`
+
+Full country list and slugs: `/api/index.json`
+
+## Castle object schema
+
+Each castle record contains:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `castle_code` | string | Unique identifier (URL slug) |
+| `castle_name` | string | Castle name |
+| `position` | number | Rank (1 = highest score) |
+| `score_total` | number | Composite score |
+| `score_visitors` | number | Visitor rating (0–10) |
+| `visitors` | number | Number of visitor ratings |
+| `country` | string | Country name |
+| `region` | string | Region name |
+| `place` | string | Nearest town |
+| `area` | string | Comma-separated area tags |
+| `latitude` | number\|null | WGS84 latitude |
+| `longitude` | number\|null | WGS84 longitude |
+| `era` | number\|null | Century of construction (e.g. 12 = 12th century) |
+| `castle_type` | string | Location type (e.g. "Hilltop castle", "Water castle") |
+| `castle_concept` | string | Structural concept (e.g. "Concentric castle") |
+| `condition` | string | Preservation state |
+| `founder` | string | Builder or founding order |
+| `remarkable` | string | Notable feature summary |
+| `description` | string | Short description |
+| `website` | string | Official or reference URL |
+| `wikipedia_extract` | string\|null | First paragraph from Wikipedia |
+| `wikipedia_url` | string\|null | Wikipedia article URL |
+| `wikipedia_thumbnail` | string\|null | Wikipedia thumbnail image URL |
+| `wikidata_id` | string\|null | Wikidata QID (e.g. "Q23053") |
+| `architectural_style` | string\|null | From Wikidata P149 |
+| `heritage_status` | string\|null | From Wikidata P1435 (e.g. "UNESCO World Heritage Site") |
+| `inception_year` | number\|null | Year of construction from Wikidata P571 |
+| `wikidata_image` | string\|null | Wikidata commons image URL |
+
+## Example use cases for AI agents
+
+- "What are the top 10 castles in France?" → fetch `/api/by-country/france.json`, sort by `score_total`
+- "Find intact hilltop castles from the 12th century" → fetch `/api/castles.json`, filter `condition === 'Intact'`, `castle_type === 'Hilltop castle'`, `era === 12`
+- "Which castles are UNESCO World Heritage Sites?" → filter `heritage_status` contains "UNESCO"
+- "Show me castles near coordinates 48.8, 2.3" → compute Haversine distance from `latitude`/`longitude` fields
+
+## Web interface
+
+The dataset is also browsable at the TopCastles website. Castle detail pages are at `/castles/{castle_code}`.
+
+## Data freshness
+
+Wikipedia and Wikidata enrichment is periodically refreshed. The `generated` field in `/api/index.json` shows the last generation date.
