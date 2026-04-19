@@ -10,7 +10,7 @@ The deployment script performs these steps:
 
 1. Builds the Angular application from `new_app/`
 2. Builds a Docker image from the repository root
-3. Tags the image as `hobunror/hobunror:latest`
+3. Tags the image as `hobunror/synology:latest`
 4. Pushes the image to Docker Hub
 5. Connects to the Synology NAS over SSH
 6. Pulls the image from Docker Hub on the NAS
@@ -23,280 +23,160 @@ Script location:
 ./deploy.sh
 ```
 
-## Script contents
-
-Current script:
-
-```bash
-#!/bin/bash
-
-# Deployment script for Topcastles-New to Synology NAS via Docker Hub
-
-set -e
-
-IMAGE_NAME="hobunror/hobunror"
-IMAGE_TAG="latest"
-FULL_IMAGE_NAME="${IMAGE_NAME}:${IMAGE_TAG}"
-NAS_HOST="DS224plus.local"
-NAS_USER="robertron"
-CONTAINER_NAME="topcastles-new"
-HOST_PORT="8080"
-CONTAINER_PORT="80"
-
-echo "Building Angular application..."
-cd new_app
-npm run build
-cd ..
-
-echo "Building Docker image..."
-docker build -t "$FULL_IMAGE_NAME" .
-
-echo "Pushing image to Docker Hub..."
-docker push "$FULL_IMAGE_NAME"
-
-echo "Connecting to Synology and deploying..."
-ssh "${NAS_USER}@${NAS_HOST}" << EOF
-  set -e
-  echo "Pulling image from Docker Hub..."
-  docker pull "$FULL_IMAGE_NAME"
-
-  echo "Stopping existing container if running..."
-  docker stop "$CONTAINER_NAME" || true
-  docker rm "$CONTAINER_NAME" || true
-
-  echo "Running new container..."
-  docker run -d --restart unless-stopped --name "$CONTAINER_NAME" -p ${HOST_PORT}:${CONTAINER_PORT} "$FULL_IMAGE_NAME"
-
-  echo "Deployment complete!"
-EOF
-
-echo "Done!"
-```
-
-## Prerequisites
-
-The script assumes all of the following are already configured.
-
-### Local machine
-
-- Bash-compatible shell is available
-- Node.js and npm are installed
-- Docker Desktop or another working Docker engine is running
-- The repository dependencies are installed in `new_app/`
-- You are logged in to Docker Hub with permission to push `hobunror/hobunror`
-- `ssh` is installed and available in `PATH`
-- The local machine can resolve `DS224plus.local`
-- The local machine can connect to the NAS over SSH
-
-Docker Hub login command:
-
-```bash
-docker login
-```
-
-### Synology NAS
-
-- SSH service is enabled
-- The user `robertron` can authenticate over SSH
-- Docker/Container Manager is installed and usable from the shell
-- The NAS has outbound network access to Docker Hub
-- The `robertron` user can run `docker pull`, `docker stop`, `docker rm`, and `docker run`
-- Port `8080` on the NAS is available
-
 ## How to run the deployment
 
-From the repository root:
+Open a **Git Bash** terminal (not PowerShell or CMD) in VS Code and run from the repository root:
 
 ```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
 bash deploy.sh
 ```
 
-If the script has execute permission:
+The `ssh-agent` step caches the SSH key passphrase so the script can connect to the NAS without prompting.
+
+## Prerequisites
+
+### Local machine
+
+- Git Bash terminal (Windows)
+- Docker Desktop running
+- Node.js and npm installed
+- Repository dependencies installed in `new_app/`
+- Logged in to Docker Hub: `docker login`
+- SSH key added to the agent (see above)
+- Local machine can resolve `DS224plus.local`
+
+### Synology NAS
+
+- SSH enabled: DSM → Control Panel → Terminal & SNMP → Terminal → Enable SSH
+- SSH key authentication configured for `robertron`
+- Docker/Container Manager installed
+- `robertron` has passwordless sudo for docker:
 
 ```bash
-./deploy.sh
+echo "robertron ALL=(ALL) NOPASSWD: /usr/local/bin/docker" | sudo tee /etc/sudoers.d/robertron-docker
 ```
+
+- Port `8082` available on the NAS
 
 ## Step-by-step behavior
 
 ### 1. Build the Angular app
 
-The script enters `new_app/` and runs:
-
 ```bash
 npm run build
 ```
 
-This produces the production application build before the Docker image is created.
+Produces browser files in `new_app/dist/new_app/browser/`.
 
 ### 2. Build the Docker image
 
-From the repository root, the script runs:
-
 ```bash
-docker build -t hobunror/hobunror:latest .
+docker build -t hobunror/synology:latest .
 ```
 
-This uses the root-level `Dockerfile` and tags the image for Docker Hub.
+The `Dockerfile` copies `dist/new_app/browser/` into the nginx image.
 
-### 3. Push the image to Docker Hub
-
-After the image is built, the script runs:
+### 3. Push to Docker Hub
 
 ```bash
-docker push hobunror/hobunror:latest
+docker push hobunror/synology:latest
 ```
 
-This uploads the image so the Synology NAS can pull it directly.
+### 4. Pull and redeploy on the NAS
 
-### 4. Pull the image on the NAS
-
-After connecting over SSH, the NAS runs:
+Over SSH, the script runs:
 
 ```bash
-docker pull hobunror/hobunror:latest
+sudo docker pull hobunror/synology:latest
+sudo docker stop topcastles || true
+sudo docker rm topcastles || true
+sudo docker run -d --restart unless-stopped --name topcastles -p 8082:80 hobunror/synology:latest
 ```
-
-This retrieves the latest published image from Docker Hub.
-
-### 5. Replace the running container
-
-The script attempts to stop and remove the existing container, ignoring errors if it does not exist:
-
-```bash
-docker stop topcastles-new || true
-docker rm topcastles-new || true
-```
-
-### 6. Start the new container
-
-The new container is started with:
-
-```bash
-docker run -d --restart unless-stopped --name topcastles-new -p 8080:80 hobunror/hobunror:latest
-```
-
-This maps:
-
-- NAS port `8080`
-- to container port `80`
-
-It also configures the container to restart automatically unless it is explicitly stopped.
 
 ## Resulting deployment topology
 
-After a successful run, the expected topology is:
+| Layer | Detail |
+| --- | --- |
+| Docker Hub image | `hobunror/synology:latest` |
+| Container name on NAS | `topcastles` |
+| NAS local port | `8082` |
+| LAN URL | `http://DS224plus.local:8082` |
+| HTTPS LAN URL | via Synology Reverse Proxy (see below) |
+| Public URL | `https://topcastles.hobunror.synology.me` |
 
-- Image in Docker Hub: `hobunror/hobunror:latest`
-- Container name on NAS: `topcastles-new`
-- Public binding on NAS: `http://<synology-host>:8080`
+## Network and HTTPS setup
 
-## Advantages over tar-based deployment
+### Synology Reverse Proxy (LAN + public HTTPS)
 
-Compared with the previous `docker save`/`scp`/`docker load` workflow, this approach:
+DSM → Control Panel → Application Portal → Reverse Proxy → Create:
 
-- removes local tar archive creation
-- removes manual image copying to the NAS
-- reduces local and NAS disk usage during deployment
-- aligns with standard registry-based deployment practices
-- makes it easier to pull the same image from Synology Container Manager directly
+| Field | Value |
+| --- | --- |
+| Description | topcastles |
+| Source protocol | HTTPS |
+| Source hostname | `topcastles.hobunror.synology.me` |
+| Source port | `443` |
+| Destination protocol | HTTP |
+| Destination hostname | `localhost` |
+| Destination port | `8082` |
 
-## Operational assumptions
+Synology's wildcard certificate covers `*.hobunror.synology.me` automatically.
 
-The current script makes several important assumptions:
+### Router port forwarding
 
-- The Docker image serves HTTP on container port `80`
-- Replacing the container is acceptable downtime
-- No persistent named volumes are required for runtime state
-- No environment variables are required at startup
-- No reverse proxy or TLS setup is handled by this script
-- The Docker Hub repository `hobunror/hobunror` exists and is writable from the local machine
+Forward these ports from your router to the NAS local IP:
 
-## Limitations and risks
+| External port | Internal port | Protocol |
+| --- | --- | --- |
+| 80 | 80 | TCP |
+| 443 | 443 | TCP |
 
-The current script works as a simple manual deployment path, but it has several limitations.
+Find the NAS local IP in DSM → Control Panel → Network → Network Interface.
 
-### No health check
+### DDNS
 
-The script starts the container but does not verify that the application is healthy or reachable.
-
-### No rollback
-
-If the new container starts and fails immediately, the previous container is already removed.
-
-### Fixed image tag
-
-The script always deploys `latest`. This makes rollbacks and release traceability harder than using versioned tags.
-
-### Fixed hostnames, user, and ports
-
-These values are hard-coded:
-
-- `hobunror/hobunror`
-- `robertron`
-- `DS224plus.local`
-- `topcastles-new`
-- `8080:80`
-
-That makes the script environment-specific.
+DSM → Control Panel → External Access → DDNS — verify `hobunror.synology.me` shows a green status and points to your current public IP.
 
 ## Troubleshooting
 
-### `docker push` fails with authentication or permission errors
+### Default nginx page instead of the app
 
-Cause:
-You are not logged in to Docker Hub, or the account does not have permission to push to `hobunror/hobunror`.
+The Dockerfile must copy from `dist/new_app/browser/`, not `dist/new_app/`. Check the `COPY` line in `Dockerfile`.
 
-Fix:
+### `docker push` fails with authentication errors
 
 ```bash
 docker login
 ```
 
-Then verify that the repository name is correct and that the account has push access.
+Verify the repository `hobunror/synology` exists on Docker Hub and the account has push access.
 
-### `docker pull` fails on the NAS
+### `permission denied` connecting to Docker socket on the NAS
 
-Cause:
-The NAS cannot reach Docker Hub, or the image has not been pushed successfully.
+The `robertron` user lacks sudo rights for docker. Add the sudoers entry:
 
-Fix:
-
-- Verify internet access from the NAS
-- Confirm that `hobunror/hobunror:latest` exists on Docker Hub
-- Ensure the image is public, or configure Docker Hub authentication on the NAS if it is private
-
-### `failed to read dockerfile: open Dockerfile: no such file or directory`
-
-Cause:
-The build was started from `new_app/` instead of the repository root.
-
-Fix:
-Run deployment from the repository root so the root `Dockerfile` is in the build context.
+```bash
+echo "robertron ALL=(ALL) NOPASSWD: /usr/local/bin/docker" | sudo tee /etc/sudoers.d/robertron-docker
+```
 
 ### `ssh` cannot resolve `DS224plus.local`
 
-Cause:
-mDNS/local hostname resolution is not working on the local machine.
-
-Fix options:
-
 - Use the NAS IP address instead of `DS224plus.local`
-- Add a local hosts entry
-- Ensure local name resolution for `.local` addresses is configured
+- Or ensure mDNS/local hostname resolution is configured on your machine
 
-## Recommended future improvements
+### SSH passphrase prompt blocks the script
 
-If this deployment path remains in use, the next improvements should be:
+Load the key into the agent before running:
 
-1. Move hard-coded values into environment variables or script arguments
-2. Add post-deploy health verification
-3. Add rollback support with versioned tags
-4. Publish immutable release tags in addition to `latest`
-5. Optionally support Synology Container Manager pull-only deployment without SSH
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
 
 ## Related documentation
 
-- `README.md` � project overview and local commands
-- `docs/setup.md` � stack and deployment target
-- `docs/pipeline.md` � build and deployment pipeline
+- `README.md` — project overview and local commands
+- `docs/setup.md` — stack and deployment target
+- `docs/pipeline.md` — build and deployment pipeline

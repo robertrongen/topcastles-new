@@ -19,7 +19,7 @@ RUN npm run build --prod
 FROM nginx:alpine
 
 # Copy built app to nginx
-COPY --from=build /app/dist/new_app /usr/share/nginx/html
+COPY --from=build /app/dist/new_app/browser /usr/share/nginx/html
 
 # Copy nginx config if needed
 # COPY nginx.conf /etc/nginx/nginx.conf

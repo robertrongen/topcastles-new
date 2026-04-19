@@ -82,6 +82,25 @@ mat-sidenav {
   font-weight: bold;
 }
 
+.tk-footer {
+  margin-top: 32px;
+  padding: 16px;
+  border-top: 1px solid #CCCCFF;
+  background-color: #E6E6F5;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 11px;
+  color: #333333;
+  text-align: center;
+
+  p {
+    margin: 4px 0;
+  }
+
+  a {
+    color: #00005C;
+  }
+}
+
 @media (max-width: 767px) {
   // Center the logo in the toolbar; hamburger stays on the right
   .tk-logo-link {
