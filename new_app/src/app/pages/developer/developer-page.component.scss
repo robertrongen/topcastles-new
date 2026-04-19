@@ -1,0 +1,261 @@
+.developer-page {
+  padding: 16px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.page-intro {
+  color: rgba(0,0,0,.6);
+  font-size: 1.05em;
+  margin-bottom: 24px;
+  max-width: 720px;
+}
+
+.tab-content {
+  padding: 24px 0;
+
+  h2 { margin: 24px 0 12px; font-size: 1.3em; }
+  h3 { margin: 20px 0 8px; font-size: 1.05em; }
+  h4 { margin: 16px 0 6px; font-size: 0.95em; color: rgba(0,0,0,.7); }
+
+  p { line-height: 1.65; }
+  code { font-family: monospace; background: rgba(0,0,0,.06); padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
+}
+
+// ── Overview cards ────────────────────────────────────────────────────────
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.access-card {
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+
+  &:hover { box-shadow: 0 4px 16px rgba(0,0,0,.15); }
+
+  mat-icon[mat-card-avatar] {
+    font-size: 28px; width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 8px; color: #fff;
+  }
+
+  .icon-rest   { background: #1565c0; }
+  .icon-mcp    { background: #6a1b9a; }
+  .icon-schema { background: #2e7d32; }
+  .icon-ai     { background: #e65100; }
+}
+
+.info-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 640px;
+  margin-bottom: 24px;
+
+  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid rgba(0,0,0,.1); }
+  th { width: 200px; color: rgba(0,0,0,.55); font-weight: 500; }
+}
+
+// ── Code blocks ───────────────────────────────────────────────────────────
+
+.code-block {
+  position: relative;
+  background: #1e1e2e;
+  border-radius: 6px;
+  margin: 8px 0 16px;
+  overflow: hidden;
+
+  pre {
+    margin: 0;
+    padding: 16px 48px 16px 16px;
+    overflow-x: auto;
+  }
+
+  code {
+    background: none;
+    padding: 0;
+    color: #cdd6f4;
+    font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    font-size: 0.85em;
+    line-height: 1.55;
+    border-radius: 0;
+  }
+
+  &.small pre { padding: 12px 48px 12px 12px; }
+}
+
+.copy-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  color: rgba(255,255,255,.5);
+
+  &:hover { color: #fff; }
+
+  mat-icon { font-size: 18px; width: 18px; height: 18px; }
+}
+
+// ── Endpoints ─────────────────────────────────────────────────────────────
+
+.endpoint-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.endpoint {
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 8px;
+  padding: 16px;
+
+  p { margin: 8px 0; }
+}
+
+.endpoint-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.method {
+  font-size: 0.75em;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+
+  &.get { background: #e3f2fd; color: #1565c0; }
+}
+
+.endpoint-path {
+  font-size: 0.95em;
+  font-family: monospace;
+  background: rgba(0,0,0,.06);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.endpoint-desc {
+  color: rgba(0,0,0,.55);
+  font-size: 0.9em;
+}
+
+.response-example {
+  margin: 8px 0 0;
+  background: #f5f5f5;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 0.82em;
+  overflow-x: auto;
+}
+
+details > summary {
+  cursor: pointer;
+  color: #1565c0;
+  font-size: 0.9em;
+  margin-top: 8px;
+  user-select: none;
+}
+
+// ── MCP ───────────────────────────────────────────────────────────────────
+
+.compat-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 24px;
+
+  mat-chip mat-icon { font-size: 16px; width: 16px; height: 16px; color: #2e7d32; margin-right: 4px; }
+}
+
+.setup-steps {
+  padding-left: 20px;
+  line-height: 2;
+
+  li { margin-bottom: 16px; }
+}
+
+.tool-accordion {
+  margin-bottom: 32px;
+
+  mat-panel-title code { font-size: 0.95em; color: #6a1b9a; }
+}
+
+.example-prompts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.prompt {
+  background: rgba(106, 27, 154, .06);
+  border-left: 3px solid #6a1b9a;
+  padding: 10px 14px;
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+  color: rgba(0,0,0,.75);
+}
+
+// ── Schema ────────────────────────────────────────────────────────────────
+
+.spec-btn {
+  margin-bottom: 24px;
+}
+
+.schema-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+  font-size: 0.88em;
+
+  th {
+    text-align: left;
+    padding: 8px 12px;
+    background: rgba(0,0,0,.04);
+    border-bottom: 2px solid rgba(0,0,0,.12);
+    font-weight: 600;
+  }
+
+  td {
+    padding: 7px 12px;
+    border-bottom: 1px solid rgba(0,0,0,.07);
+    vertical-align: top;
+
+    &:first-child code { color: #1565c0; }
+    &:nth-child(2) { color: rgba(0,0,0,.55); white-space: nowrap; }
+  }
+
+  tr:hover td { background: rgba(0,0,0,.02); }
+}
+
+.param-table {
+  @extend .schema-table;
+  margin: 12px 0;
+}
+
+.enum-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+// ── AI Agents ─────────────────────────────────────────────────────────────
+
+.agent-steps {
+  padding-left: 20px;
+  line-height: 1.9;
+  margin-bottom: 24px;
+
+  li { margin-bottom: 12px; }
+}
+
+.example-accordion {
+  margin-bottom: 24px;
+}

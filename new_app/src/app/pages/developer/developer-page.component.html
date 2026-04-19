@@ -1,0 +1,516 @@
+<div class="developer-page">
+  <h1>Data Access &amp; Developer Guide</h1>
+  <p class="page-intro">
+    The TopCastles dataset is openly available as static JSON, an OpenAPI-described REST API,
+    and an MCP server for direct AI assistant integration.
+    No authentication, no rate limits, no sign-up required.
+  </p>
+
+  <mat-tab-group [selectedIndex]="selectedIndex()" (selectedIndexChange)="onTabChange($event)">
+
+    <!-- ── TAB: Overview ──────────────────────────────────────────────────── -->
+    <mat-tab label="Overview">
+      <div class="tab-content">
+        <h2>What's available</h2>
+
+        <div class="card-grid">
+          <mat-card class="access-card" (click)="onTabChange(1)">
+            <mat-card-header>
+              <mat-icon mat-card-avatar class="icon-rest">api</mat-icon>
+              <mat-card-title>REST / JSON API</mat-card-title>
+              <mat-card-subtitle>Static pre-sliced files</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              Zero-infrastructure static JSON endpoints. Fetch all castles,
+              the top 100, or filter by country. CORS-friendly, cacheable.
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button color="primary">Explore endpoints →</button>
+            </mat-card-actions>
+          </mat-card>
+
+          <mat-card class="access-card" (click)="onTabChange(2)">
+            <mat-card-header>
+              <mat-icon mat-card-avatar class="icon-mcp">smart_toy</mat-icon>
+              <mat-card-title>MCP Server</mat-card-title>
+              <mat-card-subtitle>Model Context Protocol</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              Connect any MCP-compatible AI assistant (Claude Desktop, Cursor,
+              VS Code Copilot) and query the dataset conversationally.
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button color="primary">Setup guide →</button>
+            </mat-card-actions>
+          </mat-card>
+
+          <mat-card class="access-card" (click)="onTabChange(3)">
+            <mat-card-header>
+              <mat-icon mat-card-avatar class="icon-schema">schema</mat-icon>
+              <mat-card-title>Data Schema</mat-card-title>
+              <mat-card-subtitle>OpenAPI 3.0 + field reference</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              Full OpenAPI 3.0 specification plus a field-by-field reference for
+              the Castle object including Wikipedia and Wikidata enrichment fields.
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button color="primary">View schema →</button>
+            </mat-card-actions>
+          </mat-card>
+
+          <mat-card class="access-card" (click)="onTabChange(4)">
+            <mat-card-header>
+              <mat-icon mat-card-avatar class="icon-ai">psychology</mat-icon>
+              <mat-card-title>For AI Agents</mat-card-title>
+              <mat-card-subtitle>llms.txt &amp; discovery</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              An <code>llms.txt</code> discovery file lets any LLM self-discover
+              the dataset. Includes example prompts and query patterns for agents.
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button color="primary">Agent guide →</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+
+        <h2>Dataset at a glance</h2>
+        <table class="info-table">
+          <tbody>
+            <tr><th>Castles</th><td>1,000 ranked entries</td></tr>
+            <tr><th>Countries</th><td>56 countries</td></tr>
+            <tr><th>Wikipedia enrichment</th><td>~785 entries with extract, thumbnail, URL</td></tr>
+            <tr><th>Wikidata enrichment</th><td>~777 entries with heritage status, style, inception year</td></tr>
+            <tr><th>Coordinates</th><td>Latitude / longitude for most castles</td></tr>
+            <tr><th>License</th><td>Creative Commons Attribution-NonCommercial 3.0</td></tr>
+            <tr><th>Format</th><td>JSON (UTF-8)</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Quick start</h2>
+        <p>Fetch the top 10 castles in three lines:</p>
+        <div class="code-block">
+          <button mat-icon-button class="copy-btn" (click)="copy('quickstart')" [title]="copied() === 'quickstart' ? 'Copied!' : 'Copy'">
+            <mat-icon>{{ copied() === 'quickstart' ? 'check' : 'content_copy' }}</mat-icon>
+          </button>
+          <pre><code>{{ snippets['quickstart'] }}</code></pre>
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- ── TAB: REST API ───────────────────────────────────────────────────── -->
+    <mat-tab label="REST API">
+      <div class="tab-content">
+        <h2>Static JSON Endpoints</h2>
+        <p>
+          All endpoints are pre-generated static files served directly from the same origin.
+          No server-side processing. Responses are cacheable and work from any language or tool.
+        </p>
+
+        <div class="endpoint-list">
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <code class="endpoint-path">/api/index.json</code>
+              <span class="endpoint-desc">API index and country list</span>
+            </div>
+            <p>Returns the API manifest: total castle count, all available endpoints, and the full list of country slugs with castle counts.</p>
+            <div class="code-block">
+              <button mat-icon-button class="copy-btn" (click)="copy('curlIndex')" [title]="copied() === 'curlIndex' ? 'Copied!' : 'Copy'">
+                <mat-icon>{{ copied() === 'curlIndex' ? 'check' : 'content_copy' }}</mat-icon>
+              </button>
+              <pre><code>{{ snippets['curlIndex'] }}</code></pre>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <code class="endpoint-path">/api/castles.json</code>
+              <span class="endpoint-desc">All 1,000 castles</span>
+            </div>
+            <p>Complete dataset sorted by <code>score_total</code> descending. Includes all enrichment fields.</p>
+            <div class="code-block">
+              <button mat-icon-button class="copy-btn" (click)="copy('curlAll')" [title]="copied() === 'curlAll' ? 'Copied!' : 'Copy'">
+                <mat-icon>{{ copied() === 'curlAll' ? 'check' : 'content_copy' }}</mat-icon>
+              </button>
+              <pre><code>{{ snippets['curlAll'] }}</code></pre>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <code class="endpoint-path">/api/top100.json</code>
+              <span class="endpoint-desc">Top 100 castles by score</span>
+            </div>
+            <p>The 100 highest-scoring castles. Useful when you only need the most prominent entries.</p>
+            <div class="code-block">
+              <button mat-icon-button class="copy-btn" (click)="copy('curlTop100')" [title]="copied() === 'curlTop100' ? 'Copied!' : 'Copy'">
+                <mat-icon>{{ copied() === 'curlTop100' ? 'check' : 'content_copy' }}</mat-icon>
+              </button>
+              <pre><code>{{ snippets['curlTop100'] }}</code></pre>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <code class="endpoint-path">/api/by-country/<span class="path-param">&#123;slug&#125;</span>.json</code>
+              <span class="endpoint-desc">Castles for one country</span>
+            </div>
+            <p>
+              Returns all castles in a specific country, sorted by score.
+              Slugs are lowercase hyphenated country names — full list in <code>/api/index.json</code>.
+            </p>
+            <div class="code-block">
+              <button mat-icon-button class="copy-btn" (click)="copy('curlCountry')" [title]="copied() === 'curlCountry' ? 'Copied!' : 'Copy'">
+                <mat-icon>{{ copied() === 'curlCountry' ? 'check' : 'content_copy' }}</mat-icon>
+              </button>
+              <pre><code>{{ snippets['curlCountry'] }}</code></pre>
+            </div>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <code class="endpoint-path">/api/openapi.yaml</code>
+              <span class="endpoint-desc">OpenAPI 3.0 specification</span>
+            </div>
+            <p>Machine-readable API description. Import into Postman, Insomnia, or any OpenAPI-compatible tool.</p>
+            <a mat-stroked-button href="/api/openapi.yaml" target="_blank" rel="noopener">
+              <mat-icon>download</mat-icon> Download openapi.yaml
+            </a>
+          </div>
+        </div>
+
+        <h2>Usage examples</h2>
+
+        <h3>JavaScript / fetch</h3>
+        <div class="code-block">
+          <button mat-icon-button class="copy-btn" (click)="copy('jsExample')" [title]="copied() === 'jsExample' ? 'Copied!' : 'Copy'">
+            <mat-icon>{{ copied() === 'jsExample' ? 'check' : 'content_copy' }}</mat-icon>
+          </button>
+          <pre><code>{{ snippets['jsExample'] }}</code></pre>
+        </div>
+
+        <h3>Python</h3>
+        <div class="code-block">
+          <button mat-icon-button class="copy-btn" (click)="copy('pyExample')" [title]="copied() === 'pyExample' ? 'Copied!' : 'Copy'">
+            <mat-icon>{{ copied() === 'pyExample' ? 'check' : 'content_copy' }}</mat-icon>
+          </button>
+          <pre><code>{{ snippets['pyExample'] }}</code></pre>
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- ── TAB: MCP ────────────────────────────────────────────────────────── -->
+    <mat-tab label="MCP Server">
+      <div class="tab-content">
+        <h2>Model Context Protocol Server</h2>
+        <p>
+          The TopCastles MCP server lets any MCP-compatible AI assistant query the castle dataset
+          directly — without copy-pasting data. Once connected, you can ask things like
+          <em>"Find intact 12th-century hilltop castles in France"</em> and get structured results.
+        </p>
+
+        <mat-chip-set class="compat-chips" aria-label="Compatible tools">
+          <mat-chip><mat-icon>check_circle</mat-icon> Claude Desktop</mat-chip>
+          <mat-chip><mat-icon>check_circle</mat-icon> Cursor</mat-chip>
+          <mat-chip><mat-icon>check_circle</mat-icon> VS Code Copilot</mat-chip>
+          <mat-chip><mat-icon>check_circle</mat-icon> Any MCP client</mat-chip>
+        </mat-chip-set>
+
+        <h2>Setup</h2>
+        <ol class="setup-steps">
+          <li>
+            <strong>Clone or download the repo</strong>
+            <div class="code-block">
+              <button mat-icon-button class="copy-btn" (click)="copy('mcpClone')" [title]="copied() === 'mcpClone' ? 'Copied!' : 'Copy'">
+                <mat-icon>{{ copied() === 'mcpClone' ? 'check' : 'content_copy' }}</mat-icon>
+              </button>
+              <pre><code>{{ snippets['mcpClone'] }}</code></pre>
+            </div>
+          </li>
+          <li>
+            <strong>Install dependencies</strong>
+            <div class="code-block">
+              <button mat-icon-button class="copy-btn" (click)="copy('mcpInstall')" [title]="copied() === 'mcpInstall' ? 'Copied!' : 'Copy'">
+                <mat-icon>{{ copied() === 'mcpInstall' ? 'check' : 'content_copy' }}</mat-icon>
+              </button>
+              <pre><code>{{ snippets['mcpInstall'] }}</code></pre>
+            </div>
+          </li>
+          <li>
+            <strong>Configure your AI assistant</strong>
+            <p>Add to <code>claude_desktop_config.json</code> (Claude Desktop) or your tool's MCP config:</p>
+            <div class="code-block">
+              <button mat-icon-button class="copy-btn" (click)="copy('mcpConfig')" [title]="copied() === 'mcpConfig' ? 'Copied!' : 'Copy'">
+                <mat-icon>{{ copied() === 'mcpConfig' ? 'check' : 'content_copy' }}</mat-icon>
+              </button>
+              <pre><code>{{ snippets['mcpConfig'] }}</code></pre>
+            </div>
+          </li>
+          <li><strong>Restart your AI assistant</strong> — the <em>topcastles</em> tools will appear automatically.</li>
+        </ol>
+
+        <h2>Available tools</h2>
+
+        <mat-accordion class="tool-accordion">
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title><code>search_castles</code></mat-panel-title>
+              <mat-panel-description>Search and filter across the full dataset</mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>Search and filter castles. All parameters are optional.</p>
+            <table class="param-table">
+              <thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td><code>query</code></td><td>string</td><td>Text search across name, description, remarkable, founder, Wikipedia extract</td></tr>
+                <tr><td><code>country</code></td><td>string</td><td>Filter by country name (case-insensitive)</td></tr>
+                <tr><td><code>era</code></td><td>integer</td><td>Century of construction (e.g. 12 for 12th century)</td></tr>
+                <tr><td><code>condition</code></td><td>string</td><td>e.g. "Intact", "Ruined/Partly remained"</td></tr>
+                <tr><td><code>castle_type</code></td><td>string</td><td>e.g. "Hilltop castle", "Water castle"</td></tr>
+                <tr><td><code>heritage</code></td><td>boolean</td><td>If true, only castles with a heritage designation</td></tr>
+                <tr><td><code>limit</code></td><td>integer</td><td>Max results (default 10, max 100)</td></tr>
+              </tbody>
+            </table>
+            <div class="code-block small">
+              <pre><code>{{ snippets['toolSearch'] }}</code></pre>
+            </div>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title><code>get_castle</code></mat-panel-title>
+              <mat-panel-description>Full detail for one castle by code</mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>Returns all fields including the full Wikipedia extract and Wikidata enrichment.</p>
+            <table class="param-table">
+              <thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td><code>castle_code</code></td><td>string</td><td>The castle identifier, e.g. "krak-des-chevaliers"</td></tr>
+              </tbody>
+            </table>
+            <div class="code-block small">
+              <pre><code>{{ snippets['toolGet'] }}</code></pre>
+            </div>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title><code>list_countries</code></mat-panel-title>
+              <mat-panel-description>All countries with castle counts</mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>Returns all 56 countries with their castle count and the top-scoring castle per country. No parameters.</p>
+            <div class="code-block small">
+              <pre><code>{{ snippets['toolCountries'] }}</code></pre>
+            </div>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title><code>nearby_castles</code></mat-panel-title>
+              <mat-panel-description>Castles nearest to a coordinate</mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>Computes Haversine distance from the given point and returns the closest castles.</p>
+            <table class="param-table">
+              <thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td><code>latitude</code></td><td>number</td><td>WGS84 latitude</td></tr>
+                <tr><td><code>longitude</code></td><td>number</td><td>WGS84 longitude</td></tr>
+                <tr><td><code>limit</code></td><td>integer</td><td>Results to return (default 5, max 20)</td></tr>
+                <tr><td><code>max_km</code></td><td>number</td><td>Optional maximum distance in kilometres</td></tr>
+              </tbody>
+            </table>
+            <div class="code-block small">
+              <pre><code>{{ snippets['toolNearby'] }}</code></pre>
+            </div>
+          </mat-expansion-panel>
+
+        </mat-accordion>
+
+        <h2>Example conversations</h2>
+        <div class="example-prompts">
+          <div class="prompt">"What are the top 10 castles in Germany?"</div>
+          <div class="prompt">"Find intact crusader castles from the 12th century"</div>
+          <div class="prompt">"Which castles are UNESCO World Heritage Sites?"</div>
+          <div class="prompt">"What castles are within 50 km of Vienna?"</div>
+          <div class="prompt">"Tell me everything about Krak des Chevaliers"</div>
+          <div class="prompt">"Which country has the most castles in the dataset?"</div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- ── TAB: Schema ────────────────────────────────────────────────────── -->
+    <mat-tab label="Schema">
+      <div class="tab-content">
+        <h2>Data Schema</h2>
+        <p>
+          Every castle record is a flat JSON object. Fields from Wikipedia and Wikidata enrichment
+          are nullable — not all castles have a Wikipedia article or Wikidata entry.
+        </p>
+
+        <a mat-stroked-button href="/api/openapi.yaml" target="_blank" rel="noopener" class="spec-btn">
+          <mat-icon>download</mat-icon> Download OpenAPI 3.0 spec (YAML)
+        </a>
+
+        <h3>Core fields</h3>
+        <table class="schema-table">
+          <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>castle_code</code></td><td>string</td><td>Unique identifier and URL slug (e.g. "krak-des-chevaliers")</td></tr>
+            <tr><td><code>castle_name</code></td><td>string</td><td>Castle name</td></tr>
+            <tr><td><code>position</code></td><td>integer?</td><td>Rank in the dataset (1 = highest score)</td></tr>
+            <tr><td><code>score_total</code></td><td>number?</td><td>Composite score (sources + visitor rating)</td></tr>
+            <tr><td><code>score_visitors</code></td><td>number?</td><td>Visitor rating 0–10</td></tr>
+            <tr><td><code>visitors</code></td><td>integer?</td><td>Number of visitor ratings</td></tr>
+            <tr><td><code>country</code></td><td>string</td><td>Country name</td></tr>
+            <tr><td><code>region</code></td><td>string</td><td>Region name</td></tr>
+            <tr><td><code>region_code</code></td><td>string</td><td>Region slug</td></tr>
+            <tr><td><code>place</code></td><td>string</td><td>Nearest town or village</td></tr>
+            <tr><td><code>area</code></td><td>string</td><td>Comma-separated area / theme tags</td></tr>
+            <tr><td><code>latitude</code></td><td>number?</td><td>WGS84 latitude</td></tr>
+            <tr><td><code>longitude</code></td><td>number?</td><td>WGS84 longitude</td></tr>
+            <tr><td><code>era</code></td><td>integer?</td><td>Century of construction (12 = 12th century)</td></tr>
+            <tr><td><code>castle_type</code></td><td>string</td><td>Location type</td></tr>
+            <tr><td><code>castle_concept</code></td><td>string</td><td>Structural concept</td></tr>
+            <tr><td><code>condition</code></td><td>string</td><td>Preservation state</td></tr>
+            <tr><td><code>founder</code></td><td>string</td><td>Builder, dynasty, or military order</td></tr>
+            <tr><td><code>remarkable</code></td><td>string</td><td>Notable feature summary</td></tr>
+            <tr><td><code>description</code></td><td>string</td><td>Short editorial description</td></tr>
+            <tr><td><code>website</code></td><td>string</td><td>Official or reference URL</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Wikipedia enrichment</h3>
+        <table class="schema-table">
+          <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>wikipedia_extract</code></td><td>string?</td><td>First paragraph from the Wikipedia article</td></tr>
+            <tr><td><code>wikipedia_url</code></td><td>string?</td><td>Full URL to the Wikipedia article</td></tr>
+            <tr><td><code>wikipedia_thumbnail</code></td><td>string?</td><td>URL of the Wikipedia thumbnail image</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Wikidata enrichment</h3>
+        <table class="schema-table">
+          <thead><tr><th>Field</th><th>Type</th><th>Wikidata property</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>wikidata_id</code></td><td>string?</td><td>—</td><td>Wikidata QID (e.g. "Q23053")</td></tr>
+            <tr><td><code>architectural_style</code></td><td>string?</td><td>P149</td><td>Architectural style label</td></tr>
+            <tr><td><code>heritage_status</code></td><td>string?</td><td>P1435</td><td>Heritage designation (e.g. "UNESCO World Heritage Site")</td></tr>
+            <tr><td><code>inception_year</code></td><td>integer?</td><td>P571</td><td>Year of construction</td></tr>
+            <tr><td><code>wikidata_image</code></td><td>string?</td><td>P18</td><td>Wikimedia Commons image URL</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Enumerated values</h3>
+
+        <h4>castle_type</h4>
+        <div class="enum-chips">
+          @for (v of castleTypes; track v) {
+            <mat-chip>{{ v }}</mat-chip>
+          }
+        </div>
+
+        <h4>condition</h4>
+        <div class="enum-chips">
+          @for (v of conditions; track v) {
+            <mat-chip>{{ v }}</mat-chip>
+          }
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- ── TAB: AI Agents ─────────────────────────────────────────────────── -->
+    <mat-tab label="AI Agents">
+      <div class="tab-content">
+        <h2>For AI Agents &amp; LLMs</h2>
+        <p>
+          TopCastles follows the
+          <a href="https://llmstxt.org" target="_blank" rel="noopener">llms.txt</a> convention
+          so any LLM can self-discover the dataset without manual configuration.
+        </p>
+
+        <h3>Discovery file</h3>
+        <p>
+          A machine-readable discovery file is served at <code>/llms.txt</code>.
+          It describes the dataset, all endpoints, the Castle schema, and example query patterns.
+        </p>
+        <a mat-stroked-button href="/llms.txt" target="_blank" rel="noopener">
+          <mat-icon>open_in_new</mat-icon> View /llms.txt
+        </a>
+
+        <h3>Recommended access pattern</h3>
+        <ol class="agent-steps">
+          <li><strong>Discover:</strong> Fetch <code>/llms.txt</code> or <code>/api/index.json</code> to learn available endpoints and schema.</li>
+          <li><strong>Fetch data:</strong> Use the most specific endpoint. For country queries use <code>/api/by-country/&#123;slug&#125;.json</code> rather than loading all 1,000 castles.</li>
+          <li><strong>Filter client-side:</strong> Era, condition, and type filtering is done after fetching — the static API has no query parameters.</li>
+          <li><strong>Or use MCP:</strong> The MCP server provides server-side filtering via <code>search_castles</code> — no client-side logic needed.</li>
+        </ol>
+
+        <h3>Example agent queries</h3>
+
+        <mat-accordion class="example-accordion">
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>"What are the top castles in France?"</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="code-block small">
+              <pre><code>{{ snippets['agentFrance'] }}</code></pre>
+            </div>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>"Find UNESCO World Heritage castles"</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="code-block small">
+              <pre><code>{{ snippets['agentUnesco'] }}</code></pre>
+            </div>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>"Which castles are near Paris?"</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="code-block small">
+              <pre><code>{{ snippets['agentNearby'] }}</code></pre>
+            </div>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>"Which country has the most castles?"</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="code-block small">
+              <pre><code>{{ snippets['agentCountry'] }}</code></pre>
+            </div>
+          </mat-expansion-panel>
+
+        </mat-accordion>
+
+        <h3>Data freshness</h3>
+        <p>
+          The <code>generated</code> field in <code>/api/index.json</code> shows the last enrichment date.
+          Agents can poll this to detect stale data.
+        </p>
+
+        <h3>License</h3>
+        <p>
+          Dataset published under
+          <a href="https://creativecommons.org/licenses/by-nc/3.0/" target="_blank" rel="noopener">
+            Creative Commons Attribution-NonCommercial 3.0</a>.
+          Attribution: <strong>TopCastles (topcastles.com) by Robert Rongen</strong>.
+          Commercial use requires separate permission.
+        </p>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>
