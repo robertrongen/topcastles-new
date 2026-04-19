@@ -63,12 +63,11 @@ Foundation for Wikipedia/Wikidata display in Phase 2. Run scripts once, then re-
 
 ## Phase 4 — Navigation & Polish
 
-- [ ] **4.1** Breadcrumb navigation on detail page
-  - `Home > Castles > [Country] > [Castle name]`
-  - Built from Angular route data
-- [ ] **4.2** SEO / meta tags on detail page
-  - `<meta name="description">` using `wikipedia_extract` (first 160 chars)
-  - Open Graph tags (`og:title`, `og:description`, `og:image`) for social sharing
+- [x] **4.1** Breadcrumb navigation on detail page
+  - `Home › Castles › Country › Castle name`; country links to filtered castles list
+- [x] **4.2** SEO / meta tags on detail page
+  - `<title>`, `<meta name="description">`, `og:title`, `og:description`, `og:image` via Angular `Meta`/`Title` services
+  - Description uses `wikipedia_extract` (first 160 chars) or falls back to ranked summary
 
 ---
 
