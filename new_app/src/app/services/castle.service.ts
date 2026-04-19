@@ -1,5 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 import { Castle, CountrySummary, RegionSummary } from '../models/castle.model';
 
 @Injectable({ providedIn: 'root' })
@@ -14,7 +15,9 @@ export class CastleService {
       return;
     }
     this.loading.set(true);
-    this.http.get<Castle[]>('/assets/data/castles.json').subscribe({
+    this.http.get<Castle[]>('/assets/data/castles_enriched.json').pipe(
+      catchError(() => this.http.get<Castle[]>('/assets/data/castles.json')),
+    ).subscribe({
       next: (data) => {
         this.castles.set(data);
         this.loading.set(false);

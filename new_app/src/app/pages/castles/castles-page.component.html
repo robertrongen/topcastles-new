@@ -108,13 +108,26 @@
         </mat-select>
       </mat-form-field>
 
-      @if (hasFilters()) {
-        <button mat-stroked-button class="reset-btn" (click)="onReset()">Reset</button>
-      }
     </div>
   </div>
 
   <div class="results-section">
+    @if (activeFilters().length > 0) {
+      <div class="active-filters">
+        <mat-chip-set aria-label="Active filters">
+          @for (chip of activeFilters(); track chip.label) {
+            <mat-chip (removed)="chip.clear()">
+              {{ chip.label }}
+              <button matChipRemove aria-label="Remove filter">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+          }
+        </mat-chip-set>
+        <button mat-button class="clear-all-btn" (click)="onReset()">Clear all</button>
+      </div>
+    }
+
     @if (loading()) {
       <p>Loading castles…</p>
     } @else {

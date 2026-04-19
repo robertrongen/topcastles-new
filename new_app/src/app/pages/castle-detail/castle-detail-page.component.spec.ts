@@ -43,13 +43,13 @@ describe('CastleDetailPageComponent', () => {
   let httpTesting: HttpTestingController;
 
   const mockCastles: Castle[] = [
-    makeCastle({ position: 1, castle_code: 'krak', castle_name: 'Krak des Chevaliers', country: 'Syria', score_total: 500 }),
-    makeCastle({ position: 2, castle_code: 'carcassonne', castle_name: 'Carcassonne', country: 'France', score_total: 480 }),
-    makeCastle({ position: 3, castle_code: 'malbork', castle_name: 'Malbork Castle', country: 'Poland', score_total: 460 }),
-    makeCastle({ position: 4, castle_code: 'aleppo', castle_name: 'Citadel of Aleppo', country: 'Syria', score_total: 440 }),
+    makeCastle({ position: 1, castle_code: 'krak',        castle_name: 'Krak des Chevaliers', country: 'Syria',   score_total: 500, latitude: 34.76, longitude: 36.29 }),
+    makeCastle({ position: 2, castle_code: 'carcassonne', castle_name: 'Carcassonne',          country: 'France',  score_total: 480, latitude: 43.21, longitude: 2.36  }),
+    makeCastle({ position: 3, castle_code: 'malbork',     castle_name: 'Malbork Castle',       country: 'Poland',  score_total: 460, latitude: 54.04, longitude: 19.03 }),
+    makeCastle({ position: 4, castle_code: 'aleppo',      castle_name: 'Citadel of Aleppo',    country: 'Syria',   score_total: 440, latitude: 36.20, longitude: 37.16 }),
   ];
 
-  function setupWithCode(code: string): void {
+  function setupWithCode(code: string, castles = mockCastles): void {
     TestBed.configureTestingModule({
       imports: [CastleDetailPageComponent, NoopAnimationsModule],
       providers: [
@@ -68,7 +68,8 @@ describe('CastleDetailPageComponent', () => {
     httpTesting = TestBed.inject(HttpTestingController);
 
     fixture.detectChanges();
-    httpTesting.expectOne('/assets/data/castles.json').flush(mockCastles);
+    // Service tries castles_enriched.json first, falls back to castles.json on error
+    httpTesting.expectOne('/assets/data/castles_enriched.json').flush(castles);
     fixture.detectChanges();
   }
 
@@ -83,14 +84,12 @@ describe('CastleDetailPageComponent', () => {
 
   it('should display the castle name', () => {
     setupWithCode('krak');
-    const el: HTMLElement = fixture.nativeElement;
-    expect(el.querySelector('h1')?.textContent).toContain('Krak des Chevaliers');
+    expect(fixture.nativeElement.querySelector('h1')?.textContent).toContain('Krak des Chevaliers');
   });
 
   it('should display metadata fields', () => {
     setupWithCode('krak');
-    const el: HTMLElement = fixture.nativeElement;
-    const text = el.textContent ?? '';
+    const text: string = fixture.nativeElement.textContent ?? '';
     expect(text).toContain('position 1');
     expect(text).toContain('500');
     expect(text).toContain('Syria');
@@ -103,29 +102,24 @@ describe('CastleDetailPageComponent', () => {
 
   it('should display description and remarkable sections', () => {
     setupWithCode('krak');
-    const el: HTMLElement = fixture.nativeElement;
-    expect(el.textContent).toContain('The most famous Crusader castle');
-    expect(el.textContent).toContain('Best preserved Crusader castle');
+    const text: string = fixture.nativeElement.textContent ?? '';
+    expect(text).toContain('The most famous Crusader castle');
+    expect(text).toContain('Best preserved Crusader castle');
   });
 
   it('should show Google Maps link when coordinates exist', () => {
     setupWithCode('krak');
-    const el: HTMLElement = fixture.nativeElement;
-    const mapLink = el.querySelector('a[href*="maps.google"]');
-    expect(mapLink).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('a[href*="maps.google"]')).toBeTruthy();
   });
 
   it('should show website link', () => {
     setupWithCode('krak');
-    const el: HTMLElement = fixture.nativeElement;
-    const link = el.querySelector('a[href="https://example.com"]');
-    expect(link).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('a[href="https://example.com"]')).toBeTruthy();
   });
 
   it('should show "not found" for unknown castle code', () => {
     setupWithCode('nonexistent');
-    const el: HTMLElement = fixture.nativeElement;
-    expect(el.textContent).toContain('Castle not found');
+    expect(fixture.nativeElement.textContent).toContain('Castle not found');
   });
 
   it('should compute prev/next castles in top 100', () => {
@@ -136,52 +130,98 @@ describe('CastleDetailPageComponent', () => {
 
   it('should compute prev/next castles within same country', () => {
     setupWithCode('aleppo');
-    // Krak and Aleppo are both in Syria
     expect(component.prevInCountry()?.castle_code).toBe('krak');
     expect(component.nextInCountry()).toBeUndefined();
   });
 
   it('should show navigation links', () => {
     setupWithCode('carcassonne');
-    const el: HTMLElement = fixture.nativeElement;
-    const navLinks = el.querySelectorAll('.castle-nav a');
-    expect(navLinks.length).toBeGreaterThan(0);
+    expect(fixture.nativeElement.querySelectorAll('.castle-nav a').length).toBeGreaterThan(0);
   });
 
-  it('should show visitor rating when visitors > 0', () => {
+  // ── Phase 2.5: star rating ─────────────────────────────────────────────────
+
+  it('starSegments should produce 5 segments for any score > 0', () => {
     setupWithCode('krak');
-    const el: HTMLElement = fixture.nativeElement;
-    expect(el.textContent).toContain('120 visitors');
+    expect(component.starSegments().length).toBe(5);
+  });
+
+  it('starSegments should be all full stars for score 10', () => {
+    const castles = [makeCastle({ castle_code: 'krak', score_visitors: 10, visitors: 1 })];
+    setupWithCode('krak', castles);
+    expect(component.starSegments().every(s => s === 'full')).toBeTrue();
+  });
+
+  it('starSegments should be empty for score 0', () => {
+    setupWithCode('krak', [makeCastle({ castle_code: 'krak', score_visitors: 0, visitors: 0 })]);
+    expect(component.starSegments().length).toBe(0);
+  });
+
+  it('should show star icons in DOM when visitors > 0', () => {
+    setupWithCode('krak');
+    const stars = fixture.nativeElement.querySelectorAll('.star-rating mat-icon');
+    expect(stars.length).toBe(5);
   });
 
   it('should show "No rating" when visitors is 0', () => {
-    setupWithCode('krak');
-    // Override the data with 0 visitors
-    const noVisitorCastles = mockCastles.map(c =>
-      c.castle_code === 'malbork' ? { ...c, visitors: 0, score_visitors: 0 } : c
-    );
-    // Re-setup with malbork
-    TestBed.resetTestingModule();
-    TestBed.configureTestingModule({
-      imports: [CastleDetailPageComponent, NoopAnimationsModule],
-      providers: [
-        provideRouter([]),
-        provideHttpClient(),
-        provideHttpClientTesting(),
-        {
-          provide: ActivatedRoute,
-          useValue: { params: of({ code: 'malbork' }), queryParams: of({}) },
-        },
-      ],
-    });
-    fixture = TestBed.createComponent(CastleDetailPageComponent);
-    component = fixture.componentInstance;
-    httpTesting = TestBed.inject(HttpTestingController);
-    fixture.detectChanges();
-    httpTesting.expectOne('/assets/data/castles.json').flush(noVisitorCastles);
-    fixture.detectChanges();
+    setupWithCode('krak', [makeCastle({ castle_code: 'krak', visitors: 0, score_visitors: 0 })]);
+    expect(fixture.nativeElement.textContent).toContain('No rating');
+  });
 
-    const el: HTMLElement = fixture.nativeElement;
-    expect(el.textContent).toContain('No rating');
+  // ── Phase 2.6: nearby castles ──────────────────────────────────────────────
+
+  it('nearbyCastles should exclude the current castle', () => {
+    setupWithCode('krak');
+    const codes = component.nearbyCastles().map(n => n.castle.castle_code);
+    expect(codes).not.toContain('krak');
+  });
+
+  it('nearbyCastles should return at most 5 results', () => {
+    setupWithCode('krak');
+    expect(component.nearbyCastles().length).toBeLessThanOrEqual(5);
+  });
+
+  it('nearbyCastles should be sorted by distance ascending', () => {
+    setupWithCode('krak');
+    const distances = component.nearbyCastles().map(n => n.distanceKm);
+    expect(distances).toEqual([...distances].sort((a, b) => a - b));
+  });
+
+  it('nearbyCastles should return empty array when castle has no coordinates', () => {
+    setupWithCode('krak', [makeCastle({ castle_code: 'krak', latitude: null, longitude: null })]);
+    expect(component.nearbyCastles().length).toBe(0);
+  });
+
+  // ── Phase 2.2: Wikipedia section ──────────────────────────────────────────
+
+  it('should show Wikipedia section when extract is present', () => {
+    const castles = [makeCastle({ castle_code: 'krak', wikipedia_extract: 'A great castle.', wikipedia_url: 'https://en.wikipedia.org/wiki/Krak' })];
+    setupWithCode('krak', castles);
+    expect(fixture.nativeElement.textContent).toContain('A great castle.');
+    expect(fixture.nativeElement.querySelector('a[href*="wikipedia.org"]')).toBeTruthy();
+  });
+
+  it('should not show Wikipedia section when extract is absent', () => {
+    setupWithCode('krak');
+    expect(fixture.nativeElement.textContent).not.toContain('From Wikipedia');
+  });
+
+  // ── Phase 2.3: enrichment badges ──────────────────────────────────────────
+
+  it('should show heritage badge when heritage_status is present', () => {
+    const castles = [makeCastle({ castle_code: 'krak', heritage_status: 'UNESCO World Heritage Site' })];
+    setupWithCode('krak', castles);
+    expect(fixture.nativeElement.textContent).toContain('UNESCO World Heritage Site');
+  });
+
+  it('should show architectural style badge when present', () => {
+    const castles = [makeCastle({ castle_code: 'krak', architectural_style: 'Romanesque' })];
+    setupWithCode('krak', castles);
+    expect(fixture.nativeElement.textContent).toContain('Romanesque');
+  });
+
+  it('should not show badge row when no enrichment data', () => {
+    setupWithCode('krak');
+    expect(fixture.nativeElement.querySelector('.badge-row')).toBeNull();
   });
 });

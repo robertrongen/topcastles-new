@@ -40,6 +40,9 @@
               "src/styles.scss"
             ],
             "scripts": [],
+            "allowedCommonJsDependencies": [
+              "leaflet"
+            ],
             "server": "src/main.server.ts",
             "security": {
               "allowedHosts": []

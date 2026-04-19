@@ -40,123 +40,252 @@
       }
     </nav>
 
-    <!-- Castle name -->
+    <!-- Castle name + badges (full width) -->
     <h1>{{ castle()!.castle_name }}</h1>
 
-    <!-- Metadata card -->
-    <mat-card class="metadata-card">
-      <mat-card-content>
-        <table class="detail-table">
-          <tbody>
-          <tr>
-            <td class="label">Ranking:</td>
-            <td>position <strong>{{ castle()!.position }}</strong></td>
-            <td class="label">Total score:</td>
-            <td><strong>{{ castle()!.score_total | number:'1.0-0' }}</strong> points</td>
-          </tr>
-          <tr>
-            <td class="label">Rating visitors:</td>
-            <td>
-              @if ((castle()!.visitors ?? 0) > 0) {
-                <strong>{{ castle()!.score_visitors | number:'1.1-1' }}</strong> of {{ castle()!.visitors }} visitors
-              } @else {
-                No rating
-              }
-            </td>
-            <td class="label">Country:</td>
-            <td>
-              <a [routerLink]="['/castles']" [queryParams]="{ country: castle()!.country }">
-                <strong>{{ castle()!.country }}</strong>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td class="label">Founder:</td>
-            <td><strong>{{ castle()!.founder || '—' }}</strong></td>
-            <td class="label">Region:</td>
-            <td><strong>{{ castle()!.region || '—' }}</strong></td>
-          </tr>
-          <tr>
-            <td class="label">Building structure:</td>
-            <td><strong>{{ castle()!.castle_concept || '—' }}</strong></td>
-            <td class="label">Castle type:</td>
-            <td><strong>{{ castle()!.castle_type || '—' }}</strong></td>
-          </tr>
-          <tr>
-            <td class="label">Place:</td>
-            <td><strong>{{ castle()!.place || '—' }}</strong></td>
-            <td class="label">Area:</td>
-            <td><strong>{{ castle()!.area || '—' }}</strong></td>
-          </tr>
-          <tr>
-            <td class="label">Era:</td>
-            <td>
-              @if (castle()!.era && castle()!.era! > 1) {
-                <strong>{{ castle()!.era }}th century</strong>
-              } @else {
-                —
-              }
-            </td>
-            <td class="label">Condition:</td>
-            <td><strong>{{ castle()!.condition || '—' }}</strong></td>
-          </tr>
-          </tbody>
-        </table>
-      </mat-card-content>
-    </mat-card>
-
-    <!-- Description -->
-    @if (castle()!.description) {
-      <mat-card class="section-card">
-        <mat-card-content>
-          <h3>Description</h3>
-          <p>{{ castle()!.description }}</p>
-        </mat-card-content>
-      </mat-card>
+    @if (castle()!.heritage_status || castle()!.architectural_style) {
+      <mat-chip-set class="badge-row" aria-label="Castle attributes">
+        @if (castle()!.heritage_status) {
+          <mat-chip class="badge badge-heritage">
+            <mat-icon matChipAvatar>workspace_premium</mat-icon>
+            {{ castle()!.heritage_status }}
+          </mat-chip>
+        }
+        @if (castle()!.architectural_style) {
+          <mat-chip class="badge badge-style">
+            <mat-icon matChipAvatar>architecture</mat-icon>
+            {{ castle()!.architectural_style }}
+          </mat-chip>
+        }
+      </mat-chip-set>
     }
 
-    <!-- Remarkable -->
-    @if (castle()!.remarkable) {
-      <mat-card class="section-card">
-        <mat-card-content>
-          <h3>Remarkable</h3>
-          <p>{{ castle()!.remarkable }}</p>
-        </mat-card-content>
-      </mat-card>
-    }
+    <!-- Two-column layout -->
+    <div class="detail-layout">
 
-    <!-- External links -->
-    <mat-card class="section-card">
-      <mat-card-content>
-        <h3>External links</h3>
-        <div class="external-links">
-          @if (castle()!.website) {
-            <a mat-button [href]="castle()!.website" target="_blank" rel="noopener noreferrer">
-              <mat-icon>language</mat-icon> Official website
-            </a>
-          }
-          @if (castle()!.latitude != null && castle()!.longitude != null) {
-            <a mat-button [href]="googleMapsUrl()" target="_blank" rel="noopener noreferrer">
-              <mat-icon>map</mat-icon> Google Maps
-            </a>
+      <!-- Left: all text content -->
+      <div class="detail-main">
+
+        <mat-card class="section-card">
+          <mat-card-content>
+            <table class="detail-table">
+              <tbody>
+              <tr>
+                <td class="label">Ranking:</td>
+                <td>position <strong>{{ castle()!.position }}</strong></td>
+                <td class="label">Total score:</td>
+                <td><strong>{{ castle()!.score_total | number:'1.0-0' }}</strong> points</td>
+              </tr>
+              <tr>
+                <td class="label">Visitor rating:</td>
+                <td>
+                  @if ((castle()!.visitors ?? 0) > 0) {
+                    <span class="star-rating" [title]="(castle()!.score_visitors | number:'1.1-1') + ' / 10'">
+                      @for (seg of starSegments(); track $index) {
+                        <mat-icon class="star">{{ seg === 'full' ? 'star' : seg === 'half' ? 'star_half' : 'star_border' }}</mat-icon>
+                      }
+                    </span>
+                    <span class="star-label">{{ castle()!.score_visitors | number:'1.1-1' }}/10 &middot; {{ castle()!.visitors }} voters</span>
+                  } @else {
+                    No rating
+                  }
+                </td>
+                <td class="label">Country:</td>
+                <td>
+                  <a [routerLink]="['/castles']" [queryParams]="{ country: castle()!.country }">
+                    <strong>{{ castle()!.country }}</strong>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td class="label">Founder:</td>
+                <td><strong>{{ castle()!.founder || '—' }}</strong></td>
+                <td class="label">Region:</td>
+                <td><strong>{{ castle()!.region || '—' }}</strong></td>
+              </tr>
+              <tr>
+                <td class="label">Building structure:</td>
+                <td><strong>{{ castle()!.castle_concept || '—' }}</strong></td>
+                <td class="label">Castle type:</td>
+                <td><strong>{{ castle()!.castle_type || '—' }}</strong></td>
+              </tr>
+              <tr>
+                <td class="label">Place:</td>
+                <td><strong>{{ castle()!.place || '—' }}</strong></td>
+                <td class="label">Area:</td>
+                <td><strong>{{ castle()!.area || '—' }}</strong></td>
+              </tr>
+              <tr>
+                <td class="label">Era:</td>
+                <td>
+                  @if (castle()!.era && castle()!.era! > 1) {
+                    <strong>{{ castle()!.era }}th century</strong>
+                  } @else {
+                    —
+                  }
+                </td>
+                <td class="label">Condition:</td>
+                <td><strong>{{ castle()!.condition || '—' }}</strong></td>
+              </tr>
+              </tbody>
+            </table>
+          </mat-card-content>
+        </mat-card>
+
+        @if (castle()!.description) {
+          <mat-card class="section-card">
+            <mat-card-content>
+              <h3>Description</h3>
+              <p>{{ castle()!.description }}</p>
+            </mat-card-content>
+          </mat-card>
+        }
+
+        @if (castle()!.remarkable) {
+          <mat-card class="section-card">
+            <mat-card-content>
+              <h3>Remarkable</h3>
+              <p>{{ castle()!.remarkable }}</p>
+            </mat-card-content>
+          </mat-card>
+        }
+
+        @if (castle()!.wikipedia_extract) {
+          <mat-card class="section-card">
+            <mat-card-content>
+              <div class="wikipedia-header">
+                <h3>From Wikipedia</h3>
+                <a mat-button [href]="castle()!.wikipedia_url!" target="_blank" rel="noopener noreferrer">
+                  <mat-icon>open_in_new</mat-icon> Read full article
+                </a>
+              </div>
+              <div class="wikipedia-body">
+                @if (castle()!.wikipedia_thumbnail) {
+                  <img class="wikipedia-thumb"
+                       [src]="castle()!.wikipedia_thumbnail!"
+                       [alt]="castle()!.castle_name"
+                       loading="lazy" />
+                }
+                <p>{{ castle()!.wikipedia_extract }}</p>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        }
+
+        @if (castle()!.website) {
+          <mat-card class="section-card">
+            <mat-card-content>
+              <h3>External links</h3>
+              <div class="external-links">
+                <a mat-button [href]="castle()!.website" target="_blank" rel="noopener noreferrer">
+                  <mat-icon>language</mat-icon> Official website
+                </a>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        }
+
+        @if (nearbyCastles().length > 0) {
+          <mat-card class="section-card">
+            <mat-card-content>
+              <h3>Nearby castles</h3>
+              <div class="nearby-grid">
+                @for (item of nearbyCastles(); track item.castle.castle_code) {
+                  <a class="nearby-tile" [routerLink]="['/castles', item.castle.castle_code]">
+                    <img [src]="'/images/castles/small/' + item.castle.castle_code + '_small.jpg'"
+                         [alt]="item.castle.castle_name"
+                         (error)="onImageError($event)"
+                         loading="lazy" />
+                    <div class="nearby-name">{{ item.castle.castle_name }}</div>
+                    <div class="nearby-meta">{{ item.distanceKm }} km &middot; {{ item.castle.country }}</div>
+                  </a>
+                }
+              </div>
+            </mat-card-content>
+          </mat-card>
+        }
+
+      </div>
+
+      <!-- Right: images + map -->
+      <aside class="detail-aside">
+
+        <!-- Invisible probes to trigger image loading -->
+        <div class="preload-container">
+          @for (url of imageUrls(); track $index) {
+            <img class="preload-img"
+                 [src]="url"
+                 [alt]="castle()!.castle_name"
+                 (load)="onImageLoad(url)"
+                 (error)="onImageError($event)" />
           }
         </div>
-        @if (castle()!.latitude != null && castle()!.longitude != null) {
-          <p class="geo-text">
-            Latitude: {{ castle()!.latitude }}, Longitude: {{ castle()!.longitude }}
-          </p>
-        }
-      </mat-card-content>
-    </mat-card>
 
-    <!-- Images -->
-    <div class="castle-images">
-      @for (url of imageUrls(); track $index) {
-        <img [src]="url"
-             [alt]="castle()!.castle_name"
-             (error)="onImageError($event)"
-             loading="lazy" />
-      }
+        @if (loadedImageUrls().length > 0) {
+          <div class="featured-image-wrap" (click)="openLightbox(0)">
+            <img class="featured-image"
+                 [src]="loadedImageUrls()[0]"
+                 [alt]="castle()!.castle_name" />
+            @if (loadedImageUrls().length > 1) {
+              <div class="featured-image-count">
+                <mat-icon>photo_library</mat-icon> {{ loadedImageUrls().length }} photos
+              </div>
+            }
+          </div>
+
+          @if (loadedImageUrls().length > 1) {
+            <div class="thumb-strip">
+              @for (url of loadedImageUrls().slice(1, 5); track $index) {
+                <img class="strip-thumb"
+                     [src]="url"
+                     [alt]="castle()!.castle_name"
+                     (click)="openLightbox($index + 1)" />
+              }
+              @if (loadedImageUrls().length > 5) {
+                <div class="strip-more" (click)="openLightbox(5)">
+                  +{{ loadedImageUrls().length - 5 }}
+                </div>
+              }
+            </div>
+          }
+        }
+
+        @if (hasCoordinates()) {
+          <div class="aside-map-section">
+            <h3>Location</h3>
+            <div #mapContainer class="leaflet-map"></div>
+            <div class="map-links">
+              <a mat-button [href]="googleMapsUrl()" target="_blank" rel="noopener noreferrer">
+                <mat-icon>open_in_new</mat-icon> Google Maps
+              </a>
+              <span class="geo-text">{{ castle()!.latitude }}, {{ castle()!.longitude }}</span>
+            </div>
+          </div>
+        }
+
+      </aside>
     </div>
   </div>
+
+  <!-- Lightbox overlay -->
+  @if (lightboxIndex() !== null) {
+    <div class="lightbox-overlay" (click)="closeLightbox()">
+      <button class="lightbox-close" (click)="closeLightbox()" aria-label="Close">
+        <mat-icon>close</mat-icon>
+      </button>
+      @if (loadedImageUrls().length > 1) {
+        <button class="lightbox-prev" (click)="$event.stopPropagation(); lightboxPrev()" aria-label="Previous">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <button class="lightbox-next" (click)="$event.stopPropagation(); lightboxNext()" aria-label="Next">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      }
+      <img class="lightbox-img"
+           [src]="loadedImageUrls()[lightboxIndex()!]"
+           [alt]="castle()!.castle_name"
+           (click)="$event.stopPropagation()" />
+      <div class="lightbox-counter">{{ lightboxIndex()! + 1 }} / {{ loadedImageUrls().length }}</div>
+    </div>
+  }
 }

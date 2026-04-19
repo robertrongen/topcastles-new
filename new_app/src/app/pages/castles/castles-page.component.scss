@@ -31,6 +31,23 @@
   margin-top: 16px;
 }
 
+.active-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 6px;
+}
+
+.clear-all-btn {
+  font-size: 0.85em;
+  color: rgba(0, 0, 0, 0.55);
+  margin-left: auto;
+}
+
 .result-count {
   margin-bottom: 8px;
   color: rgba(0, 0, 0, 0.6);

@@ -70,7 +70,7 @@ describe('CountryDetailPageComponent', () => {
     TestBed.inject(ViewModeService).setMode('list');
     fixture.detectChanges();
 
-    const req = httpTesting.expectOne('/assets/data/castles.json');
+    const req = httpTesting.expectOne('/assets/data/castles_enriched.json');
     req.flush(castles);
     fixture.detectChanges();
   });

@@ -20,6 +20,15 @@ export interface Castle {
   score_total: number | null;
   score_visitors: number | null;
   visitors: number | null;
+  // Wikipedia / Wikidata enrichment (optional — populated by enrichment scripts)
+  wikipedia_extract?: string | null;
+  wikipedia_thumbnail?: string | null;
+  wikipedia_url?: string | null;
+  wikidata_id?: string | null;
+  architectural_style?: string | null;
+  heritage_status?: string | null;
+  inception_year?: number | null;
+  wikidata_image?: string | null;
 }
 
 export interface CountrySummary {

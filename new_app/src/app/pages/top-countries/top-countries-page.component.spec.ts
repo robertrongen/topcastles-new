@@ -34,7 +34,7 @@ describe('TopCountriesPageComponent', () => {
     httpTesting = TestBed.inject(HttpTestingController);
     fixture = TestBed.createComponent(TopCountriesPageComponent);
     fixture.detectChanges();
-    httpTesting.expectOne('/assets/data/castles.json').flush(castles);
+    httpTesting.expectOne('/assets/data/castles_enriched.json').flush(castles);
     fixture.detectChanges();
   });
 

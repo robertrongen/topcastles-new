@@ -67,7 +67,7 @@ describe('Top100PageComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
 
-    const req = httpTesting.expectOne('/assets/data/castles.json');
+    const req = httpTesting.expectOne('/assets/data/castles_enriched.json');
     req.flush(castles);
     fixture.detectChanges();
   });

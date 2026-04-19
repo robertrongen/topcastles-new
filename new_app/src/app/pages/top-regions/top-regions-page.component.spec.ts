@@ -36,7 +36,7 @@ describe('TopRegionsPageComponent', () => {
     fixture = TestBed.createComponent(TopRegionsPageComponent);
     TestBed.inject(ViewModeService).setMode('list');
     fixture.detectChanges();
-    httpTesting.expectOne('/assets/data/castles.json').flush(castles);
+    httpTesting.expectOne('/assets/data/castles_enriched.json').flush(castles);
     fixture.detectChanges();
   });
 

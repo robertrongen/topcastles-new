@@ -44,10 +44,10 @@ describe('CastlesPageComponent', () => {
   let httpTesting: HttpTestingController;
 
   const mockCastles: Castle[] = [
-    makeCastle({ position: 1, castle_code: 'krak', castle_name: 'Krak des Chevaliers', country: 'Syria', score_total: 500 }),
-    makeCastle({ position: 2, castle_code: 'carcassonne', castle_name: 'Carcassonne', country: 'France', score_total: 480 }),
-    makeCastle({ position: 3, castle_code: 'malbork', castle_name: 'Malbork Castle', country: 'Poland', score_total: 460 }),
-    makeCastle({ position: 4, castle_code: 'bodiam', castle_name: 'Bodiam Castle', country: 'England', score_total: 300 }),
+    makeCastle({ position: 1, castle_code: 'krak',        castle_name: 'Krak des Chevaliers', country: 'Syria',   score_total: 500 }),
+    makeCastle({ position: 2, castle_code: 'carcassonne', castle_name: 'Carcassonne',          country: 'France',  score_total: 480 }),
+    makeCastle({ position: 3, castle_code: 'malbork',     castle_name: 'Malbork Castle',       country: 'Poland',  score_total: 460 }),
+    makeCastle({ position: 4, castle_code: 'bodiam',      castle_name: 'Bodiam Castle',        country: 'England', score_total: 300 }),
   ];
 
   function setup(queryParams: Record<string, string> = {}): void {
@@ -70,7 +70,8 @@ describe('CastlesPageComponent', () => {
     TestBed.inject(ViewModeService).setMode('list');
 
     fixture.detectChanges();
-    httpTesting.expectOne('/assets/data/castles.json').flush(mockCastles);
+    // Service tries castles_enriched.json first, falls back to castles.json on error
+    httpTesting.expectOne('/assets/data/castles_enriched.json').flush(mockCastles);
     fixture.detectChanges();
   }
 
@@ -128,5 +129,61 @@ describe('CastlesPageComponent', () => {
     expect(countries).toContain('Syria');
     expect(countries).toContain('Poland');
     expect(countries).toContain('England');
+  });
+
+  // ── Phase 3.1: filter chips ────────────────────────────────────────────────
+
+  it('activeFilters should be empty when no filters are set', () => {
+    setup();
+    expect(component.activeFilters().length).toBe(0);
+  });
+
+  it('activeFilters should contain a chip for each active filter', () => {
+    setup();
+    component.name.set('Castle');
+    component.country.set('France');
+    fixture.detectChanges();
+    const labels = component.activeFilters().map(f => f.label);
+    expect(labels).toContain('Name: Castle');
+    expect(labels).toContain('Country: France');
+    expect(labels.length).toBe(2);
+  });
+
+  it('chip clear function should remove that filter', () => {
+    setup();
+    component.name.set('Castle');
+    component.country.set('France');
+    fixture.detectChanges();
+    component.activeFilters().find(f => f.label.startsWith('Name'))?.clear();
+    fixture.detectChanges();
+    expect(component.name()).toBe('');
+    expect(component.country()).toBe('France');
+    expect(component.activeFilters().length).toBe(1);
+  });
+
+  it('onReset should clear all filters and chips', () => {
+    setup();
+    component.name.set('foo');
+    component.country.set('France');
+    component.era.set(12);
+    fixture.detectChanges();
+    component.onReset();
+    fixture.detectChanges();
+    expect(component.activeFilters().length).toBe(0);
+  });
+
+  it('should render filter chips in the DOM when filters are active', () => {
+    setup();
+    component.country.set('France');
+    fixture.detectChanges();
+    const chips = fixture.nativeElement.querySelectorAll('mat-chip');
+    expect(chips.length).toBeGreaterThan(0);
+    expect(fixture.nativeElement.textContent).toContain('Country: France');
+  });
+
+  it('should not render filter chip bar when no filters are active', () => {
+    setup();
+    const filterBar = fixture.nativeElement.querySelector('.active-filters');
+    expect(filterBar).toBeNull();
   });
 });

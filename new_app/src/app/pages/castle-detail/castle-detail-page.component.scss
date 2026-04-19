@@ -1,5 +1,5 @@
 .castle-detail {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 16px;
 }
@@ -39,7 +39,7 @@ h1 {
 
   td {
     padding: 6px 8px;
-    vertical-align: top;
+    vertical-align: middle;
   }
 
   tr:nth-child(even) {
@@ -53,6 +53,27 @@ h1 {
   }
 }
 
+// ── Star rating ──────────────────────────────────────────────────────────────
+.star-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+
+  .star {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: #f5a623;
+  }
+}
+
+.star-label {
+  margin-left: 6px;
+  font-size: 0.85em;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+// ── Section cards ─────────────────────────────────────────────────────────────
 .section-card {
   margin-bottom: 16px;
 
@@ -66,24 +87,63 @@ h1 {
   }
 }
 
-.castle-images {
-  margin-bottom: 16px;
+// ── Wikipedia ─────────────────────────────────────────────────────────────────
+.wikipedia-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
 
-  img {
-    display: block;
-    max-width: 500px;
-    width: 100%;
-    height: auto;
-    margin-bottom: 8px;
-    border-radius: 4px;
+  h3 { margin: 0; }
+}
+
+.wikipedia-body {
+  overflow: hidden; // clearfix for float
+
+  p {
+    margin: 0;
+    line-height: 1.6;
   }
 }
 
-.external-links {
+.wikipedia-thumb {
+  float: right;
+  width: 160px;
+  height: auto;
+  border-radius: 4px;
+  margin: 0 0 12px 16px;
+
+  @media (max-width: 480px) {
+    float: none;
+    width: 100%;
+    margin: 0 0 12px;
+  }
+}
+
+// ── Map ───────────────────────────────────────────────────────────────────────
+.aside-map-section {
+  margin-top: 12px;
+
+  h3 {
+    margin: 0 0 6px;
+    font-size: 0.95em;
+    color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+.leaflet-map {
+  width: 100%;
+  height: 220px;
+  border-radius: 6px;
+  background: #e8e0d8;
+}
+
+.map-links {
   display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 8px;
 }
 
 .geo-text {
@@ -91,6 +151,237 @@ h1 {
   color: rgba(0, 0, 0, 0.6);
 }
 
+.external-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+// ── Enrichment badges ─────────────────────────────────────────────────────────
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.badge {
+  font-size: 0.85em;
+
+  mat-icon { font-size: 16px; width: 16px; height: 16px; }
+
+  &.badge-heritage {
+    background: #fff3cd;
+    color: #856404;
+  }
+
+  &.badge-style {
+    background: #d1ecf1;
+    color: #0c5460;
+  }
+}
+
+// ── Two-column layout ─────────────────────────────────────────────────────────
+.detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 500px;
+  gap: 24px;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detail-main {
+  min-width: 0;
+}
+
+.detail-aside {
+  width: 500px;
+  position: sticky;
+  top: 16px;
+
+  @media (max-width: 900px) {
+    width: 100%;
+    position: static;
+  }
+}
+
+// Probe container: zero-size, invisible but present so the browser fetches images
+.preload-container {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preload-img {
+  display: block;
+  width: 1px;
+  height: 1px;
+}
+
+.featured-image-wrap {
+  position: relative;
+  cursor: pointer;
+  border-radius: 6px;
+  overflow: hidden;
+  line-height: 0;
+
+  &:hover .featured-image { opacity: 0.92; }
+}
+
+.featured-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  transition: opacity 0.15s;
+}
+
+.featured-image-count {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 0.8em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  mat-icon { font-size: 16px; width: 16px; height: 16px; }
+}
+
+.thumb-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.strip-thumb {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+
+  &:hover { opacity: 0.8; }
+}
+
+.strip-more {
+  aspect-ratio: 1;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover { background: rgba(0, 0, 0, 0.7); }
+}
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  transition: background 0.15s;
+
+  &:hover { background: rgba(255, 255, 255, 0.3); }
+  mat-icon { font-size: 24px; }
+}
+
+.lightbox-close { top: 16px; right: 16px; }
+.lightbox-prev  { left: 16px; top: 50%; transform: translateY(-50%); }
+.lightbox-next  { right: 16px; top: 50%; transform: translateY(-50%); }
+
+.lightbox-counter {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85em;
+}
+
+// ── Nearby castles ────────────────────────────────────────────────────────────
+.nearby-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.nearby-tile {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.15s;
+
+  &:hover { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); }
+
+  img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.nearby-name {
+  font-size: 0.85em;
+  font-weight: 500;
+  padding: 6px 8px 2px;
+  line-height: 1.3;
+}
+
+.nearby-meta {
+  font-size: 0.75em;
+  color: rgba(0, 0, 0, 0.55);
+  padding: 0 8px 6px;
+}
+
+// ── States ────────────────────────────────────────────────────────────────────
 .loading {
   padding: 48px;
   text-align: center;

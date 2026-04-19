@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { CastleService } from '../../services/castle.service';
 import { CastleTableComponent } from '../../components/castle-table/castle-table.component';
 import { CastleGridComponent } from '../../components/castle-grid/castle-grid.component';
@@ -16,6 +19,7 @@ import { ViewModeService } from '../../services/view-mode.service';
   imports: [
     FormsModule,
     MatFormFieldModule, MatInputModule, MatSelectModule,
+    MatChipsModule, MatIconModule, MatButtonModule,
     CastleTableComponent, CastleGridComponent, ViewToggleComponent,
   ],
   templateUrl: './castles-page.component.html',
@@ -107,11 +111,23 @@ export class CastlesPageComponent implements OnInit {
     return castles;
   });
 
-  hasFilters = computed(() =>
-    !!(this.name() || this.description() || this.place() || this.region() ||
-       this.country() || this.area() || this.castleType() || this.castleConcept() ||
-       this.founder() || this.era() != null || this.condition())
-  );
+  activeFilters = computed(() => {
+    const chips: { label: string; clear: () => void }[] = [];
+    if (this.name())        chips.push({ label: `Name: ${this.name()}`,               clear: () => this.name.set('') });
+    if (this.description()) chips.push({ label: `Description: ${this.description()}`, clear: () => this.description.set('') });
+    if (this.place())       chips.push({ label: `Place: ${this.place()}`,             clear: () => this.place.set('') });
+    if (this.region())      chips.push({ label: `Region: ${this.region()}`,           clear: () => this.region.set('') });
+    if (this.country())     chips.push({ label: `Country: ${this.country()}`,         clear: () => this.country.set('') });
+    if (this.area())        chips.push({ label: `Area: ${this.area()}`,               clear: () => this.area.set('') });
+    if (this.castleType())  chips.push({ label: `Type: ${this.castleType()}`,         clear: () => this.castleType.set('') });
+    if (this.castleConcept()) chips.push({ label: `Structure: ${this.castleConcept()}`, clear: () => this.castleConcept.set('') });
+    if (this.founder())     chips.push({ label: `Founder: ${this.founder()}`,         clear: () => this.founder.set('') });
+    if (this.era() != null) chips.push({ label: `Era: ${this.era()}th century`,       clear: () => this.era.set(null) });
+    if (this.condition())   chips.push({ label: `Condition: ${this.condition()}`,     clear: () => this.condition.set('') });
+    return chips;
+  });
+
+  hasFilters = computed(() => this.activeFilters().length > 0);
 
   ngOnInit(): void {
     this.castleService.loadCastles();
