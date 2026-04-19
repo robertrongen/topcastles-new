@@ -19,7 +19,8 @@
       "Bash(graphify-ts install *)",
       "Bash(npx -y universal-context-mode --help)",
       "Bash(npx -y universal-context-mode report)",
-      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d.get\\('bin',{}\\)\\); print\\(d.get\\('main',''\\)\\)\")"
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d.get\\('bin',{}\\)\\); print\\(d.get\\('main',''\\)\\)\")",
+      "Bash(git commit -m ' *)"
     ]
   }
 }

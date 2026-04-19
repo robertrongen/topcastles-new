@@ -1,8 +1,17 @@
 #!/bin/bash
 
-# Deployment script for Topcastles-New to Synology NAS
+# Deployment script for Topcastles-New to Synology NAS via Docker Hub
 
 set -e
+
+IMAGE_NAME="hobunror/hobunror"
+IMAGE_TAG="latest"
+FULL_IMAGE_NAME="${IMAGE_NAME}:${IMAGE_TAG}"
+NAS_HOST="DS224plus.local"
+NAS_USER="robertron"
+CONTAINER_NAME="topcastles-new"
+HOST_PORT="8080"
+CONTAINER_PORT="80"
 
 echo "Building Angular application..."
 cd new_app
@@ -10,34 +19,25 @@ npm run build
 cd ..
 
 echo "Building Docker image..."
-docker build -t topcastles-new:latest .
+docker build -t "$FULL_IMAGE_NAME" .
 
-echo "Saving Docker image..."
-docker save topcastles-new:latest > topcastles-new.tar
-
-echo "Copying image to Synology NAS..."
-scp topcastles-new.tar robertron@DS224plus.local:/volume1/docker/
+echo "Pushing image to Docker Hub..."
+docker push "$FULL_IMAGE_NAME"
 
 echo "Connecting to Synology and deploying..."
-ssh robertron@DS224plus.local << 'EOF'
-  cd /volume1/docker/
-  echo "Loading Docker image..."
-  docker load < topcastles-new.tar
+ssh "${NAS_USER}@${NAS_HOST}" << EOF
+  set -e
+  echo "Pulling image from Docker Hub..."
+  docker pull "$FULL_IMAGE_NAME"
 
   echo "Stopping existing container if running..."
-  docker stop topcastles-new || true
-  docker rm topcastles-new || true
+  docker stop "$CONTAINER_NAME" || true
+  docker rm "$CONTAINER_NAME" || true
 
   echo "Running new container..."
-  docker run -d --name topcastles-new -p 8080:80 topcastles-new:latest
-
-  echo "Cleaning up..."
-  rm topcastles-new.tar
+  docker run -d --restart unless-stopped --name "$CONTAINER_NAME" -p ${HOST_PORT}:${CONTAINER_PORT} "$FULL_IMAGE_NAME"
 
   echo "Deployment complete!"
 EOF
-
-echo "Local cleanup..."
-rm topcastles-new.tar
 
 echo "Done!"
