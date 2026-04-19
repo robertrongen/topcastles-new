@@ -22,7 +22,7 @@ Foundation for Wikipedia/Wikidata display in Phase 2. Run scripts once, then re-
   - Added: `wikipedia_extract?`, `wikipedia_thumbnail?`, `wikipedia_url?`, `wikidata_id?`, `architectural_style?`, `heritage_status?`, `inception_year?`, `wikidata_image?`
 - [x] **1.4** Update `CastleService` to load enriched JSON ([new_app/src/app/services/castle.service.ts](../new_app/src/app/services/castle.service.ts))
   - Service now loads `castles_enriched.json`; all enrichment fields flow through automatically
-- [ ] **1.5** Run the enrichment scripts and commit `castles_enriched.json`
+- [x] **1.5** Run the enrichment scripts and commit `castles_enriched.json`
   - `node scripts/enrich_wikipedia.js`
   - `node scripts/enrich_wikidata.js`
   - Verify output, commit to repo
@@ -54,11 +54,10 @@ Foundation for Wikipedia/Wikidata display in Phase 2. Run scripts once, then re-
 - [x] **3.1** Active filter chips ([new_app/src/app/pages/castles/](../new_app/src/app/pages/castles/))
   - Active filters shown as dismissible `mat-chip` elements above results
   - Each chip's × clears that single filter; "Clear all" button resets everything
-- [ ] **3.2** Map view mode (third view alongside grid / table)
-  - Full-page Leaflet map with all filtered castles as clustered markers
-  - Uses same Leaflet install from 2.1
-  - Clicking a marker navigates to castle detail
-  - Requires `leaflet.markercluster`
+- [x] **3.2** Map view mode (third view alongside grid / table)
+  - `CastleMapComponent`: Leaflet circle markers coloured by score (red/orange/blue), tooltip + click-to-detail
+  - Castles page: map toggle button added; `<app-castle-map>` shown in a 600px container
+  - Castle detail page: nearby castles shown as orange circle markers on the location map
 
 ---
 
