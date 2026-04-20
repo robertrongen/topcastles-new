@@ -178,6 +178,17 @@ Suggested improvements to quality-of-life and discoverability.
 
 ---
 
+## Phase 11 — Infrastructure & Deployment
+
+- [ ] **11.0** Serve castle images from Synology NAS
+  - Add `imageBaseUrl` to `src/environments/environment.ts` (`''`) and `environment.prod.ts` (Synology URL)
+  - Create `ImageService` that prepends the base URL; replace all `/images/castles/…` literals in templates and TS with service calls
+  - Add `/public/images/castles/` to `.dockerignore` so images are excluded from the container build
+  - Configure CORS on the Synology web server (`Access-Control-Allow-Origin`) for the app's domain
+  - Prerequisite: confirm Synology URL and whether dev still serves from disk or also from NAS
+
+---
+
 ## Phase 11 — Advanced & Optional
 
 Larger or more speculative improvements.
