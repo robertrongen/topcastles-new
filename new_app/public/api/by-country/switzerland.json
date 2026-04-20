@@ -28,7 +28,13 @@
     "architectural_style": "Romanesque architecture",
     "heritage_status": "class A Swiss cultural property of national significance",
     "inception_year": 1160,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/001_Chateau_de_Chillon_and_Dents_du_Midi_Photo_by_Giles_Laurent.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/001_Chateau_de_Chillon_and_Dents_du_Midi_Photo_by_Giles_Laurent.jpg?width=800",
+    "architect": "James of Saint George",
+    "wikidata_website": "https://www.chillon.ch",
+    "significant_events": [
+      "architectural reconstruction",
+      "architectural reconstruction"
+    ]
   },
   {
     "position": 115,
@@ -58,7 +64,8 @@
     "wikidata_id": "Q668250",
     "heritage_status": "class A Swiss cultural property of national significance",
     "inception_year": 1094,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/SchlossTarasp1.pg.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/SchlossTarasp1.pg.JPG?width=800",
+    "wikidata_website": "https://notvital.ch/en/fundaziun/schloss-tarasp"
   },
   {
     "position": 142,
@@ -88,7 +95,8 @@
     "wikidata_id": "Q680215",
     "heritage_status": "class A Swiss cultural property of national significance",
     "inception_year": 1200,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_d'Aigle_2022_(2).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_d'Aigle_2022_(2).jpg?width=800",
+    "wikidata_website": "https://www.chateauaigle.ch"
   },
   {
     "position": 181,
@@ -124,7 +132,7 @@
     "region_code": "nordwestschweiz",
     "latitude": 47.4625,
     "longitude": 8.180833,
-    "founder": "",
+    "founder": "Guntram the Rich",
     "era": 11,
     "castle_type": "Mountain castle",
     "castle_concept": "Donjon in curtain wall",
@@ -139,7 +147,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Arms_of_Counts_of_Habsbourg.svg/330px-Arms_of_Counts_of_Habsbourg.svg.png",
     "wikipedia_url": "https://en.wikipedia.org/wiki/House_of_Habsburg",
     "wikidata_id": "Q65968",
-    "inception_year": 1001
+    "inception_year": 1001,
+    "wikidata_founder": "Guntram the Rich"
   },
   {
     "position": 251,
@@ -374,7 +383,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Gruy%C3%A8res",
     "wikidata_id": "Q69600",
     "heritage_status": "Swiss townscape worthy of protection",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Gruy%C3%A8res_et_sa_cit%C3%A9_m%C3%A9di%C3%A9vale.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Gruy%C3%A8res_et_sa_cit%C3%A9_m%C3%A9di%C3%A9vale.jpg?width=800",
+    "wikidata_website": "https://www.gruyeres.ch"
   },
   {
     "position": 584,
@@ -433,7 +443,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Kyburg_(castle)",
     "wikidata_id": "Q573643",
     "heritage_status": "class A Swiss cultural property of national significance",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kyburg_-_Schloss_2010-11-01_13-25-20_ShiftN.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kyburg_-_Schloss_2010-11-01_13-25-20_ShiftN.jpg?width=800",
+    "wikidata_website": "https://www.schlosskyburg.ch"
   },
   {
     "position": 627,
@@ -483,7 +494,13 @@
     "website": "",
     "score_total": 360.414604,
     "score_visitors": 7.125,
-    "visitors": 7
+    "visitors": 7,
+    "wikipedia_extract": "Neuchâtel Castle is a castle in the municipality of Neuchâtel of the Canton of Neuchâtel in Switzerland. It is a Swiss heritage site of national significance.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Ch%C3%A2teau_de_Neuch%C3%A2tel_en_automne.jpg/330px-Ch%C3%A2teau_de_Neuch%C3%A2tel_en_automne.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Neuch%C3%A2tel_Castle",
+    "wikidata_id": "Q2970117",
+    "heritage_status": "class A Swiss cultural property of national significance",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Facade_est_du_ch%C3%A2teau_de_Neuch%C3%A2tel_au_lever_du_soleil.jpg?width=800"
   },
   {
     "position": 677,
@@ -642,7 +659,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://schloss-burgdorf.ch/de/",
     "score_total": 336.565184,
     "score_visitors": 6.666667,
     "visitors": 5,
@@ -652,7 +669,8 @@
     "wikidata_id": "Q453648",
     "heritage_status": "class A Swiss cultural property of national significance",
     "inception_year": 1200,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Schloss_Burgdorf.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Schloss_Burgdorf.jpg?width=800",
+    "wikidata_website": "https://schloss-burgdorf.ch/de/"
   },
   {
     "position": 783,
@@ -863,7 +881,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.schloss-lenzburg.ch",
     "score_total": 306.628732,
     "score_visitors": 4.166667,
     "visitors": 5,
@@ -873,7 +891,8 @@
     "wikidata_id": "Q668647",
     "heritage_status": "class A Swiss cultural property of national significance",
     "inception_year": 1036,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/20110621_Heliflug_33.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/20110621_Heliflug_33.JPG?width=800",
+    "wikidata_website": "https://www.schloss-lenzburg.ch"
   },
   {
     "position": 885,
@@ -893,7 +912,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.aarburg.ch/",
     "score_total": 302.175348,
     "score_visitors": 5.888889,
     "visitors": 8,
@@ -902,7 +921,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Aarburg",
     "wikidata_id": "Q64165",
     "heritage_status": "Swiss townscape worthy of protection",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aarburg_Castle_-_2023_(1).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aarburg_Castle_-_2023_(1).jpg?width=800",
+    "wikidata_website": "https://www.aarburg.ch/"
   },
   {
     "position": 931,
@@ -978,7 +998,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.vitromusee.ch",
     "score_total": 278.360083,
     "score_visitors": 5.8,
     "visitors": 9,
@@ -987,7 +1007,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Romont_Glass_Museum",
     "wikidata_id": "Q26257853",
     "heritage_status": "class A Swiss cultural property of national significance",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Romont_chateau1_ag1.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Romont_chateau1_ag1.jpg?width=800",
+    "wikidata_website": "https://www.vitromusee.ch"
   },
   {
     "position": 981,

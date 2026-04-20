@@ -8,8 +8,8 @@
     "place": "Smederevo (Semendria)",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 44.668611,
+    "longitude": 20.929167,
     "founder": "Durad Brankovic",
     "era": 15,
     "castle_type": "City castle",
@@ -26,7 +26,10 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Smederevo_Fortress",
     "wikidata_id": "Q2588696",
     "heritage_status": "Immovable Cultural Heritage of Exceptional Importance",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Smederevo_small_town_panorama_1.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Smederevo_small_town_panorama_1.jpg?width=800",
+    "significant_events": [
+      "Smederevo Fortress explosion"
+    ]
   },
   {
     "position": 215,
@@ -37,8 +40,8 @@
     "place": "Golubac",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 44.661187,
+    "longitude": 21.678485,
     "founder": "",
     "era": 14,
     "castle_type": "Rock castle",
@@ -46,7 +49,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://tvrdjavagolubackigrad.rs/",
     "score_total": 494.74073,
     "score_visitors": 8.125,
     "visitors": 15,
@@ -56,7 +59,8 @@
     "wikidata_id": "Q2625461",
     "heritage_status": "Immovable Cultural Heritage of Exceptional Importance",
     "inception_year": 1335,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Golubac.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Golubac.JPG?width=800",
+    "wikidata_website": "https://tvrdjavagolubackigrad.rs/"
   },
   {
     "position": 277,
@@ -67,8 +71,8 @@
     "place": "Maglic",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 43.545363,
+    "longitude": 20.03469,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -90,8 +94,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 45.3931,
+    "longitude": 19.2217,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -102,6 +106,14 @@
     "website": "",
     "score_total": 421.280893,
     "score_visitors": 7.285714,
-    "visitors": 6
+    "visitors": 6,
+    "wikipedia_extract": "Bač Fortress is a medieval fortress in Vojvodina, Serbia. It is located in the town of Bač, in the Bačka region.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Ba%C4%8D_fortress_%28Ba%C4%8Dka_tvr%C4%91ava%29.JPG/330px-Ba%C4%8D_fortress_%28Ba%C4%8Dka_tvr%C4%91ava%29.JPG",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Ba%C4%8D_Fortress",
+    "wikidata_id": "Q2629582",
+    "architectural_style": "Gothic art",
+    "heritage_status": "Spatial entities historico-cultural",
+    "inception_year": 1338,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ba%C4%8D_fortress%2C_view_from_the_south-east.jpg?width=800"
   }
 ]

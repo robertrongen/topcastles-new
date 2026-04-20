@@ -8,8 +8,8 @@
     "place": "Minsk",
     "region": "Grodno Region, Korelichi District",
     "region_code": "grodno",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 53.451267,
+    "longitude": 26.472894,
     "founder": "Dukes Radziwils",
     "era": null,
     "castle_type": "",
@@ -17,7 +17,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://mirzamak.by/",
     "score_total": 388.889717,
     "score_visitors": 6.1,
     "visitors": 9,
@@ -27,6 +27,8 @@
     "wikidata_id": "Q209643",
     "architectural_style": "Gothic architecture",
     "heritage_status": "Cultural heritage of Belarus",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mir_Castle_2018.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mir_Castle_2018.jpg?width=800",
+    "wikidata_founder": "Jerzy Iwanowicz Ilinicz",
+    "wikidata_website": "http://mirzamak.by/"
   }
 ]

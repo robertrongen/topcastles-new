@@ -28,7 +28,9 @@
     "architectural_style": "Norman architecture",
     "heritage_status": "World Heritage Site",
     "inception_year": 1066,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tower_of_London_viewed_from_the_River_Thames.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tower_of_London_viewed_from_the_River_Thames.jpg?width=800",
+    "wikidata_founder": "William the Conqueror",
+    "wikidata_website": "http://www.hrp.org.uk/tower-of-london/"
   },
   {
     "position": 10,
@@ -59,7 +61,11 @@
     "architectural_style": "medieval architecture",
     "heritage_status": "Grade I listed building",
     "inception_year": 1179,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/1_dover_castle_aerial_panorama_2017.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/1_dover_castle_aerial_panorama_2017.jpg?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/dover-castle/",
+    "significant_events": [
+      "Siege of Dover Castle"
+    ]
   },
   {
     "position": 12,
@@ -90,7 +96,11 @@
     "architectural_style": "medieval architecture",
     "heritage_status": "Grade I listed building",
     "inception_year": 1385,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bodiam-castle-10My8-1197.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bodiam-castle-10My8-1197.jpg?width=800",
+    "wikidata_website": "https://www.nationaltrust.org.uk/bodiam-castle",
+    "significant_events": [
+      "licence to crenellate"
+    ]
   },
   {
     "position": 26,
@@ -121,7 +131,15 @@
     "architectural_style": "Perpendicular Gothic",
     "heritage_status": "Grade I listed building",
     "inception_year": 1070,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Windsor_Castle_at_Sunset_-_Nov_2006.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Windsor_Castle_at_Sunset_-_Nov_2006.jpg?width=800",
+    "architect": "Hugh May",
+    "wikidata_website": "https://www.royalcollection.org.uk/visit/windsorcastle",
+    "significant_events": [
+      "construction",
+      "First Barons' War",
+      "English Civil War",
+      "conflagration"
+    ]
   },
   {
     "position": 34,
@@ -151,7 +169,8 @@
     "wikidata_id": "Q1125527",
     "heritage_status": "Grade I listed building",
     "inception_year": 1087,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rochester_Castle_Keep_and_Bailey_0038stcp.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rochester_Castle_Keep_and_Bailey_0038stcp.JPG?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/rochester-castle/"
   },
   {
     "position": 38,
@@ -182,7 +201,8 @@
     "architectural_style": "medieval architecture",
     "heritage_status": "Grade I listed building",
     "inception_year": 1068,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Warwick_Castle_May_2016.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Warwick_Castle_May_2016.jpg?width=800",
+    "wikidata_website": "https://www.warwick-castle.com/"
   },
   {
     "position": 96,
@@ -193,8 +213,8 @@
     "place": "Arundel (Sussex)",
     "region": "South East",
     "region_code": "south_east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.856111,
+    "longitude": -0.553611,
     "founder": "King Henry I of England",
     "era": 12,
     "castle_type": "Mountain castle",
@@ -213,7 +233,8 @@
     "architectural_style": "Gothic Revival",
     "heritage_status": "Grade I listed building",
     "inception_year": 1067,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Arundel-Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Arundel-Castle.jpg?width=800",
+    "wikidata_website": "https://arundelcastle.org/"
   },
   {
     "position": 104,
@@ -233,7 +254,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/kenilworth-castle/",
     "score_total": 583.671342,
     "score_visitors": 6.367925,
     "visitors": 105,
@@ -243,7 +264,11 @@
     "wikidata_id": "Q1738764",
     "heritage_status": "Grade I listed building",
     "inception_year": 1122,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kenilworth_Castle_gatehouse_landscape.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kenilworth_Castle_gatehouse_landscape.jpg?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/kenilworth-castle/",
+    "significant_events": [
+      "Siege of Kenilworth"
+    ]
   },
   {
     "position": 117,
@@ -254,8 +279,8 @@
     "place": "(Surrey)",
     "region": "South East",
     "region_code": "south_east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.8702,
+    "longitude": 0.339214,
     "founder": "",
     "era": null,
     "castle_type": "Water castle",
@@ -263,7 +288,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.herstmonceux-castle.com/",
     "score_total": 566.339412,
     "score_visitors": 8.483607,
     "visitors": 243,
@@ -273,7 +298,8 @@
     "wikidata_id": "Q2652207",
     "heritage_status": "Grade I listed building",
     "inception_year": 1401,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Herstmonceux_castle_aerialview.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Herstmonceux_castle_aerialview.jpg?width=800",
+    "wikidata_website": "http://www.herstmonceux-castle.com/"
   },
   {
     "position": 121,
@@ -293,7 +319,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.bamburghcastle.com/",
     "score_total": 563.092274,
     "score_visitors": 8.430233,
     "visitors": 171,
@@ -303,7 +329,8 @@
     "wikidata_id": "Q2026185",
     "architectural_style": "Norman architecture",
     "heritage_status": "Grade I listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bamburgh_2006_closeup.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bamburgh_2006_closeup.jpg?width=800",
+    "wikidata_website": "http://www.bamburghcastle.com/"
   },
   {
     "position": 124,
@@ -323,7 +350,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "Gebouwd binnen de muren van een oude romeinse vesting.",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/portchester-castle/",
     "score_total": 559.692248,
     "score_visitors": 5.922078,
     "visitors": 76,
@@ -333,7 +360,8 @@
     "wikidata_id": "Q732249",
     "heritage_status": "Grade I listed building",
     "inception_year": 1100,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Portchester_castle_04.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Portchester_castle_04.jpg?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/portchester-castle/"
   },
   {
     "position": 131,
@@ -344,8 +372,8 @@
     "place": "Teme (Shropshire)",
     "region": "West Midlands",
     "region_code": "west_midlands",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 52.3672,
+    "longitude": -2.72301,
     "founder": "Roger de Lacy",
     "era": 12,
     "castle_type": "Rock castle",
@@ -364,7 +392,8 @@
     "architectural_style": "Norman architecture",
     "heritage_status": "scheduled monument",
     "inception_year": 1066,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ludlow_Castle_-_geograph.org.uk_-_2896819.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ludlow_Castle_-_geograph.org.uk_-_2896819.jpg?width=800",
+    "wikidata_website": "https://www.ludlowcastle.com/"
   },
   {
     "position": 143,
@@ -375,8 +404,8 @@
     "place": "York",
     "region": "Yorkshire and Humber",
     "region_code": "yorkshire",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 53.955833,
+    "longitude": -1.08,
     "founder": "King Henry III of England",
     "era": 13,
     "castle_type": "Mountain castle",
@@ -394,7 +423,9 @@
     "wikidata_id": "Q80637",
     "heritage_status": "scheduled monument",
     "inception_year": 1068,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/York_MMB_54_Clifford's_Tower.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/York_MMB_54_Clifford's_Tower.jpg?width=800",
+    "wikidata_founder": "William the Conqueror",
+    "architect": "Henry de Reynes"
   },
   {
     "position": 156,
@@ -405,8 +436,8 @@
     "place": "Suffolk (Norfolk)",
     "region": "East",
     "region_code": "east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 52.0942,
+    "longitude": 1.53073,
     "founder": "King Henry II of England",
     "era": 12,
     "castle_type": "Mountain castle",
@@ -414,7 +445,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/orford-castle/",
     "score_total": 530.80232,
     "score_visitors": 7.512821,
     "visitors": 38,
@@ -424,7 +455,14 @@
     "wikidata_id": "Q1964047",
     "heritage_status": "Grade I listed building",
     "inception_year": 1165,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Orford_Castle_-_geograph.org.uk_-_1755708.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Orford_Castle_-_geograph.org.uk_-_1755708.jpg?width=800",
+    "wikidata_founder": "Henry II of England",
+    "architect": "Alnoth",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/orford-castle/",
+    "significant_events": [
+      "archaeological field survey",
+      "archaeological excavation"
+    ]
   },
   {
     "position": 157,
@@ -454,7 +492,9 @@
     "wikidata_id": "Q3662579",
     "heritage_status": "Grade I listed building",
     "inception_year": 1100,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/ConisbroughCastle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/ConisbroughCastle.jpg?width=800",
+    "wikidata_founder": "William de Warenne, 1st Earl of Surrey",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/conisbrough-castle/"
   },
   {
     "position": 158,
@@ -465,8 +505,8 @@
     "place": "(Cornwall)",
     "region": "South West",
     "region_code": "south_west",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.4217,
+    "longitude": -4.6704,
     "founder": "Robert of Mortain",
     "era": 12,
     "castle_type": "Mountain castle",
@@ -474,7 +514,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/restormel-castle/",
     "score_total": 528.152607,
     "score_visitors": 6.090909,
     "visitors": 43,
@@ -484,7 +524,8 @@
     "wikidata_id": "Q1140030",
     "heritage_status": "scheduled monument",
     "inception_year": 1100,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/RestormelCastle.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/RestormelCastle.JPG?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/restormel-castle/"
   },
   {
     "position": 161,
@@ -495,8 +536,8 @@
     "place": "Croquet (Northumberland)",
     "region": "North East",
     "region_code": "north_east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.3452,
+    "longitude": -1.61178,
     "founder": "",
     "era": 12,
     "castle_type": "Mountain castle",
@@ -504,7 +545,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/warkworth-castle-and-hermitage/",
     "score_total": 524.702776,
     "score_visitors": 6.945946,
     "visitors": 36,
@@ -513,7 +554,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Warkworth_Castle",
     "wikidata_id": "Q922422",
     "heritage_status": "Grade I listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Warkworth_Castle_interior%2C_2007.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Warkworth_Castle_interior%2C_2007.jpg?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/warkworth-castle-and-hermitage/"
   },
   {
     "position": 167,
@@ -524,8 +566,8 @@
     "place": "Tattershall (Lincolnshire)",
     "region": "East Midlands",
     "region_code": "east_midlands",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 53.101333,
+    "longitude": -0.192611,
     "founder": "Ralph Lord Cromwell (Treasurer for Henry VI)",
     "era": 15,
     "castle_type": "Water castle",
@@ -533,7 +575,7 @@
     "condition": "Intact",
     "remarkable": "De toren is in het begin van de 20ste eeuw gerestaureerd, de weermuren om de toren zijn verdwenen.",
     "description": "Oorspronkelijk dubbel omgrachte bakstenen toren.",
-    "website": "",
+    "website": "https://www.nationaltrust.org.uk/tattershall-castle/",
     "score_total": 519.163782,
     "score_visitors": 7.205128,
     "visitors": 77,
@@ -543,7 +585,8 @@
     "wikidata_id": "Q2628361",
     "heritage_status": "Grade I listed building",
     "inception_year": 1231,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tattershall_Castle%2C_2006.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tattershall_Castle%2C_2006.jpg?width=800",
+    "wikidata_website": "https://www.nationaltrust.org.uk/tattershall-castle/"
   },
   {
     "position": 169,
@@ -554,8 +597,8 @@
     "place": "Newport (Isle of Wight)",
     "region": "South East",
     "region_code": "south_east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.6875,
+    "longitude": -1.31389,
     "founder": "",
     "era": 12,
     "castle_type": "Mountain castle",
@@ -563,7 +606,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "Het poortgebouw dateert uit de 14de eeuw.",
-    "website": "",
+    "website": "https://carisbrookecastlemuseum.org.uk/",
     "score_total": 518.22004,
     "score_visitors": 7.489362,
     "visitors": 46,
@@ -573,7 +616,8 @@
     "wikidata_id": "Q328595",
     "heritage_status": "Grade I listed building",
     "inception_year": 1100,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Carisbrooke_Castle_14th_century.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Carisbrooke_Castle_14th_century.jpg?width=800",
+    "wikidata_website": "https://carisbrookecastlemuseum.org.uk/"
   },
   {
     "position": 186,
@@ -584,8 +628,8 @@
     "place": "(Suffolk)",
     "region": "East",
     "region_code": "east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 52.2246,
+    "longitude": 1.34661,
     "founder": "Count Roger Bigot of Norfolk",
     "era": 12,
     "castle_type": "Mountain castle",
@@ -593,7 +637,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/framlingham-castle/",
     "score_total": 508.294315,
     "score_visitors": 7.097561,
     "visitors": 40,
@@ -602,7 +646,15 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Framlingham_Castle",
     "wikidata_id": "Q2524183",
     "heritage_status": "Grade I listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Framlingham_Castle_reflected_in_The_Mere%2Cat_dawn._-_geograph.org.uk_-_1293414.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Framlingham_Castle_reflected_in_The_Mere%2Cat_dawn._-_geograph.org.uk_-_1293414.jpg?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/framlingham-castle/",
+    "significant_events": [
+      "slighting",
+      "siege",
+      "magnetometry survey",
+      "resistivity survey",
+      "archaeological field survey"
+    ]
   },
   {
     "position": 187,
@@ -613,8 +665,8 @@
     "place": "(Devon)",
     "region": "South West",
     "region_code": "south_west",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.6399,
+    "longitude": -2.0589,
     "founder": "King Henry I of England",
     "era": 12,
     "castle_type": "Mountain castle",
@@ -622,7 +674,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://corfecastle.co.uk",
     "score_total": 508.13368,
     "score_visitors": 6.053571,
     "visitors": 55,
@@ -632,7 +684,8 @@
     "wikidata_id": "Q1236511",
     "heritage_status": "Grade I listed building",
     "inception_year": 1100,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Corfe_Castle_57.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Corfe_Castle_57.jpg?width=800",
+    "wikidata_website": "https://corfecastle.co.uk"
   },
   {
     "position": 195,
@@ -652,7 +705,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "Dit kasteel wordt veelvuldig voor films en series gebruikt, ondermeer in de films van Harry Potter als 'Hogwart's School', Ivanhoe, Robin Hood-Prince of Thieves (met Kevin Costner) en Blackadder 1 (Rowan Atkinson).",
     "description": "",
-    "website": "",
+    "website": "http://www.alnwickcastle.com/",
     "score_total": 504.099983,
     "score_visitors": 8.361538,
     "visitors": 129,
@@ -662,7 +715,8 @@
     "wikidata_id": "Q1320427",
     "heritage_status": "Grade I listed building",
     "inception_year": 1096,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castle_at_Alnwick_panorama_(27201950193).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castle_at_Alnwick_panorama_(27201950193).jpg?width=800",
+    "wikidata_website": "http://www.alnwickcastle.com/"
   },
   {
     "position": 198,
@@ -682,7 +736,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "De toren van twee verdiepingen had oorspronkelijk waarschijnlijk vier verdiepingen.",
-    "website": "",
+    "website": "https://colchester.cimuseums.org.uk/visit/colchester-castle/",
     "score_total": 503.211902,
     "score_visitors": 5.466667,
     "visitors": 44,
@@ -693,7 +747,10 @@
     "architectural_style": "Norman architecture",
     "heritage_status": "Grade I listed building",
     "inception_year": 1069,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Colchester-castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Colchester-castle.jpg?width=800",
+    "wikidata_founder": "Eudo Dapifer",
+    "architect": "Gundulf",
+    "wikidata_website": "https://colchester.cimuseums.org.uk/visit/colchester-castle/"
   },
   {
     "position": 223,
@@ -704,8 +761,8 @@
     "place": "Ross (Hereford & Worcester)",
     "region": "West Midlands",
     "region_code": "west_midlands",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.8767,
+    "longitude": -2.6157,
     "founder": "Godric",
     "era": 13,
     "castle_type": "Rock castle",
@@ -713,7 +770,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/goodrich-castle/",
     "score_total": 493.247036,
     "score_visitors": 6.607143,
     "visitors": 27,
@@ -723,7 +780,8 @@
     "wikidata_id": "Q5583571",
     "heritage_status": "Grade I listed building",
     "inception_year": 1001,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Goodrich_Castle%2C_Herefordshire_-_52019488056.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Goodrich_Castle%2C_Herefordshire_-_52019488056.jpg?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/goodrich-castle/"
   },
   {
     "position": 225,
@@ -734,16 +792,16 @@
     "place": "Richmond",
     "region": "Yorkshire and Humber",
     "region_code": "yorkshire",
-    "latitude": null,
-    "longitude": null,
-    "founder": "",
+    "latitude": 54.402185,
+    "longitude": -1.737512,
+    "founder": "Alan Rufus",
     "era": 11,
     "castle_type": "Mountain castle",
     "castle_concept": "Donjon in curtain wall",
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/richmond-castle/",
     "score_total": 492.762718,
     "score_visitors": 7.258065,
     "visitors": 30,
@@ -753,7 +811,9 @@
     "wikidata_id": "Q6645746",
     "heritage_status": "Grade I listed building",
     "inception_year": 1071,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bailey_and_keep%2C_Richmond_Castle_-_geograph.org.uk_-_1318287.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bailey_and_keep%2C_Richmond_Castle_-_geograph.org.uk_-_1318287.jpg?width=800",
+    "wikidata_founder": "Alan Rufus",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/richmond-castle/"
   },
   {
     "position": 233,
@@ -773,7 +833,7 @@
     "condition": "",
     "remarkable": "Hier bracht Anne Boleyn (1507-1536, tweede vrouw van Henry VIII) haar jeugd door.",
     "description": "",
-    "website": "",
+    "website": "http://www.hevercastle.co.uk/",
     "score_total": 487.066257,
     "score_visitors": 8.1875,
     "visitors": 31,
@@ -783,7 +843,12 @@
     "wikidata_id": "Q1132683",
     "heritage_status": "Grade I listed building",
     "inception_year": 1271,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hever_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hever_Castle.jpg?width=800",
+    "wikidata_website": "http://www.hevercastle.co.uk/",
+    "significant_events": [
+      "licence to crenellate",
+      "licence to crenellate"
+    ]
   },
   {
     "position": 255,
@@ -794,8 +859,8 @@
     "place": "(Gloucestershire)",
     "region": "South West",
     "region_code": "south_west",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.688611,
+    "longitude": -2.456944,
     "founder": "",
     "era": 11,
     "castle_type": "",
@@ -803,7 +868,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.berkeley-castle.com/",
     "score_total": 477.828371,
     "score_visitors": 7.363636,
     "visitors": 21,
@@ -813,7 +878,8 @@
     "wikidata_id": "Q4891993",
     "heritage_status": "Grade I listed building",
     "inception_year": 1067,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Berkeley_Castle_-_geograph.org.uk_-_1440403.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Berkeley_Castle_-_geograph.org.uk_-_1440403.jpg?width=800",
+    "wikidata_website": "https://www.berkeley-castle.com/"
   },
   {
     "position": 258,
@@ -824,8 +890,8 @@
     "place": "(Norfolk)",
     "region": "East",
     "region_code": "east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 52.7945,
+    "longitude": 0.4694,
     "founder": "Count William d'Albini of Sussex",
     "era": 12,
     "castle_type": "Mountain castle",
@@ -852,8 +918,8 @@
     "place": "Hedingham (Essex)",
     "region": "East",
     "region_code": "east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.99248,
+    "longitude": 0.60153,
     "founder": "Count Aubrey de Vere of Oxford",
     "era": 12,
     "castle_type": "Mountain castle",
@@ -861,7 +927,7 @@
     "condition": "Damaged",
     "remarkable": "Koning John van Engeland veroverde dit kasteel tijdens de Magna Carta oorlog.",
     "description": "Normandische donjon.",
-    "website": "",
+    "website": "https://www.hedinghamcastle.co.uk/",
     "score_total": 469.079614,
     "score_visitors": 6.428571,
     "visitors": 27,
@@ -871,7 +937,8 @@
     "wikidata_id": "Q1146583",
     "architectural_style": "Norman architecture",
     "heritage_status": "Grade I listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hedingham_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hedingham_Castle.jpg?width=800",
+    "wikidata_website": "https://www.hedinghamcastle.co.uk/"
   },
   {
     "position": 337,
@@ -891,7 +958,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.leeds-castle.com/",
     "score_total": 446.200564,
     "score_visitors": 8.1875,
     "visitors": 63,
@@ -902,7 +969,8 @@
     "architectural_style": "Norman architecture",
     "heritage_status": "Grade I listed building",
     "inception_year": 1119,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/1_castle_leeds_panorama_2017.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/1_castle_leeds_panorama_2017.jpg?width=800",
+    "wikidata_website": "http://www.leeds-castle.com/"
   },
   {
     "position": 361,
@@ -913,8 +981,8 @@
     "place": "Tintagel (Cornwall)",
     "region": "South West",
     "region_code": "south_west",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.6683,
+    "longitude": -4.7608,
     "founder": "Prince Richard Earl of Cornwall",
     "era": 12,
     "castle_type": "Rock castle",
@@ -922,7 +990,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "Dit kasteel zou volgens de overlevering gebouwd zijn op de restanten van het kasteel Camelot van koning Arthur (5de eeuw). Een ander kasteel dat dit claimt is Cadbury Castle .",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/tintagel-castle/",
     "score_total": 439.587762,
     "score_visitors": 6.48,
     "visitors": 24,
@@ -930,7 +998,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Upper_mainland_courtyard_of_Tintagel_Castle%2C_2007.jpg/330px-Upper_mainland_courtyard_of_Tintagel_Castle%2C_2007.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Tintagel_Castle",
     "wikidata_id": "Q934922",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tintagel_Ruins_-_Mainland_Courtyard_01.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tintagel_Ruins_-_Mainland_Courtyard_01.JPG?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/tintagel-castle/"
   },
   {
     "position": 362,
@@ -941,8 +1010,8 @@
     "place": "(Surrey)",
     "region": "South East",
     "region_code": "south_east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.855977,
+    "longitude": 0.58496,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -959,7 +1028,11 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Hastings_Castle",
     "wikidata_id": "Q5680295",
     "heritage_status": "Grade I listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hastings_Castle_2012-07-28.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hastings_Castle_2012-07-28.jpg?width=800",
+    "significant_events": [
+      "rescue excavation",
+      "archaeological excavation"
+    ]
   },
   {
     "position": 378,
@@ -970,8 +1043,8 @@
     "place": "(Devon)",
     "region": "South West",
     "region_code": "south_west",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.4325,
+    "longitude": -3.69119,
     "founder": "",
     "era": 11,
     "castle_type": "Mountain castle",
@@ -979,7 +1052,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/totnes-castle/",
     "score_total": 434.416028,
     "score_visitors": 7.714286,
     "visitors": 13,
@@ -988,7 +1061,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Totnes_Castle",
     "wikidata_id": "Q2445840",
     "heritage_status": "Grade I listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Totnes_Castle_20181026-02.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Totnes_Castle_20181026-02.jpg?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/totnes-castle/"
   },
   {
     "position": 426,
@@ -999,16 +1073,16 @@
     "place": "Lincoln (Lincolnshire)",
     "region": "East Midlands",
     "region_code": "east_midlands",
-    "latitude": null,
-    "longitude": null,
-    "founder": "",
+    "latitude": 53.2349,
+    "longitude": -0.5409,
+    "founder": "William the Conqueror",
     "era": null,
     "castle_type": "",
     "castle_concept": "",
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.lincolncastle.com/",
     "score_total": 420.953398,
     "score_visitors": 6.5,
     "visitors": 9,
@@ -1019,7 +1093,9 @@
     "architectural_style": "Romanesque architecture",
     "heritage_status": "Grade I listed building",
     "inception_year": 1068,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Lincoln%2C_UK_-_panoramio_(49).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Lincoln%2C_UK_-_panoramio_(49).jpg?width=800",
+    "wikidata_founder": "William the Conqueror",
+    "wikidata_website": "https://www.lincolncastle.com/"
   },
   {
     "position": 434,
@@ -1039,7 +1115,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.boltoncastle.co.uk/",
     "score_total": 418.484912,
     "score_visitors": 7.058824,
     "visitors": 16,
@@ -1049,7 +1125,12 @@
     "wikidata_id": "Q495086",
     "heritage_status": "Grade I listed building",
     "inception_year": 1379,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bolton_Castle.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bolton_Castle.JPG?width=800",
+    "architect": "John Lewyn",
+    "wikidata_website": "https://www.boltoncastle.co.uk/",
+    "significant_events": [
+      "slighting"
+    ]
   },
   {
     "position": 438,
@@ -1060,16 +1141,16 @@
     "place": "(Surrey)",
     "region": "South East",
     "region_code": "south_east",
-    "latitude": null,
-    "longitude": null,
-    "founder": "",
+    "latitude": 50.8192,
+    "longitude": 0.333114,
+    "founder": "William the Conqueror",
     "era": null,
     "castle_type": "",
     "castle_concept": "",
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/pevensey-castle/",
     "score_total": 416.316374,
     "score_visitors": 5.956522,
     "visitors": 22,
@@ -1079,7 +1160,20 @@
     "wikidata_id": "Q2970215",
     "heritage_status": "scheduled monument",
     "inception_year": 1066,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pevensey_castle-09.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pevensey_castle-09.jpg?width=800",
+    "wikidata_founder": "William the Conqueror",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/pevensey-castle/",
+    "significant_events": [
+      "archaeological excavation",
+      "archaeological excavation",
+      "archaeological excavation",
+      "archaeological excavation",
+      "siege",
+      "siege",
+      "siege",
+      "siege",
+      "archaeological excavation"
+    ]
   },
   {
     "position": 439,
@@ -1090,8 +1184,8 @@
     "place": "Trematon (Cornwall)",
     "region": "South West",
     "region_code": "south_west",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.4001,
+    "longitude": -4.23804,
     "founder": "",
     "era": 11,
     "castle_type": "",
@@ -1120,8 +1214,8 @@
     "place": "(Surrey)",
     "region": "South East",
     "region_code": "south_east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.8728,
+    "longitude": 0.007247,
     "founder": "William of Warenne",
     "era": null,
     "castle_type": "",
@@ -1129,7 +1223,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://sussexpast.co.uk/attraction/lewes-castle/",
     "score_total": 409.973562,
     "score_visitors": 6.3,
     "visitors": 19,
@@ -1138,7 +1232,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Lewes_Castle",
     "wikidata_id": "Q386703",
     "heritage_status": "Grade I listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Keep_To_Lewes_Castle_April_2018_02.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Keep_To_Lewes_Castle_April_2018_02.jpg?width=800",
+    "wikidata_website": "https://sussexpast.co.uk/attraction/lewes-castle/"
   },
   {
     "position": 502,
@@ -1149,8 +1244,8 @@
     "place": "",
     "region": "Yorkshire and Humber",
     "region_code": "yorkshire",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 54.2869,
+    "longitude": -0.388034,
     "founder": "King Henry II of England",
     "era": 12,
     "castle_type": "Rock castle",
@@ -1158,7 +1253,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/scarborough-castle/",
     "score_total": 400.235408,
     "score_visitors": 6.454545,
     "visitors": 21,
@@ -1168,7 +1263,11 @@
     "wikidata_id": "Q1963850",
     "heritage_status": "scheduled monument",
     "inception_year": 1130,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Scarborough_Castle_keep%2C_2007.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Scarborough_Castle_keep%2C_2007.jpg?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/scarborough-castle/",
+    "significant_events": [
+      "Great Siege of Scarborough Castle"
+    ]
   },
   {
     "position": 543,
@@ -1179,8 +1278,8 @@
     "place": "(Durham)",
     "region": "North East",
     "region_code": "north_east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 54.7749,
+    "longitude": -1.57558,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -1188,7 +1287,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.dur.ac.uk/durham.castle/",
     "score_total": 391.465508,
     "score_visitors": 5.888889,
     "visitors": 8,
@@ -1199,7 +1298,11 @@
     "architectural_style": "Norman architecture",
     "heritage_status": "Grade I listed building",
     "inception_year": 1072,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Durham_Castle%2C_April_2017_(14)_(33459522640).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Durham_Castle%2C_April_2017_(14)_(33459522640).jpg?width=800",
+    "wikidata_website": "https://www.dur.ac.uk/durham.castle/",
+    "significant_events": [
+      "UNESCO World Heritage Site record modification"
+    ]
   },
   {
     "position": 555,
@@ -1233,8 +1336,8 @@
     "place": "(Stafforddshire)",
     "region": "West Midlands",
     "region_code": "west_midlands",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 52.6325,
+    "longitude": -1.69635,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -1242,7 +1345,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.tamworthcastle.co.uk/",
     "score_total": 387.250979,
     "score_visitors": 6.857143,
     "visitors": 6,
@@ -1251,7 +1354,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Tamworth_Castle",
     "wikidata_id": "Q7681908",
     "heritage_status": "Grade I listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tamworth_Castle_343714.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tamworth_Castle_343714.jpg?width=800",
+    "wikidata_website": "https://www.tamworthcastle.co.uk/"
   },
   {
     "position": 577,
@@ -1262,8 +1366,8 @@
     "place": "(Tyne & Wear)",
     "region": "North East",
     "region_code": "north_east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 54.968828,
+    "longitude": -1.610356,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -1271,7 +1375,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.newcastlecastle.co.uk/",
     "score_total": 382.766564,
     "score_visitors": 5.529412,
     "visitors": 16,
@@ -1281,7 +1385,8 @@
     "wikidata_id": "Q7721569",
     "heritage_status": "Grade I listed building",
     "inception_year": 1080,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Newcastle_schloss.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Newcastle_schloss.jpg?width=800",
+    "wikidata_website": "http://www.newcastlecastle.co.uk/"
   },
   {
     "position": 633,
@@ -1292,8 +1397,8 @@
     "place": "",
     "region": "Yorkshire and Humber",
     "region_code": "yorkshire",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 54.28404,
+    "longitude": -1.80685,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -1301,7 +1406,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/middleham-castle/",
     "score_total": 368.70617,
     "score_visitors": 6.761905,
     "visitors": 20,
@@ -1311,7 +1416,8 @@
     "wikidata_id": "Q2705370",
     "heritage_status": "Grade I listed building",
     "inception_year": 1190,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/MiddlehamCJW.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/MiddlehamCJW.jpg?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/middleham-castle/"
   },
   {
     "position": 639,
@@ -1322,8 +1428,8 @@
     "place": "(Somerset)",
     "region": "South West",
     "region_code": "south_west",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.210175,
+    "longitude": -2.378333,
     "founder": "",
     "era": null,
     "castle_type": "Water castle",
@@ -1331,7 +1437,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/nunney-castle/",
     "score_total": 366.691795,
     "score_visitors": 5.833333,
     "visitors": 11,
@@ -1340,7 +1446,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Nunney_Castle",
     "wikidata_id": "Q427746",
     "heritage_status": "scheduled monument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunney_Castle_(2)_-_geograph.org.uk_-_694664.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Nunney_Castle_(2)_-_geograph.org.uk_-_694664.jpg?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/nunney-castle/"
   },
   {
     "position": 666,
@@ -1351,8 +1458,8 @@
     "place": "(Northumberland)",
     "region": "North East",
     "region_code": "north_east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.4885,
+    "longitude": -1.59351,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -1360,7 +1467,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.nationaltrust.org.uk/dunstanburgh-castle",
     "score_total": 359.473888,
     "score_visitors": 6,
     "visitors": 13,
@@ -1370,7 +1477,8 @@
     "wikidata_id": "Q515105",
     "heritage_status": "Grade I listed building",
     "inception_year": 1313,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Gatehouse_and_curtain_wall_of_Dunstanburgh_Castle%2C_2009.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Gatehouse_and_curtain_wall_of_Dunstanburgh_Castle%2C_2009.jpg?width=800",
+    "wikidata_website": "https://www.nationaltrust.org.uk/dunstanburgh-castle"
   },
   {
     "position": 670,
@@ -1381,8 +1489,8 @@
     "place": "Launceston (Cornwall)",
     "region": "South West",
     "region_code": "south_west",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.6376,
+    "longitude": -4.36142,
     "founder": "",
     "era": 11,
     "castle_type": "Mountain castle",
@@ -1390,7 +1498,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "De toren is in de 13de eeuw bijgebouwd door koning Richard I",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/launceston-castle/",
     "score_total": 358.769617,
     "score_visitors": 5.85,
     "visitors": 19,
@@ -1401,7 +1509,8 @@
     "architectural_style": "Norman architecture",
     "heritage_status": "Grade I listed building",
     "inception_year": 1067,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Launceston_Castle_-_geograph.org.uk_-_22242.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Launceston_Castle_-_geograph.org.uk_-_22242.jpg?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/launceston-castle/"
   },
   {
     "position": 687,
@@ -1412,8 +1521,8 @@
     "place": "Ashby (Essex)",
     "region": "East Midlands",
     "region_code": "east_midlands",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 52.746,
+    "longitude": -1.476,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -1421,7 +1530,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://ashbydelazouch.leicestershireparishcouncils.org/",
     "score_total": 355.761584,
     "score_visitors": 6.105263,
     "visitors": 18,
@@ -1429,7 +1538,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Market_Street%2C_Ashby-de-la-Zouch_-_geograph.org.uk_-_6471466.jpg/330px-Market_Street%2C_Ashby-de-la-Zouch_-_geograph.org.uk_-_6471466.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Ashby-de-la-Zouch",
     "wikidata_id": "Q2046537",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Marketstreet020.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Marketstreet020.jpg?width=800",
+    "wikidata_website": "http://ashbydelazouch.leicestershireparishcouncils.org/"
   },
   {
     "position": 720,
@@ -1459,7 +1569,9 @@
     "wikidata_id": "Q7535853",
     "heritage_status": "Grade I listed building",
     "inception_year": 1090,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Skipton_Castle_dg2.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Skipton_Castle_dg2.JPG?width=800",
+    "architect": "Anne Clifford",
+    "wikidata_website": "https://www.skiptoncastle.co.uk"
   },
   {
     "position": 730,
@@ -1470,8 +1582,8 @@
     "place": "(Hampshire)",
     "region": "South East",
     "region_code": "south_east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.063333,
+    "longitude": -1.308611,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -1507,7 +1619,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://chipchasecastle.com",
     "score_total": 344.420832,
     "score_visitors": 6.384615,
     "visitors": 12,
@@ -1516,7 +1628,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Chipchase_Castle",
     "wikidata_id": "Q5101582",
     "heritage_status": "Grade I listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chipchase_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chipchase_Castle.jpg?width=800",
+    "wikidata_website": "http://chipchasecastle.com"
   },
   {
     "position": 736,
@@ -1527,8 +1640,8 @@
     "place": "(Norfolk)",
     "region": "East",
     "region_code": "east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 52.6281,
+    "longitude": 1.29678,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -1536,7 +1649,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.museums.norfolk.gov.uk/norwich-castle/",
     "score_total": 344.19982,
     "score_visitors": 6.277778,
     "visitors": 17,
@@ -1546,7 +1659,8 @@
     "wikidata_id": "Q1672292",
     "heritage_status": "Grade I listed building",
     "inception_year": 1066,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Norwich_castle.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Norwich_castle.JPG?width=800",
+    "wikidata_website": "https://www.museums.norfolk.gov.uk/norwich-castle/"
   },
   {
     "position": 746,
@@ -1557,8 +1671,8 @@
     "place": "(Derbyshire)",
     "region": "East Midlands",
     "region_code": "east_midlands",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 53.3402,
+    "longitude": -1.7772,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -1566,7 +1680,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/peveril-castle/",
     "score_total": 341.9,
     "score_visitors": 7.1,
     "visitors": 9,
@@ -1576,7 +1690,8 @@
     "wikidata_id": "Q255574",
     "heritage_status": "Grade I listed building",
     "inception_year": 1080,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Peveril_Castle_keep%2C_2009.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Peveril_Castle_keep%2C_2009.jpg?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/peveril-castle/"
   },
   {
     "position": 798,
@@ -1587,8 +1702,8 @@
     "place": "(Cumbria)",
     "region": "North West",
     "region_code": "north_west",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 54.6533,
+    "longitude": -2.71802,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -1596,7 +1711,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/brougham-castle/",
     "score_total": 330.339075,
     "score_visitors": 6,
     "visitors": 13,
@@ -1605,7 +1720,9 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Brougham_Castle",
     "wikidata_id": "Q2968700",
     "heritage_status": "part of a Scheduled Monument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Brougham_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Brougham_Castle.jpg?width=800",
+    "architect": "Anne Clifford",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/brougham-castle/"
   },
   {
     "position": 824,
@@ -1616,8 +1733,8 @@
     "place": "(Northumberland)",
     "region": "North East",
     "region_code": "north_east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.721812,
+    "longitude": -2.150757,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -1625,7 +1742,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/norham-castle/",
     "score_total": 322.138774,
     "score_visitors": 5.625,
     "visitors": 7,
@@ -1635,7 +1752,8 @@
     "wikidata_id": "Q388705",
     "heritage_status": "Grade I listed building",
     "inception_year": 1121,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Norham_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Norham_Castle.jpg?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/norham-castle/"
   },
   {
     "position": 836,
@@ -1646,8 +1764,8 @@
     "place": "(Cumbria)",
     "region": "North West",
     "region_code": "north_west",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 54.8972,
+    "longitude": -2.94167,
     "founder": "King Henry I of England",
     "era": 12,
     "castle_type": "",
@@ -1655,7 +1773,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/carlisle-castle/",
     "score_total": 318.688755,
     "score_visitors": 6.1,
     "visitors": 9,
@@ -1666,7 +1784,8 @@
     "architectural_style": "Norman architecture",
     "heritage_status": "scheduled monument",
     "inception_year": 1093,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Carlisle_Castle_-_geograph.org.uk_-_60471.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Carlisle_Castle_-_geograph.org.uk_-_60471.jpg?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/carlisle-castle/"
   },
   {
     "position": 837,
@@ -1677,8 +1796,8 @@
     "place": "Exeter (Devon)",
     "region": "South West",
     "region_code": "south_west",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.7261,
+    "longitude": -3.53032,
     "founder": "Baldwin de Brionne",
     "era": 11,
     "castle_type": "Mountain castle",
@@ -1706,8 +1825,8 @@
     "place": "(Hereford & Worcester)",
     "region": "West Midlands",
     "region_code": "west_midlands",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.7641,
+    "longitude": -0.558783,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -1715,7 +1834,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/berkhamsted-castle/",
     "score_total": 317.956421,
     "score_visitors": 5.25,
     "visitors": 7,
@@ -1725,7 +1844,8 @@
     "wikidata_id": "Q4892150",
     "heritage_status": "scheduled monument",
     "inception_year": 1066,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Berkhamsted_Castle_Jan_2007.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Berkhamsted_Castle_Jan_2007.jpg?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/berkhamsted-castle/"
   },
   {
     "position": 847,
@@ -1736,8 +1856,8 @@
     "place": "Canterbury (Kent)",
     "region": "South East",
     "region_code": "south_east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.2757,
+    "longitude": 1.07462,
     "founder": "",
     "era": 12,
     "castle_type": "Mountain castle",
@@ -1766,8 +1886,8 @@
     "place": "(Surrey)",
     "region": "South East",
     "region_code": "south_east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.2185,
+    "longitude": -0.802306,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -1775,7 +1895,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.english-heritage.org.uk/visit/places/farnham-castle-keep/",
     "score_total": 312.734033,
     "score_visitors": 5.4,
     "visitors": 4,
@@ -1784,7 +1904,12 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Farnham_Castle",
     "wikidata_id": "Q5436016",
     "heritage_status": "scheduled monument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Farnham_Castle_keep.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Farnham_Castle_keep.jpg?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/farnham-castle-keep/",
+    "significant_events": [
+      "slighting",
+      "archaeological excavation"
+    ]
   },
   {
     "position": 864,
@@ -1795,8 +1920,8 @@
     "place": "Oxford",
     "region": "South East",
     "region_code": "south_east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.7518,
+    "longitude": -1.26248,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -1804,7 +1929,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.oxfordcastleandprison.co.uk/",
     "score_total": 310.012014,
     "score_visitors": 5.666667,
     "visitors": 5,
@@ -1814,7 +1939,8 @@
     "wikidata_id": "Q2600886",
     "architectural_style": "Norman architecture",
     "heritage_status": "scheduled monument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Oxford-castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Oxford-castle.jpg?width=800",
+    "wikidata_website": "https://www.oxfordcastleandprison.co.uk/"
   },
   {
     "position": 874,
@@ -1825,8 +1951,8 @@
     "place": "(Durham)",
     "region": "North East",
     "region_code": "north_east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 54.55,
+    "longitude": -1.92,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -1853,8 +1979,8 @@
     "place": "(Cornwall)",
     "region": "South West",
     "region_code": "south_west",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 47.7315,
+    "longitude": -117.341,
     "founder": "",
     "era": 14,
     "castle_type": "Water castle",
@@ -1873,6 +1999,7 @@
     "architectural_style": "Gothic Revival",
     "heritage_status": "National Register of Historic Places listed place",
     "inception_year": 1915,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mountstmichael.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mountstmichael.jpg?width=800",
+    "architect": "Julius Zittel"
   }
 ]

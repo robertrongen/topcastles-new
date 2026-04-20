@@ -20,6 +20,12 @@
     "website": "",
     "score_total": 434.915135,
     "score_visitors": 7.2,
-    "visitors": 4
+    "visitors": 4,
+    "wikipedia_extract": "Samuel's Fortress is a fortress in the old town of Ohrid, North Macedonia. It was the capital of the First Bulgarian Empire during the rule of Tsar Samuel at the turn of the 11th century. Today, this historical monument is a major tourist attraction and was heavily restored in 2003 with the addition of entirely new battlements where none had survived.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Samuel%27s_Fortress_Ohrid_1.jpg/330px-Samuel%27s_Fortress_Ohrid_1.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Samuel's_Fortress%2C_Ohrid",
+    "wikidata_id": "Q1283801",
+    "heritage_status": "heritage site in North Macedonia",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Samuil's_Fortress_in_Ohrid_(%D0%A1%D0%B0%D0%BC%D1%83%D0%B8%D0%BB%D0%BE%D0%B2%D0%B0_%D1%82%D0%B2%D1%80%D1%92%D0%B0%D0%B2%D0%B0_%D1%83_%D0%9E%D1%85%D1%80%D0%B8%D0%B4%D1%83).jpg?width=800"
   }
 ]

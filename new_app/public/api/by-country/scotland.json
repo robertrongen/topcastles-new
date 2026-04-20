@@ -27,7 +27,8 @@
     "wikidata_id": "Q212065",
     "heritage_status": "scheduled monument",
     "inception_year": 1200,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Edinburgh_Castle_from_the_Grassmarket.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Edinburgh_Castle_from_the_Grassmarket.jpg?width=800",
+    "wikidata_website": "https://www.edinburghcastle.scot/"
   },
   {
     "position": 66,
@@ -57,7 +58,13 @@
     "wikidata_id": "Q1025398",
     "heritage_status": "category A listed building",
     "inception_year": 1300,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Caerlaverock_Castle_2016.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Caerlaverock_Castle_2016.jpg?width=800",
+    "wikidata_website": "http://www.historic-scotland.gov.uk/propertyresults/propertyoverview.htm?PropID=PL_047&PropName=Caerlaverock%2520Castle",
+    "significant_events": [
+      "archaeological excavation",
+      "archaeological excavation",
+      "slighting"
+    ]
   },
   {
     "position": 118,
@@ -86,7 +93,11 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Stirling_Castle",
     "wikidata_id": "Q756268",
     "heritage_status": "scheduled monument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Stirlingcastle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Stirlingcastle.jpg?width=800",
+    "wikidata_website": "https://www.stirlingcastle.scot/",
+    "significant_events": [
+      "Siege of Stirling Castle"
+    ]
   },
   {
     "position": 199,
@@ -97,8 +108,8 @@
     "place": "Glamis (Tayside)",
     "region": "Grampian",
     "region_code": "grampian",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.6203,
+    "longitude": -3.0024,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -106,7 +117,7 @@
     "condition": "",
     "remarkable": "childhood home of The Queen Mother\nand setting for Shakespeare's Macbeth",
     "description": "",
-    "website": "",
+    "website": "https://www.glamis-castle.co.uk/",
     "score_total": 502.965843,
     "score_visitors": 8.461165,
     "visitors": 205,
@@ -117,7 +128,8 @@
     "architectural_style": "Gothic art",
     "heritage_status": "category A listed building",
     "inception_year": 1372,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Angus_-_Glamis_Castle_-_2025-09-26_01-18-20_001.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Angus_-_Glamis_Castle_-_2025-09-26_01-18-20_001.JPG?width=800",
+    "wikidata_website": "https://www.glamis-castle.co.uk/"
   },
   {
     "position": 216,
@@ -128,8 +140,8 @@
     "place": "(Lothian)",
     "region": "Edinburg and Lothian",
     "region_code": "edinburg_and_lothian",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.826698,
+    "longitude": -3.007361,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -137,7 +149,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.borthwickcastle.com/",
     "score_total": 494.48293,
     "score_visitors": 7.458333,
     "visitors": 23,
@@ -147,7 +159,8 @@
     "wikidata_id": "Q17567402",
     "heritage_status": "category A listed building",
     "inception_year": 1430,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Scotland-2016-Aerial-Borthwick_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Scotland-2016-Aerial-Borthwick_Castle.jpg?width=800",
+    "wikidata_website": "https://www.borthwickcastle.com/"
   },
   {
     "position": 231,
@@ -158,8 +171,8 @@
     "place": "Edinburgh (Lothian)",
     "region": "Edinburg and Lothian",
     "region_code": "edinburg_and_lothian",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.9257,
+    "longitude": -3.14089,
     "founder": "Simon Preston of Gorton",
     "era": 14,
     "castle_type": "Mountain castle",
@@ -167,7 +180,7 @@
     "condition": "Damaged",
     "remarkable": "Een van de residenties van Queen Mary of Scotland (1542-1587).",
     "description": "Een van de eerste kastelen in Schotland met openingen voor het gebruik van kanonnen.",
-    "website": "",
+    "website": "http://www.historicenvironment.scot/visit-a-place/places/craigmillar-castle/",
     "score_total": 488.257975,
     "score_visitors": 6.793103,
     "visitors": 28,
@@ -177,7 +190,8 @@
     "wikidata_id": "Q432422",
     "heritage_status": "category A listed building",
     "inception_year": 1300,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Craigmillar_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Craigmillar_Castle.jpg?width=800",
+    "wikidata_website": "http://www.historicenvironment.scot/visit-a-place/places/craigmillar-castle/"
   },
   {
     "position": 246,
@@ -188,8 +202,8 @@
     "place": "(East Lothian)",
     "region": "Central",
     "region_code": "central",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.056389,
+    "longitude": -2.650556,
     "founder": "Earls of Fife",
     "era": 14,
     "castle_type": "Rock castle",
@@ -197,7 +211,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.historic-scotland.gov.uk/propertyresults/propertyoverview.htm?PropID=PL_284",
     "score_total": 480.398274,
     "score_visitors": 6.4,
     "visitors": 49,
@@ -207,7 +221,9 @@
     "wikidata_id": "Q57803",
     "heritage_status": "scheduled monument",
     "inception_year": 1350,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tantallon_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tantallon_Castle.jpg?width=800",
+    "architect": "William Douglas, 1st Earl of Douglas",
+    "wikidata_website": "http://www.historic-scotland.gov.uk/propertyresults/propertyoverview.htm?PropID=PL_284"
   },
   {
     "position": 249,
@@ -218,8 +234,8 @@
     "place": "Uddingston Near Glasgow (Strathclyde)",
     "region": "Central",
     "region_code": "central",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.809455,
+    "longitude": -4.095043,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -227,7 +243,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.historicenvironment.scot/visit-a-place/places/bothwell-castle/",
     "score_total": 479.356386,
     "score_visitors": 6.36,
     "visitors": 24,
@@ -236,7 +252,12 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Bothwell_Castle",
     "wikidata_id": "Q2412005",
     "heritage_status": "category A listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bothwell_Castle_20080505_-_south-east_tower.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bothwell_Castle_20080505_-_south-east_tower.jpg?width=800",
+    "wikidata_website": "https://www.historicenvironment.scot/visit-a-place/places/bothwell-castle/",
+    "significant_events": [
+      "slighting",
+      "archaeological excavation"
+    ]
   },
   {
     "position": 269,
@@ -247,8 +268,8 @@
     "place": "(Stirlingshire)",
     "region": "Central",
     "region_code": "central",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.185158,
+    "longitude": -4.050253,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -277,8 +298,8 @@
     "place": "Ross and Cromarty",
     "region": "Highland",
     "region_code": "highland",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 57.274167,
+    "longitude": -5.516111,
     "founder": "",
     "era": 13,
     "castle_type": "Water castle",
@@ -286,7 +307,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.eileandonancastle.com/",
     "score_total": 469.350554,
     "score_visitors": 8.343137,
     "visitors": 101,
@@ -294,7 +315,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Eilean_Donan_Castle%2C_Scotland_-_Jan_2011.jpg/330px-Eilean_Donan_Castle%2C_Scotland_-_Jan_2011.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Eilean_Donan",
     "wikidata_id": "Q79182",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Eilean_Donan_Castle%2C_Scotland_-_Jan_2011.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Eilean_Donan_Castle%2C_Scotland_-_Jan_2011.jpg?width=800",
+    "wikidata_website": "http://www.eileandonancastle.com/"
   },
   {
     "position": 283,
@@ -305,8 +327,8 @@
     "place": "(Strathclyde)",
     "region": "Central",
     "region_code": "central",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.836461,
+    "longitude": -5.055042,
     "founder": "",
     "era": null,
     "castle_type": "Water castle",
@@ -314,7 +336,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.historicenvironment.scot/visit-a-place/places/rothesay-castle/",
     "score_total": 466.48472,
     "score_visitors": 7.235294,
     "visitors": 16,
@@ -323,7 +345,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Rothesay_Castle",
     "wikidata_id": "Q866902",
     "heritage_status": "scheduled monument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rothesay_Castle_20100926_view_from_NNE.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rothesay_Castle_20100926_view_from_NNE.jpg?width=800",
+    "wikidata_website": "https://www.historicenvironment.scot/visit-a-place/places/rothesay-castle/"
   },
   {
     "position": 290,
@@ -334,8 +357,8 @@
     "place": "",
     "region": "Highland",
     "region_code": "highland",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 57.324,
+    "longitude": -4.442,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -343,7 +366,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.historicenvironment.scot/visit-a-place/places/urquhart-castle/",
     "score_total": 463.908521,
     "score_visitors": 7.692308,
     "visitors": 51,
@@ -352,7 +375,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Urquhart_Castle",
     "wikidata_id": "Q913981",
     "heritage_status": "category A listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Urquhart_Castle_5.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Urquhart_Castle_5.jpg?width=800",
+    "wikidata_website": "https://www.historicenvironment.scot/visit-a-place/places/urquhart-castle/"
   },
   {
     "position": 301,
@@ -363,8 +387,8 @@
     "place": "(Kirkcudbrightshire)",
     "region": "South",
     "region_code": "south",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 54.9392,
+    "longitude": -3.9697,
     "founder": "Archibald the Grim (de Wrede)",
     "era": 14,
     "castle_type": "Water castle",
@@ -372,7 +396,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.historicenvironment.scot/visit-a-place/places/threave-castle/",
     "score_total": 459.396983,
     "score_visitors": 6.818182,
     "visitors": 32,
@@ -382,7 +406,13 @@
     "wikidata_id": "Q607339",
     "heritage_status": "category A listed building",
     "inception_year": 1369,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Threave_Castle_2.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Threave_Castle_2.jpg?width=800",
+    "wikidata_founder": "Archibald Douglas, 3rd Earl of Douglas",
+    "architect": "Archibald Douglas, 3rd Earl of Douglas",
+    "wikidata_website": "https://www.historicenvironment.scot/visit-a-place/places/threave-castle/",
+    "significant_events": [
+      "slighting"
+    ]
   },
   {
     "position": 345,
@@ -416,8 +446,8 @@
     "place": "(Grampian)",
     "region": "Grampian",
     "region_code": "grampian",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 57.6878,
+    "longitude": -3.36139,
     "founder": "David I",
     "era": null,
     "castle_type": "",
@@ -435,7 +465,8 @@
     "wikidata_id": "Q2789683",
     "heritage_status": "scheduled monument",
     "inception_year": 1140,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Duffuscastle1.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Duffuscastle1.jpg?width=800",
+    "architect": "Freskin"
   },
   {
     "position": 364,
@@ -446,8 +477,8 @@
     "place": "(Lothian)",
     "region": "Edinburg and Lothian",
     "region_code": "edinburg_and_lothian",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.0458,
+    "longitude": -2.77838,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -455,7 +486,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.historicenvironment.scot/visit-a-place/places/dirleton-castle/",
     "score_total": 438.339428,
     "score_visitors": 7.708333,
     "visitors": 23,
@@ -464,7 +495,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Dirleton_Castle",
     "wikidata_id": "Q1955420",
     "heritage_status": "scheduled monument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dirleton_S.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dirleton_S.jpg?width=800",
+    "wikidata_website": "https://www.historicenvironment.scot/visit-a-place/places/dirleton-castle/"
   },
   {
     "position": 376,
@@ -475,8 +507,8 @@
     "place": "(Lothian)",
     "region": "Edinburg and Lothian",
     "region_code": "edinburg_and_lothian",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.975278,
+    "longitude": -3.610556,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -503,8 +535,8 @@
     "place": "(Strathclyde)",
     "region": "Central",
     "region_code": "central",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.571539,
+    "longitude": -5.386192,
     "founder": "Stewarts of Appin",
     "era": 15,
     "castle_type": "Water castle",
@@ -512,7 +544,7 @@
     "condition": "Intact",
     "remarkable": "Figureert in de eindscene van de Monty Python film \"The holy grail\" als het kasteel van de fransen.",
     "description": "",
-    "website": "",
+    "website": "https://www.castlestalker.com/",
     "score_total": 430.527505,
     "score_visitors": 8.096154,
     "visitors": 51,
@@ -522,7 +554,8 @@
     "wikidata_id": "Q217058",
     "heritage_status": "category A listed building",
     "inception_year": 1320,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castle_Stalker_Scotland.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castle_Stalker_Scotland.jpg?width=800",
+    "wikidata_website": "https://www.castlestalker.com/"
   },
   {
     "position": 432,
@@ -542,7 +575,7 @@
     "condition": "Intact",
     "remarkable": "Dunvegan bezit een natte variant van een oubliette: In de \"bottle dungeon\" werden gevangenen gegooid om te verdrinken.",
     "description": "Oorspronkelijk was het kasteel allen per boot te bereiken.",
-    "website": "",
+    "website": "https://www.dunvegancastle.com/",
     "score_total": 419.032313,
     "score_visitors": 7.90625,
     "visitors": 31,
@@ -552,7 +585,8 @@
     "wikidata_id": "Q1266330",
     "heritage_status": "category A listed building",
     "inception_year": 1220,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dunvegan_Castle_-_entrance.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dunvegan_Castle_-_entrance.jpg?width=800",
+    "wikidata_website": "https://www.dunvegancastle.com/"
   },
   {
     "position": 443,
@@ -563,8 +597,8 @@
     "place": "(Lothian)",
     "region": "Edinburg and Lothian",
     "region_code": "edinburg_and_lothian",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.8526,
+    "longitude": -3.16002,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -593,8 +627,8 @@
     "place": "Braemar (Grampian)",
     "region": "Grampian",
     "region_code": "grampian",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 57.014753,
+    "longitude": -3.391476,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -602,7 +636,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.braemarcastle.co.uk/",
     "score_total": 408.798644,
     "score_visitors": 7.911765,
     "visitors": 33,
@@ -612,7 +646,8 @@
     "wikidata_id": "Q897169",
     "heritage_status": "category A listed building",
     "inception_year": 1628,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Schotland_Braemar_Castle_9-5-2010_12-16.png?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Schotland_Braemar_Castle_9-5-2010_12-16.png?width=800",
+    "wikidata_website": "http://www.braemarcastle.co.uk/"
   },
   {
     "position": 478,
@@ -623,9 +658,9 @@
     "place": "(Fife)",
     "region": "Central",
     "region_code": "central",
-    "latitude": null,
-    "longitude": null,
-    "founder": "",
+    "latitude": 56.119578,
+    "longitude": -3.141272,
+    "founder": "James II of Scotland",
     "era": null,
     "castle_type": "",
     "castle_concept": "",
@@ -642,7 +677,8 @@
     "wikidata_id": "Q3994788",
     "heritage_status": "category A listed building",
     "inception_year": 1460,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ravenscraig_Castle_-_geograph.org.uk_-_1159565.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ravenscraig_Castle_-_geograph.org.uk_-_1159565.jpg?width=800",
+    "wikidata_founder": "James II of Scotland"
   },
   {
     "position": 479,
@@ -653,8 +689,8 @@
     "place": "(Grampian)",
     "region": "Grampian",
     "region_code": "grampian",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 57.095,
+    "longitude": -2.338,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -662,7 +698,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.nts.org.uk/visit/places/drum-castle",
     "score_total": 407.038968,
     "score_visitors": 7.789474,
     "visitors": 18,
@@ -671,7 +707,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Drum_Castle",
     "wikidata_id": "Q1923521",
     "heritage_status": "category A listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Drum_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Drum_Castle.jpg?width=800",
+    "wikidata_website": "https://www.nts.org.uk/visit/places/drum-castle"
   },
   {
     "position": 491,
@@ -682,8 +719,8 @@
     "place": "(Fife)",
     "region": "Central",
     "region_code": "central",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.342181,
+    "longitude": -2.790056,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -691,7 +728,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.historicenvironment.scot/visit-a-place/places/st-andrews-castle",
     "score_total": 403.701468,
     "score_visitors": 6.875,
     "visitors": 7,
@@ -701,7 +738,8 @@
     "wikidata_id": "Q2287936",
     "heritage_status": "category A listed building",
     "inception_year": 1200,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/General_view_of_castle_from_SE.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/General_view_of_castle_from_SE.jpg?width=800",
+    "wikidata_website": "https://www.historicenvironment.scot/visit-a-place/places/st-andrews-castle"
   },
   {
     "position": 493,
@@ -712,8 +750,8 @@
     "place": "(Grampian)",
     "region": "Grampian",
     "region_code": "grampian",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.94569,
+    "longitude": -2.19677,
     "founder": "",
     "era": null,
     "castle_type": "Rock castle",
@@ -721,7 +759,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.dunnottarcastle.co.uk/",
     "score_total": 403.547456,
     "score_visitors": 7.526316,
     "visitors": 18,
@@ -731,7 +769,8 @@
     "wikidata_id": "Q746983",
     "heritage_status": "scheduled monument",
     "inception_year": 1400,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dunnottar_Castle_-_geograph.org.uk_-_8057610.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dunnottar_Castle_-_geograph.org.uk_-_8057610.jpg?width=800",
+    "wikidata_website": "https://www.dunnottarcastle.co.uk/"
   },
   {
     "position": 501,
@@ -742,8 +781,8 @@
     "place": "(Strathclyde)",
     "region": "Central",
     "region_code": "central",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.936,
+    "longitude": -4.5628,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -751,10 +790,20 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.historicenvironment.scot/visit-a-place/places/dumbarton-castle/",
     "score_total": 401.096786,
     "score_visitors": 7.833333,
-    "visitors": 5
+    "visitors": 5,
+    "wikipedia_extract": "Dumbarton Castle has the longest recorded history of any stronghold in Scotland. It sits on a volcanic plug of basalt known as Dumbarton Rock which is 240 feet (73 m) high and overlooks the Scottish town of Dumbarton.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Scotland_Dumbarton_Castle_bordercropped.jpg/330px-Scotland_Dumbarton_Castle_bordercropped.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Dumbarton_Castle",
+    "wikidata_id": "Q2177200",
+    "heritage_status": "category A listed building",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dumbarton_Castle_20090607_south_entrance.jpg?width=800",
+    "wikidata_website": "https://www.historicenvironment.scot/visit-a-place/places/dumbarton-castle/",
+    "significant_events": [
+      "Siege of Dumbarton"
+    ]
   },
   {
     "position": 551,
@@ -765,8 +814,8 @@
     "place": "(Strathclyde)",
     "region": "Central",
     "region_code": "central",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.9479,
+    "longitude": -5.6654,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -774,7 +823,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.historicenvironment.scot/visit-a-place/places/castle-sween/",
     "score_total": 389.664248,
     "score_visitors": 6.375,
     "visitors": 7,
@@ -783,7 +832,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Castle_Sween",
     "wikidata_id": "Q3174",
     "heritage_status": "category A listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castle_Sween_-_geograph.org.uk_-_220264.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castle_Sween_-_geograph.org.uk_-_220264.jpg?width=800",
+    "wikidata_website": "https://www.historicenvironment.scot/visit-a-place/places/castle-sween/"
   },
   {
     "position": 568,
@@ -794,16 +844,16 @@
     "place": "",
     "region": "Highland",
     "region_code": "highland",
-    "latitude": null,
-    "longitude": null,
-    "founder": "",
+    "latitude": 57.476311,
+    "longitude": -4.2255,
+    "founder": "Malcolm III of Scotland",
     "era": null,
     "castle_type": "",
     "castle_concept": "",
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.castleuk.net/castle_lists_scotland/26/invernesscastle.htm",
     "score_total": 383.659521,
     "score_visitors": 7.565217,
     "visitors": 22,
@@ -814,7 +864,9 @@
     "architectural_style": "Scottish baronial architecture",
     "heritage_status": "category A listed building",
     "inception_year": 1836,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Inverness_Castle%2C_Scotland_-_Diliff.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Inverness_Castle%2C_Scotland_-_Diliff.jpg?width=800",
+    "wikidata_founder": "Malcolm III of Scotland",
+    "wikidata_website": "http://www.castleuk.net/castle_lists_scotland/26/invernesscastle.htm"
   },
   {
     "position": 578,
@@ -825,8 +877,8 @@
     "place": "(Grampian)",
     "region": "Grampian",
     "region_code": "grampian",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 57.174151,
+    "longitude": -2.718118,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -834,7 +886,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.nts.org.uk/visit/places/craigievar",
     "score_total": 382.527012,
     "score_visitors": 7.153846,
     "visitors": 25,
@@ -844,7 +896,8 @@
     "wikidata_id": "Q1138741",
     "heritage_status": "category A listed building",
     "inception_year": 1626,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Craigievar-Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Craigievar-Castle.jpg?width=800",
+    "wikidata_website": "https://www.nts.org.uk/visit/places/craigievar"
   },
   {
     "position": 587,
@@ -855,8 +908,8 @@
     "place": "northeastern end of Loch Awe, Oban 29 km (Argyll & Bute)",
     "region": "Highland",
     "region_code": "highland",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.4037,
+    "longitude": -5.0274,
     "founder": "",
     "era": 15,
     "castle_type": "Harbour castle",
@@ -864,7 +917,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.historicenvironment.scot/visit-a-place/places/kilchurn-castle/",
     "score_total": 380.157143,
     "score_visitors": 7.857143,
     "visitors": 13,
@@ -874,7 +927,8 @@
     "wikidata_id": "Q1741258",
     "heritage_status": "scheduled monument",
     "inception_year": 1450,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kilchurn_Castle_at_sunrise.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kilchurn_Castle_at_sunrise.jpg?width=800",
+    "wikidata_website": "https://www.historicenvironment.scot/visit-a-place/places/kilchurn-castle/"
   },
   {
     "position": 602,
@@ -885,8 +939,8 @@
     "place": "Grampian (Aberdeen)",
     "region": "Grampian",
     "region_code": "grampian",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 57.234811,
+    "longitude": -2.904631,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -894,7 +948,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.historicenvironment.scot/visit-a-place/places/kildrummy-castle/",
     "score_total": 377.590867,
     "score_visitors": 5.9,
     "visitors": 9,
@@ -903,7 +957,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Kildrummy_Castle",
     "wikidata_id": "Q1741270",
     "heritage_status": "category A listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kildrummy_castle_2.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kildrummy_castle_2.jpg?width=800",
+    "wikidata_website": "https://www.historicenvironment.scot/visit-a-place/places/kildrummy-castle/"
   },
   {
     "position": 616,
@@ -914,8 +969,8 @@
     "place": "(Lothian)",
     "region": "Edinburg and Lothian",
     "region_code": "edinburg_and_lothian",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.839573,
+    "longitude": -2.991417,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -943,8 +998,8 @@
     "place": "(Tayside)",
     "region": "Grampian",
     "region_code": "grampian",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.2008,
+    "longitude": -3.39179,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -973,8 +1028,8 @@
     "place": "Dundee (Tayside)",
     "region": "Grampian",
     "region_code": "grampian",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.476389,
+    "longitude": -2.89,
     "founder": "John Strachan",
     "era": null,
     "castle_type": "",
@@ -1002,8 +1057,8 @@
     "place": "Huntley (Aberdeenshire)",
     "region": "Grampian",
     "region_code": "grampian",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 57.454881,
+    "longitude": -2.781169,
     "founder": "Clan Gordon, Earl of Huntly",
     "era": 12,
     "castle_type": "Rock castle",
@@ -1011,7 +1066,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "A mound in the grounds of the castle is all that remains of an earlier 12th century motte. The 14th century keep is ruined. What remains is the 15th century castle.",
-    "website": "",
+    "website": "https://www.historicenvironment.scot/visit-a-place/places/huntly-castle/",
     "score_total": 352.07957,
     "score_visitors": 6.714286,
     "visitors": 6,
@@ -1020,7 +1075,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Huntly_Castle",
     "wikidata_id": "Q64597",
     "heritage_status": "category A listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Huntly_Castle%2C_Aberdeenshire._The_16th_century_section.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Huntly_Castle%2C_Aberdeenshire._The_16th_century_section.jpg?width=800",
+    "wikidata_website": "https://www.historicenvironment.scot/visit-a-place/places/huntly-castle/"
   },
   {
     "position": 702,
@@ -1031,8 +1087,8 @@
     "place": "",
     "region": "Highland",
     "region_code": "highland",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 57.524258,
+    "longitude": -3.926612,
     "founder": "",
     "era": 15,
     "castle_type": "Rock castle",
@@ -1050,7 +1106,8 @@
     "wikidata_id": "Q1051919",
     "heritage_status": "category A listed building",
     "inception_year": 1454,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/CastellCawdor01LB.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/CastellCawdor01LB.jpg?width=800",
+    "wikidata_website": "https://www.cawdorcastle.com"
   },
   {
     "position": 716,
@@ -1061,8 +1118,8 @@
     "place": "Craignure (Argyll & Bute)",
     "region": "Highland",
     "region_code": "highland",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.456162,
+    "longitude": -5.654941,
     "founder": "Clan MacLean",
     "era": 13,
     "castle_type": "Harbour castle",
@@ -1080,7 +1137,9 @@
     "wikidata_id": "Q1262718",
     "heritage_status": "category A listed building",
     "inception_year": 1201,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Duart-Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Duart-Castle.jpg?width=800",
+    "wikidata_founder": "Clan MacDougall",
+    "wikidata_website": "http://www.duartcastle.com/"
   },
   {
     "position": 809,
@@ -1091,16 +1150,16 @@
     "place": "Hawick (Borders)",
     "region": "South",
     "region_code": "south",
-    "latitude": null,
-    "longitude": null,
-    "founder": "",
+    "latitude": 55.2556,
+    "longitude": -2.7933,
+    "founder": "William Douglas, 1st Earl of Douglas",
     "era": null,
     "castle_type": "",
     "castle_concept": "",
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.historicenvironment.scot/visit-a-place/places/hermitage-castle/",
     "score_total": 325.955123,
     "score_visitors": 5.8,
     "visitors": 4,
@@ -1110,7 +1169,9 @@
     "wikidata_id": "Q1613640",
     "heritage_status": "category A listed building",
     "inception_year": 1240,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hermitage_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hermitage_Castle.jpg?width=800",
+    "wikidata_founder": "William Douglas, 1st Earl of Douglas",
+    "wikidata_website": "https://www.historicenvironment.scot/visit-a-place/places/hermitage-castle/"
   },
   {
     "position": 810,
@@ -1121,8 +1182,8 @@
     "place": "",
     "region": "Highland",
     "region_code": "highland",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 57.528817,
+    "longitude": -4.378784,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -1150,8 +1211,8 @@
     "place": "(Perth & Kinross)",
     "region": "Central",
     "region_code": "central",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.4094,
+    "longitude": -3.4883,
     "founder": "Clan Ruthven",
     "era": 15,
     "castle_type": "",
@@ -1159,7 +1220,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.historicenvironment.scot/visit-a-place/places/huntingtower-castle/",
     "score_total": 256.542359,
     "score_visitors": 4.333333,
     "visitors": 2,
@@ -1168,7 +1229,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Huntingtower_Castle",
     "wikidata_id": "Q2475039",
     "heritage_status": "category A listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Huntingtower_north_17062009.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Huntingtower_north_17062009.jpg?width=800",
+    "wikidata_website": "https://www.historicenvironment.scot/visit-a-place/places/huntingtower-castle/"
   },
   {
     "position": 967,
@@ -1179,8 +1241,8 @@
     "place": "(Dumfries and Galloway)",
     "region": "South",
     "region_code": "south",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.03751,
+    "longitude": -3.323716,
     "founder": "",
     "era": null,
     "castle_type": "",

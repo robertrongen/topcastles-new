@@ -28,7 +28,8 @@
     "architectural_style": "Art of Al-Andalus",
     "heritage_status": "Historic Garden (Spain)",
     "inception_year": 1239,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Alhambra_detail.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Alhambra_detail.jpg?width=800",
+    "wikidata_website": "http://www.alhambra-patronato.es"
   },
   {
     "position": 9,
@@ -59,7 +60,21 @@
     "architectural_style": "Herrerian",
     "heritage_status": "bien de interés cultural",
     "inception_year": 1200,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Panor%C3%A1mica_Oto%C3%B1o_Alc%C3%A1zar_de_Segovia.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Panor%C3%A1mica_Oto%C3%B1o_Alc%C3%A1zar_de_Segovia.jpg?width=800",
+    "architect": "Francisco de Mora",
+    "wikidata_website": "https://www.alcazardesegovia.com/",
+    "significant_events": [
+      "Revolts in Segovia (1506)",
+      "Revolts in Segovia (1476)",
+      "Revolt of the Comuneros",
+      "Peninsular War",
+      "Carlist Wars",
+      "Reconquista",
+      "Concord of Segovia",
+      "Hundred Thousand Sons of Saint Louis",
+      "War of the Spanish Succession",
+      "War of the Castilian Succession"
+    ]
   },
   {
     "position": 21,
@@ -90,7 +105,8 @@
     "architectural_style": "Gothic art",
     "heritage_status": "bien de interés cultural",
     "inception_year": 1453,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_Coca.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_Coca.jpg?width=800",
+    "wikidata_website": "http://www.castillodecoca.com/"
   },
   {
     "position": 45,
@@ -120,7 +136,8 @@
     "wikidata_id": "Q2969574",
     "heritage_status": "bien de interés cultural",
     "inception_year": 1100,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_la_Mota_2021.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_la_Mota_2021.jpg?width=800",
+    "wikidata_website": "http://www.castillodelamota.es/"
   },
   {
     "position": 61,
@@ -140,7 +157,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.museosdeandalucia.es/web/conjuntomonumentallaalcazabaalmeria",
     "score_total": 661.513458,
     "score_visitors": 7.485294,
     "visitors": 67,
@@ -150,7 +167,8 @@
     "wikidata_id": "Q24024872",
     "architectural_style": "Art of Al-Andalus",
     "heritage_status": "bien de interés cultural",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Alcazaba_de_Almer%C3%ADa.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Alcazaba_de_Almer%C3%ADa.jpg?width=800",
+    "wikidata_website": "http://www.museosdeandalucia.es/web/conjuntomonumentallaalcazabaalmeria"
   },
   {
     "position": 63,
@@ -291,7 +309,8 @@
     "architectural_style": "Romanesque architecture",
     "heritage_status": "bien de interés cultural",
     "inception_year": 1020,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_Loarre_2.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_Loarre_2.jpg?width=800",
+    "wikidata_website": "https://castillo-loarre.es/"
   },
   {
     "position": 99,
@@ -320,7 +339,11 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Castle_of_Almod%C3%B3var_del_R%C3%ADo",
     "wikidata_id": "Q626232",
     "heritage_status": "bien de interés cultural",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Almodovar_del_Rio_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Almodovar_del_Rio_Castle.jpg?width=800",
+    "wikidata_website": "http://castillodealmodovar.com",
+    "significant_events": [
+      "home repair"
+    ]
   },
   {
     "position": 110,
@@ -340,7 +363,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.alcazarsevilla.org/",
     "score_total": 574.575747,
     "score_visitors": 7.929825,
     "visitors": 56,
@@ -350,7 +373,8 @@
     "wikidata_id": "Q498261",
     "architectural_style": "Art of Al-Andalus",
     "heritage_status": "part of UNESCO World Heritage Site",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Patio_de_las_doncellas001.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Patio_de_las_doncellas001.JPG?width=800",
+    "wikidata_website": "http://www.alcazarsevilla.org/"
   },
   {
     "position": 152,
@@ -363,14 +387,14 @@
     "region_code": "castilla-la_mancha",
     "latitude": 39.56117,
     "longitude": -2.702465,
-    "founder": "",
+    "founder": "Juan Pacheco",
     "era": null,
     "castle_type": "",
     "castle_concept": "",
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://castillodebelmonte.com/",
     "score_total": 534.001346,
     "score_visitors": 7.59375,
     "visitors": 31,
@@ -381,7 +405,9 @@
     "architectural_style": "Mudéjar style",
     "heritage_status": "bien de interés cultural",
     "inception_year": 1456,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Belmonte-PM_65431.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Belmonte-PM_65431.jpg?width=800",
+    "wikidata_founder": "Juan Pacheco",
+    "wikidata_website": "http://castillodebelmonte.com/"
   },
   {
     "position": 166,
@@ -439,7 +465,10 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Alc%C3%A1zar_of_Toledo",
     "wikidata_id": "Q1326589",
     "heritage_status": "bien de interés cultural",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Alc%C3%A1zar_de_Toledo_-_01.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Alc%C3%A1zar_de_Toledo_-_01.jpg?width=800",
+    "significant_events": [
+      "Siege of the Alcázar"
+    ]
   },
   {
     "position": 221,
@@ -623,7 +652,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.castillodecalatrava.org",
     "score_total": 462.039742,
     "score_visitors": 7.583333,
     "visitors": 11,
@@ -634,7 +663,8 @@
     "architectural_style": "Gothic art",
     "heritage_status": "bien de interés cultural",
     "inception_year": 1300,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo-convento_de_Calatrava_La_Nueva.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo-convento_de_Calatrava_La_Nueva.JPG?width=800",
+    "wikidata_website": "http://www.castillodecalatrava.org"
   },
   {
     "position": 297,
@@ -735,7 +765,7 @@
     "region_code": "navarra",
     "latitude": 42.483889,
     "longitude": -1.65,
-    "founder": "",
+    "founder": "Charles III of Navarre",
     "era": null,
     "castle_type": "",
     "castle_concept": "",
@@ -753,7 +783,8 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "bien de interés cultural",
     "inception_year": 1201,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Palacio_de_Olite.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Palacio_de_Olite.JPG?width=800",
+    "wikidata_founder": "Charles III of Navarre"
   },
   {
     "position": 354,
@@ -812,7 +843,7 @@
     "region_code": "madrid",
     "latitude": 40.994622,
     "longitude": -3.633664,
-    "founder": "",
+    "founder": "Diego Hurtado de Mendoza, 3rd Duke of the Infantado",
     "era": null,
     "castle_type": "",
     "castle_concept": "",
@@ -829,7 +860,8 @@
     "wikidata_id": "Q3888432",
     "architectural_style": "Gothic architecture",
     "heritage_status": "bien de interés cultural",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Interior_del_Castillo_de_Buitrago_del_Lozoya.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Interior_del_Castillo_de_Buitrago_del_Lozoya.jpg?width=800",
+    "wikidata_founder": "Diego Hurtado de Mendoza, 3rd Duke of the Infantado"
   },
   {
     "position": 375,
@@ -852,7 +884,13 @@
     "website": "",
     "score_total": 434.903472,
     "score_visitors": 7.25,
-    "visitors": 7
+    "visitors": 7,
+    "wikipedia_extract": "The Alcazaba of Antequera is a Moorish fortress in Antequera, Spain. It was erected over Roman ruins in the 14th century to counter the Christian advance from the north.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Antequera_Alcazaba.jpg/330px-Antequera_Alcazaba.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Alcazaba_of_Antequera",
+    "wikidata_id": "Q4712981",
+    "heritage_status": "bien de interés cultural",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Antequera_Alcazaba.jpg?width=800"
   },
   {
     "position": 380,
@@ -872,7 +910,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.alcazarsevilla.org/",
     "score_total": 432.985882,
     "score_visitors": 7.090909,
     "visitors": 10,
@@ -882,7 +920,8 @@
     "wikidata_id": "Q498261",
     "architectural_style": "Art of Al-Andalus",
     "heritage_status": "part of UNESCO World Heritage Site",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Patio_de_las_doncellas001.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Patio_de_las_doncellas001.JPG?width=800",
+    "wikidata_website": "http://www.alcazarsevilla.org/"
   },
   {
     "position": 392,
@@ -964,7 +1003,10 @@
     "wikidata_id": "Q8342648",
     "architectural_style": "Romanesque architecture",
     "heritage_status": "bien de interés cultural",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_Alca%C3%B1iz%2C_Teruel_(Spain).JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_Alca%C3%B1iz%2C_Teruel_(Spain).JPG?width=800",
+    "significant_events": [
+      "Concord of Alcañiz"
+    ]
   },
   {
     "position": 431,
@@ -1073,7 +1115,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.ayto-escalona.com/",
     "score_total": 414.069667,
     "score_visitors": 8,
     "visitors": 5,
@@ -1081,7 +1123,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/en/thumb/4/46/SkylineEscalona.JPG/330px-SkylineEscalona.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Escalona",
     "wikidata_id": "Q616621",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/VistasDeEscalona20120108150641P1140515.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/VistasDeEscalona20120108150641P1140515.jpg?width=800",
+    "wikidata_website": "http://www.ayto-escalona.com/"
   },
   {
     "position": 468,
@@ -1258,7 +1301,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.valenciadedonjuan.es/",
     "score_total": 391.160139,
     "score_visitors": 7.4375,
     "visitors": 15,
@@ -1266,7 +1309,9 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Castillo_de_valencia_de_don_juan.jpg/330px-Castillo_de_valencia_de_don_juan.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Valencia_de_Don_Juan",
     "wikidata_id": "Q385017",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_Valencia_de_Don_Juan-12.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_Valencia_de_Don_Juan-12.jpg?width=800",
+    "wikidata_website": "https://www.valenciadedonjuan.es/",
+    "significant_events": []
   },
   {
     "position": 554,
@@ -1409,7 +1454,14 @@
     "website": "",
     "score_total": 363.912415,
     "score_visitors": 7,
-    "visitors": 6
+    "visitors": 6,
+    "wikipedia_extract": "The Castle of Jadraque is a castle in the municipality of Jadraque, Castile-La Mancha, Spain. It sits on a hill commanding the plain of the Henares river. It is sometimes called \"Castle of Cid\" as it is mentioned in the poem Cantar del Mio Cid.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Castillo_de_Jadraque.jpg/330px-Castillo_de_Jadraque.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Castle_of_Jadraque",
+    "wikidata_id": "Q1049190",
+    "heritage_status": "bien de interés cultural",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Jadraque_Castillo_724.JPG?width=800",
+    "wikidata_founder": "Pedro González de Mendoza"
   },
   {
     "position": 658,
@@ -1837,7 +1889,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.peñarandadeduero.es/",
     "score_total": 305.45,
     "score_visitors": 6.375,
     "visitors": 7,
@@ -1845,7 +1897,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Pe%C3%B1aranda_de_Duero_03.jpg/330px-Pe%C3%B1aranda_de_Duero_03.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Pe%C3%B1aranda_de_Duero",
     "wikidata_id": "Q953384",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pe%C3%B1aranda_de_Duero%2C_Burgos%2C_Castilla_y_Le%C3%B3n%2CEspa%C3%B1a.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pe%C3%B1aranda_de_Duero%2C_Burgos%2C_Castilla_y_Le%C3%B3n%2CEspa%C3%B1a.jpg?width=800",
+    "wikidata_website": "http://www.peñarandadeduero.es/"
   },
   {
     "position": 912,
@@ -1897,7 +1950,13 @@
     "website": "",
     "score_total": 286.4,
     "score_visitors": 6,
-    "visitors": 4
+    "visitors": 4,
+    "wikipedia_extract": "Sádaba Castle is a castle in Sádaba, Aragon, eastern Spain, located some 90 kilometres (56 mi) north of Zaragoza.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Castillo_Sadaba1.JPG/330px-Castillo_Sadaba1.JPG",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/S%C3%A1daba_Castle",
+    "wikidata_id": "Q1049260",
+    "heritage_status": "bien de interés cultural",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_S%C3%A1daba%2C_Huesca%2C_Espa%C3%B1a%2C_2015-01-06%2C_DD_01.JPG?width=800"
   },
   {
     "position": 934,

@@ -27,7 +27,11 @@
     "wikidata_id": "Q1543972",
     "heritage_status": "beschermd monument",
     "inception_year": 1180,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Gravensteengent22042008.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Gravensteengent22042008.JPG?width=800",
+    "wikidata_website": "https://visit.gent.be/nl/zien-doen/gravensteen-een-burcht-gent",
+    "significant_events": [
+      "Battle of the Gravensteen"
+    ]
   },
   {
     "position": 60,
@@ -57,7 +61,8 @@
     "wikidata_id": "Q791969",
     "heritage_status": "protected cultural-historical landscape",
     "inception_year": 1300,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/BurgBeersel.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/BurgBeersel.jpg?width=800",
+    "wikidata_website": "http://www.beersel.be/product.aspx?id=28"
   },
   {
     "position": 107,
@@ -77,7 +82,7 @@
     "condition": "Damaged",
     "remarkable": "Bekendste bewoner: Godfried van Bouillon, de leider van de eerste kruistocht die ook daadwerkelijk Jeruzalem veroverde.",
     "description": "",
-    "website": "",
+    "website": "https://chateaufortdebouillon.ellohaweb.com/",
     "score_total": 579.805412,
     "score_visitors": 8.02069,
     "visitors": 144,
@@ -86,7 +91,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Bouillon_Castle",
     "wikidata_id": "Q567525",
     "heritage_status": "protected heritage property in Wallonia",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bouillon-kasteel.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bouillon-kasteel.JPG?width=800",
+    "wikidata_website": "https://chateaufortdebouillon.ellohaweb.com/"
   },
   {
     "position": 295,
@@ -190,7 +196,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.corroy-le-chateau.com/",
     "score_total": 420.444581,
     "score_visitors": 7.974359,
     "visitors": 77,
@@ -199,7 +205,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Ch%C3%A2teau_de_Corroy-le-Ch%C3%A2teau",
     "wikidata_id": "Q1706511",
     "heritage_status": "protected heritage property in Wallonia",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Corroy-le-Ch%C3%A2teau_CH1b.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Corroy-le-Ch%C3%A2teau_CH1b.jpg?width=800",
+    "wikidata_website": "http://www.corroy-le-chateau.com/"
   },
   {
     "position": 556,
@@ -219,7 +226,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.toerismetorhout.be/en/wijnendale-castle",
     "score_total": 387.729252,
     "score_visitors": 8.462585,
     "visitors": 146,
@@ -229,7 +236,8 @@
     "wikidata_id": "Q1753166",
     "architectural_style": "Gothic Revival",
     "heritage_status": "beschermd monument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/87491_kasteel_wijnendale.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/87491_kasteel_wijnendale.jpg?width=800",
+    "wikidata_website": "http://www.toerismetorhout.be/en/wijnendale-castle"
   },
   {
     "position": 599,
@@ -305,7 +313,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://kunsthochschulekassel.de/willkommen.html",
     "score_total": 371.768182,
     "score_visitors": 8.261364,
     "visitors": 87,
@@ -314,7 +322,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Cleydael_Castle",
     "wikidata_id": "Q1571167",
     "heritage_status": "beschermd monument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Cleydael.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Cleydael.jpg?width=800",
+    "wikidata_website": "https://kunsthochschulekassel.de/willkommen.html"
   },
   {
     "position": 624,
@@ -337,7 +346,13 @@
     "website": "http://www.chateaufort-ecaussinnes.be/",
     "score_total": 371.053198,
     "score_visitors": 7.2,
-    "visitors": 24
+    "visitors": 24,
+    "wikipedia_extract": "Écaussinnes-Lalaing Castle is a castle in the village of Écaussinnes-Lalaing in the municipality of Écaussinnes in the province of Hainaut, Wallonia, Belgium.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Ecaussinnes-Lalaing_CH1bJPG.jpg/330px-Ecaussinnes-Lalaing_CH1bJPG.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/%C3%89caussinnes-Lalaing_Castle",
+    "wikidata_id": "Q2462884",
+    "heritage_status": "protected heritage property in Wallonia",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ecaussinnes-Lalaing_CH1bJPG.jpg?width=800"
   },
   {
     "position": 652,
@@ -357,7 +372,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.chateaudelaroche.be",
     "score_total": 363.07141,
     "score_visitors": 7.575758,
     "visitors": 32,
@@ -366,7 +381,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/La_Roche-en-Ardenne_Castle",
     "wikidata_id": "Q2969578",
     "heritage_status": "protected heritage property in Wallonia",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/2012-04-15_Ch%C3%A2teau_F%C3%A9odal_-_La_Roche-en-Ardenne.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/2012-04-15_Ch%C3%A2teau_F%C3%A9odal_-_La_Roche-en-Ardenne.jpg?width=800",
+    "wikidata_website": "http://www.chateaudelaroche.be"
   },
   {
     "position": 656,
@@ -396,7 +412,8 @@
     "wikidata_id": "Q320479",
     "heritage_status": "protected heritage property in Wallonia",
     "inception_year": 1354,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Reinhardstein%2C_Robertville_(8).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Reinhardstein%2C_Robertville_(8).jpg?width=800",
+    "wikidata_website": "http://www.reinhardstein.net"
   },
   {
     "position": 660,
@@ -446,7 +463,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.kasteelgrootbijgaarden.be/",
     "score_total": 358.030537,
     "score_visitors": 7.565217,
     "visitors": 22,
@@ -456,7 +473,8 @@
     "wikidata_id": "Q2173432",
     "heritage_status": "beschermd monument",
     "inception_year": 1300,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kasteel_Groot-Bijgaarden_905.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kasteel_Groot-Bijgaarden_905.jpg?width=800",
+    "wikidata_website": "http://www.kasteelgrootbijgaarden.be/"
   },
   {
     "position": 699,
@@ -514,7 +532,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Ch%C3%A2teau_de_V%C3%AAves",
     "wikidata_id": "Q1014446",
     "heritage_status": "protected heritage property in Wallonia",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/V%C3%AAves_CH1aJPG.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/V%C3%AAves_CH1aJPG.jpg?width=800",
+    "wikidata_website": "https://chateau-de-veves.be"
   },
   {
     "position": 753,
@@ -572,7 +591,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Montaigle_Castle",
     "wikidata_id": "Q1013148",
     "heritage_status": "protected heritage property in Wallonia",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Montaigle_2_Luc_Viatour.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Montaigle_2_Luc_Viatour.jpg?width=800",
+    "wikidata_website": "http://www.montaigle.be"
   },
   {
     "position": 762,
@@ -658,7 +678,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Franchimont_Castle",
     "wikidata_id": "Q474267",
     "heritage_status": "protected heritage property in Wallonia",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/FranchimontCastleFromENE.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/FranchimontCastleFromENE.jpg?width=800",
+    "wikidata_website": "http://www.chateau-franchimont.be"
   },
   {
     "position": 782,
@@ -687,7 +708,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Ch%C3%A2teau_de_Lavaux-Sainte-Anne",
     "wikidata_id": "Q261084",
     "heritage_status": "protected heritage property in Wallonia",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Lavaux-Sainte-Anne_AG01.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Lavaux-Sainte-Anne_AG01.jpg?width=800",
+    "wikidata_website": "http://www.chateau-lavaux.com"
   },
   {
     "position": 789,
@@ -718,7 +740,8 @@
     "architectural_style": "Renaissance architecture",
     "heritage_status": "beschermd monument",
     "inception_year": 1236,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kasteelgaasbeek.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kasteelgaasbeek.jpg?width=800",
+    "wikidata_website": "http://www.kasteelvangaasbeek.be"
   },
   {
     "position": 795,
@@ -738,7 +761,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.prov-liege.be/chateaujehay",
     "score_total": 331.95,
     "score_visitors": 7.625,
     "visitors": 7,
@@ -747,7 +770,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Jehay-Bodegn%C3%A9e_Castle",
     "wikidata_id": "Q774009",
     "heritage_status": "protected heritage property in Wallonia",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/0_Jehay_-_Ch%C3%A2teau_(5).JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/0_Jehay_-_Ch%C3%A2teau_(5).JPG?width=800",
+    "wikidata_website": "http://www.prov-liege.be/chateaujehay"
   },
   {
     "position": 890,
@@ -825,7 +849,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.kasteelvanrumbeke.be/",
     "score_total": 287.363636,
     "score_visitors": 6.727273,
     "visitors": 10,
@@ -834,7 +858,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Rumbeke_Castle",
     "wikidata_id": "Q1704306",
     "architectural_style": "Renaissance architecture",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kasteel-Rumbeke.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kasteel-Rumbeke.jpg?width=800",
+    "wikidata_website": "http://www.kasteelvanrumbeke.be/"
   },
   {
     "position": 933,

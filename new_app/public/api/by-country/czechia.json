@@ -28,7 +28,9 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "national cultural monument of the Czech Republic",
     "inception_year": 1348,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Karlstein_-_Karl%C5%A1tejn_-_panoramio.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Karlstein_-_Karl%C5%A1tejn_-_panoramio.jpg?width=800",
+    "architect": "Matthias of Arras",
+    "wikidata_website": "https://www.hrad-karlstejn.cz/"
   },
   {
     "position": 52,
@@ -48,7 +50,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.hrad.cz/",
     "score_total": 677.754397,
     "score_visitors": 8.098592,
     "visitors": 70,
@@ -59,7 +61,9 @@
     "architectural_style": "Romanesque architecture",
     "heritage_status": "national cultural monument of the Czech Republic",
     "inception_year": 900,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_Praga%2C_Praga%2C_Rep%C3%BAblica_Checa%2C_2022-07-02%2C_DD_209.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_Praga%2C_Praga%2C_Rep%C3%BAblica_Checa%2C_2022-07-02%2C_DD_209.jpg?width=800",
+    "architect": "Matthias of Arras",
+    "wikidata_website": "https://www.hrad.cz/"
   },
   {
     "position": 86,
@@ -70,8 +74,8 @@
     "place": "Nedvedice (Brno)",
     "region": "Jiho Moravia (Südmährien)",
     "region_code": "sudmoravia",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 49.450833,
+    "longitude": 16.318889,
     "founder": "",
     "era": 13,
     "castle_type": "Mountain castle",
@@ -90,7 +94,8 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "national cultural monument of the Czech Republic",
     "inception_year": 1270,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Pernstein.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Pernstein.JPG?width=800",
+    "wikidata_website": "https://www.hrad-pernstejn.eu/"
   },
   {
     "position": 101,
@@ -144,7 +149,9 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "national cultural monument of the Czech Republic",
     "inception_year": 1230,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/K%C5%99ivokl%C3%A1t%2C_v%C3%BDhled_na_hrad_(2018-05-08%3B_01).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/K%C5%99ivokl%C3%A1t%2C_v%C3%BDhled_na_hrad_(2018-05-08%3B_01).jpg?width=800",
+    "wikidata_founder": "Ottokar I of Bohemia",
+    "wikidata_website": "https://www.hrad-krivoklat.cz/"
   },
   {
     "position": 235,
@@ -155,8 +162,8 @@
     "place": "Zvikov",
     "region": "Jiho Ceský (Südböhmen)",
     "region_code": "sudbohemia",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 49.438876,
+    "longitude": 14.192405,
     "founder": "Wenzel I",
     "era": 13,
     "castle_type": "Harbour castle",
@@ -164,7 +171,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.hrad-zvikov.cz/",
     "score_total": 485.165418,
     "score_visitors": 7.395349,
     "visitors": 42,
@@ -175,7 +182,8 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "national cultural monument of the Czech Republic",
     "inception_year": 1300,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Zv%C3%ADkov_Castle_from_Kopaniny_(4)_(cropped).JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Zv%C3%ADkov_Castle_from_Kopaniny_(4)_(cropped).JPG?width=800",
+    "wikidata_website": "https://www.hrad-zvikov.cz/"
   },
   {
     "position": 298,
@@ -209,8 +217,8 @@
     "place": "Sloup v Čechách (Bürgstein)",
     "region": "Liberec (Reichenberg)",
     "region_code": "liberec",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.735556,
+    "longitude": 14.580556,
     "founder": "",
     "era": 13,
     "castle_type": "Rock castle",
@@ -221,7 +229,15 @@
     "website": "http://www.hradsloup.cz/",
     "score_total": 451.844863,
     "score_visitors": 7.214286,
-    "visitors": 13
+    "visitors": 13,
+    "wikipedia_extract": "Sloup Castle is a rock castle in the municipality of Sloup v Čechách in the Liberec Region of the Czech Republic.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Hrad_Sloup_v_%C4%8Cech%C3%A1ch.jpg/330px-Hrad_Sloup_v_%C4%8Cech%C3%A1ch.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Sloup_Castle",
+    "wikidata_id": "Q499095",
+    "heritage_status": "cultural monument of the Czech Republic",
+    "inception_year": 1324,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Sloup%2C_skaln%C3%AD_hrad_-_celek1c.jpg?width=800",
+    "wikidata_website": "http://www.hradsloup.cz/"
   },
   {
     "position": 339,
@@ -232,8 +248,8 @@
     "place": "Ceský Krumlov",
     "region": "Jiho Ceský (Südböhmen)",
     "region_code": "sudbohemia",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 48.81099,
+    "longitude": 14.315208,
     "founder": "",
     "era": 13,
     "castle_type": "Rock castle",
@@ -249,7 +265,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Historic_Centre_of_%C4%8Cesk%C3%BD_Krumlov-111747.jpg/330px-Historic_Centre_of_%C4%8Cesk%C3%BD_Krumlov-111747.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/%C4%8Cesk%C3%BD_Krumlov",
     "wikidata_id": "Q188082",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/%C4%8Cesk%C3%BD_Krumlov%2C_historick%C3%A9_j%C3%A1dro.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/%C4%8Cesk%C3%BD_Krumlov%2C_historick%C3%A9_j%C3%A1dro.jpg?width=800",
+    "wikidata_website": "https://www.ckrumlov.cz/"
   },
   {
     "position": 347,
@@ -260,8 +277,8 @@
     "place": "Sloup",
     "region": "Jiho Moravia (Südmährien)",
     "region_code": "sudmoravia",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 49,
+    "longitude": 21.233333,
     "founder": "",
     "era": 12,
     "castle_type": "Rock castle",
@@ -269,7 +286,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.presov.sk/",
     "score_total": 444.222559,
     "score_visitors": 7.26087,
     "visitors": 22,
@@ -278,7 +295,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Pre%C5%A1ov",
     "wikidata_id": "Q26119",
     "inception_year": 1247,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Konkatedr%C3%A1la_Pre%C5%A1ov_18_Slovakia5.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Konkatedr%C3%A1la_Pre%C5%A1ov_18_Slovakia5.jpg?width=800",
+    "wikidata_website": "https://www.presov.sk/"
   },
   {
     "position": 351,
@@ -289,8 +307,8 @@
     "place": "Ceský Šternberk",
     "region": "Stredo Ceský (Mittelböhmen)",
     "region_code": "mezbohemia",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 49.810953,
+    "longitude": 14.928205,
     "founder": "Zdeslav z Divišova",
     "era": 13,
     "castle_type": "Rock castle",
@@ -306,7 +324,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/%C4%8Cesk%C3%BD_%C5%A0ternberk_2008-07-26.jpg/330px-%C4%8Cesk%C3%BD_%C5%A0ternberk_2008-07-26.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/%C4%8Cesk%C3%BD_%C5%A0ternberk",
     "wikidata_id": "Q341345",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/%C5%98eka_S%C3%A1zava_%C4%8Cesk%C3%BD_%C5%A0ternberk_-_podhrad%C3%AD_u_%C5%99eky_07.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/%C5%98eka_S%C3%A1zava_%C4%8Cesk%C3%BD_%C5%A0ternberk_-_podhrad%C3%AD_u_%C5%99eky_07.jpg?width=800",
+    "wikidata_website": "http://ceskysternberk.eu/"
   },
   {
     "position": 386,
@@ -317,8 +336,8 @@
     "place": "To¢nik (Beroun)",
     "region": "Stredo Ceský (Mittelböhmen)",
     "region_code": "mezbohemia",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 49.890594,
+    "longitude": 13.88741,
     "founder": "Wenzel IV",
     "era": 15,
     "castle_type": "Mountain castle",
@@ -329,7 +348,16 @@
     "website": "http://www.tocnik.com",
     "score_total": 431.880624,
     "score_visitors": 6.296296,
-    "visitors": 26
+    "visitors": 26,
+    "wikipedia_extract": "Točník Castle is a castle ruin in the Central Bohemian Region of the Czech Republic. It is located in the municipality of Točník in the Beroun District. It was built during the reign of Wenceslaus IV at the end of the 14th century above the already existing castle Žebrák as his private residence. The two castles, Točník and Žebrák, make up a picturesque couple, standing almost right next to each other. Together they are protected as one national cultural monument.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Tocnik_od_jz.jpg/330px-Tocnik_od_jz.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/To%C4%8Dn%C3%ADk_Castle",
+    "wikidata_id": "Q1014274",
+    "architectural_style": "Gothic architecture",
+    "heritage_status": "cultural monument of the Czech Republic",
+    "inception_year": 1400,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hrad_To%C4%8Dn%C3%ADk_052.JPG?width=800",
+    "wikidata_website": "https://www.hrad-tocnik.cz/"
   },
   {
     "position": 396,
@@ -363,8 +391,8 @@
     "place": "Bezdez",
     "region": "Liberec (Reichenberg)",
     "region_code": "liberec",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.539045,
+    "longitude": 14.719701,
     "founder": "Premysl Otakar II",
     "era": 13,
     "castle_type": "Mountain castle",
@@ -372,7 +400,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.hrad-bezdez.eu/",
     "score_total": 427.225848,
     "score_visitors": 7.71875,
     "visitors": 31,
@@ -383,7 +411,9 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "national cultural monument of the Czech Republic",
     "inception_year": 1264,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bezdez.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bezdez.jpg?width=800",
+    "wikidata_founder": "Ottokar II of Bohemia",
+    "wikidata_website": "https://www.hrad-bezdez.eu/"
   },
   {
     "position": 416,
@@ -394,8 +424,8 @@
     "place": "",
     "region": "Vysočina (Hochland)",
     "region_code": "vysocina",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.186971,
+    "longitude": 12.754438,
     "founder": "King Wenceslas I",
     "era": 13,
     "castle_type": "Rock castle",
@@ -406,7 +436,16 @@
     "website": "http://www.hradloket.cz/",
     "score_total": 423.20495,
     "score_visitors": 7.333333,
-    "visitors": 8
+    "visitors": 8,
+    "wikipedia_extract": "Loket Castle is a 12th-century Gothic castle in Loket in the Karlovy Vary Region of the Czech Republic. It ls located on a massive rock, surrounded on three sides by the Ohře river. Once known as \"the Impregnable Castle of Bohemia\", because of its thick walls, it is one of the oldest stone castles in the country. It is administered by the Loket Castle Foundation since 1993 and preserved today as a museum and national monument. First built in the Romanesque style in the 12th century, the castle was expanded in the Gothic style during the next century, and took most of its current form during reconstruction work in the 1390s.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/071107-Loket-Castle-Hrad.jpg/330px-071107-Loket-Castle-Hrad.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Loket_Castle",
+    "wikidata_id": "Q1013039",
+    "architectural_style": "Gothic architecture",
+    "heritage_status": "cultural monument of the Czech Republic",
+    "inception_year": 1300,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hrad_Loket_kv%C4%9Bten_2020.jpg?width=800",
+    "wikidata_website": "http://www.hradloket.cz/"
   },
   {
     "position": 436,
@@ -417,8 +456,8 @@
     "place": "Libosovice (nabij Podkost, Jičín district)",
     "region": "Hradeck Králové (Königgrätz)",
     "region_code": "hradec_kralove",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.490278,
+    "longitude": 15.135,
     "founder": "Beneš von Wartenberg",
     "era": 14,
     "castle_type": "Rock castle",
@@ -437,7 +476,8 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "national cultural monument of the Czech Republic",
     "inception_year": 1300,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kost-letecky-pohled.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kost-letecky-pohled.jpg?width=800",
+    "wikidata_website": "https://www.kost-hrad.cz/"
   },
   {
     "position": 446,
@@ -448,8 +488,8 @@
     "place": "Rovensko pod Troskami",
     "region": "Liberec (Reichenberg)",
     "region_code": "liberec",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.51625,
+    "longitude": 15.230833,
     "founder": "",
     "era": 14,
     "castle_type": "Rock castle",
@@ -457,7 +497,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.hrad-trosky.cz/cs",
     "score_total": 414.4928,
     "score_visitors": 7.833333,
     "visitors": 11,
@@ -468,7 +508,8 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "national cultural monument of the Czech Republic",
     "inception_year": 1400,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hrad_Trosky%2C_leteck%C3%BD_sn%C3%ADmek.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hrad_Trosky%2C_leteck%C3%BD_sn%C3%ADmek.jpg?width=800",
+    "wikidata_website": "https://www.hrad-trosky.cz/cs"
   },
   {
     "position": 477,
@@ -479,8 +520,8 @@
     "place": "Rabí (Klatovy)",
     "region": "Plzen (Pilsen)",
     "region_code": "plzen",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 49.478772,
+    "longitude": 13.2849,
     "founder": "",
     "era": 14,
     "castle_type": "Mountain castle",
@@ -499,7 +540,9 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "national cultural monument of the Czech Republic",
     "inception_year": 1500,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Svihov_v_zime_(cropped).JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Svihov_v_zime_(cropped).JPG?width=800",
+    "architect": "Benedikt Rejt",
+    "wikidata_website": "http://www.hrad-svihov.cz/cs"
   },
   {
     "position": 506,
@@ -510,8 +553,8 @@
     "place": "Velhartice",
     "region": "Plzen (Pilsen)",
     "region_code": "plzen",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 49.265294,
+    "longitude": 13.389774,
     "founder": "",
     "era": 14,
     "castle_type": "Rock castle",
@@ -519,7 +562,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.velhartice.cz/",
     "score_total": 399.39382,
     "score_visitors": 7.733333,
     "visitors": 14,
@@ -527,7 +570,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Velhartice_-_kostel_Narozen%C3%AD_Panny_Marie_03.jpg/330px-Velhartice_-_kostel_Narozen%C3%AD_Panny_Marie_03.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Velhartice",
     "wikidata_id": "Q597712",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Velhartice_-_kostel_Narozen%C3%AD_Panny_Marie_03.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Velhartice_-_kostel_Narozen%C3%AD_Panny_Marie_03.jpg?width=800",
+    "wikidata_website": "http://www.velhartice.cz/"
   },
   {
     "position": 507,
@@ -538,8 +582,8 @@
     "place": "Švihov",
     "region": "Jiho Ceský (Südböhmen)",
     "region_code": "sudbohemia",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 49.478772,
+    "longitude": 13.2849,
     "founder": "",
     "era": 14,
     "castle_type": "Water castle",
@@ -558,7 +602,9 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "national cultural monument of the Czech Republic",
     "inception_year": 1500,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Svihov_v_zime_(cropped).JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Svihov_v_zime_(cropped).JPG?width=800",
+    "architect": "Benedikt Rejt",
+    "wikidata_website": "http://www.hrad-svihov.cz/cs"
   },
   {
     "position": 508,
@@ -569,8 +615,8 @@
     "place": "",
     "region": "Jiho Ceský (Südböhmen)",
     "region_code": "sudbohemia",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 49.024,
+    "longitude": 15.23,
     "founder": "",
     "era": 12,
     "castle_type": "Rock castle",
@@ -589,7 +635,8 @@
     "architectural_style": "Romanesque architecture",
     "heritage_status": "cultural monument of the Czech Republic",
     "inception_year": 1222,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Land%C5%A1tejn%2C_2013_(11).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Land%C5%A1tejn%2C_2013_(11).jpg?width=800",
+    "wikidata_website": "https://www.hrad-landstejn.cz/"
   },
   {
     "position": 582,
@@ -600,8 +647,8 @@
     "place": "Hukvaldy",
     "region": "Moravia Slezský (Mährisch-Schlesien)",
     "region_code": "moravia-silezia",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 49.621626,
+    "longitude": 18.225677,
     "founder": "",
     "era": 13,
     "castle_type": "Rock castle",
@@ -623,8 +670,8 @@
     "place": "Házmburk",
     "region": "Ústi nad Labem (Aussig)",
     "region_code": "usti_nad_labem",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.51625,
+    "longitude": 15.230833,
     "founder": "",
     "era": 14,
     "castle_type": "Rock castle",
@@ -632,7 +679,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.hrad-trosky.cz/cs",
     "score_total": 376.608073,
     "score_visitors": 7,
     "visitors": 6,
@@ -643,7 +690,8 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "national cultural monument of the Czech Republic",
     "inception_year": 1400,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hrad_Trosky%2C_leteck%C3%BD_sn%C3%ADmek.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hrad_Trosky%2C_leteck%C3%BD_sn%C3%ADmek.jpg?width=800",
+    "wikidata_website": "https://www.hrad-trosky.cz/cs"
   },
   {
     "position": 648,
@@ -654,8 +702,8 @@
     "place": "Kokorín",
     "region": "Stredo Ceský (Mittelböhmen)",
     "region_code": "mezbohemia",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.440403,
+    "longitude": 14.576792,
     "founder": "",
     "era": 14,
     "castle_type": "Rock castle",
@@ -663,7 +711,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://hrad-kokorin.cz/",
     "score_total": 363.989783,
     "score_visitors": 7.461538,
     "visitors": 12,
@@ -674,7 +722,9 @@
     "architectural_style": "Gothic Revival",
     "heritage_status": "national cultural monument of the Czech Republic",
     "inception_year": 1400,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kokorin_letecky_pohled.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kokorin_letecky_pohled.jpg?width=800",
+    "architect": "Eduard Sochor",
+    "wikidata_website": "https://hrad-kokorin.cz/"
   },
   {
     "position": 689,
@@ -685,8 +735,8 @@
     "place": "Kašperské Hory",
     "region": "Plzen (Pilsen)",
     "region_code": "plzen",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 49.166111,
+    "longitude": 13.563889,
     "founder": "Emperor Charles IV of the holy roman empire",
     "era": 14,
     "castle_type": "Mountain castle",
@@ -694,7 +744,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.kasperk.cz/",
     "score_total": 355.353947,
     "score_visitors": 5.2,
     "visitors": 9,
@@ -705,7 +755,9 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "cultural monument of the Czech Republic",
     "inception_year": 1356,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Podzim_na_Ka%C5%A1perku.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Podzim_na_Ka%C5%A1perku.jpg?width=800",
+    "wikidata_founder": "Charles IV",
+    "wikidata_website": "https://www.kasperk.cz/"
   },
   {
     "position": 723,
@@ -716,8 +768,8 @@
     "place": "Strekov",
     "region": "Ústi nad Labem (Aussig)",
     "region_code": "usti_nad_labem",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.639133,
+    "longitude": 14.050792,
     "founder": "Johann von Luxemburg",
     "era": 14,
     "castle_type": "Rock castle",
@@ -736,7 +788,8 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "cultural monument of the Czech Republic",
     "inception_year": 1310,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hrad_St%C5%99ekov%2C_St%C5%99ekov%2C_okres_%C3%9Ast%C3%AD_nad_Labem.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hrad_St%C5%99ekov%2C_St%C5%99ekov%2C_okres_%C3%9Ast%C3%AD_nad_Labem.jpg?width=800",
+    "wikidata_website": "https://www.lobkowicz.cz/strekov"
   },
   {
     "position": 743,
@@ -747,8 +800,8 @@
     "place": "Lipnice nad Sázavou",
     "region": "Vysočina (Hochland)",
     "region_code": "vysocina",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 49.614283,
+    "longitude": 15.412852,
     "founder": "",
     "era": 12,
     "castle_type": "Rock castle",
@@ -770,8 +823,8 @@
     "place": "Týrov",
     "region": "Stredo Ceský (Mittelböhmen)",
     "region_code": "mezbohemia",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 49.973621,
+    "longitude": 13.790765,
     "founder": "Wenceslas I",
     "era": 13,
     "castle_type": "Rock castle",
@@ -843,8 +896,8 @@
     "place": "Lestkov",
     "region": "Ústi nad Labem (Aussig)",
     "region_code": "usti_nad_labem",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.367242,
+    "longitude": 13.184711,
     "founder": "Herren von Egerberg",
     "era": 13,
     "castle_type": "Rock castle",
@@ -874,8 +927,8 @@
     "place": "Litomerice",
     "region": "Ústi nad Labem (Aussig)",
     "region_code": "usti_nad_labem",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.604975,
+    "longitude": 14.206529,
     "founder": "",
     "era": 15,
     "castle_type": "Rock castle",
@@ -897,9 +950,9 @@
     "place": "Benešov",
     "region": "Stredo Ceský (Mittelböhmen)",
     "region_code": "mezbohemia",
-    "latitude": null,
-    "longitude": null,
-    "founder": "",
+    "latitude": 49.808889,
+    "longitude": 14.926389,
+    "founder": "Zdislaw Sternberg",
     "era": 14,
     "castle_type": "Rock castle",
     "castle_concept": "Rectangular or polygonal",
@@ -917,7 +970,9 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "national cultural monument of the Czech Republic",
     "inception_year": 1241,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cesky_Stemberk_01.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cesky_Stemberk_01.JPG?width=800",
+    "wikidata_founder": "Zdislaw Sternberg",
+    "wikidata_website": "https://www.hradceskysternberk.cz/"
   },
   {
     "position": 887,
@@ -928,8 +983,8 @@
     "place": "Staré Hradiště",
     "region": "Pardubice",
     "region_code": "pardubice",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.080058,
+    "longitude": 15.813056,
     "founder": "",
     "era": 14,
     "castle_type": "Rock castle",
@@ -937,7 +992,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.hrad-kunetickahora.cz",
     "score_total": 301.482631,
     "score_visitors": 5.875,
     "visitors": 7,
@@ -948,7 +1003,8 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "national cultural monument of the Czech Republic",
     "inception_year": 2000,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castle_Kuneticka_Hora.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castle_Kuneticka_Hora.jpg?width=800",
+    "wikidata_website": "http://www.hrad-kunetickahora.cz"
   },
   {
     "position": 961,
@@ -959,8 +1015,8 @@
     "place": "",
     "region": "Jiho Ceský (Südböhmen)",
     "region_code": "sudbohemia",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 49.258417,
+    "longitude": 13.902082,
     "founder": "",
     "era": 13,
     "castle_type": "City castle",

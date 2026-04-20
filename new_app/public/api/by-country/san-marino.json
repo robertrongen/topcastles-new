@@ -8,8 +8,8 @@
     "place": "San Marino",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 43.933333,
+    "longitude": 12.466667,
     "founder": "",
     "era": 15,
     "castle_type": "Mountain castle",
@@ -17,7 +17,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.gov.sm/",
     "score_total": 551.588986,
     "score_visitors": 8.310345,
     "visitors": 28,
@@ -26,6 +26,7 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/San_Marino",
     "wikidata_id": "Q238",
     "inception_year": 301,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/View_of_Mount_Titano_-_San_Marino.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/View_of_Mount_Titano_-_San_Marino.jpg?width=800",
+    "wikidata_website": "https://www.gov.sm/"
   }
 ]

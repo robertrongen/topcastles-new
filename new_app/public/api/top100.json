@@ -28,7 +28,9 @@
     "architectural_style": "Norman architecture",
     "heritage_status": "World Heritage Site",
     "inception_year": 1066,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tower_of_London_viewed_from_the_River_Thames.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tower_of_London_viewed_from_the_River_Thames.jpg?width=800",
+    "wikidata_founder": "William the Conqueror",
+    "wikidata_website": "http://www.hrp.org.uk/tower-of-london/"
   },
   {
     "position": 2,
@@ -57,7 +59,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Cit%C3%A9_de_Carcassonne",
     "wikidata_id": "Q389269",
     "heritage_status": "classified historical monument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cit%C3%A9_de_Carcassonne.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cit%C3%A9_de_Carcassonne.jpg?width=800",
+    "wikidata_website": "http://www.carcassonne.culture.fr/"
   },
   {
     "position": 3,
@@ -87,7 +90,10 @@
     "wikidata_id": "Q177549",
     "heritage_status": "part of UNESCO World Heritage Site",
     "inception_year": 1031,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Krak_des_Chevaliers_01.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Krak_des_Chevaliers_01.jpg?width=800",
+    "significant_events": [
+      "list of World Heritage in Danger"
+    ]
   },
   {
     "position": 4,
@@ -116,7 +122,12 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Malbork",
     "wikidata_id": "Q146820",
     "inception_year": 1201,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Panorama_of_Malbork_Castle%2C_part_4.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Panorama_of_Malbork_Castle%2C_part_4.jpg?width=800",
+    "wikidata_website": "http://www.malbork.pl/",
+    "significant_events": [
+      "Siege of Marienburg",
+      "Siege of Marienburg"
+    ]
   },
   {
     "position": 5,
@@ -147,7 +158,9 @@
     "architectural_style": "medieval architecture",
     "heritage_status": "Grade I listed building",
     "inception_year": 1283,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_Caernarfon_yn_y_cyfnos_yn_2023_-_Castell_Caernarfon%2C_Gwynedd%2C_Wales_at_Dusk_-_2023_10.png?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_Caernarfon_yn_y_cyfnos_yn_2023_-_Castell_Caernarfon%2C_Gwynedd%2C_Wales_at_Dusk_-_2023_10.png?width=800",
+    "architect": "James of Saint George",
+    "wikidata_website": "http://cadw.gov.wales/splash?orig=/daysout/caernarfon-castle"
   },
   {
     "position": 6,
@@ -178,7 +191,8 @@
     "architectural_style": "Art of Al-Andalus",
     "heritage_status": "Historic Garden (Spain)",
     "inception_year": 1239,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Alhambra_detail.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Alhambra_detail.jpg?width=800",
+    "wikidata_website": "http://www.alhambra-patronato.es"
   },
   {
     "position": 7,
@@ -208,7 +222,10 @@
     "wikidata_id": "Q540964",
     "heritage_status": "Grade I listed building",
     "inception_year": 1283,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_a_Morfa_Harlech%2C_Gwynedd%2C_Mai_2024_-_Parc_Cenedlaethol_Eryri_National_Park_02.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_a_Morfa_Harlech%2C_Gwynedd%2C_Mai_2024_-_Parc_Cenedlaethol_Eryri_National_Park_02.jpg?width=800",
+    "wikidata_founder": "Edward I of England",
+    "architect": "James of Saint George",
+    "wikidata_website": "https://cadw.gov.wales/visit/places-to-visit/harlech-castle"
   },
   {
     "position": 8,
@@ -239,7 +256,13 @@
     "architectural_style": "Romanesque architecture",
     "heritage_status": "class A Swiss cultural property of national significance",
     "inception_year": 1160,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/001_Chateau_de_Chillon_and_Dents_du_Midi_Photo_by_Giles_Laurent.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/001_Chateau_de_Chillon_and_Dents_du_Midi_Photo_by_Giles_Laurent.jpg?width=800",
+    "architect": "James of Saint George",
+    "wikidata_website": "https://www.chillon.ch",
+    "significant_events": [
+      "architectural reconstruction",
+      "architectural reconstruction"
+    ]
   },
   {
     "position": 9,
@@ -270,7 +293,21 @@
     "architectural_style": "Herrerian",
     "heritage_status": "bien de interés cultural",
     "inception_year": 1200,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Panor%C3%A1mica_Oto%C3%B1o_Alc%C3%A1zar_de_Segovia.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Panor%C3%A1mica_Oto%C3%B1o_Alc%C3%A1zar_de_Segovia.jpg?width=800",
+    "architect": "Francisco de Mora",
+    "wikidata_website": "https://www.alcazardesegovia.com/",
+    "significant_events": [
+      "Revolts in Segovia (1506)",
+      "Revolts in Segovia (1476)",
+      "Revolt of the Comuneros",
+      "Peninsular War",
+      "Carlist Wars",
+      "Reconquista",
+      "Concord of Segovia",
+      "Hundred Thousand Sons of Saint Louis",
+      "War of the Spanish Succession",
+      "War of the Castilian Succession"
+    ]
   },
   {
     "position": 10,
@@ -301,7 +338,11 @@
     "architectural_style": "medieval architecture",
     "heritage_status": "Grade I listed building",
     "inception_year": 1179,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/1_dover_castle_aerial_panorama_2017.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/1_dover_castle_aerial_panorama_2017.jpg?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/dover-castle/",
+    "significant_events": [
+      "Siege of Dover Castle"
+    ]
   },
   {
     "position": 11,
@@ -331,7 +372,8 @@
     "wikidata_id": "Q153426",
     "architectural_style": "Romanesque architecture",
     "heritage_status": "cultural heritage monument in Germany",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wierschem%2C_Burg_Eltz%2C_2012-08_CN-01.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wierschem%2C_Burg_Eltz%2C_2012-08_CN-01.jpg?width=800",
+    "wikidata_website": "https://burg-eltz.de/"
   },
   {
     "position": 12,
@@ -362,7 +404,11 @@
     "architectural_style": "medieval architecture",
     "heritage_status": "Grade I listed building",
     "inception_year": 1385,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bodiam-castle-10My8-1197.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bodiam-castle-10My8-1197.jpg?width=800",
+    "wikidata_website": "https://www.nationaltrust.org.uk/bodiam-castle",
+    "significant_events": [
+      "licence to crenellate"
+    ]
   },
   {
     "position": 13,
@@ -393,7 +439,9 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "World Heritage Site",
     "inception_year": 1240,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castel_del_Monte_BW_2016-10-14_12-26-11_r.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castel_del_Monte_BW_2016-10-14_12-26-11_r.jpg?width=800",
+    "wikidata_founder": "Frederick II, Holy Roman Emperor",
+    "wikidata_website": "https://www.casteldelmonte.beniculturali.it/"
   },
   {
     "position": 14,
@@ -423,7 +471,11 @@
     "wikidata_id": "Q1543972",
     "heritage_status": "beschermd monument",
     "inception_year": 1180,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Gravensteengent22042008.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Gravensteengent22042008.JPG?width=800",
+    "wikidata_website": "https://visit.gent.be/nl/zien-doen/gravensteen-een-burcht-gent",
+    "significant_events": [
+      "Battle of the Gravensteen"
+    ]
   },
   {
     "position": 15,
@@ -453,7 +505,10 @@
     "wikidata_id": "Q756830",
     "heritage_status": "Grade I listed building",
     "inception_year": 1283,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Conwy-Castle-0006.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Conwy-Castle-0006.jpg?width=800",
+    "wikidata_founder": "Edward I of England",
+    "architect": "James of Saint George",
+    "wikidata_website": "https://cadw.gov.wales/visit/places-to-visit/conwy-castle"
   },
   {
     "position": 16,
@@ -483,7 +538,10 @@
     "wikidata_id": "Q756815",
     "heritage_status": "Grade I listed building",
     "inception_year": 1295,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_Beaumaris_Castle%2C_Ynys_Mon_(Anglesey)%2C_Wales_44.png?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_Beaumaris_Castle%2C_Ynys_Mon_(Anglesey)%2C_Wales_44.png?width=800",
+    "wikidata_founder": "Edward I of England",
+    "architect": "James of Saint George",
+    "wikidata_website": "http://www.beaumaris.com"
   },
   {
     "position": 17,
@@ -514,7 +572,12 @@
     "architectural_style": "medieval architecture",
     "heritage_status": "classified historical monument",
     "inception_year": 1197,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Donjonvueg%C3%A9n%C3%A9rale.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Donjonvueg%C3%A9n%C3%A9rale.jpg?width=800",
+    "wikidata_website": "https://www.nouvelle-normandie-tourisme.com/a-vivre-nouvelle-normandie/chateau-gaillard-le-medieval/",
+    "significant_events": [
+      "Siege of Château Gaillard",
+      "slighting"
+    ]
   },
   {
     "position": 18,
@@ -542,7 +605,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Vianden_17Jan2021.jpg/330px-Vianden_17Jan2021.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Vianden",
     "wikidata_id": "Q836082",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vianden_002x.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vianden_002x.jpg?width=800",
+    "wikidata_website": "https://vianden.lu/"
   },
   {
     "position": 19,
@@ -573,7 +637,9 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "national cultural monument of the Czech Republic",
     "inception_year": 1348,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Karlstein_-_Karl%C5%A1tejn_-_panoramio.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Karlstein_-_Karl%C5%A1tejn_-_panoramio.jpg?width=800",
+    "architect": "Matthias of Arras",
+    "wikidata_website": "https://www.hrad-karlstejn.cz/"
   },
   {
     "position": 20,
@@ -604,7 +670,9 @@
     "architectural_style": "Romanesque architecture",
     "heritage_status": "World Heritage Site",
     "inception_year": 1067,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Thuringia_Eisenach_asv2020-07_img23_Wartburg_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Thuringia_Eisenach_asv2020-07_img23_Wartburg_Castle.jpg?width=800",
+    "wikidata_founder": "Louis the Springer",
+    "wikidata_website": "https://www.wartburg.de/de/"
   },
   {
     "position": 21,
@@ -635,7 +703,8 @@
     "architectural_style": "Gothic art",
     "heritage_status": "bien de interés cultural",
     "inception_year": 1453,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_Coca.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_Coca.jpg?width=800",
+    "wikidata_website": "http://www.castillodecoca.com/"
   },
   {
     "position": 22,
@@ -665,7 +734,9 @@
     "wikidata_id": "Q682601",
     "heritage_status": "Grade I listed building",
     "inception_year": 1268,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Caerphilly_aerial.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Caerphilly_aerial.jpg?width=800",
+    "wikidata_founder": "Gilbert de Clare, 7th Earl of Gloucester",
+    "wikidata_website": "http://cadw.wales.gov.uk/daysout/caerphilly-castle"
   },
   {
     "position": 23,
@@ -696,7 +767,8 @@
     "architectural_style": "Renaissance architecture",
     "heritage_status": "governmental listed building complex",
     "inception_year": 1200,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kalmar_slott_frontal.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kalmar_slott_frontal.jpg?width=800",
+    "wikidata_website": "http://www.kalmarslott.se/"
   },
   {
     "position": 24,
@@ -726,7 +798,8 @@
     "wikidata_id": "Q2426916",
     "heritage_status": "Rijksmonument",
     "inception_year": 1280,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Muiden%2C_Muiderslot._09-05-2022._(actm.)_07.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Muiden%2C_Muiderslot._09-05-2022._(actm.)_07.jpg?width=800",
+    "wikidata_website": "http://www.muiderslot.nl/"
   },
   {
     "position": 25,
@@ -780,7 +853,15 @@
     "architectural_style": "Perpendicular Gothic",
     "heritage_status": "Grade I listed building",
     "inception_year": 1070,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Windsor_Castle_at_Sunset_-_Nov_2006.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Windsor_Castle_at_Sunset_-_Nov_2006.jpg?width=800",
+    "architect": "Hugh May",
+    "wikidata_website": "https://www.royalcollection.org.uk/visit/windsorcastle",
+    "significant_events": [
+      "construction",
+      "First Barons' War",
+      "English Civil War",
+      "conflagration"
+    ]
   },
   {
     "position": 27,
@@ -810,7 +891,8 @@
     "wikidata_id": "Q679292",
     "heritage_status": "Listed objects in Austria",
     "inception_year": 1077,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Salzburg_-_Festung_Hohensalzburg.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Salzburg_-_Festung_Hohensalzburg.JPG?width=800",
+    "wikidata_website": "https://www.salzburg-burgen.at/de/hohensalzburg-castle/"
   },
   {
     "position": 28,
@@ -833,7 +915,13 @@
     "website": "http://mars.elte.hu/varak/visegrad/visegrad.htm?rom=483",
     "score_total": 746.903484,
     "score_visitors": 7.409722,
-    "visitors": 143
+    "visitors": 143,
+    "wikipedia_extract": "Visegrád is a castle town in Pest County, Hungary. It is north of Budapest on the right bank of the Danube in the Danube Bend. It had a population of 1,864 in 2010. The town is the site of the remains of the Early Renaissance summer palace of King Matthias Corvinus of Hungary and a medieval citadel. The town was also the site of a meeting on 15 February 1991 between the President of the Czech and Slovak Federative Republic, Václav Havel, the President of the Republic of Poland, Lech Wałęsa, and the Prime Minister of the Republic of Hungary, József Antall which founded the titular Visegrád group.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Fellegv%C3%A1r_%287612._sz%C3%A1m%C3%BA_m%C5%B1eml%C3%A9k%29_6.jpg/330px-Fellegv%C3%A1r_%287612._sz%C3%A1m%C3%BA_m%C5%B1eml%C3%A9k%29_6.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Visegr%C3%A1d%2C_Hungary",
+    "wikidata_id": "Q548097",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Danube_gorge_near_Visegr%C3%A1d.jpg?width=800",
+    "wikidata_website": "https://www.visegrad.hu/"
   },
   {
     "position": 29,
@@ -864,7 +952,8 @@
     "architectural_style": "Romanesque architecture",
     "heritage_status": "World Heritage Site",
     "inception_year": 1200,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/SK_SN_Spis_castle_2024_1.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/SK_SN_Spis_castle_2024_1.jpg?width=800",
+    "wikidata_website": "https://www.spisskyhrad.com/lokalita/spissky-hrad/"
   },
   {
     "position": 30,
@@ -892,7 +981,11 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Vue_a%C3%A9rienne_2_JP_Campomar.jpg/330px-Vue_a%C3%A9rienne_2_JP_Campomar.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Avignon",
     "wikidata_id": "Q6397",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Avignon%2C_Palais_des_Papes_depuis_Tour_Philippe_le_Bel_by_JM_Rosier.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Avignon%2C_Palais_des_Papes_depuis_Tour_Philippe_le_Bel_by_JM_Rosier.jpg?width=800",
+    "wikidata_website": "http://www.avignon.fr",
+    "significant_events": [
+      "Siege of Avignon"
+    ]
   },
   {
     "position": 31,
@@ -923,7 +1016,9 @@
     "architectural_style": "Gothic Revival",
     "heritage_status": "Historic Monument",
     "inception_year": 1289,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bran_Castle_TB1.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bran_Castle_TB1.jpg?width=800",
+    "wikidata_founder": "Teutonic Order",
+    "wikidata_website": "http://www.bran-castle.com"
   },
   {
     "position": 32,
@@ -952,7 +1047,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Rumelihisar%C4%B1",
     "wikidata_id": "Q90801",
     "inception_year": 1451,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Twierdza_Rumeli_Istambu%C5%82_RB1.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Twierdza_Rumeli_Istambu%C5%82_RB1.jpg?width=800",
+    "wikidata_founder": "Mehmed II"
   },
   {
     "position": 33,
@@ -1011,7 +1107,8 @@
     "wikidata_id": "Q1125527",
     "heritage_status": "Grade I listed building",
     "inception_year": 1087,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rochester_Castle_Keep_and_Bailey_0038stcp.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rochester_Castle_Keep_and_Bailey_0038stcp.JPG?width=800",
+    "wikidata_website": "https://www.english-heritage.org.uk/visit/places/rochester-castle/"
   },
   {
     "position": 35,
@@ -1042,7 +1139,8 @@
     "architectural_style": "medieval architecture",
     "heritage_status": "classified historical monument",
     "inception_year": 1100,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Logis_royal_Loches.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Logis_royal_Loches.jpg?width=800",
+    "wikidata_website": "https://www.ville-loches.fr/"
   },
   {
     "position": 36,
@@ -1093,7 +1191,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.meath.ie/Tourism/Heritage/HeritageSites/TrimCastle/",
     "score_total": 714.741044,
     "score_visitors": 7.578947,
     "visitors": 56,
@@ -1104,7 +1202,8 @@
     "architectural_style": "Norman architecture",
     "heritage_status": "national monument of Ireland",
     "inception_year": 1174,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castle_In_Trim%2C_County_Meath_-_geograph.org.uk_-_303169.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castle_In_Trim%2C_County_Meath_-_geograph.org.uk_-_303169.jpg?width=800",
+    "wikidata_website": "http://www.meath.ie/Tourism/Heritage/HeritageSites/TrimCastle/"
   },
   {
     "position": 38,
@@ -1135,7 +1234,8 @@
     "architectural_style": "medieval architecture",
     "heritage_status": "Grade I listed building",
     "inception_year": 1068,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Warwick_Castle_May_2016.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Warwick_Castle_May_2016.jpg?width=800",
+    "wikidata_website": "https://www.warwick-castle.com/"
   },
   {
     "position": 39,
@@ -1164,7 +1264,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Blarney_Castle",
     "wikidata_id": "Q881739",
     "inception_year": 1446,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Blarney_Castle-02-2017-gje.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Blarney_Castle-02-2017-gje.jpg?width=800",
+    "wikidata_website": "http://www.blarneycastle.ie/"
   },
   {
     "position": 40,
@@ -1194,7 +1295,8 @@
     "wikidata_id": "Q257210",
     "heritage_status": "cultural heritage monument in Rhineland-Palatinate",
     "inception_year": 1117,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Marksburg.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Marksburg.jpg?width=800",
+    "wikidata_website": "http://www.marksburg.de/"
   },
   {
     "position": 41,
@@ -1223,7 +1325,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Nuremberg_Castle",
     "wikidata_id": "Q707396",
     "heritage_status": "architectural heritage monument in Bavaria",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/N%C3%BCrnberg_Burg_ArM.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/N%C3%BCrnberg_Burg_ArM.jpg?width=800",
+    "wikidata_website": "http://www.nuernberg.de/internet/portal_e/reiseziel/ctz_904.html"
   },
   {
     "position": 42,
@@ -1254,7 +1357,14 @@
     "architectural_style": "Japanese castle architecture",
     "heritage_status": "National Treasure of Japan",
     "inception_year": 1609,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Himeji_Castle%2C_Hy%C5%8Dgo_Prefecture%3B_August_2018_(04).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Himeji_Castle%2C_Hy%C5%8Dgo_Prefecture%3B_August_2018_(04).jpg?width=800",
+    "wikidata_founder": "Akamatsu Sadanori",
+    "wikidata_website": "http://www.himejicastle.jp/en/",
+    "significant_events": [
+      "construction",
+      "expansion",
+      "restoration"
+    ]
   },
   {
     "position": 43,
@@ -1285,7 +1395,13 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "classified historical monument",
     "inception_year": 1393,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Le_Ch%C3%A2teau_de_Pierrefonds.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Le_Ch%C3%A2teau_de_Pierrefonds.jpg?width=800",
+    "wikidata_founder": "Louis I, Duke of Orléans",
+    "architect": "Raymond du Temple",
+    "wikidata_website": "http://pierrefonds.monuments-nationaux.fr/",
+    "significant_events": [
+      "slighting"
+    ]
   },
   {
     "position": 44,
@@ -1315,7 +1431,8 @@
     "wikidata_id": "Q212065",
     "heritage_status": "scheduled monument",
     "inception_year": 1200,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Edinburgh_Castle_from_the_Grassmarket.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Edinburgh_Castle_from_the_Grassmarket.jpg?width=800",
+    "wikidata_website": "https://www.edinburghcastle.scot/"
   },
   {
     "position": 45,
@@ -1345,7 +1462,8 @@
     "wikidata_id": "Q2969574",
     "heritage_status": "bien de interés cultural",
     "inception_year": 1100,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_la_Mota_2021.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_la_Mota_2021.jpg?width=800",
+    "wikidata_website": "http://www.castillodelamota.es/"
   },
   {
     "position": 46,
@@ -1376,7 +1494,12 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "Italian national heritage",
     "inception_year": 1356,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Paolo_Monti_-_Servizio_fotografico_(Verona%2C_1982)_-_BEIC_6361679.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Paolo_Monti_-_Servizio_fotografico_(Verona%2C_1982)_-_BEIC_6361679.jpg?width=800",
+    "wikidata_website": "http://www.comune.verona.it/castelvecchio/cvsito/",
+    "significant_events": [
+      "start of construction",
+      "reconstruction"
+    ]
   },
   {
     "position": 47,
@@ -1405,7 +1528,9 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Ch%C3%A2teau_de_Langeais",
     "wikidata_id": "Q1143558",
     "heritage_status": "classified historical monument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Langeais-Chateau.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Langeais-Chateau.JPG?width=800",
+    "wikidata_founder": "Fulk III, Count of Anjou",
+    "wikidata_website": "http://www.chateau-de-langeais.com/"
   },
   {
     "position": 48,
@@ -1465,7 +1590,12 @@
     "wikidata_id": "Q486382",
     "heritage_status": "Italian national heritage",
     "inception_year": 139,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Engelsburg_und_Engelsbr%C3%BCcke_abends_(Zuschnitt).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Engelsburg_und_Engelsbr%C3%BCcke_abends_(Zuschnitt).jpg?width=800",
+    "architect": "Decriannus",
+    "wikidata_website": "http://www.castelsantangelo.beniculturali.it/",
+    "significant_events": [
+      "start of construction"
+    ]
   },
   {
     "position": 50,
@@ -1496,7 +1626,9 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "Historical monument of Poland",
     "inception_year": 1001,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wawel_on_Wisla.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wawel_on_Wisla.JPG?width=800",
+    "architect": "Francesco Fiorentino",
+    "wikidata_website": "https://wawel.krakow.pl/"
   },
   {
     "position": 51,
@@ -1526,7 +1658,8 @@
     "wikidata_id": "Q696951",
     "heritage_status": "cultural heritage monument in Germany",
     "inception_year": 1326,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Pfalzgrafenstein_2017.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Pfalzgrafenstein_2017.jpg?width=800",
+    "wikidata_website": "http://www.burg-pfalzgrafenstein.dee/"
   },
   {
     "position": 52,
@@ -1546,7 +1679,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.hrad.cz/",
     "score_total": 677.754397,
     "score_visitors": 8.098592,
     "visitors": 70,
@@ -1557,7 +1690,9 @@
     "architectural_style": "Romanesque architecture",
     "heritage_status": "national cultural monument of the Czech Republic",
     "inception_year": 900,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_Praga%2C_Praga%2C_Rep%C3%BAblica_Checa%2C_2022-07-02%2C_DD_209.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_Praga%2C_Praga%2C_Rep%C3%BAblica_Checa%2C_2022-07-02%2C_DD_209.jpg?width=800",
+    "architect": "Matthias of Arras",
+    "wikidata_website": "https://www.hrad.cz/"
   },
   {
     "position": 53,
@@ -1586,7 +1721,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Ch%C3%A2teau_d'Angers",
     "wikidata_id": "Q1048155",
     "heritage_status": "classified historical monument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_d'Angers-2015b.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_d'Angers-2015b.JPG?width=800",
+    "wikidata_website": "https://www.chateau-angers.fr"
   },
   {
     "position": 54,
@@ -1614,7 +1750,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Castello_di_Rocca_scalegna.jpg/330px-Castello_di_Rocca_scalegna.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Roccascalegna",
     "wikidata_id": "Q51276",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castello_di_Rocca_scalegna.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castello_di_Rocca_scalegna.jpg?width=800",
+    "wikidata_website": "http://www.comune.roccascalegna.ch.it"
   },
   {
     "position": 55,
@@ -1667,7 +1804,14 @@
     "website": "http://www.trifelsland.de/de/region/burgen/trifels.html",
     "score_total": 673.350804,
     "score_visitors": 5.855422,
-    "visitors": 82
+    "visitors": 82,
+    "wikipedia_extract": "Trifels Castle is a reconstructed medieval castle at an elevation of 500 m (1,600 ft) near the small town of Annweiler, in the Palatinate region of southwestern Germany. It is located high above the Queich valley within the Palatinate Forest on one peak of a red sandstone mountain split into three. Trifels Castle is on the peak of the Sonnenberg, and on both of the other two rock elevations there are castle ruins: Anebos Castle and Scharfenberg Castle.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Aerial_image_of_Trifels_Castle_%28view_from_the_southeast%29.jpg/330px-Aerial_image_of_Trifels_Castle_%28view_from_the_southeast%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Trifels_Castle",
+    "wikidata_id": "Q559202",
+    "heritage_status": "cultural heritage monument in Germany",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_image_of_Trifels_Castle_(view_from_the_southeast).jpg?width=800",
+    "wikidata_website": "http://www.trifelsland.de/de/region/burgen/trifels.html"
   },
   {
     "position": 57,
@@ -1710,7 +1854,7 @@
     "condition": "Damaged",
     "remarkable": "Geboorteplaats van koning Henry VII (1485-1509).",
     "description": "",
-    "website": "",
+    "website": "https://pembrokecastle.co.uk/",
     "score_total": 666.636922,
     "score_visitors": 7.384615,
     "visitors": 116,
@@ -1720,7 +1864,18 @@
     "wikidata_id": "Q1422235",
     "heritage_status": "Grade I listed building",
     "inception_year": 1093,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/PembrokeCastle_2007.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/PembrokeCastle_2007.jpg?width=800",
+    "wikidata_founder": "Roger de Montgomerie, 1st Earl of Shrewsbury",
+    "wikidata_website": "https://pembrokecastle.co.uk/",
+    "significant_events": [
+      "slighting",
+      "siege",
+      "siege",
+      "siege",
+      "architectural reconstruction",
+      "geophysical survey",
+      "Siege of Pembroke"
+    ]
   },
   {
     "position": 59,
@@ -1740,7 +1895,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.carrickfergus.org/tourism/attractions/carrickfergus-castle/",
     "score_total": 663.167937,
     "score_visitors": 6.857143,
     "visitors": 34,
@@ -1749,7 +1904,9 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Carrickfergus_Castle",
     "wikidata_id": "Q2368960",
     "architectural_style": "Norman architecture",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Carrickfergus_Castle%2C_reflections_at_sunset_-_geograph.org.uk_-_1098306.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Carrickfergus_Castle%2C_reflections_at_sunset_-_geograph.org.uk_-_1098306.jpg?width=800",
+    "architect": "John de Courcy",
+    "wikidata_website": "http://www.carrickfergus.org/tourism/attractions/carrickfergus-castle/"
   },
   {
     "position": 60,
@@ -1779,7 +1936,8 @@
     "wikidata_id": "Q791969",
     "heritage_status": "protected cultural-historical landscape",
     "inception_year": 1300,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/BurgBeersel.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/BurgBeersel.jpg?width=800",
+    "wikidata_website": "http://www.beersel.be/product.aspx?id=28"
   },
   {
     "position": 61,
@@ -1799,7 +1957,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.museosdeandalucia.es/web/conjuntomonumentallaalcazabaalmeria",
     "score_total": 661.513458,
     "score_visitors": 7.485294,
     "visitors": 67,
@@ -1809,7 +1967,8 @@
     "wikidata_id": "Q24024872",
     "architectural_style": "Art of Al-Andalus",
     "heritage_status": "bien de interés cultural",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Alcazaba_de_Almer%C3%ADa.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Alcazaba_de_Almer%C3%ADa.jpg?width=800",
+    "wikidata_website": "http://www.museosdeandalucia.es/web/conjuntomonumentallaalcazabaalmeria"
   },
   {
     "position": 62,
@@ -1840,7 +1999,8 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "Historic Monument",
     "inception_year": 1440,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castelul_Corvinilor_HD.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castelul_Corvinilor_HD.jpg?width=800",
+    "wikidata_website": "https://castelulcorvinilor.ro/"
   },
   {
     "position": 63,
@@ -1889,7 +2049,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.comune.napoli.it/home",
     "score_total": 646.378206,
     "score_visitors": 6.474576,
     "visitors": 58,
@@ -1900,7 +2060,9 @@
     "architectural_style": "Gothic art",
     "heritage_status": "Italian national heritage",
     "inception_year": 1282,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Naples-Castel_Nuovo.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Naples-Castel_Nuovo.jpg?width=800",
+    "architect": "Pierre d'Angicourt",
+    "wikidata_website": "https://www.comune.napoli.it/home"
   },
   {
     "position": 65,
@@ -1911,16 +2073,16 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
-    "founder": "",
+    "latitude": 61.863713,
+    "longitude": 28.901238,
+    "founder": "Erik Axelsson Tott",
     "era": 15,
     "castle_type": "Water castle",
     "castle_concept": "Rectangular or polygonal",
     "condition": "Intact",
     "remarkable": "",
     "description": "The castle was purposefully build on an small rocky island in the middle of a deep and very rapidly flowing straight between 2 lake systems, which was frequently used as a waterway for trading and war during history. This also meant that the castle's \"moat\" (the straight itself) would not freeze over during even the harshest of winters. There was a well for sweetwater on the island, though it had to be dug unseemly deep and was even then prone to drying up at times.\n\nThe castle had originally 5 nearly equally tall round towers built to similar design like those on your picture (cannon towers), of which 1 was partially dismantled due to perceived danger of imminent collapse and the other one in fact did collapse due to neglect, they were located on the castle's \"backside\" where the water was wider (upper lake) and so were not rebuilt but were replaced with bastion defences later on.\n\nThe original castle was triangular (not square) in shape and had 3 towers in each of it corners 2 remain and 1 was destroyed.\n\nLater on the castle was expanded first by adding 2 more towers and curtain walls to cover the islands only water source (the well) now covered by the huge white canvas. This also allowed more substantial storage space and accommodations to be placed secure on the island. One of the additional round towers is still seen on the upper-right corner of the castle here, the other (named the \"fat tower\" due its originally 5 meter thick walls, since it was intended to be used, as a second \"keep\" at the time) is now covered by the huge bastion seen in the lower-right corner of the castle, the defences facing the upper lake were later on strengthened with further 2 large bastions and 2 additional small ones added in the upper left-corner and the middle of the right flank of the castle closely adjoining the original \"Fat Tower\" or the \"Grand Bastion\" as it became known. The original triangular Medieval Castle served as the \"Keep\" for the whole complex, with its walls maintained as clearly the highest in all the castle. \n\n\"The Castle Front\" side facing the town of Savonlinna (meaning \"the castle of Savolax\", the town was named after the province this castle and its town administered and protected). \n[Text: Ilari Rahja]",
-    "website": "",
+    "website": "https://www.kansallismuseo.fi/fi/olavinlinna/etusivu",
     "score_total": 643.004514,
     "score_visitors": 8.296296,
     "visitors": 26,
@@ -1930,7 +2092,9 @@
     "wikidata_id": "Q251272",
     "heritage_status": "building protected by Decree 480/85 in Finland",
     "inception_year": 1475,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Savonlinna_hein%C3%A4kuu_2002_IMG_1635.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Savonlinna_hein%C3%A4kuu_2002_IMG_1635.JPG?width=800",
+    "wikidata_founder": "Erik Axelsson Tott",
+    "wikidata_website": "https://www.kansallismuseo.fi/fi/olavinlinna/etusivu"
   },
   {
     "position": 66,
@@ -1960,7 +2124,13 @@
     "wikidata_id": "Q1025398",
     "heritage_status": "category A listed building",
     "inception_year": 1300,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Caerlaverock_Castle_2016.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Caerlaverock_Castle_2016.jpg?width=800",
+    "wikidata_website": "http://www.historic-scotland.gov.uk/propertyresults/propertyoverview.htm?PropID=PL_047&PropName=Caerlaverock%2520Castle",
+    "significant_events": [
+      "archaeological excavation",
+      "archaeological excavation",
+      "slighting"
+    ]
   },
   {
     "position": 67,
@@ -2021,7 +2191,8 @@
     "wikidata_id": "Q607126",
     "architectural_style": "Gothic architecture",
     "heritage_status": "Italian national heritage",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/CastelloDiF%C3%A9nisJuly292023_06.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/CastelloDiF%C3%A9nisJuly292023_06.jpg?width=800",
+    "wikidata_website": "http://www.regione.vda.it/cultura/patrimonio/castelli/castello_fenis/default_i.asp"
   },
   {
     "position": 69,
@@ -2051,7 +2222,8 @@
     "wikidata_id": "Q663673",
     "heritage_status": "classified historical monument",
     "inception_year": 1340,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Vincennes_Paris_FRA_002.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Vincennes_Paris_FRA_002.jpg?width=800",
+    "wikidata_website": "http://www.chateau-vincennes.fr/"
   },
   {
     "position": 70,
@@ -2081,7 +2253,8 @@
     "wikidata_id": "Q679248",
     "heritage_status": "Listed objects in Austria",
     "inception_year": 860,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/St._Georgen_am_L%C3%A4ngsee_-_Burg_Hochosterwitz_(a).JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/St._Georgen_am_L%C3%A4ngsee_-_Burg_Hochosterwitz_(a).JPG?width=800",
+    "wikidata_website": "https://www.burg-hochosterwitz.com/en/"
   },
   {
     "position": 71,
@@ -2110,7 +2283,9 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Ch%C3%A2teau_de_Chinon",
     "wikidata_id": "Q912447",
     "heritage_status": "classified historical monument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Chinon_vu_de_la_Vienne.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Chinon_vu_de_la_Vienne.jpg?width=800",
+    "wikidata_founder": "Theobald I, Count of Blois",
+    "wikidata_website": "http://www.forteressechinon.fr/"
   },
   {
     "position": 72,
@@ -2198,7 +2373,8 @@
     "architectural_style": "medieval architecture",
     "heritage_status": "classified historical monument",
     "inception_year": 1100,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chateau-de-Gisors.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chateau-de-Gisors.jpg?width=800",
+    "wikidata_founder": "William II of England"
   },
   {
     "position": 75,
@@ -2241,7 +2417,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://afk.no/",
     "score_total": 620.323171,
     "score_visitors": 6.673913,
     "visitors": 45,
@@ -2250,7 +2426,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Akershus",
     "wikidata_id": "Q50615",
     "inception_year": 1919,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Oslo_from_east_IMG_7642_aerial.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Oslo_from_east_IMG_7642_aerial.JPG?width=800",
+    "wikidata_website": "https://afk.no/"
   },
   {
     "position": 77,
@@ -2280,7 +2457,8 @@
     "wikidata_id": "Q376571",
     "heritage_status": "Cultural heritage monument in South Tyrol",
     "inception_year": 1237,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Schloss_Runkelstein_ext.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Schloss_Runkelstein_ext.jpg?width=800",
+    "wikidata_website": "https://www.runkelstein.info/"
   },
   {
     "position": 78,
@@ -2311,7 +2489,9 @@
     "architectural_style": "Romanesque architecture",
     "heritage_status": "architectural heritage monument in Bavaria",
     "inception_year": 1225,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_image_of_the_Coburg_Fortress.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_image_of_the_Coburg_Fortress.jpg?width=800",
+    "architect": "Bodo Ebhardt",
+    "wikidata_website": "http://www.kunstsammlungen-coburg.de/en/"
   },
   {
     "position": 79,
@@ -2322,8 +2502,8 @@
     "place": "Moskou",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.751667,
+    "longitude": 37.617778,
     "founder": "",
     "era": 15,
     "castle_type": "City castle",
@@ -2341,7 +2521,12 @@
     "wikidata_id": "Q133274",
     "heritage_status": "part of UNESCO World Heritage Site",
     "inception_year": 1420,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Moscow_05-2012_Kremlin_22.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Moscow_05-2012_Kremlin_22.jpg?width=800",
+    "architect": "Aristotile Fioravanti",
+    "wikidata_website": "http://kreml.ru",
+    "significant_events": [
+      "Kremlin drone attack"
+    ]
   },
   {
     "position": 80,
@@ -2352,8 +2537,8 @@
     "place": "Mariefred (Södermanland)",
     "region": "Östra Mellansverige (East Middle Sweden)",
     "region_code": "ostra_mellansverige",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 59.256111,
+    "longitude": 17.219167,
     "founder": "Bo Jonsson Grip",
     "era": 14,
     "castle_type": "Harbour castle",
@@ -2372,7 +2557,10 @@
     "architectural_style": "Renaissance",
     "heritage_status": "governmental listed building complex",
     "inception_year": 1537,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Gripsholms_slott_view2.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Gripsholms_slott_view2.jpg?width=800",
+    "wikidata_founder": "Gustav I of Sweden",
+    "architect": "Henrik von Cöllen",
+    "wikidata_website": "https://www.royalpalaces.se/english/royal-palaces-and-sites/gripsholm-castle.html"
   },
   {
     "position": 81,
@@ -2383,8 +2571,8 @@
     "place": "Dublin",
     "region": "Dublin",
     "region_code": "dublin",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 53.343109,
+    "longitude": -6.267394,
     "founder": "",
     "era": 13,
     "castle_type": "City castle",
@@ -2392,7 +2580,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://dublincastle.ie/",
     "score_total": 614.515133,
     "score_visitors": 6.970588,
     "visitors": 33,
@@ -2401,7 +2589,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Dublin_Castle",
     "wikidata_id": "Q742767",
     "inception_year": 1204,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dublin_castle.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dublin_castle.JPG?width=800",
+    "wikidata_website": "http://dublincastle.ie/"
   },
   {
     "position": 82,
@@ -2412,8 +2601,8 @@
     "place": "Trencín",
     "region": "Trenciansko",
     "region_code": "trenciansko",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 48.894167,
+    "longitude": 18.044722,
     "founder": "Matúš Cák TrenCianský",
     "era": 10,
     "castle_type": "Mountain castle",
@@ -2431,7 +2620,8 @@
     "wikidata_id": "Q678465",
     "architectural_style": "Romanesque architecture",
     "heritage_status": "Cultural Heritage Monuments of Slovakia",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Trencin_Castle_030.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Trencin_Castle_030.jpg?width=800",
+    "wikidata_website": "https://www.muzeumtn.sk/hlavna-stranka/trenciansky-hrad.html?page_id=297"
   },
   {
     "position": 83,
@@ -2492,8 +2682,8 @@
     "place": "Kværndrup",
     "region": "Fyn (Funen)",
     "region_code": "fyn",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.176389,
+    "longitude": 10.489444,
     "founder": "",
     "era": null,
     "castle_type": "Water castle",
@@ -2512,7 +2702,8 @@
     "architectural_style": "Renaissance architecture",
     "heritage_status": "monument on Kulturstyrelsen register",
     "inception_year": 1554,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Egeskov_Slot_spejling_Edit_2.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Egeskov_Slot_spejling_Edit_2.jpg?width=800",
+    "wikidata_website": "http://www.egeskov.dk"
   },
   {
     "position": 86,
@@ -2523,8 +2714,8 @@
     "place": "Nedvedice (Brno)",
     "region": "Jiho Moravia (Südmährien)",
     "region_code": "sudmoravia",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 49.450833,
+    "longitude": 16.318889,
     "founder": "",
     "era": 13,
     "castle_type": "Mountain castle",
@@ -2543,7 +2734,8 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "national cultural monument of the Czech Republic",
     "inception_year": 1270,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Pernstein.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Pernstein.JPG?width=800",
+    "wikidata_website": "https://www.hrad-pernstejn.eu/"
   },
   {
     "position": 87,
@@ -2591,7 +2783,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.ruineaggstein.at/",
     "score_total": 600.738844,
     "score_visitors": 6.291667,
     "visitors": 71,
@@ -2601,7 +2793,8 @@
     "wikidata_id": "Q698689",
     "heritage_status": "Listed objects in Austria",
     "inception_year": 1181,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burgruine-Aggstein.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burgruine-Aggstein.jpg?width=800",
+    "wikidata_website": "https://www.ruineaggstein.at/"
   },
   {
     "position": 89,
@@ -2715,7 +2908,8 @@
     "architectural_style": "Romanesque architecture",
     "heritage_status": "bien de interés cultural",
     "inception_year": 1020,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_Loarre_2.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_Loarre_2.jpg?width=800",
+    "wikidata_website": "https://castillo-loarre.es/"
   },
   {
     "position": 93,
@@ -2726,8 +2920,8 @@
     "place": "",
     "region": "Trnava",
     "region_code": "trnava",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 48.599465,
+    "longitude": 17.53751,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -2749,8 +2943,8 @@
     "place": "Sandvig",
     "region": "Bornholm",
     "region_code": "bornholm",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.271151,
+    "longitude": 14.755815,
     "founder": "Vikings",
     "era": 12,
     "castle_type": "Rock castle",
@@ -2807,8 +3001,8 @@
     "place": "Arundel (Sussex)",
     "region": "South East",
     "region_code": "south_east",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.856111,
+    "longitude": -0.553611,
     "founder": "King Henry I of England",
     "era": 12,
     "castle_type": "Mountain castle",
@@ -2827,7 +3021,8 @@
     "architectural_style": "Gothic Revival",
     "heritage_status": "Grade I listed building",
     "inception_year": 1067,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Arundel-Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Arundel-Castle.jpg?width=800",
+    "wikidata_website": "https://arundelcastle.org/"
   },
   {
     "position": 97,
@@ -2856,7 +3051,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Kwidzyn",
     "wikidata_id": "Q326582",
     "inception_year": 1233,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/444._Collage_of_views_of_Kwidzyn.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/444._Collage_of_views_of_Kwidzyn.jpg?width=800",
+    "wikidata_website": "http://www.kwidzyn.pl"
   },
   {
     "position": 98,
@@ -2867,8 +3063,8 @@
     "place": "Bergen",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 60.39972,
+    "longitude": 5.3175,
     "founder": "Olav Kyrre",
     "era": 11,
     "castle_type": "Harbour castle",
@@ -2915,7 +3111,11 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Castle_of_Almod%C3%B3var_del_R%C3%ADo",
     "wikidata_id": "Q626232",
     "heritage_status": "bien de interés cultural",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Almodovar_del_Rio_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Almodovar_del_Rio_Castle.jpg?width=800",
+    "wikidata_website": "http://castillodealmodovar.com",
+    "significant_events": [
+      "home repair"
+    ]
   },
   {
     "position": 100,
@@ -2935,7 +3135,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.muenzenberg.de/",
     "score_total": 585.741342,
     "score_visitors": 6.708333,
     "visitors": 71,
@@ -2943,6 +3143,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Burg_M%C3%BCnzenberg_17.JPG/330px-Burg_M%C3%BCnzenberg_17.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/M%C3%BCnzenberg",
     "wikidata_id": "Q570892",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_M%C3%BCnzenberg_17.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_M%C3%BCnzenberg_17.JPG?width=800",
+    "wikidata_website": "https://www.muenzenberg.de/"
   }
 ]

@@ -8,8 +8,8 @@
     "place": "Kuressaare",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 58.24689,
+    "longitude": 22.47929,
     "founder": "Order of Teutonic Knights",
     "era": null,
     "castle_type": "Water castle",
@@ -20,7 +20,16 @@
     "website": "",
     "score_total": 445.12946,
     "score_visitors": 7,
-    "visitors": 6
+    "visitors": 6,
+    "wikipedia_extract": "Kuressaare Castle, also Kuressaare Episcopal Castle, is a castle in Kuressaare on Saaremaa island, in western Estonia.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Kuressaare_Castle.jpg/330px-Kuressaare_Castle.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Kuressaare_Castle",
+    "wikidata_id": "Q1768091",
+    "heritage_status": "architectural monument",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kuressaare_linnus_%C3%B5hust.jpg?width=800",
+    "significant_events": [
+      "construction"
+    ]
   },
   {
     "position": 572,
@@ -31,8 +40,8 @@
     "place": "Bauska",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.406667,
+    "longitude": 24.1875,
     "founder": "Order of Teutonic Knights",
     "era": null,
     "castle_type": "Mountain castle",
@@ -40,7 +49,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.bauska.lv/",
     "score_total": 383.199056,
     "score_visitors": 6.333333,
     "visitors": 5,
@@ -49,7 +58,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Bauska",
     "wikidata_id": "Q498256",
     "inception_year": 1609,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/3_Bauskas-pils-9apr04.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/3_Bauskas-pils-9apr04.jpg?width=800",
+    "wikidata_website": "https://www.bauska.lv/"
   },
   {
     "position": 647,
@@ -60,8 +70,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 59.379167,
+    "longitude": 28.200556,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -69,7 +79,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.narva.ee/",
     "score_total": 364.92946,
     "score_visitors": 5.4,
     "visitors": 4,
@@ -78,6 +88,20 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Narva",
     "wikidata_id": "Q102158",
     "inception_year": 1345,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Narva_asv2022-04_img09_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Narva_asv2022-04_img09_Castle.jpg?width=800",
+    "wikidata_website": "https://www.narva.ee/",
+    "significant_events": [
+      "Battle for Narva",
+      "Battle of Narva",
+      "Narva Offensive February 1944",
+      "March 1944 Narva Offensive",
+      "Narva Offensive",
+      "Siege of Narva",
+      "Siege of Narva",
+      "Siege of Narva",
+      "Siege of Narva",
+      "Siege of Narva",
+      "Treaty of Teusina"
+    ]
   }
 ]

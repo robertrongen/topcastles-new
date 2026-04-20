@@ -28,7 +28,14 @@
     "architectural_style": "Japanese castle architecture",
     "heritage_status": "National Treasure of Japan",
     "inception_year": 1609,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Himeji_Castle%2C_Hy%C5%8Dgo_Prefecture%3B_August_2018_(04).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Himeji_Castle%2C_Hy%C5%8Dgo_Prefecture%3B_August_2018_(04).jpg?width=800",
+    "wikidata_founder": "Akamatsu Sadanori",
+    "wikidata_website": "http://www.himejicastle.jp/en/",
+    "significant_events": [
+      "construction",
+      "expansion",
+      "restoration"
+    ]
   },
   {
     "position": 200,
@@ -76,7 +83,7 @@
     "condition": "Intact",
     "remarkable": "Het oudste nog intakte Japanse donjon kasteel.",
     "description": "",
-    "website": "",
+    "website": "https://www.matsumoto-castle.jp/",
     "score_total": 484.653796,
     "score_visitors": 8.391304,
     "visitors": 22,
@@ -86,7 +93,8 @@
     "wikidata_id": "Q739612",
     "heritage_status": "National Treasure of Japan",
     "inception_year": 1504,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Matsumoto_Castle05s5s4592.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Matsumoto_Castle05s5s4592.jpg?width=800",
+    "wikidata_website": "https://www.matsumoto-castle.jp/"
   },
   {
     "position": 330,
@@ -106,7 +114,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.city.kumamoto.jp/",
     "score_total": 448.893446,
     "score_visitors": 7.888889,
     "visitors": 8,
@@ -115,7 +123,11 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Kumamoto",
     "wikidata_id": "Q199889",
     "inception_year": 1889,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kumamoto_Castle_and_Ky%C5%ABsh%C5%AB_Shinkansen_02.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kumamoto_Castle_and_Ky%C5%ABsh%C5%AB_Shinkansen_02.jpg?width=800",
+    "wikidata_website": "http://www.city.kumamoto.jp/",
+    "significant_events": [
+      "Siege of Kumamoto Castle"
+    ]
   },
   {
     "position": 547,
@@ -144,7 +156,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Hirosaki",
     "wikidata_id": "Q194087",
     "inception_year": 1889,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/The_Hirosaki_castle_-_panoramio.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/The_Hirosaki_castle_-_panoramio.jpg?width=800",
+    "wikidata_website": "http://www.city.hirosaki.aomori.jp/"
   },
   {
     "position": 640,
@@ -164,7 +177,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "Het oorspronkelijke kasteel is in de tweede wereldoorlog bijna compleet verwoest. De huidige donjon is een betonnen reconstructie.",
-    "website": "",
+    "website": "https://www.city.nagoya.jp/",
     "score_total": 366.624655,
     "score_visitors": 7,
     "visitors": 6,
@@ -173,7 +186,12 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Nagoya",
     "wikidata_id": "Q11751",
     "inception_year": 1616,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Japan_Nagoya.png?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Japan_Nagoya.png?width=800",
+    "wikidata_website": "https://www.city.nagoya.jp/",
+    "significant_events": [
+      "Great Fire of Manji",
+      "bombing of Nagoya"
+    ]
   },
   {
     "position": 706,
@@ -193,7 +211,7 @@
     "condition": "Intact",
     "remarkable": "Dit kasteel speelt een belangrijke rol in de film Shogun.",
     "description": "",
-    "website": "",
+    "website": "https://www.city.hikone.lg.jp/",
     "score_total": 350.157988,
     "score_visitors": 6.666667,
     "visitors": 8,
@@ -202,7 +220,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Hikone%2C_Shiga",
     "wikidata_id": "Q386635",
     "inception_year": 1937,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Genkyu-en-r.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Genkyu-en-r.jpg?width=800",
+    "wikidata_website": "https://www.city.hikone.lg.jp/"
   },
   {
     "position": 780,
@@ -213,8 +232,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 35.132333,
+    "longitude": 136.141028,
     "founder": "Oda Nobunaga",
     "era": 16,
     "castle_type": "",
@@ -251,7 +270,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://wakayamajo.jp/index.html",
     "score_total": 322.314286,
     "score_visitors": 6.714286,
     "visitors": 6,
@@ -261,7 +280,13 @@
     "wikidata_id": "Q1151269",
     "heritage_status": "Important Cultural Property of Japan",
     "inception_year": 1585,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wakayama_Castle_2011_Kuruwa.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wakayama_Castle_2011_Kuruwa.jpg?width=800",
+    "wikidata_founder": "Toyotomi Hidenaga",
+    "wikidata_website": "http://wakayamajo.jp/index.html",
+    "significant_events": [
+      "destruction",
+      "architectural reconstruction"
+    ]
   },
   {
     "position": 866,
@@ -272,8 +297,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 35.388333,
+    "longitude": 136.939167,
     "founder": "Naruse daimyô",
     "era": 17,
     "castle_type": "Mountain castle",
@@ -281,7 +306,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://inuyama-castle.jp/",
     "score_total": 309.481798,
     "score_visitors": 5.857143,
     "visitors": 6,
@@ -291,7 +316,12 @@
     "wikidata_id": "Q1155484",
     "heritage_status": "National Treasure of Japan",
     "inception_year": 1469,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Inuyama_Castle_(1)%2C_Kitakoken_Inuyama_Inuyama_City_2023.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Inuyama_Castle_(1)%2C_Kitakoken_Inuyama_Inuyama_City_2023.jpg?width=800",
+    "wikidata_founder": "Oda Hirochika",
+    "wikidata_website": "https://inuyama-castle.jp/",
+    "significant_events": [
+      "destruction"
+    ]
   },
   {
     "position": 883,
@@ -302,8 +332,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 33.368056,
+    "longitude": 129.553722,
     "founder": "",
     "era": null,
     "castle_type": "Harbour castle",
@@ -311,7 +341,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.city.hirado.nagasaki.jp/",
     "score_total": 302.338941,
     "score_visitors": 5.714286,
     "visitors": 6,
@@ -320,7 +350,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Hirado%2C_Nagasaki",
     "wikidata_id": "Q328601",
     "inception_year": 1955,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/View_of_Hirado_Strait_from_Hirado_castle_Nagasaki%2CJAPAN.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/View_of_Hirado_Strait_from_Hirado_castle_Nagasaki%2CJAPAN.jpg?width=800",
+    "wikidata_website": "https://www.city.hirado.nagasaki.jp/"
   },
   {
     "position": 913,
@@ -331,8 +362,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 34.939501,
+    "longitude": 135.77686,
     "founder": "Toyotomi Hideyoshi",
     "era": 16,
     "castle_type": "Water castle",
@@ -349,7 +380,14 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Fushimi_Castle",
     "wikidata_id": "Q1196273",
     "inception_year": 1594,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/FushimiCastle.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/FushimiCastle.JPG?width=800",
+    "wikidata_founder": "Toyotomi Hideyoshi",
+    "significant_events": [
+      "1596 Fushimi earthquake",
+      "disassembly",
+      "architectural reconstruction",
+      "Siege of Fushimi"
+    ]
   },
   {
     "position": 920,
@@ -360,8 +398,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 33.839167,
+    "longitude": 132.765639,
     "founder": "Tokugawa Shogunate",
     "era": 16,
     "castle_type": "Rock castle",
@@ -369,7 +407,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.city.matsuyama.ehime.jp/",
     "score_total": 285.474655,
     "score_visitors": 5.375,
     "visitors": 7,
@@ -378,7 +416,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Matsuyama",
     "wikidata_id": "Q200022",
     "inception_year": 1889,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Matsuyama_(14074874872).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Matsuyama_(14074874872).jpg?width=800",
+    "wikidata_website": "https://www.city.matsuyama.ehime.jp/"
   },
   {
     "position": 921,
@@ -389,8 +428,8 @@
     "place": "Kyoto",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 35.014167,
+    "longitude": 135.7475,
     "founder": "Tokugawa Ieyasu",
     "era": 17,
     "castle_type": "City castle",
@@ -398,10 +437,24 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://nijo-jocastle.city.kyoto.lg.jp/?lang=en",
     "score_total": 285.181798,
     "score_visitors": 5.357143,
-    "visitors": 13
+    "visitors": 13,
+    "wikipedia_extract": "Nijō Castle  is a flatland castle in Kyoto, Japan. The castle consists of two concentric rings (Kuruwa) of fortifications, the Ninomaru Palace, the ruins of the Honmaru Palace, various support buildings and several gardens. The surface area of the castle is 275,000 square metres, of which 8,000 square metres (86,000 sq ft) is occupied by buildings.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NinomaruPalace.jpg/330px-NinomaruPalace.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Nij%C5%8D_Castle",
+    "wikidata_id": "Q1013399",
+    "heritage_status": "National Treasure of Japan",
+    "inception_year": 1601,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Nijo_Castle.jpg?width=800",
+    "wikidata_founder": "Tokugawa Ieyasu",
+    "wikidata_website": "https://nijo-jocastle.city.kyoto.lg.jp/?lang=en",
+    "significant_events": [
+      "Taisei Hokan",
+      "Nijō Castle Meeting",
+      "Kan'ei Gyōkō"
+    ]
   },
   {
     "position": 982,
@@ -421,7 +474,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.city.kakegawa.shizuoka.jp/",
     "score_total": 223.8,
     "score_visitors": 4.75,
     "visitors": 3,
@@ -430,6 +483,7 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Kakegawa%2C_Shizuoka",
     "wikidata_id": "Q823988",
     "inception_year": 1889,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kakegawacastleapril2006.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kakegawacastleapril2006.JPG?width=800",
+    "wikidata_website": "https://www.city.kakegawa.shizuoka.jp/"
   }
 ]

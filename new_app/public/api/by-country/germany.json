@@ -27,7 +27,8 @@
     "wikidata_id": "Q153426",
     "architectural_style": "Romanesque architecture",
     "heritage_status": "cultural heritage monument in Germany",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wierschem%2C_Burg_Eltz%2C_2012-08_CN-01.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wierschem%2C_Burg_Eltz%2C_2012-08_CN-01.jpg?width=800",
+    "wikidata_website": "https://burg-eltz.de/"
   },
   {
     "position": 20,
@@ -58,7 +59,9 @@
     "architectural_style": "Romanesque architecture",
     "heritage_status": "World Heritage Site",
     "inception_year": 1067,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Thuringia_Eisenach_asv2020-07_img23_Wartburg_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Thuringia_Eisenach_asv2020-07_img23_Wartburg_Castle.jpg?width=800",
+    "wikidata_founder": "Louis the Springer",
+    "wikidata_website": "https://www.wartburg.de/de/"
   },
   {
     "position": 40,
@@ -88,7 +91,8 @@
     "wikidata_id": "Q257210",
     "heritage_status": "cultural heritage monument in Rhineland-Palatinate",
     "inception_year": 1117,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Marksburg.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Marksburg.jpg?width=800",
+    "wikidata_website": "http://www.marksburg.de/"
   },
   {
     "position": 41,
@@ -117,7 +121,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Nuremberg_Castle",
     "wikidata_id": "Q707396",
     "heritage_status": "architectural heritage monument in Bavaria",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/N%C3%BCrnberg_Burg_ArM.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/N%C3%BCrnberg_Burg_ArM.jpg?width=800",
+    "wikidata_website": "http://www.nuernberg.de/internet/portal_e/reiseziel/ctz_904.html"
   },
   {
     "position": 51,
@@ -147,7 +152,8 @@
     "wikidata_id": "Q696951",
     "heritage_status": "cultural heritage monument in Germany",
     "inception_year": 1326,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Pfalzgrafenstein_2017.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Pfalzgrafenstein_2017.jpg?width=800",
+    "wikidata_website": "http://www.burg-pfalzgrafenstein.dee/"
   },
   {
     "position": 56,
@@ -170,7 +176,14 @@
     "website": "http://www.trifelsland.de/de/region/burgen/trifels.html",
     "score_total": 673.350804,
     "score_visitors": 5.855422,
-    "visitors": 82
+    "visitors": 82,
+    "wikipedia_extract": "Trifels Castle is a reconstructed medieval castle at an elevation of 500 m (1,600 ft) near the small town of Annweiler, in the Palatinate region of southwestern Germany. It is located high above the Queich valley within the Palatinate Forest on one peak of a red sandstone mountain split into three. Trifels Castle is on the peak of the Sonnenberg, and on both of the other two rock elevations there are castle ruins: Anebos Castle and Scharfenberg Castle.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Aerial_image_of_Trifels_Castle_%28view_from_the_southeast%29.jpg/330px-Aerial_image_of_Trifels_Castle_%28view_from_the_southeast%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Trifels_Castle",
+    "wikidata_id": "Q559202",
+    "heritage_status": "cultural heritage monument in Germany",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_image_of_Trifels_Castle_(view_from_the_southeast).jpg?width=800",
+    "wikidata_website": "http://www.trifelsland.de/de/region/burgen/trifels.html"
   },
   {
     "position": 73,
@@ -230,7 +243,9 @@
     "architectural_style": "Romanesque architecture",
     "heritage_status": "architectural heritage monument in Bavaria",
     "inception_year": 1225,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_image_of_the_Coburg_Fortress.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_image_of_the_Coburg_Fortress.jpg?width=800",
+    "architect": "Bodo Ebhardt",
+    "wikidata_website": "http://www.kunstsammlungen-coburg.de/en/"
   },
   {
     "position": 91,
@@ -280,7 +295,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.muenzenberg.de/",
     "score_total": 585.741342,
     "score_visitors": 6.708333,
     "visitors": 71,
@@ -288,7 +303,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Burg_M%C3%BCnzenberg_17.JPG/330px-Burg_M%C3%BCnzenberg_17.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/M%C3%BCnzenberg",
     "wikidata_id": "Q570892",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_M%C3%BCnzenberg_17.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_M%C3%BCnzenberg_17.JPG?width=800",
+    "wikidata_website": "https://www.muenzenberg.de/"
   },
   {
     "position": 112,
@@ -331,7 +347,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.schloss-heidelberg.de/",
     "score_total": 563.780276,
     "score_visitors": 7.688679,
     "visitors": 105,
@@ -341,7 +357,8 @@
     "wikidata_id": "Q327265",
     "architectural_style": "Gothic architecture",
     "heritage_status": "cultural heritage monument in Germany",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Heidelberg-Schlo%C3%9F.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Heidelberg-Schlo%C3%9F.JPG?width=800",
+    "wikidata_website": "http://www.schloss-heidelberg.de/"
   },
   {
     "position": 129,
@@ -371,7 +388,10 @@
     "wikidata_id": "Q567643",
     "heritage_status": "cultural heritage monument in Germany",
     "inception_year": 1245,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_rheinfels_2004.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_rheinfels_2004.jpg?width=800",
+    "significant_events": [
+      "slighting"
+    ]
   },
   {
     "position": 130,
@@ -402,7 +422,8 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "cultural heritage monument in Germany",
     "inception_year": 1316,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rheinstein.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rheinstein.jpg?width=800",
+    "wikidata_website": "http://www.burg-rheinstein.de/"
   },
   {
     "position": 140,
@@ -431,7 +452,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Burghausen_City_Museum",
     "wikidata_id": "Q63646200",
     "inception_year": 1899,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burghausen_Hauptburg_von_Westen.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burghausen_Hauptburg_von_Westen.jpg?width=800",
+    "wikidata_website": "https://www.stadtmuseum-burghausen.de/"
   },
   {
     "position": 146,
@@ -451,7 +473,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "Only the \"Burgtor\" tower and barbican remains of the town castle.",
-    "website": "",
+    "website": "https://www.rothenburg.de/",
     "score_total": 538.734426,
     "score_visitors": 6.954545,
     "visitors": 43,
@@ -459,7 +481,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Rothenburg_BW_4.JPG/330px-Rothenburg_BW_4.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Rothenburg_ob_der_Tauber",
     "wikidata_id": "Q153494",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rothenburg_BW_4.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rothenburg_BW_4.JPG?width=800",
+    "wikidata_website": "https://www.rothenburg.de/"
   },
   {
     "position": 170,
@@ -507,7 +530,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.eltville.de/tourismus/kurfuerstliche-burg/",
     "score_total": 516.452069,
     "score_visitors": 6.8125,
     "visitors": 15,
@@ -518,7 +541,8 @@
     "architectural_style": "Gothic art",
     "heritage_status": "cultural heritage monument in Hesse",
     "inception_year": 1330,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kurfuerstliche_Burg_Eltville.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kurfuerstliche_Burg_Eltville.jpg?width=800",
+    "wikidata_website": "https://www.eltville.de/tourismus/kurfuerstliche-burg/"
   },
   {
     "position": 180,
@@ -568,7 +592,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.wildenstein.fr",
     "score_total": 505.881736,
     "score_visitors": 7.916667,
     "visitors": 11,
@@ -576,7 +600,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Wildenstein%2C_%C3%89glise_Saints-Pierre-et-Paul_2.jpg/330px-Wildenstein%2C_%C3%89glise_Saints-Pierre-et-Paul_2.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Wildenstein",
     "wikidata_id": "Q180804",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wildenstein%2C_%C3%89glise_Saints-Pierre-et-Paul.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wildenstein%2C_%C3%89glise_Saints-Pierre-et-Paul.jpg?width=800",
+    "wikidata_website": "http://www.wildenstein.fr"
   },
   {
     "position": 201,
@@ -599,7 +624,13 @@
     "website": "",
     "score_total": 502.24665,
     "score_visitors": 7.685714,
-    "visitors": 34
+    "visitors": 34,
+    "wikipedia_extract": "Schönburg Castle, is in the municipality of Schönburg, Saxony-Anhalt, Germany. It has been proposed by Germany as a World Heritage Site.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Sch%C3%B6nburg2.jpg/330px-Sch%C3%B6nburg2.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Sch%C3%B6nburg_Castle",
+    "wikidata_id": "Q1013954",
+    "heritage_status": "heritage monument in Saxony-Anhalt",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Sch%C3%B6nburg2.jpg?width=800"
   },
   {
     "position": 211,
@@ -677,7 +708,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Freyburg_Marienkirche_12_Ansicht_von_S%C3%BCden.jpg/330px-Freyburg_Marienkirche_12_Ansicht_von_S%C3%BCden.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Freyburg%2C_Germany",
     "wikidata_id": "Q529853",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Freyburg_Marienkirche_12_Ansicht_von_S%C3%BCden.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Freyburg_Marienkirche_12_Ansicht_von_S%C3%BCden.jpg?width=800",
+    "wikidata_website": "http://www.freyburg-info.de/"
   },
   {
     "position": 259,
@@ -697,7 +729,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.rudelsburg.com",
     "score_total": 476.333727,
     "score_visitors": 6.9,
     "visitors": 9,
@@ -707,7 +739,8 @@
     "wikidata_id": "Q896555",
     "architectural_style": "Romanesque architecture",
     "heritage_status": "heritage monument in Saxony-Anhalt",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rudelsburg_von_unten.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rudelsburg_von_unten.JPG?width=800",
+    "wikidata_website": "http://www.rudelsburg.com"
   },
   {
     "position": 262,
@@ -783,7 +816,14 @@
     "website": "",
     "score_total": 465.632051,
     "score_visitors": 7.535714,
-    "visitors": 27
+    "visitors": 27,
+    "wikipedia_extract": "Katz Castle is a castle above the German town of Sankt Goarshausen in Rhineland-Palatinate. The castle stands on a ledge looking downstream from the riverside at Sankt Goar. It was first built around 1371 by Count William II of Katzenelnbogen. The castle was bombarded in 1806 by Napoleon and rebuilt in the late 19th century, in 1896–98. It is now privately owned, and not open for visitors.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Burg_Katz%2C_St._Goarshausen%2C_West_view_20141002_1.jpg/330px-Burg_Katz%2C_St._Goarshausen%2C_West_view_20141002_1.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Katz_Castle",
+    "wikidata_id": "Q567635",
+    "heritage_status": "cultural heritage monument in Germany",
+    "inception_year": 1301,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg-Katz-JR-E-275-2010-06-05.jpg?width=800"
   },
   {
     "position": 304,
@@ -803,7 +843,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://kulturerbe-eifel-mosel.de/de/schloss-buerresheim/",
     "score_total": 459.091283,
     "score_visitors": 7.843137,
     "visitors": 50,
@@ -812,7 +852,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/B%C3%BCrresheim_Castle",
     "wikidata_id": "Q322433",
     "architectural_style": "Romanesque architecture",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Buerresheim_1.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Buerresheim_1.jpg?width=800",
+    "wikidata_website": "https://kulturerbe-eifel-mosel.de/de/schloss-buerresheim/"
   },
   {
     "position": 308,
@@ -870,7 +911,10 @@
     "wikidata_id": "Q22583",
     "heritage_status": "cultural heritage monument in Germany",
     "inception_year": 1287,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Grafendahn_-_Dahn_-_01.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Grafendahn_-_Dahn_-_01.jpg?width=800",
+    "significant_events": [
+      "slighting"
+    ]
   },
   {
     "position": 333,
@@ -890,7 +934,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.wertheim.de/",
     "score_total": 447.981292,
     "score_visitors": 7.136364,
     "visitors": 21,
@@ -898,7 +942,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Burg_Wertheim_0998.jpg/330px-Burg_Wertheim_0998.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Wertheim_am_Main",
     "wikidata_id": "Q61912",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wertheim_Aerial_fg217.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wertheim_Aerial_fg217.jpg?width=800",
+    "wikidata_website": "https://www.wertheim.de/"
   },
   {
     "position": 346,
@@ -918,10 +963,19 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://burg-harburg.de/",
     "score_total": 444.36189,
     "score_visitors": 7.315789,
-    "visitors": 18
+    "visitors": 18,
+    "wikipedia_extract": "Harburg Castle in Harburg, Bavaria, in the Donau-Ries district, is an extensive mediaeval complex from the 11th / 12th century. Originally it was a Staufer castle and was owned by the princely House of Oettingen-Wallerstein. Since 2000 the castle belongs to the Prince of Oettingen-Wallerstein Cultural Foundation, which has the mission to preserve this unique castle for the present and future.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Harburg_in_Schwaben%2C_Burg_20170826_001.jpg/330px-Harburg_in_Schwaben%2C_Burg_20170826_001.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Harburg_Castle",
+    "wikidata_id": "Q1012188",
+    "architectural_style": "baroque architecture",
+    "heritage_status": "architectural heritage monument in Bavaria",
+    "inception_year": 1150,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Harburg_in_Schwaben%2C_Burg_20170826_001.jpg?width=800",
+    "wikidata_website": "https://burg-harburg.de/"
   },
   {
     "position": 372,
@@ -1015,7 +1069,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.burgtrausnitz.de",
     "score_total": 429.801104,
     "score_visitors": 7.692308,
     "visitors": 12,
@@ -1026,7 +1080,8 @@
     "architectural_style": "Renaissance architecture",
     "heritage_status": "architectural heritage monument in Bavaria",
     "inception_year": 1204,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Trausnitz_Landshut.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Trausnitz_Landshut.jpg?width=800",
+    "wikidata_website": "http://www.burgtrausnitz.de"
   },
   {
     "position": 403,
@@ -1075,7 +1130,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.festung-koenigstein.de/",
     "score_total": 423.793777,
     "score_visitors": 7.291667,
     "visitors": 23,
@@ -1084,7 +1139,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/K%C3%B6nigstein_Fortress",
     "wikidata_id": "Q700562",
     "heritage_status": "heritage monument in Saxony",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Festung_Koenigstein_asv2023-01_img43_Georgenburg.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Festung_Koenigstein_asv2023-01_img43_Georgenburg.jpg?width=800",
+    "wikidata_website": "http://www.festung-koenigstein.de/"
   },
   {
     "position": 419,
@@ -1112,7 +1168,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Meersburg_in_FN.svg/330px-Meersburg_in_FN.svg.png",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Meersburg",
     "wikidata_id": "Q498212",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Meersburg_panor2.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Meersburg_panor2.jpg?width=800",
+    "wikidata_website": "https://www.meersburg.de/"
   },
   {
     "position": 424,
@@ -1142,7 +1199,8 @@
     "wikidata_id": "Q22573",
     "heritage_status": "cultural heritage monument in Germany",
     "inception_year": 1101,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Berwartstein.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Berwartstein.JPG?width=800",
+    "wikidata_website": "http://www.burgberwartstein.de/"
   },
   {
     "position": 430,
@@ -1162,7 +1220,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.burg-lahneck.de/",
     "score_total": 420.152682,
     "score_visitors": 7.555556,
     "visitors": 17,
@@ -1172,7 +1230,8 @@
     "wikidata_id": "Q564207",
     "heritage_status": "cultural heritage monument in Germany",
     "inception_year": 1226,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Lahneck_2010.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Lahneck_2010.jpg?width=800",
+    "wikidata_website": "http://www.burg-lahneck.de/"
   },
   {
     "position": 450,
@@ -1202,7 +1261,8 @@
     "wikidata_id": "Q1012744",
     "heritage_status": "heritage monument in Saxony",
     "inception_year": 1384,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Kriebstein.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Kriebstein.jpg?width=800",
+    "wikidata_website": "http://www.burg-kriebstein.de"
   },
   {
     "position": 451,
@@ -1222,7 +1282,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.burg-steinsberg.de/",
     "score_total": 413.476456,
     "score_visitors": 4.947368,
     "visitors": 18,
@@ -1232,7 +1292,8 @@
     "wikidata_id": "Q1014121",
     "heritage_status": "cultural heritage monument in Germany",
     "inception_year": 1109,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_image_of_Steinsberg_Castle_(view_from_the_southeast).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_image_of_Steinsberg_Castle_(view_from_the_southeast).jpg?width=800",
+    "wikidata_website": "https://www.burg-steinsberg.de/"
   },
   {
     "position": 464,
@@ -1292,7 +1353,8 @@
     "wikidata_id": "Q317023",
     "heritage_status": "heritage monument in Saxony-Anhalt",
     "inception_year": 1120,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Falkenstein_im_Harz_(April_2009).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Falkenstein_im_Harz_(April_2009).jpg?width=800",
+    "wikidata_website": "http://burgfalkensteinimharz.apps-1and1.net/"
   },
   {
     "position": 481,
@@ -1315,7 +1377,15 @@
     "website": "",
     "score_total": 406.338512,
     "score_visitors": 6.375,
-    "visitors": 23
+    "visitors": 23,
+    "wikipedia_extract": "The Drachenfels is a hill in the Siebengebirge uplands between Königswinter and Bad Honnef in Germany. The hill was formed by rising magma that could not break through to the surface, and then cooled and became solid underneath. It is the subject of much tourism and romanticism in the North Rhine-Westphalia area.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/20130816_Drachenfels.jpg/330px-20130816_Drachenfels.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Drachenfels_(Siebengebirge)",
+    "wikidata_id": "Q703922",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/20130816_Drachenfels.jpg?width=800",
+    "significant_events": [
+      "slighting"
+    ]
   },
   {
     "position": 492,
@@ -1335,7 +1405,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.wasserburg-anholt.de/",
     "score_total": 403.59349,
     "score_visitors": 7.645161,
     "visitors": 30,
@@ -1345,7 +1415,8 @@
     "wikidata_id": "Q880788",
     "architectural_style": "Baroque",
     "heritage_status": "architectural heritage monument in North Rhine-Westphalia",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_image_of_Burg_Anholt_(view_from_the_west).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_image_of_Burg_Anholt_(view_from_the_west).jpg?width=800",
+    "wikidata_website": "http://www.wasserburg-anholt.de/"
   },
   {
     "position": 503,
@@ -1388,7 +1459,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.gemeinde-schauenburg.de/",
     "score_total": 400.159272,
     "score_visitors": 6.470588,
     "visitors": 16,
@@ -1397,7 +1468,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Schauenburg",
     "wikidata_id": "Q175419",
     "inception_year": 1972,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kirche-hoof.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kirche-hoof.JPG?width=800",
+    "wikidata_website": "https://www.gemeinde-schauenburg.de/"
   },
   {
     "position": 505,
@@ -1499,7 +1571,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.eckartsberga.de",
     "score_total": 396.855825,
     "score_visitors": 5.5,
     "visitors": 5,
@@ -1507,7 +1579,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Eckartsberga.jpg/330px-Eckartsberga.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Eckartsberga",
     "wikidata_id": "Q530107",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Eckartsberga.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Eckartsberga.jpg?width=800",
+    "wikidata_website": "http://www.eckartsberga.de"
   },
   {
     "position": 526,
@@ -1635,7 +1708,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://olsztynek.com.pl/",
     "score_total": 385.254581,
     "score_visitors": 5.833333,
     "visitors": 11,
@@ -1643,7 +1716,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/St%C4%99bark_-_ko%C5%9Bci%C3%B3%C5%82_%C5%9Aw._Tr%C3%B3jcy_%28widok_z_boku%29.jpg/330px-St%C4%99bark_-_ko%C5%9Bci%C3%B3%C5%82_%C5%9Aw._Tr%C3%B3jcy_%28widok_z_boku%29.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/St%C4%99bark",
     "wikidata_id": "Q545312",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/St%C4%99bark_-_ko%C5%9Bci%C3%B3%C5%82_%C5%9Aw._Tr%C3%B3jcy_(widok_z_boku).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/St%C4%99bark_-_ko%C5%9Bci%C3%B3%C5%82_%C5%9Aw._Tr%C3%B3jcy_(widok_z_boku).jpg?width=800",
+    "wikidata_website": "http://olsztynek.com.pl/"
   },
   {
     "position": 575,
@@ -1722,7 +1796,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://burg-runkel.de/",
     "score_total": 375.526555,
     "score_visitors": 6.083333,
     "visitors": 11,
@@ -1733,7 +1807,8 @@
     "architectural_style": "Renaissance",
     "heritage_status": "cultural heritage monument in Hesse",
     "inception_year": 1100,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Runkel01_2011-10-02.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Runkel01_2011-10-02.jpg?width=800",
+    "wikidata_website": "http://burg-runkel.de/"
   },
   {
     "position": 607,
@@ -1753,7 +1828,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.landstuhl.de/en/tourism/worth-seeing/nanstein-castle/",
     "score_total": 374.375802,
     "score_visitors": 6.222222,
     "visitors": 8,
@@ -1763,7 +1838,14 @@
     "wikidata_id": "Q1013198",
     "heritage_status": "cultural heritage monument in Germany",
     "inception_year": 1152,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Nanstein_Kernburg.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Nanstein_Kernburg.JPG?width=800",
+    "wikidata_website": "https://www.landstuhl.de/en/tourism/worth-seeing/nanstein-castle/",
+    "significant_events": [
+      "construction",
+      "Siege of Nanstein Castle",
+      "building implosion",
+      "destruction"
+    ]
   },
   {
     "position": 609,
@@ -1868,7 +1950,14 @@
     "website": "",
     "score_total": 368.687833,
     "score_visitors": 6.285714,
-    "visitors": 13
+    "visitors": 13,
+    "wikipedia_extract": "The ruins of Nideggen Castle are a symbol of the town of Nideggen in Germany and are owned by the county of Düren. The rectangular hill castle was the seat of the powerful counts and dukes of Jülich and had a reputation in the Middle Ages of being impregnable.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Burg_Nideggen_007-.jpg/330px-Burg_Nideggen_007-.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Nideggen_Castle",
+    "wikidata_id": "Q1013312",
+    "heritage_status": "architectural heritage monument in North Rhine-Westphalia",
+    "inception_year": 1177,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Nideggen_007-.jpg?width=800"
   },
   {
     "position": 643,
@@ -1915,7 +2004,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.altenburg.eu/",
     "score_total": 361.517442,
     "score_visitors": 6.444444,
     "visitors": 8,
@@ -1923,7 +2012,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Altenburg_Frauenfels.jpg/330px-Altenburg_Frauenfels.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Altenburg",
     "wikidata_id": "Q15976",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Altenburg_Frauenfels.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Altenburg_Frauenfels.jpg?width=800",
+    "wikidata_website": "http://www.altenburg.eu/"
   },
   {
     "position": 663,
@@ -1975,7 +2065,13 @@
     "website": "",
     "score_total": 356.802352,
     "score_visitors": 6,
-    "visitors": 11
+    "visitors": 11,
+    "wikipedia_extract": "Eisenberg Castle is a medieval hilltop castle ruin north of Pfronten, Bavaria, Germany built in the 14th century.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Main_entrance_to_inner_yard_of_Eisenberg_Castle.jpg/330px-Main_entrance_to_inner_yard_of_Eisenberg_Castle.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Eisenberg_Castle%2C_Bavaria",
+    "wikidata_id": "Q1011579",
+    "heritage_status": "architectural heritage monument in Bavaria",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Eisenberg.jpg?width=800"
   },
   {
     "position": 682,
@@ -2005,7 +2101,10 @@
     "wikidata_id": "Q885079",
     "heritage_status": "cultural heritage monument in Germany",
     "inception_year": 1127,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hochburg_Panorama.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hochburg_Panorama.jpg?width=800",
+    "significant_events": [
+      "slighting"
+    ]
   },
   {
     "position": 700,
@@ -2025,7 +2124,7 @@
     "condition": "Damaged",
     "remarkable": "The castle has two donjons (\"Bergfried\").",
     "description": "",
-    "website": "",
+    "website": "http://www.thurant.de",
     "score_total": 351.505981,
     "score_visitors": 6,
     "visitors": 6,
@@ -2034,7 +2133,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Thurant_Castle",
     "wikidata_id": "Q1014241",
     "heritage_status": "cultural heritage monument in Germany",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Alken%2C_Burg_Thurant%2C_2012-08_CN-01.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Alken%2C_Burg_Thurant%2C_2012-08_CN-01.jpg?width=800",
+    "wikidata_website": "http://www.thurant.de"
   },
   {
     "position": 710,
@@ -2064,7 +2164,8 @@
     "wikidata_id": "Q449031",
     "heritage_status": "architectural heritage monument in North Rhine-Westphalia",
     "inception_year": 1271,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/L%C3%BCdinghausen%2C_Burg_Vischering_--_2013_--_0293.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/L%C3%BCdinghausen%2C_Burg_Vischering_--_2013_--_0293.jpg?width=800",
+    "wikidata_website": "http://www.burg-vischering.de"
   },
   {
     "position": 715,
@@ -2117,7 +2218,13 @@
     "website": "",
     "score_total": 347.511272,
     "score_visitors": 6.333333,
-    "visitors": 11
+    "visitors": 11,
+    "wikipedia_extract": "Lichtenberg Castle is a ruin of the spur castle type; with a length of 425m (1,394 ft) it is the biggest castle ruin in Germany. It is located near Thallichtenberg in the district of Kusel in Rhineland-Palatinate.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Burg_Lichtenberg_total.jpg/330px-Burg_Lichtenberg_total.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Lichtenberg_Castle_(Palatinate)",
+    "wikidata_id": "Q885150",
+    "heritage_status": "cultural heritage monument in Rhineland-Palatinate",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Lichtenberg_total.jpg?width=800"
   },
   {
     "position": 719,
@@ -2160,7 +2267,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.loamnessibiu.ro",
     "score_total": 343.080484,
     "score_visitors": 5.615385,
     "visitors": 12,
@@ -2168,7 +2275,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/RO_SB_Hasag_2.jpg/330px-RO_SB_Hasag_2.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Loamne%C8%99",
     "wikidata_id": "Q5066037",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/RO_SB_Loamnes_1.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/RO_SB_Loamnes_1.jpg?width=800",
+    "wikidata_website": "http://www.loamnessibiu.ro"
   },
   {
     "position": 758,
@@ -2226,7 +2334,10 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Ilya_Ehrenburg_1960s.jpg/330px-Ilya_Ehrenburg_1960s.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Ilya_Ehrenburg",
     "wikidata_id": "Q348497",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ilya_Ehrenburg_(1959).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ilya_Ehrenburg_(1959).jpg?width=800",
+    "significant_events": [
+      "Nazi book burnings"
+    ]
   },
   {
     "position": 790,
@@ -2386,7 +2497,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.eppstein.de/",
     "score_total": 298.03695,
     "score_visitors": 5.866667,
     "visitors": 14,
@@ -2394,7 +2505,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/View_of_Eppstein_21-07-2001.jpg/330px-View_of_Eppstein_21-07-2001.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Eppstein",
     "wikidata_id": "Q45347",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Eppstein-JR-E-3039-2019-04-19.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Eppstein-JR-E-3039-2019-04-19.jpg?width=800",
+    "wikidata_website": "https://www.eppstein.de/"
   },
   {
     "position": 897,
@@ -2414,7 +2526,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.gulbenesdome.lv/",
     "score_total": 297.328132,
     "score_visitors": 5.714286,
     "visitors": 6,
@@ -2423,7 +2535,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Gulbene",
     "wikidata_id": "Q753010",
     "inception_year": 1928,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Gulbene_035%2C_opraven%C3%A1_%C4%8D%C3%A1st_z%C3%A1mesk%C3%A9ho_komplexu.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Gulbene_035%2C_opraven%C3%A1_%C4%8D%C3%A1st_z%C3%A1mesk%C3%A9ho_komplexu.jpg?width=800",
+    "wikidata_website": "http://www.gulbenesdome.lv/"
   },
   {
     "position": 903,

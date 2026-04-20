@@ -29,6 +29,10 @@ export interface Castle {
   heritage_status?: string | null;
   inception_year?: number | null;
   wikidata_image?: string | null;
+  wikidata_founder?: string | null;
+  architect?: string | null;
+  wikidata_website?: string | null;
+  significant_events?: string[] | null;
 }
 
 export interface CountrySummary {

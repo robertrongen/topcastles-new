@@ -28,7 +28,9 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "World Heritage Site",
     "inception_year": 1240,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castel_del_Monte_BW_2016-10-14_12-26-11_r.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castel_del_Monte_BW_2016-10-14_12-26-11_r.jpg?width=800",
+    "wikidata_founder": "Frederick II, Holy Roman Emperor",
+    "wikidata_website": "https://www.casteldelmonte.beniculturali.it/"
   },
   {
     "position": 46,
@@ -59,7 +61,12 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "Italian national heritage",
     "inception_year": 1356,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Paolo_Monti_-_Servizio_fotografico_(Verona%2C_1982)_-_BEIC_6361679.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Paolo_Monti_-_Servizio_fotografico_(Verona%2C_1982)_-_BEIC_6361679.jpg?width=800",
+    "wikidata_website": "http://www.comune.verona.it/castelvecchio/cvsito/",
+    "significant_events": [
+      "start of construction",
+      "reconstruction"
+    ]
   },
   {
     "position": 49,
@@ -89,7 +96,12 @@
     "wikidata_id": "Q486382",
     "heritage_status": "Italian national heritage",
     "inception_year": 139,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Engelsburg_und_Engelsbr%C3%BCcke_abends_(Zuschnitt).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Engelsburg_und_Engelsbr%C3%BCcke_abends_(Zuschnitt).jpg?width=800",
+    "architect": "Decriannus",
+    "wikidata_website": "http://www.castelsantangelo.beniculturali.it/",
+    "significant_events": [
+      "start of construction"
+    ]
   },
   {
     "position": 54,
@@ -117,7 +129,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Castello_di_Rocca_scalegna.jpg/330px-Castello_di_Rocca_scalegna.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Roccascalegna",
     "wikidata_id": "Q51276",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castello_di_Rocca_scalegna.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castello_di_Rocca_scalegna.jpg?width=800",
+    "wikidata_website": "http://www.comune.roccascalegna.ch.it"
   },
   {
     "position": 64,
@@ -137,7 +150,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.comune.napoli.it/home",
     "score_total": 646.378206,
     "score_visitors": 6.474576,
     "visitors": 58,
@@ -148,7 +161,9 @@
     "architectural_style": "Gothic art",
     "heritage_status": "Italian national heritage",
     "inception_year": 1282,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Naples-Castel_Nuovo.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Naples-Castel_Nuovo.jpg?width=800",
+    "architect": "Pierre d'Angicourt",
+    "wikidata_website": "https://www.comune.napoli.it/home"
   },
   {
     "position": 68,
@@ -178,7 +193,8 @@
     "wikidata_id": "Q607126",
     "architectural_style": "Gothic architecture",
     "heritage_status": "Italian national heritage",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/CastelloDiF%C3%A9nisJuly292023_06.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/CastelloDiF%C3%A9nisJuly292023_06.jpg?width=800",
+    "wikidata_website": "http://www.regione.vda.it/cultura/patrimonio/castelli/castello_fenis/default_i.asp"
   },
   {
     "position": 77,
@@ -208,7 +224,8 @@
     "wikidata_id": "Q376571",
     "heritage_status": "Cultural heritage monument in South Tyrol",
     "inception_year": 1237,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Schloss_Runkelstein_ext.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Schloss_Runkelstein_ext.jpg?width=800",
+    "wikidata_website": "https://www.runkelstein.info/"
   },
   {
     "position": 123,
@@ -274,7 +291,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.mantovaducale.beniculturali.it/",
     "score_total": 522.409602,
     "score_visitors": 7.888889,
     "visitors": 8,
@@ -284,7 +301,8 @@
     "wikidata_id": "Q1635704",
     "architectural_style": "Renaissance architecture",
     "heritage_status": "Italian national heritage",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mantoue_palais_ducal.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mantoue_palais_ducal.jpg?width=800",
+    "wikidata_website": "http://www.mantovaducale.beniculturali.it/"
   },
   {
     "position": 172,
@@ -304,7 +322,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.comune.lucera.fg.it",
     "score_total": 515.33316,
     "score_visitors": 5.421053,
     "visitors": 18,
@@ -315,7 +333,8 @@
     "architectural_style": "Gothic art",
     "heritage_status": "Italian national heritage",
     "inception_year": 1233,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Lucera0001.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Lucera0001.jpg?width=800",
+    "wikidata_website": "http://www.comune.lucera.fg.it"
   },
   {
     "position": 175,
@@ -346,7 +365,9 @@
     "architectural_style": "Renaissance architecture",
     "heritage_status": "Italian national heritage",
     "inception_year": 1360,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/20110725_Castello_Sforzesco_Milan_5557.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/20110725_Castello_Sforzesco_Milan_5557.jpg?width=800",
+    "architect": "Filarete",
+    "wikidata_website": "http://www.milanocastello.it/"
   },
   {
     "position": 182,
@@ -390,14 +411,14 @@
     "region_code": "emilia_romagna",
     "latitude": 44.8375,
     "longitude": 11.619167,
-    "founder": "",
+    "founder": "Niccolò II d'Este, Marquis of Ferrara",
     "era": null,
     "castle_type": "Water castle",
     "castle_concept": "",
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.castelloestense.it",
     "score_total": 496.600186,
     "score_visitors": 7.382353,
     "visitors": 33,
@@ -408,7 +429,10 @@
     "architectural_style": "Renaissance architecture",
     "heritage_status": "Italian national heritage",
     "inception_year": 1350,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castello_dall'alto.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castello_dall'alto.jpg?width=800",
+    "wikidata_founder": "Niccolò II d'Este, Marquis of Ferrara",
+    "architect": "Bartolino da Novara",
+    "wikidata_website": "http://www.castelloestense.it"
   },
   {
     "position": 243,
@@ -451,7 +475,7 @@
     "condition": "Intact",
     "remarkable": "Gerestaureerd in 1951.",
     "description": "Normandisch kasteel.",
-    "website": "",
+    "website": "http://www.provincia.palermo.it/turismo/tesori_d_arte/00007746_Castello_della_Zisa.html",
     "score_total": 477.249556,
     "score_visitors": 7.176471,
     "visitors": 16,
@@ -461,7 +485,8 @@
     "wikidata_id": "Q1000054",
     "architectural_style": "Normanno",
     "heritage_status": "part of UNESCO World Heritage Site",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/La_Zisa_(Palermo)-msu-1093.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/La_Zisa_(Palermo)-msu-1093.jpg?width=800",
+    "wikidata_website": "http://www.provincia.palermo.it/turismo/tesori_d_arte/00007746_Castello_della_Zisa.html"
   },
   {
     "position": 268,
@@ -515,7 +540,8 @@
     "architectural_style": "Gothic art",
     "heritage_status": "Italian national heritage",
     "inception_year": 1239,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Catania_Castel_Ursino.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Catania_Castel_Ursino.jpg?width=800",
+    "architect": "Riccardo da Lentini"
   },
   {
     "position": 271,
@@ -535,7 +561,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://musei.puglia.beniculturali.it/musei/castello-svevo-di-bari/",
     "score_total": 471.668759,
     "score_visitors": 6.529412,
     "visitors": 16,
@@ -544,7 +570,9 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Castello_Normanno-Svevo_(Bari)",
     "wikidata_id": "Q790430",
     "heritage_status": "Italian national heritage",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Senza_titolo_(44_di_401).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Senza_titolo_(44_di_401).jpg?width=800",
+    "wikidata_founder": "Roger II of Sicily",
+    "wikidata_website": "https://musei.puglia.beniculturali.it/musei/castello-svevo-di-bari/"
   },
   {
     "position": 272,
@@ -614,7 +642,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.fortezzafirmafede.it",
     "score_total": 465.843384,
     "score_visitors": 6.166667,
     "visitors": 11,
@@ -623,7 +651,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Fortezza_Firmafede",
     "wikidata_id": "Q28859651",
     "heritage_status": "Italian national heritage",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Forteresse_Firmafede_-_Sarzana_(IT42)_-_2022-08-28_-_10.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Forteresse_Firmafede_-_Sarzana_(IT42)_-_2022-08-28_-_10.jpg?width=800",
+    "wikidata_website": "http://www.fortezzafirmafede.it"
   },
   {
     "position": 296,
@@ -724,7 +753,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www2.po-net.prato.it/artestoria/citta/castello/imperatore/pagina23.html",
     "score_total": 450.848721,
     "score_visitors": 6.6,
     "visitors": 14,
@@ -735,7 +764,10 @@
     "architectural_style": "Frederician architecture",
     "heritage_status": "Italian national heritage",
     "inception_year": 1240,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Prato%2C_Castello_dell'imperatore%2C_da_S-E.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Prato%2C_Castello_dell'imperatore%2C_da_S-E.jpg?width=800",
+    "wikidata_founder": "Frederick II, Holy Roman Emperor",
+    "architect": "Riccardo da Lentini",
+    "wikidata_website": "http://www2.po-net.prato.it/artestoria/citta/castello/imperatore/pagina23.html"
   },
   {
     "position": 331,
@@ -862,7 +894,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://musei.puglia.beniculturali.it/musei/castello-svevo-di-bari/",
     "score_total": 424.333012,
     "score_visitors": 6.333333,
     "visitors": 5,
@@ -871,7 +903,9 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Castello_Normanno-Svevo_(Bari)",
     "wikidata_id": "Q790430",
     "heritage_status": "Italian national heritage",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Senza_titolo_(44_di_401).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Senza_titolo_(44_di_401).jpg?width=800",
+    "wikidata_founder": "Roger II of Sicily",
+    "wikidata_website": "https://musei.puglia.beniculturali.it/musei/castello-svevo-di-bari/"
   },
   {
     "position": 420,
@@ -891,7 +925,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.musei.emiliaromagna.beniculturali.it/musei/castello-di-torrechiara",
     "score_total": 421.405775,
     "score_visitors": 7.6875,
     "visitors": 31,
@@ -901,7 +935,8 @@
     "wikidata_id": "Q13291063",
     "heritage_status": "Italian national heritage",
     "inception_year": 1450,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Torrechiara-Drone-2_(27270845692).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Torrechiara-Drone-2_(27270845692).jpg?width=800",
+    "wikidata_website": "https://www.musei.emiliaromagna.beniculturali.it/musei/castello-di-torrechiara"
   },
   {
     "position": 448,
@@ -1001,7 +1036,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://buonconsiglio.it",
     "score_total": 412.612081,
     "score_visitors": 7.642857,
     "visitors": 13,
@@ -1010,7 +1045,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Buonconsiglio_Castle",
     "wikidata_id": "Q247451",
     "heritage_status": "Italian national heritage",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/20110727_Trento_Buonconsiglio_Castle_6609.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/20110727_Trento_Buonconsiglio_Castle_6609.jpg?width=800",
+    "wikidata_website": "https://buonconsiglio.it"
   },
   {
     "position": 460,
@@ -1103,7 +1139,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.comunemalcesine.it/",
     "score_total": 393.098053,
     "score_visitors": 7.818182,
     "visitors": 10,
@@ -1111,7 +1147,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Malcesine_Castle.jpg/330px-Malcesine_Castle.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Malcesine",
     "wikidata_id": "Q47821",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Malcesine_and_the_castle.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Malcesine_and_the_castle.JPG?width=800",
+    "wikidata_website": "https://www.comunemalcesine.it/"
   },
   {
     "position": 550,
@@ -1131,7 +1168,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://musefirenze.it/musei/museo-di-palazzo-vecchio/",
     "score_total": 390.035722,
     "score_visitors": 6.695652,
     "visitors": 22,
@@ -1142,7 +1179,12 @@
     "architectural_style": "Romanesque art",
     "heritage_status": "Italian national heritage",
     "inception_year": 1299,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Piazza_della_signoria%2C_palazzo_vecchio%2C_veduta_01.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Piazza_della_signoria%2C_palazzo_vecchio%2C_veduta_01.jpg?width=800",
+    "architect": "Arnolfo di Cambio",
+    "wikidata_website": "https://musefirenze.it/musei/museo-di-palazzo-vecchio/",
+    "significant_events": [
+      "construction"
+    ]
   },
   {
     "position": 558,
@@ -1162,7 +1204,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.san-leo.it/visita-san-leo/il-forte-rinascimentale/",
     "score_total": 387.593202,
     "score_visitors": 7.416667,
     "visitors": 11,
@@ -1173,7 +1215,8 @@
     "architectural_style": "Renaissance architecture",
     "heritage_status": "Italian national heritage",
     "inception_year": 1441,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/La_rocca_di_San_Leo.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/La_rocca_di_San_Leo.JPG?width=800",
+    "wikidata_website": "https://www.san-leo.it/visita-san-leo/il-forte-rinascimentale/"
   },
   {
     "position": 579,
@@ -1239,7 +1282,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.fontanellato.org/la-rocca/",
     "score_total": 363.101237,
     "score_visitors": 6.727273,
     "visitors": 10,
@@ -1250,7 +1293,8 @@
     "architectural_style": "Mannerism",
     "heritage_status": "Italian national heritage",
     "inception_year": 1350,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fontanellato_rocca_Sanvitale.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fontanellato_rocca_Sanvitale.jpg?width=800",
+    "wikidata_website": "https://www.fontanellato.org/la-rocca/"
   },
   {
     "position": 659,
@@ -1297,7 +1341,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.comune.cagliari.it/portale/page/it/castello_di_san_michele",
     "score_total": 349.998398,
     "score_visitors": 5.5,
     "visitors": 5,
@@ -1306,7 +1350,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Castle_of_San_Michele",
     "wikidata_id": "Q3662867",
     "heritage_status": "Italian national heritage",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castello_San_Michele_CA.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castello_San_Michele_CA.jpg?width=800",
+    "wikidata_website": "https://www.comune.cagliari.it/portale/page/it/castello_di_san_michele"
   },
   {
     "position": 711,
@@ -1337,7 +1382,9 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "Italian national heritage",
     "inception_year": 1360,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castello_Sforzesco_(2).JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castello_Sforzesco_(2).JPG?width=800",
+    "architect": "Bartolino da Novara",
+    "wikidata_website": "http://www.lombardiabeniculturali.it/architetture/schede/PV110-00010/"
   },
   {
     "position": 722,
@@ -1357,7 +1404,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.castellodicanossa.it/",
     "score_total": 346.790956,
     "score_visitors": 5.363636,
     "visitors": 10,
@@ -1367,7 +1414,12 @@
     "wikidata_id": "Q1033649",
     "heritage_status": "Italian national heritage",
     "inception_year": 950,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castello_(Canossa)_-_lato_sud_3_2022-07-23.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castello_(Canossa)_-_lato_sud_3_2022-07-23.jpg?width=800",
+    "wikidata_website": "http://www.castellodicanossa.it/",
+    "significant_events": [
+      "restoration",
+      "construction"
+    ]
   },
   {
     "position": 725,
@@ -1420,7 +1472,8 @@
     "wikidata_id": "Q1048826",
     "heritage_status": "Italian national heritage",
     "inception_year": 1470,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castel_Orsini-Odescalchi_(Bracciano).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castel_Orsini-Odescalchi_(Bracciano).jpg?width=800",
+    "wikidata_website": "http://www.odescalchi.it"
   },
   {
     "position": 745,
@@ -1440,7 +1493,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.comune.arco.tn.it/aree-tematiche/il-castello",
     "score_total": 342.004232,
     "score_visitors": 5.8,
     "visitors": 4,
@@ -1450,7 +1503,8 @@
     "wikidata_id": "Q224779",
     "heritage_status": "Italian national heritage",
     "inception_year": 1000,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castello_di_Arco_(TN).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castello_di_Arco_(TN).jpg?width=800",
+    "wikidata_website": "http://www.comune.arco.tn.it/aree-tematiche/il-castello"
   },
   {
     "position": 749,
@@ -1551,7 +1605,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://musei.puglia.beniculturali.it/musei/castello-svevo-di-bari/",
     "score_total": 339.993191,
     "score_visitors": 4.833333,
     "visitors": 5,
@@ -1560,7 +1614,9 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Castello_Normanno-Svevo_(Bari)",
     "wikidata_id": "Q790430",
     "heritage_status": "Italian national heritage",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Senza_titolo_(44_di_401).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Senza_titolo_(44_di_401).jpg?width=800",
+    "wikidata_founder": "Roger II of Sicily",
+    "wikidata_website": "https://musei.puglia.beniculturali.it/musei/castello-svevo-di-bari/"
   },
   {
     "position": 759,
@@ -1580,7 +1636,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.fondoambiente.it/luoghi/castello-di-avio",
     "score_total": 339.223131,
     "score_visitors": 7.25,
     "visitors": 15,
@@ -1589,7 +1645,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Castle_of_Avio",
     "wikidata_id": "Q3662477",
     "heritage_status": "Italian national heritage",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Il_Castello_di_Avio%2C_Bene_FAI_in_Trentino_in_una_giornata_di_sole.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Il_Castello_di_Avio%2C_Bene_FAI_in_Trentino_in_una_giornata_di_sole.jpg?width=800",
+    "wikidata_website": "https://www.fondoambiente.it/luoghi/castello-di-avio"
   },
   {
     "position": 760,
@@ -1696,7 +1753,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.mantovaducale.beniculturali.it/",
     "score_total": 302.280104,
     "score_visitors": 5.5,
     "visitors": 11,
@@ -1706,7 +1763,8 @@
     "wikidata_id": "Q1635704",
     "architectural_style": "Renaissance architecture",
     "heritage_status": "Italian national heritage",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mantoue_palais_ducal.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mantoue_palais_ducal.jpg?width=800",
+    "wikidata_website": "http://www.mantovaducale.beniculturali.it/"
   },
   {
     "position": 905,
@@ -1801,7 +1859,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://valledaostaheritage.com/fr/chateau-de-verres/",
     "score_total": 282.885714,
     "score_visitors": 6.285714,
     "visitors": 6,
@@ -1811,7 +1869,14 @@
     "wikidata_id": "Q937190",
     "architectural_style": "Gothic architecture",
     "heritage_status": "Italian national heritage",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/CastelloDiVerresJuly292023_04.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/CastelloDiVerresJuly292023_04.jpg?width=800",
+    "wikidata_website": "https://valledaostaheritage.com/fr/chateau-de-verres/",
+    "significant_events": [
+      "construction",
+      "increase",
+      "architectural reconstruction",
+      "architectural reconstruction"
+    ]
   },
   {
     "position": 927,
@@ -1831,7 +1896,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.comune.cesena.fc.it/cesenaturismo/rocca-malatestiana",
     "score_total": 282.826536,
     "score_visitors": 5.333333,
     "visitors": 5,
@@ -1841,7 +1906,9 @@
     "wikidata_id": "Q1166106",
     "heritage_status": "Italian national heritage",
     "inception_year": 1450,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rocca_Malatestiana_-_Aerial_view.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rocca_Malatestiana_-_Aerial_view.jpg?width=800",
+    "architect": "Matteo Nuti",
+    "wikidata_website": "http://www.comune.cesena.fc.it/cesenaturismo/rocca-malatestiana"
   },
   {
     "position": 928,
@@ -1870,7 +1937,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Montalto_Dora_Castle",
     "wikidata_id": "Q3662715",
     "heritage_status": "Italian national heritage",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Montalto_Dora_Castello_1.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Montalto_Dora_Castello_1.JPG?width=800",
+    "wikidata_website": "http://www.castellomontaltodora.com/"
   },
   {
     "position": 935,
@@ -1920,7 +1988,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.lombardiabeniculturali.it/architetture/schede/PV110-00010/",
     "score_total": 268.5,
     "score_visitors": 6,
     "visitors": 5,
@@ -1931,7 +1999,9 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "Italian national heritage",
     "inception_year": 1360,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castello_Sforzesco_(2).JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castello_Sforzesco_(2).JPG?width=800",
+    "architect": "Bartolino da Novara",
+    "wikidata_website": "http://www.lombardiabeniculturali.it/architetture/schede/PV110-00010/"
   },
   {
     "position": 952,
@@ -1951,7 +2021,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://valledaostaheritage.com/fr/chateau-de-verres/",
     "score_total": 265.731378,
     "score_visitors": 3.75,
     "visitors": 3,
@@ -1961,7 +2031,14 @@
     "wikidata_id": "Q937190",
     "architectural_style": "Gothic architecture",
     "heritage_status": "Italian national heritage",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/CastelloDiVerresJuly292023_04.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/CastelloDiVerresJuly292023_04.jpg?width=800",
+    "wikidata_website": "https://valledaostaheritage.com/fr/chateau-de-verres/",
+    "significant_events": [
+      "construction",
+      "increase",
+      "architectural reconstruction",
+      "architectural reconstruction"
+    ]
   },
   {
     "position": 983,

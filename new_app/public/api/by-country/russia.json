@@ -8,8 +8,8 @@
     "place": "Moskou",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.751667,
+    "longitude": 37.617778,
     "founder": "",
     "era": 15,
     "castle_type": "City castle",
@@ -27,7 +27,12 @@
     "wikidata_id": "Q133274",
     "heritage_status": "part of UNESCO World Heritage Site",
     "inception_year": 1420,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Moscow_05-2012_Kremlin_22.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Moscow_05-2012_Kremlin_22.jpg?width=800",
+    "architect": "Aristotile Fioravanti",
+    "wikidata_website": "http://kreml.ru",
+    "significant_events": [
+      "Kremlin drone attack"
+    ]
   },
   {
     "position": 305,
@@ -38,9 +43,9 @@
     "place": "Vyborg",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
-    "founder": "",
+    "latitude": 60.715833,
+    "longitude": 28.728889,
+    "founder": "Torkel Knutsson",
     "era": null,
     "castle_type": "",
     "castle_concept": "",
@@ -57,7 +62,8 @@
     "wikidata_id": "Q2272243",
     "heritage_status": "federal cultural heritage site in Russia",
     "inception_year": 1293,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vyborg_06-2012_Castle_06.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vyborg_06-2012_Castle_06.jpg?width=800",
+    "wikidata_founder": "Torkel Knutsson"
   },
   {
     "position": 313,
@@ -68,8 +74,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 58.52099,
+    "longitude": 31.27579,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -77,7 +83,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.adm.nov.ru/",
     "score_total": 455.88077,
     "score_visitors": 7.166667,
     "visitors": 5,
@@ -86,7 +92,14 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Veliky_Novgorod",
     "wikidata_id": "Q2235",
     "inception_year": 859,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Veliky_Novgorod_montage_(2015).png?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Veliky_Novgorod_montage_(2015).png?width=800",
+    "wikidata_website": "http://www.adm.nov.ru/",
+    "significant_events": [
+      "Capture of Novgorod",
+      "Novgorod–Luga Offensive",
+      "Massacre of Novgorod",
+      "Novgorod-Chudovskaya  Defensive"
+    ]
   },
   {
     "position": 323,
@@ -97,8 +110,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 57.816667,
+    "longitude": 28.333333,
     "founder": "",
     "era": null,
     "castle_type": "Mountain castle",
@@ -106,7 +119,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.pskovgorod.ru/",
     "score_total": 451.476836,
     "score_visitors": 7.8,
     "visitors": 9,
@@ -115,7 +128,11 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Pskov",
     "wikidata_id": "Q2214",
     "inception_year": 903,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pskov_asv07-2018_Kremlin_before_sunset.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pskov_asv07-2018_Kremlin_before_sunset.jpg?width=800",
+    "wikidata_website": "https://www.pskovgorod.ru/",
+    "significant_events": [
+      "Siege of Pskov"
+    ]
   },
   {
     "position": 529,
@@ -126,8 +143,8 @@
     "place": "Kaliningrad",
     "region": "Pawlowo",
     "region_code": "pawlowo",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.965137,
+    "longitude": 43.071114,
     "founder": "Order of Teutonic Knights",
     "era": 13,
     "castle_type": "Harbour castle",
@@ -149,8 +166,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 59.945,
+    "longitude": 31.034722,
     "founder": "",
     "era": 15,
     "castle_type": "Harbour castle",
@@ -168,7 +185,11 @@
     "wikidata_id": "Q15339",
     "heritage_status": "part of UNESCO World Heritage Site",
     "inception_year": 1323,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Oreshek_(fortress)_view01.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Oreshek_(fortress)_view01.jpg?width=800",
+    "significant_events": [
+      "Siege of Nöteborg",
+      "Siege of Nöteborg"
+    ]
   },
   {
     "position": 718,
@@ -179,8 +200,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 59.70917,
+    "longitude": 29.03222,
     "founder": "",
     "era": null,
     "castle_type": "Mountain castle",

@@ -17,7 +17,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.carrickfergus.org/tourism/attractions/carrickfergus-castle/",
     "score_total": 663.167937,
     "score_visitors": 6.857143,
     "visitors": 34,
@@ -26,7 +26,9 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Carrickfergus_Castle",
     "wikidata_id": "Q2368960",
     "architectural_style": "Norman architecture",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Carrickfergus_Castle%2C_reflections_at_sunset_-_geograph.org.uk_-_1098306.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Carrickfergus_Castle%2C_reflections_at_sunset_-_geograph.org.uk_-_1098306.jpg?width=800",
+    "architect": "John de Courcy",
+    "wikidata_website": "http://www.carrickfergus.org/tourism/attractions/carrickfergus-castle/"
   },
   {
     "position": 252,
@@ -37,8 +39,8 @@
     "place": "",
     "region": "Antrim",
     "region_code": "antrim",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.211389,
+    "longitude": -6.579167,
     "founder": "",
     "era": null,
     "castle_type": "Rock castle",
@@ -46,7 +48,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://discovernorthernireland.com/things-to-do/dunluce-castle-medieval-irish-castle-on-the-antrim-coast-p675011",
     "score_total": 478.365083,
     "score_visitors": 6.75,
     "visitors": 15,
@@ -55,7 +57,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Dunluce_Castle",
     "wikidata_id": "Q1266167",
     "heritage_status": "scheduled monument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dunluce3.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dunluce3.JPG?width=800",
+    "wikidata_website": "https://discovernorthernireland.com/things-to-do/dunluce-castle-medieval-irish-castle-on-the-antrim-coast-p675011"
   },
   {
     "position": 781,
@@ -66,8 +69,8 @@
     "place": "",
     "region": "Down",
     "region_code": "down",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 54.0405,
+    "longitude": -6.1043,
     "founder": "",
     "era": 13,
     "castle_type": "",
@@ -78,6 +81,11 @@
     "website": "",
     "score_total": 336.109413,
     "score_visitors": 5.375,
-    "visitors": 7
+    "visitors": 7,
+    "wikipedia_extract": "Greencastle is a castle in County Down, Northern Ireland. While it dates mainly from the 13th century, it had substantial 15th- and 16th-century alterations. It was originally surrounded by outer rectangular walls with four corner towers. It is likely to have been built by Hugh de Lacy, along with Carlingford Castle on the opposite side of Carlingford Lough, to guard the narrow entry channel to the Lough, and the ferry crossing between the two.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Greencastle_County_Down.jpg/330px-Greencastle_County_Down.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Greencastle%2C_County_Down",
+    "wikidata_id": "Q5603788",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Green_Castle%2C_Greencastle%2C_Carlingford_Lough_-_geograph.org.uk_-_1095224.jpg?width=800"
   }
 ]

@@ -48,7 +48,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://doboj.gov.ba/",
     "score_total": 323.022222,
     "score_visitors": 7.444444,
     "visitors": 8,
@@ -57,7 +57,11 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Doboj",
     "wikidata_id": "Q169247",
     "inception_year": 1415,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tvr%C4%91ava_Doboj_6.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tvr%C4%91ava_Doboj_6.jpg?width=800",
+    "wikidata_website": "https://doboj.gov.ba/",
+    "significant_events": [
+      "Siege of Doboj"
+    ]
   },
   {
     "position": 941,
@@ -77,7 +81,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.srebrenik.ba",
     "score_total": 275.5,
     "score_visitors": 6.5,
     "visitors": 5,
@@ -85,7 +89,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Srebrenik_Castle.JPG/330px-Srebrenik_Castle.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Srebrenik",
     "wikidata_id": "Q999004",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg-Srebrenik.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg-Srebrenik.jpg?width=800",
+    "wikidata_website": "http://www.srebrenik.ba"
   },
   {
     "position": 972,
@@ -105,7 +110,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.opcina-tesanj.ba",
     "score_total": 240.4,
     "score_visitors": 5.8,
     "visitors": 4,
@@ -113,6 +118,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Te%C5%A1anj%2C_BiH.jpg/330px-Te%C5%A1anj%2C_BiH.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Te%C5%A1anj",
     "wikidata_id": "Q994179",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Te%C5%A1anj%2C_BiH.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Te%C5%A1anj%2C_BiH.jpg?width=800",
+    "wikidata_website": "http://www.opcina-tesanj.ba"
   }
 ]

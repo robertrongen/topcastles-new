@@ -28,7 +28,9 @@
     "architectural_style": "Gothic Revival",
     "heritage_status": "Historic Monument",
     "inception_year": 1289,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bran_Castle_TB1.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bran_Castle_TB1.jpg?width=800",
+    "wikidata_founder": "Teutonic Order",
+    "wikidata_website": "http://www.bran-castle.com"
   },
   {
     "position": 62,
@@ -59,7 +61,8 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "Historic Monument",
     "inception_year": 1440,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castelul_Corvinilor_HD.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castelul_Corvinilor_HD.jpg?width=800",
+    "wikidata_website": "https://castelulcorvinilor.ro/"
   },
   {
     "position": 89,
@@ -93,8 +96,8 @@
     "place": "Suczawa",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 47.651389,
+    "longitude": 26.255556,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -102,7 +105,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.primariasv.ro/",
     "score_total": 512.790296,
     "score_visitors": 8,
     "visitors": 16,
@@ -111,7 +114,11 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Suceava",
     "wikidata_id": "Q46400",
     "inception_year": 1388,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/View_on_Suceava_(Romania)_from_Fortess.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/View_on_Suceava_(Romania)_from_Fortess.jpg?width=800",
+    "wikidata_website": "https://www.primariasv.ro/",
+    "significant_events": [
+      "Siege of Suczawa"
+    ]
   },
   {
     "position": 178,
@@ -122,8 +129,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 47.7575,
+    "longitude": 26.23,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -131,7 +138,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.dragomirna.ro",
     "score_total": 512.470339,
     "score_visitors": 8.35,
     "visitors": 19,
@@ -141,7 +148,8 @@
     "wikidata_id": "Q289153",
     "heritage_status": "Historic Monument",
     "inception_year": 1602,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dragomirna_monastery_sunset.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dragomirna_monastery_sunset.jpg?width=800",
+    "wikidata_website": "http://www.dragomirna.ro"
   },
   {
     "position": 214,
@@ -152,8 +160,8 @@
     "place": "Câlnic (Alba)",
     "region": "Transylvanië (Siebenbürgen)",
     "region_code": "transylvania",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 45.889111,
+    "longitude": 23.660389,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -181,8 +189,8 @@
     "place": "",
     "region": "Transylvanië (Siebenbürgen)",
     "region_code": "transylvania",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 45.888611,
+    "longitude": 22.897222,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -190,10 +198,18 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://cetateadeva.ro/",
     "score_total": 491.5475,
     "score_visitors": 8.2,
-    "visitors": 4
+    "visitors": 4,
+    "wikipedia_extract": "The Fortress of Deva is a fortress located in the city of Deva, Hunedoara County, Romania, on top of a volcanic hill.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Cetatea_medieval%C4%83_Deva%2C_%C3%AEn_lumina_r%C4%83s%C4%83ritului.jpg/330px-Cetatea_medieval%C4%83_Deva%2C_%C3%AEn_lumina_r%C4%83s%C4%83ritului.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Fortress_of_Deva",
+    "wikidata_id": "Q956332",
+    "heritage_status": "Historic Monument",
+    "inception_year": 1242,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/RO_HD_Cetatea_Devei_2018_(3).jpg?width=800",
+    "wikidata_website": "http://cetateadeva.ro/"
   },
   {
     "position": 349,
@@ -204,8 +220,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 48.507778,
+    "longitude": 26.485972,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -213,7 +229,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://khotyn.dosvit.org.ua/",
     "score_total": 444.028571,
     "score_visitors": 8.428571,
     "visitors": 6,
@@ -222,7 +238,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Khotyn",
     "wikidata_id": "Q45883",
     "inception_year": 1002,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chocim_stronghold.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chocim_stronghold.jpg?width=800",
+    "wikidata_website": "https://khotyn.dosvit.org.ua/"
   },
   {
     "position": 353,
@@ -233,8 +250,8 @@
     "place": "Şeica Mică (Kleinschelken)",
     "region": "Transylvanië (Siebenbürgen)",
     "region_code": "transylvania",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 46.054807,
+    "longitude": 24.13026,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -256,8 +273,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 46.193917,
+    "longitude": 30.341111,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -265,7 +282,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.bilgorod-d.org.ua/",
     "score_total": 439.980833,
     "score_visitors": 7.166667,
     "visitors": 5,
@@ -273,7 +290,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Bilhorod_Dnistrovskyi.jpg/330px-Bilhorod_Dnistrovskyi.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Bilhorod-Dnistrovskyi",
     "wikidata_id": "Q672990",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bilhorod_Dnistrovskyi.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bilhorod_Dnistrovskyi.jpg?width=800",
+    "wikidata_website": "http://www.bilgorod-d.org.ua/"
   },
   {
     "position": 486,

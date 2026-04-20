@@ -8,8 +8,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 17.383336,
+    "longitude": 78.404169,
     "founder": "",
     "era": 15,
     "castle_type": "Rock castle",
@@ -25,7 +25,10 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Golconda_Fort_005.jpg/330px-Golconda_Fort_005.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Golconda",
     "wikidata_id": "Q4141623",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Golkonda_Fort_12.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Golkonda_Fort_12.jpg?width=800",
+    "significant_events": [
+      "Siege of Golconda"
+    ]
   },
   {
     "position": 672,
@@ -36,8 +39,8 @@
     "place": "Daulatabad",
     "region": "Maharashtra",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 19.944543,
+    "longitude": 75.217187,
     "founder": "",
     "era": null,
     "castle_type": "Rock castle",
@@ -65,8 +68,8 @@
     "place": "",
     "region": "Rajasthan",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 26.019242,
+    "longitude": 76.455178,
     "founder": "",
     "era": 13,
     "castle_type": "Rock castle",
@@ -83,7 +86,10 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Ranthambore_Fort",
     "wikidata_id": "Q2724894",
     "heritage_status": "part of UNESCO World Heritage Site",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fort_of_Ranthambore_as_visible_from_Ranthambore_National_Park.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fort_of_Ranthambore_as_visible_from_Ranthambore_National_Park.jpg?width=800",
+    "significant_events": [
+      "Siege of Ranthambore"
+    ]
   },
   {
     "position": 850,
@@ -94,9 +100,9 @@
     "place": "Rajasthan",
     "region": "Rajasthan",
     "region_code": "rajasthan",
-    "latitude": null,
-    "longitude": null,
-    "founder": "",
+    "latitude": 24.889444,
+    "longitude": 74.623889,
+    "founder": "Chitrangada Mori",
     "era": 12,
     "castle_type": "Rock castle",
     "castle_concept": "Donjon inside curtain wall",
@@ -111,7 +117,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Chittorgarh_fort.JPG/330px-Chittorgarh_fort.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Chittorgarh",
     "wikidata_id": "Q41827",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chiitaurgarh_(5089621718).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chiitaurgarh_(5089621718).jpg?width=800",
+    "wikidata_founder": "Chitrangada Mori"
   },
   {
     "position": 858,
@@ -122,8 +129,8 @@
     "place": "",
     "region": "Andhra Pradesh",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 17.9,
+    "longitude": 77.55,
     "founder": "",
     "era": 14,
     "castle_type": "Rock castle",
@@ -131,7 +138,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.bidar.nic.in/",
     "score_total": 311.3,
     "score_visitors": 6.5,
     "visitors": 3,
@@ -139,7 +146,11 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Guru_Nanak_Jhira_Sahib_gurdwara_in_Bidar%2C_Jul_2017.jpg/330px-Guru_Nanak_Jhira_Sahib_gurdwara_in_Bidar%2C_Jul_2017.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Bidar",
     "wikidata_id": "Q461922",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Entrance_to_the_Bidar_Fort.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Entrance_to_the_Bidar_Fort.JPG?width=800",
+    "wikidata_website": "http://www.bidar.nic.in/",
+    "significant_events": [
+      "Siege of Bidar"
+    ]
   },
   {
     "position": 968,
@@ -173,8 +184,8 @@
     "place": "Delhi",
     "region": "Haryana",
     "region_code": "haryana",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 28.511944,
+    "longitude": 77.260833,
     "founder": "",
     "era": 14,
     "castle_type": "Water castle",

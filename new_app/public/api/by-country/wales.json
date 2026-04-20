@@ -28,7 +28,9 @@
     "architectural_style": "medieval architecture",
     "heritage_status": "Grade I listed building",
     "inception_year": 1283,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_Caernarfon_yn_y_cyfnos_yn_2023_-_Castell_Caernarfon%2C_Gwynedd%2C_Wales_at_Dusk_-_2023_10.png?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_Caernarfon_yn_y_cyfnos_yn_2023_-_Castell_Caernarfon%2C_Gwynedd%2C_Wales_at_Dusk_-_2023_10.png?width=800",
+    "architect": "James of Saint George",
+    "wikidata_website": "http://cadw.gov.wales/splash?orig=/daysout/caernarfon-castle"
   },
   {
     "position": 7,
@@ -58,7 +60,10 @@
     "wikidata_id": "Q540964",
     "heritage_status": "Grade I listed building",
     "inception_year": 1283,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_a_Morfa_Harlech%2C_Gwynedd%2C_Mai_2024_-_Parc_Cenedlaethol_Eryri_National_Park_02.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_a_Morfa_Harlech%2C_Gwynedd%2C_Mai_2024_-_Parc_Cenedlaethol_Eryri_National_Park_02.jpg?width=800",
+    "wikidata_founder": "Edward I of England",
+    "architect": "James of Saint George",
+    "wikidata_website": "https://cadw.gov.wales/visit/places-to-visit/harlech-castle"
   },
   {
     "position": 15,
@@ -88,7 +93,10 @@
     "wikidata_id": "Q756830",
     "heritage_status": "Grade I listed building",
     "inception_year": 1283,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Conwy-Castle-0006.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Conwy-Castle-0006.jpg?width=800",
+    "wikidata_founder": "Edward I of England",
+    "architect": "James of Saint George",
+    "wikidata_website": "https://cadw.gov.wales/visit/places-to-visit/conwy-castle"
   },
   {
     "position": 16,
@@ -118,7 +126,10 @@
     "wikidata_id": "Q756815",
     "heritage_status": "Grade I listed building",
     "inception_year": 1295,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_Beaumaris_Castle%2C_Ynys_Mon_(Anglesey)%2C_Wales_44.png?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_Beaumaris_Castle%2C_Ynys_Mon_(Anglesey)%2C_Wales_44.png?width=800",
+    "wikidata_founder": "Edward I of England",
+    "architect": "James of Saint George",
+    "wikidata_website": "http://www.beaumaris.com"
   },
   {
     "position": 22,
@@ -148,7 +159,9 @@
     "wikidata_id": "Q682601",
     "heritage_status": "Grade I listed building",
     "inception_year": 1268,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Caerphilly_aerial.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Caerphilly_aerial.jpg?width=800",
+    "wikidata_founder": "Gilbert de Clare, 7th Earl of Gloucester",
+    "wikidata_website": "http://cadw.wales.gov.uk/daysout/caerphilly-castle"
   },
   {
     "position": 58,
@@ -168,7 +181,7 @@
     "condition": "Damaged",
     "remarkable": "Geboorteplaats van koning Henry VII (1485-1509).",
     "description": "",
-    "website": "",
+    "website": "https://pembrokecastle.co.uk/",
     "score_total": 666.636922,
     "score_visitors": 7.384615,
     "visitors": 116,
@@ -178,7 +191,18 @@
     "wikidata_id": "Q1422235",
     "heritage_status": "Grade I listed building",
     "inception_year": 1093,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/PembrokeCastle_2007.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/PembrokeCastle_2007.jpg?width=800",
+    "wikidata_founder": "Roger de Montgomerie, 1st Earl of Shrewsbury",
+    "wikidata_website": "https://pembrokecastle.co.uk/",
+    "significant_events": [
+      "slighting",
+      "siege",
+      "siege",
+      "siege",
+      "architectural reconstruction",
+      "geophysical survey",
+      "Siege of Pembroke"
+    ]
   },
   {
     "position": 125,
@@ -198,7 +222,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "Gelegen aan de rivier Wye op de grens van Engeland en Zuid Wales. De huidige vorm met de grote Marten's toren en het poortgebouw dateert uit de 13de-eeuw.",
-    "website": "",
+    "website": "http://cadw.wales.gov.uk/daysout/chepstow-castle/",
     "score_total": 559.257453,
     "score_visitors": 7.442623,
     "visitors": 60,
@@ -208,7 +232,8 @@
     "wikidata_id": "Q1070187",
     "heritage_status": "Grade I listed building",
     "inception_year": 1067,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chepstow_castle_-_panoramio.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chepstow_castle_-_panoramio.jpg?width=800",
+    "wikidata_website": "http://cadw.wales.gov.uk/daysout/chepstow-castle/"
   },
   {
     "position": 205,
@@ -219,8 +244,8 @@
     "place": "Raglan",
     "region": "Gwynedd",
     "region_code": "gwynedd",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.770297,
+    "longitude": -2.850063,
     "founder": "",
     "era": null,
     "castle_type": "Water castle",
@@ -228,7 +253,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://cadw.gov.wales/visit/places-to-visit/raglan-castle",
     "score_total": 500.761109,
     "score_visitors": 7.75,
     "visitors": 75,
@@ -237,7 +262,11 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Raglan_Castle",
     "wikidata_id": "Q2630723",
     "heritage_status": "Grade I listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Raglan_Castle%2C_Monmouthshire_01.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Raglan_Castle%2C_Monmouthshire_01.JPG?width=800",
+    "wikidata_website": "https://cadw.gov.wales/visit/places-to-visit/raglan-castle",
+    "significant_events": [
+      "Raglan Castle archaeological investigation"
+    ]
   },
   {
     "position": 229,
@@ -248,8 +277,8 @@
     "place": "",
     "region": "Clwyd",
     "region_code": "clwyd",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 53.2892,
+    "longitude": -3.46425,
     "founder": "King Edward I of England",
     "era": 13,
     "castle_type": "",
@@ -257,7 +286,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://cadw.gov.wales/visit/places-to-visit/rhuddlan-castle",
     "score_total": 488.997963,
     "score_visitors": 5.875,
     "visitors": 23,
@@ -267,7 +296,9 @@
     "wikidata_id": "Q1585938",
     "heritage_status": "Grade I listed building",
     "inception_year": 1277,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rhuddlan_Castle%2C_May_2012.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rhuddlan_Castle%2C_May_2012.jpg?width=800",
+    "architect": "James of Saint George",
+    "wikidata_website": "http://cadw.gov.wales/visit/places-to-visit/rhuddlan-castle"
   },
   {
     "position": 239,
@@ -297,7 +328,10 @@
     "wikidata_id": "Q1428846",
     "heritage_status": "Grade I listed building",
     "inception_year": 1277,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/YFflintLB04.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/YFflintLB04.JPG?width=800",
+    "wikidata_founder": "Edward I of England",
+    "architect": "James of Saint George",
+    "wikidata_website": "https://cadw.gov.wales/visit/places-to-visit/flint-castle"
   },
   {
     "position": 311,
@@ -317,7 +351,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://cadw.gov.wales/visit/places-to-visit/criccieth-castle",
     "score_total": 456.807154,
     "score_visitors": 7.210526,
     "visitors": 18,
@@ -327,7 +361,12 @@
     "wikidata_id": "Q1139896",
     "heritage_status": "Grade I listed building",
     "inception_year": 1230,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Criccieth_Castle_(14393993760).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Criccieth_Castle_(14393993760).jpg?width=800",
+    "wikidata_website": "https://cadw.gov.wales/visit/places-to-visit/criccieth-castle",
+    "significant_events": [
+      "slighting",
+      "archaeological excavation"
+    ]
   },
   {
     "position": 422,
@@ -358,7 +397,8 @@
     "architectural_style": "Gothic Revival",
     "heritage_status": "Grade I listed building",
     "inception_year": 1080,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cardiff_Castle_-_panoramio_(1).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cardiff_Castle_-_panoramio_(1).jpg?width=800",
+    "wikidata_website": "http://www.castell-caerdydd.com"
   },
   {
     "position": 500,
@@ -369,8 +409,8 @@
     "place": "",
     "region": "Clwyd",
     "region_code": "clwyd",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 53.180546,
+    "longitude": -3.420726,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -378,7 +418,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://cadw.gov.wales/visit/places-to-visit/denbigh-castle",
     "score_total": 401.692539,
     "score_visitors": 7.857143,
     "visitors": 6,
@@ -388,7 +428,11 @@
     "wikidata_id": "Q1186885",
     "heritage_status": "Grade I listed building",
     "inception_year": 1282,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_Dinbych%2C_Dinbych%2C_Sir_Ddinbych_(Denbigh_Castle%2C_Wales)_-_Grade_1_listed_15.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_Dinbych%2C_Dinbych%2C_Sir_Ddinbych_(Denbigh_Castle%2C_Wales)_-_Grade_1_listed_15.jpg?width=800",
+    "wikidata_website": "https://cadw.gov.wales/visit/places-to-visit/denbigh-castle",
+    "significant_events": [
+      "slighting"
+    ]
   },
   {
     "position": 515,
@@ -399,8 +443,8 @@
     "place": "",
     "region": "Dyfed",
     "region_code": "dyfed",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.739408,
+    "longitude": -4.305735,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -408,7 +452,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://cadw.gov.wales/visit/places-to-visit/kidwelly-castle",
     "score_total": 397.371241,
     "score_visitors": 8.1,
     "visitors": 9,
@@ -418,7 +462,8 @@
     "wikidata_id": "Q1585849",
     "heritage_status": "Grade I listed building",
     "inception_year": 1106,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kidwelly_castle_whole.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kidwelly_castle_whole.JPG?width=800",
+    "wikidata_website": "https://cadw.gov.wales/visit/places-to-visit/kidwelly-castle"
   },
   {
     "position": 540,
@@ -429,8 +474,8 @@
     "place": "(Carmarthenshire)",
     "region": "Dyfed",
     "region_code": "dyfed",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.854551,
+    "longitude": -3.935246,
     "founder": "Rhyps ad Gruffydd",
     "era": null,
     "castle_type": "",
@@ -438,7 +483,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.carregcennencastle.com/",
     "score_total": 393.057345,
     "score_visitors": 8.055556,
     "visitors": 17,
@@ -447,7 +492,11 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Carreg_Cennen_Castle",
     "wikidata_id": "Q3403691",
     "heritage_status": "Grade I listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Carreg_Cennen_seen_from_the_southeast_-_geograph.org.uk_-_211604.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Carreg_Cennen_seen_from_the_southeast_-_geograph.org.uk_-_211604.jpg?width=800",
+    "wikidata_website": "http://www.carregcennencastle.com/",
+    "significant_events": [
+      "slighting"
+    ]
   },
   {
     "position": 563,
@@ -458,8 +507,8 @@
     "place": "Abergavenny",
     "region": "Gwynedd",
     "region_code": "gwynedd",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.8459,
+    "longitude": -2.90206,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -467,10 +516,18 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://cadw.gov.wales/visit/places-to-visit/white-castle",
     "score_total": 385.450061,
     "score_visitors": 6.352941,
-    "visitors": 16
+    "visitors": 16,
+    "wikipedia_extract": "White Castle, also known historically as Llantilio Castle, is a ruined castle near the village of Llantilio Crossenny in Monmouthshire, Wales. The fortification was established by the Normans in the wake of the invasion of England in 1066, to protect the route from Wales to Hereford. Possibly commissioned by William fitz Osbern, the Earl of Hereford, it comprised three large earthworks with timber defences. In 1135, a major Welsh revolt took place and in response King Stephen brought together White Castle and its sister fortifications of Grosmont and Skenfrith to form a lordship known as the \"Three Castles\", which continued to play a role in defending the region from Welsh attack for several centuries.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/White_Castle%2C_Cadw_image.jpg/330px-White_Castle%2C_Cadw_image.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/White_Castle%2C_Monmouthshire",
+    "wikidata_id": "Q1985853",
+    "heritage_status": "Grade I listed building",
+    "inception_year": 1130,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/White_Castle%2C_Cadw_image.jpg?width=800",
+    "wikidata_website": "https://cadw.gov.wales/visit/places-to-visit/white-castle"
   },
   {
     "position": 570,
@@ -481,8 +538,8 @@
     "place": "",
     "region": "Glamorgan",
     "region_code": "glamorgan",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.576995,
+    "longitude": -4.002707,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -490,7 +547,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://oystermouthcastle.wordpress.com/",
     "score_total": 383.489454,
     "score_visitors": 7.6,
     "visitors": 9,
@@ -499,7 +556,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Oystermouth_Castle",
     "wikidata_id": "Q7116379",
     "heritage_status": "Grade I listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Oystermouth_Castle_-_geograph.org.uk_-_292767.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Oystermouth_Castle_-_geograph.org.uk_-_292767.jpg?width=800",
+    "wikidata_website": "https://oystermouthcastle.wordpress.com/"
   },
   {
     "position": 646,
@@ -510,8 +568,8 @@
     "place": "",
     "region": "Dyfed",
     "region_code": "dyfed",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 52.413278,
+    "longitude": -4.089504,
     "founder": "King Edward I of England",
     "era": 13,
     "castle_type": "",
@@ -540,16 +598,16 @@
     "place": "",
     "region": "Gwynedd",
     "region_code": "gwynedd",
-    "latitude": null,
-    "longitude": null,
-    "founder": "",
+    "latitude": 53.053056,
+    "longitude": -3.908333,
+    "founder": "Llywelyn ab Iorwerth",
     "era": null,
     "castle_type": "",
     "castle_concept": "",
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://cadw.gov.wales/visit/places-to-visit/dolwyddelan-castle",
     "score_total": 350.180093,
     "score_visitors": 6.857143,
     "visitors": 6,
@@ -558,7 +616,9 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Dolwyddelan_Castle",
     "wikidata_id": "Q2369922",
     "heritage_status": "Grade I listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_Dolwyddelan1.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_Dolwyddelan1.jpg?width=800",
+    "wikidata_founder": "Llywelyn ab Iorwerth",
+    "wikidata_website": "https://cadw.gov.wales/visit/places-to-visit/dolwyddelan-castle"
   },
   {
     "position": 735,
@@ -569,8 +629,8 @@
     "place": "",
     "region": "Powys",
     "region_code": "powys",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 52.1492,
+    "longitude": -3.39855,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -598,8 +658,8 @@
     "place": "",
     "region": "Clwyd",
     "region_code": "clwyd",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 53.199961,
+    "longitude": -3.067223,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -607,7 +667,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://cadw.gov.wales/daysout/ewloe_castle/?lang=en",
     "score_total": 338.2,
     "score_visitors": 7.75,
     "visitors": 7,
@@ -617,7 +677,8 @@
     "wikidata_id": "Q5419069",
     "heritage_status": "Grade I listed building",
     "inception_year": 1257,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ewloe_Castle.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ewloe_Castle.JPG?width=800",
+    "wikidata_website": "http://cadw.gov.wales/daysout/ewloe_castle/?lang=en"
   },
   {
     "position": 815,
@@ -628,8 +689,8 @@
     "place": "Ross-on-Wye (Hereford & Worcester)",
     "region": "Gwent",
     "region_code": "gwent",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.8783,
+    "longitude": -2.79021,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -637,7 +698,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.nationaltrust.org.uk/skenfrith-castle/",
     "score_total": 324.283564,
     "score_visitors": 5.470588,
     "visitors": 16,
@@ -646,7 +707,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Skenfrith_Castle",
     "wikidata_id": "Q7534629",
     "heritage_status": "Grade II* listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/SKENFRITH_CASTLE.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/SKENFRITH_CASTLE.jpg?width=800",
+    "wikidata_website": "https://www.nationaltrust.org.uk/skenfrith-castle/"
   },
   {
     "position": 820,
@@ -657,8 +719,8 @@
     "place": "",
     "region": "Gwynedd",
     "region_code": "gwynedd",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 52.658258,
+    "longitude": -3.971067,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -666,7 +728,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://cadw.gov.wales/visit/places-to-visit/castell-y-bere",
     "score_total": 323.130152,
     "score_visitors": 6.666667,
     "visitors": 8,
@@ -676,7 +738,8 @@
     "wikidata_id": "Q1048693",
     "heritage_status": "scheduled monument",
     "inception_year": 1221,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Awyrlun_o_Gastell_y_Bere_yn_Hydref_2024_-_Aerial_image_of_Welsh_castle_Castell_y_Bere_near_Tywyn%2C_Gwynedd%2C_Wales_50.png?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Awyrlun_o_Gastell_y_Bere_yn_Hydref_2024_-_Aerial_image_of_Welsh_castle_Castell_y_Bere_near_Tywyn%2C_Gwynedd%2C_Wales_50.png?width=800",
+    "wikidata_website": "https://cadw.gov.wales/visit/places-to-visit/castell-y-bere"
   },
   {
     "position": 840,
@@ -687,8 +750,8 @@
     "place": "",
     "region": "Dyfed",
     "region_code": "dyfed",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.645485,
+    "longitude": -4.799891,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -696,7 +759,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.manorbiercastle.co.uk/",
     "score_total": 317.994401,
     "score_visitors": 5.888889,
     "visitors": 17,
@@ -706,7 +769,8 @@
     "wikidata_id": "Q1508342",
     "heritage_status": "Grade I listed building",
     "inception_year": 1200,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Manorbier_Castle2.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Manorbier_Castle2.jpg?width=800",
+    "wikidata_website": "http://www.manorbiercastle.co.uk/"
   },
   {
     "position": 877,
@@ -717,8 +781,8 @@
     "place": "Carew",
     "region": "Dyfed",
     "region_code": "dyfed",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.698439,
+    "longitude": -4.830659,
     "founder": "Sir Nicholas de Carew",
     "era": 13,
     "castle_type": "Harbour castle",
@@ -736,7 +800,8 @@
     "wikidata_id": "Q752721",
     "heritage_status": "Grade I listed building",
     "inception_year": 1270,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Carew_Castle_Summer_2018.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Carew_Castle_Summer_2018.jpg?width=800",
+    "wikidata_website": "http://www.carewcastle.com"
   },
   {
     "position": 919,
@@ -756,7 +821,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://cadw.gov.wales/visit/places-to-visit/grosmont-castle",
     "score_total": 285.51009,
     "score_visitors": 6,
     "visitors": 5,
@@ -765,7 +830,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Grosmont_Castle",
     "wikidata_id": "Q3402778",
     "heritage_status": "Grade I listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Grosmont_Castle_from_the_south%2C_2011.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Grosmont_Castle_from_the_south%2C_2011.jpg?width=800",
+    "wikidata_website": "https://cadw.gov.wales/visit/places-to-visit/grosmont-castle"
   },
   {
     "position": 937,
@@ -776,8 +842,8 @@
     "place": "Chirk (Wrexham, Powis)",
     "region": "Clwyd",
     "region_code": "clwyd",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 52.935,
+    "longitude": -3.08972,
     "founder": "Roger Mortimer, 1st Earl of March",
     "era": 13,
     "castle_type": "Rock castle",
@@ -785,7 +851,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.nationaltrust.org.uk/chirk-castle",
     "score_total": 279.171429,
     "score_visitors": 6.571429,
     "visitors": 6,
@@ -795,7 +861,8 @@
     "wikidata_id": "Q3306356",
     "heritage_status": "Grade I listed building",
     "inception_year": 1295,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_y_Waun%2C_y_Waun%2C_Sir_Wrecsam_-_Chirk_Castle%2C_Wrexham_Borough%2C_Wales_07.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_y_Waun%2C_y_Waun%2C_Sir_Wrecsam_-_Chirk_Castle%2C_Wrexham_Borough%2C_Wales_07.jpg?width=800",
+    "wikidata_website": "https://www.nationaltrust.org.uk/chirk-castle"
   },
   {
     "position": 940,
@@ -806,8 +873,8 @@
     "place": "Llandeilo (Carmarthenshire)",
     "region": "Dyfed",
     "region_code": "dyfed",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.876802,
+    "longitude": -4.018475,
     "founder": "Rhys ap Gruffydd, ruler of Deheubarth from 1155 to 1197",
     "era": 12,
     "castle_type": "Rock castle",
@@ -835,8 +902,8 @@
     "place": "Welshpool",
     "region": "Powys",
     "region_code": "powys",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 52.65,
+    "longitude": -3.160556,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -844,7 +911,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.nationaltrust.org.uk/powis-castle-and-garden",
     "score_total": 266.077075,
     "score_visitors": 5.833333,
     "visitors": 5,
@@ -853,7 +920,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Powis_Castle",
     "wikidata_id": "Q1377263",
     "heritage_status": "Grade I listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/PowisCastle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/PowisCastle.jpg?width=800",
+    "wikidata_website": "https://www.nationaltrust.org.uk/powis-castle-and-garden"
   },
   {
     "position": 965,
@@ -864,8 +932,8 @@
     "place": "",
     "region": "Gwynedd",
     "region_code": "gwynedd",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 53.116578,
+    "longitude": -4.114197,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -873,7 +941,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://cadw.gov.wales/visit/places-to-visit/dolbadarn-castle",
     "score_total": 253.158959,
     "score_visitors": 5.6875,
     "visitors": 15,
@@ -883,7 +951,8 @@
     "wikidata_id": "Q2078555",
     "heritage_status": "Grade I listed building",
     "inception_year": 1220,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dolbadarn_Castle_Cadw.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dolbadarn_Castle_Cadw.jpg?width=800",
+    "wikidata_website": "https://cadw.gov.wales/visit/places-to-visit/dolbadarn-castle"
   },
   {
     "position": 984,
@@ -894,8 +963,8 @@
     "place": "Laugharne (Carmarthensire)",
     "region": "Dyfed",
     "region_code": "dyfed",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 51.7696,
+    "longitude": -4.46205,
     "founder": "",
     "era": null,
     "castle_type": "Rock castle",
@@ -903,7 +972,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://cadw.gov.wales/visit/places-to-visit/laugharne-castle",
     "score_total": 217.466667,
     "score_visitors": 5.333333,
     "visitors": 8,
@@ -912,6 +981,10 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Laugharne_Castle",
     "wikidata_id": "Q911714",
     "heritage_status": "Grade I listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Laugharne_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Laugharne_Castle.jpg?width=800",
+    "wikidata_website": "https://cadw.gov.wales/visit/places-to-visit/laugharne-castle",
+    "significant_events": [
+      "slighting"
+    ]
   }
 ]

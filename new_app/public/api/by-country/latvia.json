@@ -8,8 +8,8 @@
     "place": "Cesis",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 57.313333,
+    "longitude": 25.27,
     "founder": "Order of Teutonic Knights",
     "era": null,
     "castle_type": "Rock castle",
@@ -17,10 +17,22 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.cesiscastle.lv/en/",
     "score_total": 503.66754,
     "score_visitors": 8.25,
-    "visitors": 11
+    "visitors": 11,
+    "wikipedia_extract": "Cēsis Castle is one of the most iconic and best preserved medieval castles in Latvia. The foundations of the castle were laid 800 years ago by the Livonian Brothers of the Sword. The most prosperous period Cēsis Castle experienced was during its next owners, the Teutonic Order. It became one of the key administrative and economic centers of the Teutonic Order in Livonia and was the seat of the Landmeister in Livland. The first serious damage was done to the castle during the Livonian War, when it was besieged by the army of Ivan the Terrible. In the course of the siege of 1577 approximately 300 people within the castle committed mass suicide by blowing themselves up with gunpowder. Cēsis Castle was still in use during the following century but it fell into disuse after the Great Northern War. Today the castle is the most visited heritage site in Cēsis and one of the 'must see' destinations in the Baltic states.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/CesuPils_2017-09-10.jpg/330px-CesuPils_2017-09-10.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/C%C4%93sis_Castle",
+    "wikidata_id": "Q2512369",
+    "heritage_status": "archaeological monument of state importance in Latvia",
+    "inception_year": 1209,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cesis_Burgruine1.jpg?width=800",
+    "wikidata_founder": "Wenno",
+    "wikidata_website": "http://www.cesiscastle.lv/en/",
+    "significant_events": [
+      "Siege of Cēsis Castle"
+    ]
   },
   {
     "position": 455,
@@ -31,8 +43,8 @@
     "place": "Turaida",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 57.183333,
+    "longitude": 24.833333,
     "founder": "Albert, archibishop of Riga, Order of Teutonic Knights",
     "era": 13,
     "castle_type": "Mountain castle",
@@ -59,8 +71,8 @@
     "place": "Sigulda",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 57.153889,
+    "longitude": 24.854444,
     "founder": "Order of Teutonic Knights",
     "era": 13,
     "castle_type": "Rock castle",
@@ -68,7 +80,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://sigulda.lv/public",
     "score_total": 383.629452,
     "score_visitors": 7.222222,
     "visitors": 8,
@@ -77,7 +89,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Sigulda",
     "wikidata_id": "Q465698",
     "inception_year": 1207,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/The_new_Sigulda_castle_(2).JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/The_new_Sigulda_castle_(2).JPG?width=800",
+    "wikidata_website": "http://sigulda.lv/public"
   },
   {
     "position": 574,
@@ -88,8 +101,8 @@
     "place": "Riga",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.9475,
+    "longitude": 24.106944,
     "founder": "Order of Teutonic Knights",
     "era": 16,
     "castle_type": "City castle",
@@ -97,7 +110,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.riga.lv/",
     "score_total": 383.107043,
     "score_visitors": 5,
     "visitors": 6,
@@ -106,7 +119,12 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Riga",
     "wikidata_id": "Q1773",
     "inception_year": 1201,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vistas_desde_la_iglesia_de_San_Pedro%2C_Riga%2C_Letonia%2C_2012-08-07%2C_DD_12.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vistas_desde_la_iglesia_de_San_Pedro%2C_Riga%2C_Letonia%2C_2012-08-07%2C_DD_12.JPG?width=800",
+    "wikidata_founder": "Albert of Riga",
+    "wikidata_website": "https://www.riga.lv/",
+    "significant_events": [
+      "Siege of Riga"
+    ]
   },
   {
     "position": 792,
@@ -117,8 +135,8 @@
     "place": "Ikskile",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.83751,
+    "longitude": 24.49752,
     "founder": "Order of Teutonic Knights",
     "era": 12,
     "castle_type": "Harbour castle",
@@ -144,8 +162,8 @@
     "place": "Koknese",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.638056,
+    "longitude": 25.4175,
     "founder": "Order of Teutonic Knights",
     "era": null,
     "castle_type": "Harbour castle",
@@ -156,6 +174,13 @@
     "website": "",
     "score_total": 282.4,
     "score_visitors": 5.2,
-    "visitors": 4
+    "visitors": 4,
+    "wikipedia_extract": "Koknese Castle is a complex in Koknese, in the Vidzeme region of Latvia, dating from the 13th century. The castle was situated on a high bluff overlooking the Daugava river valley. In 1965 a hydroelectric dam was built downriver, creating a water reservoir that partially submerged the castle and flooded the surrounding valley.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/12_Kokneses-pils-no-pret-kr-29sep07.jpg/330px-12_Kokneses-pils-no-pret-kr-29sep07.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Koknese_Castle",
+    "wikidata_id": "Q3744576",
+    "heritage_status": "National architectural monument of Latvia",
+    "inception_year": 1209,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/12_Kokneses-pils-no-pret-kr-29sep07.jpg?width=800"
   }
 ]

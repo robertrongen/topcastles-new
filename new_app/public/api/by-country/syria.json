@@ -27,7 +27,10 @@
     "wikidata_id": "Q177549",
     "heritage_status": "part of UNESCO World Heritage Site",
     "inception_year": 1031,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Krak_des_Chevaliers_01.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Krak_des_Chevaliers_01.jpg?width=800",
+    "significant_events": [
+      "list of World Heritage in Danger"
+    ]
   },
   {
     "position": 72,
@@ -104,7 +107,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://alp-city.sy/",
     "score_total": 533.217511,
     "score_visitors": 8.15625,
     "visitors": 63,
@@ -113,7 +116,17 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Aleppo",
     "wikidata_id": "Q41183",
     "inception_year": 5000,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aleppo%2C_View_of_the_city%2C_Syria.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aleppo%2C_View_of_the_city%2C_Syria.jpg?width=800",
+    "wikidata_website": "https://alp-city.sy/",
+    "significant_events": [
+      "1947 anti-Jewish riots in Aleppo",
+      "Siege of Sheikh Suleiman",
+      "Siege of Aleppo",
+      "Siege of Aleppo",
+      "Siege of Aleppo",
+      "Siege of Aleppo",
+      "Siege of Aleppo"
+    ]
   },
   {
     "position": 597,
@@ -124,8 +137,8 @@
     "place": "Masyaf",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 35.06624,
+    "longitude": 36.34329,
     "founder": "Sinan",
     "era": 12,
     "castle_type": "Rock castle",
@@ -136,7 +149,12 @@
     "website": "",
     "score_total": 378.166667,
     "score_visitors": 7.833333,
-    "visitors": 5
+    "visitors": 5,
+    "wikipedia_extract": "Masyaf Castle is a medieval structure in the town of Masyaf in Hama Governorate, Syria, situated in the Orontes Valley, approximately 40 kilometres to the west of Hama. It served to protect the approach to other Ismaili castles in the Syrian Coastal Mountain Range at a site controlling the trade routes to cities further inland such as Banyas. The castle itself stands on a platform about 20 metres above the surrounding plain. It became famous as the stronghold from which Rashid ad-Din Sinan, known as the Old Man of the Mountain, ruled from 1166 to 1193. He was a leader of the Syrian branch of the Shia Nizari Isma'ili sect, also known as the Assassins, and a figure in the history of the Crusades.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/The_Masyaf_Castle.jpg/330px-The_Masyaf_Castle.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Masyaf_Castle",
+    "wikidata_id": "Q602945",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Masyaf_-_Gesamtansicht.jpg?width=800"
   },
   {
     "position": 676,
@@ -147,8 +165,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 34.820817,
+    "longitude": 36.117344,
     "founder": "",
     "era": 12,
     "castle_type": "Rock castle",
@@ -175,8 +193,8 @@
     "place": "Akkar el-Atika",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 34.550556,
+    "longitude": 36.078056,
     "founder": "Muhriz ibn Akkar",
     "era": 13,
     "castle_type": "",
@@ -203,8 +221,8 @@
     "place": "Qalaat Yahamur",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 34.812222,
+    "longitude": 35.970556,
     "founder": "",
     "era": 13,
     "castle_type": "",

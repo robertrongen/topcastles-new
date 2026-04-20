@@ -26,7 +26,12 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Malbork",
     "wikidata_id": "Q146820",
     "inception_year": 1201,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Panorama_of_Malbork_Castle%2C_part_4.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Panorama_of_Malbork_Castle%2C_part_4.jpg?width=800",
+    "wikidata_website": "http://www.malbork.pl/",
+    "significant_events": [
+      "Siege of Marienburg",
+      "Siege of Marienburg"
+    ]
   },
   {
     "position": 50,
@@ -57,7 +62,9 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "Historical monument of Poland",
     "inception_year": 1001,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wawel_on_Wisla.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wawel_on_Wisla.JPG?width=800",
+    "architect": "Francesco Fiorentino",
+    "wikidata_website": "https://wawel.krakow.pl/"
   },
   {
     "position": 97,
@@ -86,7 +93,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Kwidzyn",
     "wikidata_id": "Q326582",
     "inception_year": 1233,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/444._Collage_of_views_of_Kwidzyn.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/444._Collage_of_views_of_Kwidzyn.jpg?width=800",
+    "wikidata_website": "http://www.kwidzyn.pl"
   },
   {
     "position": 105,
@@ -137,7 +145,21 @@
     "website": "",
     "score_total": 534.375766,
     "score_visitors": 6.714286,
-    "visitors": 34
+    "visitors": 34,
+    "wikipedia_extract": "Bolków Castle is a castle located in Bolków on the Castle Hill, with a 396 metres, where the hillside is cut by the Nysa Szalona river, with a sharp precipice ; the eastern side of the hill gradually lowers, taken up by the town. The castle is an upland stronghold, covering an area of 7600 m2. The castle is located in Bolków, Lower Silesian Voivodeship; in Poland.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/2018_Zamek_w_Bolkowie_02.jpg/330px-2018_Zamek_w_Bolkowie_02.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Bolk%C3%B3w_Castle",
+    "wikidata_id": "Q891409",
+    "architectural_style": "Gothic art",
+    "heritage_status": "immovable monument in Poland",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/2018_Zamek_w_Bolkowie_02.jpg?width=800",
+    "significant_events": [
+      "construction",
+      "renovation",
+      "renovation",
+      "renovation",
+      "renovation"
+    ]
   },
   {
     "position": 164,
@@ -157,7 +179,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "Royal castle, destroyed by fire and Swedish troops In XVII century, rebuilt in 1951",
-    "website": "",
+    "website": "http://www.bedzin.pl",
     "score_total": 522.20332,
     "score_visitors": 7.725,
     "visitors": 39,
@@ -165,7 +187,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/B%C4%99dzin_-_Zamek_obronny_z_XIVw..jpg/330px-B%C4%99dzin_-_Zamek_obronny_z_XIVw..jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/B%C4%99dzin",
     "wikidata_id": "Q461513",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C4%99dzin_panorama.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C4%99dzin_panorama.jpg?width=800",
+    "wikidata_website": "http://www.bedzin.pl"
   },
   {
     "position": 179,
@@ -185,7 +208,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "Castle built by Czech King, then owned by Silesian dukes and nobles, during World War II German’s headquarter of coders.",
-    "website": "",
+    "website": "http://www.hotelewam.pl/631-zamek-czocha-sucha.html",
     "score_total": 512.195184,
     "score_visitors": 7.766667,
     "visitors": 29,
@@ -194,7 +217,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Czocha_Castle",
     "wikidata_id": "Q1014312",
     "heritage_status": "immovable monument in Poland",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/2021-08_Zamek_Czocha_(1).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/2021-08_Zamek_Czocha_(1).jpg?width=800",
+    "wikidata_website": "http://www.hotelewam.pl/631-zamek-czocha-sucha.html"
   },
   {
     "position": 197,
@@ -214,7 +238,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "King’s castle where royal treasure was stored, also royal prison in XV century, destroyed during Polish - Swedish war in xvii century",
-    "website": "",
+    "website": "http://www.checiny.pl",
     "score_total": 503.228199,
     "score_visitors": 7.5625,
     "visitors": 31,
@@ -223,7 +247,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Ch%C4%99ciny",
     "wikidata_id": "Q991924",
     "inception_year": 1275,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/20180817_Ch%C4%99ciny_-_widok_z_zamku_-_1122_9051_DxO.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/20180817_Ch%C4%99ciny_-_widok_z_zamku_-_1122_9051_DxO.jpg?width=800",
+    "wikidata_website": "http://www.checiny.pl"
   },
   {
     "position": 266,
@@ -246,7 +271,14 @@
     "website": "",
     "score_total": 473.698696,
     "score_visitors": 6.809524,
-    "visitors": 20
+    "visitors": 20,
+    "wikipedia_extract": "The Castle of the Masovian Dukes is a medieval Brick Gothic castle located in the village of Czersk, Masovian Voivodeship, in Poland.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Czersk_zamek_2014.JPG/330px-Czersk_zamek_2014.JPG",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Czersk_Castle",
+    "wikidata_id": "Q9386588",
+    "architectural_style": "Gothic art",
+    "heritage_status": "immovable monument in Poland",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Zamek_ksi%C4%85%C5%BC%C4%85t_mazowieckich_w_Czersku_2.jpg?width=800"
   },
   {
     "position": 319,
@@ -266,7 +298,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "Bishop’s castle used by Teutons, after 1466 in Polish borders used by bishop’s of Warmia, in 17th century bishop Stefan Wydzga built palace next to castle.",
-    "website": "",
+    "website": "http://www.lidzbarkwarminski.pl",
     "score_total": 452.900279,
     "score_visitors": 7.133333,
     "visitors": 14,
@@ -275,7 +307,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Lidzbark_Warmi%C5%84ski",
     "wikidata_id": "Q751123",
     "inception_year": 1201,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/646547_Lidzbark_Warmi%C5%84ski_zamek_krzy%C5%BCacki_01.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/646547_Lidzbark_Warmi%C5%84ski_zamek_krzy%C5%BCacki_01.JPG?width=800",
+    "wikidata_website": "http://www.lidzbarkwarminski.pl"
   },
   {
     "position": 321,
@@ -295,7 +328,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "Biggest castle at Polish Jura with (32 000 cubic meters)",
     "description": "Nobles castle, In XVI century enlarged and rebuilt in renaissance style by Boner familly, destroyed by Swedes In XVII century,",
-    "website": "",
+    "website": "http://www.ogrodzieniec.pl",
     "score_total": 452.22416,
     "score_visitors": 7.631579,
     "visitors": 37,
@@ -303,7 +336,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Ko%C5%9Bci%C3%B3%C5%82_Przemienienia_Pa%C5%84skiego_w_Ogrodzie%C5%84cu3.jpg/330px-Ko%C5%9Bci%C3%B3%C5%82_Przemienienia_Pa%C5%84skiego_w_Ogrodzie%C5%84cu3.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Ogrodzieniec",
     "wikidata_id": "Q1006772",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ogrodzieniec_ko%C5%9Bci%C3%B3%C5%82_DK12.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ogrodzieniec_ko%C5%9Bci%C3%B3%C5%82_DK12.jpg?width=800",
+    "wikidata_website": "http://www.ogrodzieniec.pl"
   },
   {
     "position": 358,
@@ -323,7 +357,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "Silesian dukes castle, then owned by nobles, destroyed by fire In 1657",
-    "website": "",
+    "website": "http://www.chojnik.pl/pl",
     "score_total": 440.309902,
     "score_visitors": 7.6875,
     "visitors": 15,
@@ -334,7 +368,8 @@
     "architectural_style": "Gothic architecture",
     "heritage_status": "immovable monument in Poland",
     "inception_year": 1292,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chojnik(js)3.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chojnik(js)3.jpg?width=800",
+    "wikidata_website": "http://www.chojnik.pl/pl"
   },
   {
     "position": 379,
@@ -377,7 +412,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.um.ciechanow.pl",
     "score_total": 432.334389,
     "score_visitors": 6.769231,
     "visitors": 12,
@@ -385,7 +420,9 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Ciechan%C3%B3w%2C_zamek_ksi%C4%85%C5%BC%C4%85t_mazowieckich.jpg/330px-Ciechan%C3%B3w%2C_zamek_ksi%C4%85%C5%BC%C4%85t_mazowieckich.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Ciechan%C3%B3w",
     "wikidata_id": "Q745051",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/04_-_Ciechan%C3%B3w_Townhall_-_01.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/04_-_Ciechan%C3%B3w_Townhall_-_01.jpg?width=800",
+    "wikidata_founder": null,
+    "wikidata_website": "http://www.um.ciechanow.pl"
   },
   {
     "position": 390,
@@ -436,7 +473,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "Castle where treasure of great master of Teutonic Order was stored, since 1466 owned by Polish King, destroyed in XIX century",
-    "website": "",
+    "website": "http://www.radzynchelminski.eu/www/",
     "score_total": 429.736737,
     "score_visitors": 6.891892,
     "visitors": 36,
@@ -444,7 +481,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Zamek_radzyn_3.jpg/330px-Zamek_radzyn_3.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Radzy%C5%84_Che%C5%82mi%C5%84ski",
     "wikidata_id": "Q991917",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ruiny_sredniowiecznego_zamku_w_Radzyniu_Chelminskim_z_zachowanymi_basztami.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ruiny_sredniowiecznego_zamku_w_Radzyniu_Chelminskim_z_zachowanymi_basztami.JPG?width=800",
+    "wikidata_website": "http://www.radzynchelminski.eu/www/"
   },
   {
     "position": 412,
@@ -487,7 +525,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.bobolice.pl/",
     "score_total": 421.0475,
     "score_visitors": 7.5,
     "visitors": 9,
@@ -495,7 +533,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Ko%C5%9Bci%C3%B3%C5%82_par._p.w.Wniebowzi%C4%99cia_NMP_w_Bobolicach.jpg/330px-Ko%C5%9Bci%C3%B3%C5%82_par._p.w.Wniebowzi%C4%99cia_NMP_w_Bobolicach.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Bobolice",
     "wikidata_id": "Q511956",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/W_Bobolicach_przy_fontannie_-_panorama.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/W_Bobolicach_przy_fontannie_-_panorama.jpg?width=800",
+    "wikidata_website": "http://www.bobolice.pl/"
   },
   {
     "position": 441,
@@ -515,7 +554,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "Originally royal castle, then owned by nobles, destroyed during Swedish invasion in 1655 (II North War)",
-    "website": "",
+    "website": "https://www.olsztyn.eu/o-olsztynie.html",
     "score_total": 415.922457,
     "score_visitors": 7.642857,
     "visitors": 27,
@@ -524,7 +563,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Olsztyn",
     "wikidata_id": "Q82765",
     "inception_year": 1353,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Zamek_Olsztyn_(2).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Zamek_Olsztyn_(2).jpg?width=800",
+    "wikidata_website": "https://www.olsztyn.eu/o-olsztynie.html"
   },
   {
     "position": 452,
@@ -547,7 +587,14 @@
     "website": "",
     "score_total": 413.295571,
     "score_visitors": 7.466667,
-    "visitors": 14
+    "visitors": 14,
+    "wikipedia_extract": "Golub Castle is a four-wing conventional Teutonic fortress built at the turn of the fourteenth century, built on a hill as a look-out point over the whole town of Golub-Dobrzyń. The castle was initially constructed in a brick Gothic architectural style and a Renaissance attic was added in the 17th century. It is located in Golub-Dobrzyń, approximately 43km north-east of Toruń.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Golub-Dobrzy%C5%84%2C_zamek_krzy%C5%BCacki.jpg/330px-Golub-Dobrzy%C5%84%2C_zamek_krzy%C5%BCacki.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Golub_Castle",
+    "wikidata_id": "Q2379846",
+    "heritage_status": "immovable monument in Poland",
+    "inception_year": 1293,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Golub-Dobrzy%C5%84%2C_zamek_krzy%C5%BCacki.jpg?width=800"
   },
   {
     "position": 476,
@@ -594,7 +641,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "Teutonic castle from 13th century, then owned by Prussian prince, ruined during II north war, by fire in 18th century and Napoleon’s wars, bombed by Russians during World war II, rebuilt in 60’s",
-    "website": "",
+    "website": "http://www.nidzica.pl/",
     "score_total": 402.341881,
     "score_visitors": 7.690909,
     "visitors": 54,
@@ -602,7 +649,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Nidzica_Castle%2C_Poland%2C_2015%2C_09.jpg/330px-Nidzica_Castle%2C_Poland%2C_2015%2C_09.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Nidzica",
     "wikidata_id": "Q527768",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/SM_Nidzica_Ratusz_(3)_ID_647026.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/SM_Nidzica_Ratusz_(3)_ID_647026.jpg?width=800",
+    "wikidata_website": "http://www.nidzica.pl/"
   },
   {
     "position": 511,
@@ -622,7 +670,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "Castle and cathedral founded by Henryk Wogenap, owned by bishops of Varmia, Nicolas Copernicus has writen here “de revolutionibus orbium coelestium”, destroyed by Russians during WWII then rebuilt.",
-    "website": "",
+    "website": "https://www.frombork.pl/",
     "score_total": 397.862681,
     "score_visitors": 8.133333,
     "visitors": 14,
@@ -630,7 +678,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Frauenburger_Dom_2010.jpg/330px-Frauenburger_Dom_2010.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Frombork",
     "wikidata_id": "Q497115",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Frauenburger_Dom_2010.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Frauenburger_Dom_2010.jpg?width=800",
+    "wikidata_website": "https://www.frombork.pl/"
   },
   {
     "position": 542,
@@ -673,7 +722,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "Castle built by teutonic knights, then owned by bishops of Varmia, rebuilt in renaissance style in 16th century, transformed into prison by prussians in 18th century, then destroyed by fire in 1807, restored in 1829 by evangelic county and in 1980 museum and hotel by foundation “Pojezierze”.",
-    "website": "",
+    "website": "https://www.reszel.pl/",
     "score_total": 390.372976,
     "score_visitors": 8.142857,
     "visitors": 13,
@@ -682,7 +731,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Reszel",
     "wikidata_id": "Q986841",
     "inception_year": 1241,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Reszelska_Star%C3%B3wka-cz%C4%99%C5%9B%C4%87_po%C5%82udniowa_2011-10-09_-_panoramio.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Reszelska_Star%C3%B3wka-cz%C4%99%C5%9B%C4%87_po%C5%82udniowa_2011-10-09_-_panoramio.jpg?width=800",
+    "wikidata_website": "https://www.reszel.pl/"
   },
   {
     "position": 573,
@@ -702,7 +752,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://lublin.eu",
     "score_total": 383.13364,
     "score_visitors": 7.230769,
     "visitors": 12,
@@ -711,7 +761,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Lublin",
     "wikidata_id": "Q37333",
     "inception_year": 1317,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Lublin_PanoramaStaregoMiasta.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Lublin_PanoramaStaregoMiasta.JPG?width=800",
+    "wikidata_website": "https://lublin.eu"
   },
   {
     "position": 620,
@@ -731,7 +782,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "Castle build by Bishop Drzewiecki, then owned by his familly and other nobles, in XVIII used by female Bernandines Order, destroyed by fire In 1814",
-    "website": "",
+    "website": "http://www.drzewica.pl",
     "score_total": 371.4215,
     "score_visitors": 6.384615,
     "visitors": 12,
@@ -739,7 +790,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Kosciol_sw_Lukasza_w_Drzewicy.jpg/330px-Kosciol_sw_Lukasza_w_Drzewicy.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Drzewica",
     "wikidata_id": "Q1005409",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Drzewica%2C_ko%C5%9Bci%C3%B3%C5%82_par._p.w._%C5%9Bw._%C5%81ukasza_Ewangelisty_04.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Drzewica%2C_ko%C5%9Bci%C3%B3%C5%82_par._p.w._%C5%9Bw._%C5%81ukasza_Ewangelisty_04.JPG?width=800",
+    "wikidata_website": "http://www.drzewica.pl"
   },
   {
     "position": 641,
@@ -759,7 +811,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "Teutonic castle from XIII century, destroyed by mutined townsmans in 1454 during war with Poland",
-    "website": "",
+    "website": "https://torun.pl/",
     "score_total": 366.594179,
     "score_visitors": 5,
     "visitors": 10,
@@ -768,7 +820,16 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Toru%C5%84",
     "wikidata_id": "Q47554",
     "inception_year": 1233,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Torun_panorama_zza_Wisly_2.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Torun_panorama_zza_Wisly_2.jpg?width=800",
+    "wikidata_website": "https://torun.pl/",
+    "significant_events": [
+      "Siege of Thorn",
+      "Siege of Toruń",
+      "Tumult of Thorn",
+      "Thirteen Years' War",
+      "Peace of Thorn",
+      "Second Peace of Thorn (1466)"
+    ]
   },
   {
     "position": 684,
@@ -788,7 +849,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.darlowo.pl/",
     "score_total": 356.381436,
     "score_visitors": 6.285714,
     "visitors": 6,
@@ -796,7 +857,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Darlowo_rynek_%281%29.jpg/330px-Darlowo_rynek_%281%29.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Dar%C5%82owo",
     "wikidata_id": "Q497138",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dar%C5%82owo_radnice_a_kostel_3.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dar%C5%82owo_radnice_a_kostel_3.jpg?width=800",
+    "wikidata_website": "https://www.darlowo.pl/"
   },
   {
     "position": 691,
@@ -839,7 +901,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.ojcow.pl",
     "score_total": 353.766667,
     "score_visitors": 7.333333,
     "visitors": 11,
@@ -847,7 +909,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Ojc%C3%B3w_%22Na_Wodzie%22_17.JPG/330px-Ojc%C3%B3w_%22Na_Wodzie%22_17.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Ojc%C3%B3w",
     "wikidata_id": "Q842133",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Krzy%C5%BCowa_OPN_1_(1).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Krzy%C5%BCowa_OPN_1_(1).jpg?width=800",
+    "wikidata_website": "http://www.ojcow.pl"
   },
   {
     "position": 769,
@@ -867,7 +930,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.amt-mecklenburgische-kleinseenplatte.de/amt-gemeinden/mirow",
     "score_total": 337.4,
     "score_visitors": 7,
     "visitors": 14,
@@ -876,7 +939,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Mirow",
     "wikidata_id": "Q20320",
     "inception_year": 1201,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mirow_Kirche_2010-04-07_048.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mirow_Kirche_2010-04-07_048.jpg?width=800",
+    "wikidata_website": "https://www.amt-mecklenburgische-kleinseenplatte.de/amt-gemeinden/mirow"
   },
   {
     "position": 849,
@@ -899,7 +963,14 @@
     "website": "",
     "score_total": 315.195934,
     "score_visitors": 6.571429,
-    "visitors": 13
+    "visitors": 13,
+    "wikipedia_extract": "Gniew Castle is a restored castle in Gniew, in northern Poland. The original building, which served as a defensive structure for the Teutonic Order on the Vistula river, dates back to the late 13th or 14th century.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Zamek_w_Gniewie_%28cropped%29.jpg/330px-Zamek_w_Gniewie_%28cropped%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Gniew_Castle",
+    "wikidata_id": "Q5574254",
+    "heritage_status": "immovable monument in Poland",
+    "inception_year": 1383,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Zamek_w_Gniewie_1.jpg?width=800"
   },
   {
     "position": 853,
@@ -919,7 +990,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "Castle of Silesian dukes, then king of Czech, destroyed during 17th century warswith Sweden and Austria, finally abandoned in 1728",
-    "website": "",
+    "website": "https://www.zabkowiceslaskie.pl/",
     "score_total": 312.881578,
     "score_visitors": 4.571429,
     "visitors": 6,
@@ -927,6 +998,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Market_square_in_Z%C4%85bkowice_%C5%9Al%C4%85skie.jpg/330px-Market_square_in_Z%C4%85bkowice_%C5%9Al%C4%85skie.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Z%C4%85bkowice_%C5%9Al%C4%85skie",
     "wikidata_id": "Q246693",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Market_square_in_Z%C4%85bkowice_%C5%9Al%C4%85skie.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Market_square_in_Z%C4%85bkowice_%C5%9Al%C4%85skie.jpg?width=800",
+    "wikidata_website": "https://www.zabkowiceslaskie.pl/"
   }
 ]

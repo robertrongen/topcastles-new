@@ -20,7 +20,13 @@
     "website": "http://mars.elte.hu/varak/visegrad/visegrad.htm?rom=483",
     "score_total": 746.903484,
     "score_visitors": 7.409722,
-    "visitors": 143
+    "visitors": 143,
+    "wikipedia_extract": "Visegrád is a castle town in Pest County, Hungary. It is north of Budapest on the right bank of the Danube in the Danube Bend. It had a population of 1,864 in 2010. The town is the site of the remains of the Early Renaissance summer palace of King Matthias Corvinus of Hungary and a medieval citadel. The town was also the site of a meeting on 15 February 1991 between the President of the Czech and Slovak Federative Republic, Václav Havel, the President of the Republic of Poland, Lech Wałęsa, and the Prime Minister of the Republic of Hungary, József Antall which founded the titular Visegrád group.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Fellegv%C3%A1r_%287612._sz%C3%A1m%C3%BA_m%C5%B1eml%C3%A9k%29_6.jpg/330px-Fellegv%C3%A1r_%287612._sz%C3%A1m%C3%BA_m%C5%B1eml%C3%A9k%29_6.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Visegr%C3%A1d%2C_Hungary",
+    "wikidata_id": "Q548097",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Danube_gorge_near_Visegr%C3%A1d.jpg?width=800",
+    "wikidata_website": "https://www.visegrad.hu/"
   },
   {
     "position": 75,
@@ -129,7 +135,10 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Dr%C3%A9gely_-_Castle.jpg/330px-Dr%C3%A9gely_-_Castle.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Dr%C3%A9gely_Castle",
     "wikidata_id": "Q910327",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dr%C3%A9gely_-_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dr%C3%A9gely_-_Castle.jpg?width=800",
+    "significant_events": [
+      "Siege of Drégely"
+    ]
   },
   {
     "position": 132,
@@ -157,7 +166,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Csesznek_-_Castle.jpg/330px-Csesznek_-_Castle.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Castle_of_Csesznek",
     "wikidata_id": "Q872569",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Csesznek_-_Castle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Csesznek_-_Castle.jpg?width=800",
+    "wikidata_founder": "Jakab Cseszneky"
   },
   {
     "position": 260,
@@ -187,7 +197,8 @@
     "wikidata_id": "Q1092030",
     "architectural_style": "eclectic architecture",
     "heritage_status": "historic monument of Hungary",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vajdahunyad_v%C3%A1ra_Budapest_September_2013.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vajdahunyad_v%C3%A1ra_Budapest_September_2013.jpg?width=800",
+    "architect": "Ignác Alpár"
   },
   {
     "position": 284,
@@ -261,7 +272,11 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Tata_castle_05.jpg/330px-Tata_castle_05.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Tata_Castle",
     "wikidata_id": "Q1317190",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tata_castle_04.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tata_castle_04.JPG?width=800",
+    "significant_events": [
+      "Siege of Tata",
+      "Siege of Tata (1593)"
+    ]
   },
   {
     "position": 371,
@@ -310,10 +325,21 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.esztergom.hu/",
     "score_total": 402.313333,
     "score_visitors": 6.375,
-    "visitors": 7
+    "visitors": 7,
+    "wikipedia_extract": "Esztergom (Hungarian pronunciation: [ˈɛstɛrɡom] ; German: Gran; Slovak: Ostrihom; Latin: Solva or Strigonium, is a city with county rights in northern Hungary, 46 kilometres northwest of the capital Budapest. It lies in Komárom-Esztergom County, on the right bank of the river Danube, which forms the border with Slovakia there. Esztergom was the capital of Kingdom of Hungary from the 10th until the mid-13th century when King Béla IV of Hungary moved the royal seat to Buda.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/EsztergomMontage2.JPG/330px-EsztergomMontage2.JPG",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Esztergom",
+    "wikidata_id": "Q171353",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/EsztergomMontage2.JPG?width=800",
+    "wikidata_website": "https://www.esztergom.hu/",
+    "significant_events": [
+      "Siege of Esztergom",
+      "Siege of Esztergom",
+      "Siege of Esztergom (1241)"
+    ]
   },
   {
     "position": 566,
@@ -336,7 +362,14 @@
     "website": "",
     "score_total": 384.430568,
     "score_visitors": 6.4,
-    "visitors": 9
+    "visitors": 9,
+    "wikipedia_extract": "Šomoška Castle are the ruins of a castle located in the village of Šiatorská Bukovinka in the Banská Bystrica Region of Slovakia. The castle is a part of the Cerová vrchovina Protected Landscape Area.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/%C5%A0iatorsk%C3%A1_Bukovinka_-_hrad_%C5%A0omo%C5%A1ka.jpg/330px-%C5%A0iatorsk%C3%A1_Bukovinka_-_hrad_%C5%A0omo%C5%A1ka.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/%C5%A0omo%C5%A1ka_Castle",
+    "wikidata_id": "Q748687",
+    "architectural_style": "Gothic architecture",
+    "heritage_status": "Cultural Heritage Monuments of Slovakia",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Somosk%C5%91_-_castle.jpg?width=800"
   },
   {
     "position": 595,
@@ -428,7 +461,13 @@
     "website": "",
     "score_total": 308.693571,
     "score_visitors": 5.166667,
-    "visitors": 5
+    "visitors": 5,
+    "wikipedia_extract": "The Castle of Simontornya is a 13th-century Renaissance castle in Simontornya, Hungary. The castle went through several modifications and was owned by a succession of different noble families. It was the scene of several battles, including most notably, Rákóczi's War of Independence and was eventually upgraded into a fortress in the early 18th century and ended up being used as a barn. The name Simontornya means Simon's Tower.",
+    "wikipedia_thumbnail": null,
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Castle_of_Simontornya",
+    "wikidata_id": "Q1288738",
+    "architectural_style": "Renaissance architecture",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Simontornya_-_Castle.jpg?width=800"
   },
   {
     "position": 908,
@@ -448,7 +487,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "The original 13th-century castle was developed between the 15th and 17th centuries and given Romantic additions in the 19th century. Recent restoration work helps to conjure up the atmosphere of the border castles",
-    "website": "",
+    "website": "https://boldogkovaralja.hu/",
     "score_total": 290.314286,
     "score_visitors": 5.714286,
     "visitors": 6,
@@ -456,7 +495,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/V%C3%A1rrom_%282684._sz%C3%A1m%C3%BA_m%C5%B1eml%C3%A9k%29_4.jpg/330px-V%C3%A1rrom_%282684._sz%C3%A1m%C3%BA_m%C5%B1eml%C3%A9k%29_4.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Boldogk%C5%91v%C3%A1ralja",
     "wikidata_id": "Q833970",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/V%C3%A1rrom_(2684._sz%C3%A1m%C3%BA_m%C5%B1eml%C3%A9k)_6.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/V%C3%A1rrom_(2684._sz%C3%A1m%C3%BA_m%C5%B1eml%C3%A9k)_6.jpg?width=800",
+    "wikidata_website": "https://boldogkovaralja.hu/"
   },
   {
     "position": 945,
@@ -548,7 +588,12 @@
     "website": "",
     "score_total": 246.166667,
     "score_visitors": 4.833333,
-    "visitors": 5
+    "visitors": 5,
+    "wikipedia_extract": "Jurisics Castle, named after Croatian nobleman Nikola Jurišić is located in Kőszeg, Hungary.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/K%C5%91szeg_-_Jurisics_Castle.jpg/330px-K%C5%91szeg_-_Jurisics_Castle.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Jurisics_Castle",
+    "wikidata_id": "Q944804",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/K%C5%91szeg_-_Jurisics_Castle.jpg?width=800"
   },
   {
     "position": 971,

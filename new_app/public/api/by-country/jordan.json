@@ -8,8 +8,8 @@
     "place": "Oultrejourdain",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 31.180556,
+    "longitude": 35.701389,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -20,7 +20,16 @@
     "website": "",
     "score_total": 475.004366,
     "score_visitors": 7.434783,
-    "visitors": 22
+    "visitors": 22,
+    "wikipedia_extract": "Kerak Castle is a large medieval castle located in al-Karak, Jordan. It is one of the largest castles in the Levant. Construction began in the 1140s, under Pagan and Fulk, King of Jerusalem. The Crusaders called it Crac des Moabites or \"Karak in Moab\", as it is referred to in history books. It was also colloquially referred to as Krak of the Desert.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Kerak_BW_1.JPG/330px-Kerak_BW_1.JPG",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Kerak_Castle",
+    "wikidata_id": "Q844694",
+    "inception_year": 1142,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kerak_BW_1.JPG?width=800",
+    "significant_events": [
+      "Siege of Kerak"
+    ]
   },
   {
     "position": 988,
@@ -31,8 +40,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 31.879964,
+    "longitude": 36.827428,
     "founder": "",
     "era": null,
     "castle_type": "",

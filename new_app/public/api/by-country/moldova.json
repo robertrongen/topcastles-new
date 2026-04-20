@@ -8,8 +8,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 46.837639,
+    "longitude": 29.485083,
     "founder": "",
     "era": 15,
     "castle_type": "City castle",
@@ -17,9 +17,16 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://bendery-fortress.com/",
     "score_total": 394.195179,
     "score_visitors": 6.75,
-    "visitors": 3
+    "visitors": 3,
+    "wikipedia_extract": "The Tighina Fortress was a 15th-century fortress on the right bank of the Dniester River in Bender, Moldova, built from earth and wood during the reign of Prince Stephen the Great. In 1538 it was conquered by the Turkish sultan Suleiman the Magnificent, who ordered it to be rebuilt in stone and enlarged.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Cetatea_Tighina_2021.jpg/330px-Cetatea_Tighina_2021.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Tighina_Fortress",
+    "wikidata_id": "Q1968281",
+    "heritage_status": "historical monument of Moldova",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bender_Fortress._South_side_03.JPG?width=800",
+    "wikidata_website": "https://bendery-fortress.com/"
   }
 ]

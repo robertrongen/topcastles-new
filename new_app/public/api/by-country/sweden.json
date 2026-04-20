@@ -28,7 +28,8 @@
     "architectural_style": "Renaissance architecture",
     "heritage_status": "governmental listed building complex",
     "inception_year": 1200,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kalmar_slott_frontal.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kalmar_slott_frontal.jpg?width=800",
+    "wikidata_website": "http://www.kalmarslott.se/"
   },
   {
     "position": 55,
@@ -69,8 +70,8 @@
     "place": "Mariefred (Södermanland)",
     "region": "Östra Mellansverige (East Middle Sweden)",
     "region_code": "ostra_mellansverige",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 59.256111,
+    "longitude": 17.219167,
     "founder": "Bo Jonsson Grip",
     "era": 14,
     "castle_type": "Harbour castle",
@@ -89,7 +90,10 @@
     "architectural_style": "Renaissance",
     "heritage_status": "governmental listed building complex",
     "inception_year": 1537,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Gripsholms_slott_view2.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Gripsholms_slott_view2.jpg?width=800",
+    "wikidata_founder": "Gustav I of Sweden",
+    "architect": "Henrik von Cöllen",
+    "wikidata_website": "https://www.royalpalaces.se/english/royal-palaces-and-sites/gripsholm-castle.html"
   },
   {
     "position": 113,
@@ -100,8 +104,8 @@
     "place": "Svedala (Skåne)",
     "region": "Sydsverige (South Sweden)",
     "region_code": "sydsverige",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.565278,
+    "longitude": 13.208611,
     "founder": "",
     "era": 12,
     "castle_type": "Water castle",
@@ -130,8 +134,8 @@
     "place": "Svalöv (Skåne)",
     "region": "Sydsverige (South Sweden)",
     "region_code": "sydsverige",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.908333,
+    "longitude": 13.261944,
     "founder": "Tage Ottesen Thott till Näs",
     "era": 16,
     "castle_type": "Water castle",
@@ -148,7 +152,9 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Trolleholm_Castle",
     "wikidata_id": "Q2970866",
     "inception_year": 1760,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Trolleholms_slott.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Trolleholms_slott.JPG?width=800",
+    "architect": "Carl Hårleman",
+    "wikidata_website": "https://www.trolleholmsslott.se"
   },
   {
     "position": 136,
@@ -168,7 +174,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "Glimmingehus, located in Simrishamn Municipality, Skåne County in southern Sweden, is the best preserved medieval castle in Scandinavia. It was built 1499-1506, during an era when Scania formed a vital part of Denmark, and contains many defensive arrangements of the era, such as parapets, false doors and dead-end corridors, 'murder-holes' for pouring boiling pitch over the attackers, moats, drawbridges and various other forms of death traps to surprise trespassers and protect the nobles against peasant uprisings. The lower part of the castle's stone walls are 2.4 meters (94 inches) thick and the upper part 1.8 meters (71 inches).",
-    "website": "",
+    "website": "https://www.raa.se/in-english/events-seminars-and-cultural-experiences/experience-the-cultural-heritage/glimmingehus_eng/",
     "score_total": 551.647078,
     "score_visitors": 4.911765,
     "visitors": 33,
@@ -178,7 +184,9 @@
     "wikidata_id": "Q1531449",
     "heritage_status": "monument in Fornminnesregistret",
     "inception_year": 1505,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Glimmingehus_c-m_2.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Glimmingehus_c-m_2.jpg?width=800",
+    "architect": "Adam van Düren",
+    "wikidata_website": "https://www.raa.se/in-english/events-seminars-and-cultural-experiences/experience-the-cultural-heritage/glimmingehus_eng/"
   },
   {
     "position": 202,
@@ -189,8 +197,8 @@
     "place": "Skurup (Skåne)",
     "region": "Sydsverige (South Sweden)",
     "region_code": "sydsverige",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 57.617111,
+    "longitude": 12.81117,
     "founder": "Danish knight and royal advisor Mourids Jepsen Sparre",
     "era": 16,
     "castle_type": "Harbour castle",
@@ -217,8 +225,8 @@
     "place": "Helsingborg (Skåne)",
     "region": "Sydsverige (South Sweden)",
     "region_code": "sydsverige",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.048333,
+    "longitude": 12.6975,
     "founder": "",
     "era": 13,
     "castle_type": "City castle",
@@ -247,8 +255,8 @@
     "place": "Vadstena",
     "region": "Östra Mellansverige (East Middle Sweden)",
     "region_code": "ostra_mellansverige",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 58.445972,
+    "longitude": 14.883611,
     "founder": "Gustav Vasas son Magnus",
     "era": 16,
     "castle_type": "Water castle",
@@ -267,7 +275,10 @@
     "architectural_style": "Renaissance",
     "heritage_status": "governmental listed building complex",
     "inception_year": 1545,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vadstena.slottet.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vadstena.slottet.jpg?width=800",
+    "wikidata_founder": "Gustav I of Sweden",
+    "architect": "Arendt de Roy",
+    "wikidata_website": "https://vadstenaslott.com"
   },
   {
     "position": 288,
@@ -278,8 +289,8 @@
     "place": "Tranemo (Västergötland)",
     "region": "Västsverige (West Sweden)",
     "region_code": "vastsverige",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 57.65,
+    "longitude": 13.279444,
     "founder": "Arvid Knutsson",
     "era": 15,
     "castle_type": "Harbour castle",
@@ -297,7 +308,8 @@
     "wikidata_id": "Q575112",
     "heritage_status": "individual listed building complex",
     "inception_year": 1470,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Torpa_stenhus_vallgrav.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Torpa_stenhus_vallgrav.JPG?width=800",
+    "wikidata_founder": "Arvid Knutsson"
   },
   {
     "position": 289,
@@ -308,8 +320,8 @@
     "place": "Kungalv (Bohuslän)",
     "region": "Västsverige (West Sweden)",
     "region_code": "vastsverige",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 57.861944,
+    "longitude": 11.999444,
     "founder": "King Haakon V Magnuson of Norway",
     "era": 14,
     "castle_type": "Rock castle",
@@ -317,7 +329,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "Bohus Fortress (also Baahus or Båhus, originally: Bagahus) lies along the old Norwegian - Swedish border in Kungälv, Bohuslän, Sweden, north east from Hisingen where the Göta river splits into two branches (20 kilometres north of Gothenburg). It commands its surroundings from a 40 meter high cliff, with the river forming a natural moat about it.\nAccording to Kavli, “by 1310 records show it was constructed, as normal for that period, out of granite and brick, perhaps under the guidance of Count Jacob of Halland. By 1450 it included a continuous surrounding wall, 3 meter thick at the base, with a height which varied from 8.5 to 13.5 meters, varying with the terrain. It was approximately rectangular, with four rectangular corner towers. At the eastern end there was a brick tower, and in the center of the west side a gate house and drawbridge. Along the inside of the surrounding wall buildings were located which among other things included the \"Kings hall,\" the castle commander’s residence, the chapel, the guardroom, the barracks and the kitchen. The fortress had secure vaulted positions, partly cut into the mountain, and beyond that strong outer-works. At the time Båhus was Norway's strongest fortress. The approaches were very difficult and the area to be defended was small, only 250 x 150 meters, so it did not require a large defensive force.",
-    "website": "",
+    "website": "https://bohusfastning.com",
     "score_total": 464.40401,
     "score_visitors": 6.166667,
     "visitors": 11,
@@ -328,7 +340,16 @@
     "architectural_style": "Renaissance architecture",
     "heritage_status": "governmental listed building",
     "inception_year": 1308,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bohus-Castle6.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bohus-Castle6.jpg?width=800",
+    "wikidata_founder": "Haakon V of Norway",
+    "architect": "Hans van Steenwinckel the Elder",
+    "wikidata_website": "https://bohusfastning.com",
+    "significant_events": [
+      "explosion",
+      "siege",
+      "Siege of Bohus Fortress",
+      "Bohus explosion"
+    ]
   },
   {
     "position": 291,
@@ -339,8 +360,8 @@
     "place": "Vittskövle (Skåne)",
     "region": "Sydsverige (South Sweden)",
     "region_code": "sydsverige",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.857849,
+    "longitude": 14.147434,
     "founder": "Jens Brahe",
     "era": 16,
     "castle_type": "Water castle",
@@ -351,7 +372,12 @@
     "website": "",
     "score_total": 463.85658,
     "score_visitors": 6.894737,
-    "visitors": 18
+    "visitors": 18,
+    "wikipedia_extract": "Vittskövle is a locality situated in Kristianstad Municipality, Skåne County, Sweden with 235 inhabitants in 2010.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Vittsk%C3%B6vle_kyrka%2C_exteri%C3%B6r_16.jpg/330px-Vittsk%C3%B6vle_kyrka%2C_exteri%C3%B6r_16.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Vittsk%C3%B6vle",
+    "wikidata_id": "Q1968940",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vittsk%C3%B6vle_kyrka_i_augusti_2012.jpg?width=800"
   },
   {
     "position": 309,
@@ -362,8 +388,8 @@
     "place": "Kållandsö (Skåne)",
     "region": "Sydsverige (South Sweden)",
     "region_code": "sydsverige",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 58.675,
+    "longitude": 13.22,
     "founder": "Brynolf Algotsson, Bishop of Skara",
     "era": 13,
     "castle_type": "Harbour castle",
@@ -382,7 +408,8 @@
     "architectural_style": "Baroque",
     "heritage_status": "governmental listed building complex",
     "inception_year": 1298,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/0283L%C3%A4ck%C3%B6_slott.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/0283L%C3%A4ck%C3%B6_slott.jpg?width=800",
+    "wikidata_website": "https://www.lackoslott.se"
   },
   {
     "position": 472,
@@ -393,8 +420,8 @@
     "place": "Tomelilla (Skåne)",
     "region": "Sydsverige (South Sweden)",
     "region_code": "sydsverige",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.48,
+    "longitude": 13.986389,
     "founder": "Axel Eskilssen",
     "era": 14,
     "castle_type": "Water castle",
@@ -402,7 +429,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.tosterup.se/",
     "score_total": 409.649666,
     "score_visitors": 6,
     "visitors": 9,
@@ -411,7 +438,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Tosterup_Castle",
     "wikidata_id": "Q2915892",
     "inception_year": 1400,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tosterups_slott.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tosterups_slott.jpg?width=800",
+    "wikidata_website": "http://www.tosterup.se/"
   },
   {
     "position": 527,
@@ -422,16 +450,16 @@
     "place": "Örebro",
     "region": "Östra Mellansverige (East Middle Sweden)",
     "region_code": "ostra_mellansverige",
-    "latitude": null,
-    "longitude": null,
-    "founder": "",
+    "latitude": 59.273889,
+    "longitude": 15.215278,
+    "founder": "Magnus IV of Sweden",
     "era": 13,
     "castle_type": "Water castle",
     "castle_concept": "Rectangular or polygonal",
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://orebroslott.se",
     "score_total": 395.4,
     "score_visitors": 7.4,
     "visitors": 34,
@@ -442,7 +470,9 @@
     "architectural_style": "Romanesque architecture",
     "heritage_status": "cultural heritage",
     "inception_year": 1400,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Orebro_slott_2010.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Orebro_slott_2010.JPG?width=800",
+    "wikidata_founder": "Magnus IV of Sweden",
+    "wikidata_website": "https://orebroslott.se"
   },
   {
     "position": 588,
@@ -453,8 +483,8 @@
     "place": "Pallas (Skåne)",
     "region": "Sydsverige (South Sweden)",
     "region_code": "sydsverige",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.751389,
+    "longitude": 13.036667,
     "founder": "Hans Spiegel",
     "era": 16,
     "castle_type": "Water castle",
@@ -482,8 +512,8 @@
     "place": "Österlen (Skåne)",
     "region": "Sydsverige (South Sweden)",
     "region_code": "sydsverige",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.491389,
+    "longitude": 14.045833,
     "founder": "",
     "era": 15,
     "castle_type": "Water castle",
@@ -511,8 +541,8 @@
     "place": "Nyköping (Södermanland)",
     "region": "Östra Mellansverige (East Middle Sweden)",
     "region_code": "ostra_mellansverige",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 58.748472,
+    "longitude": 17.011667,
     "founder": "",
     "era": 12,
     "castle_type": "Harbour castle",
@@ -520,7 +550,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "The castle is mostly known for the ghastly Nyköping Banquet which took place here in 1317. The Nyköping banquet was king Birger of Sweden's Christmas celebration December 11, 1317 at the Nyköping Castle. Among the guests were his two brothers Duke Valdemar and Duke Eric, who later that night were imprisoned and starved to death in the dungeon of Nyköping Castle.",
     "description": "",
-    "website": "",
+    "website": "https://sormlandsmuseum.se/besoksinfo/nykopingshus/",
     "score_total": 309.363636,
     "score_visitors": 5.727273,
     "visitors": 10,
@@ -530,6 +560,10 @@
     "wikidata_id": "Q1779071",
     "heritage_status": "governmental listed building complex",
     "inception_year": 1200,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/NykopingsHus_hus_2_Porthus_ut3.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/NykopingsHus_hus_2_Porthus_ut3.jpg?width=800",
+    "wikidata_website": "https://sormlandsmuseum.se/besoksinfo/nykopingshus/",
+    "significant_events": [
+      "Nyköping Banquet"
+    ]
   }
 ]

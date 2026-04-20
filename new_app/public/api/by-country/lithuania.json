@@ -8,8 +8,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 54.6525,
+    "longitude": 24.933056,
     "founder": "",
     "era": 15,
     "castle_type": "Harbour castle",
@@ -37,8 +37,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 54.9,
+    "longitude": 23.933333,
     "founder": "Order of Teutonic Knights",
     "era": 14,
     "castle_type": "Harbour castle",
@@ -46,7 +46,7 @@
     "condition": "Damaged",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.kaunas.lt/apie-kauna/miesto-istorija/",
     "score_total": 392.9,
     "score_visitors": 8.1,
     "visitors": 19,
@@ -55,6 +55,7 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Kaunas",
     "wikidata_id": "Q4115712",
     "inception_year": 1361,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vytautas_the_Great_Bridge_from_hill%2C_Kaunas%2C_Lithuania_-_Diliff.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vytautas_the_Great_Bridge_from_hill%2C_Kaunas%2C_Lithuania_-_Diliff.jpg?width=800",
+    "wikidata_website": "http://www.kaunas.lt/apie-kauna/miesto-istorija/"
   }
 ]

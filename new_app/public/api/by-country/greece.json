@@ -31,8 +31,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 36.8154,
+    "longitude": 21.7045,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -43,7 +43,13 @@
     "website": "",
     "score_total": 509.304605,
     "score_visitors": 8.272727,
-    "visitors": 10
+    "visitors": 10,
+    "wikipedia_extract": "The Castle of Methoni is a medieval fortification in the port town of Methoni, Messenia, in southwestern Greece. The castle of Methoni occupies the whole area of the cape and the southwestern coast to the small islet that has also been fortified with an octagonal tower and is protected by the sea on its three sides. Its north part, the one that looks to land, is covered by a heavily fortified acropolis. A deep moat separates the castle from the land and communication was achieved by a wooden bridge. The Venetians built on the ancient battlements and added on and repaired it during both periods that they occupied the castle.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Modon1770.jpg/330px-Modon1770.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Methoni_Castle",
+    "wikidata_id": "Q12878512",
+    "heritage_status": "archaeological site in Greece",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/%CE%A4%CE%BF_%CE%BC%CE%B5%CF%83%CE%B1%CE%B9%CF%89%CE%BD%CE%B9%CE%BA%CF%8C_%CE%BA%CE%AC%CF%83%CF%84%CF%81%CE%BF_%CF%84%CE%B7%CF%82_%CE%9C%CE%B5%CE%B8%CF%8E%CE%BD%CE%B7%CF%82_-_panoramio.jpg?width=800"
   },
   {
     "position": 241,
@@ -54,8 +60,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 40.640278,
+    "longitude": 22.935556,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -63,7 +69,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://thessaloniki.gr/",
     "score_total": 481.32196,
     "score_visitors": 7.625,
     "visitors": 7,
@@ -71,7 +77,21 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Thessaloniki_Heptapyrgion_northeastern_wall_from_the_inner_yard.jpg/330px-Thessaloniki_Heptapyrgion_northeastern_wall_from_the_inner_yard.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Thessaloniki",
     "wikidata_id": "Q17151",
-    "inception_year": 315
+    "inception_year": 315,
+    "wikidata_website": "https://thessaloniki.gr/",
+    "significant_events": [
+      "Siege of Thessalonica",
+      "Siege of Thessalonica",
+      "Sack of Thessalonica",
+      "Sack of Thessalonica",
+      "Siege of Thessalonica",
+      "Siege of Thessalonica",
+      "Siege of Thessalonica",
+      "Siege of Thessalonica",
+      "Siege of Thessalonica",
+      "Siege of Thessalonica",
+      "Siege of Thessalonica"
+    ]
   },
   {
     "position": 281,
@@ -82,8 +102,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 37.89142,
+    "longitude": 22.870921,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -94,7 +114,15 @@
     "website": "",
     "score_total": 467.597537,
     "score_visitors": 7.3,
-    "visitors": 9
+    "visitors": 9,
+    "wikipedia_extract": "Acrocorinth is a monolithic rock overlooking the ancient city of Corinth, Greece. In the estimation of George Forrest, \"It is the most impressive of the acropolis of mainland Greece.\"",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Akrokorinth_nordmauern.jpg/330px-Akrokorinth_nordmauern.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Acrocorinth",
+    "wikidata_id": "Q420810",
+    "architectural_style": "Byzantine architecture",
+    "heritage_status": "archaeological site in Greece",
+    "inception_year": 700,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Acrocorinto.jpg?width=800"
   },
   {
     "position": 292,
@@ -105,8 +133,8 @@
     "place": "Argolis",
     "region": "Peloponnisos",
     "region_code": "peloponnisos",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 37.730833,
+    "longitude": 22.756111,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -134,8 +162,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 37.890278,
+    "longitude": 21.141944,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -146,7 +174,15 @@
     "website": "",
     "score_total": 418.676014,
     "score_visitors": 6.818182,
-    "visitors": 10
+    "visitors": 10,
+    "wikipedia_extract": "Chlemoutsi, also known as Clermont, is a medieval castle in the northwest of the Elis regional unit in the Peloponnese peninsula of southern Greece, in the Kastro-Kyllini municipality.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Aerial_view_of_the_Kastro_Medieval_Castle_and_Museum_on_Peloponnese%2C_Greece_%2851223833204%29.jpg/330px-Aerial_view_of_the_Kastro_Medieval_Castle_and_Museum_on_Peloponnese%2C_Greece_%2851223833204%29.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Chlemoutsi",
+    "wikidata_id": "Q913308",
+    "architectural_style": "Frankokratia",
+    "heritage_status": "archaeological site in Greece",
+    "inception_year": 1220,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chlemoutsi_BoreiaEis.jpg?width=800"
   },
   {
     "position": 456,
@@ -157,8 +193,8 @@
     "place": "",
     "region": "Kreta",
     "region_code": "kreta",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 35.297,
+    "longitude": 25.738,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -205,7 +241,10 @@
     "wikidata_id": "Q606341",
     "heritage_status": "archaeological site in Greece",
     "inception_year": 1714,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Palamidi_fortress_(Nafplio%2C_Greece).jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Palamidi_fortress_(Nafplio%2C_Greece).jpg?width=800",
+    "significant_events": [
+      "conquest"
+    ]
   },
   {
     "position": 522,
@@ -216,8 +255,8 @@
     "place": "Sparta",
     "region": "Peloponnisos",
     "region_code": "peloponnisos",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 37.074,
+    "longitude": 22.3673,
     "founder": "Guillaume II Villehardouin",
     "era": 13,
     "castle_type": "Rock castle",
@@ -246,8 +285,8 @@
     "place": "Levadeia",
     "region": "Centraal",
     "region_code": "centraal",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 44.467778,
+    "longitude": 34.143611,
     "founder": "",
     "era": 13,
     "castle_type": "",
@@ -255,7 +294,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://ливадийский-дворец.рф/",
     "score_total": 332.326394,
     "score_visitors": 5.714286,
     "visitors": 6,
@@ -266,7 +305,8 @@
     "architectural_style": "Renaissance Revival architecture",
     "heritage_status": "State Register of Immovable Monuments of Ukraine",
     "inception_year": 1910,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Livadia_Palace_Crimea.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Livadia_Palace_Crimea.jpg?width=800",
+    "wikidata_website": "http://ливадийский-дворец.рф/"
   },
   {
     "position": 799,
@@ -277,8 +317,8 @@
     "place": "",
     "region": "Achaia",
     "region_code": "achaia",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 38.086811,
+    "longitude": 21.859839,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -286,7 +326,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.achaia.gr",
     "score_total": 329.5,
     "score_visitors": 6.5,
     "visitors": 5,
@@ -295,7 +335,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Achaea",
     "wikidata_id": "Q2495811",
     "inception_year": 2011,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Patras_2008_view.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Patras_2008_view.jpg?width=800",
+    "wikidata_website": "http://www.achaia.gr"
   },
   {
     "position": 816,
@@ -306,8 +347,8 @@
     "place": "Argos",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 39.638493,
+    "longitude": 22.413061,
     "founder": "",
     "era": 15,
     "castle_type": "Rock castle",
@@ -315,7 +356,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.larissa-dimos.gr/",
     "score_total": 324.039474,
     "score_visitors": 5.666667,
     "visitors": 5,
@@ -323,7 +364,11 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Larissa_Montage_L.png/330px-Larissa_Montage_L.png",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Larissa",
     "wikidata_id": "Q178405",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Larissa_City_Montage.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Larissa_City_Montage.jpg?width=800",
+    "wikidata_website": "https://www.larissa-dimos.gr/",
+    "significant_events": [
+      "Siege of Larissa"
+    ]
   },
   {
     "position": 880,
@@ -334,8 +379,8 @@
     "place": "",
     "region": "Peloponnisos",
     "region_code": "peloponnisos",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 37.485135,
+    "longitude": 22.0421,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -372,7 +417,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://www.nafpaktos.gr/",
     "score_total": 301.518,
     "score_visitors": 5,
     "visitors": 2,
@@ -380,7 +425,11 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Nafpaktos_2.JPG/330px-Nafpaktos_2.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Nafpaktos",
     "wikidata_id": "Q782278",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Nafpaktos_old_port.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Nafpaktos_old_port.JPG?width=800",
+    "wikidata_website": "https://www.nafpaktos.gr/",
+    "significant_events": [
+      "Battle of Lepanto"
+    ]
   },
   {
     "position": 901,
@@ -408,7 +457,10 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Bodonitsa_castle_01.jpg/330px-Bodonitsa_castle_01.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Mendenitsa",
     "wikidata_id": "Q15253019",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bodonitsa_castle_01.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bodonitsa_castle_01.jpg?width=800",
+    "significant_events": [
+      "Siege of Mendenítsa"
+    ]
   },
   {
     "position": 989,
@@ -428,7 +480,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://e-patras.gr",
     "score_total": 204.5,
     "score_visitors": 4,
     "visitors": 5,
@@ -436,6 +488,16 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Patras_Montage_L.png/330px-Patras_Montage_L.png",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Patras",
     "wikidata_id": "Q133123",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Patras_Montage_L.png?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Patras_Montage_L.png?width=800",
+    "wikidata_website": "https://e-patras.gr",
+    "significant_events": [
+      "Siege of Patras",
+      "Siege of Patras",
+      "Siege of Patras",
+      "Siege of Patras",
+      "Siege of Patras",
+      "Siege of Patras",
+      "Siege of Patras"
+    ]
   }
 ]

@@ -20,7 +20,12 @@
     "website": "",
     "score_total": 495.995059,
     "score_visitors": 7.761905,
-    "visitors": 20
+    "visitors": 20,
+    "wikipedia_extract": "Baba Vida is a medieval castle in Vidin in northwestern Bulgaria and the town's primary landmark. It consists of two concentric curtain walls and about nine towers of which three are preserved to their full medieval height, including the original battlements, and is the only entirely preserved medieval castle in the country. Baba Vida is 39 metres (128 ft) above sea level.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Baba_Vida_Klearchos_1.jpg/330px-Baba_Vida_Klearchos_1.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Baba_Vida",
+    "wikidata_id": "Q59893",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Baba_Vida_Fortress_(2006).jpg?width=800"
   },
   {
     "position": 370,

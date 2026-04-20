@@ -27,7 +27,8 @@
     "wikidata_id": "Q2426916",
     "heritage_status": "Rijksmonument",
     "inception_year": 1280,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Muiden%2C_Muiderslot._09-05-2022._(actm.)_07.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Muiden%2C_Muiderslot._09-05-2022._(actm.)_07.jpg?width=800",
+    "wikidata_website": "http://www.muiderslot.nl/"
   },
   {
     "position": 114,
@@ -58,7 +59,9 @@
     "architectural_style": "Gothic Revival",
     "heritage_status": "Rijksmonument complex",
     "inception_year": 1892,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/De_Haar_castlle.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/De_Haar_castlle.jpg?width=800",
+    "architect": "Pierre Cuypers",
+    "wikidata_website": "https://www.kasteeldehaar.nl"
   },
   {
     "position": 119,
@@ -139,7 +142,8 @@
     "wikidata_id": "Q680425",
     "heritage_status": "Rijksmonument",
     "inception_year": 1402,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kasteel_Doorwerth._(actm)_28.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kasteel_Doorwerth._(actm)_28.jpg?width=800",
+    "wikidata_website": "http://www.glk.nl/doorwerth"
   },
   {
     "position": 209,
@@ -228,7 +232,9 @@
     "architectural_style": "Gothic Revival",
     "heritage_status": "Rijksmonument",
     "inception_year": 1288,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kasteel_Radboud_2010_Nr._2_SteDi.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kasteel_Radboud_2010_Nr._2_SteDi.jpg?width=800",
+    "architect": "Jacobus van Lokhorst",
+    "wikidata_website": "http://www.kasteelradboud.nl"
   },
   {
     "position": 429,
@@ -313,7 +319,11 @@
     "wikidata_id": "Q2177577",
     "heritage_status": "Rijksmonument",
     "inception_year": 1368,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/2024-08-14_Slot_Loevestein_ZvD_55.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/2024-08-14_Slot_Loevestein_ZvD_55.jpg?width=800",
+    "wikidata_website": "https://www.slotloevestein.nl/",
+    "significant_events": [
+      "Siege of Loevestein"
+    ]
   },
   {
     "position": 561,
@@ -356,7 +366,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "Verwoest in de 16de eeuw door spaanse troepen.",
-    "website": "",
+    "website": "http://www.kasteelteylingen.nl/",
     "score_total": 380.67941,
     "score_visitors": 7.103774,
     "visitors": 105,
@@ -365,7 +375,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Teylingen_Castle",
     "wikidata_id": "Q2286213",
     "heritage_status": "Rijksmonument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/De_ru%C3%AFne_van_Teylingen_in_2014.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/De_ru%C3%AFne_van_Teylingen_in_2014.JPG?width=800",
+    "wikidata_website": "http://www.kasteelteylingen.nl/"
   },
   {
     "position": 601,
@@ -388,7 +399,13 @@
     "website": "",
     "score_total": 377.80582,
     "score_visitors": 7.513158,
-    "visitors": 75
+    "visitors": 75,
+    "wikipedia_extract": "Helmond Castle is a square medieval moated castle in the center of the city Helmond in the Dutch province of North Brabant.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Helmond_achter_4.jpg/330px-Helmond_achter_4.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Helmond_Castle",
+    "wikidata_id": "Q7476033",
+    "heritage_status": "Rijksmonument",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Helmond_achter_4.jpg?width=800"
   },
   {
     "position": 615,
@@ -408,10 +425,17 @@
     "condition": "Damaged",
     "remarkable": "Jacoba van Beieren, gravin van Holland, Zeeland en Henegouwen, is hier in 1436 overleden.",
     "description": "",
-    "website": "",
+    "website": "http://www.kasteelteylingen.nl/",
     "score_total": 372.632079,
     "score_visitors": 6.814815,
-    "visitors": 53
+    "visitors": 53,
+    "wikipedia_extract": "Teylingen Castle is a Dutch castle in the municipality of Teylingen, in the town of Voorhout, near the border with Sassenheim. It is presumably the family keep of the noble family Van Teylingen, from which the Van Brederode family directly descended.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Slot_Teylingen_north_side.jpg/330px-Slot_Teylingen_north_side.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Teylingen_Castle",
+    "wikidata_id": "Q2286213",
+    "heritage_status": "Rijksmonument",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/De_ru%C3%AFne_van_Teylingen_in_2014.JPG?width=800",
+    "wikidata_website": "http://www.kasteelteylingen.nl/"
   },
   {
     "position": 621,
@@ -431,7 +455,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "De donjon is uit de 15de-eeuw. Het kasteel is aanzienlijk verbouwd in de 18de-eeuw.",
-    "website": "",
+    "website": "https://www.huisbergh.nl",
     "score_total": 371.255633,
     "score_visitors": 7.317241,
     "visitors": 144,
@@ -441,7 +465,14 @@
     "wikidata_id": "Q17605261",
     "heritage_status": "Rijksmonument",
     "inception_year": 1200,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Huis_Bergh2.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Huis_Bergh2.jpg?width=800",
+    "architect": "Hendrik van Heeswijk",
+    "wikidata_website": "https://www.huisbergh.nl",
+    "significant_events": [
+      "conflagration",
+      "conflagration",
+      "Eighty Years' War"
+    ]
   },
   {
     "position": 645,
@@ -461,7 +492,7 @@
     "condition": "Intact",
     "remarkable": "Dit kasteel speelde een bijrol in de serie van Floris als de tolburcht van Floris.",
     "description": "Het kasteel bezit intacte -voor Nederland unieke- overdekte weergangen. Van de donjon is alleen nog een restant over.",
-    "website": "",
+    "website": "http://www.glk.nl/hernen",
     "score_total": 366.00213,
     "score_visitors": 7.609756,
     "visitors": 40,
@@ -470,7 +501,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Hernen_Castle",
     "wikidata_id": "Q4322946",
     "heritage_status": "Rijksmonument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kasteel_Hernen_oude_prent.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kasteel_Hernen_oude_prent.jpg?width=800",
+    "wikidata_website": "http://www.glk.nl/hernen"
   },
   {
     "position": 668,
@@ -493,7 +525,13 @@
     "website": "http://www.kasteelduurstede.nl",
     "score_total": 359.193974,
     "score_visitors": 6.813953,
-    "visitors": 85
+    "visitors": 85,
+    "wikipedia_extract": "Castle Duurstede is a medieval castle in Wijk bij Duurstede in the province of Utrecht in the Netherlands.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/1209_Wijk_bij_Duurstede_155.JPG/330px-1209_Wijk_bij_Duurstede_155.JPG",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Duurstede_Castle",
+    "wikidata_id": "Q2478123",
+    "heritage_status": "Rijksmonument",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wijk_bij_duurstede_kasteel1.jpg?width=800"
   },
   {
     "position": 708,
@@ -551,7 +589,10 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Rechteren_Castle",
     "wikidata_id": "Q11721778",
     "heritage_status": "Rijksmonument complex",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kasteel_Rechteren_HDR.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kasteel_Rechteren_HDR.jpg?width=800",
+    "significant_events": [
+      "slighting"
+    ]
   },
   {
     "position": 738,
@@ -571,7 +612,7 @@
     "condition": "Intact",
     "remarkable": "",
     "description": "Gebouwd op de plaats waar in de 11de eeuw een motteburcht stond. Het kasteel met voorburcht is in de 19de-eeuw gerestaureerd en uitgebreid met de Ijzertoren en een kruisgang.",
-    "website": "",
+    "website": "https://www.kasteelheeswijk.nl/",
     "score_total": 343.875949,
     "score_visitors": 7.721519,
     "visitors": 78,
@@ -580,7 +621,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Heeswijk_Castle",
     "wikidata_id": "Q1341673",
     "heritage_status": "Rijksmonument complex",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kasteel_Heeswijk_01.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kasteel_Heeswijk_01.JPG?width=800",
+    "wikidata_website": "https://www.kasteelheeswijk.nl/"
   },
   {
     "position": 741,
@@ -626,7 +668,14 @@
     "website": "http://www.oostvoorne.org/burcht/",
     "score_total": 337.769772,
     "score_visitors": 5.354839,
-    "visitors": 30
+    "visitors": 30,
+    "wikipedia_extract": "The Burcht of Voorne is a ruinous motte-and-bailey castle in Oostvoorne, Netherlands. It was home to the Lords of Voorne, burgraves of Zeeland.",
+    "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Reconstructie_Burcht_door_A.L.Oger_-_Oostvoorne_-_20175895_-_RCE.jpg/330px-Reconstructie_Burcht_door_A.L.Oger_-_Oostvoorne_-_20175895_-_RCE.jpg",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Burcht_of_Voorne",
+    "wikidata_id": "Q2765622",
+    "heritage_status": "Rijksmonument",
+    "inception_year": 1170,
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burcht_Hoflaan_Oostvoorne.jpg?width=800"
   },
   {
     "position": 776,
@@ -673,7 +722,7 @@
     "condition": "Rebuild/Restored",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.kasteel-dussen.nl/",
     "score_total": 329.068085,
     "score_visitors": 7.489362,
     "visitors": 46,
@@ -682,7 +731,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Dussen_Castle",
     "wikidata_id": "Q2731452",
     "heritage_status": "Rijksmonument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/20070705Kasteel_Dussen.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/20070705Kasteel_Dussen.jpg?width=800",
+    "wikidata_website": "http://www.kasteel-dussen.nl/"
   },
   {
     "position": 930,

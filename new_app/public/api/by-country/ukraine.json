@@ -8,8 +8,8 @@
     "place": "",
     "region": "Khmelnitskyi",
     "region_code": "khmelnitskyi",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 48.507778,
+    "longitude": 26.485972,
     "founder": "",
     "era": 14,
     "castle_type": "Mountain castle",
@@ -17,7 +17,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://khotyn.dosvit.org.ua/",
     "score_total": 465.30227,
     "score_visitors": 8.25,
     "visitors": 7,
@@ -26,7 +26,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Khotyn",
     "wikidata_id": "Q45883",
     "inception_year": 1002,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chocim_stronghold.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chocim_stronghold.jpg?width=800",
+    "wikidata_website": "https://khotyn.dosvit.org.ua/"
   },
   {
     "position": 324,
@@ -37,8 +38,8 @@
     "place": "",
     "region": "Khmelnitskyi",
     "region_code": "khmelnitskyi",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 48.680556,
+    "longitude": 26.580556,
     "founder": "",
     "era": null,
     "castle_type": "City castle",
@@ -46,7 +47,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://kam-pod.gov.ua",
     "score_total": 451.300059,
     "score_visitors": 7.884615,
     "visitors": 25,
@@ -55,7 +56,11 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Kamianets-Podilskyi",
     "wikidata_id": "Q193965",
     "inception_year": 1062,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kamianets-Podilskyi-2007.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kamianets-Podilskyi-2007.jpg?width=800",
+    "wikidata_website": "http://kam-pod.gov.ua",
+    "significant_events": [
+      "Siege of Kamenets"
+    ]
   },
   {
     "position": 340,
@@ -66,8 +71,8 @@
     "place": "Wolhynien",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 50.745073,
+    "longitude": 25.320078,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -94,8 +99,8 @@
     "place": "Mukachevo",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 48.431506,
+    "longitude": 22.687797,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -123,8 +128,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 46.193917,
+    "longitude": 30.341111,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -132,7 +137,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.bilgorod-d.org.ua/",
     "score_total": 297.1,
     "score_visitors": 5.5,
     "visitors": 1,
@@ -140,7 +145,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Bilhorod_Dnistrovskyi.jpg/330px-Bilhorod_Dnistrovskyi.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Bilhorod-Dnistrovskyi",
     "wikidata_id": "Q672990",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bilhorod_Dnistrovskyi.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bilhorod_Dnistrovskyi.jpg?width=800",
+    "wikidata_website": "http://www.bilgorod-d.org.ua/"
   },
   {
     "position": 899,
@@ -151,8 +157,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 49.966667,
+    "longitude": 24.883333,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -179,8 +185,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 44.851389,
+    "longitude": 34.9725,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -197,6 +203,9 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Sudak",
     "wikidata_id": "Q7830",
     "inception_year": 212,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/View_of_Sudak_from_Genoese_Fortress.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/View_of_Sudak_from_Genoese_Fortress.jpg?width=800",
+    "significant_events": [
+      "destruction"
+    ]
   }
 ]

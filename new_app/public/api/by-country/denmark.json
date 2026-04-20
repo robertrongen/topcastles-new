@@ -8,8 +8,8 @@
     "place": "Kværndrup",
     "region": "Fyn (Funen)",
     "region_code": "fyn",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.176389,
+    "longitude": 10.489444,
     "founder": "",
     "era": null,
     "castle_type": "Water castle",
@@ -28,7 +28,8 @@
     "architectural_style": "Renaissance architecture",
     "heritage_status": "monument on Kulturstyrelsen register",
     "inception_year": 1554,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Egeskov_Slot_spejling_Edit_2.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Egeskov_Slot_spejling_Edit_2.jpg?width=800",
+    "wikidata_website": "http://www.egeskov.dk"
   },
   {
     "position": 94,
@@ -39,8 +40,8 @@
     "place": "Sandvig",
     "region": "Bornholm",
     "region_code": "bornholm",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.271151,
+    "longitude": 14.755815,
     "founder": "Vikings",
     "era": 12,
     "castle_type": "Rock castle",
@@ -69,8 +70,8 @@
     "place": "",
     "region": "Sjælland",
     "region_code": "sjaelland",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.008333,
+    "longitude": 11.910278,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -86,7 +87,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/View_from_G%C3%A5set%C3%A5rnetKlassik.jpg/330px-View_from_G%C3%A5set%C3%A5rnetKlassik.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Vordingborg",
     "wikidata_id": "Q2608258",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vordingborg_-_udsigt_over_byen.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vordingborg_-_udsigt_over_byen.jpg?width=800",
+    "wikidata_website": "https://vordingborg.dk/"
   },
   {
     "position": 147,
@@ -97,8 +99,8 @@
     "place": "",
     "region": "Fyn (Funen)",
     "region_code": "fyn",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 55.309722,
+    "longitude": 10.791667,
     "founder": "",
     "era": null,
     "castle_type": "",
@@ -115,7 +117,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Nyborg",
     "wikidata_id": "Q3530435",
     "inception_year": 1175,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Nyborg-Palace.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Nyborg-Palace.jpg?width=800",
+    "wikidata_website": "https://www.nyborg.dk/"
   },
   {
     "position": 176,
@@ -126,8 +129,8 @@
     "place": "Spøttrup",
     "region": "Jylland",
     "region_code": "jylland",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 56.639611,
+    "longitude": 8.782694,
     "founder": "",
     "era": null,
     "castle_type": "",

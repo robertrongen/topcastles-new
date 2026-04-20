@@ -110,7 +110,7 @@
               </tr>
               <tr>
                 <td class="label">Founder:</td>
-                <td><strong>{{ castle()!.founder || '—' }}</strong></td>
+                <td><strong>{{ castle()!.founder || castle()!.wikidata_founder || '—' }}</strong></td>
                 <td class="label">Region:</td>
                 <td>
                   @if (castle()!.region) {
@@ -197,14 +197,43 @@
           </mat-card>
         }
 
-        @if (castle()!.website) {
+        @if (castle()!.architect) {
+          <mat-card class="section-card">
+            <mat-card-content>
+              <h3>Architect</h3>
+              <p>{{ castle()!.architect }}</p>
+            </mat-card-content>
+          </mat-card>
+        }
+
+        @if (castle()!.significant_events?.length) {
+          <mat-card class="section-card">
+            <mat-card-content>
+              <h3>Significant events</h3>
+              <ul class="events-list">
+                @for (event of castle()!.significant_events!; track $index) {
+                  <li>{{ event }}</li>
+                }
+              </ul>
+            </mat-card-content>
+          </mat-card>
+        }
+
+        @if (castle()!.website || castle()!.wikidata_website) {
           <mat-card class="section-card">
             <mat-card-content>
               <h3>External links</h3>
               <div class="external-links">
-                <a mat-button [href]="castle()!.website" target="_blank" rel="noopener noreferrer">
-                  <mat-icon>language</mat-icon> Official website
-                </a>
+                @if (castle()!.website) {
+                  <a mat-button [href]="castle()!.website" target="_blank" rel="noopener noreferrer">
+                    <mat-icon>language</mat-icon> Official website
+                  </a>
+                }
+                @if (castle()!.wikidata_website && castle()!.wikidata_website !== castle()!.website) {
+                  <a mat-button [href]="castle()!.wikidata_website!" target="_blank" rel="noopener noreferrer">
+                    <mat-icon>language</mat-icon> Official website (Wikidata)
+                  </a>
+                }
               </div>
             </mat-card-content>
           </mat-card>

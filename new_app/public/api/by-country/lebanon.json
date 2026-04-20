@@ -8,8 +8,8 @@
     "place": "Saida",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 33.560556,
+    "longitude": 35.375833,
     "founder": "",
     "era": 13,
     "castle_type": "Harbour castle",
@@ -26,7 +26,10 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Sidon",
     "wikidata_id": "Q163490",
     "heritage_status": "Tentative World Heritage Site",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/SidonNewCity.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/SidonNewCity.jpg?width=800",
+    "significant_events": [
+      "Siege of Sidon"
+    ]
   },
   {
     "position": 310,
@@ -37,8 +40,8 @@
     "place": "",
     "region": "",
     "region_code": "",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 33.324541,
+    "longitude": 35.532167,
     "founder": "Arabisch",
     "era": 12,
     "castle_type": "",
@@ -60,8 +63,8 @@
     "place": "Byblos",
     "region": "Tripoli",
     "region_code": "tripoli",
-    "latitude": null,
-    "longitude": null,
+    "latitude": 34.116667,
+    "longitude": 35.65,
     "founder": "Hugo I Embriaco of Giblet",
     "era": 12,
     "castle_type": "",
@@ -69,7 +72,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "http://www.jbail-byblos.gov.lb/",
     "score_total": 259.048839,
     "score_visitors": 3.75,
     "visitors": 11,
@@ -79,6 +82,7 @@
     "wikidata_id": "Q173532",
     "heritage_status": "World Heritage Site",
     "inception_year": 8000,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Byblos_Libanon_2003.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Byblos_Libanon_2003.JPG?width=800",
+    "wikidata_website": "http://www.jbail-byblos.gov.lb/"
   }
 ]
