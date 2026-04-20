@@ -1,6 +1,6 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, Input, signal, inject } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Castle } from '../../models/castle.model';
@@ -15,8 +15,15 @@ import { Castle } from '../../models/castle.model';
 export class CastleGridComponent {
   @Input({ required: true }) castles: Castle[] = [];
 
+  private router = inject(Router);
   failedLocal = signal(new Set<string>());
   failedWiki  = signal(new Set<string>());
+
+  goToCountry(event: MouseEvent, country: string): void {
+    event.preventDefault();
+    event.stopPropagation();
+    this.router.navigate(['/countries', country]);
+  }
 
   onLocalError(castle: Castle): void {
     this.failedLocal.update(s => new Set(s).add(castle.castle_code));

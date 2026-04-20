@@ -62,6 +62,10 @@ export class CountryDetailPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.castleService.loadCastles();
+    // map mode is not valid on this page (we have our own map panel)
+    if (this.viewModeService.mode() === 'map') {
+      this.viewModeService.setMode('grid');
+    }
     this.route.params.subscribe((params) => {
       this.country.set(params['country'] ?? '');
     });

@@ -26,7 +26,7 @@
           <div class="castle-rank">{{ castle.position }} &mdash; {{ castle.score_total | number:'1.0-0' }} pts</div>
         }
         <div class="castle-name">{{ castle.castle_name }}</div>
-        <a class="castle-country" [routerLink]="['/countries', castle.country]" (click)="$event.stopPropagation()">{{ castle.country }}</a>
+        <span class="castle-country" (click)="goToCountry($event, castle.country)" role="link" tabindex="0">{{ castle.country }}</span>
       </mat-card>
     </a>
   }
