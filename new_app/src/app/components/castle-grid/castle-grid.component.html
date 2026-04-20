@@ -3,11 +3,25 @@
     <a class="castle-tile" [routerLink]="['/castles', castle.castle_code]"
        [title]="castle.castle_name + ' - ' + castle.country">
       <mat-card>
-        <img class="castle-thumb"
-             [src]="'/images/castles/small/' + castle.castle_code + '_small.jpg'"
-             [alt]="castle.castle_name"
-             (error)="onImgError($event)"
-             loading="lazy" />
+        <div class="thumb-wrap">
+          @if (!failedLocal().has(castle.castle_code)) {
+            <img class="castle-thumb"
+                 [src]="'/images/castles/small/' + castle.castle_code + '_small.jpg'"
+                 [alt]="castle.castle_name"
+                 [title]="castle.castle_name"
+                 (error)="onLocalError(castle)"
+                 loading="lazy" />
+          } @else if (castle.wikipedia_thumbnail && !failedWiki().has(castle.castle_code)) {
+            <img class="castle-thumb"
+                 [src]="castle.wikipedia_thumbnail"
+                 [alt]="castle.castle_name"
+                 [title]="castle.castle_name"
+                 (error)="onWikiError(castle)"
+                 loading="lazy" />
+          } @else {
+            <mat-icon class="thumb-icon">castle</mat-icon>
+          }
+        </div>
         @if (castle.position != null) {
           <div class="castle-rank">{{ castle.position }} &mdash; {{ castle.score_total | number:'1.0-0' }} pts</div>
         }

@@ -133,7 +133,12 @@ export class CastlesPageComponent implements OnInit {
   ngOnInit(): void {
     this.castleService.loadCastles();
     this.route.queryParams.subscribe(params => {
-      if (params['country']) this.country.set(params['country']);
+      if (params['country'])       this.country.set(params['country']);
+      if (params['region'])        this.region.set(params['region']);
+      if (params['castleType'])    this.castleType.set(params['castleType']);
+      if (params['castleConcept']) this.castleConcept.set(params['castleConcept']);
+      if (params['condition'])     this.condition.set(params['condition']);
+      if (params['era'])           this.era.set(Number(params['era']));
     });
   }
 

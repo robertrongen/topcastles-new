@@ -82,9 +82,10 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
       .slice(0, 6);
   });
 
-  // ── Image lightbox (2.4) ───────────────────────────────────────────────────
+  // ── Image strip (2.4 / 6.2) ───────────────────────────────────────────────
   loadedImageUrls = signal<string[]>([]);
-  lightboxIndex = signal<number | null>(null);
+  selectedIndex  = signal(0);
+  lightboxIndex  = signal<number | null>(null);
 
   /** Candidate image URLs: {code}.jpg, {code}2.jpg … {code}25.jpg */
   imageUrls = computed(() => {
@@ -101,6 +102,10 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
 
   onImageError(event: Event): void {
     (event.target as HTMLImageElement).style.display = 'none';
+  }
+
+  selectImage(index: number): void {
+    this.selectedIndex.set(index);
   }
 
   openLightbox(index: number): void {
@@ -141,10 +146,11 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
       }
     });
 
-    // Reset loaded images when castle changes
+    // Reset loaded images and selection when castle changes
     effect(() => {
       this.code();
       this.loadedImageUrls.set([]);
+      this.selectedIndex.set(0);
       this.lightboxIndex.set(null);
     });
 

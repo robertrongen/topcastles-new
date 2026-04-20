@@ -112,13 +112,25 @@
                 <td class="label">Founder:</td>
                 <td><strong>{{ castle()!.founder || '—' }}</strong></td>
                 <td class="label">Region:</td>
-                <td><strong>{{ castle()!.region || '—' }}</strong></td>
+                <td>
+                  @if (castle()!.region) {
+                    <a [routerLink]="['/castles']" [queryParams]="{ region: castle()!.region }"><strong>{{ castle()!.region }}</strong></a>
+                  } @else { — }
+                </td>
               </tr>
               <tr>
                 <td class="label">Building structure:</td>
-                <td><strong>{{ castle()!.castle_concept || '—' }}</strong></td>
+                <td>
+                  @if (castle()!.castle_concept) {
+                    <a [routerLink]="['/castles']" [queryParams]="{ castleConcept: castle()!.castle_concept }"><strong>{{ castle()!.castle_concept }}</strong></a>
+                  } @else { — }
+                </td>
                 <td class="label">Castle type:</td>
-                <td><strong>{{ castle()!.castle_type || '—' }}</strong></td>
+                <td>
+                  @if (castle()!.castle_type) {
+                    <a [routerLink]="['/castles']" [queryParams]="{ castleType: castle()!.castle_type }"><strong>{{ castle()!.castle_type }}</strong></a>
+                  } @else { — }
+                </td>
               </tr>
               <tr>
                 <td class="label">Place:</td>
@@ -130,13 +142,15 @@
                 <td class="label">Era:</td>
                 <td>
                   @if (castle()!.era && castle()!.era! > 1) {
-                    <strong>{{ castle()!.era }}th century</strong>
-                  } @else {
-                    —
-                  }
+                    <a [routerLink]="['/castles']" [queryParams]="{ era: castle()!.era }"><strong>{{ castle()!.era }}th century</strong></a>
+                  } @else { — }
                 </td>
                 <td class="label">Condition:</td>
-                <td><strong>{{ castle()!.condition || '—' }}</strong></td>
+                <td>
+                  @if (castle()!.condition) {
+                    <a [routerLink]="['/castles']" [queryParams]="{ condition: castle()!.condition }"><strong>{{ castle()!.condition }}</strong></a>
+                  } @else { — }
+                </td>
               </tr>
               </tbody>
             </table>
@@ -233,29 +247,26 @@
         </div>
 
         @if (loadedImageUrls().length > 0) {
-          <div class="featured-image-wrap" (click)="openLightbox(0)">
+          <div class="featured-image-wrap">
             <img class="featured-image"
-                 [src]="loadedImageUrls()[0]"
+                 [src]="loadedImageUrls()[selectedIndex()]"
                  [alt]="castle()!.castle_name" />
-            @if (loadedImageUrls().length > 1) {
-              <div class="featured-image-count">
-                <mat-icon>photo_library</mat-icon> {{ loadedImageUrls().length }} photos
-              </div>
-            }
+            <button class="featured-fullscreen"
+                    (click)="openLightbox(selectedIndex())"
+                    aria-label="View fullscreen"
+                    type="button">
+              <mat-icon>fullscreen</mat-icon>
+            </button>
           </div>
 
           @if (loadedImageUrls().length > 1) {
             <div class="thumb-strip">
-              @for (url of loadedImageUrls().slice(1, 5); track $index) {
+              @for (url of loadedImageUrls(); track $index) {
                 <img class="strip-thumb"
+                     [class.active]="selectedIndex() === $index"
                      [src]="url"
                      [alt]="castle()!.castle_name"
-                     (click)="openLightbox($index + 1)" />
-              }
-              @if (loadedImageUrls().length > 5) {
-                <div class="strip-more" (click)="openLightbox(5)">
-                  +{{ loadedImageUrls().length - 5 }}
-                </div>
+                     (click)="selectImage($index)" />
               }
             </div>
           }

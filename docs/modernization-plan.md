@@ -99,18 +99,18 @@ Expose the castle dataset for third-party developers, chatbots, and AI agents.
 
 Items from `additional_improvements.md` not yet implemented.
 
-- [ ] **6.1** Clickable metadata on detail page
+- [x] **6.1** Clickable metadata on detail page
   - Region, castle type, building structure, condition and era become links/buttons
   - Clicking navigates to `/castles?country=…&castleType=…` (etc.) with the filter pre-applied
   - Era link goes to `/castles?era=12` — reuses existing query-param support
-- [ ] **6.2** In-place scrollable image strip
+- [x] **6.2** In-place scrollable image strip
   - Replace the static thumbnail strip with a horizontally-scrollable carousel in the aside
   - Clicking a thumbnail makes it the featured image *in place* (no overlay) without leaving the page
   - Fullscreen lightbox remains available as an optional second action
-- [ ] **6.3** Extend nearby castles from 5 to 6
+- [x] **6.3** Extend nearby castles from 5 to 6
   - One-line change in `nearbyCastles` computed (`slice(0, 6)`)
   - Update spec assertions
-- [ ] **6.4** Thumbnail images in castle table and grid
+- [x] **6.4** Thumbnail images in castle table and grid
   - Show `wikipedia_thumbnail` (or a local `/images/castles/small/{code}_small.jpg`) as a 60×60 cell in the table and a card header in the grid
   - Graceful fallback (castle icon) when no image is available
 

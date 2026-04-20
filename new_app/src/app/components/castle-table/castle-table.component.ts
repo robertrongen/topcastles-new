@@ -1,14 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule, Sort } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
 import { Castle } from '../../models/castle.model';
 
 @Component({
   selector: 'app-castle-table',
   standalone: true,
-  imports: [DecimalPipe, RouterLink, MatTableModule, MatSortModule],
+  imports: [DecimalPipe, RouterLink, MatTableModule, MatSortModule, MatIconModule],
   templateUrl: './castle-table.component.html',
   styleUrl: './castle-table.component.scss',
 })
@@ -45,6 +46,17 @@ export class CastleTableComponent {
     const m = era % 10;
     const suffix = (n >= 11 && n <= 13) ? 'th' : (m === 1 ? 'st' : m === 2 ? 'nd' : m === 3 ? 'rd' : 'th');
     return `${era}${suffix} c.`;
+  }
+
+  failedLocal = signal(new Set<string>());
+  failedWiki  = signal(new Set<string>());
+
+  onLocalError(castle: Castle): void {
+    this.failedLocal.update(s => new Set(s).add(castle.castle_code));
+  }
+
+  onWikiError(castle: Castle): void {
+    this.failedWiki.update(s => new Set(s).add(castle.castle_code));
   }
 
   onImgError(event: Event): void {
