@@ -14,7 +14,7 @@
       <span class="breadcrumb-sep" aria-hidden="true">›</span>
       <a routerLink="/castles">Castles</a>
       <span class="breadcrumb-sep" aria-hidden="true">›</span>
-      <a [routerLink]="['/castles']" [queryParams]="{ country: castle()!.country }">{{ castle()!.country }}</a>
+      <a [routerLink]="['/countries', castle()!.country]">{{ castle()!.country }}</a>
       <span class="breadcrumb-sep" aria-hidden="true">›</span>
       <span aria-current="page">{{ castle()!.castle_name }}</span>
     </nav>
@@ -103,7 +103,7 @@
                 </td>
                 <td class="label">Country:</td>
                 <td>
-                  <a [routerLink]="['/castles']" [queryParams]="{ country: castle()!.country }">
+                  <a [routerLink]="['/countries', castle()!.country]">
                     <strong>{{ castle()!.country }}</strong>
                   </a>
                 </td>
