@@ -120,12 +120,13 @@ Items from `additional_improvements.md` not yet implemented.
 
 Items from `additional_improvements.md`: "add a map of the country / region with all the castles marked on it".
 
-- [ ] **7.1** Country detail page map
+- [x] **7.1** Country detail page map
   - Embed `<app-castle-map>` on the country detail page (already has a Leaflet map effect — replace with the shared component)
   - `autoFit=true` so it fits all castles in that country
-- [ ] **7.2** Region detail page map
+- [x] **7.2** Region detail page map
   - Add `<app-castle-map>` to the region detail page (currently has no map)
   - Filtered to castles in that region, auto-fit bounds
+  - Note: regions share the country detail page via `?region=…`; using `cf.filtered()` scopes the map automatically
 
 ---
 
