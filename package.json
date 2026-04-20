@@ -1,0 +1,35 @@
+{
+  "name": "topcastles",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Angular 19 castle-ranking website with SSR, Storybook, and Docker deployment",
+  "scripts": {
+    "install:all": "npm install --prefix new_app && npm install --prefix scripts",
+
+    "start": "npm start --prefix new_app",
+    "build": "npm run build --prefix new_app",
+    "build:watch": "npm run watch --prefix new_app",
+    "serve:ssr": "npm run serve:ssr:new_app --prefix new_app",
+
+    "test": "npm test --prefix new_app",
+
+    "storybook": "npm run storybook --prefix new_app",
+    "build:storybook": "npm run build-storybook --prefix new_app",
+
+    "data:convert": "python scripts/xlsx_to_json.py",
+    "data:enrich:wikidata": "node scripts/enrich_wikidata.js",
+    "data:enrich:wikipedia": "node scripts/enrich_wikipedia.js",
+    "data:api": "node scripts/generate_api.js",
+    "mcp": "node scripts/mcp-server.js",
+
+    "graph:build": "graphify build .",
+    "graph:update": "graphify auto-update .",
+    "graph:query": "graphify query graphify-out/graph.json",
+
+    "deploy": "bash deploy.sh"
+  },
+  "engines": {
+    "node": ">=18",
+    "npm": ">=9"
+  }
+}

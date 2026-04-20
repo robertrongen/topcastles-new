@@ -1,14 +1,14 @@
 # Project Guidelines
 
-## graphify-ts
+## graphify
 
-This project has a graphify-ts knowledge graph at graphify-out/.
+This project has a graphify knowledge graph at graphify-out/graph.json (6,926 files, 3,540 symbols).
 
 Rules:
 
-- Before answering architecture or codebase questions, read graphify-out/GRAPH_REPORT.md for god nodes and community structure
-- If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
-- After modifying code files in this session, run `graphify-ts generate .` to refresh graph artifacts.
+- Before answering architecture or codebase questions, use `graphify query graphify-out/graph.json <name>` to look up symbols instead of reading raw files
+- After modifying code files in this session, run `graphify build .` to rebuild, or `graphify auto-update .` for incremental updates
+- The stop hook auto-updates the graph at session end
 
 
 <!-- BEGIN BEADS INTEGRATION v:1 profile:minimal hash:ca08a54f -->

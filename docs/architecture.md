@@ -5,28 +5,28 @@
 ## High-level architecture
 
 ```text
-┌─────────────────────────────────────────────────────┐
-│                    Browser                          │
-│  Angular 19 SPA (SSR-prerendered for SEO)          │
+┌───────────────────────────────────────────────────┐
+│                    Browser                        │
+│  Angular 19 SPA (SSR-prerendered for SEO)         │
 │  ┌─────────┐ ┌──────────┐ ┌───────────────┐       │
 │  │ Pages   │ │Components│ │ Angular       │       │
 │  │(routes) │ │(shared)  │ │ Material UI   │       │
 │  └────┬────┘ └─────┬────┘ └───────────────┘       │
-│       │            │                                │
-│       └─────┬──────┘                                │
-│             ▼                                       │
-│  ┌──────────────────┐                               │
-│  │    Services       │  ← inject() DI               │
-│  │  (CastleService,  │                               │
-│  │   NoCastleService,│                               │
-│  │   ViewModeService)│                               │
-│  └────────┬─────────┘                               │
-│           ▼                                         │
-│  ┌──────────────────┐                               │
-│  │  Static JSON      │  ← /assets/data/*.json       │
-│  │  (castle data)    │     built from CSV export     │
-│  └──────────────────┘                               │
-└─────────────────────────────────────────────────────┘
+│       │            │                              │
+│       └─────┬──────┘                              │
+│             ▼                                     │
+│  ┌───────────────────┐                            │
+│  │    Services       │  ← inject() DI             │
+│  │  (CastleService,  │                            │
+│  │   NoCastleService,│                            │
+│  │   ViewModeService)│                            │
+│  └────────┬──────────┘                            │
+│           ▼                                       │
+│  ┌──────────────────┐                             │
+│  │  Static JSON      │  ← /assets/data/*.json     │
+│  │  (castle data)    │     built from CSV export  │
+│  └──────────────────┘                             │
+└───────────────────────────────────────────────────┘
 ```
 
 ## Component hierarchy
@@ -67,7 +67,7 @@ AppComponent (shell: toolbar + sidenav + router-outlet)
 
 ```text
 ┌──────────────────────────────────────────────┐
-│              Synology NAS                     │
+│              Synology NAS                    │
 │  ┌────────────────────────────────────────┐  │
 │  │  Docker Container (Node Alpine)        │  │
 │  │  ┌──────────────────────────────────┐  │  │
