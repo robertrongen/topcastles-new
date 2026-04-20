@@ -12,6 +12,10 @@
     <app-view-toggle />
     @if (viewModeService.mode() === 'grid') {
       <app-castle-grid [castles]="cf.filtered()" />
+    } @else if (viewModeService.mode() === 'map') {
+      <div class="map-view-container">
+        <app-castle-map [castles]="cf.filtered()" />
+      </div>
     } @else {
       <app-castle-table [castles]="cf.filtered()" [columns]="displayedColumns" />
     }

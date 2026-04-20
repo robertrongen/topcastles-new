@@ -6,13 +6,14 @@ import { Castle } from '../../models/castle.model';
 import { CastleFilterComponent, FilterField } from '../../components/castle-filter/castle-filter.component';
 import { CastleGridComponent } from '../../components/castle-grid/castle-grid.component';
 import { CastleTableComponent } from '../../components/castle-table/castle-table.component';
+import { CastleMapComponent } from '../../components/castle-map/castle-map.component';
 import { ViewToggleComponent } from '../../components/view-toggle/view-toggle.component';
 import { ViewModeService } from '../../services/view-mode.service';
 
 @Component({
   selector: 'app-country-detail-page',
   standalone: true,
-  imports: [RouterLink, CastleFilterComponent, CastleGridComponent, CastleTableComponent, ViewToggleComponent],
+  imports: [RouterLink, CastleFilterComponent, CastleGridComponent, CastleTableComponent, CastleMapComponent, ViewToggleComponent],
   templateUrl: './country-detail-page.component.html',
   styleUrl: './country-detail-page.component.scss',
 })
