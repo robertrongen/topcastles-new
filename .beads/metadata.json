@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "topcastles",
+  "project_id": "71dfddea-d731-480a-ab1d-a32620d13947"
+}
