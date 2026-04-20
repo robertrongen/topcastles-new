@@ -30,8 +30,9 @@ import { dirname, join } from 'path';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, '..');
 
-const INPUT_PATH  = join(REPO_ROOT, 'new_app', 'src', 'assets', 'data', 'castles.json');
-const OUTPUT_PATH = join(REPO_ROOT, 'new_app', 'src', 'assets', 'data', 'castles_enriched.json');
+const INPUT_PATH      = join(REPO_ROOT, 'new_app', 'src', 'assets', 'data', 'castles.json');
+const OUTPUT_PATH     = join(REPO_ROOT, 'new_app', 'src', 'assets', 'data', 'castles_enriched.json');
+const OVERRIDES_PATH  = join(__dirname, 'wikipedia_overrides.json');
 
 const args = process.argv.slice(2);
 const DRY_RUN     = args.includes('--dry-run');
@@ -44,6 +45,12 @@ const DELAY_MS = (() => {
 const WIKI_SUMMARY = 'https://en.wikipedia.org/api/rest_v1/page/summary/';
 const WIKI_SEARCH  = 'https://en.wikipedia.org/w/api.php?action=query&list=search&srlimit=1&format=json&formatversion=2&srsearch=';
 const HEADERS = { 'User-Agent': 'TopCastles-enrichment/1.0 (rongen.robert@gmail.com)' };
+
+// Manual overrides: castle_code → Wikipedia article title
+const overrides = existsSync(OVERRIDES_PATH)
+  ? (() => { const raw = JSON.parse(readFileSync(OVERRIDES_PATH, 'utf8')); delete raw._comment; return raw; })()
+  : {};
+console.log(`Loaded ${Object.keys(overrides).length} manual overrides from wikipedia_overrides.json`);
 
 // Keywords that indicate a search result is actually about a castle/fortress
 const CASTLE_KEYWORDS = [
@@ -118,6 +125,13 @@ function candidateTitles(castle) {
 }
 
 async function enrich(castle) {
+  // Step 0: manual override
+  const overrideTitle = overrides[castle.castle_code];
+  if (overrideTitle) {
+    const data = await fetchSummary(overrideTitle);
+    if (data) return summaryToFields(data, 'override');
+  }
+
   // Steps 1–3: direct title lookups
   for (const title of candidateTitles(castle)) {
     const data = await fetchSummary(title);
