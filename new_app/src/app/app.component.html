@@ -15,7 +15,7 @@
       <a mat-menu-item routerLink="/top-countries">Top Countries</a>
       <a mat-menu-item routerLink="/top-regions">Top Regions</a>
     </mat-menu>
-    <a mat-button routerLink="/castles" routerLinkActive="tk-nav-active">Search</a>
+
     <a mat-button routerLink="/developer" routerLinkActive="tk-nav-active">Developer / API</a>
   </nav>
 
@@ -38,10 +38,6 @@
         <mat-icon matListItemIcon>leaderboard</mat-icon>
         <span matListItemTitle>Top 1000</span>
       </a>
-      <a mat-list-item routerLink="/castles" routerLinkActive="active" (click)="sidenav.close()">
-        <mat-icon matListItemIcon>castle</mat-icon>
-        <span matListItemTitle>All Castles</span>
-      </a>
       <mat-divider />
       <a mat-list-item routerLink="/background" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>info</mat-icon>
@@ -54,10 +50,6 @@
       <a mat-list-item routerLink="/top-regions" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>map</mat-icon>
         <span matListItemTitle>Top Regions</span>
-      </a>
-      <a mat-list-item routerLink="/castles" routerLinkActive="active" (click)="sidenav.close()">
-        <mat-icon matListItemIcon>search</mat-icon>
-        <span matListItemTitle>Search</span>
       </a>
       <mat-divider />
       <a mat-list-item routerLink="/developer" routerLinkActive="active" (click)="sidenav.close()">

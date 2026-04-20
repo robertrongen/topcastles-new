@@ -22,7 +22,7 @@ export class CastleGridComponent {
   goToCountry(event: MouseEvent, country: string): void {
     event.preventDefault();
     event.stopPropagation();
-    this.router.navigate(['/countries', country]);
+    this.router.navigate(['/top1000'], { queryParams: { country } });
   }
 
   onLocalError(castle: Castle): void {

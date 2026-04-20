@@ -8,7 +8,13 @@
       "Bash(new_app/node_modules/.bin/ng build *)",
       "Bash(node scripts/enrich_wikipedia.js --misses-only --delay 400)",
       "Bash(node scripts/enrich_coordinates.js --dry-run)",
-      "Bash(node scripts/enrich_coordinates.js --delay 400)"
+      "Bash(node scripts/enrich_coordinates.js --delay 400)",
+      "Bash(node scripts/enrich_wikidata.js --dry-run)",
+      "Bash(node scripts/enrich_wikidata.js --refill)",
+      "Bash(node scripts/generate_api.js)",
+      "Bash(bd ready *)",
+      "Bash(git stash *)",
+      "Bash(node scripts/enrich_wikipedia.js --misses-only)"
     ]
   },
   "hooks": {

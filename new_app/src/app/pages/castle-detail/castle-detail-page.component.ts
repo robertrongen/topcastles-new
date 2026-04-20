@@ -261,6 +261,23 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
     if (this.keyHandler) document.removeEventListener('keydown', this.keyHandler);
   }
 
+  // ── Share (9.3) ───────────────────────────────────────────────────────────
+  shareCopied = signal(false);
+
+  async share(): Promise<void> {
+    const castle = this.castle();
+    if (!castle) return;
+    const url  = window.location.href;
+    const text = `${castle.castle_name} — ranked #${castle.position} in Top Castles`;
+    if (navigator.share) {
+      await navigator.share({ title: castle.castle_name, text, url }).catch(() => {});
+    } else {
+      await navigator.clipboard.writeText(url).catch(() => {});
+      this.shareCopied.set(true);
+      setTimeout(() => this.shareCopied.set(false), 2500);
+    }
+  }
+
   googleMapsUrl(): string {
     const c = this.castle();
     if (!c?.latitude || !c?.longitude) return '';

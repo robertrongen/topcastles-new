@@ -4,6 +4,13 @@
   padding: 16px;
 }
 
+.title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  h1 { flex: 1; }
+}
+
 .breadcrumb {
   display: flex;
   align-items: center;

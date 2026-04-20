@@ -14,7 +14,7 @@
       <span class="breadcrumb-sep" aria-hidden="true">›</span>
       <a routerLink="/castles">Castles</a>
       <span class="breadcrumb-sep" aria-hidden="true">›</span>
-      <a [routerLink]="['/countries', castle()!.country]">{{ castle()!.country }}</a>
+      <a [routerLink]="['/top1000']" [queryParams]="{ country: castle()!.country }">{{ castle()!.country }}</a>
       <span class="breadcrumb-sep" aria-hidden="true">›</span>
       <span aria-current="page">{{ castle()!.castle_name }}</span>
     </nav>
@@ -52,7 +52,14 @@
     </nav>
 
     <!-- Castle name + badges (full width) -->
-    <h1>{{ castle()!.castle_name }}</h1>
+    <div class="title-row">
+      <h1>{{ castle()!.castle_name }}</h1>
+      <button mat-icon-button type="button" (click)="share()"
+              [title]="shareCopied() ? 'Link copied!' : 'Share this castle'"
+              aria-label="Share this castle">
+        <mat-icon>{{ shareCopied() ? 'check' : 'share' }}</mat-icon>
+      </button>
+    </div>
 
     @if (castle()!.heritage_status || castle()!.architectural_style) {
       <mat-chip-set class="badge-row" aria-label="Castle attributes">
@@ -103,7 +110,7 @@
                 </td>
                 <td class="label">Country:</td>
                 <td>
-                  <a [routerLink]="['/countries', castle()!.country]">
+                  <a [routerLink]="['/top1000']" [queryParams]="{ country: castle()!.country }">
                     <strong>{{ castle()!.country }}</strong>
                   </a>
                 </td>

@@ -1,10 +1,33 @@
 <div class="top100-page">
+  <h1>Top 1000 Medieval Castles</h1>
+
+  <!-- Unified search box -->
+  <mat-form-field appearance="outline" class="search-box">
+    <mat-label>Search castles</mat-label>
+    <input matInput
+           [ngModel]="searchQuery()"
+           (ngModelChange)="searchQuery.set($event)"
+           placeholder="Search all castle data…" />
+    @if (searchQuery()) {
+      <button matSuffix mat-icon-button type="button" aria-label="Clear search"
+              (click)="searchQuery.set('')">
+        <mat-icon>clear</mat-icon>
+      </button>
+    } @else {
+      <mat-icon matSuffix>search</mat-icon>
+    }
+  </mat-form-field>
+
   <section class="section">
-    <h2>The top 1000 of medieval castles</h2>
-    <p>
-      All castles ranked by score, derived from references used by topcastles.com and the visitors rating.
-    </p>
-    <app-castle-filter #cf [castles]="top100()" [fields]="filterFields" />
+    <app-castle-filter #cf
+      [castles]="searchedCastles()"
+      [fields]="filterFields"
+      [initialFilters]="initialFilters()" />
+
+    @if (cf.hasActiveFilters() || searchQuery()) {
+      <p class="result-count">{{ cf.filtered().length }} castles found</p>
+    }
+
     @if (typeDescriptions[cf.getFilter('castle_type')]; as desc) {
       <mat-card class="type-description">
         <mat-card-content>
@@ -29,16 +52,41 @@
           @if (desc.image) {
             <img [src]="'/assets/images/drawings/' + desc.image"
                  [alt]="cf.getFilter('castle_concept')"
+                 [title]="cf.getFilter('castle_concept')"
                  class="concept-image" />
           }
         </mat-card-content>
       </mat-card>
     }
-    <app-view-toggle />
-    @if (viewModeService.mode() === 'grid') {
-      <app-castle-grid [castles]="cf.filtered()" />
+
+    <div class="view-toolbar">
+      <app-view-toggle [hideMap]="true" />
+      <button mat-icon-button type="button"
+              (click)="toggleMap()"
+              [color]="mapVisible() ? 'primary' : ''"
+              [title]="mapVisible() ? 'Hide map' : 'Show map'"
+              aria-label="Toggle map">
+        <mat-icon>map</mat-icon>
+      </button>
+    </div>
+
+    @if (loading()) {
+      <p>Loading castles…</p>
     } @else {
-      <app-castle-table [castles]="cf.filtered()" [columns]="displayedColumns" />
+      <div class="content-layout" [class.map-open]="mapVisible()">
+        <div class="content-area">
+          @if (viewModeService.mode() === 'grid') {
+            <app-castle-grid [castles]="cf.filtered()" />
+          } @else {
+            <app-castle-table [castles]="cf.filtered()" [columns]="displayedColumns" />
+          }
+        </div>
+        @if (mapVisible()) {
+          <div class="map-panel">
+            <app-castle-map [castles]="cf.filtered()" />
+          </div>
+        }
+      </div>
     }
   </section>
 </div>
