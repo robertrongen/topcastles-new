@@ -8,10 +8,10 @@ Angular 19 castle-ranking website, rebuilt from a legacy PHP app. Serves a ranke
 
 | Concern        | Choice                                                        |
 | -------------- | ------------------------------------------------------------- |
-| Framework      | Angular 19 — Standalone Components, Signals, SSR             |
+| Framework      | Angular 19 — Standalone Components, Signals, SSR              |
 | UI             | Angular Material 19                                           |
 | Styling        | SCSS with legacy brand palette                                |
-| Data           | Static JSON in `new_app/src/assets/data/`                    |
+| Data           | Static JSON in `new_app/src/assets/data/`                     |
 | Rendering      | Angular SSR + prerendering for SEO                            |
 | Container      | Docker (Node Alpine), deployed to Synology NAS                |
 | Component docs | Storybook 9                                                   |
