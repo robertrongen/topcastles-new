@@ -82,6 +82,18 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
       .slice(0, 6);
   });
 
+  // ── Nearby castle image fallback ──────────────────────────────────────────
+  nearbyFailedLocal = signal(new Set<string>());
+  nearbyFailedWiki  = signal(new Set<string>());
+
+  onNearbyLocalError(code: string): void {
+    this.nearbyFailedLocal.update(s => new Set(s).add(code));
+  }
+
+  onNearbyWikiError(code: string): void {
+    this.nearbyFailedWiki.update(s => new Set(s).add(code));
+  }
+
   // ── Image strip (2.4 / 6.2) ───────────────────────────────────────────────
   loadedImageUrls = signal<string[]>([]);
   selectedIndex  = signal(0);
@@ -146,12 +158,14 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
       }
     });
 
-    // Reset loaded images and selection when castle changes
+    // Reset loaded images, selection and nearby fallbacks when castle changes
     effect(() => {
       this.code();
       this.loadedImageUrls.set([]);
       this.selectedIndex.set(0);
       this.lightboxIndex.set(null);
+      this.nearbyFailedLocal.set(new Set());
+      this.nearbyFailedWiki.set(new Set());
     });
 
     // Read castle(), nearbyCastles(), and mapContainer() as dependencies so the

@@ -217,10 +217,23 @@
               <div class="nearby-grid">
                 @for (item of nearbyCastles(); track item.castle.castle_code) {
                   <a class="nearby-tile" [routerLink]="['/castles', item.castle.castle_code]">
-                    <img [src]="'/images/castles/small/' + item.castle.castle_code + '_small.jpg'"
-                         [alt]="item.castle.castle_name"
-                         (error)="onImageError($event)"
-                         loading="lazy" />
+                    <div class="nearby-thumb">
+                      @if (!nearbyFailedLocal().has(item.castle.castle_code)) {
+                        <img [src]="'/images/castles/small/' + item.castle.castle_code + '_small.jpg'"
+                             [alt]="item.castle.castle_name"
+                             [title]="item.castle.castle_name"
+                             (error)="onNearbyLocalError(item.castle.castle_code)"
+                             loading="lazy" />
+                      } @else if (item.castle.wikipedia_thumbnail && !nearbyFailedWiki().has(item.castle.castle_code)) {
+                        <img [src]="item.castle.wikipedia_thumbnail"
+                             [alt]="item.castle.castle_name"
+                             [title]="item.castle.castle_name"
+                             (error)="onNearbyWikiError(item.castle.castle_code)"
+                             loading="lazy" />
+                      } @else {
+                        <mat-icon class="nearby-icon">castle</mat-icon>
+                      }
+                    </div>
                     <div class="nearby-name">{{ item.castle.castle_name }}</div>
                     <div class="nearby-meta">{{ item.distanceKm }} km &middot; {{ item.castle.country }}</div>
                   </a>
