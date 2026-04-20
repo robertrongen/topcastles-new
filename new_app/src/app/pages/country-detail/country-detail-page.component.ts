@@ -1,6 +1,8 @@
 import { Component, computed, inject, OnInit, signal, effect, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { CastleService } from '../../services/castle.service';
 import { Castle } from '../../models/castle.model';
 import { CastleFilterComponent, FilterField } from '../../components/castle-filter/castle-filter.component';
@@ -13,7 +15,7 @@ import { ViewModeService } from '../../services/view-mode.service';
 @Component({
   selector: 'app-country-detail-page',
   standalone: true,
-  imports: [RouterLink, CastleFilterComponent, CastleGridComponent, CastleTableComponent, CastleMapComponent, ViewToggleComponent],
+  imports: [RouterLink, MatButtonModule, MatIconModule, CastleFilterComponent, CastleGridComponent, CastleTableComponent, CastleMapComponent, ViewToggleComponent],
   templateUrl: './country-detail-page.component.html',
   styleUrl: './country-detail-page.component.scss',
 })
@@ -25,7 +27,10 @@ export class CountryDetailPageComponent implements OnInit {
 
   country = signal('');
   initialRegion = signal('');
+  mapVisible = signal(false);
   loading = this.castleService.loading;
+
+  toggleMap(): void { this.mapVisible.update(v => !v); }
 
   castles = computed<Castle[]>(() =>
     this.castleService.getCastlesByCountry(this.country())

@@ -8,7 +8,9 @@
   <mat-button-toggle value="grid" aria-label="Grid view">
     <mat-icon>grid_view</mat-icon>
   </mat-button-toggle>
-  <mat-button-toggle value="map" aria-label="Map view">
-    <mat-icon>map</mat-icon>
-  </mat-button-toggle>
+  @if (!hideMap()) {
+    <mat-button-toggle value="map" aria-label="Map view">
+      <mat-icon>map</mat-icon>
+    </mat-button-toggle>
+  }
 </mat-button-toggle-group>
