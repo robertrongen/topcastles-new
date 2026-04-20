@@ -61,6 +61,10 @@ Each castle record contains:
 | `heritage_status` | string\|null | From Wikidata P1435 (e.g. "UNESCO World Heritage Site") |
 | `inception_year` | number\|null | Year of construction from Wikidata P571 |
 | `wikidata_image` | string\|null | Wikidata commons image URL |
+| `wikidata_founder` | string\|null | Founded by, from Wikidata P112 |
+| `architect` | string\|null | Architect, from Wikidata P84 |
+| `wikidata_website` | string\|null | Official website from Wikidata P856 |
+| `significant_events` | string[]\|null | Historical events from Wikidata P793 |
 
 ## Example use cases for AI agents
 

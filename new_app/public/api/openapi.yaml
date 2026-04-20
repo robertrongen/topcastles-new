@@ -206,6 +206,25 @@ components:
           type: string
           nullable: true
           format: uri
+        wikidata_founder:
+          type: string
+          nullable: true
+          description: Wikidata P112 founded-by label
+        architect:
+          type: string
+          nullable: true
+          description: Wikidata P84 architect label
+        wikidata_website:
+          type: string
+          nullable: true
+          format: uri
+          description: Official website from Wikidata P856
+        significant_events:
+          type: array
+          nullable: true
+          description: Wikidata P793 significant event labels
+          items:
+            type: string
 
     ApiIndex:
       type: object
