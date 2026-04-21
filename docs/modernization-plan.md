@@ -181,6 +181,11 @@ Suggested improvements to quality-of-life and discoverability.
   - Script `scripts/generate_sitemap.js` writes `new_app/public/sitemap.xml`
   - One `<url>` per castle plus static pages; include `<lastmod>` from enrichment date
   - Add `<link rel="sitemap">` to `index.html` for Google discovery
+- [ ] **9.5** Design refresh — Storybook + Figma exploration
+  - Use Storybook (already in the stack) to build and review components in isolation before reworking the visual design
+  - Explore Figma (or a comparable tool such as Penpot, which is open-source) to design page layouts and component states before implementing them
+  - Candidate areas for a design pass: typography scale, card layout, colour hierarchy, mobile responsiveness, empty states
+  - Storybook stories already exist for some components — expand coverage so every UI component has a story before the redesign begins
 
 ---
 
