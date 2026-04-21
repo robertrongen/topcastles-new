@@ -40,3 +40,4 @@ graphify-out/cache/*
 *.db
 .beads-credential-key
 .claude/settings.json
+bitwarden.txt
