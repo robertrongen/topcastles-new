@@ -14,12 +14,12 @@ export interface Castle {
   castle_type: string;
   castle_concept: string;
   condition: string;
-  remarkable: string;
-  description: string;
-  website: string;
+  remarkable?: string | null;
+  description?: string | null;
+  website?: string | null;
   score_total: number | null;
   score_visitors: number | null;
-  visitors: number | null;
+  visitors?: number | null;
   // Wikipedia / Wikidata enrichment (optional — populated by enrichment scripts)
   wikipedia_extract?: string | null;
   wikipedia_thumbnail?: string | null;

@@ -55,7 +55,7 @@ describe('CastleService', () => {
   describe('loadCastles', () => {
     it('loads castles from JSON and sets signal', () => {
       service.loadCastles();
-      const req = httpTesting.expectOne('/assets/data/castles_enriched.json');
+      const req = httpTesting.expectOne('/assets/data/castles.json');
       req.flush(castles);
       expect(service.castles().length).toBe(4);
     });
@@ -64,7 +64,7 @@ describe('CastleService', () => {
       // getAllByScore, getTopByScore, getTopByCountry all rely on this ordering.
       // If this test fails, re-run the enrichment scripts and verify sort order.
       service.loadCastles();
-      httpTesting.expectOne('/assets/data/castles_enriched.json').flush(castles);
+      httpTesting.expectOne('/assets/data/castles.json').flush(castles);
       const scores = service.castles().map(c => c.score_total ?? 0);
       for (let i = 1; i < scores.length; i++) {
         expect(scores[i]).toBeLessThanOrEqual(scores[i - 1]);
@@ -74,21 +74,21 @@ describe('CastleService', () => {
     it('sets loading to true during request and false after', () => {
       service.loadCastles();
       expect(service.loading()).toBeTrue();
-      httpTesting.expectOne('/assets/data/castles_enriched.json').flush(castles);
+      httpTesting.expectOne('/assets/data/castles.json').flush(castles);
       expect(service.loading()).toBeFalse();
     });
 
     it('sets loading to false on error', () => {
       service.loadCastles();
-      httpTesting.expectOne('/assets/data/castles_enriched.json').error(new ProgressEvent('network error'));
+      httpTesting.expectOne('/assets/data/castles.json').error(new ProgressEvent('network error'));
       expect(service.loading()).toBeFalse();
     });
 
     it('does not make a second request if castles already loaded', () => {
       service.loadCastles();
-      httpTesting.expectOne('/assets/data/castles_enriched.json').flush(castles);
+      httpTesting.expectOne('/assets/data/castles.json').flush(castles);
       service.loadCastles();
-      httpTesting.expectNone('/assets/data/castles_enriched.json');
+      httpTesting.expectNone('/assets/data/castles.json');
     });
   });
 

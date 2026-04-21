@@ -10,17 +10,46 @@ export class CastleService {
   castles = signal<Castle[]>([]);
   loading = signal(false);
 
+  private enrichedMap = signal<Map<string, Castle>>(new Map());
+  private enrichedLoaded = signal(false);
+  private enrichedLoading = false;
+
   async loadCastles(): Promise<void> {
     if (this.castles().length > 0) return;
     this.loading.set(true);
     try {
-      const data = await firstValueFrom(this.http.get<Castle[]>('/assets/data/castles_enriched.json'));
+      const data = await firstValueFrom(this.http.get<Castle[]>('/assets/data/castles.json'));
       this.castles.set(data);
     } catch (err) {
       console.error('Failed to load castles:', err);
     } finally {
       this.loading.set(false);
     }
+  }
+
+  async loadEnrichedData(): Promise<void> {
+    if (this.enrichedLoaded() || this.enrichedLoading) return;
+    this.enrichedLoading = true;
+    try {
+      const delta = await firstValueFrom(this.http.get<Partial<Castle>[]>('/assets/data/castles_delta.json'));
+      const merged = new Map<string, Castle>();
+      const leanByCode = new Map(this.castles().map(c => [c.castle_code, c]));
+      for (const d of delta) {
+        if (!d.castle_code) continue;
+        const lean = leanByCode.get(d.castle_code);
+        if (lean) merged.set(d.castle_code, { ...lean, ...d });
+      }
+      this.enrichedMap.set(merged);
+      this.enrichedLoaded.set(true);
+    } catch (err) {
+      console.error('Failed to load enriched castle data:', err);
+    } finally {
+      this.enrichedLoading = false;
+    }
+  }
+
+  getEnrichedCastle(code: string): Castle | undefined {
+    return this.enrichedMap().get(code);
   }
 
   getCastleByCode(code: string): Castle | undefined {

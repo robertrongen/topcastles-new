@@ -119,8 +119,8 @@ describe('Top100PageComponent', () => {
     expect(links[0].textContent?.trim()).toBe('Alpha');
   });
 
-  it('should compute top100 sorted by score_total desc', () => {
-    const top = component.top100();
+  it('should compute allCastles sorted by score_total desc', () => {
+    const top = component.allCastles();
     expect(top[0].castle_code).toBe('c1');
     expect(top[1].castle_code).toBe('c2');
     expect(top[2].castle_code).toBe('c3');

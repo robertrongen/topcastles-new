@@ -42,9 +42,11 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
   private nearbyMarkersLayer: any = null;
   private keyHandler?: (e: KeyboardEvent) => void;
 
-  castle = computed<Castle | undefined>(() =>
-    this.castleService.getCastleByCode(this.code())
-  );
+  // Prefer enriched data once loaded; fall back to lean castle until then.
+  castle = computed<Castle | undefined>(() => {
+    const code = this.code();
+    return this.castleService.getEnrichedCastle(code) ?? this.castleService.getCastleByCode(code);
+  });
 
   prevCastle = computed(() => this.castleService.getPreviousCastle(this.code()));
   nextCastle = computed(() => this.castleService.getNextCastle(this.code()));
@@ -246,6 +248,8 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.castleService.loadEnrichedData();
+
     this.route.params.subscribe((params) => {
       this.code.set(params['code'] ?? '');
     });
