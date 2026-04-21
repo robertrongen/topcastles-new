@@ -21,8 +21,8 @@ FROM nginx:alpine
 # Copy built app to nginx
 COPY --from=build /app/dist/new_app/browser /usr/share/nginx/html
 
-# Copy nginx config if needed
-# COPY nginx.conf /etc/nginx/nginx.conf
+# Replace default nginx config with SPA fallback + gzip
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 

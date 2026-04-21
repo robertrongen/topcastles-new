@@ -233,7 +233,7 @@ Larger or more speculative improvements.
 
 Resolves three classes of issues identified in peer review: a broken production deployment (nginx without SPA fallback), accidental SSR scaffolding that is never run, and structural problems in `CastleService`. The rendering strategy is **Option C — build-time prerendering (SSG)**: Angular's SSR toolchain renders known routes to static HTML at build time; nginx serves those files with a `try_files` fallback for client-side routes. No Node process runs in production.
 
-- [ ] **12.1** Add nginx config with SPA fallback and gzip
+- [x] **12.1** Add nginx config with SPA fallback and gzip
   - Add `nginx.conf` to the repo with `try_files $uri $uri/ /index.html` so client-side routes work on hard refresh
   - Enable gzip for HTML, JS, CSS, and JSON (supersedes Phase 10.2 nginx approach)
   - Update `Dockerfile` to `COPY nginx.conf /etc/nginx/conf.d/default.conf`
@@ -269,7 +269,7 @@ Resolves three classes of issues identified in peer review: a broken production 
 
 ## Dependencies
 
-```
+```text
 1.1 → 1.2 → 1.5            (enrichment pipeline, sequential; 1.3 + 1.4 are code-only)
 1.5 → 2.2, 2.3             (Wikipedia/Wikidata data must be committed before display)
 2.1 (Leaflet install) → 3.2 (reuses same library)
