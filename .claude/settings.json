@@ -1,4 +1,39 @@
 {
+  "hooks": {
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "command": "bd prime",
+            "type": "command"
+          }
+        ],
+        "matcher": ""
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "[ -f graphify-out/graph.json ] \u0026\u0026 echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"additionalContext\":\"graphify: Knowledge graph exists at graphify-out/graph.json. Use `graphify query graphify-out/graph.json \u003cname\u003e` to look up symbols instead of searching raw files.\"}}' || true",
+            "type": "command"
+          }
+        ],
+        "matcher": "Glob|Grep"
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "bd prime",
+            "type": "command"
+          }
+        ],
+        "matcher": ""
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "Bash(git commit -m ' *)",
@@ -15,41 +50,6 @@
       "Bash(bd ready *)",
       "Bash(git stash *)",
       "Bash(node scripts/enrich_wikipedia.js --misses-only)"
-    ]
-  },
-  "hooks": {
-    "PreCompact": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bd prime"
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "Glob|Grep",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "[ -f graphify-out/graph.json ] && echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"additionalContext\":\"graphify: Knowledge graph exists at graphify-out/graph.json. Use `graphify query graphify-out/graph.json <name>` to look up symbols instead of searching raw files.\"}}' || true"
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bd prime"
-          }
-        ]
-      }
     ]
   }
 }

@@ -29,6 +29,12 @@ npm install -g @beads/bd
 bd init                   # run from repo root — sets up hooks and CLAUDE.md integration
 ```
 
+**bun** — JavaScript runtime required by graphify:
+
+```bash
+npm install -g bun
+```
+
 **graphify** — codebase navigation graph for AI agents:
 
 ```bash

@@ -39,3 +39,4 @@ graphify-out/cache/*
 .dolt/
 *.db
 .beads-credential-key
+.claude/settings.json
