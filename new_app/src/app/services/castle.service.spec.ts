@@ -264,12 +264,26 @@ describe('CastleService', () => {
   describe('getRegionSummaries', () => {
     beforeEach(() => { service.castles.set(castles); });
 
-    it('aggregates castles by region sorted by totalScore descending', () => {
-      const summaries = service.getRegionSummaries();
-      const normandy = summaries.find(s => s.region === 'Normandy');
-      expect(normandy?.castleCount).toBe(2);
-      expect(normandy?.totalScore).toBe(180);
-      expect(normandy?.country).toBe('France');
+    it('aggregates castles by region for a given country', () => {
+      const summaries = service.getRegionSummaries('France');
+      expect(summaries.length).toBe(1);
+      const normandy = summaries[0];
+      expect(normandy.region).toBe('Normandy');
+      expect(normandy.castleCount).toBe(2);
+      expect(normandy.totalScore).toBe(180);
+      expect(normandy.country).toBe('France');
+    });
+
+    it('does not mix same-name regions from different countries', () => {
+      // Bavaria exists in Germany only; querying France should not return it
+      const france = service.getRegionSummaries('France');
+      expect(france.find(s => s.region === 'Bavaria')).toBeUndefined();
+      const germany = service.getRegionSummaries('Germany');
+      expect(germany.find(s => s.region === 'Normandy')).toBeUndefined();
+    });
+
+    it('returns empty array for unknown country', () => {
+      expect(service.getRegionSummaries('Spain').length).toBe(0);
     });
   });
 

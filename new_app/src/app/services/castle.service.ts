@@ -138,17 +138,18 @@ export class CastleService {
       .sort((a, b) => b.totalScore - a.totalScore);
   }
 
-  getRegionSummaries(): RegionSummary[] {
-    const map = new Map<string, { country: string; region_code: string; count: number; totalScore: number }>();
+  // Regions are scoped to a country — the same region name can appear in multiple countries.
+  getRegionSummaries(country: string): RegionSummary[] {
+    const map = new Map<string, { region_code: string; count: number; totalScore: number }>();
     for (const c of this.castles()) {
-      if (!c.region) continue;
-      const entry = map.get(c.region) ?? { country: c.country, region_code: c.region_code || '', count: 0, totalScore: 0 };
+      if (!c.region || c.country !== country) continue;
+      const entry = map.get(c.region) ?? { region_code: c.region_code || '', count: 0, totalScore: 0 };
       entry.count++;
       entry.totalScore += c.score_total ?? 0;
       map.set(c.region, entry);
     }
     return [...map.entries()]
-      .map(([region, { country, region_code, count, totalScore }]) => ({ region, country, region_code, castleCount: count, totalScore }))
+      .map(([region, { region_code, count, totalScore }]) => ({ region, country, region_code, castleCount: count, totalScore }))
       .sort((a, b) => b.totalScore - a.totalScore);
   }
 

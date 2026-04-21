@@ -18,7 +18,11 @@ export class TopRegionsPageComponent {
   private castleService = inject(CastleService);
   protected viewModeService = inject(ViewModeService);
 
-  summaries = computed(() => this.castleService.getRegionSummaries());
+  summaries = computed(() =>
+    this.castleService.getCountries()
+      .flatMap(country => this.castleService.getRegionSummaries(country))
+      .sort((a, b) => b.totalScore - a.totalScore)
+  );
 
   onImageError(event: Event): void {
     (event.target as HTMLImageElement).style.display = 'none';

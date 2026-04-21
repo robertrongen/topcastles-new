@@ -264,7 +264,7 @@ Resolves three classes of issues identified in peer review: a broken production 
   - `getTopByCountry()` is already correct — `filter()` preserves global order; add a comment making the precondition explicit
   - Keep the explicit sort in `getTopByVisitors()` — visitor score order differs from total score order
 
-- [ ] **12.5** Scope `getRegionSummaries()` to a country
+- [x] **12.5** Scope `getRegionSummaries()` to a country
   - Change signature to `getRegionSummaries(country: string): RegionSummary[]`
   - Filter by country before grouping — regions are only meaningful within a country context
   - Eliminates the region-name collision bug; no composite key needed
