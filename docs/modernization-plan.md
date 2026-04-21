@@ -227,16 +227,16 @@ Suggested improvements to quality-of-life and discoverability.
 
 Larger or more speculative improvements.
 
-- [ ] **11.1** Castle comparison view
+- [POSTPONE] **11.1** Castle comparison view
   - Select 2–3 castles and view them side-by-side in a comparison table
   - Pin comparison bar at bottom of the castles list page; accessible from any castle card/row
-- [ ] **11.2** Structured data (JSON-LD)
+- [POSTPONE] **11.2** Structured data (JSON-LD)
   - Add `schema.org/LandmarksOrHistoricalBuildings` JSON-LD to each detail page
   - Enables Google rich results (knowledge panel, image carousel in search)
-- [ ] **11.3** Accessibility audit
+- [POSTPONE] **11.3** Accessibility audit
   - WCAG 2.1 AA audit: keyboard navigation, focus indicators, ARIA roles on map markers, colour contrast
   - Run `axe` or Lighthouse accessibility score ≥ 90 target
-- [ ] **11.4** "Castle of the week" on homepage
+- [POSTPONE] **11.4** "Castle of the week" on homepage
   - Deterministic pick based on ISO week number + year (no server needed)
   - Prominent featured card on the home page with image and score
 
