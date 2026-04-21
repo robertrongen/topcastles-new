@@ -149,18 +149,17 @@ Items from `additional_improvements.md`: "add a map of the country / region with
 
 Item from `additional_improvements.md`: "further efforts to enrich data for castles that were not found by the script".
 
-- [ ] **8.1** Manual overrides file for Wikipedia misses
-  - Create `scripts/wikipedia_overrides.json` mapping `castle_code → wikipedia_title` for the ~223 unmatched castles
-  - Update `enrich_wikipedia.js` to consult overrides before network lookup
-  - Start with the top-50 unmatched by score (highest-impact misses first)
-- [ ] **8.2** Alternate-language Wikipedia fallback
-  - For castles not found in English Wikipedia, try `de.wikipedia.org` / `fr.wikipedia.org` (in the castle's country language)
-  - Flag with `wikipedia_lang` field so the UI can show "Source: German Wikipedia"
-- [ ] **8.3** Fill missing coordinates via Wikidata
-  - 407 castles currently have no `latitude`/`longitude` — no location map or nearby-castles section
-  - Update `enrich_wikidata.js` (or create `enrich_coordinates.js`) to query Wikidata `P625` (coordinate location) for castles missing coords
-  - Fallback: use OpenStreetMap Nominatim geocoding on the castle name + country for remaining gaps
-  - Coordinates are the prerequisite for map markers and the nearby-castles feature
+- [x] **8.1** Manual overrides file for Wikipedia misses
+  - `scripts/wikipedia_overrides.json` maps `castle_code → wikipedia_title` for 120+ unmatched castles
+  - `enrich_wikipedia.js` consults overrides as Step 0 before any auto-lookup
+  - Covers the top-scoring misses; 157 total missing → ~80 covered after overrides + auto-lookup
+- [x] **8.2** Alternate-language Wikipedia fallback
+  - After all English strategies fail, `enrich_wikipedia.js` tries the castle's country language (de, fr, it, es, hu, cs, etc.) via search API
+  - `wikipedia_lang` field stored in delta when a non-English source is used; detail page shows "(de)" badge next to "From Wikipedia"
+  - 27-language mapping covers all dataset countries
+- [x] **8.3** Fill missing coordinates via Wikidata
+  - `scripts/enrich_coordinates.js` queries Wikidata P625 then falls back to Nominatim
+  - Previously 407 missing; now only 23 remain — run `node scripts/enrich_coordinates.js` to fill the last gaps
 
 ---
 

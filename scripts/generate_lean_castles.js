@@ -43,7 +43,7 @@ const LEAN_FIELDS = [
 const DELTA_FIELDS = [
   'castle_code',
   'description', 'remarkable', 'visitors', 'website',
-  'wikipedia_extract', 'wikipedia_url',
+  'wikipedia_extract', 'wikipedia_url', 'wikipedia_lang',
   'wikidata_id', 'architectural_style', 'heritage_status',
   'inception_year', 'wikidata_image', 'wikidata_founder',
   'architect', 'wikidata_website', 'significant_events',

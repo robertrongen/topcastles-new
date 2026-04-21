@@ -42,9 +42,42 @@ const DELAY_MS = (() => {
   return idx !== -1 ? parseInt(args[idx + 1], 10) : 300;
 })();
 
-const WIKI_SUMMARY = 'https://en.wikipedia.org/api/rest_v1/page/summary/';
-const WIKI_SEARCH  = 'https://en.wikipedia.org/w/api.php?action=query&list=search&srlimit=1&format=json&formatversion=2&srsearch=';
+const WIKI_SUMMARY = lang => `https://${lang}.wikipedia.org/api/rest_v1/page/summary/`;
+const WIKI_SEARCH  = lang => `https://${lang}.wikipedia.org/w/api.php?action=query&list=search&srlimit=1&format=json&formatversion=2&srsearch=`;
 const HEADERS = { 'User-Agent': 'TopCastles-enrichment/1.0 (rongen.robert@gmail.com)' };
+
+// Primary Wikipedia language per country (fallback after English fails).
+const COUNTRY_LANG = {
+  'France':        'fr',
+  'Germany':       'de',
+  'Austria':       'de',
+  'Switzerland':   'de',
+  'Italy':         'it',
+  'Spain':         'es',
+  'Portugal':      'pt',
+  'Hungary':       'hu',
+  'Czechia':       'cs',
+  'Slovakia':      'sk',
+  'Poland':        'pl',
+  'Croatia':       'hr',
+  'Slovenia':      'sl',
+  'Serbia':        'sr',
+  'Rumania':       'ro',
+  'Bulgaria':      'bg',
+  'Greece':        'el',
+  'Netherlands':   'nl',
+  'Belgium':       'nl',
+  'Denmark':       'da',
+  'Sweden':        'sv',
+  'Norway':        'no',
+  'Finland':       'fi',
+  'Estonia':       'et',
+  'Latvia':        'lv',
+  'Lithuania':     'lt',
+  'Turkey':        'tr',
+  'Morocco':       'ar',
+  'Lebanon':       'ar',
+};
 
 // Manual overrides: castle_code → Wikipedia article title
 const overrides = existsSync(OVERRIDES_PATH)
@@ -73,8 +106,8 @@ function isCastleResult(title, extract) {
   return CASTLE_KEYWORDS.some(kw => hay.includes(kw));
 }
 
-async function fetchSummary(title) {
-  const url = WIKI_SUMMARY + encodeURIComponent(title);
+async function fetchSummary(title, lang = 'en') {
+  const url = WIKI_SUMMARY(lang) + encodeURIComponent(title);
   const res = await fetch(url, { headers: HEADERS });
   if (!res.ok) return null;
   const data = await res.json();
@@ -83,20 +116,18 @@ async function fetchSummary(title) {
   return data;
 }
 
-async function searchWikipedia(query) {
-  const url = WIKI_SEARCH + encodeURIComponent(query);
+async function searchWikipedia(query, lang = 'en') {
+  const url = WIKI_SEARCH(lang) + encodeURIComponent(query);
   const res = await fetch(url, { headers: HEADERS });
   if (!res.ok) return null;
   const data = await res.json();
   const hit = data?.query?.search?.[0];
   if (!hit) return null;
 
-  // Fetch the actual summary for the top search result
-  const summary = await fetchSummary(hit.title);
+  const summary = await fetchSummary(hit.title, lang);
   if (!summary) return null;
 
-  // Reject if the result doesn't look like a castle page
-  if (!isCastleResult(summary.title, summary.extract)) return null;
+  if (lang === 'en' && !isCastleResult(summary.title, summary.extract)) return null;
 
   return summary;
 }
@@ -125,33 +156,45 @@ function candidateTitles(castle) {
 }
 
 async function enrich(castle) {
-  // Step 0: manual override
+  // Step 0: manual override (English Wikipedia)
   const overrideTitle = overrides[castle.castle_code];
   if (overrideTitle) {
     const data = await fetchSummary(overrideTitle);
-    if (data) return summaryToFields(data, 'override');
+    if (data) return summaryToFields(data, 'override', 'en');
   }
 
-  // Steps 1–3: direct title lookups
+  // Steps 1–3: direct title lookups (English)
   for (const title of candidateTitles(castle)) {
     const data = await fetchSummary(title);
     if (!data) continue;
-    return summaryToFields(data, 'direct');
+    return summaryToFields(data, 'direct', 'en');
   }
 
-  // Step 4: Wikipedia search API fallback
+  // Step 4: English Wikipedia search API fallback
   const stripped = castle.castle_name.replace(/\s*\(.*\)/, '').trim();
-  const data = await searchWikipedia(stripped);
-  if (data) return summaryToFields(data, 'search');
+  const enData = await searchWikipedia(stripped);
+  if (enData) return summaryToFields(enData, 'search', 'en');
+
+  // Step 5: Alternate-language Wikipedia (country's primary language)
+  const lang = COUNTRY_LANG[castle.country];
+  if (lang) {
+    for (const title of candidateTitles(castle)) {
+      const data = await fetchSummary(title, lang);
+      if (data) return summaryToFields(data, 'direct', lang);
+    }
+    const data = await searchWikipedia(stripped, lang);
+    if (data) return summaryToFields(data, 'search', lang);
+  }
 
   return {};
 }
 
-function summaryToFields(data, method) {
+function summaryToFields(data, method, lang) {
   return {
     wikipedia_extract:   data.extract             ?? null,
     wikipedia_thumbnail: data.thumbnail?.source   ?? null,
     wikipedia_url:       data.content_urls?.desktop?.page ?? null,
+    wikipedia_lang:      lang !== 'en' ? lang : null,
     _wikipedia_method:   method,   // temporary debug field, stripped on write
   };
 }
@@ -180,9 +223,10 @@ async function main() {
 
     if (extra.wikipedia_url) {
       const viaSearch = extra._wikipedia_method === 'search';
+      const lang = extra.wikipedia_lang;
       hits++;
       if (viaSearch) searchHits++;
-      console.log(`${viaSearch ? 'search→ ' : 'OK '}— ${extra.wikipedia_url}`);
+      console.log(`${viaSearch ? 'search→ ' : 'OK '}${lang ? `[${lang}] ` : ''}— ${extra.wikipedia_url}`);
     } else {
       misses++;
       console.log('not found');

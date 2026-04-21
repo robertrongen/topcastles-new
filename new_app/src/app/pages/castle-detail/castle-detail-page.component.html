@@ -186,7 +186,9 @@
           <mat-card class="section-card">
             <mat-card-content>
               <div class="wikipedia-header">
-                <h3>From Wikipedia</h3>
+                <h3>From Wikipedia@if (castle()!.wikipedia_lang) {
+                  <span class="wiki-lang-badge" [title]="'Source: ' + castle()!.wikipedia_lang + '.wikipedia.org'">&nbsp;({{ castle()!.wikipedia_lang }})</span>
+                }</h3>
                 <a mat-button [href]="castle()!.wikipedia_url!" target="_blank" rel="noopener noreferrer">
                   <mat-icon>open_in_new</mat-icon> Read full article
                 </a>

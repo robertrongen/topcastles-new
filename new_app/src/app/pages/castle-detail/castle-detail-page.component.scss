@@ -130,6 +130,13 @@ h1 {
   h3 { margin: 0; }
 }
 
+.wiki-lang-badge {
+  font-size: 0.7em;
+  font-weight: normal;
+  color: var(--mat-sys-on-surface-variant, #666);
+  vertical-align: middle;
+}
+
 .wikipedia-body {
   overflow: hidden; // clearfix for float
 

@@ -26,6 +26,7 @@ export interface Castle {
   wikipedia_extract?: string | null;
   wikipedia_thumbnail?: string | null;
   wikipedia_url?: string | null;
+  wikipedia_lang?: string | null;
   wikidata_id?: string | null;
   architectural_style?: string | null;
   heritage_status?: string | null;
