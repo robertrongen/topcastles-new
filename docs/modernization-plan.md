@@ -214,6 +214,44 @@ Larger or more speculative improvements.
 
 ---
 
+## Phase 12 — Service Architecture & Infrastructure
+
+Resolves three classes of issues identified in peer review: a broken production deployment (nginx without SPA fallback), accidental SSR scaffolding that is never run, and structural problems in `CastleService`. The rendering strategy is **Option C — build-time prerendering (SSG)**: Angular's SSR toolchain renders known routes to static HTML at build time; nginx serves those files with a `try_files` fallback for client-side routes. No Node process runs in production.
+
+- [ ] **12.1** Add nginx config with SPA fallback and gzip
+  - Add `nginx.conf` to the repo with `try_files $uri $uri/ /index.html` so client-side routes work on hard refresh
+  - Enable gzip for HTML, JS, CSS, and JSON (supersedes Phase 10.2 nginx approach)
+  - Update `Dockerfile` to `COPY nginx.conf /etc/nginx/conf.d/default.conf`
+  - Most urgent fix: without it, a hard refresh on any non-root URL returns a 404
+
+- [ ] **12.2** Prerender sharing routes (SSG)
+  - Write `scripts/generate_prerender_routes.js` that reads `castles_enriched.json` and writes `new_app/prerender-routes.txt`
+  - Routes: `/`, `/castles`, all `/countries/:slug` (56 pages), all `/castles/:code` (~1000 pages)
+  - Update `angular.json`: `"prerender": { "routesFile": "prerender-routes.txt" }`
+  - Purpose: og:title, og:description, og:image (Phase 4.2) are baked into static HTML so link previews work correctly in WhatsApp, Slack, and social media
+  - `server.ts` remains as a build-time renderer only; remove the `serve:ssr:new_app` npm script to avoid confusion
+
+- [ ] **12.3** Load castles once at app startup
+  - Register `CastleService.loadCastles()` via `provideAppInitializer()` in `app.config.ts`
+  - Data is guaranteed available before any component renders — eliminates the concurrent-call race condition by design
+  - Audit and remove all component-level `loadCastles()` calls
+  - Delete `NoCastleService` and `no-castle.service.ts` (verify no remaining imports)
+
+- [ ] **12.4** Trust JSON sort order in `CastleService`
+  - Add a unit test asserting `castles_enriched.json` is sorted by `score_total` descending — makes the precondition explicit and catches accidental re-ordering from enrichment scripts
+  - Simplify `getAllByScore()` → `return this.castles()` (no sort needed)
+  - Simplify `getTopByScore(n)` → `return this.castles().slice(0, n)`
+  - `getTopByCountry()` is already correct — `filter()` preserves global order; add a comment making the precondition explicit
+  - Keep the explicit sort in `getTopByVisitors()` — visitor score order differs from total score order
+
+- [ ] **12.5** Scope `getRegionSummaries()` to a country
+  - Change signature to `getRegionSummaries(country: string): RegionSummary[]`
+  - Filter by country before grouping — regions are only meaningful within a country context
+  - Eliminates the region-name collision bug; no composite key needed
+  - Update all callers to pass the country parameter
+
+---
+
 ## Dependencies
 
 ```
@@ -232,4 +270,9 @@ Independent (can be done in any order): 2.4, 2.5, 2.6, 3.1, 4.1, 4.2
 9.4 → submit to Google Search Console after deploy
 10.1 before 10.3 (reduce bundle first, then add PWA to avoid caching bloated chunks)
 11.2 pairs with 4.2 (both are SEO — do together)
+12.1 independent (most urgent — fixes live 404 bug)
+12.2 requires 4.2 ✓ (meta tags must be set by Angular before prerendering captures them)
+12.3 independent (land before 12.4 — APP_INITIALIZER guarantees data before any sort runs)
+12.4 after 12.3
+12.5 independent
 ```
