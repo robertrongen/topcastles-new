@@ -18,8 +18,11 @@ app.get('/api/health', (_req, res) => {
 
 app.use(express.static(DIST));
 
-// SPA fallback — must be last
-app.get('*', (_req, res) => {
+// SPA fallback — must be last; unknown /api/* routes return 404 JSON
+app.get('*', (req, res) => {
+  if (req.path.startsWith('/api/')) {
+    return res.status(404).json({ error: 'Not found' });
+  }
   res.sendFile(path.join(DIST, 'index.html'));
 });
 

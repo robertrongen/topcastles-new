@@ -5,7 +5,8 @@
   "description": "Node.js runtime server for TopCastles — static serving, SPA fallback, and API",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "start:prod": "node index.js"
   },
   "dependencies": {
     "compression": "^1.7.5",
