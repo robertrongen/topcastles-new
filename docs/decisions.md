@@ -76,27 +76,55 @@ Consequences:
 
 ## ADR-004: Docker deployment on Synology NAS
 
-Status: accepted
+Status: accepted (runtime updated by ADR-006)
 
 Context:
 
 - The application needs a hosting target for production.
 - The developer has a personal Synology NAS that supports Docker containers.
-- The site is read-only content with Angular SSR — lightweight resource requirements.
+- The site is read-only content — lightweight resource requirements.
 
 Decision:
 
-- Package the Angular SSR application as a Docker container.
-- Use a multi-stage Dockerfile: Node build stage then lightweight Node runtime stage.
+- Package the application as a Docker container.
+- Use a multi-stage Dockerfile: Node build stage then nginx Alpine runtime stage.
 - Deploy to Synology NAS via Docker Hub and SSH (`deploy.sh`).
 - Expose the app on NAS port 8080 mapped to container port 80.
 
 Consequences:
 
 - Self-hosted, no cloud hosting costs.
-- Synology Docker has limited resources — keep the container image small (Node Alpine base).
-- SSR serves prerendered HTML and handles dynamic routes; static assets served by Node/Express.
-- Future option: add a reverse proxy (Synology built-in or Nginx) for HTTPS/domain mapping.
+- nginx Alpine is extremely lightweight — well within Synology Docker resource limits.
+- See ADR-006 for the rendering mode decision (build-time SSG, no Node process in production).
+- Future option: add a reverse proxy (Synology built-in or nginx) for HTTPS/domain mapping.
+
+## ADR-006: Rendering mode — build-time SSG with nginx static serving
+
+Status: accepted
+
+Context:
+
+- `angular.json` had `ssr.entry` and `prerender: true` configured, producing both a browser bundle and a Node/Express server bundle at build time.
+- The `Dockerfile` copied only the browser bundle to nginx and discarded the server bundle — so runtime SSR was never active in production.
+- nginx was running without `try_files $uri $uri/ /index.html`, meaning hard refresh on any non-root route returned a 404.
+- Three options were evaluated: (A) pure SPA, (B) runtime SSR with Node/Express, (C) build-time prerendering (SSG) served by nginx.
+- SEO is not a priority. The requirement is correct link-preview rendering (og: meta tags) when sharing the home page, country pages, or a castle detail page in WhatsApp/Slack.
+
+Decision:
+
+- **Option C: build-time SSG.** Angular's SSR toolchain (`@angular/ssr`) runs only at `ng build` time to prerender known routes to static HTML files. No Node process runs in production.
+- A script (`scripts/generate_prerender_routes.js`) generates the prerender route list: `/`, `/castles`, all `/countries/:slug`, and all `/castles/:code`.
+- nginx serves the pre-rendered HTML files for known routes and falls back to `index.html` for any client-side route not in the prerender list.
+- `server.ts` remains in the codebase as the build-time renderer but is not deployed. The `serve:ssr:new_app` npm script is removed to avoid confusion.
+- A custom `nginx.conf` is added to the repo and referenced in the Dockerfile.
+
+Consequences:
+
+- og: meta tags set by Angular (Phase 4.2) are baked into the pre-rendered HTML, enabling correct link previews without a runtime server.
+- No Node process in production — deployment is a single nginx container, simpler and lighter than a Node/Express container.
+- Hard-refresh 404s on non-root routes are fixed by the `try_files` nginx config.
+- Data changes (enrichment script runs) require a rebuild to update pre-rendered HTML; acceptable given data changes infrequently.
+- Castle detail pages (~1000) are included in the prerender list because they are the primary sharing targets.
 
 ## ADR-005: Visual parity — old-app brand applied via CSS overrides
 
