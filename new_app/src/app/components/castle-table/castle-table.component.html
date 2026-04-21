@@ -1,99 +1,115 @@
 <div class="table-container">
-  <table mat-table [dataSource]="tableData" matSort (matSortChange)="onSortChange($event)">
+  <div class="virtual-table" role="table">
 
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Position</th>
-      <td mat-cell *matCellDef="let castle">{{ castle.position }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="score_total">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Score</th>
-      <td mat-cell *matCellDef="let castle">{{ castle.score_total | number:'1.0-0' }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="score_visitors">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Visitors ★</th>
-      <td mat-cell *matCellDef="let castle">{{ castle.score_visitors != null ? (castle.score_visitors | number:'1.1-1') : '' }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="thumbnail">
-      <th mat-header-cell *matHeaderCellDef>Thumbnail</th>
-      <td mat-cell *matCellDef="let castle">
-        <a [routerLink]="['/castles', castle.castle_code]">
-          @if (!failedLocal().has(castle.castle_code)) {
-            <img class="table-thumb"
-                 [src]="'/images/castles/small/' + castle.castle_code + '_small.jpg'"
-                 [alt]="castle.castle_name"
-                 [title]="castle.castle_name"
-                 (error)="onLocalError(castle)"
-                 [loading]="isAboveFold(castle) ? 'eager' : 'lazy'" />
-          } @else if (castle.wikipedia_thumbnail && !failedWiki().has(castle.castle_code)) {
-            <img class="table-thumb"
-                 [src]="castle.wikipedia_thumbnail"
-                 [alt]="castle.castle_name"
-                 [title]="castle.castle_name"
-                 (error)="onWikiError(castle)"
-                 [loading]="isAboveFold(castle) ? 'eager' : 'lazy'" />
-          } @else {
-            <mat-icon class="thumb-icon">castle</mat-icon>
-          }
-        </a>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="castle_name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Castle</th>
-      <td mat-cell *matCellDef="let castle">
-        <a [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="country">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
-      <td mat-cell *matCellDef="let castle">
-        <a [routerLink]="['/top1000']" [queryParams]="{ country: castle.country }">{{ castle.country }}</a>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="place">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Place</th>
-      <td mat-cell *matCellDef="let castle">{{ castle.place }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="region">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Region</th>
-      <td mat-cell *matCellDef="let castle">
-        <a [routerLink]="['/top1000']" [queryParams]="{ country: castle.country, region: castle.region }">{{ castle.region }}</a>
-        @if (castle.region_code) {
-          <br>
-          <img class="region-map"
-               [src]="'/images/maps/' + castle.region_code + '.jpg'"
-               [alt]="castle.region"
-               [title]="castle.region"
-               (error)="onImgError($event)"
-               loading="lazy" />
+    <!-- Sticky header — lives outside the viewport so it never scrolls away -->
+    <div role="rowgroup">
+      <div class="header-row" role="row" [style.grid-template-columns]="colTemplate()">
+        @for (col of visibleColumns(); track col) {
+          <div class="header-cell"
+               [class]="'col-' + col"
+               role="columnheader"
+               [attr.aria-sort]="ariaSort(col)"
+               (click)="sortBy(col)"
+               [class.sorted]="sortCol() === col">
+            {{ colLabels[col] }}
+            @if (sortCol() === col) {
+              <mat-icon class="sort-icon">
+                {{ sortDir() === 'asc' ? 'arrow_upward' : 'arrow_downward' }}
+              </mat-icon>
+            }
+          </div>
         }
-      </td>
-    </ng-container>
+      </div>
+    </div>
 
-    <ng-container matColumnDef="castle_type">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
-      <td mat-cell *matCellDef="let castle">
-        {{ castle.castle_type }}
-      </td>
-    </ng-container>
+    <!-- Virtual scroll body — only renders visible rows -->
+    <cdk-virtual-scroll-viewport role="rowgroup" [itemSize]="rowHeight" class="table-body-viewport">
+      <div *cdkVirtualFor="let castle of displayData(); trackBy: trackByCode"
+           class="body-row"
+           role="row"
+           [style.height.px]="rowHeight"
+           [style.grid-template-columns]="colTemplate()">
 
-    <ng-container matColumnDef="era">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Era</th>
-      <td mat-cell *matCellDef="let castle">{{ eraLabel(castle.era) }}</td>
-    </ng-container>
+        @if (isVisible('position')) {
+          <div class="table-cell col-position" role="cell">{{ castle.position }}</div>
+        }
+        @if (isVisible('score_total')) {
+          <div class="table-cell col-score_total" role="cell">
+            {{ castle.score_total | number:'1.0-0' }}
+          </div>
+        }
+        @if (isVisible('score_visitors')) {
+          <div class="table-cell col-score_visitors" role="cell">
+            {{ castle.score_visitors != null ? (castle.score_visitors | number:'1.1-1') : '' }}
+          </div>
+        }
+        @if (isVisible('thumbnail')) {
+          <div class="table-cell col-thumbnail" role="cell">
+            <a [routerLink]="['/castles', castle.castle_code]">
+              @if (!failedLocal().has(castle.castle_code)) {
+                <img class="table-thumb"
+                     [src]="'/images/castles/small/' + castle.castle_code + '_small.jpg'"
+                     [alt]="castle.castle_name"
+                     [title]="castle.castle_name"
+                     (error)="onLocalError(castle)"
+                     loading="eager" />
+              } @else if (castle.wikipedia_thumbnail && !failedWiki().has(castle.castle_code)) {
+                <img class="table-thumb"
+                     [src]="castle.wikipedia_thumbnail"
+                     [alt]="castle.castle_name"
+                     [title]="castle.castle_name"
+                     (error)="onWikiError(castle)"
+                     loading="eager" />
+              } @else {
+                <mat-icon class="thumb-icon">castle</mat-icon>
+              }
+            </a>
+          </div>
+        }
+        @if (isVisible('castle_name')) {
+          <div class="table-cell col-castle_name" role="cell">
+            <a [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
+          </div>
+        }
+        @if (isVisible('era')) {
+          <div class="table-cell col-era" role="cell">{{ eraLabel(castle.era) }}</div>
+        }
+        @if (isVisible('country')) {
+          <div class="table-cell col-country" role="cell">
+            <a [routerLink]="['/top1000']" [queryParams]="{ country: castle.country }">
+              {{ castle.country }}
+            </a>
+          </div>
+        }
+        @if (isVisible('place')) {
+          <div class="table-cell col-place" role="cell">{{ castle.place }}</div>
+        }
+        @if (isVisible('region')) {
+          <div class="table-cell col-region" role="cell">
+            <a [routerLink]="['/top1000']"
+               [queryParams]="{ country: castle.country, region: castle.region }">
+              {{ castle.region }}
+            </a>
+            @if (castle.region_code) {
+              <br>
+              <img class="region-map"
+                   [src]="'/images/maps/' + castle.region_code + '.jpg'"
+                   [alt]="castle.region"
+                   [title]="castle.region"
+                   (error)="onImgError($event)"
+                   loading="lazy" />
+            }
+          </div>
+        }
+        @if (isVisible('castle_type')) {
+          <div class="table-cell col-castle_type" role="cell">{{ castle.castle_type }}</div>
+        }
+        @if (isVisible('condition')) {
+          <div class="table-cell col-condition" role="cell">{{ castle.condition }}</div>
+        }
 
-    <ng-container matColumnDef="condition">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Condition</th>
-      <td mat-cell *matCellDef="let castle">{{ castle.condition }}</td>
-    </ng-container>
+      </div>
+    </cdk-virtual-scroll-viewport>
 
-    <tr mat-header-row *matHeaderRowDef="columns"></tr>
-    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-  </table>
+  </div>
 </div>

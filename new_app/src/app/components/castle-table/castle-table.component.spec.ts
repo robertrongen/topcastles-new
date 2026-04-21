@@ -6,27 +6,13 @@ import { Castle } from '../../models/castle.model';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
   return {
-    position: 1,
-    castle_code: 'test',
-    castle_name: 'Test Castle',
-    country: 'France',
-    area: '',
-    place: 'Paris',
-    region: 'Ile-de-France',
-    region_code: 'ile-de-france',
-    latitude: 0,
-    longitude: 0,
-    founder: '',
-    era: null,
-    castle_type: 'City castle',
-    castle_concept: '',
-    condition: '',
-    remarkable: '',
-    description: '',
-    website: '',
-    score_total: 50.7,
-    score_visitors: 30,
-    visitors: 10,
+    position: 1, castle_code: 'test', castle_name: 'Test Castle',
+    country: 'France', area: '', place: 'Paris',
+    region: 'Ile-de-France', region_code: 'ile-de-france',
+    latitude: 0, longitude: 0, founder: '', era: null,
+    castle_type: 'City castle', castle_concept: '', condition: '',
+    remarkable: '', description: '', website: '',
+    score_total: 50.7, score_visitors: 30, visitors: 10,
     ...overrides,
   };
 }
@@ -40,54 +26,45 @@ describe('CastleTableComponent', () => {
       imports: [CastleTableComponent, NoopAnimationsModule],
       providers: [provideRouter([])],
     }).compileComponents();
-
     fixture = TestBed.createComponent(CastleTableComponent);
     component = fixture.componentInstance;
   });
 
   it('should create', () => {
-    component.castles = [];
-    component.columns = ['position', 'castle_name'];
+    component.castles = []; component.columns = ['position', 'castle_name'];
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 
-  it('should render the specified columns', () => {
+  it('should render a header cell for each visible column', () => {
     component.castles = [makeCastle()];
     component.columns = ['position', 'score_total', 'castle_name', 'country'];
     fixture.detectChanges();
-
-    const headers = fixture.nativeElement.querySelectorAll('th');
-    expect(headers.length).toBe(4);
+    expect(fixture.nativeElement.querySelectorAll('.header-cell').length).toBe(4);
   });
 
-  it('should display castle data in rows', () => {
+  it('should display castle data in body rows', () => {
     component.castles = [
-      makeCastle({ position: 1, castle_name: 'Alpha', score_total: 100 }),
-      makeCastle({ position: 2, castle_name: 'Beta', score_total: 80 }),
+      makeCastle({ position: 1, castle_name: 'Alpha' }),
+      makeCastle({ position: 2, castle_name: 'Beta' }),
     ];
-    component.columns = ['position', 'castle_name', 'score_total'];
+    component.columns = ['position', 'castle_name'];
     fixture.detectChanges();
-
-    const rows = fixture.nativeElement.querySelectorAll('tr.mat-mdc-row');
-    expect(rows.length).toBe(2);
+    expect(fixture.nativeElement.querySelectorAll('.body-row').length).toBe(2);
   });
 
   it('should round score_total to whole number', () => {
     component.castles = [makeCastle({ score_total: 123.456 })];
     component.columns = ['score_total'];
     fixture.detectChanges();
-
-    const cell = fixture.nativeElement.querySelector('td.mat-column-score_total');
-    expect(cell.textContent.trim()).toBe('123');
+    expect(fixture.nativeElement.querySelector('.col-score_total').textContent.trim()).toBe('123');
   });
 
   it('should show thumbnail image', () => {
     component.castles = [makeCastle({ castle_code: 'tower' })];
     component.columns = ['thumbnail'];
     fixture.detectChanges();
-
-    const img = fixture.nativeElement.querySelector('td.mat-column-thumbnail img');
+    const img = fixture.nativeElement.querySelector('.col-thumbnail img');
     expect(img).toBeTruthy();
     expect(img.getAttribute('src') || img.src).toContain('tower_small.jpg');
   });
@@ -96,8 +73,7 @@ describe('CastleTableComponent', () => {
     component.castles = [makeCastle({ region: 'Bayern', region_code: 'bayern' })];
     component.columns = ['region'];
     fixture.detectChanges();
-
-    const cell = fixture.nativeElement.querySelector('td.mat-column-region');
+    const cell = fixture.nativeElement.querySelector('.col-region');
     expect(cell.textContent).toContain('Bayern');
     const img = cell.querySelector('img.region-map');
     expect(img).toBeTruthy();
@@ -108,33 +84,26 @@ describe('CastleTableComponent', () => {
     component.castles = [makeCastle({ region: 'Unknown', region_code: '' })];
     component.columns = ['region'];
     fixture.detectChanges();
-
-    const img = fixture.nativeElement.querySelector('td.mat-column-region img.region-map');
-    expect(img).toBeNull();
+    expect(fixture.nativeElement.querySelector('.col-region img.region-map')).toBeNull();
   });
 
-  it('should sort data when onSortChange is called', () => {
-    component.castles = [
-      makeCastle({ position: 2, castle_name: 'Beta' }),
-      makeCastle({ position: 1, castle_name: 'Alpha' }),
-    ];
-    component.columns = ['position', 'castle_name'];
-    fixture.detectChanges();
-
-    component.onSortChange({ active: 'position', direction: 'asc' });
-    expect(component.tableData[0].position).toBe(1);
-    expect(component.tableData[1].position).toBe(2);
-  });
-
-  it('should reset sort when direction is empty', () => {
+  it('should sort ascending when sortBy is called', () => {
     component.castles = [makeCastle({ position: 2 }), makeCastle({ position: 1 })];
     component.columns = ['position'];
+    fixture.detectChanges();
+    component.sortBy('position');
+    expect(component.displayData()[0].position).toBe(1);
+    expect(component.displayData()[1].position).toBe(2);
+  });
 
-    component.onSortChange({ active: 'position', direction: 'asc' });
-    expect(component.sortedData.length).toBe(2);
-
-    component.onSortChange({ active: 'position', direction: '' });
-    expect(component.sortedData.length).toBe(0);
+  it('should toggle sort direction on repeated sortBy call', () => {
+    component.castles = [makeCastle()];
+    component.columns = ['position'];
+    fixture.detectChanges();
+    component.sortBy('position');
+    expect(component.sortDir()).toBe('asc');
+    component.sortBy('position');
+    expect(component.sortDir()).toBe('desc');
   });
 
   it('should hide broken images via onImgError', () => {
@@ -145,32 +114,21 @@ describe('CastleTableComponent', () => {
     expect(img.style.display).toBe('none');
   });
 
-  it('should show castle_type column when included', () => {
+  it('should show castle_type as plain text without a link', () => {
     component.castles = [makeCastle({ castle_type: 'Water castle' })];
     component.columns = ['castle_type'];
     fixture.detectChanges();
-
-    const cell = fixture.nativeElement.querySelector('td.mat-column-castle_type');
+    const cell = fixture.nativeElement.querySelector('.col-castle_type');
     expect(cell.textContent.trim()).toBe('Water castle');
+    expect(cell.querySelector('a')).toBeNull();
   });
 
-  it('should link country to country detail page', () => {
+  it('should link country to filtered castle list', () => {
     component.castles = [makeCastle({ country: 'Germany' })];
     component.columns = ['country'];
     fixture.detectChanges();
-
-    const link = fixture.nativeElement.querySelector('td.mat-column-country a');
+    const link = fixture.nativeElement.querySelector('.col-country a');
     expect(link).toBeTruthy();
-    expect(link.getAttribute('href')).toBe('/countries/Germany');
-  });
-
-  it('should display castle_type as plain text', () => {
-    component.castles = [makeCastle({ castle_type: 'Hilltop castle' })];
-    component.columns = ['castle_type'];
-    fixture.detectChanges();
-
-    const cell = fixture.nativeElement.querySelector('td.mat-column-castle_type');
-    expect(cell.textContent?.trim()).toBe('Hilltop castle');
-    expect(cell.querySelector('a')).toBeNull();
+    expect(link.getAttribute('href')).toContain('Germany');
   });
 });

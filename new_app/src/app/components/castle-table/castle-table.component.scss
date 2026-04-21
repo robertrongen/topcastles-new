@@ -1,86 +1,104 @@
 .table-container {
   overflow-x: auto;
+}
+
+.virtual-table {
+  min-width: max-content;
+}
+
+// ── Header ────────────────────────────────────────────────────────────────────
+.header-row {
+  display: grid;
+  background: white;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+.header-cell {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+  height: 56px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
 
-  table {
-    flex: 0 0 auto;
-    width: auto !important; // override mat-table's default width: 100%
+  &:hover { background: rgba(0, 0, 0, 0.04); }
+  &.sorted { color: rgba(0, 0, 0, 0.87); }
+
+  .sort-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    color: rgba(0, 0, 0, 0.54);
   }
+}
 
-  th {
-    white-space: nowrap;
+// ── Viewport ──────────────────────────────────────────────────────────────────
+.table-body-viewport {
+  height: 75vh;
+}
+
+// ── Body rows ─────────────────────────────────────────────────────────────────
+.body-row {
+  display: grid;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+
+  &:nth-child(even) { background: #fff6de; }
+  &:hover { background: rgba(0, 0, 153, 0.05); }
+}
+
+.table-cell {
+  padding: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+// ── Images ────────────────────────────────────────────────────────────────────
+.table-thumb {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+.thumb-icon {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.region-map {
+  width: 55px;
+  object-fit: contain;
+  vertical-align: middle;
+  display: block;
+  margin-top: 4px;
+}
+
+// ── Links ─────────────────────────────────────────────────────────────────────
+a {
+  color: #000099;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    background-color: #CCCCFF;
   }
+}
 
-  // pin compact columns to their content width
-  .mat-column-position,
-  .mat-column-score_total,
-  .mat-column-score_visitors,
-  .mat-column-era {
-    white-space: nowrap;
-  }
-
-  // cap name so one very long entry doesn't blow out the column
-  .mat-column-castle_name {
-    max-width: 220px;
-  }
-
-  .table-thumb {
-    width: 110px;
-    height: 110px;
-    object-fit: cover;
-    border-radius: 2px;
-    vertical-align: middle;
-  }
-
-  .thumb-icon {
-    font-size: 40px;
-    width: 40px;
-    height: 40px;
-    color: rgba(0, 0, 0, 0.25);
-    vertical-align: middle;
-  }
-
-  .region-map {
-    width: 55px;
-    object-fit: contain;
-    vertical-align: middle;
-  }
-
-  a {
-    color: #000099;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-      background-color: #CCCCFF;
-    }
-  }
-
-  td {
-    vertical-align: middle;
-  }
-
-  tr:nth-child(even) {
-    background-color: #fff6de;
-  }
-
-  // Tablet: hide secondary columns to keep the table readable
-  @media (max-width: 1199px) {
-    .mat-column-score_visitors,
-    .mat-column-era,
-    .mat-column-condition { display: none; }
-  }
-
-  // Mobile: show only the essentials, shrink thumbnail
-  @media (max-width: 767px) {
-    .mat-column-place,
-    .mat-column-region,
-    .mat-column-castle_type { display: none; }
-
-    .table-thumb {
-      width: 55px;
-      height: 55px;
-    }
-  }
+// ── Mobile ────────────────────────────────────────────────────────────────────
+@media (max-width: 767px) {
+  .table-thumb { width: 55px; height: 55px; }
 }
