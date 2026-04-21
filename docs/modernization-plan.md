@@ -167,10 +167,10 @@ Item from `additional_improvements.md`: "further efforts to enrich data for cast
 
 Suggested improvements to quality-of-life and discoverability.
 
-- [ ] **9.1** Dark mode
+- [x] **9.1** Dark mode
   - Add CSS custom properties for all colours in `styles.scss`
   - Auto-switch via `prefers-color-scheme: dark`; manual toggle in toolbar persisted to `localStorage`
-- [ ] **9.2** Castle name autocomplete
+- [x] **9.2** Castle name autocomplete
   - Dropdown suggestion list while typing in the Name filter on the castles page
   - Angular Material `MatAutocomplete` — data comes from `CastleService`
 - [x] **9.3** Share button on detail page
@@ -211,8 +211,8 @@ Suggested improvements to quality-of-life and discoverability.
   - A minimal password-protected upload endpoint receives the file, writes it to the shared data volume, then re-runs `generate_lean_castles.js` and `generate_sitemap.js` to re-derive `castles.json`, `castles_delta.json`, and `sitemap.xml`
   - The Angular app fetches these files at runtime — visitors get fresh data on next page load with no downtime
   - Prerendered HTML (og tags) remains stale until the next full build — acceptable for data-only updates
-  - Implementation options: (1) small Node or Python sidecar container sharing the assets volume with nginx; (2) Synology Task Scheduler triggering the script on file-system change
-  - Auth: Bearer token or HTTP basic auth checked by the sidecar
+  - Architecture resolved (ADR-008): embedded Node server inside the single container handles this endpoint; no sidecar or Synology Task Scheduler needed
+  - Auth: `ADMIN_TOKEN` environment variable; `Authorization: Bearer <token>` header
 
 - [ ] **11.0** Serve castle images from Synology NAS
   - Add `imageBaseUrl` to `src/environments/environment.ts` (`''`) and `environment.prod.ts` (Synology URL)
@@ -230,6 +230,7 @@ Larger or more speculative improvements.
 - [POSTPONE] **11.1** Castle comparison view
   - Select 2–3 castles and view them side-by-side in a comparison table
   - Pin comparison bar at bottom of the castles list page; accessible from any castle card/row
+  - Cross-page state: use URL query params (`/compare?codes=nl001,de023`) — no complex state manager needed; Angular Signals are sufficient (confirmed in architecture review)
 - [POSTPONE] **11.2** Structured data (JSON-LD)
   - Add `schema.org/LandmarksOrHistoricalBuildings` JSON-LD to each detail page
   - Enables Google rich results (knowledge panel, image carousel in search)
@@ -280,6 +281,120 @@ Resolves three classes of issues identified in peer review: a broken production 
 
 ---
 
+## Phase 13 — Infrastructure: Node.js Server Migration
+
+Migrate the production runtime from nginx to an embedded Node.js server (ADR-008). This is the prerequisite for all API-backed features in Phases 14 and 15. The SSG prerendering pipeline (Phase 12) is unchanged — Node serves the same static output that nginx did, plus new API routes.
+
+- [ ] **13.1** Rewrite Dockerfile runtime stage
+  - Replace `FROM nginx:alpine` runtime stage with `FROM node:alpine`
+  - Copy Angular dist output (`/dist/new_app/browser`) and `server/` directory into image
+  - `CMD ["node", "server/index.js"]`; expose `PORT` env variable (default 3000)
+  - Remove `nginx.conf` from the build (no longer used at runtime)
+  - Update `deploy.sh` image tags and port mappings
+
+- [ ] **13.2** Express server — static serving and SPA fallback
+  - `server/index.js`: Express app with `express.static('/dist/new_app/browser')`
+  - SPA fallback: catch-all route returns `index.html` for any path not matched by a static file or API route (equivalent to nginx `try_files`)
+  - Gzip middleware (`compression` package) replacing the nginx gzip config from Phase 12.1
+
+- [ ] **13.3** Image serving from NAS mount
+  - `GET /images/*` → stream from `/images` volume mount
+  - Cache-Control headers (long TTL); 404 for missing files
+  - Test with a castle image request against the mounted volume
+
+- [ ] **13.4** Data volume structure and initialisation
+  - On server startup, ensure `/data/users.json` exists (create with `{ "users": [] }` if absent)
+  - Ensure `/data/content.json` exists (create with default intro text if absent)
+  - Document both volume mounts (`/data`, `/images`) in `docker-compose.yml` and README
+  - Runtime data (`/data`) is never committed to the repo — add to `.dockerignore`
+
+- [ ] **13.5** JSON write safety utility
+  - `server/lib/json-store.js`: atomic writes via write-to-`.tmp`-then-rename pattern
+  - In-process async mutex (e.g. `async-mutex`) to serialise concurrent writes to the same file
+  - Exported as `readJson(path)` / `writeJson(path, data)` — used by all routes that touch `/data/**`
+
+- [ ] **13.6** Smoke tests for server migration
+  - Verify static Angular pages load (home, castle detail, country detail) — SPA fallback working
+  - Verify hard-refresh on a deep route returns the correct page (regression vs. Phase 12.1 fix)
+  - Verify `/images/castles/nl001_1.jpg` is served from the volume mount
+  - Verify gzip is active (`Accept-Encoding: gzip` → `Content-Encoding: gzip` in response)
+
+---
+
+## Phase 14 — User Accounts & Favorites
+
+Introduces runtime user state: accounts, token auth, and named castle sets. Implements ADR-009 (file-based user model). Requires Phase 13 complete.
+
+- [ ] **14.1** User API — accounts and token auth
+  - `POST /api/user/register` → create user record in `/data/users.json`, return `{ id, token }`
+  - `POST /api/user/login` → validate token, return user object
+  - `GET /api/user/me` → return current user from token header
+  - Token is a UUID stored plaintext in `users.json`; no password hashing needed (ADR-009)
+  - All writes via `json-store.js` (Phase 13.5)
+
+- [ ] **14.2** Angular `UserService`
+  - Signals: `currentUser = signal<User | null>(null)`
+  - Token stored in `localStorage`; auto-login on app startup via `provideAppInitializer()`
+  - Methods: `register()`, `login(token)`, `logout()`
+
+- [ ] **14.3** Favorites: save and remove castle
+  - `PUT /api/user/favorites/:setId/castles/:code` — add castle to named set
+  - `DELETE /api/user/favorites/:setId/castles/:code` — remove castle from named set
+  - Heart/bookmark icon on castle cards (grid + table) and castle detail page; filled state reflects membership in any set
+
+- [ ] **14.4** Named sets — create, rename, delete
+  - `POST /api/user/favorites` — create named set (e.g. "My trip 2025"), returns set id
+  - `PATCH /api/user/favorites/:setId` — rename set
+  - `DELETE /api/user/favorites/:setId` — delete set and all its castle memberships
+  - `GET /api/user/favorites` — list all sets with castle counts
+
+- [ ] **14.5** Favorites page
+  - New route `/favorites` — lists user's named sets; each set shows its castles as a grid/table (reuse existing components)
+  - Add to component hierarchy and sidenav
+  - Empty state: prompt to browse castles and save the first one
+
+---
+
+## Phase 15 — Admin UI
+
+Web-based admin interface for content management. Implements ADR-010 (admin triggers rebuild, not runtime mutation). Requires Phase 13 complete (Node server running).
+
+- [ ] **15.1** Admin API auth
+  - All `/api/admin/...` routes require `Authorization: Bearer <token>` header
+  - Token read from `ADMIN_TOKEN` environment variable at server startup
+  - Return 401 for missing/invalid token
+
+- [ ] **15.2** Admin UI shell (Angular)
+  - Protected route `/admin` — guarded by `AdminAuthGuard` that checks `localStorage` for admin token
+  - Token entry: `/admin/login` page with a single token input; stores to `localStorage` on success
+  - Sidenav links hidden from regular users; admin nav shown when token is present
+
+- [ ] **15.3** Edit castle data
+  - `PUT /api/admin/castles/:code` — update fields in `castles_enriched.json` for the given code
+  - Admin form: inline editing of name, country, region, coordinates, castle type, condition, score overrides
+  - Changes write to JSON only via `json-store.js` (Phase 13.5) — a rebuild is required for prerendered pages to reflect them (ADR-010)
+
+- [ ] **15.4** Add a new castle
+  - `POST /api/admin/castles` — append new castle entry to `castles_enriched.json`
+  - Form with required fields (code, name, country, coordinates); auto-validate code uniqueness
+  - After save: prompt to run enrichment scripts then trigger rebuild
+
+- [ ] **15.5** Run enrichment scripts
+  - `POST /api/admin/enrichment/wikipedia` — spawn `enrich_wikipedia.js` as a child process, stream stdout to response
+  - `POST /api/admin/enrichment/wikidata` — same for `enrich_wikidata.js`
+  - Admin UI shows live log output; completion status returned when process exits
+
+- [ ] **15.6** Edit introduction text
+  - `PUT /api/admin/content/intro` — write intro text to `/data/content.json` via `json-store.js`
+  - Angular homepage reads `content.json` via `HttpClient` (runtime fetch, not build-time import) so intro updates are visible without rebuild
+
+- [ ] **15.7** Trigger rebuild
+  - `POST /api/admin/rebuild` — runs the full build pipeline: `ng build` + `generate_prerender_routes.js` + sitemap + API generation
+  - Admin UI shows build progress (streamed stdout) and final success/failure status
+  - Only required for content changes (castle data, enrichment); user data changes take effect immediately
+
+---
+
 ## Dependencies
 
 ```text
@@ -303,4 +418,12 @@ Independent (can be done in any order): 2.4, 2.5, 2.6, 3.1, 4.1, 4.2
 12.3 independent (land before 12.4 — APP_INITIALIZER guarantees data before any sort runs)
 12.4 after 12.3
 12.5 independent
+Phase 13 is a prerequisite for all of Phase 14 and Phase 15
+13.1 → 13.2 → 13.3, 13.4 → 13.5 → 13.6
+14.1 → 14.2 → 14.3, 14.4 → 14.5
+15.1 → 15.2 → 15.3, 15.4, 15.5, 15.6, 15.7
+13.5 (json-store) required by 14.1, 15.3, 15.6 (all JSON write routes)
+11.5 after Phase 13 (uses the same Node server)
+15.5 after Phase 1 scripts exist ✓ (enrichment scripts must exist before the API can spawn them)
+15.7 after 12.2 ✓ (rebuild pipeline must be defined before admin can trigger it)
 ```

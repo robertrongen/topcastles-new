@@ -2,55 +2,132 @@
 
 ## Stack (ADR-002)
 
-| Concern          | Choice           | Version | Notes                                                         |
-| ---------------- | ---------------- | ------- | ------------------------------------------------------------- |
-| Framework        | Angular          | 19.2+   | Standalone Components + Signals                               |
-| UI library       | Angular Material | 19.2+   | Tables, cards, nav, theming                                   |
-| Component docs   | Storybook        | 9.1+    | Isolated component development and review                     |
-| Language         | TypeScript       | 5.7+    | Required by Angular                                           |
-| Styling          | SCSS             | -       | CSS Custom Properties; Angular Material uses SCSS natively    |
-| Linting          | ESLint           | -       | With `@angular-eslint`                                        |
-| Formatting       | Prettier         | -       | Integrated with ESLint via `eslint-config-prettier`           |
-| Unit testing     | Karma + Jasmine  | -       | Angular CLI default                                           |
-| Package manager  | npm              | -       | Angular CLI default                                           |
-| Data layer       | Static JSON      | -       | CSV to JSON conversion at build time (ADR-003); no database   |
-| Rendering        | Angular SSR      | -       | `@angular/ssr` for SSR and prerendering (SEO)                 |
-| Containerization | Docker           | -       | Multi-stage build; Node Alpine runtime for Synology (ADR-004) |
+| Concern          | Choice           | Version | Notes                                                              |
+| ---------------- | ---------------- | ------- | ------------------------------------------------------------------ |
+| Framework        | Angular          | 19.2+   | Standalone Components + Signals                                    |
+| UI library       | Angular Material | 19.2+   | Tables, cards, nav, theming                                        |
+| Component docs   | Storybook        | 9.1+    | Isolated component development and review                          |
+| Language         | TypeScript       | 5.7+    | Required by Angular                                                |
+| Styling          | SCSS             | -       | CSS Custom Properties; Angular Material uses SCSS natively         |
+| Linting          | ESLint           | -       | With `@angular-eslint`                                             |
+| Formatting       | Prettier         | -       | Integrated with ESLint via `eslint-config-prettier`                |
+| Unit testing     | Karma + Jasmine  | -       | Angular CLI default                                                |
+| Package manager  | npm              | -       | Angular CLI default                                                |
+| Data layer       | Static JSON      | -       | CSV to JSON conversion at build time (ADR-003); no database        |
+| Rendering        | Angular SSR      | -       | `@angular/ssr` for SSR and prerendering (SEO)                      |
+| Containerization | Docker           | -       | Multi-stage build; Node Alpine runtime for Synology (ADR-004, ADR-008) |
 
 ## Project structure
 
 ```text
-new_app/
-├── src/
-│   ├── app/
-│   │   ├── components/          # Shared/reusable components
-│   │   │   ├── castle-filter/
-│   │   │   ├── castle-grid/
-│   │   │   ├── castle-table/
-│   │   │   └── view-toggle/
-│   │   ├── pages/               # Route-level page components
-│   │   │   ├── background/
-│   │   │   ├── castle-detail/
+topcastles-new/                          # Repo root
+├── new_app/                             # Angular application
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── components/              # Shared/reusable components
+│   │   │   │   ├── castle-filter/
+│   │   │   │   ├── castle-grid/
+│   │   │   │   ├── castle-map/          # Leaflet map (list + detail + country)
+│   │   │   │   ├── castle-table/
+│   │   │   │   └── view-toggle/
+│   │   │   ├── pages/                   # Route-level page components
+│   │   │   │   ├── background/          # /background
+│   │   │   │   ├── castle-detail/       # /castles/:code
+│   │   │   │   ├── castles/             # /castles
+│   │   │   │   ├── country-redirect/    # legacy URL redirect
+│   │   │   │   ├── developer/           # /developer (internal)
+│   │   │   │   ├── home/                # /
+│   │   │   │   ├── nocastle-detail/     # /nocastle/:code
+│   │   │   │   ├── top-countries/       # /top-countries
+│   │   │   │   ├── top-regions/         # /top-regions
+│   │   │   │   └── top100/              # /top1000
+│   │   │   ├── services/
+│   │   │   │   ├── castle.service.ts    # Castle data loading + queries
+│   │   │   │   ├── no-castle.service.ts # No-castle data
+│   │   │   │   ├── theme.service.ts     # Dark/light mode toggle
+│   │   │   │   └── view-mode.service.ts # Grid/table/map view state
+│   │   │   ├── models/
+│   │   │   │   └── castle.model.ts      # Castle + enrichment TypeScript interfaces
+│   │   │   ├── app.component.ts         # Root component (toolbar + sidenav shell)
+│   │   │   ├── app.config.ts            # App-level providers + initializers
+│   │   │   ├── app.config.server.ts     # SSR-only providers (build-time renderer)
+│   │   │   └── app.routes.ts            # Route definitions
+│   │   ├── assets/
+│   │   │   └── data/                    # Static JSON (build-time, served by Node)
+│   │   │       ├── castles_enriched.json  # Primary dataset (Wikipedia + Wikidata)
+│   │   │       ├── castles.json           # Lean dataset (generated)
+│   │   │       ├── castles_delta.json     # Enrichment delta
+│   │   │       └── no_castles.json        # Unknown castle codes
+│   │   ├── main.ts
+│   │   ├── main.server.ts               # SSR entry point (build-time only)
+│   │   ├── server.ts                    # Build-time SSG renderer (not deployed)
+│   │   ├── styles.scss                  # Global styles + Material theme
+│   │   └── index.html
+│   ├── public/                          # Copied verbatim to dist root
+│   │   ├── api/                         # Static JSON API (Phase 5)
+│   │   │   ├── castles.json
+│   │   │   ├── top100.json
+│   │   │   ├── index.json
+│   │   │   ├── openapi.yaml
+│   │   │   └── by-country/              # 56 country-slug files
+│   │   ├── icons/                       # PWA icons
+│   │   ├── images/                      # Castle images (to move to NAS — Phase 11.0)
 │   │   │   ├── castles/
-│   │   │   ├── country-detail/
-│   │   │   ├── home/
-│   │   │   ├── nocastle-detail/
-│   │   │   ├── top-countries/
-│   │   │   ├── top-regions/
-│   │   │   └── top100/
-│   │   ├── services/            # Data loading, shared logic
-│   │   ├── models/              # TypeScript interfaces
-│   │   ├── app.component.ts     # Root component (layout shell)
-│   │   ├── app.config.ts        # App-level providers
-│   │   └── app.routes.ts        # Route definitions
-│   ├── assets/
-│   │   └── data/                # Static JSON files (castle data)
-│   └── index.html
-├── .storybook/                  # Storybook configuration
-├── angular.json
-├── Dockerfile
-└── package.json
+│   │   │   ├── drawings/
+│   │   │   └── maps/
+│   │   ├── leaflet/                     # Leaflet marker assets
+│   │   ├── llms.txt                     # AI-agent discovery file (Phase 5.2)
+│   │   ├── manifest.webmanifest         # PWA manifest
+│   │   ├── sitemap.xml                  # Generated by scripts/generate_sitemap.js
+│   │   ├── banner_en.gif
+│   │   └── tk-shield.ico
+│   ├── .storybook/                      # Storybook configuration
+│   ├── angular.json
+│   ├── ngsw-config.json                 # Service worker config (Phase 10.3)
+│   ├── prerender-routes.txt             # Generated route list for SSG
+│   └── package.json
+│
+├── scripts/                             # Node.js data pipeline scripts
+│   ├── enrich_wikipedia.js              # Phase 1.1 — Wikipedia enrichment
+│   ├── enrich_wikidata.js               # Phase 1.2 — Wikidata enrichment
+│   ├── enrich_coordinates.js            # Phase 8.3 — coordinate fill
+│   ├── generate_api.js                  # Phase 5.1 — static API slicing
+│   ├── generate_lean_castles.js         # Lean castles.json generation
+│   ├── generate_prerender_routes.js     # Phase 12.2 — SSG route list
+│   ├── generate_sitemap.js              # Phase 9.4 — sitemap.xml
+│   ├── mcp-server.js                    # Phase 5.4 — MCP server
+│   ├── wikipedia_overrides.json         # Phase 8.1 — manual Wikipedia mappings
+│   └── package.json                     # MCP server dependencies
+│
+├── server/                              # Node.js runtime server (Phase 13 — planned)
+│   ├── index.js                         # Express entry point (static + API routes)
+│   └── lib/
+│       └── json-store.js                # Atomic JSON read/write utility
+│
+├── docs/                                # Project documentation
+│   ├── architecture.md
+│   ├── decisions.md                     # ADRs (ADR-001 through ADR-010)
+│   ├── modernization-plan.md
+│   ├── setup.md                         # This file
+│   ├── deployment.md
+│   ├── pipeline.md
+│   └── storybook.md
+│
+├── old_app/                             # Legacy PHP application (reference only)
+│   ├── database/                        # Source CSV (Topcastles export.csv)
+│   ├── content/en/                      # Legacy HTML content fragments
+│   └── archive/                         # Dropped-scope items
+│
+├── tests/                               # Cross-stack tests
+│   └── test_php_baseline.py
+│
+├── Dockerfile                           # Multi-stage build (Node build → Node Alpine runtime)
+├── nginx.conf                           # Kept for reference; replaced by server/ in Phase 13
+├── deploy.sh                            # Synology deploy script
+└── package.json                         # Root scripts (data pipeline npm run targets)
 ```
+
+> `server/` does not exist yet — it will be created in Phase 13 (Node.js server migration).
 
 ## Known constraints
 

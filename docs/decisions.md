@@ -126,6 +126,124 @@ Consequences:
 - Data changes (enrichment script runs) require a rebuild to update pre-rendered HTML; acceptable given data changes infrequently.
 - Castle detail pages (~1000) are included in the prerender list because they are the primary sharing targets.
 
+## ADR-007: Hybrid static content with runtime user state
+
+Status: accepted
+
+Context:
+
+- New features (user favorites, admin UI) require write operations and runtime state.
+- The existing static-first architecture must be preserved to avoid full backend rewrite.
+
+Decision:
+
+- Castle content remains static JSON and is build-time driven.
+- Admin changes update JSON files and require a rebuild — no live mutation of prerendered HTML.
+- User data (favorites, accounts) is stored separately at runtime in `/data/users.json`.
+- Content data and user data are strictly separated by responsibility layer.
+
+Consequences:
+
+- Preserves static-site simplicity and SEO guarantees.
+- Enables user personalization without introducing a database.
+- Requires clear separation of data responsibilities across the codebase.
+
+---
+
+## ADR-008: Embedded Node middleware in single container
+
+Status: accepted (supersedes nginx-only runtime from ADR-006)
+
+Context:
+
+- Features added by the admin UI and user accounts require API endpoints, write access, and image serving from a NAS mount.
+- nginx cannot serve dynamic requests; a Node process is needed.
+- Multi-container setup is undesirable given single-developer and zero-cost constraints.
+
+Decision:
+
+- Introduce a Node.js server inside the existing Docker container, replacing nginx as the main runtime entry point.
+- Node responsibilities:
+  - Serve static Angular SSR output (pre-rendered HTML, JS/CSS bundles, JSON data).
+  - Provide admin API (update/add castle data, run enrichment scripts, trigger rebuild).
+  - Provide user API (accounts, token auth, favorites).
+  - Serve images from mounted Synology NAS volume (`/images`).
+  - Optional in-process caching layer.
+
+Consequences:
+
+- Slightly heavier runtime than nginx-only.
+- Enables all planned dynamic features without multi-container setup.
+- Single container deployment model preserved.
+
+---
+
+## ADR-009: Lean user account model (file-based)
+
+Status: accepted
+
+Context:
+
+- User favorites and named sets require persistence across sessions.
+- A database introduces deployment complexity and cost that conflicts with project constraints.
+
+Decision:
+
+- User data stored in a JSON file at `/data/users.json`.
+- Authentication via simple token-based approach — no passwords, no email verification, no external auth provider.
+
+Example structure:
+
+```json
+{
+  "users": [
+    {
+      "id": "uuid",
+      "token": "secure-token",
+      "favorites": [
+        {
+          "id": "fav-1",
+          "name": "My castles",
+          "castleIds": ["nl001", "de023"]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Consequences:
+
+- Minimal complexity, no new infrastructure.
+- Fits zero-cost constraint.
+- Not suitable for large-scale systems; acceptable for single-developer personal project.
+- File locking and corruption prevention must be handled in the Node layer.
+
+---
+
+## ADR-010: Admin UI triggers pipeline, not runtime mutation
+
+Status: accepted
+
+Context:
+
+- Admin UI needs to update castle data, add castles, and run enrichment scripts.
+- Directly mutating prerendered HTML at runtime would require cache invalidation logic and break static guarantees.
+
+Decision:
+
+- Admin UI writes changes to JSON files (castle data, enrichment inputs).
+- Changes trigger a rebuild process — the build pipeline remains the single source of truth for prerendered content.
+- No admin action directly mutates prerendered HTML at runtime.
+
+Consequences:
+
+- Avoids cache invalidation complexity entirely.
+- Keeps the build pipeline as authoritative source of truth.
+- Content changes have a rebuild delay; acceptable given infrequent content updates.
+
+---
+
 ## ADR-005: Visual parity — old-app brand applied via CSS overrides
 
 Status: accepted
