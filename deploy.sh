@@ -6,6 +6,10 @@
 
 set -e
 
+# Start ssh-agent and add your key (will prompt for passphrase once)
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
 IMAGE_NAME="hobunror/topcastles"
 IMAGE_TAG="latest"
 FULL_IMAGE_NAME="${IMAGE_NAME}:${IMAGE_TAG}"
