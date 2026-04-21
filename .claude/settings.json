@@ -27,7 +27,11 @@
       "Bash(bd update *)",
       "Bash(npx tsc *)",
       "Bash(git -C c:/github/topcastles add -u)",
-      "Bash(git -C c:/github/topcastles status --short)"
+      "Bash(git -C c:/github/topcastles status --short)",
+      "Bash(git -C c:/github/topcastles commit -m ' *)",
+      "Bash(git -C c:/github/topcastles push)",
+      "Bash(git -C c:/github/topcastles add new_app/public/leaflet/ new_app/src/app/pages/castle-detail/castle-detail-page.component.ts)",
+      "Bash(git -C c:/github/topcastles add docs/modernization-plan.md)"
     ]
   },
   "hooks": {

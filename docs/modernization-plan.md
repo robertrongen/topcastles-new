@@ -257,7 +257,7 @@ Resolves three classes of issues identified in peer review: a broken production 
   - Audit and remove all component-level `loadCastles()` calls
   - Delete `NoCastleService` and `no-castle.service.ts` (verify no remaining imports)
 
-- [ ] **12.4** Trust JSON sort order in `CastleService`
+- [x] **12.4** Trust JSON sort order in `CastleService`
   - Add a unit test asserting `castles_enriched.json` is sorted by `score_total` descending — makes the precondition explicit and catches accidental re-ordering from enrichment scripts
   - Simplify `getAllByScore()` → `return this.castles()` (no sort needed)
   - Simplify `getTopByScore(n)` → `return this.castles().slice(0, n)`

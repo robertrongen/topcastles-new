@@ -20,6 +20,15 @@ const outputFile = join(__dirname, '../new_app/prerender-routes.txt');
 
 const castles = JSON.parse(readFileSync(dataFile, 'utf8'));
 
+// Assert sort order — service methods rely on this precondition.
+for (let i = 1; i < castles.length; i++) {
+  if ((castles[i].score_total ?? 0) > (castles[i - 1].score_total ?? 0)) {
+    console.warn(`WARNING: castles_enriched.json not sorted at index ${i} (${castles[i-1].castle_code} → ${castles[i].castle_code})`);
+    console.warn('Run the enrichment scripts and re-sort before building.');
+    break;
+  }
+}
+
 const staticRoutes = [
   '/',
   '/top1000',

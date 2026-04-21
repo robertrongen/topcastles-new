@@ -60,6 +60,17 @@ describe('CastleService', () => {
       expect(service.castles().length).toBe(4);
     });
 
+    it('source data must be sorted by score_total descending (precondition for sort-free methods)', () => {
+      // getAllByScore, getTopByScore, getTopByCountry all rely on this ordering.
+      // If this test fails, re-run the enrichment scripts and verify sort order.
+      service.loadCastles();
+      httpTesting.expectOne('/assets/data/castles_enriched.json').flush(castles);
+      const scores = service.castles().map(c => c.score_total ?? 0);
+      for (let i = 1; i < scores.length; i++) {
+        expect(scores[i]).toBeLessThanOrEqual(scores[i - 1]);
+      }
+    });
+
     it('sets loading to true during request and false after', () => {
       service.loadCastles();
       expect(service.loading()).toBeTrue();
@@ -96,7 +107,7 @@ describe('CastleService', () => {
   describe('getAllByScore', () => {
     beforeEach(() => { service.castles.set(castles); });
 
-    it('returns all castles sorted by score_total descending', () => {
+    it('returns all castles in source order (source data is pre-sorted by score_total desc)', () => {
       const result = service.getAllByScore();
       expect(result.map(c => c.castle_code)).toEqual(['c1', 'c2', 'c3', 'c4']);
     });
@@ -105,7 +116,7 @@ describe('CastleService', () => {
   describe('getTopByScore', () => {
     beforeEach(() => { service.castles.set(castles); });
 
-    it('returns the top N castles by score_total', () => {
+    it('returns the top N castles in source order (source data is pre-sorted by score_total desc)', () => {
       const top2 = service.getTopByScore(2);
       expect(top2.length).toBe(2);
       expect(top2[0].castle_code).toBe('c1');

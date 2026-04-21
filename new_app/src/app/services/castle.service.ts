@@ -27,17 +27,15 @@ export class CastleService {
     return this.castles().find((c) => c.castle_code === code);
   }
 
+  // castles_enriched.json is pre-sorted by score_total descending.
+  // Methods below rely on this ordering; no runtime sort is needed except getTopByVisitors.
+
   getAllByScore(): Castle[] {
-    return this.castles()
-      .slice()
-      .sort((a, b) => (b.score_total ?? 0) - (a.score_total ?? 0));
+    return this.castles();
   }
 
   getTopByScore(count: number): Castle[] {
-    return this.castles()
-      .slice()
-      .sort((a, b) => (b.score_total ?? 0) - (a.score_total ?? 0))
-      .slice(0, count);
+    return this.castles().slice(0, count);
   }
 
   getTopByVisitors(count: number): Castle[] {
@@ -47,6 +45,7 @@ export class CastleService {
       .slice(0, count);
   }
 
+  // filter() preserves global score order, so the result is already top-N by score.
   getTopByCountry(country: string, count: number): Castle[] {
     return this.castles()
       .filter((c) => c.country?.toLowerCase() === country.toLowerCase())
