@@ -47,7 +47,9 @@
             "security": {
               "allowedHosts": []
             },
-            "prerender": true,
+            "prerender": {
+              "routesFile": "prerender-routes.txt"
+            },
             "ssr": {
               "entry": "src/server.ts"
             }

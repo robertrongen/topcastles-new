@@ -244,7 +244,7 @@ Resolves three classes of issues identified in peer review: a broken production 
   - Update `Dockerfile` to `COPY nginx.conf /etc/nginx/conf.d/default.conf`
   - Most urgent fix: without it, a hard refresh on any non-root URL returns a 404
 
-- [ ] **12.2** Prerender sharing routes (SSG)
+- [x] **12.2** Prerender sharing routes (SSG)
   - Write `scripts/generate_prerender_routes.js` that reads `castles_enriched.json` and writes `new_app/prerender-routes.txt`
   - Routes: `/`, `/castles`, all `/countries/:slug` (56 pages), all `/castles/:code` (~1000 pages)
   - Update `angular.json`: `"prerender": { "routesFile": "prerender-routes.txt" }`
