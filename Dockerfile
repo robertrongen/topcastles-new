@@ -16,14 +16,20 @@ COPY new_app/ .
 RUN NODE_OPTIONS=--max-old-space-size=4096 npm run build
 
 # Production stage
-FROM nginx:alpine
+FROM node:18-alpine
 
-# Copy built app to nginx
-COPY --from=build /app/dist/new_app/browser /usr/share/nginx/html
+WORKDIR /app
 
-# Replace default nginx config with SPA fallback + gzip
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Install server dependencies (production only)
+COPY server/package*.json ./server/
+RUN npm ci --prefix server --omit=dev
 
-EXPOSE 80
+# Copy Angular build output
+COPY --from=build /app/dist/new_app ./new_app/dist/new_app
 
-CMD ["nginx", "-g", "daemon off;"]
+# Copy server source
+COPY server/ ./server/
+
+EXPOSE 3000
+
+CMD ["node", "server/index.js"]
