@@ -18,7 +18,7 @@
  *   node scripts/generate_lean_castles.js
  */
 
-import { readFileSync, writeFileSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -72,10 +72,45 @@ function buildSearchText(castle) {
     .toLowerCase();
 }
 
+// Fields baked into prerendered HTML at build time — changes here require a full rebuild.
+// og:title uses castle_name; og:image uses wikipedia_thumbnail; meta description uses
+// position; route path uses castle_code.
+const PRERENDER_FIELDS = ['castle_code', 'castle_name', 'position', 'wikipedia_thumbnail'];
+
+function checkRebuildNeeded(newLean) {
+  if (!existsSync(LEAN_OUT)) return { needed: true, reasons: ['castles.json does not exist yet'] };
+
+  const prev = JSON.parse(readFileSync(LEAN_OUT, 'utf8'));
+  const prevMap = new Map(prev.map(c => [c.castle_code, c]));
+  const newMap  = new Map(newLean.map(c => [c.castle_code, c]));
+
+  const reasons = [];
+
+  const added   = [...newMap.keys()].filter(k => !prevMap.has(k));
+  const removed = [...prevMap.keys()].filter(k => !newMap.has(k));
+  if (added.length)   reasons.push(`${added.length} castle(s) added: ${added.slice(0, 5).join(', ')}${added.length > 5 ? '…' : ''}`);
+  if (removed.length) reasons.push(`${removed.length} castle(s) removed: ${removed.slice(0, 5).join(', ')}${removed.length > 5 ? '…' : ''}`);
+
+  for (const [code, newC] of newMap) {
+    const prevC = prevMap.get(code);
+    if (!prevC) continue;
+    for (const field of PRERENDER_FIELDS) {
+      if (prevC[field] !== newC[field]) {
+        reasons.push(`${code}: ${field} changed (${prevC[field]} → ${newC[field]})`);
+        if (reasons.length >= 8) return { needed: true, reasons }; // cap output
+      }
+    }
+  }
+
+  return { needed: reasons.length > 0, reasons };
+}
+
 const enriched = JSON.parse(readFileSync(ENRICHED, 'utf8'));
 
 const lean = enriched.map(c => ({ ...pick(c, LEAN_FIELDS), search_text: buildSearchText(c) }));
 const delta = enriched.map(c => pick(c, DELTA_FIELDS));
+
+const { needed, reasons } = checkRebuildNeeded(lean);
 
 writeFileSync(LEAN_OUT,  JSON.stringify(lean,  null, 2), 'utf8');
 writeFileSync(DELTA_OUT, JSON.stringify(delta, null, 2), 'utf8');
@@ -84,3 +119,13 @@ console.log(`✓ Wrote ${lean.length} lean castles → ${LEAN_OUT}`);
 console.log(`  Lean fields (${LEAN_FIELDS.length}): ${LEAN_FIELDS.join(', ')}`);
 console.log(`✓ Wrote ${delta.length} delta records → ${DELTA_OUT}`);
 console.log(`  Delta fields (${DELTA_FIELDS.length}): ${DELTA_FIELDS.join(', ')}`);
+console.log('');
+if (needed) {
+  console.log('⚠️  REBUILD REQUIRED — prerendered HTML is stale');
+  for (const r of reasons) console.log(`   • ${r}`);
+  console.log('   Run: npm run build');
+} else {
+  console.log('✓  HOT-SWAP ONLY — no rebuild required');
+  console.log('   Upload castles.json, castles_delta.json and sitemap.xml to the server.');
+}
+process.exitCode = needed ? 1 : 0;
