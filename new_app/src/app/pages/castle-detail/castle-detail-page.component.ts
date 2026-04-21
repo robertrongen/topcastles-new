@@ -99,21 +99,26 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
   selectedIndex  = signal(0);
   lightboxIndex  = signal<number | null>(null);
 
-  /** Candidate image URLs: {code}.jpg, {code}2.jpg … {code}25.jpg */
-  imageUrls = computed(() => {
+  private probeIndex = signal(0);
+  private probingDone = signal(false);
+
+  /** The single URL currently being probed; null when all images found or no more to try. */
+  probeUrl = computed(() => {
+    if (this.probingDone()) return null;
     const c = this.code();
-    if (!c) return [];
-    return Array.from({ length: 25 }, (_, i) =>
-      `/images/castles/${c}${i === 0 ? '' : i + 1}.jpg`
-    );
+    if (!c) return null;
+    const i = this.probeIndex();
+    if (i >= 25) return null;
+    return `/images/castles/${c}${i === 0 ? '' : i + 1}.jpg`;
   });
 
   onImageLoad(url: string): void {
     this.loadedImageUrls.update(urls => urls.includes(url) ? urls : [...urls, url]);
+    this.probeIndex.update(i => i + 1);
   }
 
-  onImageError(event: Event): void {
-    (event.target as HTMLImageElement).style.display = 'none';
+  onImageError(): void {
+    this.probingDone.set(true);
   }
 
   selectImage(index: number): void {
@@ -166,6 +171,8 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
       this.lightboxIndex.set(null);
       this.nearbyFailedLocal.set(new Set());
       this.nearbyFailedWiki.set(new Set());
+      this.probeIndex.set(0);
+      this.probingDone.set(false);
     });
 
     // Read castle(), nearbyCastles(), and mapContainer() as dependencies so the
@@ -187,7 +194,8 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
     const container = this.mapContainer()?.nativeElement;
     if (!container) return;
 
-    const L = await import('leaflet');
+    const leafletModule = await import('leaflet');
+    const L = (leafletModule as any).default ?? leafletModule;
 
     if (!this.leafletMap) {
       this.leafletMap = L.map(container, { scrollWheelZoom: false }).setView([lat, lon], 10);

@@ -36,7 +36,8 @@ export class CastleMapComponent implements OnDestroy {
     const container = this.mapContainer()?.nativeElement;
     if (!container) return;
 
-    const L = await import('leaflet');
+    const leafletModule = await import('leaflet');
+    const L = (leafletModule as any).default ?? leafletModule;
 
     if (!this.leafletMap) {
       this.leafletMap = L.map(container, { scrollWheelZoom: true }).setView([48, 10], 4);

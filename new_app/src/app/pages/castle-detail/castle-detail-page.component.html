@@ -284,16 +284,16 @@
       <!-- Right: images + map -->
       <aside class="detail-aside">
 
-        <!-- Invisible probes to trigger image loading -->
-        <div class="preload-container">
-          @for (url of imageUrls(); track $index) {
-            <img class="preload-img"
-                 [src]="url"
-                 [alt]="castle()!.castle_name"
-                 (load)="onImageLoad(url)"
-                 (error)="onImageError($event)" />
-          }
-        </div>
+        <!-- Sequential image probe: loads one at a time, stops on first 404 -->
+        @let nextProbe = probeUrl();
+        @if (nextProbe) {
+          <img class="preload-img"
+               [src]="nextProbe"
+               [alt]="castle()!.castle_name"
+               [title]="castle()!.castle_name"
+               (load)="onImageLoad(nextProbe)"
+               (error)="onImageError()" />
+        }
 
         @if (loadedImageUrls().length > 0) {
           <div class="featured-image-wrap">

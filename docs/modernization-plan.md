@@ -95,6 +95,21 @@ Expose the castle dataset for third-party developers, chatbots, and AI agents.
 
 ---
 
+## Hotfixes
+
+Production bugs fixed outside the main phase sequence.
+
+- [x] **HF-1** Sequential image probing on castle detail page
+  - The page rendered all 25 candidate `{code}N.jpg` URLs as `<img>` tags simultaneously, firing up to 25 HTTP requests at once — most returning 404 for castles with few images
+  - Replaced the batch probe with a single sequential probe: one `<img>` is rendered at a time; `onImageLoad` advances the probe index, `onImageError` stops probing
+  - Affected: `castle-detail-page.component.ts` / `.html`
+- [x] **HF-2** Leaflet map not loading in production (`c.map is not a function`)
+  - `await import('leaflet')` returns `{ default: L }` in the esbuild production bundle; dev build handled the interop transparently
+  - Fixed by resolving the default export in both map files: `const L = (leafletModule as any).default ?? leafletModule`
+  - Affected: `castle-map.component.ts`, `castle-detail-page.component.ts`
+
+---
+
 ## Phase 6 — Detail Page Enhancements
 
 Items from `additional_improvements.md` not yet implemented.
