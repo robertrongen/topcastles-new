@@ -1,5 +1,5 @@
 <div class="castle-grid">
-  @for (castle of castles; track castle.castle_code) {
+  @for (castle of castles; track castle.castle_code; let i = $index) {
     <a class="castle-tile" [routerLink]="['/castles', castle.castle_code]"
        [title]="castle.castle_name + ' - ' + castle.country">
       <mat-card>
@@ -10,14 +10,14 @@
                  [alt]="castle.castle_name"
                  [title]="castle.castle_name"
                  (error)="onLocalError(castle)"
-                 loading="lazy" />
+                 [loading]="i < 6 ? 'eager' : 'lazy'" />
           } @else if (castle.wikipedia_thumbnail && !failedWiki().has(castle.castle_code)) {
             <img class="castle-thumb"
                  [src]="castle.wikipedia_thumbnail"
                  [alt]="castle.castle_name"
                  [title]="castle.castle_name"
                  (error)="onWikiError(castle)"
-                 loading="lazy" />
+                 [loading]="i < 6 ? 'eager' : 'lazy'" />
           } @else {
             <mat-icon class="thumb-icon">castle</mat-icon>
           }

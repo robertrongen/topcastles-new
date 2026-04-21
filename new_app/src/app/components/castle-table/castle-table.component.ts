@@ -48,6 +48,10 @@ export class CastleTableComponent {
     return `${era}${suffix} c.`;
   }
 
+  isAboveFold(castle: Castle): boolean {
+    return this.tableData.indexOf(castle) < 3;
+  }
+
   failedLocal = signal(new Set<string>());
   failedWiki  = signal(new Set<string>());
 

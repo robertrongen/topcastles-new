@@ -26,14 +26,14 @@
                  [alt]="castle.castle_name"
                  [title]="castle.castle_name"
                  (error)="onLocalError(castle)"
-                 loading="lazy" />
+                 [loading]="isAboveFold(castle) ? 'eager' : 'lazy'" />
           } @else if (castle.wikipedia_thumbnail && !failedWiki().has(castle.castle_code)) {
             <img class="table-thumb"
                  [src]="castle.wikipedia_thumbnail"
                  [alt]="castle.castle_name"
                  [title]="castle.castle_name"
                  (error)="onWikiError(castle)"
-                 loading="lazy" />
+                 [loading]="isAboveFold(castle) ? 'eager' : 'lazy'" />
           } @else {
             <mat-icon class="thumb-icon">castle</mat-icon>
           }
