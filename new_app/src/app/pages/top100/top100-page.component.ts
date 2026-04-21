@@ -42,7 +42,7 @@ export class Top100PageComponent implements OnInit {
     const q = this.searchQuery().trim().toLowerCase();
     if (!q) return this.allCastles();
     return this.allCastles().filter(c =>
-      Object.values(c).some(v => v != null && String(v).toLowerCase().includes(q))
+      c.search_text ? c.search_text.includes(q) : c.castle_name?.toLowerCase().includes(q)
     );
   });
 

@@ -49,6 +49,13 @@ const DELTA_FIELDS = [
   'architect', 'wikidata_website', 'significant_events',
 ];
 
+// Fields concatenated into search_text so full-text search works on the lean file.
+const SEARCH_TEXT_FIELDS = [
+  'castle_name', 'country', 'place', 'region', 'area',
+  'founder', 'castle_type', 'castle_concept', 'condition',
+  'description', 'remarkable',
+];
+
 function pick(obj, fields) {
   const result = {};
   for (const field of fields) {
@@ -57,9 +64,17 @@ function pick(obj, fields) {
   return result;
 }
 
+function buildSearchText(castle) {
+  return SEARCH_TEXT_FIELDS
+    .map(f => castle[f] ?? '')
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+}
+
 const enriched = JSON.parse(readFileSync(ENRICHED, 'utf8'));
 
-const lean  = enriched.map(c => pick(c, LEAN_FIELDS));
+const lean = enriched.map(c => ({ ...pick(c, LEAN_FIELDS), search_text: buildSearchText(c) }));
 const delta = enriched.map(c => pick(c, DELTA_FIELDS));
 
 writeFileSync(LEAN_OUT,  JSON.stringify(lean,  null, 2), 'utf8');
