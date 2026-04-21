@@ -21,6 +21,12 @@
 
   <span class="tk-spacer"></span>
 
+  <button type="button" mat-icon-button (click)="theme.toggle()"
+          [title]="theme.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+          aria-label="Toggle dark mode">
+    <mat-icon>{{ theme.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+  </button>
+
   <button type="button" mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle navigation">
     <mat-icon>menu</mat-icon>
   </button>

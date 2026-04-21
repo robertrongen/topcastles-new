@@ -1,5 +1,5 @@
 .tk-masthead {
-  background-color: #FF9900 !important;
+  background-color: var(--tk-orange) !important;
   color: #000000 !important;
   padding-left: 4px;
   gap: 0;
@@ -63,33 +63,34 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #00005C;
+  background-color: var(--tk-body-bg);
 }
 
 mat-sidenav {
   width: 220px;
-  background-color: #E6E6F5 !important;
-  border-right: 1px solid #CCCCFF;
+  background-color: var(--tk-nav-bg) !important;
+  border-right: 1px solid var(--tk-divider);
 }
 
 .main-content {
   padding: 16px;
-  background-color: #ffffff;
+  background-color: var(--tk-content-bg);
+  color: var(--tk-text);
 }
 
 .active {
-  background-color: #CCCCFF !important;
+  background-color: var(--tk-link-hover) !important;
   font-weight: bold;
 }
 
 .tk-footer {
   margin-top: 32px;
   padding: 16px;
-  border-top: 1px solid #CCCCFF;
-  background-color: #E6E6F5;
+  border-top: 1px solid var(--tk-divider);
+  background-color: var(--tk-footer-bg);
   font-family: Verdana, Arial, sans-serif;
   font-size: 11px;
-  color: #333333;
+  color: var(--tk-footer-text);
   text-align: center;
 
   p {
@@ -97,12 +98,11 @@ mat-sidenav {
   }
 
   a {
-    color: #00005C;
+    color: var(--tk-footer-link);
   }
 }
 
 @media (max-width: 767px) {
-  // Center the logo in the toolbar; hamburger stays on the right
   .tk-logo-link {
     position: absolute;
     left: 50%;

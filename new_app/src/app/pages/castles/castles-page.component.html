@@ -5,7 +5,15 @@
     <div class="form-section">
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput [ngModel]="name()" (ngModelChange)="name.set($event)" />
+        <input matInput
+               [ngModel]="name()"
+               (ngModelChange)="name.set($event)"
+               [matAutocomplete]="nameAc" />
+        <mat-autocomplete #nameAc (optionSelected)="name.set($event.option.value)">
+          @for (s of nameSuggestions(); track s) {
+            <mat-option [value]="s">{{ s }}</mat-option>
+          }
+        </mat-autocomplete>
       </mat-form-field>
 
       <mat-form-field appearance="outline">

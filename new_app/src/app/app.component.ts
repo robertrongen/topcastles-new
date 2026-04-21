@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -20,4 +21,5 @@ import { MatDividerModule } from '@angular/material/divider';
 })
 export class AppComponent {
   title = 'Top Castles';
+  protected theme = inject(ThemeService);
 }

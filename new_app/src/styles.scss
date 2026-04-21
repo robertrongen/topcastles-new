@@ -3,16 +3,43 @@
 @use '@angular/material' as mat;
 @import 'leaflet/dist/leaflet.css';
 
-// Old-app palette variables
-$tk-orange:      #FF9900; // masthead / toolbar background
-$tk-dark-blue:   #00005C; // page body background
-$tk-link:        #000099; // primary link colour
-$tk-link-hover:  #CCCCFF; // link hover background
-$tk-nav-bg:      #E6E6F5; // left nav / sidenav background
-$tk-th-bg:       #CCCCEB; // table header background
-$tk-section-bg:  #CCCCFF; // feature/section header background
-$tk-row-even:    #FFF6DE; // alternating table row (even)
-$tk-divider:     #CCCCFF; // section divider colour
+// ── Palette — light (default) ─────────────────────────────────────────────────
+
+:root, [data-theme="light"] {
+  --tk-orange:      #FF9900;
+  --tk-body-bg:     #00005C;
+  --tk-content-bg:  #ffffff;
+  --tk-text:        #000000;
+  --tk-link:        #000099;
+  --tk-link-hover:  #CCCCFF;
+  --tk-nav-bg:      #E6E6F5;
+  --tk-th-bg:       #CCCCEB;
+  --tk-section-bg:  #CCCCFF;
+  --tk-row-even:    #FFF6DE;
+  --tk-divider:     #CCCCFF;
+  --tk-footer-bg:   #E6E6F5;
+  --tk-footer-text: #333333;
+  --tk-footer-link: #00005C;
+}
+
+// ── Palette — dark ────────────────────────────────────────────────────────────
+
+[data-theme="dark"] {
+  --tk-orange:      #FF9900;
+  --tk-body-bg:     #000033;
+  --tk-content-bg:  #1a1a2e;
+  --tk-text:        #e8e8f0;
+  --tk-link:        #aaaaff;
+  --tk-link-hover:  #2a2a60;
+  --tk-nav-bg:      #141428;
+  --tk-th-bg:       #1a1a40;
+  --tk-section-bg:  #1a1a40;
+  --tk-row-even:    #0e0e28;
+  --tk-divider:     #3333aa;
+  --tk-footer-bg:   #0a0a22;
+  --tk-footer-text: #c0c0d0;
+  --tk-footer-link: #aaaaff;
+}
 
 html {
   @include mat.theme((
@@ -38,8 +65,8 @@ body {
   font-family: Verdana, Arial, sans-serif;
   font-size: 11px;
   font-weight: bold;
-  color: #000000;
-  background-color: $tk-dark-blue;
+  color: var(--tk-text);
+  background-color: var(--tk-body-bg);
 }
 
 // ── Typography ──────────────────────────────────────────────────────────────
@@ -50,7 +77,8 @@ h1, h2, h3, h4 {
 
 h1 {
   font-size: 180%;
-  background-color: $tk-section-bg;
+  background-color: var(--tk-section-bg);
+  color: var(--tk-text);
   padding: 6px 10px;
   margin: 0 0 12px;
 }
@@ -65,20 +93,21 @@ p, li, td, span, div {
 // ── Global link styles ──────────────────────────────────────────────────────
 
 a:link, a:visited, a:active {
-  color: $tk-link;
+  color: var(--tk-link);
   text-decoration: none;
 }
 
 a:hover {
-  color: $tk-link;
+  color: var(--tk-link);
   text-decoration: underline;
-  background-color: $tk-link-hover;
+  background-color: var(--tk-link-hover);
 }
 
 // ── Table styles ─────────────────────────────────────────────────────────────
 
 th {
-  background-color: $tk-th-bg;
+  background-color: var(--tk-th-bg);
+  color: var(--tk-text);
   font-weight: bold;
   vertical-align: middle;
 }
@@ -96,9 +125,9 @@ ul {
 
 // ── Angular Material overrides ───────────────────────────────────────────────
 
-// Toolbar → orange masthead
+// Toolbar → orange masthead (same in both modes)
 .mat-toolbar {
-  background-color: $tk-orange !important;
+  background-color: var(--tk-orange) !important;
   color: #000000 !important;
 }
 
@@ -107,36 +136,37 @@ ul {
   color: #000000 !important;
 }
 
-// Sidenav → pale lavender
+// Sidenav → nav bg
 mat-sidenav.mat-sidenav {
-  background-color: $tk-nav-bg !important;
+  background-color: var(--tk-nav-bg) !important;
 }
 
-// Nav list links inside sidenav: inherit dark text, blue on active
+// Nav list links inside sidenav
 .mat-nav-list a,
 .mat-mdc-list-item {
-  color: #000000 !important;
+  color: var(--tk-text) !important;
   font-weight: normal;
 }
 
 .mat-mdc-list-item.active,
 .mat-mdc-list-item:hover {
-  background-color: $tk-link-hover !important;
-  color: $tk-link !important;
+  background-color: var(--tk-link-hover) !important;
+  color: var(--tk-link) !important;
 }
 
 // Section/feature h2 headers
 .section h2,
 .tab-content h2,
 .feature h2 {
-  background-color: $tk-section-bg;
+  background-color: var(--tk-section-bg);
+  color: var(--tk-text);
   padding: 6px 8px 5px;
   margin-left: 0;
 }
 
 // Section dividers
 .section {
-  border-bottom: 2px solid $tk-divider;
+  border-bottom: 2px solid var(--tk-divider);
   padding-bottom: 12px;
   margin-bottom: 16px;
 }
@@ -144,22 +174,21 @@ mat-sidenav.mat-sidenav {
 // ── Dropdown styles ───────────────────────────────────────────────────────────
 
 .mat-mdc-select-panel {
-  background-color: $tk-nav-bg !important; // lavender background
+  background-color: var(--tk-nav-bg) !important;
 }
 
 .mat-mdc-option {
-  color: $tk-dark-blue !important; // dark blue text
+  color: var(--tk-text) !important;
 }
 
 .mat-mdc-option:hover,
 .mat-mdc-option.mat-mdc-option-active {
-  background-color: $tk-link-hover !important; // light blue hover
+  background-color: var(--tk-link-hover) !important;
 }
 
 // ── Mobile responsiveness ─────────────────────────────────────────────────────
 
 @media (max-width: 767px) {
-  // Left-align table content on mobile
   table, th, td {
     text-align: left !important;
   }

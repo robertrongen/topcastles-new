@@ -1,6 +1,7 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -19,6 +20,7 @@ import { ViewModeService } from '../../services/view-mode.service';
   standalone: true,
   imports: [
     FormsModule,
+    MatAutocompleteModule,
     MatFormFieldModule, MatInputModule, MatSelectModule,
     MatChipsModule, MatIconModule, MatButtonModule,
     CastleTableComponent, CastleGridComponent, CastleMapComponent, ViewToggleComponent,
@@ -52,6 +54,15 @@ export class CastlesPageComponent implements OnInit {
   era         = signal<number | null>(null);
   condition   = signal('');
   sortKey     = signal('score_total');
+
+  nameSuggestions = computed(() => {
+    const q = this.name().toLowerCase();
+    if (!q) return [];
+    return this.castleService.castles()
+      .filter(c => c.castle_name?.toLowerCase().includes(q))
+      .slice(0, 8)
+      .map(c => c.castle_name);
+  });
 
   sortOptions = [
     { value: 'score_total', label: 'Total score' },
