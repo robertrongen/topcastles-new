@@ -177,10 +177,9 @@ Suggested improvements to quality-of-life and discoverability.
 - [x] **9.3** Share button on detail page
   - Native Web Share API with URL fallback (copy link to clipboard)
   - Share castle name + URL; show confirmation toast
-- [ ] **9.4** Sitemap.xml generation
-  - Script `scripts/generate_sitemap.js` writes `new_app/public/sitemap.xml`
-  - One `<url>` per castle plus static pages; include `<lastmod>` from enrichment date
-  - Add `<link rel="sitemap">` to `index.html` for Google discovery
+- [x] **9.4** Sitemap.xml generation
+  - `scripts/generate_sitemap.js` writes `new_app/public/sitemap.xml` (6 static + 1000 castle URLs)
+  - `<link rel="sitemap">` added to `index.html`; run via `npm run data:sitemap`
 - [ ] **9.5** Design refresh — Storybook + Figma exploration
   - Use Storybook (already in the stack) to build and review components in isolation before reworking the visual design
   - Explore Figma (or a comparable tool such as Penpot, which is open-source) to design page layouts and component states before implementing them

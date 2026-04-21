@@ -19,6 +19,7 @@
     "data:enrich:wikipedia": "node scripts/enrich_wikipedia.js",
     "data:api": "node scripts/generate_api.js",
     "data:lean": "node scripts/generate_lean_castles.js",
+    "data:sitemap": "node scripts/generate_sitemap.js",
     "data:routes": "node scripts/generate_prerender_routes.js",
     "mcp": "node scripts/mcp-server.js",
 

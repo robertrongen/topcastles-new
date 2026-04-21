@@ -84,11 +84,13 @@ Castle data lives in `new_app/src/assets/data/castles_enriched.json`. To regener
 npm run data:convert           # Excel/CSV → base JSON (scripts/xlsx_to_json.py)
 npm run data:enrich:wikidata   # add Wikidata fields
 npm run data:enrich:wikipedia  # add Wikipedia summaries
+npm run data:lean              # derive castles.json (lean) + castles_delta.json from castles_enriched.json
 npm run data:api               # regenerate static JSON API under new_app/src/assets/api/
-npm run data:routes            # regenerate new_app/prerender-routes.txt (run after any data change)
+npm run data:sitemap           # regenerate new_app/public/sitemap.xml
+npm run data:routes            # regenerate new_app/prerender-routes.txt
 ```
 
-> **Important:** always run `npm run data:routes` after updating `castles_enriched.json`, then rebuild the app (`npm run build`). The routes file drives Angular's build-time prerendering — without it the new castles won't get pre-rendered HTML for link sharing.
+> **Important:** run `data:lean`, `data:sitemap`, and `data:routes` after any change to `castles_enriched.json`, then rebuild (`npm run build`). These three steps keep the app data, sitemap, and prerender routes in sync.
 
 ### MCP server
 
