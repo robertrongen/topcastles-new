@@ -1,5 +1,5 @@
 # Build stage
-FROM node:18-alpine as build
+FROM node:18-alpine AS build
 
 WORKDIR /app
 
@@ -13,7 +13,7 @@ RUN npm ci
 COPY new_app/ .
 
 # Build the application
-RUN npm run build --prod
+RUN NODE_OPTIONS=--max-old-space-size=4096 npm run build
 
 # Production stage
 FROM nginx:alpine
