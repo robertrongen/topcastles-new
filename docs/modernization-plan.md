@@ -207,6 +207,14 @@ Suggested improvements to quality-of-life and discoverability.
 
 ## Phase 11 — Infrastructure & Deployment
 
+- [ ] **11.5** Admin API for hot-swapping JSON data without rebuild
+  - After running enrichment scripts locally, push the updated `castles_enriched.json` to the live server without a full Docker build
+  - A minimal password-protected upload endpoint receives the file, writes it to the shared data volume, then re-runs `generate_lean_castles.js` and `generate_sitemap.js` to re-derive `castles.json`, `castles_delta.json`, and `sitemap.xml`
+  - The Angular app fetches these files at runtime — visitors get fresh data on next page load with no downtime
+  - Prerendered HTML (og tags) remains stale until the next full build — acceptable for data-only updates
+  - Implementation options: (1) small Node or Python sidecar container sharing the assets volume with nginx; (2) Synology Task Scheduler triggering the script on file-system change
+  - Auth: Bearer token or HTTP basic auth checked by the sidecar
+
 - [ ] **11.0** Serve castle images from Synology NAS
   - Add `imageBaseUrl` to `src/environments/environment.ts` (`''`) and `environment.prod.ts` (Synology URL)
   - Create `ImageService` that prepends the base URL; replace all `/images/castles/…` literals in templates and TS with service calls
