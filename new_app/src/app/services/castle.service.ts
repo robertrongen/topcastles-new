@@ -1,5 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
 import { Castle, CountrySummary, RegionSummary } from '../models/castle.model';
 
 @Injectable({ providedIn: 'root' })
@@ -9,21 +10,17 @@ export class CastleService {
   castles = signal<Castle[]>([]);
   loading = signal(false);
 
-  loadCastles(): void {
-    if (this.castles().length > 0) {
-      return;
-    }
+  async loadCastles(): Promise<void> {
+    if (this.castles().length > 0) return;
     this.loading.set(true);
-    this.http.get<Castle[]>('/assets/data/castles_enriched.json').subscribe({
-      next: (data) => {
-        this.castles.set(data);
-        this.loading.set(false);
-      },
-      error: (err) => {
-        console.error('Failed to load castles:', err);
-        this.loading.set(false);
-      },
-    });
+    try {
+      const data = await firstValueFrom(this.http.get<Castle[]>('/assets/data/castles_enriched.json'));
+      this.castles.set(data);
+    } catch (err) {
+      console.error('Failed to load castles:', err);
+    } finally {
+      this.loading.set(false);
+    }
   }
 
   getCastleByCode(code: string): Castle | undefined {

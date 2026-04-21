@@ -84,7 +84,6 @@ export class Top100PageComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.castleService.loadCastles();
     this.route.queryParams.subscribe(params => {
       const filters: Record<string, string> = {};
       if (params['country'])       filters['country']        = params['country'];

@@ -246,7 +246,6 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.castleService.loadCastles();
     this.route.params.subscribe((params) => {
       this.code.set(params['code'] ?? '');
     });

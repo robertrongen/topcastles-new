@@ -131,7 +131,6 @@ export class CastlesPageComponent implements OnInit {
   hasFilters = computed(() => this.activeFilters().length > 0);
 
   ngOnInit(): void {
-    this.castleService.loadCastles();
     this.route.queryParams.subscribe(params => {
       if (params['country'])       this.country.set(params['country']);
       if (params['region'])        this.region.set(params['region']);

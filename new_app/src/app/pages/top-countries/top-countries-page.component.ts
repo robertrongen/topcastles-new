@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
@@ -13,7 +13,7 @@ import { CountrySummary } from '../../models/castle.model';
   templateUrl: './top-countries-page.component.html',
   styleUrl: './top-countries-page.component.scss',
 })
-export class TopCountriesPageComponent implements OnInit {
+export class TopCountriesPageComponent {
   private castleService = inject(CastleService);
 
   summaries = computed(() =>
@@ -21,10 +21,6 @@ export class TopCountriesPageComponent implements OnInit {
   );
   columns = ['rank', 'country', 'castleCount', 'totalScore'];
   sorted: CountrySummary[] = [];
-
-  ngOnInit(): void {
-    this.castleService.loadCastles();
-  }
 
   onSort(sort: Sort): void {
     const data = this.castleService.getCountrySummaries();

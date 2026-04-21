@@ -246,7 +246,7 @@ Resolves three classes of issues identified in peer review: a broken production 
   - Purpose: og:title, og:description, og:image (Phase 4.2) are baked into static HTML so link previews work correctly in WhatsApp, Slack, and social media
   - `server.ts` remains as a build-time renderer only; remove the `serve:ssr:new_app` npm script to avoid confusion
 
-- [ ] **12.3** Load castles once at app startup
+- [x] **12.3** Load castles once at app startup
   - Register `CastleService.loadCastles()` via `provideAppInitializer()` in `app.config.ts`
   - Data is guaranteed available before any component renders — eliminates the concurrent-call race condition by design
   - Audit and remove all component-level `loadCastles()` calls
