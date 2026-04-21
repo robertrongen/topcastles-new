@@ -9,8 +9,6 @@
     "start": "npm start --prefix new_app",
     "build": "npm run build --prefix new_app",
     "build:watch": "npm run watch --prefix new_app",
-    "serve:ssr": "npm run serve:ssr:new_app --prefix new_app",
-
     "test": "npm test --prefix new_app",
 
     "storybook": "npm run storybook --prefix new_app",
@@ -20,6 +18,7 @@
     "data:enrich:wikidata": "node scripts/enrich_wikidata.js",
     "data:enrich:wikipedia": "node scripts/enrich_wikipedia.js",
     "data:api": "node scripts/generate_api.js",
+    "data:routes": "node scripts/generate_prerender_routes.js",
     "mcp": "node scripts/mcp-server.js",
 
     "graph:build": "graphify build .",

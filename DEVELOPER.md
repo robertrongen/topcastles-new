@@ -85,7 +85,10 @@ npm run data:convert           # Excel/CSV → base JSON (scripts/xlsx_to_json.p
 npm run data:enrich:wikidata   # add Wikidata fields
 npm run data:enrich:wikipedia  # add Wikipedia summaries
 npm run data:api               # regenerate static JSON API under new_app/src/assets/api/
+npm run data:routes            # regenerate new_app/prerender-routes.txt (run after any data change)
 ```
+
+> **Important:** always run `npm run data:routes` after updating `castles_enriched.json`, then rebuild the app (`npm run build`). The routes file drives Angular's build-time prerendering — without it the new castles won't get pre-rendered HTML for link sharing.
 
 ### MCP server
 
@@ -144,9 +147,9 @@ topcastles/
 
 - **Standalone components** — no NgModules; each component declares its own imports
 - **Signals** — used for reactive state instead of RxJS Subjects where possible
-- **SSR + prerendering** — all castle routes are prerendered at build time for SEO
-- **Static JSON API** — no backend; data is embedded as static assets and served by the Express SSR server or CDN
-- **Single Docker image** — the Express SSR server serves both the prerendered HTML and the API JSON
+- **SSG (build-time prerendering)** — 1006 routes prerendered to static HTML by `ng build`; `server.ts` is a build-time renderer only, not deployed (ADR-006)
+- **Static JSON API** — no backend; data is embedded as static assets and served by nginx
+- **Single Docker image** — nginx Alpine serves the prerendered HTML, static assets, and JSON API files
 
 See [docs/decisions.md](docs/decisions.md) for full ADRs and [docs/architecture.md](docs/architecture.md) for component diagrams.
 
