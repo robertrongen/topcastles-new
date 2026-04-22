@@ -31,13 +31,13 @@ router.post('/register', async (req, res) => {
 router.get('/me', async (req, res) => {
   const auth = req.headers.authorization;
   if (!auth || !auth.startsWith('Bearer ')) {
-    return res.status(401).json({ error: 'Missing token' });
+    return res.status(401).json({ error: 'Unauthorized' });
   }
   const token = auth.slice(7);
   try {
     const store = (await readJson(USERS_FILE)) ?? { users: [] };
     const user = store.users.find(u => u.token === token);
-    if (!user) return res.status(401).json({ error: 'Invalid token' });
+    if (!user) return res.status(401).json({ error: 'Unauthorized' });
     res.json({ id: user.id, favorites: user.favorites });
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
