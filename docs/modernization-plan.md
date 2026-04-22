@@ -107,6 +107,10 @@ Production bugs fixed outside the main phase sequence.
   - `await import('leaflet')` returns `{ default: L }` in the esbuild production bundle; dev build handled the interop transparently
   - Fixed by resolving the default export in both map files: `const L = (leafletModule as any).default ?? leafletModule`
   - Affected: `castle-map.component.ts`, `castle-detail-page.component.ts`
+- [ ] **TD-1** Fix 77 pre-existing unit test failures
+  - 77 of 176 specs fail consistently; 99 pass. Root cause: `castle-detail-page.component.spec.ts` leaves an open HTTP request (`GET /assets/data/castles_delta.json`) that `HttpClientTestingBackend.verify()` flags at teardown — this cascades failures across the suite
+  - Fix: flush or expect the pending request in `afterEach`, or restructure the spec to not trigger the lazy enrichment load
+  - Goal: 176/176 passing so the test suite is a reliable regression signal (currently masking new failures)
 
 ---
 
