@@ -5,6 +5,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TopCountriesPageComponent } from './top-countries-page.component';
 import { Castle } from '../../models/castle.model';
+import { CastleService } from '../../services/castle.service';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
   return {
@@ -32,9 +33,8 @@ describe('TopCountriesPageComponent', () => {
       providers: [provideRouter([]), provideHttpClient(), provideHttpClientTesting()],
     }).compileComponents();
     httpTesting = TestBed.inject(HttpTestingController);
+    TestBed.inject(CastleService).castles.set(castles);
     fixture = TestBed.createComponent(TopCountriesPageComponent);
-    fixture.detectChanges();
-    httpTesting.expectOne('/assets/data/castles_enriched.json').flush(castles);
     fixture.detectChanges();
   });
 

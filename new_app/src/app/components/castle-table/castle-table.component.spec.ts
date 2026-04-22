@@ -35,6 +35,10 @@ function renderVirtualScroll(fixture: ComponentFixture<CastleTableComponent>): v
   fixture.detectChanges();
 }
 
+function bodyCell(fixture: ComponentFixture<CastleTableComponent>, col: string): HTMLElement {
+  return fixture.nativeElement.querySelector(`.body-row .col-${col}`) as HTMLElement;
+}
+
 describe('CastleTableComponent', () => {
   let fixture: ComponentFixture<CastleTableComponent>;
   let component: CastleTableComponent;
@@ -75,7 +79,7 @@ describe('CastleTableComponent', () => {
     component.castles = [makeCastle({ score_total: 123.456 })];
     component.columns = ['score_total'];
     renderVirtualScroll(fixture);
-    expect(fixture.nativeElement.querySelector('.col-score_total').textContent.trim()).toBe('123');
+    expect(bodyCell(fixture, 'score_total').textContent.trim()).toBe('123');
   }));
 
   it('should show thumbnail image', fakeAsync(() => {
@@ -91,7 +95,7 @@ describe('CastleTableComponent', () => {
     component.castles = [makeCastle({ region: 'Bayern', region_code: 'bayern' })];
     component.columns = ['region'];
     renderVirtualScroll(fixture);
-    const cell = fixture.nativeElement.querySelector('.col-region');
+    const cell = bodyCell(fixture, 'region');
     expect(cell.textContent).toContain('Bayern');
     const img = cell.querySelector('img.region-map');
     expect(img).toBeTruthy();
@@ -136,7 +140,7 @@ describe('CastleTableComponent', () => {
     component.castles = [makeCastle({ castle_type: 'Water castle' })];
     component.columns = ['castle_type'];
     renderVirtualScroll(fixture);
-    const cell = fixture.nativeElement.querySelector('.col-castle_type');
+    const cell = bodyCell(fixture, 'castle_type');
     expect(cell.textContent.trim()).toBe('Water castle');
     expect(cell.querySelector('a')).toBeNull();
   }));

@@ -3,11 +3,11 @@ import { provideRouter, ActivatedRoute } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { of } from 'rxjs';
 import { CastlesPageComponent } from './castles-page.component';
 import { CastleService } from '../../services/castle.service';
 import { Castle } from '../../models/castle.model';
 import { ViewModeService } from '../../services/view-mode.service';
+import { createActivatedRouteMock } from '../../../testing/activated-route.mock';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
   return {
@@ -56,7 +56,7 @@ describe('CastlesPageComponent', () => {
         provideHttpClientTesting(),
         {
           provide: ActivatedRoute,
-          useValue: { params: of({}), queryParams: of(queryParams) },
+          useValue: createActivatedRouteMock({}, queryParams),
         },
       ],
     }).compileComponents();

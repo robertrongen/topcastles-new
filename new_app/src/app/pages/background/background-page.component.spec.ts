@@ -1,15 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BackgroundPageComponent } from './background-page.component';
 import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { createActivatedRouteMock } from '../../../testing/activated-route.mock';
 
 describe('BackgroundPageComponent', () => {
   function setup(queryParams: Record<string, string> = {}) {
     TestBed.configureTestingModule({
       imports: [BackgroundPageComponent, NoopAnimationsModule],
       providers: [
-        { provide: ActivatedRoute, useValue: { queryParams: of(queryParams) } },
+        { provide: ActivatedRoute, useValue: createActivatedRouteMock({}, queryParams) },
       ],
     });
 

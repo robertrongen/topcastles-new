@@ -1,15 +1,17 @@
 import { ComponentFixture, TestBed, fakeAsync, flushMicrotasks } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { ActivatedRoute, provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import {
   HttpTestingController,
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { PLATFORM_ID } from '@angular/core';
 import { Top100PageComponent } from './top100-page.component';
 import { CastleService } from '../../services/castle.service';
 import { ViewModeService } from '../../services/view-mode.service';
 import { Castle } from '../../models/castle.model';
+import { createActivatedRouteMock } from '../../../testing/activated-route.mock';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
   return {
@@ -60,6 +62,8 @@ describe('Top100PageComponent', () => {
         provideRouter([]),
         provideHttpClient(),
         provideHttpClientTesting(),
+        { provide: ActivatedRoute, useValue: createActivatedRouteMock() },
+        { provide: PLATFORM_ID, useValue: 'server' },
       ],
     }).compileComponents();
 

@@ -6,9 +6,9 @@ import {
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { of } from 'rxjs';
 import { NoCastleDetailPageComponent } from './nocastle-detail-page.component';
 import { NoCastle } from '../../models/castle.model';
+import { createActivatedRouteMock } from '../../../testing/activated-route.mock';
 
 function makeNoCastle(overrides: Partial<NoCastle> = {}): NoCastle {
   return {
@@ -53,7 +53,7 @@ describe('NoCastleDetailPageComponent', () => {
         provideHttpClientTesting(),
         {
           provide: ActivatedRoute,
-          useValue: { params: of({ code }) },
+          useValue: createActivatedRouteMock({ code }),
         },
       ],
     });

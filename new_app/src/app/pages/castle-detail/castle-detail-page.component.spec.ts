@@ -6,12 +6,13 @@ import {
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { Meta, Title } from '@angular/platform-browser';
 import { PLATFORM_ID } from '@angular/core';
-import { of } from 'rxjs';
 import { CastleDetailPageComponent } from './castle-detail-page.component';
 import { CastleService } from '../../services/castle.service';
 import { Castle } from '../../models/castle.model';
+import { createActivatedRouteMock } from '../../../testing/activated-route.mock';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
   return {
@@ -54,7 +55,7 @@ describe('CastleDetailPageComponent', () => {
 
   function setupWithCode(code: string, castlesData = mockCastles): void {
     TestBed.configureTestingModule({
-      imports: [CastleDetailPageComponent, NoopAnimationsModule],
+      imports: [CastleDetailPageComponent, MatSnackBarModule, NoopAnimationsModule],
       providers: [
         provideRouter([]),
         provideHttpClient(),
@@ -63,7 +64,7 @@ describe('CastleDetailPageComponent', () => {
         { provide: PLATFORM_ID, useValue: 'server' },
         {
           provide: ActivatedRoute,
-          useValue: { params: of({ code }), queryParams: of({}) },
+          useValue: createActivatedRouteMock({ code }),
         },
       ],
     });
