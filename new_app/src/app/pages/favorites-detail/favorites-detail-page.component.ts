@@ -28,7 +28,10 @@ export class FavoritesDetailPageComponent implements OnInit {
   protected favoritesService = inject(FavoritesService);
   protected viewModeService = inject(ViewModeService);
 
-  private routeId = toSignal(this.route.paramMap.pipe(map(p => p.get('id'))));
+  private routeId = toSignal(
+    this.route.paramMap.pipe(map(p => p.get('id'))),
+    { initialValue: this.route.snapshot.paramMap.get('id') }
+  );
 
   protected selectedSet = computed(() => {
     const id = this.routeId();

@@ -81,7 +81,7 @@ export class FavoritesService {
       );
     } catch {
       this.favorites.update(favs =>
-        favs.map(f => f.id === setId ? { ...f, castleIds: [...f.castleIds, castleId] } : f)
+        favs.map(f => f.id === setId ? { ...f, castleIds: [...new Set([...f.castleIds, castleId])] } : f)
       );
     }
   }
