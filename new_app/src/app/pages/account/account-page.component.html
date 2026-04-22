@@ -1,0 +1,12 @@
+<div class="account-page">
+  <h1>Account</h1>
+  <p>Your session is stored locally in this browser. No login required.</p>
+  @if (token) {
+    <p class="token-hint">Token: <code>{{ token.slice(0, 8) }}…</code></p>
+  }
+  <p>
+    <a mat-stroked-button routerLink="/favorites">
+      <mat-icon>bookmark</mat-icon> My Favorites
+    </a>
+  </p>
+</div>

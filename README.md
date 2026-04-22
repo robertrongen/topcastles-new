@@ -21,9 +21,31 @@ Angular 19 castle-ranking website, rebuilt from a legacy PHP app. Serves a ranke
 ```bash
 git clone https://github.com/robertrongen/topcastles
 cd topcastles
-npm run install:all    # installs deps in new_app/ and scripts/
-npm start              # dev server → http://localhost:4200
+npm run install:all    # installs deps in new_app/, scripts/, and server/
 ```
+
+## Local dev
+
+The app has two processes that run together:
+
+| Process | Command | Port | Purpose |
+| --- | --- | --- | --- |
+| Node API server | `npm run dev:server` | 3000 | `/api/*` routes, user + favorites data |
+| Angular dev server | `npm run dev:app` | 4200 | UI with hot reload |
+
+Run each in a separate terminal:
+
+```bash
+# Terminal 1 — API server (from project root)
+npm run dev:server
+
+# Terminal 2 — Angular dev server (from project root)
+npm run dev:app
+```
+
+Then open <http://localhost:4200>. The Angular dev server proxies `/api/*` requests to port 3000 automatically (`new_app/proxy.conf.json`).
+
+> **Without the API server:** the app still loads but user/favorites features will silently fail (no error shown — this is intentional for offline dev).
 
 ## Deploy
 

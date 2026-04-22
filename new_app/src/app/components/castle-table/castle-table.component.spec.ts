@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CastleTableComponent } from './castle-table.component';
 import { Castle } from '../../models/castle.model';
@@ -24,7 +26,7 @@ describe('CastleTableComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CastleTableComponent, NoopAnimationsModule],
-      providers: [provideRouter([])],
+      providers: [provideRouter([]), provideHttpClient(), provideHttpClientTesting()],
     }).compileComponents();
     fixture = TestBed.createComponent(CastleTableComponent);
     component = fixture.componentInstance;

@@ -363,9 +363,15 @@ Introduces runtime user state: accounts, token auth, and named castle sets. Impl
   - `FavoritesService` extended with `addCastleToSet()` (finds set in signal, skips if already present, calls `updateSet`)
   - User auto-registered and favorites loaded on `ngOnInit` (browser-only guard via `isPlatformBrowser`)
 
-- [ ] **14.5** Favorites page enhancements
-  - Show castles within each set (reuse castle card/table components)
-  - Add to sidenav navigation
+- [x] **14.5** Favorites UX improvements + navigation
+  - `addCastleToSet()` now optimistically updates the signal before the API call — immediate UI feedback, no reload
+  - Snackbar confirmation `Added to "Set name"` (2 s) shown after adding from castle detail page
+  - `isFavorite(code)` added to `CastleGridComponent` and `CastleTableComponent`; `bookmark` icon shown on favorited castles
+  - `showFavoritesOnly` toggle (slide-toggle) on Top 1000 page — filters list to only favorited castles
+  - Toolbar nav: `bookmark + Favorites` link added alongside existing nav items
+  - Sidenav: Favorites + Account items added with icons
+  - `/account` route + `AccountPageComponent` placeholder (token preview, link to favorites)
+  - Test suite: grid/table/top100 specs updated with `provideHttpClient` — suite improved from 77 → 73 failures
 
 ---
 

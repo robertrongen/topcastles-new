@@ -4,9 +4,11 @@
   "private": true,
   "description": "Angular 19 castle-ranking website with SSR, Storybook, and Docker deployment",
   "scripts": {
-    "install:all": "npm install --prefix new_app && npm install --prefix scripts",
+    "install:all": "npm install --prefix new_app && npm install --prefix scripts && npm install --prefix server",
 
     "start": "npm start --prefix new_app",
+    "dev:server": "node server/index.js",
+    "dev:app": "npm start --prefix new_app",
     "build": "npm run build --prefix new_app",
     "build:watch": "npm run watch --prefix new_app",
     "test": "npm test --prefix new_app",

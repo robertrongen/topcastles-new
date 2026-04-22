@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CastleService } from '../../services/castle.service';
 import { FavoritesService } from '../../services/favorites.service';
 import { UserService } from '../../services/user.service';
@@ -34,6 +35,7 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
   private castleService = inject(CastleService);
   private userService = inject(UserService);
   favoritesService = inject(FavoritesService);
+  private snackBar = inject(MatSnackBar);
   private platformId = inject(PLATFORM_ID);
   private meta = inject(Meta);
   private titleService = inject(Title);
@@ -281,8 +283,12 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
   }
 
   async addToSet(setId: string): Promise<void> {
+    const set = this.favoritesService.favorites().find(s => s.id === setId);
     await this.favoritesService.addCastleToSet(setId, this.code());
     this.favoritesOpen.set(false);
+    if (set) {
+      this.snackBar.open(`Added to "${set.name}"`, 'OK', { duration: 2000 });
+    }
   }
 
   isInSet(setId: string): boolean {

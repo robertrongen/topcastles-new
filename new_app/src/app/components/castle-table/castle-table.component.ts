@@ -7,6 +7,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
 import { Castle } from '../../models/castle.model';
+import { FavoritesService } from '../../services/favorites.service';
 
 export const COL_LABELS: Record<string, string> = {
   position:      'Pos',
@@ -53,6 +54,11 @@ export class CastleTableComponent {
   @Input({ required: true }) columns: string[] = [];
 
   private bp = inject(BreakpointObserver);
+  private favoritesService = inject(FavoritesService);
+
+  isFavorite(code: string): boolean {
+    return this.favoritesService.favorites().some(s => s.castleIds.includes(code));
+  }
 
   private isTablet = toSignal(
     this.bp.observe('(max-width: 1199px)').pipe(map(r => r.matches)),

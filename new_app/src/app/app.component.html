@@ -17,6 +17,9 @@
     </mat-menu>
 
     <a mat-button routerLink="/developer" routerLinkActive="tk-nav-active">Developer / API</a>
+    <a mat-button routerLink="/favorites" routerLinkActive="tk-nav-active">
+      <mat-icon>bookmark</mat-icon> Favorites
+    </a>
   </nav>
 
   <span class="tk-spacer"></span>
@@ -61,6 +64,15 @@
       <a mat-list-item routerLink="/developer" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>code</mat-icon>
         <span matListItemTitle>Developer / API</span>
+      </a>
+      <mat-divider />
+      <a mat-list-item routerLink="/favorites" routerLinkActive="active" (click)="sidenav.close()">
+        <mat-icon matListItemIcon>bookmark</mat-icon>
+        <span matListItemTitle>Favorites</span>
+      </a>
+      <a mat-list-item routerLink="/account" routerLinkActive="active" (click)="sidenav.close()">
+        <mat-icon matListItemIcon>account_circle</mat-icon>
+        <span matListItemTitle>Account</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>

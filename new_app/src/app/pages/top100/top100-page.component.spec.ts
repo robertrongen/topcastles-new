@@ -67,14 +67,19 @@ describe('Top100PageComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
 
-    const req = httpTesting.expectOne('/assets/data/castles_enriched.json');
-    req.flush(castles);
+    // Flush all startup requests (order may vary)
+    httpTesting.match('/api/user/register').forEach(r => r.flush({ token: 'test-token' }));
+    httpTesting.match('/api/user/favorites').forEach(r => r.flush([]));
+    httpTesting.match('/assets/data/castles_enriched.json').forEach(r => r.flush(castles));
+    httpTesting.match('/assets/data/castles.json').forEach(r => r.flush(castles));
+
     fixture.detectChanges();
   });
 
   afterEach(() => {
     httpTesting.verify();
     localStorage.removeItem('castle-view-mode');
+    localStorage.removeItem('tc_user_token');
   });
 
   it('should create', () => {

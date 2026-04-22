@@ -71,6 +71,12 @@ export class FavoritesService {
   async addCastleToSet(setId: string, castleId: string): Promise<void> {
     const set = this.favorites().find(s => s.id === setId);
     if (!set || set.castleIds.includes(castleId)) return;
-    await this.updateSet(setId, set.name, [...set.castleIds, castleId]);
+    const updatedIds = [...set.castleIds, castleId];
+    this.favorites.update(favs =>
+      favs.map(f => f.id === setId ? { ...f, castleIds: updatedIds } : f)
+    );
+    await this.withAuth(() =>
+      firstValueFrom(this.http.put(`/api/user/favorites/${setId}`, { name: set.name, castleIds: updatedIds }, { headers: this.headers }))
+    );
   }
 }

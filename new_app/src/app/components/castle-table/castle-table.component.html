@@ -69,6 +69,9 @@
         @if (isVisible('castle_name')) {
           <div class="table-cell col-castle_name" role="cell">
             <a [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
+            @if (isFavorite(castle.castle_code)) {
+              <mat-icon class="fav-badge" title="In your favorites">bookmark</mat-icon>
+            }
           </div>
         }
         @if (isVisible('era')) {

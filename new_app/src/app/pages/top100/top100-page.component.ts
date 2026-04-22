@@ -6,7 +6,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CastleService } from '../../services/castle.service';
+import { FavoritesService } from '../../services/favorites.service';
+import { UserService } from '../../services/user.service';
 import { CastleFilterComponent, FilterField } from '../../components/castle-filter/castle-filter.component';
 import { CastleGridComponent } from '../../components/castle-grid/castle-grid.component';
 import { CastleTableComponent } from '../../components/castle-table/castle-table.component';
@@ -18,7 +21,7 @@ import { ViewModeService } from '../../services/view-mode.service';
   selector: 'app-top100-page',
   standalone: true,
   imports: [
-    FormsModule, MatCardModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule,
+    FormsModule, MatCardModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatSlideToggleModule,
     CastleFilterComponent, CastleGridComponent, CastleTableComponent, CastleMapComponent, ViewToggleComponent,
   ],
   templateUrl: './top100-page.component.html',
@@ -26,24 +29,38 @@ import { ViewModeService } from '../../services/view-mode.service';
 })
 export class Top100PageComponent implements OnInit {
   private castleService = inject(CastleService);
+  private userService = inject(UserService);
+  protected favoritesService = inject(FavoritesService);
   private route = inject(ActivatedRoute);
   protected viewModeService = inject(ViewModeService);
 
   loading = this.castleService.loading;
   searchQuery  = signal('');
+  showFavoritesOnly = signal(false);
   initialFilters = signal<Record<string, string>>({});
 
   allCastles = computed(() => this.castleService.getAllByScore());
+
+  favoriteCodes = computed(() => {
+    const sets = this.favoritesService.favorites();
+    return new Set(sets.flatMap(s => s.castleIds));
+  });
 
   mapVisible = signal(true);
   toggleMap(): void { this.mapVisible.update(v => !v); }
 
   searchedCastles = computed(() => {
     const q = this.searchQuery().trim().toLowerCase();
-    if (!q) return this.allCastles();
-    return this.allCastles().filter(c =>
-      c.search_text ? c.search_text.includes(q) : c.castle_name?.toLowerCase().includes(q)
-    );
+    const base = q
+      ? this.allCastles().filter(c =>
+          c.search_text ? c.search_text.includes(q) : c.castle_name?.toLowerCase().includes(q)
+        )
+      : this.allCastles();
+    if (this.showFavoritesOnly()) {
+      const codes = this.favoriteCodes();
+      return base.filter(c => codes.has(c.castle_code));
+    }
+    return base;
   });
 
   displayedColumns = ['position', 'score_total', 'score_visitors', 'thumbnail', 'castle_name', 'era', 'country', 'place', 'region', 'castle_type', 'condition'];
@@ -84,6 +101,8 @@ export class Top100PageComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.userService.ensureUser().then(() => this.favoritesService.loadFavorites());
+
     this.route.queryParams.subscribe(params => {
       const filters: Record<string, string> = {};
       if (params['country'])       filters['country']        = params['country'];

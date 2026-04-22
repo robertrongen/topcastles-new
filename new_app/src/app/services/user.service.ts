@@ -33,13 +33,21 @@ export class UserService {
 
   async ensureUser(): Promise<void> {
     if (!this.isBrowser || this.getToken()) return;
-    await this.createUser();
+    try {
+      await this.createUser();
+    } catch {
+      // Backend unavailable (e.g. ng serve without Node server) — silent no-op
+    }
   }
 
   async handleUnauthorized(): Promise<void> {
     if (!this.isBrowser) return;
     this.clearToken();
-    await this.createUser();
+    try {
+      await this.createUser();
+    } catch {
+      // silent
+    }
   }
 
   async createUser(): Promise<void> {

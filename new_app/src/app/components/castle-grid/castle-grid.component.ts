@@ -4,6 +4,7 @@ import { RouterLink, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Castle } from '../../models/castle.model';
+import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-castle-grid',
@@ -16,6 +17,11 @@ export class CastleGridComponent {
   @Input({ required: true }) castles: Castle[] = [];
 
   private router = inject(Router);
+  private favoritesService = inject(FavoritesService);
+
+  isFavorite(code: string): boolean {
+    return this.favoritesService.favorites().some(s => s.castleIds.includes(code));
+  }
   failedLocal = signal(new Set<string>());
   failedWiki  = signal(new Set<string>());
 
