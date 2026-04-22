@@ -7,7 +7,7 @@ This document maps the current content pipeline and records the plan to make `ol
 1. Source spreadsheet input:
    - Current source: `source-data/topcastles/Topcastles export.xlsx`
    - Also present: `old_app/database/Topcastles export.csv`
-   - Current command: `npm run data:convert`
+   - Current command: `npm run data:regenerate` begins with `npm run data:convert`
    - Current script: `scripts/xlsx_to_json.py`
    - Outputs:
      - `new_app/src/assets/data/castles.json`
@@ -62,6 +62,8 @@ This document maps the current content pipeline and records the plan to make `ol
    - Input: `new_app/src/assets/data/castles_enriched.json`
    - Output: `new_app/prerender-routes.txt`
    - Angular consumes this through `new_app/angular.json`.
+
+The canonical root-level pipeline command is `npm run data:regenerate`. It runs steps 1 through 8 in order and preserves `data:lean`'s rebuild-required signal as a reminder instead of treating it as a failed regeneration.
 
 9. Angular build and prerender:
    - Command: `npm run build`

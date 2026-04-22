@@ -23,6 +23,7 @@
     "data:lean": "node scripts/generate_lean_castles.js",
     "data:sitemap": "node scripts/generate_sitemap.js",
     "data:routes": "node scripts/generate_prerender_routes.js",
+    "data:regenerate": "node scripts/run_data_pipeline.js",
     "mcp": "node scripts/mcp-server.js",
 
     "graph:build": "graphify build .",

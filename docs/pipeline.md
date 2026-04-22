@@ -49,15 +49,11 @@ The Node server may create or update runtime JSON state, but it must not mutate 
 When castle source content changes:
 
 ```bash
-npm run data:convert
-npm run data:enrich:wikipedia
-npm run data:enrich:wikidata
-npm run data:lean
-npm run data:api
-npm run data:sitemap
-npm run data:routes
+npm run data:regenerate
 npm run build
 ```
+
+`npm run data:regenerate` runs conversion, Wikipedia enrichment, Wikidata enrichment, lean-data generation, static API generation, sitemap generation, and prerender-route generation in the supported order. If `data:lean` reports that prerendered HTML is stale, the command continues regenerating downstream artifacts and leaves the rebuild reminder visible.
 
 Commit the changed source data plus any generated-and-committed outputs that result. Content changes that affect shipped artifacts must go through this pipeline rather than runtime mutation.
 

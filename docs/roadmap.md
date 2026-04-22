@@ -37,8 +37,8 @@ This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeli
 
 ### DP-3: Create a single canonical pipeline command
 
-- Define one root-level command for the full regeneration workflow.
-- Align the command with the existing steps listed in [pipeline.md](pipeline.md).
+- Done: `npm run data:regenerate` runs the full data regeneration workflow in the supported order.
+- Keep the command aligned with the existing steps listed in [pipeline.md](pipeline.md).
 - Ensure the command remains compatible with the current JSON-only, build-time content model.
 
 ### DP-4: Validate generated artifact ownership
