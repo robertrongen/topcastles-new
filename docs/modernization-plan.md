@@ -285,33 +285,38 @@ Resolves three classes of issues identified in peer review: a broken production 
 
 Migrate the production runtime from nginx to an embedded Node.js server (ADR-008). This is the prerequisite for all API-backed features in Phases 14 and 15. The SSG prerendering pipeline (Phase 12) is unchanged — Node serves the same static output that nginx did, plus new API routes.
 
-- [ ] **13.1** Rewrite Dockerfile runtime stage
+- [x] **13.1** Rewrite Dockerfile runtime stage
   - Replace `FROM nginx:alpine` runtime stage with `FROM node:alpine`
   - Copy Angular dist output (`/dist/new_app/browser`) and `server/` directory into image
   - `CMD ["node", "server/index.js"]`; expose `PORT` env variable (default 3000)
   - Remove `nginx.conf` from the build (no longer used at runtime)
   - Update `deploy.sh` image tags and port mappings
+  - **Bugfix**: `deploy.sh` `CONTAINER_PORT` corrected from `80` → `3000` to match the Node server
 
-- [ ] **13.2** Express server — static serving and SPA fallback
+- [x] **13.2** Express server — static serving and SPA fallback
   - `server/index.js`: Express app with `express.static('/dist/new_app/browser')`
   - SPA fallback: catch-all route returns `index.html` for any path not matched by a static file or API route (equivalent to nginx `try_files`)
   - Gzip middleware (`compression` package) replacing the nginx gzip config from Phase 12.1
+  - `deploy.sh` extended with `--autostart <policy>` flag (default: `unless-stopped`; supports `always`, `no`)
 
 - [ ] **13.3** Image serving from NAS mount
   - `GET /images/*` → stream from `/images` volume mount
   - Cache-Control headers (long TTL); 404 for missing files
   - Test with a castle image request against the mounted volume
 
-- [ ] **13.4** Data volume structure and initialisation
-  - On server startup, ensure `/data/users.json` exists (create with `{ "users": [] }` if absent)
-  - Ensure `/data/content.json` exists (create with default intro text if absent)
-  - Document both volume mounts (`/data`, `/images`) in `docker-compose.yml` and README
-  - Runtime data (`/data`) is never committed to the repo — add to `.dockerignore`
+- [~] **13.4** Data volume structure and initialisation *(partial)*
+  - `data/` added to `.gitignore` — runtime data never committed ✓
+  - `deploy.sh` mounts NAS path `/volume1/docker/topcastles/data` as `/data` inside the container; `mkdir -p` ensures the host dir exists before `docker run` ✓
+  - `json-store.js` calls `mkdir({ recursive: true })` on first write — directory created automatically, no startup script needed ✓
+  - On server startup, ensure `/data/users.json` exists (create with `{ "users": [] }` if absent) ✗
+  - Ensure `/data/content.json` exists (create with default intro text if absent) ✗
+  - Document both volume mounts (`/data`, `/images`) in `docker-compose.yml` and README ✗
 
-- [ ] **13.5** JSON write safety utility
+- [x] **13.5** JSON write safety utility
   - `server/lib/json-store.js`: atomic writes via write-to-`.tmp`-then-rename pattern
-  - In-process async mutex (e.g. `async-mutex`) to serialise concurrent writes to the same file
+  - In-process async mutex (`async-mutex`) to serialise concurrent writes to the same file
   - Exported as `readJson(path)` / `writeJson(path, data)` — used by all routes that touch `/data/**`
+  - `mkdir({ recursive: true })` before each write — `/data/` created automatically on first use (Docker volume safe)
 
 - [ ] **13.6** Smoke tests for server migration
   - Verify static Angular pages load (home, castle detail, country detail) — SPA fallback working
@@ -325,12 +330,12 @@ Migrate the production runtime from nginx to an embedded Node.js server (ADR-008
 
 Introduces runtime user state: accounts, token auth, and named castle sets. Implements ADR-009 (file-based user model). Requires Phase 13 complete.
 
-- [ ] **14.1** User API — accounts and token auth
-  - `POST /api/user/register` → create user record in `/data/users.json`, return `{ id, token }`
-  - `POST /api/user/login` → validate token, return user object
-  - `GET /api/user/me` → return current user from token header
-  - Token is a UUID stored plaintext in `users.json`; no password hashing needed (ADR-009)
-  - All writes via `json-store.js` (Phase 13.5)
+- [~] **14.1** User API — accounts and token auth *(partial)*
+  - `POST /api/user/register` ✓ — creates user record in `/data/users.json`, returns `{ token }`
+  - `GET /api/user/me` ✓ — returns `{ id, favorites }` from Bearer token header
+  - `POST /api/user/login` ✗ — not yet implemented (validate existing token, return user object)
+  - Token is a 32-byte hex string stored plaintext in `users.json`; no password hashing needed (ADR-009)
+  - All writes via `json-store.js` (Phase 13.5) ✓
 
 - [ ] **14.2** Angular `UserService`
   - Signals: `currentUser = signal<User | null>(null)`
