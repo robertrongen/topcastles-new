@@ -26,7 +26,7 @@
           <div class="castle-rank">
             {{ castle.position }} &mdash; {{ castle.score_total | number:'1.0-0' }} pts
             @if (isFavorite(castle.castle_code)) {
-              <mat-icon class="fav-badge" title="In your favorites">bookmark</mat-icon>
+              <mat-icon class="fav-badge" matTooltip="In your favorites">bookmark</mat-icon>
             }
           </div>
         }

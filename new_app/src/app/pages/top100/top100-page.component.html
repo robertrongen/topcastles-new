@@ -61,7 +61,7 @@
 
     <div class="view-toolbar">
       <mat-slide-toggle [checked]="showFavoritesOnly()" (change)="showFavoritesOnly.set($event.checked)" color="primary">
-        Show favorites only
+        Show favorites only ({{ favoriteCount() }})
       </mat-slide-toggle>
       <app-view-toggle [hideMap]="true" />
       <button mat-icon-button type="button"

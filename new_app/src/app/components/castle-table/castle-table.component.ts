@@ -2,6 +2,7 @@ import { Component, Input, signal, computed, inject } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -45,7 +46,7 @@ export const TABLE_ROW_HEIGHT = 128;
 @Component({
   selector: 'app-castle-table',
   standalone: true,
-  imports: [DecimalPipe, RouterLink, MatIconModule, ScrollingModule],
+  imports: [DecimalPipe, RouterLink, MatIconModule, MatTooltipModule, ScrollingModule],
   templateUrl: './castle-table.component.html',
   styleUrl: './castle-table.component.scss',
 })

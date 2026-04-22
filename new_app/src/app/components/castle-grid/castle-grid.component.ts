@@ -3,13 +3,14 @@ import { DecimalPipe } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { Castle } from '../../models/castle.model';
 import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-castle-grid',
   standalone: true,
-  imports: [RouterLink, MatCardModule, DecimalPipe, MatIconModule],
+  imports: [RouterLink, MatCardModule, DecimalPipe, MatIconModule, MatTooltipModule],
   templateUrl: './castle-grid.component.html',
   styleUrl: './castle-grid.component.scss',
 })

@@ -75,8 +75,14 @@ export class FavoritesService {
     this.favorites.update(favs =>
       favs.map(f => f.id === setId ? { ...f, castleIds: updatedIds } : f)
     );
-    await this.withAuth(() =>
-      firstValueFrom(this.http.put(`/api/user/favorites/${setId}`, { name: set.name, castleIds: updatedIds }, { headers: this.headers }))
-    );
+    try {
+      await this.withAuth(() =>
+        firstValueFrom(this.http.put(`/api/user/favorites/${setId}`, { name: set.name, castleIds: updatedIds }, { headers: this.headers }))
+      );
+    } catch {
+      this.favorites.update(favs =>
+        favs.map(f => f.id === setId ? { ...f, castleIds: f.castleIds.filter(id => id !== castleId) } : f)
+      );
+    }
   }
 }

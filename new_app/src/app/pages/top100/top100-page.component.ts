@@ -46,6 +46,8 @@ export class Top100PageComponent implements OnInit {
     return new Set(sets.flatMap(s => s.castleIds));
   });
 
+  favoriteCount = computed(() => this.favoriteCodes().size);
+
   mapVisible = signal(true);
   toggleMap(): void { this.mapVisible.update(v => !v); }
 
