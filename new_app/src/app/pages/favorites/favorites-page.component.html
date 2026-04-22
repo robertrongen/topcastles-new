@@ -4,6 +4,21 @@
   @if (favoritesService.loading()) {
     <mat-spinner diameter="40" />
   } @else {
+    @if (shareLink(); as link) {
+      <mat-card class="share-card">
+        <mat-card-content>
+          <p>Your favorites are stored in this browser. To use them on another device, copy this share link.</p>
+          <mat-form-field appearance="outline">
+            <mat-label>Share link</mat-label>
+            <input matInput type="text" readonly [value]="link" />
+          </mat-form-field>
+          <button mat-stroked-button type="button" (click)="copyShareLink()">
+            <mat-icon>content_copy</mat-icon> Copy share link
+          </button>
+        </mat-card-content>
+      </mat-card>
+    }
+
     <mat-card class="create-card">
       <mat-card-content>
         <mat-form-field appearance="outline">

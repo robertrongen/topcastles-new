@@ -8,6 +8,7 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
+.share-card,
 .create-card {
   margin-bottom: 2rem;
 
@@ -22,6 +23,13 @@ h1 {
   mat-form-field {
     flex: 1;
     min-width: 200px;
+  }
+}
+
+.share-card {
+  p {
+    flex-basis: 100%;
+    margin: 0;
   }
 }
 

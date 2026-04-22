@@ -76,7 +76,7 @@ export class UserService {
   getShareLink(): string | null {
     if (!this.isBrowser) return null;
     const token = this.getToken();
-    return token ? `${window.location.origin}/account?token=${token}` : null;
+    return token ? `${window.location.origin}/favorites?token=${token}` : null;
   }
 
   importToken(token: string): void {
