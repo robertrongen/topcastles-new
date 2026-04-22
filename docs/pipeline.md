@@ -1,6 +1,6 @@
 # Artifact Policy
 
-This repo is JSON-only: there is no application database. The deployed runtime is a single Docker container whose entry point is the Node server in `server/index.js`. Build-time content and runtime state must stay separate.
+This repo is JSON-only: there is no application database. The deployed runtime is a single Docker container whose entry point is the Node server in `server/index.js`. Build-time content and runtime state must stay separate. Active future work lives in [roadmap.md](roadmap.md); historical migration context lives in [migration-report.md](migration-report.md).
 
 ## Source Artifacts
 

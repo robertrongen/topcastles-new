@@ -41,3 +41,5 @@ npm run deploy             # build image and deploy to Synology NAS
 - [DEVELOPER.md](DEVELOPER.md) - contributor workflow, setup, commands, and tooling.
 - [docs/architecture.md](docs/architecture.md) - current system design and runtime model.
 - [docs/pipeline.md](docs/pipeline.md) - artifact policy for source, generated, and runtime files.
+- [docs/roadmap.md](docs/roadmap.md) - active forward-looking worklist.
+- [docs/migration-report.md](docs/migration-report.md) - historical modernization summary.

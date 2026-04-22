@@ -135,5 +135,7 @@ The deployment script builds the app, builds and pushes the Docker image, and re
 | [docs/decisions.md](docs/decisions.md) | Architectural Decision Records |
 | [docs/deployment.md](docs/deployment.md) | Deployment script and NAS setup |
 | [docs/pipeline.md](docs/pipeline.md) | Artifact policy |
+| [docs/roadmap.md](docs/roadmap.md) | Active forward-looking worklist |
+| [docs/migration-report.md](docs/migration-report.md) | Historical modernization summary |
 | [docs/setup.md](docs/setup.md) | Stack and tooling reference |
-| [docs/modernization-plan.md](docs/modernization-plan.md) | Historical and planned modernization work |
+| [docs/modernization-plan.md](docs/modernization-plan.md) | Archive pointer to roadmap and migration report |

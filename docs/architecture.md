@@ -1,6 +1,6 @@
 # Architecture
 
-> Stack: Angular 19 + Material + Storybook + SCSS (ADR-002). See `docs/decisions.md`.
+> Stack: Angular 19 + Material + Storybook + SCSS (ADR-002). See [decisions.md](decisions.md). Active future work lives in [roadmap.md](roadmap.md); historical migration context lives in [migration-report.md](migration-report.md).
 
 ## High-level architecture
 
