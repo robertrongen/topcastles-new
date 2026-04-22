@@ -1,0 +1,39 @@
+<div class="favorites-page">
+  <h1>My Favorites</h1>
+
+  @if (favoritesService.loading()) {
+    <mat-spinner diameter="40" />
+  } @else {
+    <mat-card class="create-card">
+      <mat-card-content>
+        <mat-form-field appearance="outline">
+          <mat-label>New set name</mat-label>
+          <input matInput [value]="newSetName()" (input)="newSetName.set($any($event.target).value)" (keyup.enter)="createSet()" />
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="!newSetName().trim() || creating()" (click)="createSet()">
+          <mat-icon>add</mat-icon> Create set
+        </button>
+      </mat-card-content>
+    </mat-card>
+
+    @if (favoritesService.favorites().length === 0) {
+      <p class="empty-state">No favorite sets yet. Create one above.</p>
+    } @else {
+      <div class="sets-list">
+        @for (set of favoritesService.favorites(); track set.id) {
+          <mat-card class="set-card">
+            <mat-card-header>
+              <mat-card-title>{{ set.name }}</mat-card-title>
+              <mat-card-subtitle>{{ set.castleIds.length }} castle{{ set.castleIds.length !== 1 ? 's' : '' }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions>
+              <button mat-icon-button color="warn" (click)="deleteSet(set)" aria-label="Delete set">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        }
+      </div>
+    }
+  }
+</div>

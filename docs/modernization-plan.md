@@ -346,19 +346,19 @@ Introduces runtime user state: accounts, token auth, and named castle sets. Impl
   - Auth: all endpoints require `Authorization: Bearer <token>`; invalid/missing → 401 `{ error: "Unauthorized" }`
   - Input errors → 400 with message; all writes via `json-store.js`
 
-- [ ] **14.3** Angular `UserService`
-  - Signals: `currentUser = signal<User | null>(null)`
-  - Token stored in `localStorage`; auto-login on app startup via `provideAppInitializer()`
-  - Methods: `register()`, `login(token)`, `logout()`
+- [x] **14.3** Angular integration — UserService, FavoritesService, /favorites page
+  - `UserService` (`services/user.service.ts`): token stored in `localStorage` (`tc_user_token`); `ensureUser()` auto-registers on first visit; `authHeaders()` returns Bearer header for API calls
+  - `FavoritesService` (`services/favorites.service.ts`): signal-based state (`favorites`, `loading`); `loadFavorites()`, `createSet()`, `updateSet()`, `deleteSet()` — each mutation reloads from server
+  - `FavoritesPageComponent` (`pages/favorites/`): route `/favorites`; lists named sets with castle count; inline create (name input + button) and delete per set; auto-registers user on `ngOnInit`
+  - Empty state message when no sets exist; Material card/button/spinner only
 
-- [ ] **14.4** Angular favorites integration
+- [ ] **14.4** Castle-level favorites integration
   - Heart/bookmark icon on castle cards (grid + table) and castle detail page; filled state reflects membership in any set
-  - Calls `POST/DELETE /api/user/favorites/:id` via `UserService`
+  - Calls `createSet`/`deleteSet` or dedicated castle-add endpoint via `FavoritesService`
 
-- [ ] **14.5** Favorites page
-  - New route `/favorites` — lists user's named sets; each set shows its castles as a grid/table (reuse existing components)
-  - Add to component hierarchy and sidenav
-  - Empty state: prompt to browse castles and save the first one
+- [ ] **14.5** Favorites page enhancements
+  - Show castles within each set (reuse castle card/table components)
+  - Add to sidenav navigation
 
 ---
 
