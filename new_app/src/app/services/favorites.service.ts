@@ -67,4 +67,10 @@ export class FavoritesService {
     );
     await this.loadFavorites();
   }
+
+  async addCastleToSet(setId: string, castleId: string): Promise<void> {
+    const set = this.favorites().find(s => s.id === setId);
+    if (!set || set.castleIds.includes(castleId)) return;
+    await this.updateSet(setId, set.name, [...set.castleIds, castleId]);
+  }
 }

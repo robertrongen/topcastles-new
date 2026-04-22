@@ -59,6 +59,24 @@
               aria-label="Share this castle">
         <mat-icon>{{ shareCopied() ? 'check' : 'share' }}</mat-icon>
       </button>
+      <button mat-icon-button type="button"
+              [matMenuTriggerFor]="favMenu"
+              title="Add to favorites"
+              aria-label="Add to favorites">
+        <mat-icon>bookmark_add</mat-icon>
+      </button>
+      <mat-menu #favMenu="matMenu">
+        @if (favoritesService.favorites().length === 0) {
+          <button mat-menu-item disabled>No sets — create one on the Favorites page</button>
+        } @else {
+          @for (set of favoritesService.favorites(); track set.id) {
+            <button mat-menu-item (click)="addToSet(set.id)" [disabled]="isInSet(set.id)">
+              <mat-icon>{{ isInSet(set.id) ? 'check' : 'bookmark_border' }}</mat-icon>
+              {{ set.name }}
+            </button>
+          }
+        }
+      </mat-menu>
     </div>
 
     @if (castle()!.heritage_status || castle()!.architectural_style) {

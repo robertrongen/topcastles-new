@@ -356,9 +356,12 @@ Introduces runtime user state: accounts, token auth, and named castle sets. Impl
   - `FavoritesPageComponent` (`pages/favorites/`): route `/favorites`; lists named sets with castle count; inline create (name input + button) and delete per set; auto-registers user on `ngOnInit`
   - Empty state message when no sets exist; Material card/button/spinner only
 
-- [ ] **14.4** Castle-level favorites integration
-  - Heart/bookmark icon on castle cards (grid + table) and castle detail page; filled state reflects membership in any set
-  - Calls `createSet`/`deleteSet` or dedicated castle-add endpoint via `FavoritesService`
+- [x] **14.4** Add castle to favorites from detail page
+  - `bookmark_add` icon button in the title row (next to share); opens a `mat-menu` listing the user's sets
+  - Selecting a set calls `FavoritesService.addCastleToSet(setId, castleCode)` — dedup handled in service
+  - Set already containing the castle is disabled with a checkmark; empty-state message if no sets exist
+  - `FavoritesService` extended with `addCastleToSet()` (finds set in signal, skips if already present, calls `updateSet`)
+  - User auto-registered and favorites loaded on `ngOnInit` (browser-only guard via `isPlatformBrowser`)
 
 - [ ] **14.5** Favorites page enhancements
   - Show castles within each set (reuse castle card/table components)

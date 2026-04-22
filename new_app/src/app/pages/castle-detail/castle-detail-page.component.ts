@@ -7,7 +7,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatMenuModule } from '@angular/material/menu';
 import { CastleService } from '../../services/castle.service';
+import { FavoritesService } from '../../services/favorites.service';
+import { UserService } from '../../services/user.service';
 import { Castle } from '../../models/castle.model';
 
 function haversineKm(lat1: number, lon1: number, lat2: number, lon2: number): number {
@@ -22,16 +25,20 @@ function haversineKm(lat1: number, lon1: number, lat2: number, lon2: number): nu
 @Component({
   selector: 'app-castle-detail-page',
   standalone: true,
-  imports: [RouterLink, DecimalPipe, MatCardModule, MatButtonModule, MatIconModule, MatChipsModule],
+  imports: [RouterLink, DecimalPipe, MatCardModule, MatButtonModule, MatIconModule, MatChipsModule, MatMenuModule],
   templateUrl: './castle-detail-page.component.html',
   styleUrl: './castle-detail-page.component.scss',
 })
 export class CastleDetailPageComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private castleService = inject(CastleService);
+  private userService = inject(UserService);
+  favoritesService = inject(FavoritesService);
   private platformId = inject(PLATFORM_ID);
   private meta = inject(Meta);
   private titleService = inject(Title);
+
+  favoritesOpen = signal(false);
 
   code = signal('');
   loading = this.castleService.loading;
@@ -255,6 +262,10 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
     });
 
     if (isPlatformBrowser(this.platformId)) {
+      this.userService.ensureUser().then(() => this.favoritesService.loadFavorites());
+    }
+
+    if (isPlatformBrowser(this.platformId)) {
       this.keyHandler = (e: KeyboardEvent) => {
         if (this.lightboxIndex() === null) return;
         if (e.key === 'Escape') this.closeLightbox();
@@ -263,6 +274,20 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
       };
       document.addEventListener('keydown', this.keyHandler);
     }
+  }
+
+  toggleFavorites(): void {
+    this.favoritesOpen.update(v => !v);
+  }
+
+  async addToSet(setId: string): Promise<void> {
+    await this.favoritesService.addCastleToSet(setId, this.code());
+    this.favoritesOpen.set(false);
+  }
+
+  isInSet(setId: string): boolean {
+    const set = this.favoritesService.favorites().find(s => s.id === setId);
+    return set?.castleIds.includes(this.code()) ?? false;
   }
 
   ngOnDestroy(): void {
