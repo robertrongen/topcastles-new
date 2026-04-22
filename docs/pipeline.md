@@ -11,7 +11,8 @@ Source artifacts are hand-authored inputs that belong in git:
 - Data pipeline scripts under `scripts/`.
 - Documentation under `docs/`, `README.md`, and `DEVELOPER.md`.
 - Package manifests and lockfiles, including `package-lock.json`, `new_app/package-lock.json`, `server/package-lock.json`, and `scripts/package-lock.json`.
-- `old_app/database/` CSV/XLSX exports. This legacy directory is still a data-source dependency for ingestion, but active source data is scheduled for extraction to a current non-legacy location so `old_app/` can become archival only.
+- `source-data/topcastles/Topcastles export.xlsx`; this is the canonical active spreadsheet input for ingestion.
+- `old_app/database/` CSV exports remain legacy source/archive material. Do not add new active ingestion dependencies there.
 
 ## Generated and Committed Artifacts
 
@@ -64,7 +65,7 @@ Commit the changed source data plus any generated-and-committed outputs that res
 
 - Keep build-time castle content separate from runtime user state.
 - Do not introduce a database; use JSON files and the existing data pipeline.
-- Keep `old_app/database/` until ingestion no longer depends on it.
+- Keep `source-data/topcastles/Topcastles export.xlsx` as the active ingestion source.
 - Do not add new active dependencies on `old_app/`; required source-data dependencies should move toward the extraction plan in [pipeline-flow.md](pipeline-flow.md).
 - Do not commit `node_modules/`, `graphify-out/`, `dist/`, or runtime data.
 - Treat `docs/pipeline.md` as the source of truth for artifact classification.

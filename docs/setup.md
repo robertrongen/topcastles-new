@@ -113,8 +113,8 @@ topcastles-new/                          # Repo root
 │   ├── pipeline.md
 │   └── storybook.md
 │
-├── old_app/                             # Legacy PHP application (reference only)
-│   ├── database/                        # Source CSV (Topcastles export.csv)
+├── old_app/                             # Legacy PHP application (archive/reference only)
+│   ├── database/                        # Legacy source export archive
 │   ├── content/en/                      # Legacy HTML content fragments
 │   └── archive/                         # Dropped-scope items
 │
@@ -131,6 +131,6 @@ topcastles-new/                          # Repo root
 
 ## Known constraints
 
-- Data: static JSON converted from CSV (ADR-003) — source: `old_app/database/Topcastles export.csv` (1000 castles, 41 columns)
+- Data: static JSON converted from spreadsheet source (ADR-003) — source: `source-data/topcastles/Topcastles export.xlsx`
 - Deployment: Docker container on Synology NAS (ADR-004)
 - English-only content (ADR-001)

@@ -1,6 +1,6 @@
 """Convert the castle XLSX source to clean EN-only JSON for the Angular app.
 
-Source: old_app/database/Topcastles export.xlsx
+Source: source-data/topcastles/Topcastles export.xlsx
   Sheet 1 (topkastelen_nl): 1000 castles, 42 columns, Unicode
   Sheet 2 (No_Castles): ~59 entries that don't qualify as castles
 
@@ -34,7 +34,7 @@ except ImportError:
 
 # Paths relative to repo root
 REPO_ROOT = Path(__file__).resolve().parent.parent
-XLSX_PATH = REPO_ROOT / "old_app" / "database" / "Topcastles export.xlsx"
+XLSX_PATH = REPO_ROOT / "source-data" / "topcastles" / "Topcastles export.xlsx"
 OUTPUT_DIR = REPO_ROOT / "new_app" / "src" / "assets" / "data"
 OUTPUT_PATH = OUTPUT_DIR / "castles.json"
 NO_CASTLES_OUTPUT_PATH = OUTPUT_DIR / "no_castles.json"

@@ -58,7 +58,7 @@ AppComponent (shell: toolbar + sidenav + router-outlet)
 
 ## Data flow
 
-1. **Build time**: `scripts/xlsx_to_json.py` reads `old_app/database/Topcastles export.xlsx` and produces JSON files in `new_app/src/assets/data/`. Enrichment scripts append Wikipedia/Wikidata fields to `castles_enriched.json`. `scripts/generate_prerender_routes.js` produces `prerender-routes.txt` consumed by `ng build`.
+1. **Build time**: `scripts/xlsx_to_json.py` reads `source-data/topcastles/Topcastles export.xlsx` and produces JSON files in `new_app/src/assets/data/`. Enrichment scripts append Wikipedia/Wikidata fields to `castles_enriched.json`. `scripts/generate_prerender_routes.js` produces `prerender-routes.txt` consumed by `ng build`.
 2. **App startup**: `CastleService.loadCastles()` is registered via `provideAppInitializer()` — data is fetched once before any component renders, eliminating concurrent-load race conditions (Phase 12.3).
 3. **Signals**: Services expose data as `signal<T[]>()` — components react reactively. `castles_enriched.json` is sorted by `score_total` descending; service methods rely on this ordering and avoid redundant re-sorts.
 4. **Build-time content serving**: Pre-rendered HTML, JS/CSS bundles, and static JSON are produced by `ng build` and served by the Node.js server at runtime (ADR-006, ADR-008).

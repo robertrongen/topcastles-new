@@ -58,7 +58,7 @@ curl http://localhost:3000/api/health
 
 ## Data Pipeline
 
-Castle content is JSON-based. The legacy ingestion source is still `old_app/database/`.
+Castle content is JSON-based. The active ingestion source is `source-data/topcastles/Topcastles export.xlsx`.
 
 ```bash
 npm run data:convert           # Excel/CSV -> base JSON
@@ -81,7 +81,7 @@ Keep these boundaries intact:
 
 - Source and committed generated castle artifacts belong in git.
 - `package-lock.json` files belong in git.
-- `old_app/database/` remains a source dependency for ingestion.
+- `source-data/topcastles/Topcastles export.xlsx` remains the source dependency for ingestion.
 - `graphify-out/`, `dist/`, and `node_modules/` are generated or installed locally and must stay ignored.
 - `data/users.json`, `runtime/`, and `local/` are runtime-like state and must stay ignored.
 - Runtime code must not mutate prerendered HTML, JavaScript bundles, or other build artifacts in place.

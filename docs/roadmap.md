@@ -25,15 +25,15 @@ This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeli
 ### DP-1: Map the current pipeline end-to-end
 
 - Done: current flow, artifact ownership, active `old_app/` dependencies, and extraction targets are mapped in [pipeline-flow.md](pipeline-flow.md).
-- Document the flow from `old_app/database/` through `scripts/`, generated JSON, static API slices, sitemap output, prerender routes, and Angular app consumption.
+- Document the flow from `source-data/topcastles/` through `scripts/`, generated JSON, static API slices, sitemap output, prerender routes, and Angular app consumption.
 - Identify the transformation steps and their required order.
 - Cross-check the map against [pipeline.md](pipeline.md) rather than duplicating artifact rules here.
 
 ### DP-2: Define canonical source of truth
 
-- Decide whether `old_app/database/` remains the canonical source for ingestion or whether source data moves to a neutral location.
-- Record the decision in the appropriate docs only if it changes the current artifact policy.
-- Keep `old_app/database/` until ingestion no longer depends on it.
+- Done: `source-data/topcastles/Topcastles export.xlsx` is the canonical source for ingestion.
+- Record future source-of-truth changes in the appropriate docs if they change the current artifact policy.
+- Keep `old_app/database/` archival unless a future task deliberately extracts or removes remaining legacy exports.
 
 ### DP-3: Create a single canonical pipeline command
 
@@ -55,7 +55,7 @@ This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeli
 
 ### DP-6: Prepare for eventual `old_app` decoupling
 
-- Reduce dependency on `old_app/database/` over time without breaking ingestion, generated outputs, tests, or builds.
+- Reduce remaining dependency on `old_app/` over time without breaking ingestion, generated outputs, tests, or builds.
 - Keep the decoupling work incremental and reversible until a new canonical source is confirmed.
 - Preserve the current artifact boundaries during the transition.
 
