@@ -79,16 +79,16 @@ describe('CastleTableComponent', () => {
     component.castles = [makeCastle({ score_total: 123.456 })];
     component.columns = ['score_total'];
     renderVirtualScroll(fixture);
-    expect(bodyCell(fixture, 'score_total').textContent.trim()).toBe('123');
+    expect(bodyCell(fixture, 'score_total').textContent?.trim()).toBe('123');
   }));
 
   it('should show thumbnail image', fakeAsync(() => {
     component.castles = [makeCastle({ castle_code: 'tower' })];
     component.columns = ['thumbnail'];
     renderVirtualScroll(fixture);
-    const img = fixture.nativeElement.querySelector('.col-thumbnail img');
+    const img = fixture.nativeElement.querySelector('.col-thumbnail img') as HTMLImageElement | null;
     expect(img).toBeTruthy();
-    expect(img.getAttribute('src') || img.src).toContain('tower_small.jpg');
+    expect(img?.getAttribute('src') || img?.src).toContain('tower_small.jpg');
   }));
 
   it('should show region map image when region_code exists', fakeAsync(() => {
@@ -97,9 +97,9 @@ describe('CastleTableComponent', () => {
     renderVirtualScroll(fixture);
     const cell = bodyCell(fixture, 'region');
     expect(cell.textContent).toContain('Bayern');
-    const img = cell.querySelector('img.region-map');
+    const img = cell.querySelector('img.region-map') as HTMLImageElement | null;
     expect(img).toBeTruthy();
-    expect(img.getAttribute('src') || img.src).toContain('bayern.jpg');
+    expect(img?.getAttribute('src') || img?.src).toContain('bayern.jpg');
   }));
 
   it('should not show region map image when region_code is empty', () => {
@@ -141,7 +141,7 @@ describe('CastleTableComponent', () => {
     component.columns = ['castle_type'];
     renderVirtualScroll(fixture);
     const cell = bodyCell(fixture, 'castle_type');
-    expect(cell.textContent.trim()).toBe('Water castle');
+    expect(cell.textContent?.trim()).toBe('Water castle');
     expect(cell.querySelector('a')).toBeNull();
   }));
 

@@ -11,7 +11,7 @@
     "dev:app": "npm start --prefix new_app",
     "build": "npm run build --prefix new_app",
     "build:watch": "npm run watch --prefix new_app",
-    "test": "npm test --prefix new_app",
+    "test": "npx --prefix new_app ng test --watch=false --browsers=ChromeHeadless",
 
     "storybook": "npm run storybook --prefix new_app",
     "build:storybook": "npm run build-storybook --prefix new_app",
