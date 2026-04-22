@@ -32,7 +32,7 @@ NAS_HOST="DS224plus.local"
 NAS_USER="robertron"
 CONTAINER_NAME="topcastles"
 HOST_PORT="8082"
-CONTAINER_PORT="80"
+CONTAINER_PORT="3000"
 
 echo "Building Angular application..."
 cd new_app
