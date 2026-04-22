@@ -43,6 +43,8 @@ npm test -- --watch=false --browsers=ChromeHeadless
 
 `npm run build` produces Angular build and prerender output under `new_app/dist/new_app/`. That output is ignored and should be recreated rather than committed.
 
+The root `npm test` script intentionally calls Angular directly with `npx --prefix new_app ng test --watch=false --browsers=ChromeHeadless`. Do not simplify it back to `npm test --prefix new_app`: on Windows/npm that wrapper can swallow Angular CLI flags, leaving Karma in watch mode with regular Chrome and causing headless runs to hang without a useful summary.
+
 ## Runtime Server
 
 The production container runs `node server/index.js`. The Node server serves Angular build output, exposes `/api/*` routes, and writes runtime user state separately from build-time castle content.
