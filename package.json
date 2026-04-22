@@ -28,6 +28,8 @@
     "graph:build": "graphify build .",
     "graph:update": "graphify auto-update .",
     "graph:query": "graphify query graphify-out/graph.json",
+    "context:index": "node scripts/build-context-index.js",
+    "context:resolve": "node scripts/resolve-context.js",
 
     "deploy": "bash deploy.sh"
   },

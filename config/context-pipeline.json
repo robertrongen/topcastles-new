@@ -1,0 +1,205 @@
+{
+  "version": 1,
+  "index_roots": [
+    "AGENTS.md",
+    "DEVELOPER.md",
+    "README.md",
+    "package.json",
+    "config/context-pipeline.json",
+    "docs",
+    "scripts",
+    "server",
+    "new_app/src/app",
+    "new_app/src/main.ts",
+    "new_app/src/main.server.ts",
+    "new_app/src/server.ts",
+    "new_app/src/styles.scss"
+  ],
+  "graphify": {
+    "graph_path": "graphify-out/graph.json",
+    "max_symbol_queries": 8
+  },
+  "document_categories": {
+    "architecture": {
+      "patterns": [
+        "docs/architecture.md",
+        "docs/decisions.md",
+        "docs/pipeline.md",
+        "docs/pipeline-flow.md"
+      ],
+      "priority": 100,
+      "tags": [
+        "architecture",
+        "adr",
+        "runtime",
+        "pipeline"
+      ]
+    },
+    "plans": {
+      "patterns": [
+        "docs/roadmap.md",
+        "docs/modernization-plan.md",
+        "docs/migration-report.md"
+      ],
+      "priority": 90,
+      "tags": [
+        "plan",
+        "phase",
+        "roadmap"
+      ]
+    },
+    "workflow": {
+      "patterns": [
+        "AGENTS.md",
+        "DEVELOPER.md",
+        "README.md"
+      ],
+      "priority": 80,
+      "tags": [
+        "workflow",
+        "beads",
+        "commands"
+      ]
+    },
+    "context_pipeline": {
+      "patterns": [
+        "docs/context-pipeline.md",
+        "config/context-pipeline.json"
+      ],
+      "priority": 95,
+      "tags": [
+        "context",
+        "graphify",
+        "ucm",
+        "beads"
+      ]
+    },
+    "reference": {
+      "patterns": [
+        "docs/*.md"
+      ],
+      "priority": 40,
+      "tags": [
+        "reference"
+      ]
+    }
+  },
+  "code_categories": {
+    "server": {
+      "patterns": [
+        "server/**/*.js"
+      ],
+      "priority": 90,
+      "tags": [
+        "runtime",
+        "api",
+        "node"
+      ]
+    },
+    "scripts": {
+      "patterns": [
+        "scripts/**/*.js"
+      ],
+      "priority": 80,
+      "tags": [
+        "pipeline",
+        "tooling"
+      ]
+    },
+    "angular": {
+      "patterns": [
+        "new_app/src/**/*.ts",
+        "new_app/src/**/*.html",
+        "new_app/src/**/*.scss"
+      ],
+      "priority": 70,
+      "tags": [
+        "angular",
+        "app"
+      ]
+    }
+  },
+  "retrieval_priorities": [
+    "bead_task_context",
+    "architecture_guardrails",
+    "directly_touched_code",
+    "verification_and_runtime_rules",
+    "background_context"
+  ],
+  "hard_include_rules": [
+    "bead metadata",
+    "modernization or roadmap fragments for the current phase",
+    "ADR fragments affecting touched files",
+    "architecture or pipeline fragments affecting runtime/build separation",
+    "Graphify-resolved symbols and files being changed"
+  ],
+  "hard_exclude_rules": [
+    "node_modules/**",
+    "**/node_modules/**",
+    "new_app/dist/**",
+    "**/dist/**",
+    "dist/**",
+    "graphify-out/**",
+    "old_app/**",
+    "data/**",
+    "runtime/**",
+    "local/**",
+    "*.log",
+    "*.png",
+    "*.jpg",
+    "*.gif",
+    "*.ico",
+    "*.pdf",
+    "*.xlsx",
+    "*.csv",
+    "*.pyc"
+  ],
+  "token_budget_tiers": {
+    "small": {
+      "architecture": 4,
+      "plans": 2,
+      "workflow": 1,
+      "context_pipeline": 2,
+      "code": 4,
+      "adjacent_code": 2,
+      "verification": 2,
+      "background": 1,
+      "max_total_chunks": 14
+    },
+    "medium": {
+      "architecture": 6,
+      "plans": 3,
+      "workflow": 2,
+      "context_pipeline": 3,
+      "code": 8,
+      "adjacent_code": 4,
+      "verification": 3,
+      "background": 2,
+      "max_total_chunks": 26
+    },
+    "large": {
+      "architecture": 10,
+      "plans": 5,
+      "workflow": 3,
+      "context_pipeline": 5,
+      "code": 14,
+      "adjacent_code": 8,
+      "verification": 5,
+      "background": 4,
+      "max_total_chunks": 44
+    }
+  },
+  "beads": {
+    "enabled": true,
+    "cli": "bd",
+    "show_command": [
+      "show"
+    ],
+    "fallback_when_unavailable": true
+  },
+  "outputs": {
+    "base_dir": "data/context",
+    "index_path": "data/context/index.json",
+    "bundle_dir": "data/context/bundles"
+  }
+}
