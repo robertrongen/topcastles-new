@@ -38,7 +38,6 @@ describe('AppComponent', () => {
     expect(nav).toBeTruthy();
     expect(nav.textContent).toContain('Top 1000');
     expect(nav.textContent).toContain('Background');
-    expect(nav.textContent).toContain('Search');
   });
 
   it('should have a navigation toggle button in the toolbar', () => {

@@ -1,8 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, flush } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { By } from '@angular/platform-browser';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { CastleTableComponent } from './castle-table.component';
 import { Castle } from '../../models/castle.model';
 
@@ -17,6 +19,20 @@ function makeCastle(overrides: Partial<Castle> = {}): Castle {
     score_total: 50.7, score_visitors: 30, visitors: 10,
     ...overrides,
   };
+}
+
+/** Set a real height on the CDK virtual scroll viewport so items render in tests. */
+function renderVirtualScroll(fixture: ComponentFixture<CastleTableComponent>): void {
+  fixture.detectChanges();
+  const vpEl = fixture.nativeElement.querySelector('cdk-virtual-scroll-viewport') as HTMLElement;
+  if (vpEl) {
+    Object.defineProperty(vpEl, 'clientHeight', { get: () => 600, configurable: true });
+    Object.defineProperty(vpEl, 'clientWidth',  { get: () => 1200, configurable: true });
+    const vpInstance = fixture.debugElement.query(By.directive(CdkVirtualScrollViewport))?.componentInstance as CdkVirtualScrollViewport | undefined;
+    vpInstance?.checkViewportSize();
+  }
+  flush();
+  fixture.detectChanges();
 }
 
 describe('CastleTableComponent', () => {
@@ -45,42 +61,42 @@ describe('CastleTableComponent', () => {
     expect(fixture.nativeElement.querySelectorAll('.header-cell').length).toBe(4);
   });
 
-  it('should display castle data in body rows', () => {
+  it('should display castle data in body rows', fakeAsync(() => {
     component.castles = [
       makeCastle({ position: 1, castle_name: 'Alpha' }),
       makeCastle({ position: 2, castle_name: 'Beta' }),
     ];
     component.columns = ['position', 'castle_name'];
-    fixture.detectChanges();
+    renderVirtualScroll(fixture);
     expect(fixture.nativeElement.querySelectorAll('.body-row').length).toBe(2);
-  });
+  }));
 
-  it('should round score_total to whole number', () => {
+  it('should round score_total to whole number', fakeAsync(() => {
     component.castles = [makeCastle({ score_total: 123.456 })];
     component.columns = ['score_total'];
-    fixture.detectChanges();
+    renderVirtualScroll(fixture);
     expect(fixture.nativeElement.querySelector('.col-score_total').textContent.trim()).toBe('123');
-  });
+  }));
 
-  it('should show thumbnail image', () => {
+  it('should show thumbnail image', fakeAsync(() => {
     component.castles = [makeCastle({ castle_code: 'tower' })];
     component.columns = ['thumbnail'];
-    fixture.detectChanges();
+    renderVirtualScroll(fixture);
     const img = fixture.nativeElement.querySelector('.col-thumbnail img');
     expect(img).toBeTruthy();
     expect(img.getAttribute('src') || img.src).toContain('tower_small.jpg');
-  });
+  }));
 
-  it('should show region map image when region_code exists', () => {
+  it('should show region map image when region_code exists', fakeAsync(() => {
     component.castles = [makeCastle({ region: 'Bayern', region_code: 'bayern' })];
     component.columns = ['region'];
-    fixture.detectChanges();
+    renderVirtualScroll(fixture);
     const cell = fixture.nativeElement.querySelector('.col-region');
     expect(cell.textContent).toContain('Bayern');
     const img = cell.querySelector('img.region-map');
     expect(img).toBeTruthy();
     expect(img.getAttribute('src') || img.src).toContain('bayern.jpg');
-  });
+  }));
 
   it('should not show region map image when region_code is empty', () => {
     component.castles = [makeCastle({ region: 'Unknown', region_code: '' })];
@@ -116,21 +132,21 @@ describe('CastleTableComponent', () => {
     expect(img.style.display).toBe('none');
   });
 
-  it('should show castle_type as plain text without a link', () => {
+  it('should show castle_type as plain text without a link', fakeAsync(() => {
     component.castles = [makeCastle({ castle_type: 'Water castle' })];
     component.columns = ['castle_type'];
-    fixture.detectChanges();
+    renderVirtualScroll(fixture);
     const cell = fixture.nativeElement.querySelector('.col-castle_type');
     expect(cell.textContent.trim()).toBe('Water castle');
     expect(cell.querySelector('a')).toBeNull();
-  });
+  }));
 
-  it('should link country to filtered castle list', () => {
+  it('should link country to filtered castle list', fakeAsync(() => {
     component.castles = [makeCastle({ country: 'Germany' })];
     component.columns = ['country'];
-    fixture.detectChanges();
+    renderVirtualScroll(fixture);
     const link = fixture.nativeElement.querySelector('.col-country a');
     expect(link).toBeTruthy();
     expect(link.getAttribute('href')).toContain('Germany');
-  });
+  }));
 });

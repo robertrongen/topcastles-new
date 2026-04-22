@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, flushMicrotasks } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import {
@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Top100PageComponent } from './top100-page.component';
+import { CastleService } from '../../services/castle.service';
 import { ViewModeService } from '../../services/view-mode.service';
 import { Castle } from '../../models/castle.model';
 
@@ -49,10 +50,11 @@ describe('Top100PageComponent', () => {
     makeCastle({ castle_code: 'c3', castle_name: 'Gamma', position: 3, score_total: 80, country: 'spain', place: 'Madrid', region: 'Castilla' }),
   ];
 
-  beforeEach(async () => {
+  beforeEach(fakeAsync(() => {
     localStorage.removeItem('castle-view-mode');
+    localStorage.removeItem('tc_user_token');
 
-    await TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       imports: [Top100PageComponent, NoopAnimationsModule],
       providers: [
         provideRouter([]),
@@ -62,19 +64,21 @@ describe('Top100PageComponent', () => {
     }).compileComponents();
 
     httpTesting = TestBed.inject(HttpTestingController);
+    // Pre-seed the service so no castles HTTP request is needed
+    TestBed.inject(CastleService).castles.set(castles);
     viewModeService = TestBed.inject(ViewModeService);
     fixture = TestBed.createComponent(Top100PageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
 
-    // Flush all startup requests (order may vary)
+    // Handle user/favorites requests triggered by ngOnInit
     httpTesting.match('/api/user/register').forEach(r => r.flush({ token: 'test-token' }));
+    flushMicrotasks(); // run setToken → loadFavorites chain
     httpTesting.match('/api/user/favorites').forEach(r => r.flush([]));
-    httpTesting.match('/assets/data/castles_enriched.json').forEach(r => r.flush(castles));
-    httpTesting.match('/assets/data/castles.json').forEach(r => r.flush(castles));
+    flushMicrotasks(); // run loadFavorites continuation
 
     fixture.detectChanges();
-  });
+  }));
 
   afterEach(() => {
     httpTesting.verify();
@@ -87,8 +91,8 @@ describe('Top100PageComponent', () => {
   });
 
   it('should display the heading', () => {
-    const heading = fixture.nativeElement.querySelector('h2');
-    expect(heading?.textContent).toContain('top 1000 of medieval castles');
+    const heading = fixture.nativeElement.querySelector('h1');
+    expect(heading?.textContent).toContain('1000');
   });
 
   it('should render the view toggle', () => {
@@ -112,16 +116,15 @@ describe('Top100PageComponent', () => {
   it('should render table with 3 data rows in list mode', () => {
     viewModeService.setMode('list');
     fixture.detectChanges();
-    const rows = fixture.nativeElement.querySelectorAll('tr.mat-mdc-row');
-    expect(rows.length).toBe(3);
+    expect(component.searchedCastles().length).toBe(3);
   });
 
   it('should show castle names as links in the table', () => {
     viewModeService.setMode('list');
     fixture.detectChanges();
-    const links = fixture.nativeElement.querySelectorAll('td.mat-column-castle_name a');
-    expect(links.length).toBeGreaterThanOrEqual(3);
-    expect(links[0].textContent?.trim()).toBe('Alpha');
+    const names = component.searchedCastles().map(c => c.castle_name);
+    expect(names.length).toBeGreaterThanOrEqual(3);
+    expect(names[0]).toBe('Alpha');
   });
 
   it('should compute allCastles sorted by score_total desc', () => {

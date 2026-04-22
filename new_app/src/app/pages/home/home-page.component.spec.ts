@@ -1,12 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
-import {
-  HttpTestingController,
-  provideHttpClientTesting,
-} from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './home-page.component';
+import { CastleService } from '../../services/castle.service';
 import { Castle } from '../../models/castle.model';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
@@ -39,7 +37,6 @@ function makeCastle(overrides: Partial<Castle> = {}): Castle {
 describe('HomePageComponent', () => {
   let fixture: ComponentFixture<HomePageComponent>;
   let component: HomePageComponent;
-  let httpTesting: HttpTestingController;
 
   const castles: Castle[] = [
     makeCastle({ castle_code: 'c1', castle_name: 'Alpha', score_total: 100, score_visitors: 50, country: 'netherlands' }),
@@ -57,18 +54,12 @@ describe('HomePageComponent', () => {
       ],
     }).compileComponents();
 
-    httpTesting = TestBed.inject(HttpTestingController);
+    // Pre-seed the service so no HTTP request is needed
+    TestBed.inject(CastleService).castles.set(castles);
+
     fixture = TestBed.createComponent(HomePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-
-    const req = httpTesting.expectOne('/assets/data/castles_enriched.json');
-    req.flush(castles);
-    fixture.detectChanges();
-  });
-
-  afterEach(() => {
-    httpTesting.verify();
   });
 
   it('should create', () => {

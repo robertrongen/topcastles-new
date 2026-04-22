@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, flushMicrotasks } from '@angular/core/testing';
 import { provideRouter, ActivatedRoute } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import {
@@ -7,8 +7,10 @@ import {
 } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Meta, Title } from '@angular/platform-browser';
+import { PLATFORM_ID } from '@angular/core';
 import { of } from 'rxjs';
 import { CastleDetailPageComponent } from './castle-detail-page.component';
+import { CastleService } from '../../services/castle.service';
 import { Castle } from '../../models/castle.model';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
@@ -50,13 +52,15 @@ describe('CastleDetailPageComponent', () => {
     makeCastle({ position: 4, castle_code: 'aleppo',      castle_name: 'Citadel of Aleppo',    country: 'Syria',   score_total: 440, latitude: 36.20, longitude: 37.16 }),
   ];
 
-  function setupWithCode(code: string, castles = mockCastles): void {
+  function setupWithCode(code: string, castlesData = mockCastles): void {
     TestBed.configureTestingModule({
       imports: [CastleDetailPageComponent, NoopAnimationsModule],
       providers: [
         provideRouter([]),
         provideHttpClient(),
         provideHttpClientTesting(),
+        // Use 'server' to skip isPlatformBrowser guards (Leaflet, user/favorites in component)
+        { provide: PLATFORM_ID, useValue: 'server' },
         {
           provide: ActivatedRoute,
           useValue: { params: of({ code }), queryParams: of({}) },
@@ -64,13 +68,17 @@ describe('CastleDetailPageComponent', () => {
       ],
     });
 
+    // Pre-seed castles so getCastleByCode works without HTTP loading
+    const castleService = TestBed.inject(CastleService);
+    castleService.castles.set(castlesData);
+
     fixture = TestBed.createComponent(CastleDetailPageComponent);
     component = fixture.componentInstance;
     httpTesting = TestBed.inject(HttpTestingController);
 
     fixture.detectChanges();
-    // Service tries castles_enriched.json first, falls back to castles.json on error
-    httpTesting.expectOne('/assets/data/castles_enriched.json').flush(castles);
+    // Handle loadEnrichedData() which runs regardless of platform
+    httpTesting.match('/assets/data/castles_delta.json').forEach(r => r.flush([]));
     fixture.detectChanges();
   }
 
@@ -189,7 +197,7 @@ describe('CastleDetailPageComponent', () => {
   });
 
   it('nearbyCastles should return empty array when castle has no coordinates', () => {
-    setupWithCode('krak', [makeCastle({ castle_code: 'krak', latitude: null, longitude: null })]);
+    setupWithCode('krak', [makeCastle({ castle_code: 'krak', latitude: null as any, longitude: null as any })]);
     expect(component.nearbyCastles().length).toBe(0);
   });
 

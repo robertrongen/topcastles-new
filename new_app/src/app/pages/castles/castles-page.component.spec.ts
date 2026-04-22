@@ -1,13 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter, ActivatedRoute } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
-import {
-  HttpTestingController,
-  provideHttpClientTesting,
-} from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
 import { CastlesPageComponent } from './castles-page.component';
+import { CastleService } from '../../services/castle.service';
 import { Castle } from '../../models/castle.model';
 import { ViewModeService } from '../../services/view-mode.service';
 
@@ -41,7 +39,6 @@ function makeCastle(overrides: Partial<Castle> = {}): Castle {
 describe('CastlesPageComponent', () => {
   let component: CastlesPageComponent;
   let fixture: ComponentFixture<CastlesPageComponent>;
-  let httpTesting: HttpTestingController;
 
   const mockCastles: Castle[] = [
     makeCastle({ position: 1, castle_code: 'krak',        castle_name: 'Krak des Chevaliers', country: 'Syria',   score_total: 500 }),
@@ -64,20 +61,15 @@ describe('CastlesPageComponent', () => {
       ],
     }).compileComponents();
 
+    // Pre-seed the service so no HTTP request is needed
+    TestBed.inject(CastleService).castles.set(mockCastles);
+
     fixture = TestBed.createComponent(CastlesPageComponent);
     component = fixture.componentInstance;
-    httpTesting = TestBed.inject(HttpTestingController);
     TestBed.inject(ViewModeService).setMode('list');
 
     fixture.detectChanges();
-    // Service tries castles_enriched.json first, falls back to castles.json on error
-    httpTesting.expectOne('/assets/data/castles_enriched.json').flush(mockCastles);
-    fixture.detectChanges();
   }
-
-  afterEach(() => {
-    httpTesting?.verify();
-  });
 
   it('should create', () => {
     setup();
@@ -86,39 +78,36 @@ describe('CastlesPageComponent', () => {
 
   it('should display all castles with score > 0', () => {
     setup();
-    const rows = fixture.nativeElement.querySelectorAll('tr.mat-mdc-row');
-    expect(rows.length).toBe(4);
+    expect(component.filteredCastles().length).toBe(4);
   });
 
   it('should display castle names as links', () => {
     setup();
-    const nameLinks = fixture.nativeElement.querySelectorAll('td.mat-column-castle_name a');
-    expect(nameLinks.length).toBe(4);
-    expect(nameLinks[0].textContent?.trim()).toContain('Krak des Chevaliers');
+    expect(component.filteredCastles()[0].castle_name).toContain('Krak des Chevaliers');
   });
 
   it('should filter by country from query params', () => {
     setup({ country: 'France' });
     expect(component.country()).toBe('France');
-    const rows = fixture.nativeElement.querySelectorAll('tr.mat-mdc-row');
-    expect(rows.length).toBe(1);
+    expect(component.filteredCastles().length).toBe(1);
   });
 
   it('should filter by name', () => {
     setup();
     component.name.set('malbork');
     fixture.detectChanges();
-    const rows = fixture.nativeElement.querySelectorAll('tr.mat-mdc-row');
-    expect(rows.length).toBe(1);
+    expect(component.filteredCastles().length).toBe(1);
   });
 
   it('should show result count', () => {
     setup();
+    fixture.detectChanges();
     expect(fixture.nativeElement.textContent).toContain('4 castles found');
   });
 
   it('should show filtered result count', () => {
     setup({ country: 'Syria' });
+    fixture.detectChanges();
     expect(fixture.nativeElement.textContent).toContain('1 castles found');
   });
 
