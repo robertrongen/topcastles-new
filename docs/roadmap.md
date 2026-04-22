@@ -10,6 +10,54 @@ This is the active forward-looking worklist for Topcastles. Current runtime arch
   - Later work reduced the failure count from 77 to 73, but the cleanup passes now observe `npm test -- --watch=false --browsers=ChromeHeadless` timing out.
   - Goal: restore a reliable regression signal.
 
+## Data Pipeline And Content Ownership
+
+This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeline.md) remains the source of truth for artifact classification and regeneration rules, and [architecture.md](architecture.md) remains the source of truth for data flow, the JSON-only model, and build-time versus runtime separation.
+
+### Goal
+
+- Establish a single canonical source of castle content.
+- Keep the regeneration pipeline deterministic and repeatable.
+- Make ownership of generated artifacts unambiguous.
+- Make it clear where a content change starts and how it propagates through source data, generated JSON, static API files, sitemap output, prerender routes, and the app build.
+- Preserve the existing constraints: JSON-only content, Node server runtime entry point, single-container deployment, strict separation of build-time content from runtime state, and no runtime mutation of prerendered artifacts.
+
+### DP-1: Map the current pipeline end-to-end
+
+- Document the flow from `old_app/database/` through `scripts/`, generated JSON, static API slices, sitemap output, prerender routes, and Angular app consumption.
+- Identify the transformation steps and their required order.
+- Cross-check the map against [pipeline.md](pipeline.md) rather than duplicating artifact rules here.
+
+### DP-2: Define canonical source of truth
+
+- Decide whether `old_app/database/` remains the canonical source for ingestion or whether source data moves to a neutral location.
+- Record the decision in the appropriate docs only if it changes the current artifact policy.
+- Keep `old_app/database/` until ingestion no longer depends on it.
+
+### DP-3: Create a single canonical pipeline command
+
+- Define one root-level command for the full regeneration workflow.
+- Align the command with the existing steps listed in [pipeline.md](pipeline.md).
+- Ensure the command remains compatible with the current JSON-only, build-time content model.
+
+### DP-4: Validate generated artifact ownership
+
+- Confirm which artifacts are generated and committed, especially `new_app/src/assets/data/*.json`, `new_app/public/api/`, `new_app/public/sitemap.xml`, and `new_app/prerender-routes.txt`.
+- Confirm which artifacts are generated and ignored, especially build output, graph output, dependencies, and runtime data.
+- Remove any remaining ambiguity without changing the runtime model.
+
+### DP-5: Eliminate pipeline ambiguity
+
+- Make contributor-facing guidance clear enough that generated artifacts are not edited manually without regeneration.
+- Make it hard to bypass the pipeline accidentally when source content changes.
+- Keep admin API and rebuild-trigger work aligned with the rule that content changes affect prerendered output only after regeneration and rebuild.
+
+### DP-6: Prepare for eventual `old_app` decoupling
+
+- Reduce dependency on `old_app/database/` over time without breaking ingestion, generated outputs, tests, or builds.
+- Keep the decoupling work incremental and reversible until a new canonical source is confirmed.
+- Preserve the current artifact boundaries during the transition.
+
 ## UX And Product Improvements
 
 - **9.5: Design refresh with Storybook and Figma/Penpot exploration**
