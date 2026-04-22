@@ -72,4 +72,14 @@ export class UserService {
     const token = this.getToken();
     return token ? { Authorization: `Bearer ${token}` } : {};
   }
+
+  getShareLink(): string | null {
+    if (!this.isBrowser) return null;
+    const token = this.getToken();
+    return token ? `${window.location.origin}/account?token=${token}` : null;
+  }
+
+  importToken(token: string): void {
+    this.setToken(token);
+  }
 }
