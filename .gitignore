@@ -1,10 +1,13 @@
 # Dependencies
 node_modules
+**/node_modules/
 
 # Build outputs
 dist
+dist/
 build
 *.tsbuildinfo
+tmp/
 
 # Test coverage
 coverage
@@ -30,17 +33,25 @@ yalc.lock
 .DS_Store
 Thumbs.db
 .idea
+.vscode/
 .vscode/settings.json
+.claude/
 .claude/settings.local.json
+graphify-out/
 graphify-out/*
 graphify-out/cache/*
 
 # Beads / Dolt files (added by bd init)
+.beads/
 .dolt/
 *.db
 .beads-credential-key
 .claude/settings.json
 bitwarden.txt
+.kilo/
 
 # Runtime data (JSON store)
 data/
+data/users.json
+runtime/
+local/
