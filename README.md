@@ -1,58 +1,43 @@
 # Topcastles
 
-Angular 19 castle-ranking website, rebuilt from a legacy PHP app. Serves a ranked list of 1,000 European castles with filtering, card/table views, and per-castle detail pages.
+Angular 19 castle-ranking website rebuilt from a legacy PHP app. It serves a ranked list of 1,000 castles with filtering, card/table views, per-castle detail pages, and JSON-backed user/favorites APIs.
 
-**Live:** deployed as a Docker container on a Synology NAS via `deploy.sh`.
+The current production runtime is a single Docker container running the Node server in `server/index.js`. The Node server serves Angular build output, exposes `/api/*` endpoints, and stores runtime user state separately from build-time castle content.
 
-## Tech stack
-
-| Concern        | Choice                                                        |
-| -------------- | ------------------------------------------------------------- |
-| Framework      | Angular 19 — Standalone Components, Signals, SSR              |
-| UI             | Angular Material 19                                           |
-| Styling        | SCSS with legacy brand palette                                |
-| Data           | Static JSON in `new_app/src/assets/data/`                     |
-| Rendering      | Angular SSR + prerendering for SEO                            |
-| Container      | Docker (Node Alpine), deployed to Synology NAS                |
-| Component docs | Storybook 9                                                   |
-
-## Quick start
+## Quick Start
 
 ```bash
 git clone https://github.com/robertrongen/topcastles
 cd topcastles
-npm run install:all    # installs deps in new_app/, scripts/, and server/
+npm run install:all
 ```
 
-## Local dev
+## Local Development
 
-The app has two processes that run together:
-
-| Process | Command | Port | Purpose |
-| --- | --- | --- | --- |
-| Node API server | `npm run dev:server` | 3000 | `/api/*` routes, user + favorites data |
-| Angular dev server | `npm run dev:app` | 4200 | UI with hot reload |
-
-Run each in a separate terminal:
+Run the API server and Angular dev server in separate terminals:
 
 ```bash
-# Terminal 1 — API server (from project root)
 npm run dev:server
-
-# Terminal 2 — Angular dev server (from project root)
 npm run dev:app
 ```
 
-Then open <http://localhost:4200>. The Angular dev server proxies `/api/*` requests to port 3000 automatically (`new_app/proxy.conf.json`).
+Open <http://localhost:4200>. The Angular dev server proxies `/api/*` requests to the Node server on port 3000.
 
-> **Without the API server:** the app still loads but user/favorites features will silently fail (no error shown — this is intentional for offline dev).
-
-## Deploy
+## Key Commands
 
 ```bash
-npm run deploy         # build → Docker image → push to Docker Hub → redeploy on NAS
+npm run build              # Angular build and prerender output
+npm run start              # Angular dev server
+npm run dev:server         # Node API/static runtime server
+npm test                   # Angular unit tests
+npm run data:api           # regenerate committed static API JSON
+npm run data:sitemap       # regenerate committed sitemap
+npm run data:routes        # regenerate committed prerender route list
+npm run deploy             # build image and deploy to Synology NAS
 ```
 
-## Developer guide
+## Documentation
 
-Full setup, commands, data pipeline, architecture, and AI tooling (beads + graphify) are in [DEVELOPER.md](DEVELOPER.md).
+- [DEVELOPER.md](DEVELOPER.md) - contributor workflow, setup, commands, and tooling.
+- [docs/architecture.md](docs/architecture.md) - current system design and runtime model.
+- [docs/pipeline.md](docs/pipeline.md) - artifact policy for source, generated, and runtime files.

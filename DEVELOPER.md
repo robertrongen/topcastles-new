@@ -1,14 +1,14 @@
-# Developer Guide — Topcastles
+# Developer Guide - Topcastles
 
-Full reference for contributors. For a project overview see [README.md](README.md).
+Contributor workflow reference. For the project overview see [README.md](README.md). For the source/generated/runtime artifact policy see [docs/pipeline.md](docs/pipeline.md).
 
 ## Prerequisites
 
 | Tool | Version | Purpose |
 |------|---------|---------|
-| Node.js | ≥ 18 | Runtime |
-| npm | ≥ 9 | Package manager |
-| Python | ≥ 3.9 | Data pipeline scripts |
+| Node.js | >= 18 | App, scripts, and server runtime |
+| npm | >= 9 | Package manager |
+| Python | >= 3.9 | Data conversion scripts |
 | Docker | any | Container builds |
 | bash | any | `deploy.sh` |
 
@@ -17,190 +17,123 @@ Full reference for contributors. For a project overview see [README.md](README.m
 ```bash
 git clone https://github.com/robertrongen/topcastles
 cd topcastles
-npm run install:all       # installs deps in new_app/ and scripts/
+npm run install:all
 ```
 
-### Install developer tooling (one-time, system-wide)
+`install:all` installs dependencies for `new_app/`, `scripts/`, and `server/`. `node_modules/` directories are local only and must not be committed.
 
-**beads** — task tracking CLI:
+## Local Development
+
+Run the Node API server and Angular dev server in separate terminals:
 
 ```bash
-npm install -g @beads/bd
-bd init                   # run from repo root — sets up hooks and CLAUDE.md integration
+npm run dev:server
+npm run dev:app
 ```
 
-**bun** — JavaScript runtime required by graphify:
+Open <http://localhost:4200>. The Angular dev server proxies `/api/*` requests to the Node server on port 3000. For UI-only work, `npm start` is equivalent to `npm run dev:app`.
+
+## Build And Test
 
 ```bash
-npm install -g bun
+npm run build
+npm test
+npm test -- --watch=false --browsers=ChromeHeadless
 ```
 
-**graphify** — codebase navigation graph for AI agents:
+`npm run build` produces Angular build and prerender output under `new_app/dist/new_app/`. That output is ignored and should be recreated rather than committed.
+
+## Runtime Server
+
+The production container runs `node server/index.js`. The Node server serves Angular build output, exposes `/api/*` routes, and writes runtime user state separately from build-time castle content.
+
+Useful local checks:
 
 ```bash
-npm install -g graphify-ts   # installs the graphify binary
-graphify build .             # generate the knowledge graph (graphify-out/graph.json)
-graphify hook install        # install stop hook to auto-update graph after each session
+npm run dev:server
+curl http://localhost:3000/api/health
 ```
 
-After running `graphify build .` once, the graph stays up to date automatically via the stop hook. To update manually: `npm run graph:build` or `npm run graph:update`.
+## Data Pipeline
 
-## Commands
-
-All commands run from the **repo root**.
-
-### Development
+Castle content is JSON-based. The legacy ingestion source is still `old_app/database/`.
 
 ```bash
-npm start                  # dev server → http://localhost:4200 (HMR enabled)
-npm run build:watch        # dev build with file watching
-```
-
-### Production build
-
-```bash
-npm run build              # SSR + prerendered output → new_app/dist/new_app/
-npm run serve:ssr          # run the SSR Express server (requires prior build)
-```
-
-### Testing
-
-```bash
-npm test                   # unit tests with Karma + Jasmine (opens Chrome)
-```
-
-### Component explorer
-
-```bash
-npm run storybook          # Storybook 9 → http://localhost:6006
-npm run build:storybook    # build static Storybook site
-```
-
-### Data pipeline
-
-Castle data lives in `new_app/src/assets/data/castles_enriched.json`. To regenerate:
-
-```bash
-npm run data:convert           # Excel/CSV → base JSON (scripts/xlsx_to_json.py)
+npm run data:convert           # Excel/CSV -> base JSON
 npm run data:enrich:wikidata   # add Wikidata fields
 npm run data:enrich:wikipedia  # add Wikipedia summaries
-npm run data:lean              # derive castles.json (lean) + castles_delta.json from castles_enriched.json
-npm run data:api               # regenerate static JSON API under new_app/src/assets/api/
+npm run data:lean              # derive lean castle JSON
+npm run data:api               # regenerate new_app/public/api/
 npm run data:sitemap           # regenerate new_app/public/sitemap.xml
 npm run data:routes            # regenerate new_app/prerender-routes.txt
+npm run build
 ```
 
-> **Important:** run `data:lean`, `data:sitemap`, and `data:routes` after any change to `castles_enriched.json`, then rebuild (`npm run build`). These three steps keep the app data, sitemap, and prerender routes in sync.
+After changes to castle content, regenerate the committed derived files before building. Do not edit `new_app/public/api/`, `new_app/public/sitemap.xml`, or `new_app/prerender-routes.txt` by hand unless the generated output is being repaired and the generator stays authoritative.
 
-### MCP server
+## Artifact Policy
+
+[docs/pipeline.md](docs/pipeline.md) is the source of truth for artifact classification.
+
+Keep these boundaries intact:
+
+- Source and committed generated castle artifacts belong in git.
+- `package-lock.json` files belong in git.
+- `old_app/database/` remains a source dependency for ingestion.
+- `graphify-out/`, `dist/`, and `node_modules/` are generated or installed locally and must stay ignored.
+- `data/users.json`, `runtime/`, and `local/` are runtime-like state and must stay ignored.
+- Runtime code must not mutate prerendered HTML, JavaScript bundles, or other build artifacts in place.
+
+## Developer Tooling
+
+### beads
+
+This repo uses beads for issue tracking:
 
 ```bash
-npm run mcp                # start the Model Context Protocol server (scripts/mcp-server.js)
+bd ready
+bd show <id>
+bd update <id> --claim
+bd close <id>
+bd prime
 ```
 
-### Knowledge graph (graphify)
+beads data is synced with `bd dolt push`.
+
+### graphify
+
+graphify builds an AI navigation graph in `graphify-out/`:
 
 ```bash
-npm run graph:build        # full rebuild of graphify-out/graph.json
-npm run graph:update       # fast incremental update after editing files
-npm run graph:query <sym>  # look up a symbol — e.g. npm run graph:query CastleService
+npm run graph:build
+npm run graph:update
+npm run graph:query CastleService
 ```
 
-The graph is auto-updated at the end of each Claude Code session via a stop hook.
+`graphify-out/` is tooling output and must not be committed.
 
-### Deployment
+### Storybook
 
 ```bash
-npm run deploy             # build → Docker image → push to Docker Hub → redeploy on NAS
+npm run storybook
+npm run build:storybook
 ```
 
-See [docs/deployment.md](docs/deployment.md) for SSH prerequisites and NAS configuration.
-
-## Architecture
-
-```
-topcastles/
-├── new_app/                   Angular 19 application
-│   ├── src/
-│   │   ├── app/               Components, services, routes
-│   │   │   ├── castle-list/   List view with filters and sorting
-│   │   │   ├── castle-detail/ Detail page with Leaflet map
-│   │   │   └── ...
-│   │   ├── assets/data/       Static JSON castle data
-│   │   ├── main.ts            Browser bootstrap
-│   │   ├── main.server.ts     SSR bootstrap
-│   │   └── server.ts          Express server config
-│   └── dist/new_app/          Build output (gitignored)
-├── scripts/                   Data pipeline utilities
-│   ├── xlsx_to_json.py        Source data conversion
-│   ├── enrich_wikidata.js     Wikidata enrichment
-│   ├── enrich_wikipedia.js    Wikipedia enrichment
-│   ├── generate_api.js        Static API generation
-│   └── mcp-server.js          MCP server
-├── old_app/                   Legacy PHP source (reference only, do not modify)
-├── docs/                      Documentation
-├── graphify-out/              AI navigation graph (auto-generated)
-├── Dockerfile                 Multi-stage Node Alpine build
-├── deploy.sh                  One-command deployment script
-└── package.json               Root workspace (proxies all commands above)
-```
-
-## Key architecture decisions
-
-- **Standalone components** — no NgModules; each component declares its own imports
-- **Signals** — used for reactive state instead of RxJS Subjects where possible
-- **SSG (build-time prerendering)** — 1006 routes prerendered to static HTML by `ng build`; `server.ts` is a build-time renderer only, not deployed (ADR-006)
-- **Static JSON API** — no backend; data is embedded as static assets and served by nginx
-- **Single Docker image** — nginx Alpine serves the prerendered HTML, static assets, and JSON API files
-
-See [docs/decisions.md](docs/decisions.md) for full ADRs and [docs/architecture.md](docs/architecture.md) for component diagrams.
-
-## Developer tooling
-
-| Tool | Config | Purpose |
-|------|--------|---------|
-| [beads](https://github.com/gastownhall/beads) | `.beads/` | Issue tracking — use `bd ready` / `bd create` / `bd close` |
-| [graphify](https://github.com/safishamsi/graphify) | `graphify-out/` | Codebase navigation graph for AI agents |
-| Storybook 9 | `.storybook/` | Component development and visual testing |
-| Compodoc | `new_app/` | API documentation generation |
-| Karma + Jasmine | `karma.conf.js` | Unit testing |
-
-### beads — issue tracking
-
-beads stores issues in a local Dolt database (`.beads/`) synced to a remote repo. Claude Code automatically loads task context at session start via the `SessionStart` hook.
+## Deployment
 
 ```bash
-bd ready                                          # list issues with no open blockers
-bd create --title="..." --type=feature --priority=2  # file a new issue (priority: 0=critical → 4=backlog)
-bd update <id> --claim                            # assign to yourself and start working
-bd show <id>                                      # view full issue details and dependencies
-bd close <id>                                     # mark done
-bd dep add <child-id> <parent-id>                 # link issues hierarchically
-bd remember "useful insight"                      # persist a note across sessions
-bd memories <keyword>                             # search persisted notes
-bd prime                                          # print full workflow context (runs automatically at session start)
+npm run deploy
 ```
 
-### graphify — codebase navigation graph
+The deployment script builds the app, builds and pushes the Docker image, and redeploys the single Node-based container on the NAS. See [docs/deployment.md](docs/deployment.md) for environment and SSH details.
 
-graphify indexes all source files into a symbol graph (`graphify-out/graph.json`). Claude Code reads this instead of scanning raw files, reducing token spend on codebase exploration. A PreToolUse hook fires on every file search to remind the AI to use the graph first.
-
-```bash
-npm run graph:build                    # full rebuild (6 926 files, 3 540 symbols)
-npm run graph:update                   # fast incremental update via git diff
-npm run graph:query CastleService      # look up a symbol and its relationships
-```
-
-The graph auto-updates at the end of every Claude Code session via the stop hook installed by `graphify hook install`.
-
-## Documentation index
+## Documentation Index
 
 | File | Contents |
-|------|---------|
-| [docs/architecture.md](docs/architecture.md) | System design and component structure |
-| [docs/decisions.md](docs/decisions.md) | Architectural Decision Records (ADRs) |
-| [docs/deployment.md](docs/deployment.md) | Deployment script and Synology NAS setup |
-| [docs/pipeline.md](docs/pipeline.md) | Build and CI pipeline steps |
+|------|----------|
+| [docs/architecture.md](docs/architecture.md) | Current architecture and runtime model |
+| [docs/decisions.md](docs/decisions.md) | Architectural Decision Records |
+| [docs/deployment.md](docs/deployment.md) | Deployment script and NAS setup |
+| [docs/pipeline.md](docs/pipeline.md) | Artifact policy |
 | [docs/setup.md](docs/setup.md) | Stack and tooling reference |
-| [docs/migration-report.md](docs/migration-report.md) | PHP → Angular migration summary |
-| [docs/modernization-plan.md](docs/modernization-plan.md) | Planned improvements |
+| [docs/modernization-plan.md](docs/modernization-plan.md) | Historical and planned modernization work |

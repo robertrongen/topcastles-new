@@ -1,5 +1,7 @@
 # Castle Page Modernization Plan
 
+> This is a historical/planning document. For the current runtime model see [architecture.md](architecture.md); for source, generated, and runtime artifact boundaries see [pipeline.md](pipeline.md).
+
 Tracked via GitHub. Check boxes as tasks are completed. Each task links to relevant source files.
 
 ---
