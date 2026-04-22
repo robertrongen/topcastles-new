@@ -365,6 +365,9 @@ Introduces runtime user state: accounts, token auth, and named castle sets. Impl
 
 - [x] **14.5** Favorites UX improvements + navigation
   - `addCastleToSet()` now optimistically updates the signal before the API call — immediate UI feedback, no reload
+  - Optimistic rollback on PUT failure — removes castle code from signal if API call throws
+  - `favoriteCount` computed (unique castles across sets) shown in slide-toggle label
+  - `matTooltip="In your favorites"` on bookmark icons in grid and table (replaces native `title`)
   - Snackbar confirmation `Added to "Set name"` (2 s) shown after adding from castle detail page
   - `isFavorite(code)` added to `CastleGridComponent` and `CastleTableComponent`; `bookmark` icon shown on favorited castles
   - `showFavoritesOnly` toggle (slide-toggle) on Top 1000 page — filters list to only favorited castles
@@ -372,6 +375,22 @@ Introduces runtime user state: accounts, token auth, and named castle sets. Impl
   - Sidenav: Favorites + Account items added with icons
   - `/account` route + `AccountPageComponent` placeholder (token preview, link to favorites)
   - Test suite: grid/table/top100 specs updated with `provideHttpClient` — suite improved from 77 → 73 failures
+
+- [x] **14.6** Token sharing via URL (export + import)
+  - `UserService.getShareLink()` returns `origin/account?token=<token>` (browser-only)
+  - `UserService.importToken(token)` public entry point for external token writes
+  - `AccountPageComponent`: readonly share-link input + "Copy share link" button with clipboard snackbar
+  - `AppComponent.ngOnInit`: reads `?token=` from URL, cleans URL via `replaceState`, imports token safely
+  - Safe import: skip if same token; rollback to prior token on `loadFavorites()` failure; snackbar on success
+  - All browser APIs guarded with `isPlatformBrowser()`; `app.component.spec` updated with `HttpClient` providers
+
+- [x] **14.7** Favorites detail view (`/favorites/:id`)
+  - New route `favorites/:id` → `FavoritesDetailPageComponent`
+  - Reuses `CastleGridComponent`, `CastleTableComponent`, and `ViewToggleComponent` — no new list components
+  - Set cards on `/favorites` page have title links navigating to `/favorites/:id`
+  - Back button (`arrow_back`) returns to `/favorites`
+  - Shows "Set not found" for invalid IDs; "No castles in this set yet" for empty sets
+  - Castles filtered from `CastleService.getAllByScore()` signal — no extra API calls
 
 ---
 

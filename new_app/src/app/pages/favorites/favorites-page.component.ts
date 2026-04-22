@@ -1,4 +1,5 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -13,6 +14,7 @@ import { FavoritesService, FavoriteSet } from '../../services/favorites.service'
   selector: 'app-favorites-page',
   standalone: true,
   imports: [
+    RouterLink,
     FormsModule,
     MatButtonModule,
     MatCardModule,

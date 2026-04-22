@@ -1,0 +1,27 @@
+.favorites-detail-page {
+  padding: 16px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+
+  h1 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+}
+
+.view-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.not-found,
+.empty-state {
+  color: var(--mat-sys-on-surface-variant);
+  margin-top: 24px;
+}

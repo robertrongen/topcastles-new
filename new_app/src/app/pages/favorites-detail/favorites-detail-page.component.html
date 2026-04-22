@@ -1,0 +1,28 @@
+<div class="favorites-detail-page">
+  <div class="page-header">
+    <a mat-icon-button routerLink="/favorites" aria-label="Back to favorites">
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+    @if (selectedSet()) {
+      <h1>{{ selectedSet()!.name }}</h1>
+    } @else {
+      <h1>Set not found</h1>
+    }
+  </div>
+
+  @if (!selectedSet()) {
+    <p class="not-found">This favorites set does not exist or has been deleted.</p>
+  } @else if (castlesInSet().length === 0) {
+    <p class="empty-state">No castles in this set yet. Add castles from the castle detail page.</p>
+  } @else {
+    <div class="view-toolbar">
+      <app-view-toggle [hideMap]="true" />
+    </div>
+
+    @if (viewModeService.mode() === 'grid') {
+      <app-castle-grid [castles]="castlesInSet()" />
+    } @else {
+      <app-castle-table [castles]="castlesInSet()" [columns]="displayedColumns" />
+    }
+  }
+</div>

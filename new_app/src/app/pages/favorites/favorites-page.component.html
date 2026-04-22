@@ -23,7 +23,9 @@
         @for (set of favoritesService.favorites(); track set.id) {
           <mat-card class="set-card">
             <mat-card-header>
-              <mat-card-title>{{ set.name }}</mat-card-title>
+              <mat-card-title>
+              <a [routerLink]="['/favorites', set.id]">{{ set.name }}</a>
+            </mat-card-title>
               <mat-card-subtitle>{{ set.castleIds.length }} castle{{ set.castleIds.length !== 1 ? 's' : '' }}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-actions>

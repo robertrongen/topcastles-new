@@ -16,6 +16,7 @@ export const routes: Routes = [
   { path: 'background', loadComponent: () => import('./pages/background/background-page.component').then(m => m.BackgroundPageComponent) },
   { path: 'developer', loadComponent: () => import('./pages/developer/developer-page.component').then(m => m.DeveloperPageComponent) },
   { path: 'favorites', loadComponent: () => import('./pages/favorites/favorites-page.component').then(m => m.FavoritesPageComponent) },
+  { path: 'favorites/:id', loadComponent: () => import('./pages/favorites-detail/favorites-detail-page.component').then(m => m.FavoritesDetailPageComponent) },
   { path: 'account', loadComponent: () => import('./pages/account/account-page.component').then(m => m.AccountPageComponent) },
   { path: '**', redirectTo: '' },
 ];
