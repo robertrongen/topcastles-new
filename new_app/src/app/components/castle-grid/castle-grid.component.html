@@ -32,6 +32,11 @@
         }
         <div class="castle-name">{{ castle.castle_name }}</div>
         <span class="castle-country" (click)="goToCountry($event, castle.country)" role="link" tabindex="0">{{ castle.country }}</span>
+        @if (removable) {
+          <button mat-icon-button class="remove-btn" (click)="onRemove($event, castle.castle_code)" aria-label="Remove from set" matTooltip="Remove from set">
+            <mat-icon>close</mat-icon>
+          </button>
+        }
       </mat-card>
     </a>
   }

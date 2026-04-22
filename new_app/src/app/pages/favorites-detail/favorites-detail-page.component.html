@@ -20,9 +20,9 @@
     </div>
 
     @if (viewModeService.mode() === 'grid') {
-      <app-castle-grid [castles]="castlesInSet()" />
+      <app-castle-grid [castles]="castlesInSet()" [removable]="true" (remove)="removeCastle($event)" />
     } @else {
-      <app-castle-table [castles]="castlesInSet()" [columns]="displayedColumns" />
+      <app-castle-table [castles]="castlesInSet()" [columns]="displayedColumns" [removable]="true" (remove)="removeCastle($event)" />
     }
   }
 </div>

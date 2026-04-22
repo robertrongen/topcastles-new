@@ -1,7 +1,8 @@
-import { Component, Input, signal, computed, inject } from '@angular/core';
+import { Component, Input, Output, EventEmitter, signal, computed, inject } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { BreakpointObserver } from '@angular/cdk/layout';
@@ -46,13 +47,15 @@ export const TABLE_ROW_HEIGHT = 128;
 @Component({
   selector: 'app-castle-table',
   standalone: true,
-  imports: [DecimalPipe, RouterLink, MatIconModule, MatTooltipModule, ScrollingModule],
+  imports: [DecimalPipe, RouterLink, MatIconModule, MatButtonModule, MatTooltipModule, ScrollingModule],
   templateUrl: './castle-table.component.html',
   styleUrl: './castle-table.component.scss',
 })
 export class CastleTableComponent {
   @Input({ required: true }) castles: Castle[] = [];
   @Input({ required: true }) columns: string[] = [];
+  @Input() removable = false;
+  @Output() remove = new EventEmitter<string>();
 
   private bp = inject(BreakpointObserver);
   private favoritesService = inject(FavoritesService);

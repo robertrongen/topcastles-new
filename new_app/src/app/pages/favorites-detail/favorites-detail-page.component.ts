@@ -1,5 +1,7 @@
 import { Component, computed, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
@@ -26,16 +28,18 @@ export class FavoritesDetailPageComponent implements OnInit {
   protected favoritesService = inject(FavoritesService);
   protected viewModeService = inject(ViewModeService);
 
+  private routeId = toSignal(this.route.paramMap.pipe(map(p => p.get('id'))));
+
   protected selectedSet = computed(() => {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.routeId();
     return this.favoritesService.favorites().find(f => f.id === id) ?? null;
   });
 
   protected castlesInSet = computed(() => {
     const set = this.selectedSet();
     if (!set) return [];
-    const codes = new Set(set.castleIds);
-    return this.castleService.getAllByScore().filter(c => codes.has(c.castle_code));
+    const idSet = new Set(set.castleIds);
+    return this.castleService.getAllByScore().filter(c => idSet.has(c.castle_code));
   });
 
   protected displayedColumns = [
@@ -44,5 +48,11 @@ export class FavoritesDetailPageComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.castleService.loadCastles();
+  }
+
+  protected removeCastle(castleCode: string): void {
+    const set = this.selectedSet();
+    if (!set) return;
+    this.favoritesService.removeCastleFromSet(set.id, castleCode);
   }
 }

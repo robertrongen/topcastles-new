@@ -68,6 +68,24 @@ export class FavoritesService {
     await this.loadFavorites();
   }
 
+  async removeCastleFromSet(setId: string, castleId: string): Promise<void> {
+    const set = this.favorites().find(s => s.id === setId);
+    if (!set || !set.castleIds.includes(castleId)) return;
+    const updatedIds = set.castleIds.filter(id => id !== castleId);
+    this.favorites.update(favs =>
+      favs.map(f => f.id === setId ? { ...f, castleIds: updatedIds } : f)
+    );
+    try {
+      await this.withAuth(() =>
+        firstValueFrom(this.http.put(`/api/user/favorites/${setId}`, { name: set.name, castleIds: updatedIds }, { headers: this.headers }))
+      );
+    } catch {
+      this.favorites.update(favs =>
+        favs.map(f => f.id === setId ? { ...f, castleIds: [...f.castleIds, castleId] } : f)
+      );
+    }
+  }
+
   async addCastleToSet(setId: string, castleId: string): Promise<void> {
     const set = this.favorites().find(s => s.id === setId);
     if (!set || set.castleIds.includes(castleId)) return;

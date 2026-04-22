@@ -72,6 +72,11 @@
             @if (isFavorite(castle.castle_code)) {
               <mat-icon class="fav-badge" matTooltip="In your favorites">bookmark</mat-icon>
             }
+            @if (removable) {
+              <button mat-icon-button class="remove-btn" (click)="remove.emit(castle.castle_code)" aria-label="Remove from set" matTooltip="Remove from set">
+                <mat-icon>close</mat-icon>
+              </button>
+            }
           </div>
         }
         @if (isVisible('era')) {
