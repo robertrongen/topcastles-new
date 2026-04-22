@@ -35,8 +35,8 @@ router.get('/me', async (req, res) => {
   }
   const token = auth.slice(7);
   try {
-    const store = await readJson(USERS_FILE);
-    const user = store?.users.find(u => u.token === token);
+    const store = (await readJson(USERS_FILE)) ?? { users: [] };
+    const user = store.users.find(u => u.token === token);
     if (!user) return res.status(401).json({ error: 'Invalid token' });
     res.json({ id: user.id, favorites: user.favorites });
   } catch (err) {
