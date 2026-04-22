@@ -19,6 +19,7 @@ RUN NODE_OPTIONS=--max-old-space-size=4096 npm run build
 FROM node:18-alpine
 
 ENV NODE_ENV=production
+ENV CASTLE_IMAGE_PATH=/data/castle-images
 
 WORKDIR /app
 

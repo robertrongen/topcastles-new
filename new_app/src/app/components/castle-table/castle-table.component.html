@@ -48,7 +48,7 @@
             <a [routerLink]="['/castles', castle.castle_code]">
               @if (!failedLocal().has(castle.castle_code)) {
                 <img class="table-thumb"
-                     [src]="'/images/castles/small/' + castle.castle_code + '_small.jpg'"
+                     [src]="imageService.castleThumbnailUrl(castle.castle_code)"
                      [alt]="castle.castle_name"
                      [title]="castle.castle_name"
                      (error)="onLocalError(castle)"

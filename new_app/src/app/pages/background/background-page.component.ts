@@ -1,6 +1,7 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
+import { ImageService } from '../../services/image.service';
 
 @Component({
   selector: 'app-background-page',
@@ -11,6 +12,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 })
 export class BackgroundPageComponent implements OnInit {
   private route = inject(ActivatedRoute);
+  readonly imageService = inject(ImageService);
 
   readonly tabs = [
     { key: 'main', label: 'Definition' },

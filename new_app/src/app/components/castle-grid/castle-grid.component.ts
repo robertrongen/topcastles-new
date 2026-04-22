@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Castle } from '../../models/castle.model';
 import { FavoritesService } from '../../services/favorites.service';
+import { ImageService } from '../../services/image.service';
 
 @Component({
   selector: 'app-castle-grid',
@@ -22,6 +23,7 @@ export class CastleGridComponent {
 
   private router = inject(Router);
   private favoritesService = inject(FavoritesService);
+  imageService = inject(ImageService);
 
   isFavorite(code: string): boolean {
     return this.favoritesService.favorites().some(s => s.castleIds.includes(code));

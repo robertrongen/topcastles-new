@@ -6,6 +6,7 @@ dist
 coverage
 new_app/.angular
 new_app/node_modules
+new_app/public/images/castles
 graphify-out
 docs
 tests

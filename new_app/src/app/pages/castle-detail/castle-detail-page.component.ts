@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { CastleService } from '../../services/castle.service';
 import { FavoritesService } from '../../services/favorites.service';
 import { UserService } from '../../services/user.service';
+import { ImageService } from '../../services/image.service';
 import { Castle } from '../../models/castle.model';
 
 function haversineKm(lat1: number, lon1: number, lat2: number, lon2: number): number {
@@ -39,6 +40,7 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
   private meta = inject(Meta);
   private titleService = inject(Title);
+  imageService = inject(ImageService);
 
   favoritesOpen = signal(false);
 
@@ -120,7 +122,7 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
     if (!c) return null;
     const i = this.probeIndex();
     if (i >= 25) return null;
-    return `/images/castles/${c}${i === 0 ? '' : i + 1}.jpg`;
+    return this.imageService.castlePhotoUrl(c, i);
   });
 
   onImageLoad(url: string): void {

@@ -275,7 +275,7 @@
                   <a class="nearby-tile" [routerLink]="['/castles', item.castle.castle_code]">
                     <div class="nearby-thumb">
                       @if (!nearbyFailedLocal().has(item.castle.castle_code)) {
-                        <img [src]="'/images/castles/small/' + item.castle.castle_code + '_small.jpg'"
+                        <img [src]="imageService.castleThumbnailUrl(item.castle.castle_code)"
                              [alt]="item.castle.castle_name"
                              [title]="item.castle.castle_name"
                              (error)="onNearbyLocalError(item.castle.castle_code)"

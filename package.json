@@ -7,6 +7,7 @@
     "install:all": "npm install --prefix new_app && npm install --prefix scripts && npm install --prefix server",
 
     "start": "npm start --prefix new_app",
+    "dev": "node scripts/dev.js",
     "dev:server": "node server/index.js",
     "dev:app": "npm start --prefix new_app",
     "build": "npm run build --prefix new_app",

@@ -130,8 +130,8 @@ describe('NoCastleDetailPageComponent', () => {
     setup();
     const images = fixture.nativeElement.querySelectorAll('.nocastle-images img');
     expect(images.length).toBe(5);
-    expect(images[0].getAttribute('src')).toBe('/images/castles/chambord.jpg');
-    expect(images[1].getAttribute('src')).toBe('/images/castles/chambord2.jpg');
+    expect(images[0].getAttribute('src')).toBe('/castle-images/chambord.jpg');
+    expect(images[1].getAttribute('src')).toBe('/castle-images/chambord2.jpg');
   });
 
   it('should hide broken images via onImageError', () => {

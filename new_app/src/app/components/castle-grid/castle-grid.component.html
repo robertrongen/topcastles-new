@@ -6,7 +6,7 @@
         <div class="thumb-wrap">
           @if (!failedLocal().has(castle.castle_code)) {
             <img class="castle-thumb"
-                 [src]="'/images/castles/small/' + castle.castle_code + '_small.jpg'"
+                 [src]="imageService.castleThumbnailUrl(castle.castle_code)"
                  [alt]="castle.castle_name"
                  [title]="castle.castle_name"
                  (error)="onLocalError(castle)"

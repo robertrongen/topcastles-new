@@ -10,6 +10,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
 import { Castle } from '../../models/castle.model';
 import { FavoritesService } from '../../services/favorites.service';
+import { ImageService } from '../../services/image.service';
 
 export const COL_LABELS: Record<string, string> = {
   position:      'Pos',
@@ -59,6 +60,7 @@ export class CastleTableComponent {
 
   private bp = inject(BreakpointObserver);
   private favoritesService = inject(FavoritesService);
+  imageService = inject(ImageService);
 
   isFavorite(code: string): boolean {
     return this.favoritesService.favorites().some(s => s.castleIds.includes(code));

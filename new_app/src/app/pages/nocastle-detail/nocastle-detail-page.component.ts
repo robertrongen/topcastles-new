@@ -3,6 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { NoCastleService } from '../../services/no-castle.service';
+import { ImageService } from '../../services/image.service';
 import { NoCastle } from '../../models/castle.model';
 
 @Component({
@@ -15,6 +16,7 @@ import { NoCastle } from '../../models/castle.model';
 export class NoCastleDetailPageComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private noCastleService = inject(NoCastleService);
+  private imageService = inject(ImageService);
 
   code = signal('');
   loading = this.noCastleService.loading;
@@ -28,7 +30,7 @@ export class NoCastleDetailPageComponent implements OnInit {
     const c = this.code();
     if (!c) return [];
     return Array.from({ length: 5 }, (_, i) =>
-      `/images/castles/${c}${i === 0 ? '' : i + 1}.jpg`
+      this.imageService.castlePhotoUrl(c, i)
     );
   });
 
