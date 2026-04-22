@@ -303,18 +303,6 @@
 
       <!-- Right: images + map -->
       <aside class="detail-aside">
-
-        <!-- Sequential image probe: loads one at a time, stops on first 404 -->
-        @let nextProbe = probeUrl();
-        @if (nextProbe) {
-          <img class="preload-img"
-               [src]="nextProbe"
-               [alt]="castle()!.castle_name"
-               [title]="castle()!.castle_name"
-               (load)="onImageLoad(nextProbe)"
-               (error)="onImageError()" />
-        }
-
         @if (loadedImageUrls().length > 0) {
           <div class="featured-image-wrap">
             <img class="featured-image"

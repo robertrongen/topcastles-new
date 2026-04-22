@@ -52,6 +52,7 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
   private leafletMarker: any = null;
   private nearbyMarkersLayer: any = null;
   private keyHandler?: (e: KeyboardEvent) => void;
+  private imageLoadRun = 0;
 
   // Prefer enriched data once loaded; fall back to lean castle until then.
   castle = computed<Castle | undefined>(() => {
@@ -112,28 +113,6 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
   selectedIndex  = signal(0);
   lightboxIndex  = signal<number | null>(null);
 
-  private probeIndex = signal(0);
-  private probingDone = signal(false);
-
-  /** The single URL currently being probed; null when all images found or no more to try. */
-  probeUrl = computed(() => {
-    if (this.probingDone()) return null;
-    const c = this.code();
-    if (!c) return null;
-    const i = this.probeIndex();
-    if (i >= 25) return null;
-    return this.imageService.castlePhotoUrl(c, i);
-  });
-
-  onImageLoad(url: string): void {
-    this.loadedImageUrls.update(urls => urls.includes(url) ? urls : [...urls, url]);
-    this.probeIndex.update(i => i + 1);
-  }
-
-  onImageError(): void {
-    this.probingDone.set(true);
-  }
-
   selectImage(index: number): void {
     this.selectedIndex.set(index);
   }
@@ -176,16 +155,19 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
       }
     });
 
-    // Reset loaded images, selection and nearby fallbacks when castle changes
+    // Reset loaded images, selection and nearby fallbacks when castle changes.
     effect(() => {
-      this.code();
+      const code = this.code();
       this.loadedImageUrls.set([]);
       this.selectedIndex.set(0);
       this.lightboxIndex.set(null);
       this.nearbyFailedLocal.set(new Set());
       this.nearbyFailedWiki.set(new Set());
-      this.probeIndex.set(0);
-      this.probingDone.set(false);
+      this.imageLoadRun += 1;
+
+      if (code && isPlatformBrowser(this.platformId)) {
+        void this.loadCastleImages(code, this.imageLoadRun);
+      }
     });
 
     // Read castle(), nearbyCastles(), and mapContainer() as dependencies so the
@@ -198,6 +180,24 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
       if (!isPlatformBrowser(this.platformId)) return;
       this.initOrUpdateMap(castle.latitude, castle.longitude, castle.castle_name, nearby);
     });
+  }
+
+  private async loadCastleImages(code: string, run: number): Promise<void> {
+    for (let i = 0; i < 25; i += 1) {
+      const url = this.imageService.castlePhotoUrl(code, i);
+      let exists = false;
+
+      try {
+        exists = (await fetch(url, { method: 'HEAD' })).ok;
+      } catch {
+        exists = false;
+      }
+
+      if (run !== this.imageLoadRun || code !== this.code()) return;
+      if (!exists) return;
+
+      this.loadedImageUrls.update(urls => urls.includes(url) ? urls : [...urls, url]);
+    }
   }
 
   private async initOrUpdateMap(
