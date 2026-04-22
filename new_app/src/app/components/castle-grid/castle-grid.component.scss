@@ -61,6 +61,14 @@ $card-height: 200px;
     opacity: 0.65;
     white-space: nowrap;
     margin-bottom: 2px;
+
+    .fav-badge {
+      font-size: 0.85rem;
+      width: 0.85rem;
+      height: 0.85rem;
+      vertical-align: middle;
+      line-height: 1;
+    }
   }
 
   .castle-name {
