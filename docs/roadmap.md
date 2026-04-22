@@ -43,21 +43,20 @@ This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeli
 
 ### DP-4: Validate generated artifact ownership
 
-- Confirm which artifacts are generated and committed, especially `new_app/src/assets/data/*.json`, `new_app/public/api/`, `new_app/public/sitemap.xml`, and `new_app/prerender-routes.txt`.
-- Confirm which artifacts are generated and ignored, especially build output, graph output, dependencies, and runtime data.
-- Remove any remaining ambiguity without changing the runtime model.
+- Done: generated artifact ownership is documented in the ownership matrix in [pipeline.md](pipeline.md).
+- Generated-and-committed artifacts, generated-and-ignored artifacts, and runtime-only state are now classified without changing the runtime model.
 
 ### DP-5: Eliminate pipeline ambiguity
 
-- Make contributor-facing guidance clear enough that generated artifacts are not edited manually without regeneration.
-- Make it hard to bypass the pipeline accidentally when source content changes.
-- Keep admin API and rebuild-trigger work aligned with the rule that content changes affect prerendered output only after regeneration and rebuild.
+- Done: contributor guardrails in [pipeline.md](pipeline.md) and root `README.md` now identify the canonical source, `npm run data:regenerate`, and the required follow-up `npm run build`.
+- Generated artifacts are explicitly documented as pipeline outputs, not hand-edit targets.
+- Admin and rebuild-trigger guidance now reflects that prerendered output changes only after regeneration and build.
 
 ### DP-6: Prepare for eventual `old_app` decoupling
 
-- Reduce remaining dependency on `old_app/` over time without breaking ingestion, generated outputs, tests, or builds.
-- Keep the decoupling work incremental and reversible until a new canonical source is confirmed.
-- Preserve the current artifact boundaries during the transition.
+- Done: current `old_app/` dependency status is classified in [pipeline-flow.md](pipeline-flow.md).
+- Active ingestion uses `source-data/topcastles/Topcastles export.xlsx`; remaining `old_app/` references are transitional test/archive coverage or historical documentation.
+- Future decoupling work should stay incremental and preserve the artifact boundaries documented in [pipeline.md](pipeline.md).
 
 ## UX And Product Improvements
 
