@@ -337,21 +337,23 @@ Introduces runtime user state: accounts, token auth, and named castle sets. Impl
   - Token is a 32-byte hex string stored plaintext in `users.json`; no password hashing needed (ADR-009)
   - All writes via `json-store.js` (Phase 13.5) ✓
 
-- [ ] **14.2** Angular `UserService`
+- [x] **14.2** Favorites API — CRUD per-user sets
+  - Data model: `{ id: uuid, name: string (max 100), castleIds: string[] (deduped) }` stored in `user.favorites`
+  - `GET /api/user/favorites` — returns array of sets for authenticated user
+  - `POST /api/user/favorites` — create named set; name trimmed + validated, castleIds deduped; returns `201 + set`
+  - `PUT /api/user/favorites/:id` — update name and castleIds; 404 if not found
+  - `DELETE /api/user/favorites/:id` — remove set; 404 if not found, 204 on success
+  - Auth: all endpoints require `Authorization: Bearer <token>`; invalid/missing → 401 `{ error: "Unauthorized" }`
+  - Input errors → 400 with message; all writes via `json-store.js`
+
+- [ ] **14.3** Angular `UserService`
   - Signals: `currentUser = signal<User | null>(null)`
   - Token stored in `localStorage`; auto-login on app startup via `provideAppInitializer()`
   - Methods: `register()`, `login(token)`, `logout()`
 
-- [ ] **14.3** Favorites: save and remove castle
-  - `PUT /api/user/favorites/:setId/castles/:code` — add castle to named set
-  - `DELETE /api/user/favorites/:setId/castles/:code` — remove castle from named set
+- [ ] **14.4** Angular favorites integration
   - Heart/bookmark icon on castle cards (grid + table) and castle detail page; filled state reflects membership in any set
-
-- [ ] **14.4** Named sets — create, rename, delete
-  - `POST /api/user/favorites` — create named set (e.g. "My trip 2025"), returns set id
-  - `PATCH /api/user/favorites/:setId` — rename set
-  - `DELETE /api/user/favorites/:setId` — delete set and all its castle memberships
-  - `GET /api/user/favorites` — list all sets with castle counts
+  - Calls `POST/DELETE /api/user/favorites/:id` via `UserService`
 
 - [ ] **14.5** Favorites page
   - New route `/favorites` — lists user's named sets; each set shows its castles as a grid/table (reuse existing components)
