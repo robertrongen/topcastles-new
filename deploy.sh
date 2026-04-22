@@ -6,6 +6,21 @@
 
 set -e
 
+# --autostart <policy>  Docker restart policy: unless-stopped (default), always, no
+RESTART_POLICY="unless-stopped"
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --autostart)
+      RESTART_POLICY="$2"
+      shift 2
+      ;;
+    *)
+      echo "Unknown option: $1" >&2
+      exit 1
+      ;;
+  esac
+done
+
 # Start ssh-agent and add your key (will prompt for passphrase once)
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
@@ -41,7 +56,7 @@ ssh "${NAS_USER}@${NAS_HOST}" << EOF
   sudo docker rm "$CONTAINER_NAME" || true
 
   echo "Running new container..."
-  sudo docker run -d --restart unless-stopped --name "$CONTAINER_NAME" -p ${HOST_PORT}:${CONTAINER_PORT} "$FULL_IMAGE_NAME"
+  sudo docker run -d --restart "$RESTART_POLICY" --name "$CONTAINER_NAME" -p ${HOST_PORT}:${CONTAINER_PORT} "$FULL_IMAGE_NAME"
 
   echo "Deployment complete!"
 EOF
