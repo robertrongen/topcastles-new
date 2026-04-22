@@ -1,4 +1,5 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 
@@ -12,21 +13,37 @@ export interface UserProfile {
 @Injectable({ providedIn: 'root' })
 export class UserService {
   private http = inject(HttpClient);
+  private platformId = inject(PLATFORM_ID);
+
+  private get isBrowser(): boolean {
+    return isPlatformBrowser(this.platformId);
+  }
 
   getToken(): string | null {
-    return localStorage.getItem(TOKEN_KEY);
+    return this.isBrowser ? localStorage.getItem(TOKEN_KEY) : null;
   }
 
   private setToken(token: string): void {
-    localStorage.setItem(TOKEN_KEY, token);
+    if (this.isBrowser) localStorage.setItem(TOKEN_KEY, token);
+  }
+
+  clearToken(): void {
+    if (this.isBrowser) localStorage.removeItem(TOKEN_KEY);
   }
 
   async ensureUser(): Promise<void> {
-    if (this.getToken()) return;
+    if (!this.isBrowser || this.getToken()) return;
+    await this.createUser();
+  }
+
+  async handleUnauthorized(): Promise<void> {
+    if (!this.isBrowser) return;
+    this.clearToken();
     await this.createUser();
   }
 
   async createUser(): Promise<void> {
+    if (!this.isBrowser) return;
     const res = await firstValueFrom(
       this.http.post<{ token: string }>('/api/user/register', {})
     );
