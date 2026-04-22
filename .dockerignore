@@ -1,0 +1,16 @@
+node_modules
+.git
+.gitignore
+dist
+*.log
+coverage
+new_app/.angular
+new_app/node_modules
+graphify-out
+docs
+tests
+scripts
+old_app
+.beads
+.storybook
+storybook-static
