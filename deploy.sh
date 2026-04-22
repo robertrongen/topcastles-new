@@ -33,6 +33,7 @@ NAS_USER="robertron"
 CONTAINER_NAME="topcastles"
 HOST_PORT="8082"
 CONTAINER_PORT="3000"
+DATA_DIR="/volume1/docker/topcastles/data"
 
 echo "Building Angular application..."
 cd new_app
@@ -56,7 +57,11 @@ ssh "${NAS_USER}@${NAS_HOST}" << EOF
   sudo docker rm "$CONTAINER_NAME" || true
 
   echo "Running new container..."
-  sudo docker run -d --restart "$RESTART_POLICY" --name "$CONTAINER_NAME" -p ${HOST_PORT}:${CONTAINER_PORT} "$FULL_IMAGE_NAME"
+  mkdir -p "$DATA_DIR"
+  sudo docker run -d --restart "$RESTART_POLICY" --name "$CONTAINER_NAME" \
+    -p ${HOST_PORT}:${CONTAINER_PORT} \
+    -v ${DATA_DIR}:/data \
+    "$FULL_IMAGE_NAME"
 
   echo "Deployment complete!"
 EOF
