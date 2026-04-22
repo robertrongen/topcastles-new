@@ -30,11 +30,15 @@ npm run build              # Angular build and prerender output
 npm run start              # Angular dev server
 npm run dev:server         # Node API/static runtime server
 npm test                   # Angular unit tests
+npm run data:regenerate    # canonical content pipeline; regenerates committed artifacts
+npm run build              # required after content changes to refresh prerendered output
 npm run data:api           # regenerate committed static API JSON
 npm run data:sitemap       # regenerate committed sitemap
 npm run data:routes        # regenerate committed prerender route list
 npm run deploy             # build image and deploy to Synology NAS
 ```
+
+When source content changes, update the canonical spreadsheet source, run `npm run data:regenerate`, then run `npm run build`. Do not hand-edit generated JSON, sitemap, or prerender-route artifacts except as an emergency that is immediately regenerated through the pipeline.
 
 ## Documentation
 

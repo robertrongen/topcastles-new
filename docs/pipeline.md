@@ -74,6 +74,14 @@ npm run build
 
 Commit the changed source data plus any generated-and-committed outputs that result. Content changes that affect shipped artifacts must go through this pipeline rather than runtime mutation.
 
+## Contributor Guardrails
+
+- Canonical source content starts at `source-data/topcastles/Topcastles export.xlsx`; do not create a parallel source in `old_app/` or under generated output folders.
+- Use `npm run data:regenerate` for source-content changes. Running individual `data:*` scripts is for diagnosis or a known partial regeneration, not the normal contributor path.
+- Do not hand-edit `new_app/src/assets/data/*.json`, `new_app/public/api/*.json`, `new_app/public/api/by-country/*.json`, `new_app/public/sitemap.xml`, or `new_app/prerender-routes.txt`; regenerate them from source content.
+- Run `npm run build` after regeneration before publishing or deploying. Prerendered HTML, bundles, and copied public files become effective only after the build.
+- Admin or rebuild-trigger flows may update build-time JSON and request regeneration/rebuild work, but they must not directly mutate prerendered HTML or runtime bundles in place.
+
 ## Rules for Contributors
 
 - Keep build-time castle content separate from runtime user state.

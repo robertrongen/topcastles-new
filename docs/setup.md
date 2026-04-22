@@ -13,7 +13,7 @@
 | Formatting       | Prettier         | -       | Integrated with ESLint via `eslint-config-prettier`                |
 | Unit testing     | Karma + Jasmine  | -       | Angular CLI default                                                |
 | Package manager  | npm              | -       | Angular CLI default                                                |
-| Data layer       | Static JSON      | -       | CSV to JSON conversion at build time (ADR-003); no database        |
+| Data layer       | Static JSON      | -       | XLSX to JSON conversion at build time (ADR-003); no database       |
 | Rendering        | Angular SSR      | -       | `@angular/ssr` for SSR and prerendering (SEO)                      |
 | Containerization | Docker           | -       | Multi-stage build; Node Alpine runtime for Synology (ADR-004, ADR-008) |
 

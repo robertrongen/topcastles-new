@@ -23,7 +23,7 @@
 │           ▼                                      │
 │  ┌──────────────────┐                            │
 │  │  Static JSON     │  ← /assets/data/*.json     │
-│  │  (castle data)   │     built from CSV export  │
+│  │  (castle data)   │     built from XLSX source │
 │  └──────────────────┘                            │
 └──────────────────────────────────────────────────┘
 ```
