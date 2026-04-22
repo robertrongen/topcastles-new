@@ -14,14 +14,6 @@ function generateToken() {
   return randomBytes(32).toString('hex');
 }
 
-async function getUserFromToken(req) {
-  const auth = req.headers.authorization;
-  if (!auth || !auth.startsWith('Bearer ')) return null;
-  const token = auth.slice(7);
-  const store = (await readJson(USERS_FILE)) ?? { users: [] };
-  return store.users.find(u => u.token === token) ?? null;
-}
-
 async function getStoreAndUser(req) {
   const auth = req.headers.authorization;
   if (!auth || !auth.startsWith('Bearer ')) return { store: null, user: null };
@@ -29,6 +21,11 @@ async function getStoreAndUser(req) {
   const store = (await readJson(USERS_FILE)) ?? { users: [] };
   const user = store.users.find(u => u.token === token) ?? null;
   return { store, user };
+}
+
+async function getUserFromToken(req) {
+  const { user } = await getStoreAndUser(req);
+  return user;
 }
 
 function validateFavorite(input) {
@@ -137,9 +134,9 @@ router.delete('/favorites/:id', async (req, res) => {
     const { store, user } = await getStoreAndUser(req);
     if (!user) return res.status(401).json({ error: 'Unauthorized' });
 
-    const before = user.favorites.length;
-    user.favorites = user.favorites.filter(f => f.id !== req.params.id);
-    if (user.favorites.length === before) return res.status(404).json({ error: 'Not found' });
+    const index = user.favorites.findIndex(f => f.id === req.params.id);
+    if (index === -1) return res.status(404).json({ error: 'Not found' });
+    user.favorites.splice(index, 1);
 
     await writeJson(USERS_FILE, store);
     res.status(204).end();
