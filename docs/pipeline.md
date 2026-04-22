@@ -25,6 +25,23 @@ These are generated from source data but intentionally versioned because the app
 
 Do not edit generated committed artifacts by hand unless the corresponding generator is also updated or the edit is an emergency that will be regenerated immediately.
 
+## Generated Artifact Ownership Matrix
+
+| Artifact | Source Script | Location | Ownership | Rationale |
+| --- | --- | --- | --- | --- |
+| Castle source JSON | `scripts/xlsx_to_json.py` | `new_app/src/assets/data/castles.json` | Generated + committed | Intermediate app data from the canonical XLSX; later rewritten by `scripts/generate_lean_castles.js` and required by the app. |
+| No-castle JSON | `scripts/xlsx_to_json.py` | `new_app/src/assets/data/no_castles.json` | Generated + committed | Build-time page data loaded from `/assets/data`; versioned with castle content. |
+| Enriched castle JSON | `scripts/enrich_wikipedia.js`, `scripts/enrich_wikidata.js` | `new_app/src/assets/data/castles_enriched.json` | Generated + committed | Authoritative enriched dataset for lean data, static API, and prerender route generation. |
+| Lean castle JSON | `scripts/generate_lean_castles.js` | `new_app/src/assets/data/castles.json` | Generated + committed | App startup dataset served from `/assets/data`; never runtime-mutated. |
+| Castle delta JSON | `scripts/generate_lean_castles.js` | `new_app/src/assets/data/castles_delta.json` | Generated + committed | Detail-page enrichment delta served from `/assets/data`; regenerated from `castles_enriched.json`. |
+| Static API JSON | `scripts/generate_api.js` | `new_app/public/api/*.json`, `new_app/public/api/by-country/*.json` | Generated + committed | Public static API files copied into the build output and served read-only. |
+| Sitemap | `scripts/generate_sitemap.js` | `new_app/public/sitemap.xml` | Generated + committed | Search-engine artifact generated from build-time castle data. |
+| Prerender route list | `scripts/generate_prerender_routes.js` | `new_app/prerender-routes.txt` | Generated + committed | Angular build input that defines static prerender coverage. |
+| Angular build output | `npm run build` | `new_app/dist/` | Generated + ignored | Recreated during build; deployment artifact, not source. |
+| Graphify index | `graphify build` / `graphify auto-update` | `graphify-out/` | Generated + ignored | Local code-navigation output; not runtime or source content. |
+| Installed dependencies | `npm install` | `node_modules/`, `new_app/node_modules/`, `server/node_modules/`, `scripts/node_modules/` | Generated + ignored | Restored from lockfiles; never committed. |
+| Runtime user state | Node server JSON store | `/data/users.json`, local `data/users.json` | Runtime-only (never committed) | User tokens and favorites are runtime state on the mounted `/data` volume, separate from build-time castle content. |
+
 ## Generated and Ignored Artifacts
 
 These are build or tooling outputs and must not be committed:
