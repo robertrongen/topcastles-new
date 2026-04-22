@@ -41,3 +41,6 @@ graphify-out/cache/*
 .beads-credential-key
 .claude/settings.json
 bitwarden.txt
+
+# Runtime data (JSON store)
+data/
