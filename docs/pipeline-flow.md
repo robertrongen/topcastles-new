@@ -103,19 +103,18 @@ The canonical root-level pipeline command is `npm run data:regenerate`. It runs 
 | `new_app/dist/new_app/` | Angular build output | Generated and ignored | Recreated by `npm run build`. |
 | `data/users.json` | Runtime user state | Runtime-only | Must not be committed or mixed with build-time castle content. |
 
-## Active old_app Dependency Inventory
+## old_app dependency status
 
-| Path or Reference | Classification | Evidence | Extraction Status |
-| --- | --- | --- | --- |
-| `source-data/topcastles/Topcastles export.xlsx` | REQUIRED FOR ACTIVE PIPELINE | `scripts/xlsx_to_json.py` reads this path; `npm run data:convert` runs that script. | Extracted from `old_app/`; this is now the canonical active source. |
-| `old_app/database/Topcastles export.csv` | HISTORICAL/DOCUMENTATION ONLY | File is tracked and documented, but no current package script or pipeline script reads it. | Keep as archival or move alongside XLSX if retained as supporting source export. |
-| `old_app/` PHP files and includes | REQUIRED FOR ACTIVE TESTING | `tests/test_php_baseline.py` sets `OLD_APP` and validates PHP include paths, security patterns, forms, SEO files, and static assets. | Decide whether these baseline tests remain active; if yes, rename their scope as archive validation rather than product tests. |
-| `old_app/sitemap.xml`, `old_app/robots.txt`, old PHP forms/assets | REQUIRED FOR ACTIVE TESTING | Referenced by `tests/test_php_baseline.py`. | Keep under `old_app/` while PHP baseline tests remain active. |
-| `docs/migration-report.md` references to `old_app/` | HISTORICAL/DOCUMENTATION ONLY | Migration history explicitly describes the legacy app and dropped scope. | No extraction needed. |
-| `docs/decisions.md` references to `old_app/` and `scripts/csv_to_json.py` | HISTORICAL/DOCUMENTATION ONLY, with stale implementation details | ADRs record past decisions; some names reflect earlier CSV-based implementation. | Leave ADR history intact unless a future ADR supersedes it. |
-| `docs/setup.md` source-data references | CURRENT DOCUMENTATION | Current command uses XLSX via `scripts/xlsx_to_json.py`; setup now names the active spreadsheet source. | No extraction action needed. |
-| `docs/architecture.md` prior `csv_to_json.py`/CSV reference | DEAD/STALE REFERENCE | Current script is `scripts/xlsx_to_json.py`; this document has been corrected to the current implementation. | Corrected in this task. |
-| Runtime server and Angular app code | No active old_app dependency found | Targeted search found no runtime reads from `old_app/`. | No extraction needed. |
+No current ingestion step reads from `old_app/`: `npm run data:regenerate` starts with `scripts/xlsx_to_json.py`, which reads `source-data/topcastles/Topcastles export.xlsx`. The remaining `old_app/` references are transitional test/archive coverage or historical documentation.
+
+| Reference | Location | Classification | Action | Notes |
+| --- | --- | --- | --- | --- |
+| `source-data/topcastles/Topcastles export.xlsx` | `scripts/xlsx_to_json.py`, root `data:convert` script | Ingestion-critical | Keep unchanged | Canonical XLSX source, already extracted from `old_app/`. |
+| `old_app/database/Topcastles export.csv` | `old_app/database/`, this document | Documentation-only | Keep archived for now | Not read by the root pipeline; decide later whether it moves beside the XLSX or remains with the archive. |
+| `old_app/` PHP fixture tree | `tests/test_php_baseline.py` | Transitional | Keep until test strategy changes | Static baseline tests still validate archived PHP files, includes, forms, content, images, robots, and sitemap. |
+| `old_app/sitemap.xml`, `old_app/robots.txt`, legacy forms/assets | `tests/test_php_baseline.py` | Transitional | Keep with PHP fixture tree | Required only because the baseline suite still covers archive integrity. |
+| Historical `old_app/` references | `docs/migration-report.md`, `docs/decisions.md` | Documentation-only | Leave historical records intact | ADR and migration history may mention legacy paths without implying active runtime or ingestion use. |
+| Runtime server and Angular app | `server/`, `new_app/src/app/` | Dead / unused | No action needed | No active runtime dependency on `old_app/` was found in the assembled context. |
 
 ## Proposed Extraction Targets
 
