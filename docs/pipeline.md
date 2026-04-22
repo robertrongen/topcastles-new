@@ -1,6 +1,6 @@
 # Artifact Policy
 
-This repo is JSON-only: there is no application database. The deployed runtime is a single Docker container whose entry point is the Node server in `server/index.js`. Build-time content and runtime state must stay separate. Active future work lives in [roadmap.md](roadmap.md); historical migration context lives in [migration-report.md](migration-report.md).
+This repo is JSON-only: there is no application database. The deployed runtime is a single Docker container whose entry point is the Node server in `server/index.js`. Build-time content and runtime state must stay separate. Active future work lives in [roadmap.md](roadmap.md); the current pipeline map and `old_app/` extraction plan live in [pipeline-flow.md](pipeline-flow.md); historical migration context lives in [migration-report.md](migration-report.md).
 
 ## Source Artifacts
 
@@ -11,7 +11,7 @@ Source artifacts are hand-authored inputs that belong in git:
 - Data pipeline scripts under `scripts/`.
 - Documentation under `docs/`, `README.md`, and `DEVELOPER.md`.
 - Package manifests and lockfiles, including `package-lock.json`, `new_app/package-lock.json`, `server/package-lock.json`, and `scripts/package-lock.json`.
-- `old_app/database/` CSV/XLSX exports. This legacy directory is still a data-source dependency for ingestion.
+- `old_app/database/` CSV/XLSX exports. This legacy directory is still a data-source dependency for ingestion, but active source data is scheduled for extraction to a current non-legacy location so `old_app/` can become archival only.
 
 ## Generated and Committed Artifacts
 
@@ -49,8 +49,8 @@ When castle source content changes:
 
 ```bash
 npm run data:convert
-npm run data:enrich:wikidata
 npm run data:enrich:wikipedia
+npm run data:enrich:wikidata
 npm run data:lean
 npm run data:api
 npm run data:sitemap
@@ -65,5 +65,6 @@ Commit the changed source data plus any generated-and-committed outputs that res
 - Keep build-time castle content separate from runtime user state.
 - Do not introduce a database; use JSON files and the existing data pipeline.
 - Keep `old_app/database/` until ingestion no longer depends on it.
+- Do not add new active dependencies on `old_app/`; required source-data dependencies should move toward the extraction plan in [pipeline-flow.md](pipeline-flow.md).
 - Do not commit `node_modules/`, `graphify-out/`, `dist/`, or runtime data.
 - Treat `docs/pipeline.md` as the source of truth for artifact classification.

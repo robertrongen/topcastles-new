@@ -12,7 +12,7 @@ This is the active forward-looking worklist for Topcastles. Current runtime arch
 
 ## Data Pipeline And Content Ownership
 
-This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeline.md) remains the source of truth for artifact classification and regeneration rules, and [architecture.md](architecture.md) remains the source of truth for data flow, the JSON-only model, and build-time versus runtime separation.
+This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeline.md) remains the source of truth for artifact classification and regeneration rules, [pipeline-flow.md](pipeline-flow.md) maps the current flow and `old_app/` extraction plan, and [architecture.md](architecture.md) remains the source of truth for data flow, the JSON-only model, and build-time versus runtime separation.
 
 ### Goal
 
@@ -24,6 +24,7 @@ This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeli
 
 ### DP-1: Map the current pipeline end-to-end
 
+- Done: current flow, artifact ownership, active `old_app/` dependencies, and extraction targets are mapped in [pipeline-flow.md](pipeline-flow.md).
 - Document the flow from `old_app/database/` through `scripts/`, generated JSON, static API slices, sitemap output, prerender routes, and Angular app consumption.
 - Identify the transformation steps and their required order.
 - Cross-check the map against [pipeline.md](pipeline.md) rather than duplicating artifact rules here.
