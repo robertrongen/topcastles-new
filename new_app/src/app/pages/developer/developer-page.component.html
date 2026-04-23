@@ -226,26 +226,17 @@
         <h2>Setup</h2>
         <ol class="setup-steps">
           <li>
-            <strong>Clone or download the repo</strong>
+            <strong>Use the hosted MCP server URL</strong>
             <div class="code-block">
-              <button mat-icon-button class="copy-btn" (click)="copy('mcpClone')" [title]="copied() === 'mcpClone' ? 'Copied!' : 'Copy'">
-                <mat-icon>{{ copied() === 'mcpClone' ? 'check' : 'content_copy' }}</mat-icon>
+              <button mat-icon-button class="copy-btn" (click)="copy('mcpUrl')" [title]="copied() === 'mcpUrl' ? 'Copied!' : 'Copy'">
+                <mat-icon>{{ copied() === 'mcpUrl' ? 'check' : 'content_copy' }}</mat-icon>
               </button>
-              <pre><code>{{ snippets['mcpClone'] }}</code></pre>
-            </div>
-          </li>
-          <li>
-            <strong>Install dependencies</strong>
-            <div class="code-block">
-              <button mat-icon-button class="copy-btn" (click)="copy('mcpInstall')" [title]="copied() === 'mcpInstall' ? 'Copied!' : 'Copy'">
-                <mat-icon>{{ copied() === 'mcpInstall' ? 'check' : 'content_copy' }}</mat-icon>
-              </button>
-              <pre><code>{{ snippets['mcpInstall'] }}</code></pre>
+              <pre><code>{{ snippets['mcpUrl'] }}</code></pre>
             </div>
           </li>
           <li>
             <strong>Configure your AI assistant</strong>
-            <p>Add to <code>claude_desktop_config.json</code> (Claude Desktop) or your tool's MCP config:</p>
+            <p>Add the hosted URL to <code>claude_desktop_config.json</code> (Claude Desktop) or your tool's MCP config:</p>
             <div class="code-block">
               <button mat-icon-button class="copy-btn" (click)="copy('mcpConfig')" [title]="copied() === 'mcpConfig' ? 'Copied!' : 'Copy'">
                 <mat-icon>{{ copied() === 'mcpConfig' ? 'check' : 'content_copy' }}</mat-icon>

@@ -58,14 +58,12 @@ castles = requests.get('/api/castles.json').json()
 unesco = [c for c in castles if c.get('heritage_status') and 'UNESCO' in c['heritage_status']]
 print(f"{len(unesco)} UNESCO castles found")`,
 
-    mcpClone:    `git clone https://github.com/hobunror/topcastles-new.git`,
-    mcpInstall:  `cd topcastles-new/scripts\nnpm install`,
+    mcpUrl: `https://topcastles.hobunror.synology.me/mcp`,
     mcpConfig:
 `{
   "mcpServers": {
     "topcastles": {
-      "command": "node",
-      "args": ["/absolute/path/to/scripts/mcp-server.js"]
+      "url": "https://topcastles.hobunror.synology.me/mcp"
     }
   }
 }`,
