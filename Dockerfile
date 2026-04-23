@@ -20,6 +20,7 @@ FROM node:18-alpine
 
 ENV NODE_ENV=production
 ENV CASTLE_IMAGE_PATH=/data/castle-images
+ENV USERS_FILE=/data/users.json
 
 WORKDIR /app
 

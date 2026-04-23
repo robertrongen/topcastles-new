@@ -4,7 +4,9 @@ import path from 'path';
 import { readJson, writeJson } from '../lib/json-store.js';
 
 const router = Router();
-const USERS_FILE = path.join(process.cwd(), 'data/users.json');
+const USERS_FILE = path.resolve(
+  process.env.USERS_FILE ?? path.join(process.cwd(), 'data/users.json')
+);
 
 function logRouteError(route, error, details = {}) {
   console.error(`[user-api] ${route}`, details, error);
