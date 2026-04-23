@@ -26,23 +26,13 @@ app.get('/api/health', (_req, res) => {
 
 app.use('/api/user', userRoutes);
 
-app.get('/castle-images/*', (req, res) => {
-  const fileName = req.params[0];
-  if (!fileName || fileName.includes('\0')) {
-    return res.sendStatus(404);
-  }
+app.use('/castle-images', express.static(CASTLE_IMAGE_ROOT, {
+  fallthrough: true,
+  maxAge: '1d',
+}));
 
-  const imagePath = path.resolve(CASTLE_IMAGE_ROOT, fileName);
-  if (imagePath !== CASTLE_IMAGE_ROOT && !imagePath.startsWith(CASTLE_IMAGE_ROOT + path.sep)) {
-    return res.sendStatus(404);
-  }
-
-  res.set('Cache-Control', 'public, max-age=86400');
-  res.sendFile(imagePath, err => {
-    if (err && !res.headersSent) {
-      res.sendStatus(404);
-    }
-  });
+app.use('/castle-images', (_req, res) => {
+  res.sendStatus(404);
 });
 
 app.use(express.static(DIST));
@@ -57,5 +47,5 @@ app.get('*', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`TopCastles server listening on port ${PORT}`);
-  console.log(`Castle images served from ${CASTLE_IMAGE_ROOT}`);
+  console.log(`/castle-images mounted from ${CASTLE_IMAGE_ROOT}`);
 });
