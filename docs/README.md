@@ -7,6 +7,7 @@
 - [deployment.md](deployment.md) - Synology NAS deployment via `deploy.sh`
 - [new-developer-onboarding.md](new-developer-onboarding.md) - VS Code-first workflow for beads, Graphify, context pipeline, and verification
 - [pipeline.md](pipeline.md) - build and CI pipeline steps
+- [prompt-authoring-guide.md](prompt-authoring-guide.md) - how to write short, repo-native build prompts for Topcastles work
 - [spec-kit.md](spec-kit.md) - when to use normal lightweight workflow vs fuller Spec Kit discipline
 - [prompts/adr-template.md](prompts/adr-template.md) - short prompt scaffold for architecture decision drafts
 - [prompts/bug-rca-template.md](prompts/bug-rca-template.md) - short prompt scaffold for non-trivial bug root-cause analysis
