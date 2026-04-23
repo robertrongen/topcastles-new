@@ -8,6 +8,9 @@
 - [new-developer-onboarding.md](new-developer-onboarding.md) - VS Code-first workflow for beads, Graphify, context pipeline, and verification
 - [pipeline.md](pipeline.md) - build and CI pipeline steps
 - [spec-kit.md](spec-kit.md) - when to use normal lightweight workflow vs fuller Spec Kit discipline
+- [prompts/adr-template.md](prompts/adr-template.md) - short prompt scaffold for architecture decision drafts
+- [prompts/bug-rca-template.md](prompts/bug-rca-template.md) - short prompt scaffold for non-trivial bug root-cause analysis
+- [prompts/deployment-smoke-check-template.md](prompts/deployment-smoke-check-template.md) - short prompt scaffold for runtime-sensitive deployment and smoke verification
 - [prompts/high-risk-roadmap-template.md](prompts/high-risk-roadmap-template.md) - short prompt scaffold for architecture-sensitive roadmap work
 - [prompts/task-implementation-template.md](prompts/task-implementation-template.md) - reusable prompt scaffold for AI-assisted task implementation
 - [setup.md](setup.md) - stack and tooling reference
