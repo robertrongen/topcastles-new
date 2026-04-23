@@ -62,8 +62,13 @@ This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeli
 
 - **9.5: Design refresh with Storybook and Figma/Penpot exploration**
   - Expand Storybook coverage before the redesign begins.
-  - Explore layouts and component states before implementation.
-  - Candidate areas: typography scale, card layout, colour hierarchy, mobile responsiveness, and empty states.
+  - Use design exploration or prototyping to establish a cleaner, more harmonic visual direction before implementation.
+  - Refine typography hierarchy and relative font sizing so headings, summary text, metadata, and dense lists have clearer priority.
+  - Improve whitespace consistency and layout rhythm across page sections, cards, filters, and repeated content.
+  - Modernize the overall visual language so the product no longer feels dated, while preserving the current app architecture and content model.
+  - Improve consistency across both light and dark themes instead of treating dark mode as isolated fixes.
+  - Make table layouts scale more deliberately, especially top countries and top regions, so they avoid unnecessary full-width presentation and excessive whitespace on larger screens.
+  - Candidate areas: typography scale, card layout, colour hierarchy, table density and width behavior, mobile responsiveness, and empty states.
 
 - **10.3: PWA / service worker**
   - Add `@angular/pwa`, generate `ngsw-config.json`, and register the service worker.
