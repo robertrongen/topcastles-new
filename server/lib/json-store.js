@@ -7,7 +7,9 @@ const mutex = new Mutex();
 export async function readJson(filePath) {
   try {
     const text = await readFile(filePath, 'utf-8');
-    return JSON.parse(text);
+    const normalized = text.replace(/^\uFEFF/, '').trim();
+    if (!normalized) return null;
+    return JSON.parse(normalized);
   } catch (err) {
     if (err.code === 'ENOENT') return null;
     throw err;

@@ -14,6 +14,7 @@ export interface UserProfile {
 export class UserService {
   private http = inject(HttpClient);
   private platformId = inject(PLATFORM_ID);
+  private registrationInFlight: Promise<boolean> | null = null;
 
   private get isBrowser(): boolean {
     return isPlatformBrowser(this.platformId);
@@ -34,28 +35,47 @@ export class UserService {
   async ensureUser(): Promise<void> {
     if (!this.isBrowser || this.getToken()) return;
     try {
-      await this.createUser();
+      await this.registerAnonymousUser();
     } catch {
-      // Backend unavailable (e.g. ng serve without Node server) — silent no-op
+      // Backend unavailable (e.g. ng serve without Node server) - silent no-op
     }
   }
 
-  async handleUnauthorized(): Promise<void> {
-    if (!this.isBrowser) return;
+  async handleUnauthorized(): Promise<boolean> {
+    if (!this.isBrowser) return false;
     this.clearToken();
     try {
-      await this.createUser();
+      return await this.registerAnonymousUser();
     } catch {
-      // silent
+      return false;
     }
   }
 
   async createUser(): Promise<void> {
-    if (!this.isBrowser) return;
-    const res = await firstValueFrom(
-      this.http.post<{ token: string }>('/api/user/register', {})
-    );
-    this.setToken(res.token);
+    await this.registerAnonymousUser();
+  }
+
+  private async registerAnonymousUser(): Promise<boolean> {
+    if (!this.isBrowser) return false;
+    if (this.getToken()) return true;
+
+    if (!this.registrationInFlight) {
+      this.registrationInFlight = (async () => {
+        const res = await firstValueFrom(
+          this.http.post<{ token?: string }>('/api/user/register', {})
+        );
+        const token = typeof res?.token === 'string' ? res.token.trim() : '';
+        if (!token) {
+          throw new Error('Registration did not return a token');
+        }
+        this.setToken(token);
+        return true;
+      })().finally(() => {
+        this.registrationInFlight = null;
+      });
+    }
+
+    return this.registrationInFlight;
   }
 
   async getMe(): Promise<UserProfile | null> {

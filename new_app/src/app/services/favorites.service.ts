@@ -26,8 +26,10 @@ export class FavoritesService {
       return await call();
     } catch (err) {
       if (err instanceof HttpErrorResponse && err.status === 401) {
-        await this.userService.handleUnauthorized();
-        return call();
+        const recovered = await this.userService.handleUnauthorized();
+        if (recovered) {
+          return call();
+        }
       }
       throw err;
     }

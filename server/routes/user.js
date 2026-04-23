@@ -6,6 +6,10 @@ import { readJson, writeJson } from '../lib/json-store.js';
 const router = Router();
 const USERS_FILE = path.join(process.cwd(), 'data/users.json');
 
+function logRouteError(route, error, details = {}) {
+  console.error(`[user-api] ${route}`, details, error);
+}
+
 function generateId() {
   return randomUUID();
 }
@@ -14,11 +18,35 @@ function generateToken() {
   return randomBytes(32).toString('hex');
 }
 
+function normalizeFavoriteSet(set) {
+  return {
+    id: typeof set?.id === 'string' && set.id.trim() ? set.id : randomUUID(),
+    name: typeof set?.name === 'string' ? set.name : '',
+    castleIds: Array.isArray(set?.castleIds)
+      ? [...new Set(set.castleIds.filter((id) => typeof id === 'string'))]
+      : [],
+  };
+}
+
+function normalizeUser(user) {
+  return {
+    id: typeof user?.id === 'string' && user.id.trim() ? user.id : generateId(),
+    token: typeof user?.token === 'string' && user.token.trim() ? user.token : generateToken(),
+    favorites: Array.isArray(user?.favorites) ? user.favorites.map(normalizeFavoriteSet) : [],
+  };
+}
+
+async function readStore() {
+  const raw = await readJson(USERS_FILE);
+  const users = Array.isArray(raw?.users) ? raw.users.map(normalizeUser) : [];
+  return { users };
+}
+
 async function getStoreAndUser(req) {
   const auth = req.headers.authorization;
   if (!auth || !auth.startsWith('Bearer ')) return { store: null, user: null };
   const token = auth.slice(7);
-  const store = (await readJson(USERS_FILE)) ?? { users: [] };
+  const store = await readStore();
   const user = store.users.find(u => u.token === token) ?? null;
   return { store, user };
 }
@@ -42,13 +70,18 @@ function validateFavorite(input) {
 
 // POST /api/user/register
 router.post('/register', async (req, res) => {
+  if (req.body != null && (typeof req.body !== 'object' || Array.isArray(req.body))) {
+    return res.status(400).json({ error: 'Request body must be a JSON object' });
+  }
+
   try {
-    const store = (await readJson(USERS_FILE)) ?? { users: [] };
+    const store = await readStore();
     const user = { id: generateId(), token: generateToken(), favorites: [] };
     store.users.push(user);
     await writeJson(USERS_FILE, store);
     res.json({ token: user.token });
   } catch (err) {
+    logRouteError('register', err, { file: USERS_FILE });
     res.status(500).json({ error: 'Registration failed' });
   }
 });
@@ -61,11 +94,12 @@ router.get('/me', async (req, res) => {
   }
   const token = auth.slice(7);
   try {
-    const store = (await readJson(USERS_FILE)) ?? { users: [] };
+    const store = await readStore();
     const user = store.users.find(u => u.token === token);
     if (!user) return res.status(401).json({ error: 'Unauthorized' });
     res.json({ id: user.id, favorites: user.favorites });
   } catch (err) {
+    logRouteError('me', err, { hasAuthHeader: true });
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -77,6 +111,7 @@ router.get('/favorites', async (req, res) => {
     if (!user) return res.status(401).json({ error: 'Unauthorized' });
     res.json(user.favorites);
   } catch (err) {
+    logRouteError('favorites:get', err, { hasAuthHeader: Boolean(req.headers.authorization) });
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -99,6 +134,7 @@ router.post('/favorites', async (req, res) => {
     await writeJson(USERS_FILE, store);
     res.status(201).json(set);
   } catch (err) {
+    logRouteError('favorites:create', err, { hasAuthHeader: Boolean(req.headers.authorization) });
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -124,6 +160,7 @@ router.put('/favorites/:id', async (req, res) => {
     await writeJson(USERS_FILE, store);
     res.json(set);
   } catch (err) {
+    logRouteError('favorites:update', err, { id: req.params.id, hasAuthHeader: Boolean(req.headers.authorization) });
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -141,6 +178,7 @@ router.delete('/favorites/:id', async (req, res) => {
     await writeJson(USERS_FILE, store);
     res.status(204).end();
   } catch (err) {
+    logRouteError('favorites:delete', err, { id: req.params.id, hasAuthHeader: Boolean(req.headers.authorization) });
     res.status(500).json({ error: 'Server error' });
   }
 });
