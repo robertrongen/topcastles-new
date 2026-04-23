@@ -102,6 +102,14 @@ bd prime
 
 beads data is synced with `bd dolt push`.
 
+### Spec Kit
+
+Topcastles uses Spec Kit as a lightweight policy layer, not as a replacement for Beads, Graphify, or the local context pipeline.
+
+- Keep prompts short and reference repo docs instead of repeating long instructions.
+- For normal work, use the existing bead + Graphify + context-bundle flow.
+- For architecture-sensitive roadmap work, follow `.specify/memory/constitution.md` and `docs/spec-kit.md` before implementation.
+
 ### graphify
 
 graphify builds an AI navigation graph in `graphify-out/`:

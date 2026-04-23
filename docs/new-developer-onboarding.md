@@ -2,6 +2,8 @@
 
 This guide helps you start work the same way maintainers and agents do in Topcastles.
 
+Prompts should stay short. Reusable workflow and architecture guidance belongs in repo docs, the bead, the Graphify lookup, and the context bundle rather than repeated prompt prose.
+
 ## How to start
 
 1. Open VS Code at repo root and run:
@@ -14,6 +16,9 @@ This guide helps you start work the same way maintainers and agents do in Topcas
 4. For non-trivial tasks, build context artifacts:
    - `npm run context:index`
    - `npm run context:resolve -- <bead-id> --query "<task focus>" --budget medium`
+5. Use Spec Kit only as a policy layer when the task is architecture-sensitive or roadmap-heavy:
+   - Follow `.specify/memory/constitution.md`
+   - See `docs/spec-kit.md` for when the fuller Spec Kit flow is warranted
 
 ## How to choose context
 
@@ -22,6 +27,7 @@ Use the smallest context that can safely complete the task:
 - Trivial edit (single file, obvious): bead + Graphify lookup is enough.
 - Non-trivial edit (multiple files or architecture touch): bead + Graphify + context bundle.
 - Runtime/build/deployment-sensitive edit: include ADRs and `docs/architecture.md`, `docs/pipeline.md`, `docs/roadmap.md`.
+- High-risk roadmap edit: use the above plus the Topcastles Spec Kit constitution and fuller Spec Kit planning flow.
 
 Classify task type early:
 

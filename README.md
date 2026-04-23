@@ -44,6 +44,7 @@ When source content changes, update the canonical spreadsheet source, run `npm r
 
 - [docs/new-developer-onboarding.md](docs/new-developer-onboarding.md) - quick start workflow for new contributors in VS Code.
 - [DEVELOPER.md](DEVELOPER.md) - contributor workflow, setup, commands, and tooling.
+- [docs/spec-kit.md](docs/spec-kit.md) - when to use lightweight workflow versus fuller Spec Kit discipline.
 - [docs/architecture.md](docs/architecture.md) - current system design and runtime model.
 - [docs/pipeline.md](docs/pipeline.md) - artifact policy for source, generated, and runtime files.
 - [docs/roadmap.md](docs/roadmap.md) - active forward-looking worklist.

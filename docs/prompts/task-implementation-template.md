@@ -2,6 +2,8 @@
 
 Copy, fill placeholders, and use as the default prompt for Codex/Claude-style agents.
 
+Keep the prompt short. Reference repo docs, the bead, Graphify results, and the context bundle instead of restating reusable workflow guidance inline.
+
 ```md
 You are working in the Topcastles repository.
 
@@ -19,6 +21,9 @@ Mandatory workflow
    - Run `npm run context:index`.
    - Run `npm run context:resolve -- <id> --query "<focused query>" --budget medium`.
    - Use the resulting `data/context/bundles/<id>.json` as primary injected context.
+4. For architecture-sensitive roadmap work only:
+   - Follow `.specify/memory/constitution.md`.
+   - Use the fuller Spec Kit flow described in `docs/spec-kit.md`.
 
 Architecture constraints
 - Respect ADRs and modernization phases in docs.
@@ -28,6 +33,7 @@ Architecture constraints
 - No multi-container setup.
 - No runtime behavior changes unless explicitly required.
 - Avoid broad refactors and unrelated edits.
+- Do not burden small tasks with fuller Spec Kit ceremony unless the work is architecture-sensitive.
 
 Implementation expectations
 - Keep scope incremental and reviewable.

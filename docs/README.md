@@ -7,6 +7,8 @@
 - [deployment.md](deployment.md) - Synology NAS deployment via `deploy.sh`
 - [new-developer-onboarding.md](new-developer-onboarding.md) - VS Code-first workflow for beads, Graphify, context pipeline, and verification
 - [pipeline.md](pipeline.md) - build and CI pipeline steps
+- [spec-kit.md](spec-kit.md) - when to use normal lightweight workflow vs fuller Spec Kit discipline
+- [prompts/high-risk-roadmap-template.md](prompts/high-risk-roadmap-template.md) - short prompt scaffold for architecture-sensitive roadmap work
 - [prompts/task-implementation-template.md](prompts/task-implementation-template.md) - reusable prompt scaffold for AI-assisted task implementation
 - [setup.md](setup.md) - stack and tooling reference
 - [migration-report.md](migration-report.md) - summary of the PHP-to-Angular migration
@@ -20,3 +22,4 @@ When behavior, architecture, or operational assumptions change, update the relev
 - `pipeline.md` for build or deployment pipeline changes
 - `deployment.md` for operational changes to `deploy.sh` or the NAS setup
 - root `README.md` when the developer workflow changes
+- Keep prompts short by updating shared repo docs instead of repeating long instructions in prompt templates
