@@ -171,7 +171,7 @@ components:
           type: string
         website:
           type: string
-          format: uri
+          description: Legacy website string; may be a full URL, a non-absolute legacy URL string, or an empty string if unavailable.
         wikipedia_extract:
           type: string
           nullable: true
