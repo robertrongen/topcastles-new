@@ -2,6 +2,19 @@
 
 This is the active forward-looking worklist for Topcastles. Current runtime architecture is documented in [architecture.md](architecture.md), contributor workflow in [../DEVELOPER.md](../DEVELOPER.md), artifact policy in [pipeline.md](pipeline.md), and completed migration history in [migration-report.md](migration-report.md).
 
+## Resolved Issues Snapshot (as of 2026-04-23)
+
+Recent resolved Beads issues already delivered in this repo:
+
+- Data pipeline and artifact governance: `DP-001` to `DP-006`, `CLEANUP-004`, `topcastles-6ee`, `topcastles-82b`.
+- Runtime server baseline and deployment hardening: `topcastles-3w1`, `topcastles-ap2`, `topcastles-hgw`, `topcastles-6s3`, `topcastles-0d1`, `topcastles-d73`, `topcastles-lmw`.
+- Images and detail-page image behavior: `IMG-001`, `IMG-002`, `topcastles-r0p`, `topcastles-52t`.
+- Build/prerender/runtime quality fixes: `topcastles-76n`, `topcastles-cc9`, `topcastles-v83`, `topcastles-p0u`, `topcastles-o52`.
+- User/favorites phase delivery: `topcastles-08a`, `topcastles-vbq`, `topcastles-3c6`, `topcastles-h3j`, `topcastles-ul8`, `topcastles-rye`, `topcastles-c5z`, `topcastles-6kg`, `topcastles-w8e`, `topcastles-d17`, `topcastles-1iu`, `topcastles-1vg`, `topcastles-d7g`.
+- Workflow/tooling/docs foundations: `topcastles-2mn`, `topcastles-44i`, `topcastles-ozy`, `topcastles-3rm`, `TEST-001`.
+
+Note: some umbrella phase issues remain open as coordination trackers even when sub-issues above are already completed.
+
 ## Known Baseline Issues
 
 - **TD-1: Fix pre-existing unit test failures / test runner reliability**
