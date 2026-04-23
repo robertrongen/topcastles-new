@@ -1,0 +1,84 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "workflow: guide",
+      "type": "shell",
+      "command": "npm run workflow:guide -- ${input:beadId}",
+      "problemMatcher": []
+    },
+    {
+      "label": "graph: query symbol",
+      "type": "shell",
+      "command": "npm run graph:query -- ${input:graphSymbol}",
+      "problemMatcher": []
+    },
+    {
+      "label": "context: index",
+      "type": "shell",
+      "command": "npm run context:index",
+      "problemMatcher": []
+    },
+    {
+      "label": "context: resolve bundle",
+      "type": "shell",
+      "command": "npm run context:resolve -- ${input:beadId} --query \"${input:contextQuery}\" --budget ${input:contextBudget}",
+      "problemMatcher": []
+    },
+    {
+      "label": "test",
+      "type": "shell",
+      "command": "npm test",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "npm run build",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "dev: server",
+      "type": "shell",
+      "command": "npm run dev:server",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "verify: smoke endpoints + deep links",
+      "type": "shell",
+      "command": "powershell -NoProfile -Command \"$base = if ($env:TOPCASTLES_BASE_URL) { $env:TOPCASTLES_BASE_URL } else { 'http://localhost:3000' }; $paths = @('/', '/api/health', '/api/index.json', '/this-route-should-fallback', '/castles/krak'); foreach ($p in $paths) { $u = \\\"$base$p\\\"; try { $r = Invoke-WebRequest -Uri $u -UseBasicParsing; Write-Host \\\"$u -> $($r.StatusCode)\\\" } catch { Write-Error \\\"$u -> FAILED: $($_.Exception.Message)\\\"; exit 1 } }\"",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "beadId",
+      "type": "promptString",
+      "description": "Bead ID (example: topcastles-44i)"
+    },
+    {
+      "id": "graphSymbol",
+      "type": "promptString",
+      "description": "Graphify symbol, route, or filename fragment"
+    },
+    {
+      "id": "contextQuery",
+      "type": "promptString",
+      "description": "Short context focus query"
+    },
+    {
+      "id": "contextBudget",
+      "type": "pickString",
+      "description": "Context budget tier",
+      "options": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "default": "medium"
+    }
+  ]
+}

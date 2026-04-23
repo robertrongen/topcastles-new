@@ -2,12 +2,14 @@
 
 ## Files
 
-- [architecture.md](architecture.md) — system design, component hierarchy, data flow, deployment topology
-- [decisions.md](decisions.md) — architectural decisions (ADRs)
-- [deployment.md](deployment.md) — Synology NAS deployment via `deploy.sh`
-- [pipeline.md](pipeline.md) — build and CI pipeline steps
-- [setup.md](setup.md) — stack and tooling reference
-- [migration-report.md](migration-report.md) — summary of the PHP-to-Angular migration
+- [architecture.md](architecture.md) - system design, component hierarchy, data flow, deployment topology
+- [decisions.md](decisions.md) - architectural decisions (ADRs)
+- [deployment.md](deployment.md) - Synology NAS deployment via `deploy.sh`
+- [new-developer-onboarding.md](new-developer-onboarding.md) - VS Code-first workflow for beads, Graphify, context pipeline, and verification
+- [pipeline.md](pipeline.md) - build and CI pipeline steps
+- [prompts/task-implementation-template.md](prompts/task-implementation-template.md) - reusable prompt scaffold for AI-assisted task implementation
+- [setup.md](setup.md) - stack and tooling reference
+- [migration-report.md](migration-report.md) - summary of the PHP-to-Angular migration
 
 ## Documentation rules
 

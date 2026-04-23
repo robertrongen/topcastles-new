@@ -1,6 +1,6 @@
 # Developer Guide - Topcastles
 
-Contributor workflow reference. For the project overview see [README.md](README.md). For the source/generated/runtime artifact policy see [docs/pipeline.md](docs/pipeline.md).
+Contributor workflow reference. For the project overview see [README.md](README.md). For the source/generated/runtime artifact policy see [docs/pipeline.md](docs/pipeline.md). For a step-by-step first-day workflow in VS Code, see [docs/new-developer-onboarding.md](docs/new-developer-onboarding.md).
 
 ## Prerequisites
 
