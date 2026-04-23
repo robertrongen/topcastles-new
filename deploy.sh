@@ -34,6 +34,7 @@ CONTAINER_NAME="topcastles"
 HOST_PORT="8082"
 CONTAINER_PORT="3000"
 DATA_DIR="/volume1/docker/topcastles/data"
+IMAGE_DIR="/volume1/docker/topcastles/images/castles"
 
 echo "Building Angular application..."
 cd new_app
@@ -58,9 +59,11 @@ ssh "${NAS_USER}@${NAS_HOST}" << EOF
 
   echo "Running new container..."
   mkdir -p "$DATA_DIR"
+  mkdir -p "$IMAGE_DIR"
   sudo docker run -d --restart "$RESTART_POLICY" --name "$CONTAINER_NAME" \
     -p ${HOST_PORT}:${CONTAINER_PORT} \
     -v ${DATA_DIR}:/data \
+    -v ${IMAGE_DIR}:/data/castle-images:ro \
     "$FULL_IMAGE_NAME"
 
   echo "Deployment complete!"
