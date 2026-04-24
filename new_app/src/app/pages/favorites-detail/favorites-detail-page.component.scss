@@ -1,5 +1,10 @@
 .favorites-detail-page {
   padding: 16px;
+  color: var(--tk-text);
+
+  --mat-sys-primary: var(--tk-link);
+  --mat-sys-on-surface: var(--tk-text);
+  --mat-sys-on-surface-variant: var(--tk-text-muted);
 }
 
 .page-header {
@@ -7,6 +12,10 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 16px;
+
+  a[mat-icon-button] {
+    color: var(--tk-link);
+  }
 
   h1 {
     margin: 0;

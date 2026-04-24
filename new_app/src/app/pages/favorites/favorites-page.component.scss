@@ -2,6 +2,18 @@
   max-width: 700px;
   margin: 2rem auto;
   padding: 0 1rem;
+  color: var(--tk-text);
+
+  --mat-sys-surface: var(--tk-surface);
+  --mat-sys-surface-container-low: var(--tk-surface);
+  --mat-sys-surface-container: var(--tk-surface);
+  --mat-sys-surface-container-high: var(--tk-surface-alt);
+  --mat-sys-surface-container-highest: var(--tk-surface-alt);
+  --mat-sys-on-surface: var(--tk-text);
+  --mat-sys-on-surface-variant: var(--tk-text-muted);
+  --mat-sys-outline: var(--tk-border);
+  --mat-sys-outline-variant: var(--tk-divider);
+  --mat-sys-primary: var(--tk-link);
 }
 
 h1 {
@@ -11,6 +23,10 @@ h1 {
 .share-card,
 .create-card {
   margin-bottom: 2rem;
+  background: var(--tk-surface);
+  color: var(--tk-text);
+  border: 1px solid var(--tk-border);
+  box-shadow: none;
 
   mat-card-content {
     display: flex;
@@ -30,6 +46,7 @@ h1 {
   p {
     flex-basis: 100%;
     margin: 0;
+    color: var(--tk-text-muted);
   }
 }
 
@@ -44,8 +61,45 @@ h1 {
 }
 
 .set-card {
+  background: var(--tk-surface);
+  color: var(--tk-text);
+  border: 1px solid var(--tk-border);
+  box-shadow: none;
+
+  mat-card-title a {
+    color: var(--tk-link);
+  }
+
+  mat-card-subtitle {
+    color: var(--tk-text-muted);
+  }
+
   mat-card-actions {
     display: flex;
     justify-content: flex-end;
+  }
+}
+
+:host ::ng-deep {
+  .favorites-page {
+    .mat-mdc-form-field {
+      --mdc-outlined-text-field-input-text-color: var(--tk-text);
+      --mdc-outlined-text-field-label-text-color: var(--tk-text-muted);
+      --mdc-outlined-text-field-outline-color: var(--tk-border);
+      --mdc-outlined-text-field-hover-outline-color: var(--tk-text-muted);
+      --mdc-outlined-text-field-focus-outline-color: var(--tk-link);
+      --mat-form-field-container-text-color: var(--tk-text);
+      --mat-form-field-container-text-size: var(--tk-font-size-sm);
+    }
+
+    .mat-mdc-outlined-button {
+      --mdc-outlined-button-label-text-color: var(--tk-link);
+      --mdc-outlined-button-outline-color: var(--tk-border);
+    }
+
+    .mat-mdc-raised-button {
+      --mdc-protected-button-container-color: var(--tk-orange);
+      --mdc-protected-button-label-text-color: #000000;
+    }
   }
 }

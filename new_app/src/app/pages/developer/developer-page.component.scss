@@ -2,6 +2,18 @@
   padding: 16px;
   max-width: 960px;
   margin: 0 auto;
+  color: var(--tk-text);
+
+  --mat-sys-surface: var(--tk-surface);
+  --mat-sys-surface-container-low: var(--tk-surface);
+  --mat-sys-surface-container: var(--tk-surface);
+  --mat-sys-surface-container-high: var(--tk-surface-alt);
+  --mat-sys-surface-container-highest: var(--tk-surface-alt);
+  --mat-sys-on-surface: var(--tk-text);
+  --mat-sys-on-surface-variant: var(--tk-text-muted);
+  --mat-sys-outline: var(--tk-border);
+  --mat-sys-outline-variant: var(--tk-divider);
+  --mat-sys-primary: var(--tk-link);
 }
 
 .page-intro {
@@ -34,8 +46,21 @@
 .access-card {
   cursor: pointer;
   transition: box-shadow 0.2s;
+  background: var(--tk-surface);
+  color: var(--tk-text);
+  border: 1px solid var(--tk-border);
+  box-shadow: none;
 
   &:hover { box-shadow: 0 4px 16px rgba(0,0,0,.15); }
+
+  mat-card-title {
+    color: var(--tk-text);
+  }
+
+  mat-card-subtitle,
+  mat-card-content {
+    color: var(--tk-text-muted);
+  }
 
   mat-icon[mat-card-avatar] {
     font-size: 28px; width: 40px; height: 40px;
@@ -111,6 +136,7 @@
   border: 1px solid var(--tk-border);
   border-radius: 8px;
   padding: 16px;
+  background: var(--tk-surface);
 
   p { margin: 8px 0; }
 }
@@ -137,6 +163,7 @@
   font-size: 0.95em;
   font-family: monospace;
   background: var(--tk-surface-alt);
+  color: var(--tk-text);
   padding: 2px 8px;
   border-radius: 4px;
 }
@@ -185,6 +212,49 @@ details > summary {
   margin-bottom: 32px;
 
   mat-panel-title code { font-size: 0.95em; color: var(--tk-link); }
+}
+
+:host ::ng-deep {
+  .developer-page {
+    .mat-mdc-tab .mdc-tab__text-label {
+      color: var(--tk-text-muted);
+    }
+
+    .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+      color: var(--tk-text);
+    }
+
+    .mat-mdc-tab-header {
+      border-bottom: 1px solid var(--tk-border);
+    }
+
+    .mat-expansion-panel {
+      background: var(--tk-surface);
+      color: var(--tk-text);
+      border: 1px solid var(--tk-border);
+      box-shadow: none;
+    }
+
+    .mat-expansion-panel-header-title,
+    .mat-expansion-panel-header-description {
+      color: var(--tk-text);
+    }
+
+    .mat-expansion-panel-header-description {
+      color: var(--tk-text-muted);
+    }
+
+    .mat-mdc-chip {
+      background: var(--tk-surface-alt);
+      color: var(--tk-text);
+      border: 1px solid var(--tk-border);
+    }
+
+    .mat-mdc-outlined-button {
+      --mdc-outlined-button-label-text-color: var(--tk-link);
+      --mdc-outlined-button-outline-color: var(--tk-border);
+    }
+  }
 }
 
 .example-prompts {
