@@ -6,6 +6,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TopCountriesPageComponent } from './top-countries-page.component';
 import { Castle } from '../../models/castle.model';
 import { CastleService } from '../../services/castle.service';
+import { ViewModeService } from '../../services/view-mode.service';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
   return {
@@ -35,6 +36,7 @@ describe('TopCountriesPageComponent', () => {
     httpTesting = TestBed.inject(HttpTestingController);
     TestBed.inject(CastleService).castles.set(castles);
     fixture = TestBed.createComponent(TopCountriesPageComponent);
+    TestBed.inject(ViewModeService).setMode('list');
     fixture.detectChanges();
   });
 
