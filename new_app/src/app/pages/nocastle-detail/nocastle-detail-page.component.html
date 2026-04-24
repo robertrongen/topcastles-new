@@ -1,5 +1,5 @@
 @if (loading()) {
-  <div class="loading">Loading data…</div>
+  <div class="loading">Loading data...</div>
 } @else if (!noCastle()) {
   <div class="not-found">
     <h2>Not found</h2>
@@ -8,9 +8,11 @@
   </div>
 } @else {
   <div class="nocastle-detail">
-    <h2>{{ noCastle()!.castle_name }}</h2>
+    <header class="page-header">
+      <h2>{{ noCastle()!.castle_name }}</h2>
+      <p>Reference entry for a castle-like site that is outside the ranked medieval castle list.</p>
+    </header>
 
-    <!-- Metadata card -->
     <mat-card class="metadata-card">
       <mat-card-content>
         <table class="detail-table">
@@ -19,19 +21,19 @@
             <td class="label">Country:</td>
             <td><strong>{{ noCastle()!.country }}</strong></td>
             <td class="label">Founder:</td>
-            <td><strong>{{ noCastle()!.founder || '—' }}</strong></td>
+            <td><strong>{{ noCastle()!.founder || '-' }}</strong></td>
           </tr>
           <tr>
             <td class="label">Region:</td>
-            <td><strong>{{ noCastle()!.region || '—' }}</strong></td>
+            <td><strong>{{ noCastle()!.region || '-' }}</strong></td>
             <td class="label">Building structure:</td>
-            <td><strong>{{ noCastle()!.castle_concept || '—' }}</strong></td>
+            <td><strong>{{ noCastle()!.castle_concept || '-' }}</strong></td>
           </tr>
           <tr>
             <td class="label">Place:</td>
-            <td><strong>{{ noCastle()!.place || '—' }}</strong></td>
+            <td><strong>{{ noCastle()!.place || '-' }}</strong></td>
             <td class="label">Castle type:</td>
-            <td><strong>{{ noCastle()!.castle_type || '—' }}</strong></td>
+            <td><strong>{{ noCastle()!.castle_type || '-' }}</strong></td>
           </tr>
           <tr>
             <td class="label">Era:</td>
@@ -39,15 +41,15 @@
               @if (noCastle()!.era && noCastle()!.era! > 1) {
                 <strong>{{ noCastle()!.era }}th century</strong>
               } @else {
-                —
+                -
               }
             </td>
             <td class="label">Condition:</td>
-            <td><strong>{{ noCastle()!.condition || '—' }}</strong></td>
+            <td><strong>{{ noCastle()!.condition || '-' }}</strong></td>
           </tr>
           <tr>
             <td class="label">Category:</td>
-            <td><strong>{{ noCastle()!.nocastle_type || '—' }}</strong></td>
+            <td><strong>{{ noCastle()!.nocastle_type || '-' }}</strong></td>
             <td></td>
             <td></td>
           </tr>
@@ -56,7 +58,6 @@
       </mat-card-content>
     </mat-card>
 
-    <!-- Remarkable -->
     @if (noCastle()!.remarkable) {
       <mat-card class="section-card">
         <mat-card-content>
@@ -66,7 +67,6 @@
       </mat-card>
     }
 
-    <!-- Website -->
     @if (noCastle()!.website) {
       <mat-card class="section-card">
         <mat-card-content>
@@ -76,16 +76,17 @@
       </mat-card>
     }
 
-    <!-- Images -->
-    <div class="nocastle-images">
-      @for (url of imageUrls(); track $index) {
-        <img [src]="url"
-             [alt]="noCastle()!.castle_name"
-             (error)="onImageError($event)"
-             loading="lazy" />
-      }
-    </div>
+    <section class="image-section" aria-label="Images">
+      <div class="nocastle-images">
+        @for (url of imageUrls(); track $index) {
+          <img [src]="url"
+               [alt]="noCastle()!.castle_name"
+               (error)="onImageError($event)"
+               loading="lazy" />
+        }
+      </div>
+    </section>
 
-    <a mat-button routerLink="/background">← Back to Background</a>
+    <a mat-button routerLink="/background">Back to Background</a>
   </div>
 }
