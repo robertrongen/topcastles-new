@@ -2,13 +2,19 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { applicationConfig } from '@storybook/angular';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { CastleFilterComponent } from './castle-filter.component';
-import { Castle } from '../../models/castle.model';
+import { generateCastles, minimalCastle } from '../../testing/castle-mock';
 
-const SAMPLE_CASTLES: Partial<Castle>[] = [
-  { castle_code: 'alnwick', castle_name: 'Alnwick Castle', country: 'England', castle_type: 'Castle', condition: 'intact', era: 12 },
-  { castle_code: 'dover', castle_name: 'Dover Castle', country: 'England', castle_type: 'Castle', condition: 'intact', era: 12 },
-  { castle_code: 'heidelberg', castle_name: 'Heidelberg Castle', country: 'Germany', castle_type: 'Palace', condition: 'ruin', era: 14 },
-  { castle_code: 'neuschwanstein', castle_name: 'Neuschwanstein', country: 'Germany', castle_type: 'Palace', condition: 'intact', era: 19 },
+const SAMPLE_CASTLES = [
+  { ...generateCastles(1)[0], castle_code: 'alnwick', castle_name: 'Alnwick Castle', country: 'England', castle_type: 'Castle', condition: 'Intact', era: 12 },
+  { ...generateCastles(1)[0], castle_code: 'dover', castle_name: 'Dover Castle', country: 'England', castle_type: 'Castle', condition: 'Intact', era: 12 },
+  { ...generateCastles(1)[0], castle_code: 'heidelberg', castle_name: 'Heidelberg Castle', country: 'Germany', castle_type: 'Palace', condition: 'Ruin', era: 14 },
+  { ...generateCastles(1)[0], castle_code: 'neuschwanstein', castle_name: 'Neuschwanstein', country: 'Germany', castle_type: 'Palace', condition: 'Intact', era: 19 },
+];
+
+const FILTER_FIELDS = [
+  { key: 'country', label: 'Country' },
+  { key: 'castle_type', label: 'Type' },
+  { key: 'condition', label: 'Condition' },
 ];
 
 const meta: Meta<CastleFilterComponent> = {
@@ -25,12 +31,8 @@ type Story = StoryObj<CastleFilterComponent>;
 
 export const Default: Story = {
   args: {
-    castles: SAMPLE_CASTLES as Castle[],
-    fields: [
-      { key: 'country', label: 'Country' },
-      { key: 'castle_type', label: 'Type' },
-      { key: 'condition', label: 'Condition' },
-    ],
+    castles: SAMPLE_CASTLES,
+    fields: FILTER_FIELDS,
     initialFilters: {},
   },
 };
@@ -40,4 +42,51 @@ export const PreFiltered: Story = {
     ...Default.args,
     initialFilters: { country: 'England' },
   },
+};
+
+export const MinimalOptions: Story = {
+  name: 'Minimal options',
+  args: {
+    castles: [minimalCastle],
+    fields: [
+      { key: 'country', label: 'Country' },
+      { key: 'condition', label: 'Condition' },
+    ],
+    initialFilters: {},
+  },
+};
+
+export const NoFields: Story = {
+  args: {
+    castles: SAMPLE_CASTLES,
+    fields: [],
+    initialFilters: {},
+  },
+};
+
+export const EmptyData: Story = {
+  args: {
+    castles: [],
+    fields: FILTER_FIELDS,
+    initialFilters: {},
+  },
+};
+
+export const Mobile: Story = {
+  args: Default.args,
+  parameters: {
+    viewport: { defaultViewport: 'mobile1' },
+  },
+};
+
+export const DarkTheme: Story = {
+  args: Default.args,
+  render: args => ({
+    props: args,
+    template: `
+      <div data-theme="dark" style="min-height: 240px; padding: 16px; background: var(--tk-body-bg); color: var(--tk-text);">
+        <app-castle-filter [castles]="castles" [fields]="fields" [initialFilters]="initialFilters"></app-castle-filter>
+      </div>
+    `,
+  }),
 };
