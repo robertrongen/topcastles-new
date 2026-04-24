@@ -35,6 +35,7 @@ HOST_PORT="8082"
 CONTAINER_PORT="3000"
 DATA_DIR="/volume1/docker/topcastles/data"
 IMAGE_DIR="/volume1/docker/topcastles/images/castles"
+IMAGE_MOUNT_TARGET="/data/castle-images"
 
 echo "Building Angular application..."
 cd new_app
@@ -50,6 +51,42 @@ docker push "$FULL_IMAGE_NAME"
 echo "Connecting to Synology and deploying..."
 ssh "${NAS_USER}@${NAS_HOST}" << EOF
   set -e
+  IMAGE_SOURCE_DIR="$IMAGE_DIR"
+  IMAGE_MOUNT_TARGET="$IMAGE_MOUNT_TARGET"
+
+  echo "Preflighting NAS image source..."
+  if [ -z "\$IMAGE_SOURCE_DIR" ] || [ "\$IMAGE_SOURCE_DIR" = "/" ]; then
+    echo "ERROR: NAS image preflight failed." >&2
+    echo "IMAGE_DIR is missing or unsafe: '\$IMAGE_SOURCE_DIR'" >&2
+    echo "Set IMAGE_DIR in deploy.sh to the NAS castle image directory that should mount at \$IMAGE_MOUNT_TARGET." >&2
+    exit 1
+  fi
+  if [ ! -e "\$IMAGE_SOURCE_DIR" ]; then
+    echo "ERROR: NAS image preflight failed." >&2
+    echo "Expected image source directory does not exist: \$IMAGE_SOURCE_DIR" >&2
+    echo "Create or mount the NAS image directory before deploying; the container expects it at \$IMAGE_MOUNT_TARGET." >&2
+    exit 1
+  fi
+  if [ ! -d "\$IMAGE_SOURCE_DIR" ]; then
+    echo "ERROR: NAS image preflight failed." >&2
+    echo "Expected image source is not a directory: \$IMAGE_SOURCE_DIR" >&2
+    echo "Set IMAGE_DIR in deploy.sh to the NAS castle image directory that should mount at \$IMAGE_MOUNT_TARGET." >&2
+    exit 1
+  fi
+  if [ ! -r "\$IMAGE_SOURCE_DIR" ] || [ ! -x "\$IMAGE_SOURCE_DIR" ]; then
+    echo "ERROR: NAS image preflight failed." >&2
+    echo "Expected image source directory is not readable/listable: \$IMAGE_SOURCE_DIR" >&2
+    echo "Fix NAS permissions before deploying; the container mounts this path read-only at \$IMAGE_MOUNT_TARGET." >&2
+    exit 1
+  fi
+  if ! find "\$IMAGE_SOURCE_DIR" -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' -o -iname '*.gif' \) -print -quit | grep -q .; then
+    echo "ERROR: NAS image preflight failed." >&2
+    echo "No image files were found under: \$IMAGE_SOURCE_DIR" >&2
+    echo "Verify IMAGE_DIR points to the castle image source, not an empty parent or missing mount." >&2
+    exit 1
+  fi
+  echo "NAS image source OK: \$IMAGE_SOURCE_DIR -> \$IMAGE_MOUNT_TARGET"
+
   echo "Pulling image from Docker Hub..."
   sudo docker pull "$FULL_IMAGE_NAME"
 
@@ -59,11 +96,10 @@ ssh "${NAS_USER}@${NAS_HOST}" << EOF
 
   echo "Running new container..."
   mkdir -p "$DATA_DIR"
-  mkdir -p "$IMAGE_DIR"
   sudo docker run -d --restart "$RESTART_POLICY" --name "$CONTAINER_NAME" \
     -p ${HOST_PORT}:${CONTAINER_PORT} \
     -v ${DATA_DIR}:/data \
-    -v ${IMAGE_DIR}:/data/castle-images:ro \
+    -v ${IMAGE_DIR}:${IMAGE_MOUNT_TARGET}:ro \
     "$FULL_IMAGE_NAME"
 
   echo "Deployment complete!"

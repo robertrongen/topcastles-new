@@ -10,12 +10,13 @@ The deployment script performs these steps:
 
 1. Builds the Angular application from `new_app/`
 2. Builds a Docker image from the repository root
-3. Tags the image as `hobunror/synology:latest`
+3. Tags the image as `hobunror/topcastles:latest`
 4. Pushes the image to Docker Hub
 5. Connects to the Synology NAS over SSH
-6. Pulls the image from Docker Hub on the NAS
-7. Stops and removes the existing container if present
-8. Starts a new container from the pulled image
+6. Preflights the NAS castle image source directory
+7. Pulls the image from Docker Hub on the NAS
+8. Stops and removes the existing container if present
+9. Starts a new container from the pulled image
 
 Script location:
 
@@ -59,6 +60,8 @@ echo "robertron ALL=(ALL) NOPASSWD: /usr/local/bin/docker" | sudo tee /etc/sudoe
 ```
 
 - Port `8082` available on the NAS
+- Castle image source directory exists and is readable/listable:
+  `/volume1/docker/topcastles/images/castles`
 
 ## Step-by-step behavior
 
@@ -73,35 +76,51 @@ Produces browser files in `new_app/dist/new_app/browser/`.
 ### 2. Build the Docker image
 
 ```bash
-docker build -t hobunror/synology:latest .
+docker build -t hobunror/topcastles:latest .
 ```
 
-The `Dockerfile` copies `dist/new_app/browser/` into the nginx image.
+The `Dockerfile` copies the Angular build output into the Node runtime image.
 
 ### 3. Push to Docker Hub
 
 ```bash
-docker push hobunror/synology:latest
+docker push hobunror/topcastles:latest
 ```
 
-### 4. Pull and redeploy on the NAS
+### 4. Preflight the NAS image source
+
+Before pulling or replacing the running container, `deploy.sh` verifies that
+`/volume1/docker/topcastles/images/castles` exists on the NAS, is a readable and
+listable directory, and contains image files. The script fails early with an
+actionable error if the path is missing, points at the wrong location, or is not
+available as expected.
+
+### 5. Pull and redeploy on the NAS
 
 Over SSH, the script runs:
 
 ```bash
-sudo docker pull hobunror/synology:latest
+sudo docker pull hobunror/topcastles:latest
 sudo docker stop topcastles || true
 sudo docker rm topcastles || true
-sudo docker run -d --restart unless-stopped --name topcastles -p 8082:80 hobunror/synology:latest
+mkdir -p /volume1/docker/topcastles/data
+sudo docker run -d --restart unless-stopped --name topcastles \
+  -p 8082:3000 \
+  -v /volume1/docker/topcastles/data:/data \
+  -v /volume1/docker/topcastles/images/castles:/data/castle-images:ro \
+  hobunror/topcastles:latest
 ```
 
 ## Resulting deployment topology
 
 | Layer | Detail |
 | --- | --- |
-| Docker Hub image | `hobunror/synology:latest` |
+| Docker Hub image | `hobunror/topcastles:latest` |
 | Container name on NAS | `topcastles` |
 | NAS local port | `8082` |
+| Container port | `3000` |
+| Runtime data mount | `/volume1/docker/topcastles/data` -> `/data` |
+| Castle image mount | `/volume1/docker/topcastles/images/castles` -> `/data/castle-images` (read-only) |
 | LAN URL | `http://DS224plus.local:8082` |
 | HTTPS LAN URL | via Synology Reverse Proxy (see below) |
 | Public URL | `https://topcastles.hobunror.synology.me` |
@@ -141,9 +160,10 @@ DSM → Control Panel → External Access → DDNS — verify `hobunror.synology
 
 ## Troubleshooting
 
-### Default nginx page instead of the app
+### App does not load after container start
 
-The Dockerfile must copy from `dist/new_app/browser/`, not `dist/new_app/`. Check the `COPY` line in `Dockerfile`.
+The Dockerfile must copy the Angular browser output into the runtime image. Check
+the `COPY --from=build` line in `Dockerfile` and the Node server logs.
 
 ### `docker push` fails with authentication errors
 
@@ -151,7 +171,14 @@ The Dockerfile must copy from `dist/new_app/browser/`, not `dist/new_app/`. Chec
 docker login
 ```
 
-Verify the repository `hobunror/synology` exists on Docker Hub and the account has push access.
+Verify the repository `hobunror/topcastles` exists on Docker Hub and the account has push access.
+
+### NAS image preflight fails
+
+Verify `/volume1/docker/topcastles/images/castles` exists on the NAS, contains
+the castle image files, and is readable/listable by the deploy SSH user. The
+deployment script will not create this directory automatically because an empty
+bind mount would hide image-serving misconfiguration until after rollout.
 
 ### `permission denied` connecting to Docker socket on the NAS
 
