@@ -1,6 +1,6 @@
 .top-regions-page {
   .section {
-    max-width: 1040px;
+    // max-width: 1040px;
   }
 }
 
@@ -9,14 +9,14 @@
   grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
   gap: var(--tk-space-3);
   justify-content: start;
-  max-width: 920px;
+  // max-width: 920px;
   margin-top: var(--tk-space-4);
 }
 
 .region-card {
   width: 100%;
   max-width: 176px;
-  height: fit-content;
+  height: 290px;
   box-sizing: border-box;
   background: var(--tk-surface);
   border: 1px solid var(--tk-border);

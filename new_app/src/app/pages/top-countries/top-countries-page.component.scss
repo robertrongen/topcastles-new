@@ -1,6 +1,52 @@
 .top-countries-page {
   .section {
-    max-width: 920px;
+    max-width: 1280px;
+  }
+}
+
+.country-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--tk-space-3);
+  justify-content: start;
+  margin-top: var(--tk-space-4);
+}
+
+.country-card {
+  width: 100%;
+  max-width: 176px;
+  height: 120px;
+  box-sizing: border-box;
+  background: var(--tk-surface);
+  border: 1px solid var(--tk-border);
+  border-radius: var(--tk-radius-md);
+
+  mat-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--tk-space-2);
+    gap: var(--tk-space-1);
+  }
+
+  .country-rank {
+    color: var(--tk-text-subtle);
+    font-size: var(--tk-font-size-xs);
+  }
+
+  h3 {
+    margin: 0;
+    color: var(--tk-text);
+    font-size: var(--tk-font-size-sm);
+    font-weight: 650;
+    line-height: var(--tk-line-height-tight);
+  }
+
+  p {
+    margin: 0;
+    color: var(--tk-text-muted);
+    font-size: var(--tk-font-size-xs);
   }
 }
 
@@ -64,6 +110,10 @@
 @media (max-width: 767px) {
   .top-countries-page .section {
     max-width: none;
+  }
+
+  .country-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   }
 
   .table-container {
