@@ -6,11 +6,11 @@ This plan turns the approved UX and product improvement strategy into repo-execu
 
 This plan maps directly to these roadmap items:
 
-- **9.5 design refresh**: Storybook-led design refresh, cleaner visual style, stronger typography hierarchy, better whitespace rhythm, consistent light/dark theme treatment, and improved table density for top countries and top regions.
-- **10.3 PWA / service worker**: Angular PWA setup, service worker registration, offline caching for static assets and castle JSON, and web app manifest verification.
-- **11.0 / 13.3 NAS image serving**: Single image access path, NAS-mounted image serving, cache-control and missing-file behavior, and eventual removal of bundled castle images if NAS serving becomes authoritative.
+- **9.5 design refresh** [DONE]: Storybook-led design refresh, cleaner visual style, stronger typography hierarchy, better whitespace rhythm, consistent light/dark theme treatment, and improved table density for top countries and top regions. Routine shared-component and public-page UX refresh work is complete; future design exploration can continue as a new, narrower follow-up if needed.
+- **10.3 PWA / service worker** [OPEN]: Angular PWA setup, service worker registration, offline caching for static assets and castle JSON, and web app manifest verification.
+- **11.0 / 13.3 NAS image serving** [OPEN]: Single image access path, NAS-mounted image serving, cache-control and missing-file behavior, and eventual removal of bundled castle images if NAS serving becomes authoritative.
 - **14.1 complete login behavior**: Complete the remaining token validation login behavior while preserving the file-based user model. [DONE]
-- **15.1 to 15.7 admin API/UI workflow**: Admin auth, admin shell, castle edit/add flows, enrichment script execution, intro text editing, and rebuild trigger workflow.
+- **15.1 to 15.7 admin API/UI workflow** [OPEN]: Admin auth, admin shell, castle edit/add flows, enrichment script execution, intro text editing, and rebuild trigger workflow.
 
 ## Strategy Summary
 
@@ -48,7 +48,7 @@ Focus areas:
 - Table density and width behavior
 - Mobile responsiveness and empty states
 
-### 3. Public Page Refresh
+### 3. Public Page Refresh [DONE]
 
 Apply the shared visual system incrementally to public routes after Storybook gives stable review surfaces.
 
@@ -84,7 +84,7 @@ Recommended initial backlog ordering:
 
 1. Expand Storybook coverage for UX refresh baseline. [DONE]
 2. Define theme tokens, typography scale, spacing rhythm, and dark theme parity. [DONE]
-3. Refresh shared castle table, grid, filter, and view-toggle components.
+3. Refresh shared castle table, grid, filter, and view-toggle components. [DONE]
 4. Improve top countries and top regions table layout density. [DONE]
 5. Refresh homepage and browse/top100 public UX surfaces. [DONE]
 6. Refresh castle detail, no-castle detail, and country detail UX surfaces. [DONE]
@@ -177,11 +177,13 @@ Use fuller Spec Kit flow for:
 - Enrichment and rebuild-trigger workflows.
 - Any change that could blur build-time content and runtime state.
 
-## Recommended First Execution Bead
+## Next Execution Beads
 
-Start with **Expand Storybook coverage for UX refresh baseline**.
+The routine UX refresh backlog is complete. Next execution should move to the open architecture-sensitive roadmap tracks only when deliberately scheduled:
 
-This is the safest first implementation bead because it maps directly to roadmap item 9.5, creates reviewable UI surfaces before styling changes, and keeps the first execution step lightweight.
+- Plan PWA/service worker implementation with Spec Kit.
+- Harden NAS image serving and mounted-volume verification.
+- Plan admin API/UI workflow with Spec Kit.
 
 ## Roadmap Wording Gaps To Revisit Later
 
