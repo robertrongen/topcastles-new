@@ -1,5 +1,11 @@
 :host {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 12px;
+  margin-bottom: var(--tk-space-3);
+
+  --mat-standard-button-toggle-background-color: var(--tk-surface);
+  --mat-standard-button-toggle-text-color: var(--tk-text-muted);
+  --mat-standard-button-toggle-selected-state-background-color: var(--tk-section-bg);
+  --mat-standard-button-toggle-selected-state-text-color: var(--tk-text);
+  --mat-standard-button-toggle-divider-color: var(--tk-border);
 }

@@ -4,7 +4,7 @@ $card-height: 200px;
 .castle-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, $card-width);
-  gap: 12px;
+  gap: var(--tk-space-3);
   justify-content: start;
 }
 
@@ -23,13 +23,17 @@ $card-height: 200px;
     align-items: center;
     text-align: center;
     cursor: pointer;
-    padding: 6px 6px 8px;
+    background: var(--tk-surface);
+    color: var(--tk-text);
+    border: 1px solid var(--tk-border);
+    border-radius: var(--tk-radius-md);
+    padding: var(--tk-space-2);
     overflow: hidden;
     position: relative;
     transition: box-shadow 0.2s;
 
     &:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: var(--tk-shadow);
     }
   }
 
@@ -39,7 +43,7 @@ $card-height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 6px;
+    margin-bottom: var(--tk-space-2);
     flex-shrink: 0;
   }
 
@@ -47,21 +51,21 @@ $card-height: 200px;
     width: 110px;
     height: 110px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: var(--tk-radius-sm);
   }
 
   .thumb-icon {
     font-size: 48px;
     width: 48px;
     height: 48px;
-    color: rgba(0, 0, 0, 0.25);
+    color: var(--tk-text-subtle);
   }
 
   .castle-rank {
-    font-size: 0.7rem;
-    opacity: 0.65;
+    color: var(--tk-text-subtle);
+    font-size: var(--tk-font-size-xs);
     white-space: nowrap;
-    margin-bottom: 2px;
+    margin-bottom: var(--tk-space-1);
 
     .fav-badge {
       font-size: 0.85rem;
@@ -73,10 +77,11 @@ $card-height: 200px;
   }
 
   .castle-name {
-    font-weight: 500;
-    font-size: 0.8rem;
-    line-height: 1.2;
-    margin-bottom: 4px;
+    color: var(--tk-text);
+    font-weight: 650;
+    font-size: var(--tk-font-size-sm);
+    line-height: var(--tk-line-height-tight);
+    margin-bottom: var(--tk-space-1);
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -101,13 +106,12 @@ $card-height: 200px;
   }
 
   .castle-country {
-    font-size: 0.75rem;
-    opacity: 0.7;
+    color: var(--tk-text-muted);
+    font-size: var(--tk-font-size-xs);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
-    color: inherit;
     text-decoration: none;
     &:hover { text-decoration: underline; }
   }

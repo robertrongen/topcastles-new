@@ -9,36 +9,70 @@
   --tk-orange:      #FF9900;
   --tk-body-bg:     #00005C;
   --tk-content-bg:  #ffffff;
+  --tk-surface:     #ffffff;
+  --tk-surface-alt: #f7f4ff;
+  --tk-surface-soft:#fff8e8;
   --tk-text:        #000000;
+  --tk-text-muted:  #4f4a5c;
+  --tk-text-subtle: #6f6a7a;
   --tk-link:        #000099;
   --tk-link-hover:  #CCCCFF;
   --tk-nav-bg:      #E6E6F5;
   --tk-th-bg:       #CCCCEB;
   --tk-section-bg:  #CCCCFF;
   --tk-row-even:    #FFF6DE;
-  --tk-divider:     #CCCCFF;
+  --tk-row-hover:   #f0eeff;
+  --tk-divider:     #d7d1f4;
+  --tk-border:      #c7c2df;
+  --tk-shadow:      0 8px 18px rgba(0, 0, 0, 0.16);
   --tk-footer-bg:   #E6E6F5;
   --tk-footer-text: #333333;
   --tk-footer-link: #00005C;
+  --tk-focus-ring:  #5a55c8;
+
+  --tk-font-sans:   "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+  --tk-font-size-xs: 0.75rem;
+  --tk-font-size-sm: 0.875rem;
+  --tk-font-size-md: 1rem;
+  --tk-font-size-lg: 1.25rem;
+  --tk-line-height-tight: 1.2;
+  --tk-line-height: 1.45;
+
+  --tk-space-1: 4px;
+  --tk-space-2: 8px;
+  --tk-space-3: 12px;
+  --tk-space-4: 16px;
+  --tk-space-5: 24px;
+  --tk-radius-sm: 4px;
+  --tk-radius-md: 8px;
 }
 
 // ── Palette — dark ────────────────────────────────────────────────────────────
 
 [data-theme="dark"] {
   --tk-orange:      #FF9900;
-  --tk-body-bg:     #000033;
-  --tk-content-bg:  #1a1a2e;
-  --tk-text:        #e8e8f0;
-  --tk-link:        #aaaaff;
-  --tk-link-hover:  #2a2a60;
-  --tk-nav-bg:      #141428;
-  --tk-th-bg:       #1a1a40;
-  --tk-section-bg:  #1a1a40;
-  --tk-row-even:    #0e0e28;
-  --tk-divider:     #3333aa;
-  --tk-footer-bg:   #0a0a22;
-  --tk-footer-text: #c0c0d0;
-  --tk-footer-link: #aaaaff;
+  --tk-body-bg:     #080816;
+  --tk-content-bg:  #151527;
+  --tk-surface:     #1b1b31;
+  --tk-surface-alt: #22223e;
+  --tk-surface-soft:#16162b;
+  --tk-text:        #f2f2fa;
+  --tk-text-muted:  #c9c6dc;
+  --tk-text-subtle: #aaa6c0;
+  --tk-link:        #c6c4ff;
+  --tk-link-hover:  #34345f;
+  --tk-nav-bg:      #151527;
+  --tk-th-bg:       #252546;
+  --tk-section-bg:  #22223e;
+  --tk-row-even:    #17172b;
+  --tk-row-hover:   #252547;
+  --tk-divider:     #3a3766;
+  --tk-border:      #45416f;
+  --tk-shadow:      0 8px 18px rgba(0, 0, 0, 0.38);
+  --tk-footer-bg:   #101020;
+  --tk-footer-text: #d6d3e8;
+  --tk-footer-link: #c6c4ff;
+  --tk-focus-ring:  #aaa6ff;
 }
 
 html {
@@ -62,9 +96,10 @@ html, body {
 }
 
 body {
-  font-family: Verdana, Arial, sans-serif;
-  font-size: 11px;
-  font-weight: bold;
+  font-family: var(--tk-font-sans);
+  font-size: var(--tk-font-size-sm);
+  font-weight: 400;
+  line-height: var(--tk-line-height);
   color: var(--tk-text);
   background-color: var(--tk-body-bg);
 }
@@ -72,19 +107,21 @@ body {
 // ── Typography ──────────────────────────────────────────────────────────────
 
 h1, h2, h3, h4 {
-  font-family: Verdana, Arial, sans-serif;
+  font-family: var(--tk-font-sans);
+  font-weight: 650;
+  line-height: var(--tk-line-height-tight);
 }
 
 h1 {
-  font-size: 180%;
+  font-size: 1.75rem;
   background-color: var(--tk-section-bg);
   color: var(--tk-text);
-  padding: 6px 10px;
-  margin: 0 0 12px;
+  padding: var(--tk-space-3) var(--tk-space-4);
+  margin: 0 0 var(--tk-space-4);
 }
-h2 { font-size: 140%; }
-h3 { font-size: 120%; }
-h4 { font-size: 100%; }
+h2 { font-size: var(--tk-font-size-lg); }
+h3 { font-size: 1.05rem; }
+h4 { font-size: var(--tk-font-size-md); }
 
 p, li, td, span, div {
   font-weight: normal;
@@ -113,7 +150,7 @@ th {
 }
 
 td {
-  font-size: 11px;
+  font-size: var(--tk-font-size-sm);
   vertical-align: top;
 }
 
@@ -160,15 +197,15 @@ mat-sidenav.mat-sidenav {
 .feature h2 {
   background-color: var(--tk-section-bg);
   color: var(--tk-text);
-  padding: 6px 8px 5px;
+  padding: var(--tk-space-3) var(--tk-space-4);
   margin-left: 0;
 }
 
 // Section dividers
 .section {
-  border-bottom: 2px solid var(--tk-divider);
-  padding-bottom: 12px;
-  margin-bottom: 16px;
+  border-bottom: 1px solid var(--tk-divider);
+  padding-bottom: var(--tk-space-4);
+  margin-bottom: var(--tk-space-5);
 }
 
 // ── Dropdown styles ───────────────────────────────────────────────────────────
