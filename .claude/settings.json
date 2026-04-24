@@ -1,37 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git commit -m ' *)",
-      "Bash(python3 -c ' *)",
       "Bash(node -e ' *)",
       "Bash(node_modules/.bin/ng build *)",
       "Bash(new_app/node_modules/.bin/ng build *)",
-      "Bash(node scripts/enrich_wikipedia.js --misses-only --delay 400)",
-      "Bash(node scripts/enrich_coordinates.js --dry-run)",
-      "Bash(node scripts/enrich_coordinates.js --delay 400)",
-      "Bash(node scripts/enrich_wikidata.js --dry-run)",
-      "Bash(node scripts/enrich_wikidata.js --refill)",
-      "Bash(node scripts/generate_api.js)",
-      "Bash(bd ready *)",
-      "Bash(git stash *)",
-      "Bash(node scripts/enrich_wikipedia.js --misses-only)",
-      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); build=d['projects']['new_app']['architect']['build']; print\\('outputMode:', build.get\\('options',{}\\).get\\('outputMode','not set'\\)\\); print\\('builder:', build['builder']\\); print\\('server:', build.get\\('options',{}\\).get\\('server','not set'\\)\\); print\\('ssr:', build.get\\('options',{}\\).get\\('ssr','not set'\\)\\)\")",
-      "Bash(node -e \"const d=require\\('./angular.json'\\); const b=d.projects.new_app.architect.build; console.log\\('builder:', b.builder\\); console.log\\('options outputMode:', b.options?.outputMode\\); console.log\\('options server:', b.options?.server\\); console.log\\('options ssr:', JSON.stringify\\(b.options?.ssr\\)\\); console.log\\('configurations:', Object.keys\\(b.configurations||{}\\)\\)\")",
-      "Bash(node -e \"const d=require\\('./angular.json'\\); const b=d.projects.new_app.architect.build; console.log\\('prerender:', JSON.stringify\\(b.options?.prerender\\)\\); console.log\\('prod outputMode:', b.configurations?.production?.outputMode\\)\")",
-      "Bash(node -e \"const d=JSON.parse\\(require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\)\\); console.log\\('scripts:', JSON.stringify\\(d.scripts,null,2\\)\\); console.log\\('@angular/ssr:', d.dependencies?.['@angular/ssr']\\)\")",
-      "Bash(node -e \"const d=require\\('./package.json'\\); console.log\\('scripts:', JSON.stringify\\(d.scripts,null,2\\)\\); console.log\\('@angular/ssr:', d.dependencies['@angular/ssr']\\)\")",
-      "Bash(node -e \"const d=require\\('./new_app/package.json'\\); console.log\\('scripts:', JSON.stringify\\(d.scripts,null,2\\)\\); console.log\\('@angular/ssr:', d.dependencies['@angular/ssr']\\)\")",
-      "Bash(bd create *)",
-      "Bash(bd dep *)",
-      "Bash(bd close *)",
-      "Bash(bd update *)",
-      "Bash(npx tsc *)",
-      "Bash(git -C c:/github/topcastles add -u)",
-      "Bash(git -C c:/github/topcastles status --short)",
-      "Bash(git -C c:/github/topcastles commit -m ' *)",
-      "Bash(git -C c:/github/topcastles push)",
-      "Bash(git -C c:/github/topcastles add new_app/public/leaflet/ new_app/src/app/pages/castle-detail/castle-detail-page.component.ts)",
-      "Bash(git -C c:/github/topcastles add docs/modernization-plan.md)"
+      "Bash(node scripts/*",
+      "Bash(git *)",
+      "Bash(node scripts/enrich_wikipedia.js *)",
+      "Bash(python3 *",
+      "Bash(bd *)",
+      "Bash(git -C c:/github/topcastles *)"
     ]
   },
   "hooks": {

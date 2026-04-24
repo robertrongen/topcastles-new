@@ -1,5 +1,9 @@
 # Project Guidelines
 
+Before any task, read and follow `docs/agent-preflight.md`.
+
+Do not claim workflow compliance unless your final response includes the evidence required by that file.
+
 ## graphify
 
 This project has a graphify knowledge graph at graphify-out/graph.json (6,926 files, 3,540 symbols).

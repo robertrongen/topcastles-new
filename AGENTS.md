@@ -1,5 +1,7 @@
 # Agent Instructions
 
+Before any task, read and follow `docs/agent-preflight.md`.
+Do not claim workflow compliance unless your final response includes the evidence required by that file.
 This project uses **bd** (beads) for issue tracking. Run `bd prime` for full workflow context.
 
 ## Quick Reference

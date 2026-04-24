@@ -3,6 +3,7 @@
 ## Purpose
 
 Prompts must stay short.
+Prefer referencing `docs/agent-preflight.md` instead of repeating workflow instructions inline.
 
 Codex is expected to use the repository documentation already present in the repo. Do not restate large sections of onboarding, workflow, architecture, or verification guidance if those are already documented in:
 
@@ -37,6 +38,7 @@ Every prompt must preserve these authorities:
 - Spec Kit constitution = policy layer for higher-risk work
 
 Spec Kit does not replace Beads, Graphify, or the context pipeline.
+Graphify, Beads, and UCM-style context are not additional context sources; they are filters that replace broader repo inspection and repeated documentation injection.
 
 ## Default Prompt Structure
 
