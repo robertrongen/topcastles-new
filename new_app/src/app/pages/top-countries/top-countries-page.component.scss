@@ -1,10 +1,76 @@
+.top-countries-page {
+  .section {
+    max-width: 920px;
+  }
+}
+
 .table-container {
-  overflow-x: auto;
   display: flex;
   justify-content: center;
+  overflow-x: auto;
+}
+
+.countries-table {
+  flex: 0 1 760px;
+  width: min(100%, 760px) !important;
+  overflow: hidden;
+  background: var(--tk-surface);
+  border: 1px solid var(--tk-border);
+  border-radius: var(--tk-radius-md);
+}
+
+.countries-table th {
+  color: var(--tk-text-muted);
+  font-size: var(--tk-font-size-xs);
+  font-weight: 650;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.countries-table td {
+  color: var(--tk-text);
+  font-size: var(--tk-font-size-sm);
+}
+
+.countries-table th,
+.countries-table td {
+  padding: var(--tk-space-2) var(--tk-space-3);
+}
+
+.countries-table .mat-column-rank {
+  width: 56px;
+  color: var(--tk-text-subtle);
+  text-align: right;
+}
+
+.countries-table .mat-column-country {
+  min-width: 220px;
+}
+
+.countries-table .mat-column-castleCount,
+.countries-table .mat-column-totalScore {
+  width: 128px;
+  text-align: right;
+}
+
+.countries-table tr:nth-child(even) td {
+  background: var(--tk-row-even);
+}
+
+.countries-table tr:hover td {
+  background: var(--tk-row-hover);
+}
+
+@media (max-width: 767px) {
+  .top-countries-page .section {
+    max-width: none;
+  }
+
+  .table-container {
+    justify-content: flex-start;
+  }
 
   .countries-table {
-    flex: 0 0 auto;
-    width: auto !important;
+    min-width: 520px;
   }
 }

@@ -28,20 +28,20 @@
         <table class="region-table">
           <thead>
             <tr>
-              <th>#</th>
-              <th>Region</th>
-              <th>Map</th>
-              <th>Country</th>
-              <th>Castles</th>
-              <th>Total Score</th>
+              <th class="rank-col">#</th>
+              <th class="name-col">Region</th>
+              <th class="map-col">Map</th>
+              <th class="name-col">Country</th>
+              <th class="metric-col">Castles</th>
+              <th class="metric-col">Total Score</th>
             </tr>
           </thead>
           <tbody>
             @for (summary of summaries(); track summary.region; let i = $index) {
               <tr>
-                <td>{{ i + 1 }}</td>
-                <td>{{ summary.region }}</td>
-                <td>
+                <td class="rank-col">{{ i + 1 }}</td>
+                <td class="name-col">{{ summary.region }}</td>
+                <td class="map-col">
                   @if (summary.region_code) {
                     <img [src]="'/images/maps/' + summary.region_code + '.jpg'"
                          [alt]="summary.region"
@@ -49,9 +49,9 @@
                          (error)="onImageError($event)" />
                   }
                 </td>
-                <td><a [routerLink]="['/countries', summary.country]">{{ summary.country }}</a></td>
-                <td>{{ summary.castleCount }}</td>
-                <td>{{ summary.totalScore | number:'1.0-0' }}</td>
+                <td class="name-col"><a [routerLink]="['/countries', summary.country]">{{ summary.country }}</a></td>
+                <td class="metric-col">{{ summary.castleCount }}</td>
+                <td class="metric-col">{{ summary.totalScore | number:'1.0-0' }}</td>
               </tr>
             }
           </tbody>
