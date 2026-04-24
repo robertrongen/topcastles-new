@@ -29,6 +29,11 @@
   --tk-footer-text: #333333;
   --tk-footer-link: #00005C;
   --tk-focus-ring:  #5a55c8;
+  --tk-overlay-bg:   #ffffff;
+  --tk-overlay-hover:#f0eeff;
+  --tk-overlay-active:#CCCCFF;
+  --tk-overlay-text: #000000;
+  --tk-overlay-muted:#4f4a5c;
 
   --tk-font-sans:   "Inter", "Segoe UI", Roboto, Arial, sans-serif;
   --tk-font-size-xs: 0.75rem;
@@ -73,6 +78,11 @@
   --tk-footer-text: #d6d3e8;
   --tk-footer-link: #c6c4ff;
   --tk-focus-ring:  #aaa6ff;
+  --tk-overlay-bg:   #17172b;
+  --tk-overlay-hover:#252547;
+  --tk-overlay-active:#34345f;
+  --tk-overlay-text: #f2f2fa;
+  --tk-overlay-muted:#c9c6dc;
 }
 
 html {
@@ -85,6 +95,27 @@ html {
     typography: Roboto,
     density: 0,
   ));
+}
+
+html {
+  --mat-menu-container-color: var(--tk-overlay-bg);
+  --mat-menu-item-label-text-color: var(--tk-overlay-text);
+  --mat-menu-item-icon-color: var(--tk-overlay-muted);
+  --mat-menu-item-hover-state-layer-color: var(--tk-overlay-hover);
+  --mat-menu-item-focus-state-layer-color: var(--tk-overlay-active);
+  --mat-menu-divider-color: var(--tk-divider);
+
+  --mat-select-panel-background-color: var(--tk-overlay-bg);
+  --mat-select-enabled-trigger-text-color: var(--tk-text);
+  --mat-select-placeholder-text-color: var(--tk-text-muted);
+  --mat-select-enabled-arrow-color: var(--tk-text-muted);
+  --mat-select-focused-arrow-color: var(--tk-link);
+
+  --mat-option-label-text-color: var(--tk-overlay-text);
+  --mat-option-selected-state-label-text-color: var(--tk-overlay-text);
+  --mat-option-hover-state-layer-color: var(--tk-overlay-hover);
+  --mat-option-focus-state-layer-color: var(--tk-overlay-active);
+  --mat-option-selected-state-layer-color: var(--tk-overlay-active);
 }
 
 // ── Base reset ──────────────────────────────────────────────────────────────
@@ -210,17 +241,32 @@ mat-sidenav.mat-sidenav {
 
 // ── Dropdown styles ───────────────────────────────────────────────────────────
 
+.mat-mdc-menu-panel,
 .mat-mdc-select-panel {
-  background-color: var(--tk-nav-bg) !important;
+  background-color: var(--tk-overlay-bg) !important;
+  color: var(--tk-overlay-text) !important;
 }
 
+.mat-mdc-menu-item,
 .mat-mdc-option {
-  color: var(--tk-text) !important;
+  color: var(--tk-overlay-text) !important;
 }
 
+.mat-mdc-menu-item:not([disabled]):hover,
+.mat-mdc-menu-item:not([disabled]).cdk-program-focused,
+.mat-mdc-menu-item:not([disabled]).cdk-keyboard-focused,
+.mat-mdc-menu-item:not([disabled]).mat-mdc-menu-item-highlighted,
 .mat-mdc-option:hover,
 .mat-mdc-option.mat-mdc-option-active {
-  background-color: var(--tk-link-hover) !important;
+  background-color: var(--tk-overlay-hover) !important;
+}
+
+.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) {
+  background-color: var(--tk-overlay-active) !important;
+}
+
+.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) .mdc-list-item__primary-text {
+  color: var(--tk-overlay-text) !important;
 }
 
 // ── Mobile responsiveness ─────────────────────────────────────────────────────
