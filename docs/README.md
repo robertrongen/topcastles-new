@@ -9,6 +9,7 @@
 - [pipeline.md](pipeline.md) - build and CI pipeline steps
 - [prompt-authoring-guide.md](prompt-authoring-guide.md) - how to write short, repo-native build prompts for Topcastles work
 - [spec-kit.md](spec-kit.md) - when to use normal lightweight workflow vs fuller Spec Kit discipline
+- [ux-product-execution-plan.md](ux-product-execution-plan.md) - executable backlog plan for roadmap UX and product improvements
 - [prompts/adr-template.md](prompts/adr-template.md) - short prompt scaffold for architecture decision drafts
 - [prompts/bug-rca-template.md](prompts/bug-rca-template.md) - short prompt scaffold for non-trivial bug root-cause analysis
 - [prompts/deployment-smoke-check-template.md](prompts/deployment-smoke-check-template.md) - short prompt scaffold for runtime-sensitive deployment and smoke verification
