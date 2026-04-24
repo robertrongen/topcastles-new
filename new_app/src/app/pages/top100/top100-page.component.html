@@ -1,32 +1,57 @@
 <div class="top100-page">
-  <h1>Top 1000 Medieval Castles</h1>
+  <header class="page-header">
+    <h1>Top 1000 Medieval Castles</h1>
+    <p>
+      Browse the ranked list, filter by country or castle traits, and switch between grid,
+      table, and map views.
+    </p>
+  </header>
 
-  <!-- Unified search box -->
-  <mat-form-field appearance="outline" class="search-box">
-    <mat-label>Search castles</mat-label>
-    <input matInput
-           [ngModel]="searchQuery()"
-           (ngModelChange)="searchQuery.set($event)"
-           placeholder="Search all castle data…" />
-    @if (searchQuery()) {
-      <button matSuffix mat-icon-button type="button" aria-label="Clear search"
-              (click)="searchQuery.set('')">
-        <mat-icon>clear</mat-icon>
-      </button>
-    } @else {
-      <mat-icon matSuffix>search</mat-icon>
-    }
-  </mat-form-field>
+  <section class="section browse-section">
+    <div class="control-panel">
+      <mat-form-field appearance="outline" class="search-box">
+        <mat-label>Search castles</mat-label>
+        <input matInput
+               [ngModel]="searchQuery()"
+               (ngModelChange)="searchQuery.set($event)"
+               placeholder="Search all castle data..." />
+        @if (searchQuery()) {
+          <button matSuffix mat-icon-button type="button" aria-label="Clear search"
+                  (click)="searchQuery.set('')">
+            <mat-icon>clear</mat-icon>
+          </button>
+        } @else {
+          <mat-icon matSuffix>search</mat-icon>
+        }
+      </mat-form-field>
 
-  <section class="section">
-    <app-castle-filter #cf
-      [castles]="searchedCastles()"
-      [fields]="filterFields"
-      [initialFilters]="initialFilters()" />
+      <app-castle-filter #cf
+        [castles]="searchedCastles()"
+        [fields]="filterFields"
+        [initialFilters]="initialFilters()" />
 
-    @if (cf.hasActiveFilters() || searchQuery()) {
-      <p class="result-count">{{ cf.filtered().length }} castles found</p>
-    }
+      <div class="browse-toolbar">
+        @if (cf.hasActiveFilters() || searchQuery()) {
+          <p class="result-count">{{ cf.filtered().length }} castles found</p>
+        } @else {
+          <p class="result-count">{{ cf.filtered().length }} ranked castles</p>
+        }
+
+        <div class="view-toolbar">
+          <mat-slide-toggle [checked]="showFavoritesOnly()" (change)="showFavoritesOnly.set($event.checked)" color="primary">
+            Show favorites only ({{ favoriteCount() }})
+          </mat-slide-toggle>
+          <app-view-toggle [hideMap]="true" />
+          <button mat-icon-button type="button"
+                  (click)="toggleMap()"
+                  [color]="mapVisible() ? 'primary' : ''"
+                  [title]="mapVisible() ? 'Hide map' : 'Show map'"
+                  aria-label="Toggle map">
+            <mat-icon>map</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
 
     @if (typeDescriptions[cf.getFilter('castle_type')]; as desc) {
       <mat-card class="type-description">
@@ -59,22 +84,8 @@
       </mat-card>
     }
 
-    <div class="view-toolbar">
-      <mat-slide-toggle [checked]="showFavoritesOnly()" (change)="showFavoritesOnly.set($event.checked)" color="primary">
-        Show favorites only ({{ favoriteCount() }})
-      </mat-slide-toggle>
-      <app-view-toggle [hideMap]="true" />
-      <button mat-icon-button type="button"
-              (click)="toggleMap()"
-              [color]="mapVisible() ? 'primary' : ''"
-              [title]="mapVisible() ? 'Hide map' : 'Show map'"
-              aria-label="Toggle map">
-        <mat-icon>map</mat-icon>
-      </button>
-    </div>
-
     @if (loading()) {
-      <p>Loading castles…</p>
+      <p class="loading-state">Loading castles...</p>
     } @else {
       <div class="content-layout" [class.map-open]="mapVisible()">
         <div class="content-area">
