@@ -93,7 +93,7 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
         distanceKm: Math.round(haversineKm(c.latitude!, c.longitude!, x.latitude!, x.longitude!)),
       }))
       .sort((a, b) => a.distanceKm - b.distanceKm)
-      .slice(0, 6);
+      .slice(0, 5);
   });
 
   // ── Nearby castle image fallback ──────────────────────────────────────────
