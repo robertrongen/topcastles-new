@@ -9,7 +9,7 @@ This plan maps directly to these roadmap items:
 - **9.5 design refresh**: Storybook-led design refresh, cleaner visual style, stronger typography hierarchy, better whitespace rhythm, consistent light/dark theme treatment, and improved table density for top countries and top regions.
 - **10.3 PWA / service worker**: Angular PWA setup, service worker registration, offline caching for static assets and castle JSON, and web app manifest verification.
 - **11.0 / 13.3 NAS image serving**: Single image access path, NAS-mounted image serving, cache-control and missing-file behavior, and eventual removal of bundled castle images if NAS serving becomes authoritative.
-- **14.1 complete login behavior**: Complete the remaining token validation login behavior while preserving the file-based user model.
+- **14.1 complete login behavior**: Complete the remaining token validation login behavior while preserving the file-based user model. [DONE]
 - **15.1 to 15.7 admin API/UI workflow**: Admin auth, admin shell, castle edit/add flows, enrichment script execution, intro text editing, and rebuild trigger workflow.
 
 ## Strategy Summary
@@ -24,7 +24,7 @@ All work must preserve the current architecture guardrails: JSON only, no databa
 
 ## Phased Workstreams
 
-### 1. Storybook UX Baseline
+### 1. Storybook UX Baseline [DONE]
 
 Expand shared-component stories before broad visual implementation. Cover dense, empty, mobile, desktop, light theme, and dark theme states where practical.
 
@@ -36,7 +36,7 @@ Primary surfaces:
 - `ViewToggleComponent`
 - Top countries and top regions table states, either through existing page stories or extracted story-friendly presentation components
 
-### 2. Shared Visual System Refresh
+### 2. Shared Visual System Refresh [DONE]
 
 Define the refreshed typography, spacing, density, color, and theme behavior in the smallest shared surfaces possible. The goal is a cleaner and more harmonic product look without changing app architecture or data flow.
 
@@ -66,7 +66,7 @@ Primary surfaces:
 
 Complete image serving as a runtime-sensitive workstream. Keep a single app-facing image access path and verify mounted-volume behavior before changing container image assumptions.
 
-### 5. Login Completion
+### 5. Login Completion [DONE]
 
 Complete the remaining user login behavior around the existing token model. This should stay narrow unless it reveals a broader auth contract issue.
 
@@ -82,14 +82,14 @@ Build admin capabilities in strict sequence: auth, shell, edit/add content, enri
 
 Recommended initial backlog ordering:
 
-1. Expand Storybook coverage for UX refresh baseline.
-2. Define theme tokens, typography scale, spacing rhythm, and dark theme parity.
+1. Expand Storybook coverage for UX refresh baseline. [DONE]
+2. Define theme tokens, typography scale, spacing rhythm, and dark theme parity. [DONE]
 3. Refresh shared castle table, grid, filter, and view-toggle components.
-4. Improve top countries and top regions table layout density.
-5. Refresh homepage and browse/top100 public UX surfaces.
-6. Refresh castle detail, no-castle detail, and country detail UX surfaces.
+4. Improve top countries and top regions table layout density. [DONE]
+5. Refresh homepage and browse/top100 public UX surfaces. [DONE]
+6. Refresh castle detail, no-castle detail, and country detail UX surfaces. [DONE]
 7. Harden NAS image serving and mounted-volume verification.
-8. Complete token login endpoint and client behavior.
+8. Complete token login endpoint and client behavior. [DONE]
 9. Plan PWA/service worker implementation with Spec Kit.
 10. Implement PWA/service worker after cache scope review.
 11. Plan admin API/UI workflow with Spec Kit.
