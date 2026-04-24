@@ -5,7 +5,7 @@
 }
 
 .page-header {
-  margin-bottom: var(--tk-space-5);
+  margin-bottom: var(--tk-space-4);
 
   h2 {
     margin-bottom: var(--tk-space-2);
@@ -22,7 +22,7 @@
 
 .metadata-card,
 .section-card {
-  margin-bottom: var(--tk-space-4);
+  margin-bottom: var(--tk-space-3);
   background: var(--tk-surface);
   color: var(--tk-text);
   border: 1px solid var(--tk-border);
@@ -34,7 +34,7 @@
   border-collapse: collapse;
 
   td {
-    padding: var(--tk-space-2);
+    padding: var(--tk-space-1);
     color: var(--tk-text);
     font-size: var(--tk-font-size-sm);
     vertical-align: top;
@@ -56,12 +56,13 @@
   h3 {
     margin: 0 0 var(--tk-space-2);
     color: var(--tk-text);
+    font-size: 1.1rem;
   }
 
   p {
     margin: 0;
     color: var(--tk-text-muted);
-    line-height: 1.6;
+    line-height: 1.5;
   }
 }
 
@@ -72,7 +73,7 @@
 .nocastle-images {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--tk-space-3);
+  gap: var(--tk-space-4);
 
   img {
     display: block;
@@ -82,6 +83,10 @@
     border: 1px solid var(--tk-border);
     border-radius: var(--tk-radius-md);
   }
+}
+
+.nocastle-detail > a[mat-button] {
+  margin-top: var(--tk-space-4);
 }
 
 .loading,
@@ -116,6 +121,7 @@
 
   .detail-table td {
     box-sizing: border-box;
+    padding-bottom: var(--tk-space-1);
   }
 
   .detail-table .label {
