@@ -17,11 +17,10 @@ Note: some umbrella phase issues remain open as coordination trackers even when 
 
 ## Known Baseline Issues
 
-- **TD-1: Fix pre-existing unit test failures / test runner reliability**
+- **TD-1: Fix pre-existing unit test failures / test runner reliability** [RESOLVED]
   - Historical note from the modernization plan: 77 of 176 specs failed consistently, with 99 passing.
   - Suspected root cause recorded there: `castle-detail-page.component.spec.ts` leaves an open HTTP request for `/assets/data/castles_delta.json`; `HttpClientTestingBackend.verify()` flags it at teardown, cascading across the suite.
-  - Later work reduced the failure count from 77 to 73, but the cleanup passes now observe `npm test -- --watch=false --browsers=ChromeHeadless` timing out.
-  - Goal: restore a reliable regression signal.
+  - Resolved: subsequent feature bead work (castle-detail Phase 2.x/4.x) rewrote the spec with correct `httpTesting.match('/assets/data/castles_delta.json').forEach(r => r.flush([]))` teardown and `PLATFORM_ID: 'server'` to prevent browser-specific HTTP calls. `npm test -- --watch=false --browsers=ChromeHeadless` now produces 176/176 SUCCESS in ~1.3 s.
 
 ## Data Pipeline And Content Ownership
 
