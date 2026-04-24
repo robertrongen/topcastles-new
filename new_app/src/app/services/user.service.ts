@@ -1,6 +1,6 @@
 import { Injectable, inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 
 const TOKEN_KEY = 'tc_user_token';
@@ -32,8 +32,31 @@ export class UserService {
     if (this.isBrowser) localStorage.removeItem(TOKEN_KEY);
   }
 
+  async login(token: string): Promise<UserProfile | null> {
+    try {
+      return await firstValueFrom(
+        this.http.post<UserProfile>('/api/user/login', { token })
+      );
+    } catch (err) {
+      if (err instanceof HttpErrorResponse && err.status === 401) return null;
+      throw err;
+    }
+  }
+
   async ensureUser(): Promise<void> {
-    if (!this.isBrowser || this.getToken()) return;
+    if (!this.isBrowser) return;
+    const token = this.getToken();
+    if (token) {
+      try {
+        const profile = await this.login(token);
+        if (profile !== null) return;
+        // Explicit 401: token is no longer valid
+        this.clearToken();
+      } catch {
+        // Network/server error — keep the token and skip re-registration
+        return;
+      }
+    }
     try {
       await this.registerAnonymousUser();
     } catch {

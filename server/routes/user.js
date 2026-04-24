@@ -70,6 +70,21 @@ function validateFavorite(input) {
   return { name, castleIds };
 }
 
+// POST /api/user/login
+router.post('/login', async (req, res) => {
+  const token = typeof req.body?.token === 'string' ? req.body.token.trim() : null;
+  if (!token) return res.status(401).json({ error: 'Unauthorized' });
+  try {
+    const store = await readStore();
+    const user = store.users.find(u => u.token === token);
+    if (!user) return res.status(401).json({ error: 'Unauthorized' });
+    res.json({ id: user.id, favorites: user.favorites });
+  } catch (err) {
+    logRouteError('login', err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 // POST /api/user/register
 router.post('/register', async (req, res) => {
   if (req.body != null && (typeof req.body !== 'object' || Array.isArray(req.body))) {
