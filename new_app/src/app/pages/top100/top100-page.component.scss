@@ -135,23 +135,6 @@
     overflow: hidden;
     border-radius: var(--tk-radius-sm);
   }
-
-  ::ng-deep .leaflet-control-zoom {
-    border-color: var(--tk-border);
-    box-shadow: none;
-  }
-
-  ::ng-deep .leaflet-control-zoom a {
-    background: var(--tk-surface);
-    border-color: var(--tk-border);
-    color: var(--tk-link);
-  }
-
-  ::ng-deep .leaflet-control-zoom a:hover,
-  ::ng-deep .leaflet-control-zoom a:focus {
-    background: var(--tk-link-hover);
-    color: var(--tk-link);
-  }
 }
 
 .type-description {

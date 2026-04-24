@@ -5,7 +5,33 @@
 
   --mat-standard-button-toggle-background-color: var(--tk-surface);
   --mat-standard-button-toggle-text-color: var(--tk-text-muted);
-  --mat-standard-button-toggle-selected-state-background-color: var(--tk-section-bg);
+  --mat-standard-button-toggle-state-layer-color: var(--tk-link);
+  --mat-standard-button-toggle-selected-state-background-color: var(--tk-link-hover);
   --mat-standard-button-toggle-selected-state-text-color: var(--tk-text);
   --mat-standard-button-toggle-divider-color: var(--tk-border);
+}
+
+mat-button-toggle-group {
+  overflow: hidden;
+  background: var(--tk-surface);
+  border: 1px solid var(--tk-border);
+  border-radius: var(--tk-radius-sm);
+}
+
+mat-button-toggle {
+  color: var(--tk-text-muted);
+
+  &:hover {
+    background: var(--tk-link-hover);
+    color: var(--tk-text);
+  }
+}
+
+:host ::ng-deep .mat-button-toggle-checked {
+  background: var(--tk-link-hover);
+  color: var(--tk-text);
+}
+
+:host ::ng-deep .mat-button-toggle-checked .mat-icon {
+  color: var(--tk-text);
 }

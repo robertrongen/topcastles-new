@@ -55,7 +55,21 @@ export const DarkTheme: Story = {
   render: args => ({
     props: args,
     template: `
-      <div data-theme="dark" style="min-height: 96px; padding: 16px; background: var(--tk-body-bg); color: var(--tk-text);">
+      <div data-theme="dark" style="min-height: 128px; padding: 24px; background: var(--tk-body-bg); color: var(--tk-text);">
+        <div style="display: flex; justify-content: flex-end; padding: 16px; background: var(--tk-surface-alt); border: 1px solid var(--tk-divider); border-radius: var(--tk-radius-md);">
+          <app-view-toggle [hideMap]="hideMap"></app-view-toggle>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+export const DarkThemeNoMap: Story = {
+  args: { hideMap: true },
+  render: args => ({
+    props: args,
+    template: `
+      <div data-theme="dark" style="min-height: 128px; padding: 24px; background: var(--tk-body-bg); color: var(--tk-text);">
         <app-view-toggle [hideMap]="hideMap"></app-view-toggle>
       </div>
     `,
