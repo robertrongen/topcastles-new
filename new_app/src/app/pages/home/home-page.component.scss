@@ -662,42 +662,21 @@
 }
 
 .atlas-notes {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--tk-space-2) var(--tk-space-5);
   margin: var(--tk-space-3) 0 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: atlas-note;
+  padding-left: 1.4em;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tk-space-1);
 }
 
 .atlas-note {
-  display: grid;
-  grid-template-columns: 1.2em 1fr;
-  gap: 0 5px;
   color: var(--tk-text-muted);
   font-size: var(--tk-font-size-xs, 0.72rem);
   line-height: 1.5;
-  counter-increment: atlas-note;
-
-  &::before {
-    content: counter(atlas-note);
-    color: var(--tk-orange);
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    padding-top: 1px;
-  }
 
   &__region {
     font-weight: 700;
     color: var(--tk-text);
-    font-style: italic;
-  }
-}
-
-@media (max-width: 540px) {
-  .atlas-notes {
-    grid-template-columns: 1fr;
   }
 }
 
