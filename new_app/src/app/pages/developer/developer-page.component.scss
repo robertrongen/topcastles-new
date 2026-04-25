@@ -1,5 +1,5 @@
 .developer-page {
-  padding: 16px;
+  padding: var(--tk-space-4);
   max-width: 960px;
   margin: 0 auto;
   color: var(--tk-text);
@@ -18,20 +18,27 @@
 
 .page-intro {
   color: var(--tk-text-muted);
-  font-size: 1.05em;
-  margin-bottom: 24px;
+  font-size: var(--tk-font-size-md);
+  line-height: var(--tk-line-height-normal);
+  margin-bottom: var(--tk-space-5);
   max-width: 720px;
 }
 
 .tab-content {
-  padding: 24px 0;
+  padding: var(--tk-space-5) 0;
 
-  h2 { margin: 24px 0 12px; font-size: 1.3em; }
-  h3 { margin: 20px 0 8px; font-size: 1.05em; }
-  h4 { margin: 16px 0 6px; font-size: 0.95em; color: var(--tk-text-muted); }
+  h2 { margin: var(--tk-space-5) 0 var(--tk-space-3); font-size: var(--tk-font-size-xl); }
+  h3 { margin: var(--tk-space-4) 0 var(--tk-space-2); font-size: var(--tk-font-size-md); }
+  h4 { margin: var(--tk-space-4) 0 var(--tk-space-2); font-size: var(--tk-font-size-sm); color: var(--tk-text-muted); }
 
   p { line-height: 1.65; }
-  code { font-family: monospace; background: var(--tk-surface-alt); padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
+  code {
+    background: var(--tk-surface-alt);
+    border-radius: var(--tk-radius-xs);
+    font-family: monospace;
+    font-size: var(--tk-font-size-sm);
+    padding: 1px var(--tk-space-1);
+  }
 }
 
 // ── Overview cards ────────────────────────────────────────────────────────
@@ -39,8 +46,8 @@
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 16px;
-  margin-bottom: 32px;
+  gap: var(--tk-space-4);
+  margin-bottom: var(--tk-space-6);
 }
 
 .access-card {
@@ -49,6 +56,7 @@
   background: var(--tk-surface);
   color: var(--tk-text);
   border: 1px solid var(--tk-border);
+  border-radius: var(--tk-radius-md);
   box-shadow: none;
 
   &:hover { box-shadow: 0 4px 16px rgba(0,0,0,.15); }
@@ -78,9 +86,9 @@
   border-collapse: collapse;
   width: 100%;
   max-width: 640px;
-  margin-bottom: 24px;
+  margin-bottom: var(--tk-space-5);
 
-  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--tk-border); }
+  th, td { padding: var(--tk-space-2) var(--tk-space-3); text-align: left; border-bottom: 1px solid var(--tk-border); }
   th { width: 200px; color: var(--tk-text-muted); font-weight: 500; }
 }
 
@@ -89,13 +97,14 @@
 .code-block {
   position: relative;
   background: #1e1e2e;
-  border-radius: 6px;
-  margin: 8px 0 16px;
+  border: 1px solid var(--tk-border);
+  border-radius: var(--tk-radius-md);
+  margin: var(--tk-space-2) 0 var(--tk-space-4);
   overflow: hidden;
 
   pre {
     margin: 0;
-    padding: 16px 48px 16px 16px;
+    padding: var(--tk-space-4) 48px var(--tk-space-4) var(--tk-space-4);
     overflow-x: auto;
   }
 
@@ -104,12 +113,12 @@
     padding: 0;
     color: #cdd6f4;
     font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
-    font-size: 0.85em;
+    font-size: var(--tk-font-size-sm);
     line-height: 1.55;
     border-radius: 0;
   }
 
-  &.small pre { padding: 12px 48px 12px 12px; }
+  &.small pre { padding: var(--tk-space-3) 48px var(--tk-space-3) var(--tk-space-3); }
 }
 
 .copy-btn {
@@ -128,14 +137,14 @@
 .endpoint-list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  margin-bottom: 32px;
+  gap: var(--tk-space-5);
+  margin-bottom: var(--tk-space-6);
 }
 
 .endpoint {
   border: 1px solid var(--tk-border);
-  border-radius: 8px;
-  padding: 16px;
+  border-radius: var(--tk-radius-md);
+  padding: var(--tk-space-4);
   background: var(--tk-surface);
 
   p { margin: 8px 0; }
@@ -144,8 +153,8 @@
 .endpoint-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
+  gap: var(--tk-space-3);
+  margin-bottom: var(--tk-space-2);
   flex-wrap: wrap;
 }
 
@@ -160,12 +169,13 @@
 }
 
 .endpoint-path {
-  font-size: 0.95em;
+  font-size: var(--tk-font-size-sm);
   font-family: monospace;
   background: var(--tk-surface-alt);
   color: var(--tk-text);
-  padding: 2px 8px;
-  border-radius: 4px;
+  padding: 2px var(--tk-space-2);
+  border-radius: var(--tk-radius-xs);
+  overflow-wrap: anywhere;
 }
 
 .endpoint-desc {
@@ -281,19 +291,20 @@ details > summary {
 .schema-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 24px;
-  font-size: 0.88em;
+  margin-bottom: var(--tk-space-5);
+  font-size: var(--tk-font-size-sm);
 
   th {
     text-align: left;
-    padding: 8px 12px;
-    background: var(--tk-surface);
+    padding: var(--tk-space-2) var(--tk-space-3);
+    background: var(--tk-th-bg);
+    color: var(--tk-text-muted);
     border-bottom: 2px solid var(--tk-border);
     font-weight: 600;
   }
 
   td {
-    padding: 7px 12px;
+    padding: var(--tk-space-2) var(--tk-space-3);
     border-bottom: 1px solid var(--tk-divider);
     vertical-align: top;
 
@@ -306,7 +317,7 @@ details > summary {
 
 .param-table {
   @extend .schema-table;
-  margin: 12px 0;
+  margin: var(--tk-space-3) 0;
 }
 
 .enum-chips {
@@ -321,11 +332,42 @@ details > summary {
 .agent-steps {
   padding-left: 20px;
   line-height: 1.9;
-  margin-bottom: 24px;
+  margin-bottom: var(--tk-space-5);
 
   li { margin-bottom: 12px; }
 }
 
 .example-accordion {
-  margin-bottom: 24px;
+  margin-bottom: var(--tk-space-5);
+}
+
+@media (max-width: 700px) {
+  .developer-page {
+    padding: var(--tk-space-3);
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-table,
+  .schema-table,
+  .param-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .endpoint {
+    padding: var(--tk-space-3);
+  }
+
+  .code-block pre {
+    padding-right: var(--tk-space-4);
+  }
+
+  .copy-btn {
+    position: static;
+    float: right;
+    margin: var(--tk-space-1);
+  }
 }

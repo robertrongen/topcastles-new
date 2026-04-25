@@ -2,37 +2,40 @@
   <section class="section">
     <h2><a routerLink="/top1000">The top 1000 of medieval castles</a></h2>
     <p>
-      In Europe and Asia more than 10,000 medieval castles can be found.
-      Topcastles.com selected the most beautiful and interesting castles and ranked them in a top 1000 list.
-      The construction of this list is explained in the menu <a routerLink="/background">background</a>.
-      The total list contains almost 1,000 castles.
-      This makes it possible to show <a routerLink="/countries">toplists per country or region</a>,
-      this can be helpful for planning your holiday castle trips.
-      These are the top twelve of the <a routerLink="/top1000">list</a>:
+        In Europe and Asia more than 10,000 medieval castles can be found.
+        Topcastles.com selected the most beautiful and interesting castles and ranked them in a top 1000 list.
+        The construction of this <a routerLink="/top1000">list</a> is explained in the menu <a routerLink="/background">background</a>.
+        You can add castles to your own collection in the menu <a routerLink="/favorites">favorites</a>.
+    </p>
+    <p>
+        The pictures below represent the top twelve castles of the top 1000 list:
     </p>
     <app-castle-grid [castles]="top12()"/>
   </section>
 
   <section class="section">
+    <h2><a routerLink="/countries">Lists per country, castle type and more</a></h2>
+    <p>
+        The top 1000 list can be searched, filtered and sorted to show toplists per country or region or type of castle. 
+        Every square picture of a castle on this site links to the information page of that castle.
+    </p>
+    <p>
+        The pictures below represent the top twelve castles of the Netherlands:
+    </p>
+    <app-castle-grid [castles]="topNetherlands12()"/>
+  </section>
+  
+  <section class="section">
     <h2><a routerLink="/top1000">Top twelve by visitor rating</a></h2>
     <p>
-      Every square picture of a castle on this site links to the information page of that castle.
-      The castles with the highest ratings are listed separately in the
-      <a routerLink="/top1000">visitors top 1000</a>.
-      The pictures below represent the top twelve castles of this list:
+      If you are interested in the most popular castles based on visitor ratings, 
+      you can click on the VISITORS* header in the table view of the <a routerLink="/top1000">top 1000</a> list.
+    </p>
+    <p>
+      The pictures below represent the top twelve castles of ranked by visitor rating:
     </p>
     <app-castle-grid [castles]="topVisitors12()"/>
   </section>
 
-  <section class="section">
-    <h2><a routerLink="/countries">Lists per country, castle type and more</a></h2>
-    <p>
-      In "<a routerLink="/castles">All Castles</a>" you can search the database and create your own list of topcastles.
-      "<a routerLink="/countries/Netherlands">Per country</a>" contains a selection of topcastles per country and area
-      and even a list of top castle countries and regions.
-      "<a routerLink="/background" [queryParams]="{sub:'soorten'}">Castle types</a>" lists the topcastles per castle type.
-      The pictures below represent the top twelve castles of the Netherlands:
-    </p>
-    <app-castle-grid [castles]="topNetherlands12()"/>
-  </section>
+
 </div>
