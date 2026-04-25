@@ -98,9 +98,24 @@
         <div class="map-section__map">
           <app-castle-map [castles]="allCastles()" [autoFit]="true" />
         </div>
-        <p class="map-section__footer">
-          <a routerLink="/top1000">Browse the full index &rarr;</a>
-        </p>
+        <div class="map-section__plate">
+          <span class="map-section__plate-label">Plate I.</span>
+          Worldwide distribution of indexed entries, with editorial annotations.
+        </div>
+        <ol class="atlas-notes">
+          <li class="atlas-note">
+            <span class="atlas-note__region">Rhine &amp; Moselle</span>
+            The river valleys of the Rhine and Moselle hold the highest concentration of intact medieval fortifications in Europe. Many were rebuilt during the Romantic era, giving them the archetypal "fairy-tale" silhouette.
+          </li>
+          <li class="atlas-note">
+            <span class="atlas-note__region">Loire Valley</span>
+            The Loire châteaux evolved from military strongholds into Renaissance pleasure residences. Their prominence reflects both architectural ambition and exceptional preservation — several remain furnished and inhabited.
+          </li>
+          <li class="atlas-note">
+            <span class="atlas-note__region">British Isles</span>
+            English and Welsh castles are notable for their diversity: Norman mottes, Edwardian concentric rings, and Tudor tower houses. Scottish tower houses occupy a distinct tradition, built for clan defence rather than feudal display.
+          </li>
+        </ol>
       </section>
 
       <section class="section">
@@ -145,25 +160,6 @@
           Browse the full index
         </a>
       </div>
-
-      <section class="section atlas-notes-section">
-        <h2>Atlas notes</h2>
-        <p class="atlas-notes-intro">Brief editorial annotations on how medieval castle culture varies across the regions covered in the list.</p>
-        <ul class="atlas-notes">
-          <li class="atlas-note">
-            <span class="atlas-note__region">Rhine &amp; Moselle (Germany)</span>
-            The river valleys of the Rhine and Moselle hold the highest concentration of intact medieval fortifications in Europe. Many were rebuilt or heavily restored during the Romantic era, giving them the archetypal "fairy-tale" silhouette that defines the popular image of a castle.
-          </li>
-          <li class="atlas-note">
-            <span class="atlas-note__region">Loire Valley (France)</span>
-            The Loire châteaux evolved from military strongholds into Renaissance pleasure residences. Their prominence in the list reflects both architectural ambition and exceptional preservation — several remain furnished and inhabited to this day.
-          </li>
-          <li class="atlas-note">
-            <span class="atlas-note__region">British Isles</span>
-            English and Welsh castles are notable for their diversity of form: Norman mottes, Edwardian concentric rings, and Tudor tower houses appear across the list. Scottish tower houses occupy a distinct tradition, built for clan defence rather than feudal display.
-          </li>
-        </ul>
-      </section>
 
       <section class="section">
         <h2><a routerLink="/top1000">Top by visitor rating</a></h2>
