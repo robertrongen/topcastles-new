@@ -72,10 +72,18 @@ describe('HomePageComponent', () => {
     expect(headings[0].textContent).toContain('top 1000 of medieval castles');
   });
 
-  it('should render top castles grid', () => {
+  it('should render two castle grids (visitor rating and Netherlands)', () => {
     const el: HTMLElement = fixture.nativeElement;
     const grids = el.querySelectorAll('app-castle-grid');
-    expect(grids.length).toBe(3);
+    expect(grids.length).toBe(2);
+  });
+
+  it('should render the top-ranking reference table', () => {
+    const el: HTMLElement = fixture.nativeElement;
+    const table = el.querySelector('table.ref-table');
+    expect(table).toBeTruthy();
+    const rows = table!.querySelectorAll('tbody tr');
+    expect(rows.length).toBe(3);
   });
 
   it('should compute top12 sorted by score_total desc', () => {

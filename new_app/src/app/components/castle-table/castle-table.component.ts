@@ -81,6 +81,13 @@ export class CastleTableComponent {
   sortCol = signal('');
   sortDir = signal<'asc' | 'desc'>('asc');
 
+  @Input() set initialSort(col: string) {
+    if (col) {
+      this.sortCol.set(col);
+      this.sortDir.set('desc');
+    }
+  }
+
   private sortedCastles = computed(() => {
     const col = this.sortCol();
     if (!col) return this.castles;

@@ -98,7 +98,7 @@
           @if (viewModeService.mode() === 'grid') {
             <app-castle-grid [castles]="cf.filtered()" />
           } @else {
-            <app-castle-table [castles]="cf.filtered()" [columns]="displayedColumns" />
+            <app-castle-table [castles]="cf.filtered()" [columns]="displayedColumns" [initialSort]="initialSort()" />
           }
         </div>
         @if (mapVisible()) {

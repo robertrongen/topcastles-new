@@ -38,6 +38,7 @@ export class Top100PageComponent implements OnInit {
   searchQuery  = signal('');
   showFavoritesOnly = signal(false);
   initialFilters = signal<Record<string, string>>({});
+  initialSort = signal('');
 
   allCastles = computed(() => this.castleService.getAllByScore());
 
@@ -113,6 +114,7 @@ export class Top100PageComponent implements OnInit {
       if (params['castleConcept']) filters['castle_concept'] = params['castleConcept'];
       if (params['condition'])     filters['condition']      = params['condition'];
       if (Object.keys(filters).length) this.initialFilters.set(filters);
+      if (params['sort']) this.initialSort.set(params['sort']);
     });
   }
 }

@@ -8,6 +8,11 @@
   padding-bottom: var(--tk-space-5);
   margin-bottom: var(--tk-space-5);
 
+  &:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
   h2 {
     width: fit-content;
     max-width: 100%;
@@ -87,15 +92,168 @@
   }
 }
 
+.stat-strip {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
+  margin: 0 0 var(--tk-space-5);
+  border-top: 1px solid var(--tk-border, rgba(0 0 0 / 0.1));
+  border-bottom: 1px solid var(--tk-border, rgba(0 0 0 / 0.1));
+
+  &__item {
+    flex: 1 1 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--tk-space-3) var(--tk-space-2);
+    border-right: 1px solid var(--tk-border, rgba(0 0 0 / 0.1));
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  &__value {
+    color: var(--tk-text);
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  &__label {
+    margin-top: var(--tk-space-1);
+    color: var(--tk-text-muted);
+    font-size: var(--tk-font-size-xs, 0.72rem);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+.ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--tk-font-size-sm);
+
+  thead tr {
+    border-bottom: 2px solid var(--tk-orange);
+  }
+
+  th {
+    padding: var(--tk-space-2) var(--tk-space-2) var(--tk-space-2) 0;
+    color: var(--tk-text-muted);
+    font-size: var(--tk-font-size-xs, 0.72rem);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-align: left;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: var(--tk-space-2) var(--tk-space-2) var(--tk-space-2) 0;
+    border-bottom: 1px solid var(--tk-border, rgba(0 0 0 / 0.08));
+    color: var(--tk-text-muted);
+    vertical-align: middle;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  tbody tr:hover td {
+    background: var(--tk-surface-subtle, rgba(0 0 0 / 0.02));
+  }
+
+  &__col-rank {
+    width: 2.5rem;
+    color: var(--tk-text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__col-name {
+    a {
+      color: var(--tk-link);
+      font-weight: 650;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__col-location {
+    color: var(--tk-text-muted);
+  }
+
+  &__col-score,
+  &__col-visitors {
+    width: 6rem;
+    color: var(--tk-text);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+}
+
+.discover-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--tk-space-3);
+  margin: 0 0 var(--tk-space-5);
+
+  &__prompt {
+    color: var(--tk-text-muted);
+    font-size: var(--tk-font-size-sm);
+  }
+
+  &__action {
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--tk-link);
+    cursor: pointer;
+    font-size: var(--tk-font-size-sm);
+    font-weight: 650;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &--secondary {
+      color: var(--tk-text-muted);
+      font-weight: 400;
+    }
+  }
+}
+
+.section-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--tk-space-3);
+  margin-top: var(--tk-space-3);
+  font-size: var(--tk-font-size-sm) !important;
+
+  &__note {
+    color: var(--tk-text-muted);
+    font-size: var(--tk-font-size-xs, 0.72rem);
+  }
+}
+
 .atlas-notes-section {
   border-top: 1px solid var(--tk-border, rgba(0 0 0 / 0.1));
   padding-top: var(--tk-space-4);
 }
 
 .atlas-notes-intro {
-  font-size: var(--tk-font-size-sm) !important;
+  font-size: var(--tk-font-size-sm);
   color: var(--tk-text-muted);
-  margin-bottom: var(--tk-space-3) !important;
+  margin-bottom: var(--tk-space-3);
 }
 
 .atlas-notes {
@@ -125,6 +283,22 @@
 @media (max-width: 767px) {
   .home-page {
     padding: var(--tk-space-3);
+  }
+
+  .stat-strip {
+    &__value {
+      font-size: 1.1rem;
+    }
+
+    &__label {
+      font-size: 0.62rem;
+    }
+  }
+
+  .ref-table {
+    &__col-visitors {
+      display: none;
+    }
   }
 
   .section {

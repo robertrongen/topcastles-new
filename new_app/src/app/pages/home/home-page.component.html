@@ -12,43 +12,50 @@
       <strong>Editor's note</strong>
       The ranking weighs architectural significance, state of preservation, historical importance, and accessibility. Castles that survive as ruins can still rank very highly if their historical context is exceptional.
     </blockquote>
-    <p>
-        The pictures below represent the top twelve castles of the top 1000 list:
-    </p>
-    <app-castle-grid [castles]="top12()"/>
+    <table class="ref-table">
+      <thead>
+        <tr>
+          <th class="ref-table__col-rank">#</th>
+          <th class="ref-table__col-name">Castle</th>
+          <th class="ref-table__col-location">Country</th>
+          <th class="ref-table__col-score">Score</th>
+          <th class="ref-table__col-visitors">Visitor rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (castle of top12(); track castle.castle_code) {
+          <tr>
+            <td class="ref-table__col-rank">{{ castle.position }}</td>
+            <td class="ref-table__col-name">
+              <a [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
+            </td>
+            <td class="ref-table__col-location">{{ castle.country | titlecase }}</td>
+            <td class="ref-table__col-score">{{ castle.score_total != null ? (castle.score_total | number:'1.0-0') : '—' }}</td>
+            <td class="ref-table__col-visitors">{{ castle.score_visitors != null ? (castle.score_visitors | number:'1.1-1') : '—' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
   </section>
 
-  <section class="section">
-    <h2><a routerLink="/countries">Search, filter and sort the list and add castles to your favorites</a></h2>
-    <p>
-        The top 1000 list can be searched, filtered and sorted to show toplists per country or region or type of castle.
-        You can add castles to your own collection in the menu <a routerLink="/favorites">favorites</a>.
-    </p>
-    <p>
-        The pictures below represent the top twelve castles of the Netherlands:
-    </p>
-    <app-castle-grid [castles]="topNetherlands12()"/>
-  </section>
+  <div class="stat-strip" aria-label="Index at a glance">
+    @for (stat of stats; track stat.label) {
+      <div class="stat-strip__item">
+        <span class="stat-strip__value">{{ stat.value }}</span>
+        <span class="stat-strip__label">{{ stat.label }}</span>
+      </div>
+    }
+  </div>
 
-  <section class="section">
-    <h2><a routerLink="/top1000">Top twelve by visitor rating</a></h2>
-    <span class="ranking-label ranking-label--visitors">Visitor rating</span>
-    <p>
-      Between 2004 and 2021, 17,300 visitors of topcastles.com and topkastelen.nl* submitted 63,800 ratings for castles in the list.
-      The visitor rating reflects real audience enthusiasm and is independent of the editorial ranking above —
-      a castle ranked lower editorially may still appear here if it draws exceptional visitor interest.
-      If you are interested in the most popular castles based on visitor ratings,
-      you can click on the VISITORS* header in the table view of the <a routerLink="/top1000">top 1000</a> list.
-    </p>
-    <p>
-      The pictures below represent the top twelve castles ranked by visitor rating:
-    </p>
-    <app-castle-grid [castles]="topVisitors12()"/>
-    <p>
-      <br>
-      <em>*Note: The domains topcastles.com and topkastelen.nl have been donated to the Nederlandse Kastelenstichting in 2021 (<a href="https://topkastelen.com/" target="_blank">topkastelen.com/</a>).</em>
-    </p>
-  </section>
+  <div class="discover-row">
+    <span class="discover-row__prompt">Not sure where to start?</span>
+    <button class="discover-row__action" type="button" (click)="goToSurprise()">
+      Open a random entry &rarr;
+    </button>
+    <a class="discover-row__action discover-row__action--secondary" routerLink="/top1000">
+      Browse the full index
+    </a>
+  </div>
 
   <section class="section atlas-notes-section">
     <h2>Atlas notes</h2>
@@ -67,6 +74,33 @@
         English and Welsh castles are notable for their diversity of form: Norman mottes, Edwardian concentric rings, and Tudor tower houses appear across the list. Scottish tower houses occupy a distinct tradition, built for clan defence rather than feudal display.
       </li>
     </ul>
+  </section>
+
+  <section class="section">
+    <h2><a routerLink="/top1000">Top by visitor rating</a></h2>
+    <span class="ranking-label ranking-label--visitors">Visitor rating</span>
+    <p>
+      Between 2004 and 2021, 17,300 visitors submitted 63,800 ratings for castles in the list.
+      The visitor rating reflects audience enthusiasm and is independent of the editorial ranking above —
+      a castle can rank lower editorially but still appear here if it draws exceptional visitor interest.
+    </p>
+    <app-castle-grid [castles]="topVisitors12().slice(0, 6)"/>
+    <p class="section-footer">
+      <a [routerLink]="['/top1000']" [queryParams]="{ sort: 'score_visitors' }">See all visitor-rated castles &rarr;</a>
+      <em class="section-footer__note">*Ratings collected 2004–2021. Domains donated to Nederlandse Kastelenstichting in 2021 (<a href="https://topkastelen.com/" target="_blank">topkastelen.com</a>).</em>
+    </p>
+  </section>
+
+  <section class="section">
+    <h2><a routerLink="/countries">Explore by country</a></h2>
+    <p>
+      The list can be filtered and sorted by country, region, or castle type.
+      Add castles to your own collection in <a routerLink="/favorites">favorites</a>.
+    </p>
+    <app-castle-grid [castles]="topNetherlands12().slice(0, 6)"/>
+    <p class="section-footer">
+      <a routerLink="/countries/netherlands">Netherlands top list &rarr;</a>
+    </p>
   </section>
 
 </div>
