@@ -180,6 +180,12 @@ the castle image files, and is readable/listable by the deploy SSH user. The
 deployment script will not create this directory automatically because an empty
 bind mount would hide image-serving misconfiguration until after rollout.
 
+### Runtime image mount warning
+
+At startup, the Node server logs whether `/data/castle-images` is usable. The
+same status is included in `/api/health` under `imageMount` so a missing or
+unreadable mount is visible even if the server is otherwise healthy.
+
 ### `permission denied` connecting to Docker socket on the NAS
 
 The `robertron` user lacks sudo rights for docker. Add the sudoers entry:
