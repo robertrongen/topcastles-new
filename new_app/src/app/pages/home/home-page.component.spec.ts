@@ -95,8 +95,8 @@ describe('HomePageComponent', () => {
 
   // ── Computed sorted lists ──────────────────────────────────────────────────
 
-  it('should compute top12 sorted by score_total desc', () => {
-    const top = component.top12();
+  it('should compute top10 sorted by score_total desc', () => {
+    const top = component.top10();
     expect(top[0].castle_code).toBe('c1');
     expect(top[1].castle_code).toBe('c2');
   });

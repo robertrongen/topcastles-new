@@ -44,7 +44,7 @@ export class HomePageComponent implements OnInit {
   }
 
   allCastles = this.castleService.castles;
-  top12 = computed(() => this.castleService.getTopByScore(12));
+  top10 = computed(() => this.castleService.getTopByScore(10));
   topVisitors12 = computed(() => this.castleService.getTopByVisitors(12));
   topNetherlands12 = computed(() => this.castleService.getTopByCountry('netherlands', 12));
   loading = this.castleService.loading;
@@ -73,13 +73,4 @@ export class HomePageComponent implements OnInit {
     this.router.navigate(['/top1000'], { queryParams: params });
   }
 
-  goToSurprise(): void {
-    const pool = this.castleService.castles();
-    if (!pool.length) {
-      this.router.navigate(['/top1000']);
-      return;
-    }
-    const pick = pool[Math.floor(Math.random() * pool.length)];
-    this.router.navigate(['/castles', pick.castle_code]);
-  }
 }

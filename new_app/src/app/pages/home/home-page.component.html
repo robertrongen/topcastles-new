@@ -24,7 +24,7 @@
 
       @if (todaysCastleEnriched(); as castle) {
         <section class="section todays-index">
-          <h2 class="todays-index__heading">From Today's Index</h2>
+          <h2>From Today's Index</h2>
           <div class="todays-index__body">
             <a class="todays-index__image-link" [routerLink]="['/castles', castle.castle_code]">
               <img
@@ -93,7 +93,7 @@
       </div>
 
       <section class="section map-section">
-        <h2 class="map-section__heading">Distribution</h2>
+        <h2>Distribution</h2>
         <p class="map-section__caption">All 1,000 castles — click any marker to open the entry.</p>
         <div class="map-section__map">
           <app-castle-map [castles]="allCastles()" [autoFit]="true" />
@@ -122,35 +122,30 @@
               <th class="ref-table__col-rank">#</th>
               <th class="ref-table__col-name">Castle</th>
               <th class="ref-table__col-location">Country</th>
+              <th class="ref-table__col-era">Era</th>
               <th class="ref-table__col-score">Score</th>
               <th class="ref-table__col-visitors">Visitor rating</th>
             </tr>
           </thead>
           <tbody>
-            @for (castle of top12(); track castle.castle_code) {
+            @for (castle of top10(); track castle.castle_code) {
               <tr>
                 <td class="ref-table__col-rank">{{ castle.position }}</td>
                 <td class="ref-table__col-name">
                   <a [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
                 </td>
                 <td class="ref-table__col-location">{{ castle.country | titlecase }}</td>
+                <td class="ref-table__col-era">{{ castle.era != null ? castle.era + 'th c.' : '—' }}</td>
                 <td class="ref-table__col-score">{{ castle.score_total != null ? (castle.score_total | number:'1.0-0') : '—' }}</td>
                 <td class="ref-table__col-visitors">{{ castle.score_visitors != null ? (castle.score_visitors | number:'1.1-1') : '—' }}</td>
               </tr>
             }
           </tbody>
         </table>
+        <p class="section-footer">
+          <a routerLink="/top1000">See full ranking &rarr;</a>
+        </p>
       </section>
-
-      <div class="discover-row">
-        <span class="discover-row__prompt">Not sure where to start?</span>
-        <button class="discover-row__action" type="button" (click)="goToSurprise()">
-          Open a random entry &rarr;
-        </button>
-        <a class="discover-row__action discover-row__action--secondary" routerLink="/top1000">
-          Browse the full index
-        </a>
-      </div>
 
       <section class="section">
         <h2><a routerLink="/top1000">Top by visitor rating</a></h2>
