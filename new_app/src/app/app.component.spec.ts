@@ -24,13 +24,7 @@ describe('AppComponent', () => {
     expect(fixture.componentInstance.title).toEqual('Top Castles');
   });
 
-  it('should render the banner image in the toolbar', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const logo = fixture.nativeElement.querySelector('mat-toolbar img.tk-logo') as HTMLImageElement;
-    expect(logo).toBeTruthy();
-    expect(logo.src).toContain('banner_en.gif');
-  });
+
 
   it('should render primary nav links in the toolbar', () => {
     const fixture = TestBed.createComponent(AppComponent);

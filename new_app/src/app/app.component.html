@@ -1,9 +1,27 @@
-<mat-toolbar class="tk-masthead">
-  <a routerLink="/" class="tk-logo-link">
-    <img src="banner_en.gif" alt="Topcastles" class="tk-logo" />
-  </a>
+<div class="tk-masthead-area">
+  <div class="tk-masthead-content">
+    <div class="tk-title-section">
+      <p class="tk-title">Topcastles</p>
+      <p class="tk-subtitle">1,000 castles across 56 countries, ranked by visitors and literature.</p>
+    </div>
+    <form class="tk-search" (ngSubmit)="goToIndex(searchQuery)" #searchForm="ngForm">
+      <input
+        class="tk-search__input"
+        type="search"
+        name="q"
+        [(ngModel)]="searchQuery"
+        placeholder="Search castles, countries, regions…"
+        autocomplete="off"
+        aria-label="Search the castle index"
+      />
+      <button class="tk-search__btn" type="submit">Search index</button>
+    </form>
+  </div>
+</div>
 
+<mat-toolbar class="tk-masthead">
   <nav class="tk-toolbar-nav">
+    <a mat-button routerLink="/" routerLinkActive="tk-nav-active">Home</a>
     <a mat-button routerLink="/top1000" routerLinkActive="tk-nav-active">Top 1000</a>
 
     <button mat-button [matMenuTriggerFor]="backgroundMenu" class="tk-nav-menu-btn">
@@ -76,11 +94,23 @@
   <mat-sidenav-content class="main-content">
     <router-outlet />
     <footer class="tk-footer">
-      <p>
-        &copy; 2004&ndash;2021 and 2026&ndash;present Robert Rongen &mdash;
-        <a href="https://creativecommons.org/licenses/by-nc/3.0/" target="_blank" rel="license noopener">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>
-      </p>
-      <p>&copy; Other pictures: copyright reserved by the photographer credited on the picture.</p>
+      <div class="tk-footer-section">
+        <p>
+          &copy; 2004&ndash;2021 and 2026&ndash;present <strong>Robert Rongen</strong> &mdash;
+          <a href="https://creativecommons.org/licenses/by-nc/3.0/" target="_blank" rel="license noopener">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>
+        </p>
+      </div>
+      <div class="tk-footer-section">
+        <p>
+          <a routerLink="/background" title="Learn about the ranking methodology">Ranking Methodology</a> &middot;
+          <a routerLink="/developer" title="API and data source documentation">Data &amp; API</a>
+        </p>
+      </div>
+      <div class="tk-footer-section">
+        <p style="font-size: 11px; margin-top: 12px;">
+          Picture copyright reserved by the photographer credited on the picture.
+        </p>
+      </div>
     </footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

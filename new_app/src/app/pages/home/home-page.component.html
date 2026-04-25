@@ -1,23 +1,4 @@
 <div class="home-page">
-  <header class="home-header">
-    <div class="home-header__title-block">
-      <h1 class="home-header__title">Top 1000 Medieval Castles</h1>
-      <p class="home-header__subtitle">The definitive ranked reference — 1,000 castles across 56 countries, scored for architectural significance, preservation, and historical depth.</p>
-    </div>
-    <form class="home-search" (ngSubmit)="goToIndex(searchQuery)" #searchForm="ngForm">
-      <input
-        class="home-search__input"
-        type="search"
-        name="q"
-        [(ngModel)]="searchQuery"
-        placeholder="Search castles, countries, regions…"
-        autocomplete="off"
-        aria-label="Search the castle index"
-      />
-      <button class="home-search__btn" type="submit">Search index</button>
-    </form>
-  </header>
-
   <div class="home-layout">
 
     <main class="home-main">
@@ -79,18 +60,6 @@
           </div>
         </section>
       }
-
-      <div class="numbers-block">
-        <span class="numbers-block__label">By the Numbers</span>
-        <div class="stat-strip" aria-label="Index at a glance">
-          @for (stat of stats; track stat.label) {
-            <div class="stat-strip__item">
-              <span class="stat-strip__value">{{ stat.value }}</span>
-              <span class="stat-strip__label">{{ stat.label }}</span>
-            </div>
-          }
-        </div>
-      </div>
 
       <section class="section map-section">
         <h2>Distribution</h2>
@@ -221,7 +190,7 @@
           Topcastles is an editorial ranking of the 1,000 most significant medieval castles across Europe and Asia — selected and scored for architectural quality, state of preservation, historical importance, and accessibility.
         </p>
         <p class="sidebar-widget__body">
-          The list has been maintained since 2004. Visitor ratings were collected 2004–2021 from 17,300 respondents.
+          The list has been maintained since 2004. 63,800 visitor ratings were collected 2004–2021 from 17,300 respondents.
         </p>
         <nav class="sidebar-widget__links" aria-label="About">
           <a routerLink="/background">Ranking methodology</a>

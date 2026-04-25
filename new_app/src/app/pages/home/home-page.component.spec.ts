@@ -76,10 +76,7 @@ describe('HomePageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render the h1 page title', () => {
-    const h1: HTMLElement = fixture.nativeElement.querySelector('h1.home-header__title');
-    expect(h1?.textContent).toContain('Top 1000 Medieval Castles');
-  });
+
 
   it('should render the top-ranking reference table', () => {
     const table = fixture.nativeElement.querySelector('table.ref-table');

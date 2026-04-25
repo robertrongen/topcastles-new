@@ -36,6 +36,7 @@
   --tk-overlay-muted:#4f4a5c;
 
   --tk-font-sans:   "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+  --tk-font-serif:  "Times New Roman", "Times", serif;
   --tk-font-size-xs: 0.75rem;
   --tk-font-size-sm: 0.875rem;
   --tk-font-size-md: 1rem;
@@ -55,7 +56,7 @@
 // ── Palette — dark ────────────────────────────────────────────────────────────
 
 [data-theme="dark"] {
-  --tk-orange:      #FF9900;
+  --tk-orange:      #CC7722;
   --tk-body-bg:     #080816;
   --tk-content-bg:  #151527;
   --tk-surface:     #1b1b31;
@@ -137,12 +138,19 @@ body {
 
 // ── Typography ──────────────────────────────────────────────────────────────
 
-h1, h2, h3, h4 {
+title, h1, h2, h3, h4 {
   font-family: var(--tk-font-sans);
   font-weight: 650;
   line-height: var(--tk-line-height-tight);
 }
 
+title {
+  font-size: 2rem;
+  background-color: var(--tk-section-bg);
+  color: var(--tk-text);
+  padding: var(--tk-space-3) var(--tk-space-4);
+  margin: 0 0 var(--tk-space-4);
+}
 h1 {
   font-size: 1.75rem;
   background-color: var(--tk-section-bg);

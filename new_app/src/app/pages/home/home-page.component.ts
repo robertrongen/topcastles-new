@@ -1,22 +1,19 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { DecimalPipe, TitleCasePipe } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { CastleService } from '../../services/castle.service';
 import { CastleMapComponent } from '../../components/castle-map/castle-map.component';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [RouterLink, FormsModule, DecimalPipe, TitleCasePipe, CastleMapComponent],
+  imports: [RouterLink, DecimalPipe, TitleCasePipe, CastleMapComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
 export class HomePageComponent implements OnInit {
   private castleService = inject(CastleService);
-  private router = inject(Router);
 
-  searchQuery = '';
   private surpriseIndex = signal(Math.floor(Math.random() * 900));
 
   deepSurpriseCastle = computed(() => {
@@ -66,11 +63,6 @@ export class HomePageComponent implements OnInit {
 
   refreshDeepSurprise(): void {
     this.surpriseIndex.set(Math.floor(Math.random() * 900));
-  }
-
-  goToIndex(query: string): void {
-    const params = query.trim() ? { name: query.trim() } : {};
-    this.router.navigate(['/top1000'], { queryParams: params });
   }
 
 }

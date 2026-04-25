@@ -6,14 +6,14 @@ export class ThemeService {
   private readonly STORAGE_KEY = 'tk-theme';
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
-  isDark = signal(false);
+  isDark = signal(true);
 
   constructor() {
     if (!this.isBrowser) return;
 
     const stored = localStorage.getItem(this.STORAGE_KEY);
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const dark = stored ? stored === 'dark' : prefersDark;
+    const dark = stored ? stored === 'dark' : true;
     this.isDark.set(dark);
     this.apply(dark);
 
