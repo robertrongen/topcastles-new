@@ -34,7 +34,7 @@
   border-collapse: collapse;
 
   td {
-    padding: var(--tk-space-1);
+    padding: var(--tk-space-2);
     color: var(--tk-text);
     font-size: var(--tk-font-size-sm);
     vertical-align: top;
@@ -119,13 +119,24 @@
     width: 100%;
   }
 
+  .detail-table tr {
+    box-sizing: border-box;
+    margin-bottom: var(--tk-space-2);
+    padding: var(--tk-space-2);
+    background: var(--tk-surface-alt);
+    border: 1px solid var(--tk-divider);
+    border-radius: var(--tk-radius-sm);
+  }
+
   .detail-table td {
     box-sizing: border-box;
-    padding-bottom: var(--tk-space-1);
+    padding: 0 0 var(--tk-space-1);
   }
 
   .detail-table .label {
     width: 100%;
-    padding-bottom: 0;
+    padding: var(--tk-space-1) 0 0;
+    color: var(--tk-text-subtle);
+    font-size: var(--tk-font-size-xs);
   }
 }

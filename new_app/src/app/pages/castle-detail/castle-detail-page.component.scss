@@ -53,6 +53,19 @@
     flex: 1;
     margin-bottom: 0;
   }
+
+  button[mat-icon-button] {
+    flex: 0 0 auto;
+    background: var(--tk-surface);
+    border: 1px solid var(--tk-border);
+    color: var(--tk-link);
+
+    &:hover,
+    &:focus-visible {
+      background: var(--tk-link-hover);
+      color: var(--tk-text);
+    }
+  }
 }
 
 .nav-label,
@@ -120,7 +133,7 @@ h1 {
   border-collapse: collapse;
 
   td {
-    padding: var(--tk-space-1);
+    padding: var(--tk-space-2);
     color: var(--tk-text);
     font-size: var(--tk-font-size-sm);
     vertical-align: middle;
@@ -220,9 +233,16 @@ h1 {
   background: rgba(0, 0, 0, 0.55);
   border: 0;
   border-radius: var(--tk-radius-sm);
-  opacity: 0;
+  min-width: 40px;
+  min-height: 40px;
+  opacity: 0.92;
 
-  .featured-image-wrap:hover & { opacity: 1; }
+  .featured-image-wrap:hover &,
+  &:focus-visible {
+    opacity: 1;
+    outline: 2px solid var(--tk-focus-ring);
+    outline-offset: 2px;
+  }
 }
 
 .thumb-strip {
@@ -233,17 +253,30 @@ h1 {
   overflow-x: auto;
 }
 
-.strip-thumb {
+.strip-thumb-button {
   flex: 0 0 72px;
   width: 72px;
   height: 72px;
-  object-fit: cover;
+  padding: 0;
+  overflow: hidden;
+  background: var(--tk-surface);
+  border: 0;
   border-radius: var(--tk-radius-sm);
   cursor: pointer;
   outline: 2px solid transparent;
 
   &:hover { opacity: 0.8; }
-  &.active { outline-color: var(--tk-focus-ring); }
+  &.active,
+  &:focus-visible {
+    outline-color: var(--tk-focus-ring);
+  }
+}
+
+.strip-thumb {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .nearby-grid {
@@ -307,6 +340,10 @@ h1 {
 
 @media (max-width: 640px) {
   .castle-detail { padding: var(--tk-space-3); }
+  .title-row {
+    align-items: center;
+  }
+
   .castle-nav,
   .nav-group,
   .wikipedia-header {
@@ -322,11 +359,25 @@ h1 {
     width: 100%;
   }
 
+  .detail-table tr {
+    box-sizing: border-box;
+    margin-bottom: var(--tk-space-2);
+    padding: var(--tk-space-2);
+    background: var(--tk-surface-alt);
+    border: 1px solid var(--tk-divider);
+    border-radius: var(--tk-radius-sm);
+  }
+
   .detail-table td {
     box-sizing: border-box;
-    padding-bottom: var(--tk-space-1);
+    padding: 0 0 var(--tk-space-1);
   }
-  .detail-table .label { width: 100%; padding-bottom: 0; }
+  .detail-table .label {
+    width: 100%;
+    padding: var(--tk-space-1) 0 0;
+    color: var(--tk-text-subtle);
+    font-size: var(--tk-font-size-xs);
+  }
   .wikipedia-thumb {
     float: none;
     width: 100%;

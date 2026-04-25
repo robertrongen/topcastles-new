@@ -319,11 +319,15 @@
           @if (loadedImageUrls().length > 1) {
             <div class="thumb-strip">
               @for (url of loadedImageUrls(); track $index) {
-                <img class="strip-thumb"
-                     [class.active]="selectedIndex() === $index"
-                     [src]="url"
-                     [alt]="castle()!.castle_name"
-                     (click)="selectImage($index)" />
+                <button class="strip-thumb-button"
+                        type="button"
+                        [class.active]="selectedIndex() === $index"
+                        (click)="selectImage($index)"
+                        [attr.aria-label]="'Show image ' + ($index + 1) + ' of ' + loadedImageUrls().length">
+                  <img class="strip-thumb"
+                       [src]="url"
+                       [alt]="castle()!.castle_name" />
+                </button>
               }
             </div>
           }
