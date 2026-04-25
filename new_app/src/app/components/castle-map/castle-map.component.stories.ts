@@ -47,3 +47,20 @@ export const DarkTheme: Story = {
     `,
   }),
 };
+
+export const CompactPanel: Story = {
+  args: {
+    castles: generateCastles(12),
+  },
+  parameters: {
+    viewport: { defaultViewport: 'mobile1' },
+  },
+  render: args => ({
+    props: args,
+    template: `
+      <div style="height: 420px; padding: 8px; background: var(--tk-surface-alt); border: 1px solid var(--tk-divider); border-radius: var(--tk-radius-md);">
+        <app-castle-map style="--tk-map-min-height: 0;" [castles]="castles"></app-castle-map>
+      </div>
+    `,
+  }),
+};

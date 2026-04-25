@@ -6,7 +6,7 @@
 .castle-map {
   box-sizing: border-box;
   height: 100%;
-  min-height: 420px;
+  min-height: var(--tk-map-min-height, 420px);
   width: 100%;
   overflow: hidden;
   background: var(--tk-surface-soft);

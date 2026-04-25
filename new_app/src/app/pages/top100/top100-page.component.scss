@@ -72,7 +72,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
-  gap: var(--tk-space-2);
+  gap: var(--tk-space-3);
 
   --mat-switch-label-text-color: var(--tk-text-muted);
   --mdc-switch-unselected-track-color: var(--tk-surface);
@@ -85,14 +85,38 @@
   --mat-switch-track-outline-color: var(--tk-border);
   --mat-icon-button-icon-color: var(--tk-link);
 
+  .favorite-control {
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+  }
+
+  .view-control-group {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--tk-space-1);
+    padding: var(--tk-space-1);
+    background: var(--tk-surface);
+    border: 1px solid var(--tk-border);
+    border-radius: var(--tk-radius-sm);
+  }
+
+  app-view-toggle {
+    margin-bottom: 0;
+  }
+
   button[mat-icon-button] {
+    width: 40px;
+    height: 40px;
     background: var(--tk-surface);
     border: 1px solid var(--tk-border);
     color: var(--tk-link);
   }
 
-  button[mat-icon-button]:hover {
+  button[mat-icon-button]:hover,
+  button[mat-icon-button].active {
     background: var(--tk-link-hover);
+    color: var(--tk-text);
   }
 }
 
@@ -121,7 +145,8 @@
   position: sticky;
   top: 72px;
   box-sizing: border-box;
-  height: 560px;
+  height: min(560px, calc(100vh - 96px));
+  min-height: 420px;
   overflow: hidden;
   padding: var(--tk-space-2);
   background: var(--tk-surface-alt);
@@ -132,6 +157,7 @@
   app-castle-map {
     display: block;
     height: 100%;
+    --tk-map-min-height: 0;
     overflow: hidden;
     border-radius: var(--tk-radius-sm);
   }
@@ -177,7 +203,7 @@
 
   .map-panel {
     position: static;
-    height: 360px;
+    height: clamp(420px, 56vh, 520px);
   }
 }
 
@@ -190,5 +216,19 @@
   .view-toolbar {
     align-items: stretch;
     justify-content: flex-start;
+  }
+
+  .view-toolbar,
+  .favorite-control,
+  .view-control-group {
+    width: 100%;
+  }
+
+  .view-control-group {
+    justify-content: space-between;
+  }
+
+  .map-panel {
+    height: 420px;
   }
 }

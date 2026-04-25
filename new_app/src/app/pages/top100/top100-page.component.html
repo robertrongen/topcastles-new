@@ -37,18 +37,24 @@
           <p class="result-count">{{ cf.filtered().length }} ranked castles</p>
         }
 
-        <div class="view-toolbar">
-          <mat-slide-toggle [checked]="showFavoritesOnly()" (change)="showFavoritesOnly.set($event.checked)" color="primary">
-            Show favorites only ({{ favoriteCount() }})
-          </mat-slide-toggle>
-          <app-view-toggle [hideMap]="true" />
-          <button mat-icon-button type="button"
-                  (click)="toggleMap()"
-                  [color]="mapVisible() ? 'primary' : ''"
-                  [title]="mapVisible() ? 'Hide map' : 'Show map'"
-                  aria-label="Toggle map">
-            <mat-icon>map</mat-icon>
-          </button>
+        <div class="view-toolbar" aria-label="Browse view controls">
+          <div class="favorite-control">
+            <mat-slide-toggle [checked]="showFavoritesOnly()" (change)="showFavoritesOnly.set($event.checked)" color="primary">
+              Show favorites only ({{ favoriteCount() }})
+            </mat-slide-toggle>
+          </div>
+          <div class="view-control-group" aria-label="View and map controls">
+            <app-view-toggle [hideMap]="true" />
+            <button mat-icon-button type="button"
+                    class="map-toggle"
+                    [class.active]="mapVisible()"
+                    (click)="toggleMap()"
+                    [title]="mapVisible() ? 'Hide map' : 'Show map'"
+                    [attr.aria-pressed]="mapVisible()"
+                    aria-label="Toggle map panel">
+              <mat-icon>map</mat-icon>
+            </button>
+          </div>
         </div>
       </div>
     </div>
