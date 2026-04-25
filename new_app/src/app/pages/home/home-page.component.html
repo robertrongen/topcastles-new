@@ -1,12 +1,17 @@
 <div class="home-page">
   <section class="section">
     <h2><a routerLink="/top1000">The top 1000 of medieval castles</a></h2>
+    <span class="ranking-label">Editorial ranking</span>
     <p>
         Across Europe and Asia, more than 10,000 medieval castles can still be found.
         Topcastles.com selected the most beautiful and interesting castles and ranked them in a top 1000 list.
         Every square picture of a castle on this site links to the information page of that castle.
         The methodology behind of this <a routerLink="/top1000">list</a> is explained in the menu <a routerLink="/background">background</a>.
     </p>
+    <blockquote class="editor-note">
+      <strong>Editor's note</strong>
+      The ranking weighs architectural significance, state of preservation, historical importance, and accessibility. Castles that survive as ruins can still rank very highly if their historical context is exceptional.
+    </blockquote>
     <p>
         The pictures below represent the top twelve castles of the top 1000 list:
     </p>
@@ -16,7 +21,7 @@
   <section class="section">
     <h2><a routerLink="/countries">Search, filter and sort the list and add castles to your favorites</a></h2>
     <p>
-        The top 1000 list can be searched, filtered and sorted to show toplists per country or region or type of castle. 
+        The top 1000 list can be searched, filtered and sorted to show toplists per country or region or type of castle.
         You can add castles to your own collection in the menu <a routerLink="/favorites">favorites</a>.
     </p>
     <p>
@@ -24,24 +29,44 @@
     </p>
     <app-castle-grid [castles]="topNetherlands12()"/>
   </section>
-  
+
   <section class="section">
     <h2><a routerLink="/top1000">Top twelve by visitor rating</a></h2>
+    <span class="ranking-label ranking-label--visitors">Visitor rating</span>
     <p>
       Between 2004 and 2021, 17,300 visitors of topcastles.com and topkastelen.nl* submitted 63,800 ratings for castles in the list.
-      If you are interested in the most popular castles based on visitor ratings, 
+      The visitor rating reflects real audience enthusiasm and is independent of the editorial ranking above —
+      a castle ranked lower editorially may still appear here if it draws exceptional visitor interest.
+      If you are interested in the most popular castles based on visitor ratings,
       you can click on the VISITORS* header in the table view of the <a routerLink="/top1000">top 1000</a> list.
     </p>
     <p>
-      The pictures below represent the top twelve castles of ranked by visitor rating:
+      The pictures below represent the top twelve castles ranked by visitor rating:
     </p>
     <app-castle-grid [castles]="topVisitors12()"/>
     <p>
       <br>
       <em>*Note: The domains topcastles.com and topkastelen.nl have been donated to the Nederlandse Kastelenstichting in 2021 (<a href="https://topkastelen.com/" target="_blank">topkastelen.com/</a>).</em>
     </p>
-
   </section>
 
+  <section class="section atlas-notes-section">
+    <h2>Atlas notes</h2>
+    <p class="atlas-notes-intro">Brief editorial annotations on how medieval castle culture varies across the regions covered in the list.</p>
+    <ul class="atlas-notes">
+      <li class="atlas-note">
+        <span class="atlas-note__region">Rhine &amp; Moselle (Germany)</span>
+        The river valleys of the Rhine and Moselle hold the highest concentration of intact medieval fortifications in Europe. Many were rebuilt or heavily restored during the Romantic era, giving them the archetypal "fairy-tale" silhouette that defines the popular image of a castle.
+      </li>
+      <li class="atlas-note">
+        <span class="atlas-note__region">Loire Valley (France)</span>
+        The Loire châteaux evolved from military strongholds into Renaissance pleasure residences. Their prominence in the list reflects both architectural ambition and exceptional preservation — several remain furnished and inhabited to this day.
+      </li>
+      <li class="atlas-note">
+        <span class="atlas-note__region">British Isles</span>
+        English and Welsh castles are notable for their diversity of form: Norman mottes, Edwardian concentric rings, and Tudor tower houses appear across the list. Scottish tower houses occupy a distinct tradition, built for clan defence rather than feudal display.
+      </li>
+    </ul>
+  </section>
 
 </div>
