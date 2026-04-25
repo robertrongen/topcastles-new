@@ -88,9 +88,15 @@ describe('HomePageComponent', () => {
     expect(rows.length).toBe(3);
   });
 
-  it('should render two castle grids (visitor rating and Netherlands)', () => {
-    const grids = fixture.nativeElement.querySelectorAll('app-castle-grid');
-    expect(grids.length).toBe(2);
+  it('should render visitor ranking as a lead card and compact list', () => {
+    const lead = fixture.nativeElement.querySelector('.visitor-lead');
+    const rows = fixture.nativeElement.querySelectorAll('.visitor-list tbody tr');
+    expect(lead).toBeTruthy();
+    expect(rows.length).toBe(2);
+  });
+
+  it('should not render the postponed country exploration section', () => {
+    expect(fixture.nativeElement.textContent).not.toContain('Explore by country');
   });
 
   // ── Computed sorted lists ──────────────────────────────────────────────────
@@ -107,10 +113,9 @@ describe('HomePageComponent', () => {
     expect(top[1].castle_code).toBe('c2');
   });
 
-  it('should compute topNetherlands12 filtered to netherlands', () => {
-    const top = component.topNetherlands12();
-    expect(top.length).toBe(2);
-    expect(top.every((c) => c.country === 'netherlands')).toBeTrue();
+  it('should derive the #1 visitor castle and #2-#5 runner-up list', () => {
+    expect(component.topVisitorLead()?.castle_code).toBe('c3');
+    expect(component.topVisitorRunnersUp().map(c => c.castle_code)).toEqual(['c2', 'c1']);
   });
 
   // ── todaysCastle: daily selection ──────────────────────────────────────────

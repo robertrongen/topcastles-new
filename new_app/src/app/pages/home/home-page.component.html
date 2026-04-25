@@ -155,22 +155,59 @@
           The visitor rating reflects audience enthusiasm and is independent of the editorial ranking above —
           a castle can rank lower editorially but still appear here if it draws exceptional visitor interest.
         </p>
-        <app-castle-grid [castles]="topVisitors12().slice(0, 6)"/>
+        <div class="visitor-ranking">
+          @if (topVisitorLead(); as castle) {
+            <article class="visitor-lead">
+              <div class="visitor-lead__content">
+                <span class="visitor-lead__eyebrow">#1 visitor-rated castle</span>
+                <a class="visitor-lead__name" [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
+                <div class="visitor-lead__meta">
+                  <span>{{ castle.country | titlecase }}</span>
+                  @if (castle.score_visitors != null) {
+                    <span>{{ castle.score_visitors | number:'1.1-1' }} visitor rating</span>
+                  }
+                </div>
+                @if (castle.wikipedia_extract) {
+                  <p class="visitor-lead__summary">{{ castle.wikipedia_extract }}</p>
+                }
+              </div>
+              <a class="visitor-lead__image-link" [routerLink]="['/castles', castle.castle_code]">
+                <img
+                  class="visitor-lead__image"
+                  [src]="'images/castles/' + castle.castle_code + '.jpg'"
+                  [alt]="castle.castle_name"
+                  loading="lazy"
+                  (error)="onImageError($event, castle.wikidata_image)"
+                />
+              </a>
+            </article>
+          }
+
+          <table class="visitor-list">
+            <caption>#2-#5 visitor-rated castles</caption>
+            <thead>
+              <tr>
+                <th class="visitor-list__rank">#</th>
+                <th>Castle</th>
+                <th>Country</th>
+                <th class="visitor-list__score">Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (castle of topVisitorRunnersUp(); track castle.castle_code; let i = $index) {
+                <tr>
+                  <td class="visitor-list__rank">{{ i + 2 }}</td>
+                  <td><a [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a></td>
+                  <td>{{ castle.country | titlecase }}</td>
+                  <td class="visitor-list__score">{{ castle.score_visitors != null ? (castle.score_visitors | number:'1.1-1') : '—' }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
         <p class="section-footer">
           <a [routerLink]="['/top1000']" [queryParams]="{ sort: 'score_visitors' }">See all visitor-rated castles &rarr;</a>
           <em class="section-footer__note">*Ratings collected 2004–2021. Domains donated to Nederlandse Kastelenstichting in 2021 (<a href="https://topkastelen.com/" target="_blank">topkastelen.com</a>).</em>
-        </p>
-      </section>
-
-      <section class="section">
-        <h2><a routerLink="/countries">Explore by country</a></h2>
-        <p>
-          The list can be filtered and sorted by country, region, or castle type.
-          Add castles to your own collection in <a routerLink="/favorites">favorites</a>.
-        </p>
-        <app-castle-grid [castles]="topNetherlands12().slice(0, 6)"/>
-        <p class="section-footer">
-          <a routerLink="/countries/netherlands">Netherlands top list &rarr;</a>
         </p>
       </section>
 

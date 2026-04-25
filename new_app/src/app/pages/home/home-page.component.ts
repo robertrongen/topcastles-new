@@ -3,13 +3,12 @@ import { Router, RouterLink } from '@angular/router';
 import { DecimalPipe, TitleCasePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CastleService } from '../../services/castle.service';
-import { CastleGridComponent } from '../../components/castle-grid/castle-grid.component';
 import { CastleMapComponent } from '../../components/castle-map/castle-map.component';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [RouterLink, FormsModule, DecimalPipe, TitleCasePipe, CastleGridComponent, CastleMapComponent],
+  imports: [RouterLink, FormsModule, DecimalPipe, TitleCasePipe, CastleMapComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
@@ -46,7 +45,8 @@ export class HomePageComponent implements OnInit {
   allCastles = this.castleService.castles;
   top10 = computed(() => this.castleService.getTopByScore(10));
   topVisitors12 = computed(() => this.castleService.getTopByVisitors(12));
-  topNetherlands12 = computed(() => this.castleService.getTopByCountry('netherlands', 12));
+  topVisitorLead = computed(() => this.topVisitors12()[0] ?? null);
+  topVisitorRunnersUp = computed(() => this.topVisitors12().slice(1, 5));
   loading = this.castleService.loading;
 
   readonly stats = [
