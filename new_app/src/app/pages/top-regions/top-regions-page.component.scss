@@ -1,22 +1,21 @@
 .top-regions-page {
   .section {
-    // max-width: 1040px;
+    max-width: 1280px;
   }
 }
 
 .region-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: var(--tk-space-3);
   justify-content: start;
-  // max-width: 920px;
   margin-top: var(--tk-space-4);
 }
 
 .region-card {
   width: 100%;
-  max-width: 176px;
-  height: 290px;
+  max-width: 208px;
+  height: 308px;
   box-sizing: border-box;
   background: var(--tk-surface);
   border: 1px solid var(--tk-border);
@@ -27,14 +26,15 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    height: 100%;
     padding: var(--tk-space-2);
     gap: var(--tk-space-1);
   }
 
   .region-image {
+    width: 100%;
     height: 150px;
-    width: auto;
-    max-width: 100%;
+    object-fit: cover;
     border-radius: var(--tk-radius-sm);
     display: block;
   }
@@ -50,12 +50,14 @@
     font-size: var(--tk-font-size-sm);
     font-weight: 650;
     line-height: var(--tk-line-height-tight);
+    min-height: 2.4em;
   }
 
   p {
     margin: 0;
     color: var(--tk-text-muted);
     font-size: var(--tk-font-size-xs);
+    line-height: var(--tk-line-height-normal);
   }
 
   a {
@@ -71,6 +73,7 @@
   justify-content: center;
   overflow-x: auto;
   margin-top: var(--tk-space-4);
+  padding-bottom: var(--tk-space-1);
 
   table {
     flex: 0 1 860px;
@@ -127,13 +130,16 @@
     }
 
     .name-col {
-      min-width: 160px;
+      min-width: 176px;
     }
 
     .region-thumbnail {
       width: 55px;
       height: 55px;
       object-fit: cover;
+      border-radius: var(--tk-radius-xs);
+      display: block;
+      margin: 0 auto;
     }
 
     a {
@@ -153,7 +159,7 @@
   }
 
   .region-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
   }
 
   .table-container {
@@ -161,6 +167,17 @@
   }
 
   .region-table {
-    min-width: 700px;
+    min-width: 760px;
+  }
+}
+
+@media (max-width: 480px) {
+  .region-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .region-card {
+    max-width: none;
+    height: 300px;
   }
 }
