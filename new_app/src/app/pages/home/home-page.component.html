@@ -2,10 +2,10 @@
   <section class="section">
     <h2><a routerLink="/top1000">The top 1000 of medieval castles</a></h2>
     <p>
-        In Europe and Asia more than 10,000 medieval castles can be found.
+        Across Europe and Asia, more than 10,000 medieval castles can still be found.
         Topcastles.com selected the most beautiful and interesting castles and ranked them in a top 1000 list.
-        The construction of this <a routerLink="/top1000">list</a> is explained in the menu <a routerLink="/background">background</a>.
-        You can add castles to your own collection in the menu <a routerLink="/favorites">favorites</a>.
+        Every square picture of a castle on this site links to the information page of that castle.
+        The methodology behind of this <a routerLink="/top1000">list</a> is explained in the menu <a routerLink="/background">background</a>.
     </p>
     <p>
         The pictures below represent the top twelve castles of the top 1000 list:
@@ -14,10 +14,10 @@
   </section>
 
   <section class="section">
-    <h2><a routerLink="/countries">Lists per country, castle type and more</a></h2>
+    <h2><a routerLink="/countries">Search, filter and sort the list and add castles to your favorites</a></h2>
     <p>
         The top 1000 list can be searched, filtered and sorted to show toplists per country or region or type of castle. 
-        Every square picture of a castle on this site links to the information page of that castle.
+        You can add castles to your own collection in the menu <a routerLink="/favorites">favorites</a>.
     </p>
     <p>
         The pictures below represent the top twelve castles of the Netherlands:
@@ -28,6 +28,7 @@
   <section class="section">
     <h2><a routerLink="/top1000">Top twelve by visitor rating</a></h2>
     <p>
+      Between 2004 and 2021, 17,300 visitors of topcastles.com and topkastelen.nl* submitted 63,800 ratings for castles in the list.
       If you are interested in the most popular castles based on visitor ratings, 
       you can click on the VISITORS* header in the table view of the <a routerLink="/top1000">top 1000</a> list.
     </p>
@@ -35,6 +36,11 @@
       The pictures below represent the top twelve castles of ranked by visitor rating:
     </p>
     <app-castle-grid [castles]="topVisitors12()"/>
+    <p>
+      <br>
+      <em>*Note: The domains topcastles.com and topkastelen.nl have been donated to the Nederlandse Kastelenstichting in 2021 (<a href="https://topkastelen.com/" target="_blank">topkastelen.com/</a>).</em>
+    </p>
+
   </section>
 
 
