@@ -1,106 +1,255 @@
 <div class="home-page">
-  <section class="section">
-    <h2><a routerLink="/top1000">The top 1000 of medieval castles</a></h2>
-    <span class="ranking-label">Editorial ranking</span>
-    <p>
-        Across Europe and Asia, more than 10,000 medieval castles can still be found.
-        Topcastles.com selected the most beautiful and interesting castles and ranked them in a top 1000 list.
-        Every square picture of a castle on this site links to the information page of that castle.
-        The methodology behind of this <a routerLink="/top1000">list</a> is explained in the menu <a routerLink="/background">background</a>.
-    </p>
-    <blockquote class="editor-note">
-      <strong>Editor's note</strong>
-      The ranking weighs architectural significance, state of preservation, historical importance, and accessibility. Castles that survive as ruins can still rank very highly if their historical context is exceptional.
-    </blockquote>
-    <table class="ref-table">
-      <thead>
-        <tr>
-          <th class="ref-table__col-rank">#</th>
-          <th class="ref-table__col-name">Castle</th>
-          <th class="ref-table__col-location">Country</th>
-          <th class="ref-table__col-score">Score</th>
-          <th class="ref-table__col-visitors">Visitor rating</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (castle of top12(); track castle.castle_code) {
-          <tr>
-            <td class="ref-table__col-rank">{{ castle.position }}</td>
-            <td class="ref-table__col-name">
-              <a [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
-            </td>
-            <td class="ref-table__col-location">{{ castle.country | titlecase }}</td>
-            <td class="ref-table__col-score">{{ castle.score_total != null ? (castle.score_total | number:'1.0-0') : '—' }}</td>
-            <td class="ref-table__col-visitors">{{ castle.score_visitors != null ? (castle.score_visitors | number:'1.1-1') : '—' }}</td>
-          </tr>
-        }
-      </tbody>
-    </table>
-  </section>
+  <header class="home-header">
+    <div class="home-header__title-block">
+      <h1 class="home-header__title">Top 1000 Medieval Castles</h1>
+      <p class="home-header__subtitle">The definitive ranked reference — 1,000 castles across 56 countries, scored for architectural significance, preservation, and historical depth.</p>
+    </div>
+    <form class="home-search" (ngSubmit)="goToIndex(searchQuery)" #searchForm="ngForm">
+      <input
+        class="home-search__input"
+        type="search"
+        name="q"
+        [(ngModel)]="searchQuery"
+        placeholder="Search castles, countries, regions…"
+        autocomplete="off"
+        aria-label="Search the castle index"
+      />
+      <button class="home-search__btn" type="submit">Search index</button>
+    </form>
+  </header>
 
-  <div class="stat-strip" aria-label="Index at a glance">
-    @for (stat of stats; track stat.label) {
-      <div class="stat-strip__item">
-        <span class="stat-strip__value">{{ stat.value }}</span>
-        <span class="stat-strip__label">{{ stat.label }}</span>
+  <div class="home-layout">
+
+    <main class="home-main">
+
+      @if (todaysCastleEnriched(); as castle) {
+        <section class="section todays-index">
+          <h2 class="todays-index__heading">From Today's Index</h2>
+          <div class="todays-index__body">
+            <a class="todays-index__image-link" [routerLink]="['/castles', castle.castle_code]">
+              <img
+                class="todays-index__image"
+                [src]="'images/castles/' + castle.castle_code + '.jpg'"
+                [alt]="castle.castle_name"
+                loading="eager"
+                (error)="onImageError($event, castle.wikidata_image)"
+              />
+            </a>
+            <div class="todays-index__content">
+              <div class="todays-index__meta">
+                <span class="todays-index__rank">#{{ castle.position }}</span>
+                <span class="todays-index__separator">·</span>
+                <span>{{ castle.country | titlecase }}</span>
+                @if (castle.place) {
+                  <span class="todays-index__separator">·</span>
+                  <span>{{ castle.place }}</span>
+                }
+                @if (castle.era) {
+                  <span class="todays-index__separator">·</span>
+                  <span>{{ castle.era }}th c.</span>
+                }
+                @if (castle.castle_type) {
+                  <span class="todays-index__separator">·</span>
+                  <span>{{ castle.castle_type }}</span>
+                }
+                @if (castle.condition) {
+                  <span class="todays-index__separator">·</span>
+                  <span class="todays-index__condition">{{ castle.condition }}</span>
+                }
+              </div>
+              <a class="todays-index__name" [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
+              @if (castle.wikipedia_extract) {
+                <p class="todays-index__wikipedia">{{ castle.wikipedia_extract }}</p>
+              }
+              <div class="todays-index__scores">
+                @if (castle.score_total != null) {
+                  <span class="todays-index__score-item">
+                    <span class="todays-index__score-label">Editorial score</span>
+                    <span class="todays-index__score-value">{{ castle.score_total | number:'1.0-0' }}</span>
+                  </span>
+                }
+                @if (castle.score_visitors != null) {
+                  <span class="todays-index__score-item">
+                    <span class="todays-index__score-label">Visitor rating</span>
+                    <span class="todays-index__score-value">{{ castle.score_visitors | number:'1.1-1' }}</span>
+                  </span>
+                }
+              </div>
+            </div>
+          </div>
+        </section>
+      }
+
+      <div class="numbers-block">
+        <span class="numbers-block__label">By the Numbers</span>
+        <div class="stat-strip" aria-label="Index at a glance">
+          @for (stat of stats; track stat.label) {
+            <div class="stat-strip__item">
+              <span class="stat-strip__value">{{ stat.value }}</span>
+              <span class="stat-strip__label">{{ stat.label }}</span>
+            </div>
+          }
+        </div>
       </div>
-    }
+
+      <section class="section map-section">
+        <h2 class="map-section__heading">Distribution</h2>
+        <p class="map-section__caption">All 1,000 castles — click any marker to open the entry.</p>
+        <div class="map-section__map">
+          <app-castle-map [castles]="allCastles()" [autoFit]="true" />
+        </div>
+        <p class="map-section__footer">
+          <a routerLink="/top1000">Browse the full index &rarr;</a>
+        </p>
+      </section>
+
+      <section class="section">
+        <h2><a routerLink="/top1000">The Top 10</a></h2>
+        <span class="ranking-label">Editorial ranking</span>
+        <blockquote class="editor-note">
+          <strong>Editor's note</strong>
+          The ranking weighs architectural significance, state of preservation, historical importance, and accessibility. Castles that survive as ruins can still rank very highly if their historical context is exceptional. <a routerLink="/background">Read the methodology &rarr;</a>
+        </blockquote>
+        <table class="ref-table">
+          <thead>
+            <tr>
+              <th class="ref-table__col-rank">#</th>
+              <th class="ref-table__col-name">Castle</th>
+              <th class="ref-table__col-location">Country</th>
+              <th class="ref-table__col-score">Score</th>
+              <th class="ref-table__col-visitors">Visitor rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (castle of top12(); track castle.castle_code) {
+              <tr>
+                <td class="ref-table__col-rank">{{ castle.position }}</td>
+                <td class="ref-table__col-name">
+                  <a [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
+                </td>
+                <td class="ref-table__col-location">{{ castle.country | titlecase }}</td>
+                <td class="ref-table__col-score">{{ castle.score_total != null ? (castle.score_total | number:'1.0-0') : '—' }}</td>
+                <td class="ref-table__col-visitors">{{ castle.score_visitors != null ? (castle.score_visitors | number:'1.1-1') : '—' }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </section>
+
+      <div class="discover-row">
+        <span class="discover-row__prompt">Not sure where to start?</span>
+        <button class="discover-row__action" type="button" (click)="goToSurprise()">
+          Open a random entry &rarr;
+        </button>
+        <a class="discover-row__action discover-row__action--secondary" routerLink="/top1000">
+          Browse the full index
+        </a>
+      </div>
+
+      <section class="section atlas-notes-section">
+        <h2>Atlas notes</h2>
+        <p class="atlas-notes-intro">Brief editorial annotations on how medieval castle culture varies across the regions covered in the list.</p>
+        <ul class="atlas-notes">
+          <li class="atlas-note">
+            <span class="atlas-note__region">Rhine &amp; Moselle (Germany)</span>
+            The river valleys of the Rhine and Moselle hold the highest concentration of intact medieval fortifications in Europe. Many were rebuilt or heavily restored during the Romantic era, giving them the archetypal "fairy-tale" silhouette that defines the popular image of a castle.
+          </li>
+          <li class="atlas-note">
+            <span class="atlas-note__region">Loire Valley (France)</span>
+            The Loire châteaux evolved from military strongholds into Renaissance pleasure residences. Their prominence in the list reflects both architectural ambition and exceptional preservation — several remain furnished and inhabited to this day.
+          </li>
+          <li class="atlas-note">
+            <span class="atlas-note__region">British Isles</span>
+            English and Welsh castles are notable for their diversity of form: Norman mottes, Edwardian concentric rings, and Tudor tower houses appear across the list. Scottish tower houses occupy a distinct tradition, built for clan defence rather than feudal display.
+          </li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2><a routerLink="/top1000">Top by visitor rating</a></h2>
+        <span class="ranking-label ranking-label--visitors">Visitor rating</span>
+        <p>
+          Between 2004 and 2021, 17,300 visitors submitted 63,800 ratings for castles in the list.
+          The visitor rating reflects audience enthusiasm and is independent of the editorial ranking above —
+          a castle can rank lower editorially but still appear here if it draws exceptional visitor interest.
+        </p>
+        <app-castle-grid [castles]="topVisitors12().slice(0, 6)"/>
+        <p class="section-footer">
+          <a [routerLink]="['/top1000']" [queryParams]="{ sort: 'score_visitors' }">See all visitor-rated castles &rarr;</a>
+          <em class="section-footer__note">*Ratings collected 2004–2021. Domains donated to Nederlandse Kastelenstichting in 2021 (<a href="https://topkastelen.com/" target="_blank">topkastelen.com</a>).</em>
+        </p>
+      </section>
+
+      <section class="section">
+        <h2><a routerLink="/countries">Explore by country</a></h2>
+        <p>
+          The list can be filtered and sorted by country, region, or castle type.
+          Add castles to your own collection in <a routerLink="/favorites">favorites</a>.
+        </p>
+        <app-castle-grid [castles]="topNetherlands12().slice(0, 6)"/>
+        <p class="section-footer">
+          <a routerLink="/countries/netherlands">Netherlands top list &rarr;</a>
+        </p>
+      </section>
+
+    </main>
+
+    <aside class="home-sidebar">
+
+      <div class="sidebar-widget">
+        <h3 class="sidebar-widget__heading">About this list</h3>
+        <p class="sidebar-widget__body">
+          Topcastles is an editorial ranking of the 1,000 most significant medieval castles across Europe and Asia — selected and scored for architectural quality, state of preservation, historical importance, and accessibility.
+        </p>
+        <p class="sidebar-widget__body">
+          The list has been maintained since 2004. Visitor ratings were collected 2004–2021 from 17,300 respondents.
+        </p>
+        <nav class="sidebar-widget__links" aria-label="About">
+          <a routerLink="/background">Ranking methodology</a>
+          <a routerLink="/background">Selection criteria</a>
+          <a routerLink="/top-countries">Top countries</a>
+          <a routerLink="/top-regions">Top regions</a>
+        </nav>
+      </div>
+
+      <div class="sidebar-widget sidebar-widget--discovery">
+        <h3 class="sidebar-widget__heading">Discover the list</h3>
+        <p class="sidebar-widget__caption">A castle from positions 100–1000 — beyond the famous names</p>
+        @if (deepSurpriseCastle(); as castle) {
+          <div class="sidebar-castle">
+            <a class="sidebar-castle__image-link" [routerLink]="['/castles', castle.castle_code]" tabindex="-1" aria-hidden="true">
+              <img
+                class="sidebar-castle__image"
+                [src]="'images/castles/small/' + castle.castle_code + '_small.jpg'"
+                [alt]="castle.castle_name"
+                width="110"
+                height="110"
+                loading="lazy"
+                (error)="onImageError($event, castle.wikidata_image)"
+              />
+            </a>
+            <span class="sidebar-castle__rank">#{{ castle.position }}</span>
+            <a class="sidebar-castle__name" [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
+            <span class="sidebar-castle__country">{{ castle.country | titlecase }}</span>
+          </div>
+        } @else {
+          <div class="sidebar-castle sidebar-castle--loading">Loading…</div>
+        }
+        <button class="sidebar-widget__refresh" type="button" (click)="refreshDeepSurprise()">
+          Another castle &rarr;
+        </button>
+      </div>
+
+      <div class="sidebar-widget">
+        <h3 class="sidebar-widget__heading">Tools</h3>
+        <nav class="sidebar-widget__links" aria-label="Tools">
+          <a [routerLink]="['/top1000']" [queryParams]="{ sort: 'near-me' }">Top castles near me</a>
+          <a routerLink="/favorites">My favorites list</a>
+          <a routerLink="/developer">Data &amp; API</a>
+        </nav>
+      </div>
+
+    </aside>
+
   </div>
-
-  <div class="discover-row">
-    <span class="discover-row__prompt">Not sure where to start?</span>
-    <button class="discover-row__action" type="button" (click)="goToSurprise()">
-      Open a random entry &rarr;
-    </button>
-    <a class="discover-row__action discover-row__action--secondary" routerLink="/top1000">
-      Browse the full index
-    </a>
-  </div>
-
-  <section class="section atlas-notes-section">
-    <h2>Atlas notes</h2>
-    <p class="atlas-notes-intro">Brief editorial annotations on how medieval castle culture varies across the regions covered in the list.</p>
-    <ul class="atlas-notes">
-      <li class="atlas-note">
-        <span class="atlas-note__region">Rhine &amp; Moselle (Germany)</span>
-        The river valleys of the Rhine and Moselle hold the highest concentration of intact medieval fortifications in Europe. Many were rebuilt or heavily restored during the Romantic era, giving them the archetypal "fairy-tale" silhouette that defines the popular image of a castle.
-      </li>
-      <li class="atlas-note">
-        <span class="atlas-note__region">Loire Valley (France)</span>
-        The Loire châteaux evolved from military strongholds into Renaissance pleasure residences. Their prominence in the list reflects both architectural ambition and exceptional preservation — several remain furnished and inhabited to this day.
-      </li>
-      <li class="atlas-note">
-        <span class="atlas-note__region">British Isles</span>
-        English and Welsh castles are notable for their diversity of form: Norman mottes, Edwardian concentric rings, and Tudor tower houses appear across the list. Scottish tower houses occupy a distinct tradition, built for clan defence rather than feudal display.
-      </li>
-    </ul>
-  </section>
-
-  <section class="section">
-    <h2><a routerLink="/top1000">Top by visitor rating</a></h2>
-    <span class="ranking-label ranking-label--visitors">Visitor rating</span>
-    <p>
-      Between 2004 and 2021, 17,300 visitors submitted 63,800 ratings for castles in the list.
-      The visitor rating reflects audience enthusiasm and is independent of the editorial ranking above —
-      a castle can rank lower editorially but still appear here if it draws exceptional visitor interest.
-    </p>
-    <app-castle-grid [castles]="topVisitors12().slice(0, 6)"/>
-    <p class="section-footer">
-      <a [routerLink]="['/top1000']" [queryParams]="{ sort: 'score_visitors' }">See all visitor-rated castles &rarr;</a>
-      <em class="section-footer__note">*Ratings collected 2004–2021. Domains donated to Nederlandse Kastelenstichting in 2021 (<a href="https://topkastelen.com/" target="_blank">topkastelen.com</a>).</em>
-    </p>
-  </section>
-
-  <section class="section">
-    <h2><a routerLink="/countries">Explore by country</a></h2>
-    <p>
-      The list can be filtered and sorted by country, region, or castle type.
-      Add castles to your own collection in <a routerLink="/favorites">favorites</a>.
-    </p>
-    <app-castle-grid [castles]="topNetherlands12().slice(0, 6)"/>
-    <p class="section-footer">
-      <a routerLink="/countries/netherlands">Netherlands top list &rarr;</a>
-    </p>
-  </section>
-
 </div>

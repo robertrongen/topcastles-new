@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, NgZone, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -14,6 +14,15 @@ import { CastleGridComponent } from '../../components/castle-grid/castle-grid.co
 import { CastleMapComponent } from '../../components/castle-map/castle-map.component';
 import { ViewToggleComponent } from '../../components/view-toggle/view-toggle.component';
 import { ViewModeService } from '../../services/view-mode.service';
+
+function haversineKm(lat1: number, lon1: number, lat2: number, lon2: number): number {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) ** 2
+    + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
 
 @Component({
   selector: 'app-castles-page',
@@ -31,6 +40,7 @@ import { ViewModeService } from '../../services/view-mode.service';
 export class CastlesPageComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private castleService = inject(CastleService);
+  private ngZone = inject(NgZone);
   protected viewModeService = inject(ViewModeService);
 
   loading = this.castleService.loading;
@@ -54,6 +64,8 @@ export class CastlesPageComponent implements OnInit {
   era         = signal<number | null>(null);
   condition   = signal('');
   sortKey     = signal('score_total');
+  nearLat     = signal<number | null>(null);
+  nearLon     = signal<number | null>(null);
 
   nameSuggestions = computed(() => {
     const q = this.name().toLowerCase();
@@ -65,6 +77,7 @@ export class CastlesPageComponent implements OnInit {
   });
 
   sortOptions = [
+    { value: 'near-me', label: 'Near me' },
     { value: 'score_total', label: 'Total score' },
     { value: 'castle_name', label: 'Castle name' },
     { value: 'country', label: 'Country' },
@@ -112,15 +125,21 @@ export class CastlesPageComponent implements OnInit {
     if (condition) castles = castles.filter(c => c.condition === condition);
 
     const sort = this.sortKey();
+    const lat = this.nearLat();
+    const lon = this.nearLon();
     castles = [...castles].sort((a, b) => {
       if (sort === 'score_total') return (b.score_total ?? 0) - (a.score_total ?? 0);
       if (sort === 'era') return (a.era ?? 999) - (b.era ?? 999);
+      if (sort === 'near-me' && lat != null && lon != null) {
+        return haversineKm(lat, lon, a.latitude ?? 0, a.longitude ?? 0)
+             - haversineKm(lat, lon, b.latitude ?? 0, b.longitude ?? 0);
+      }
       const av = String(a[sort as keyof typeof a] ?? '');
       const bv = String(b[sort as keyof typeof b] ?? '');
       return av.localeCompare(bv);
     });
 
-    return castles;
+    return this.sortKey() === 'near-me' ? castles.slice(0, 5) : castles;
   });
 
   activeFilters = computed(() => {
@@ -143,6 +162,20 @@ export class CastlesPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
+      if (params['name'])          this.name.set(params['name']);
+      if (params['sort'] === 'near-me') {
+        this.sortKey.set('near-me');
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            pos => this.ngZone.run(() => {
+              this.nearLat.set(pos.coords.latitude);
+              this.nearLon.set(pos.coords.longitude);
+            }),
+            () => { /* keep near-me sort; slice(0,5) still caps results */ },
+            { timeout: 8000 },
+          );
+        }
+      }
       if (params['country'])       this.country.set(params['country']);
       if (params['region'])        this.region.set(params['region']);
       if (params['castleType'])    this.castleType.set(params['castleType']);
