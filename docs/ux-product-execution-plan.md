@@ -6,7 +6,8 @@ This plan turns the approved UX and product improvement strategy into repo-execu
 
 This plan maps directly to these roadmap items:
 
-- **9.5 design refresh** [DONE]: Storybook-led design refresh, cleaner visual style, stronger typography hierarchy, better whitespace rhythm, consistent light/dark theme treatment, and improved table density for top countries and top regions. Routine shared-component and public-page UX refresh work is complete; future design exploration can continue as a new, narrower follow-up if needed.
+- **9.5 design refresh** [DONE]: Storybook-led design refresh, cleaner visual style, stronger typography hierarchy, better whitespace rhythm, consistent light/dark theme treatment, and improved table density for top countries and top regions. Routine shared-component and public-page UX refresh work is complete.
+- **9.6 homepage reference-atlas structure** [OPEN]: Implement and validate the approved homepage layout — reference-atlas model with *From Today's Index* as anchor, *Distribution Map* before ranking, *Top 10* reference table, *By the Numbers* strip, country/period indexes, and sidebar reference column. See [product-strategy-plan.md](product-strategy-plan.md) §1 for the full structure and [roadmap.md](roadmap.md) §9.6 for implementation scope.
 - **10.3 PWA / service worker** [OPEN]: Angular PWA setup, service worker registration, offline caching for static assets and castle JSON, and web app manifest verification.
 - **11.0 / 13.3 NAS image serving** [OPEN]: Single image access path, NAS-mounted image serving, cache-control and missing-file behavior, and eventual removal of bundled castle images if NAS serving becomes authoritative.
 - **14.1 complete login behavior**: Complete the remaining token validation login behavior while preserving the file-based user model. [DONE]
@@ -17,6 +18,14 @@ This plan maps directly to these roadmap items:
 Work should proceed in two tracks.
 
 The routine UX track should stay lightweight and reviewable: expand Storybook coverage first, define shared visual tokens, then refresh shared components and public pages incrementally. Storybook is the implementation anchor for shared UI decisions. Claude Design, Figma, or Penpot may be used as optional exploration inputs, but they are not source of truth.
+
+The approved homepage UX model is the **reference-atlas structure** defined in [product-strategy-plan.md](product-strategy-plan.md) §1. All homepage UX work must be evaluated against this model. Key constraints for homepage work:
+- *From Today's Index* (Top 100 random castle) must be visible on first paint — it is the homepage anchor.
+- *Distribution Map* must precede the *Top 10* table in document flow.
+- Sidebar is a reference column, not a promotional panel.
+- Reference-table layout for Top 10, country index, and period index — not cards.
+- Section labels must use the "medieval atlas" register.
+- Methodology must be reachable from the footer.
 
 The architecture-sensitive product track should use fuller Spec Kit discipline before implementation. PWA, NAS image serving, admin APIs, admin UI, and rebuild-trigger behavior touch runtime/deployment boundaries, cache behavior, or build-time versus runtime artifact ownership.
 
@@ -62,6 +71,26 @@ Primary surfaces:
 - Top countries
 - Top regions
 
+### 3.5. Homepage Reference-Atlas Structure [OPEN]
+
+Implement and validate the approved homepage layout as defined in [product-strategy-plan.md](product-strategy-plan.md) §1. This workstream is distinct from the general visual refresh: it is about structural correctness and reference-atlas identity, not typography or spacing.
+
+Concrete UX targets:
+
+- **From Today's Index**: random castle from Top 100, rendered as the primary content block on first paint. Must include castle name, country, score, and a link to the detail page. No static "featured" content — must be server-side or build-time random selection.
+- **By the Numbers strip**: concise statistics row (e.g. total castles, countries covered, top-ranked country). Should scan quickly; not a data dashboard.
+- **Distribution Map**: interactive or static map showing castle density by country or region. Must appear in document flow before the Top 10 table. Map interaction (hover/click) should lead to country or castle detail pages.
+- **Top 10 of the List**: reference-table layout displaying rank, castle name, country, and score. Not a card grid. Column headers must be present. Should link to individual castle detail pages and to the full top 1000.
+- **Index of Top 10 Countries**: structured list or table of countries with castle counts or top-ranked castle per country. Reference style, not promotional.
+- **Index by Period**: structured list grouping castles or counts by historical construction period. Consistent label style.
+- **Right sidebar**: narrow column; "About this list/site" description, random castle from positions 100–1000 (distinct from From Today's Index pool), tools or quick links. Should feel like a reference index panel, not a widget area.
+- **Footer**: copyright, contact, methodology link, data sources. Methodology link is required on every page.
+
+Design constraints for this workstream:
+- No card-heavy layouts on the homepage.
+- Section labels must follow the "medieval atlas" register (avoid "Discover," "Explore," "Featured").
+- Random elements must be distinct: Top 100 pool for From Today's Index; positions 100–1000 for sidebar random castle.
+
 ### 4. NAS Image Serving Hardening
 
 Complete image serving as a runtime-sensitive workstream. Keep a single app-facing image access path and verify mounted-volume behavior before changing container image assumptions.
@@ -88,18 +117,19 @@ Recommended initial backlog ordering:
 4. Improve top countries and top regions table layout density. [DONE]
 5. Refresh homepage and browse/top100 public UX surfaces. [DONE]
 6. Refresh castle detail, no-castle detail, and country detail UX surfaces. [DONE]
-7. Harden NAS image serving and mounted-volume verification.
-8. Complete token login endpoint and client behavior. [DONE]
-9. Plan PWA/service worker implementation with Spec Kit.
-10. Implement PWA/service worker after cache scope review.
-11. Plan admin API/UI workflow with Spec Kit.
-12. Implement admin API auth.
-13. Implement admin UI shell and token entry.
-14. Implement admin castle edit workflow.
-15. Implement admin add castle workflow.
-16. Implement admin enrichment log workflow.
-17. Implement admin intro text workflow only if deliberately activated.
-18. Implement admin rebuild trigger workflow.
+7. Implement homepage reference-atlas structure (9.6): From Today's Index, By the Numbers, Distribution Map, Top 10 table, country/period indexes, sidebar reference column. See workstream 3.5.
+8. Harden NAS image serving and mounted-volume verification.
+9. Complete token login endpoint and client behavior. [DONE]
+10. Plan PWA/service worker implementation with Spec Kit.
+11. Implement PWA/service worker after cache scope review.
+12. Plan admin API/UI workflow with Spec Kit.
+13. Implement admin API auth.
+14. Implement admin UI shell and token entry.
+15. Implement admin castle edit workflow.
+16. Implement admin add castle workflow.
+17. Implement admin enrichment log workflow.
+18. Implement admin intro text workflow only if deliberately activated.
+19. Implement admin rebuild trigger workflow.
 
 ## Dependencies And Sequencing
 
@@ -179,10 +209,12 @@ Use fuller Spec Kit flow for:
 
 ## Next Execution Beads
 
-The routine UX refresh backlog is complete. Next execution should move to the open architecture-sensitive roadmap tracks only when deliberately scheduled:
+The routine UX refresh backlog is complete. The next open UX workstream is the **homepage reference-atlas structure** (9.6, workstream 3.5 above) — this is lightweight, not Spec Kit work, and is the highest-priority remaining UX item.
 
-- Plan PWA/service worker implementation with Spec Kit.
+After that, open architecture-sensitive roadmap tracks should be scheduled deliberately:
+
 - Harden NAS image serving and mounted-volume verification.
+- Plan PWA/service worker implementation with Spec Kit.
 - Plan admin API/UI workflow with Spec Kit.
 
 ## Roadmap Wording Gaps To Revisit Later

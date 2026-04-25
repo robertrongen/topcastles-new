@@ -72,15 +72,24 @@ This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeli
 
 ## UX And Product Improvements
 
-- **9.5: Design refresh with Storybook and Figma/Penpot exploration**
-  - Expand Storybook coverage before the redesign begins.
-  - Use design exploration or prototyping to establish a cleaner, more harmonic visual direction before implementation.
-  - Refine typography hierarchy and relative font sizing so headings, summary text, metadata, and dense lists have clearer priority.
-  - Improve whitespace consistency and layout rhythm across page sections, cards, filters, and repeated content.
-  - Modernize the overall visual language so the product no longer feels dated, while preserving the current app architecture and content model.
-  - Improve consistency across both light and dark themes instead of treating dark mode as isolated fixes.
-  - Make table layouts scale more deliberately, especially top countries and top regions, so they avoid unnecessary full-width presentation and excessive whitespace on larger screens.
-  - Candidate areas: typography scale, card layout, colour hierarchy, table density and width behavior, mobile responsiveness, and empty states.
+- **9.5: Design refresh with Storybook and Figma/Penpot exploration** [DONE]
+  - Storybook coverage expanded; shared components, typography, whitespace, and light/dark theme parity updated.
+  - The approved design direction is the **reference-atlas model**: "Wikipedia meets Michelin Guide meets a medieval atlas." See [product-strategy-plan.md](product-strategy-plan.md) §1 for the rationale and homepage structure.
+
+- **9.6: Homepage reference-atlas structure** [OPEN]
+  - Implement and maintain the approved homepage layout as defined in [product-strategy-plan.md](product-strategy-plan.md) §1.
+  - Top section: title, subtitle, search bar, menu bar.
+  - Right sidebar (narrow reference column): "About this list/site," random castle from positions 100–1000, tools.
+  - Main content flows top to bottom:
+    1. *From Today's Index* — random castle from Top 100; homepage anchor; must be visible on first paint.
+    2. *By the Numbers* — concise site-wide statistics strip.
+    3. *Distribution Map* — geographic overview; must appear before ranking table.
+    4. *Top 10 of the List* — reference-table layout (not cards); ranking signal.
+    5. *Index of Top 10 Countries* — structured geographic reference.
+    6. *Index by Period* — structured historical reference.
+  - Footer: copyright, contact, methodology link, data sources.
+  - Design constraints: no card-heavy layouts on the homepage; reference-table structure preferred; section labels must match the "medieval atlas" register (avoid "Discover," "Explore," "Featured" patterns).
+  - Methodology must be reachable from the footer on every page.
 
 - **10.3: PWA / service worker**
   - Add `@angular/pwa`, generate `ngsw-config.json`, and register the service worker.

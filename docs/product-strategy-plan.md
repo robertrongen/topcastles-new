@@ -23,6 +23,26 @@ It should not feel like:
 
 The north star: **a reader should feel that the castles speak first, and the interface steps aside.**
 
+### Homepage as reference-atlas entry point
+
+The homepage is the primary expression of this vision. Its approved structure is:
+
+**Top section** — title, subtitle, search bar, menu bar.
+
+**Right sidebar** (narrow reference column) — "About this list/site," random castle from positions 100–1000, tools. The sidebar signals that this is a reference, not a portal.
+
+**Main content** (left, flowing top to bottom):
+1. *From Today's Index* — a randomly selected castle from the Top 100, shown on first paint. This is the homepage anchor: a castle speaks before any list or map appears.
+2. *By the Numbers* — a concise strip of site-wide statistics.
+3. *Distribution Map* — geographic overview; map precedes ranking in user flow to establish spatial authority before positional ranking.
+4. *Top 10 of the List* — the ranking signal; reference-table layout, not cards.
+5. *Index of Top 10 Countries* — structured geographic reference.
+6. *Index by Period* — structured historical reference.
+
+**Footer** — copyright, contact, methodology link, data sources.
+
+This structure encodes the three core tensions deliberately: **random discovery** (From Today's Index) establishes the human dimension; **map** establishes geographic authority; **Top 10 table** establishes ranking authority. Methodology must be reachable from the footer on every page.
+
 ---
 
 ## 2. Product Principles
@@ -33,21 +53,35 @@ These principles govern every feature decision, design choice, and content addit
 
 The interface exists to surface castle content, not to demonstrate design skill. Pages should feel calm and referential. Visual noise, promotional layouts, and marketing patterns are out of scope.
 
+On the homepage, this principle is expressed through *From Today's Index*: a specific castle — not a banner, not a featured collection — is the first substantive element the reader sees.
+
 ### Ranking is the moat
 
 The `score_total` ranking is what distinguishes Topcastles from a generic list site. The ranking must stay deterministic, explainable, and consistent. Any change to scoring methodology is a high-stakes decision that affects every view that uses `score_total` ordering.
+
+Ranking authority is established on the homepage through the *Top 10 of the List* reference table. Methodology must be reachable from the footer. A reader who questions why a castle ranks where it does should be able to find a direct answer.
 
 ### Editorial voice matters
 
 Copy, page structure, and section naming should reflect the "medieval atlas" register — measured, authoritative, and specific. Avoid vague superlatives. Prefer concrete description. Inconsistent tone is a product defect.
 
+Section labels matter: "From Today's Index," "Index of Top 10 Countries," and "Index by Period" carry register. Do not replace them with marketing-style labels ("Discover," "Explore," "Featured").
+
 ### Map-first discovery matters
 
 Geographic and spatial discovery is a core mode. Browsing by country, region, or map proximity should feel natural. The data model (country codes, coordinates, region slugs) must remain first-class. Any navigation or filter work should strengthen — not dilute — geographic orientation.
 
+On the homepage, the *Distribution Map* appears before the Top 10 table. This ordering is intentional: spatial orientation precedes ranking. The map establishes *where* before the ranking establishes *which*. This ordering should be preserved in any homepage revision.
+
+### Random discovery must be visible on first paint
+
+Serendipity is part of the atlas experience. The *From Today's Index* castle (Top 100) and the sidebar's random castle (positions 100–1000) together ensure that no two visits begin identically. This is not decorative — it is the mechanism by which a reference becomes a destination.
+
 ### Curated reference over marketing design
 
 Design choices should favor legibility, information density, and scan-ability over visual delight or conversion optimization. Tables and structured lists are often better than cards. Typography hierarchy should serve the reader, not the brand.
+
+The homepage sidebar is a reference column, not a promotional panel. The right rail should feel like a reference book's index page, not a CMS widget zone.
 
 ### Architecture simplicity must be preserved
 
