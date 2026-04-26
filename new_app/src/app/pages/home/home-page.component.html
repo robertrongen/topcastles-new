@@ -255,8 +255,8 @@
             <thead>
               <tr>
                 <th>Period</th>
-                <th class="ref-table__col-score">Entries</th>
-                <th class="ref-table__col-score">Share</th>
+                <th class="ref-table__col-total">Entries</th>
+                <th class="ref-table__col-total">Share</th>
                 <th class="ref-table__col-name">Example castle</th>
               </tr>
             </thead>
@@ -264,8 +264,8 @@
               @for (row of byPeriod(); track row.era) {
                 <tr>
                   <td><a [routerLink]="['/castles']" [queryParams]="{ era: row.era }">{{ row.label }}</a></td>
-                  <td class="ref-table__col-score">{{ row.count }}</td>
-                  <td class="ref-table__col-score">{{ row.share }}%</td>
+                  <td class="ref-table__col-total">{{ row.count }}</td>
+                  <td class="ref-table__col-total">{{ row.share }}%</td>
                   <td>
                     <a [routerLink]="['/castles', row.exampleCastle.castle_code]">{{ row.exampleCastle.castle_name }}</a>
                     @if (row.exampleCastle.position != null) {
