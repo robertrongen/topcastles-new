@@ -219,7 +219,6 @@
                 <th class="ref-table__col-rank">#</th>
                 <th class="ref-table__col-name">Country</th>
                 <th class="ref-table__col-score">Castles</th>
-                <th class="ref-table__col-rank">Best rank</th>
                 <th class="ref-table__col-name">Top-ranked castle</th>
               </tr>
             </thead>
@@ -229,10 +228,12 @@
                   <td class="ref-table__col-rank">{{ i + 1 }}</td>
                   <td><a [routerLink]="['/countries', row.country]">{{ row.country | titlecase }}</a></td>
                   <td class="ref-table__col-score">{{ row.castleCount }}</td>
-                  <td class="ref-table__col-rank">#{{ row.topCastle?.position ?? '—' }}</td>
                   <td>
                     @if (row.topCastle) {
                       <a [routerLink]="['/castles', row.topCastle.castle_code]">{{ row.topCastle.castle_name }}</a>
+                      @if (row.topCastle.position != null) {
+                        <span class="top-castle-rank">(#{{ row.topCastle.position }})</span>
+                      }
                     } @else {
                       —
                     }

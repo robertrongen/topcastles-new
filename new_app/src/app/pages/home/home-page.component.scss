@@ -557,6 +557,12 @@
   }
 }
 
+.top-castle-rank {
+  margin-left: 0.3em;
+  color: var(--tk-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
 .visitor-ranking {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
