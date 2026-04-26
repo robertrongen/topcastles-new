@@ -42,6 +42,13 @@ Before broad file reading or code changes, do all of the following:
    - active roadmap work: `docs/roadmap.md`
    - higher-risk work: `docs/spec-kit.md` and `.specify/memory/constitution.md`
 
+5. Before implementing new code, the agent must:
+
+   - search for existing component/service usage
+   - identify the canonical implementation
+   - explain why reuse or extension is chosen
+
+New implementation is only allowed if reuse is clearly impossible.
 ## 2. Required Final-Response Evidence
 
 Every final response for a task must include these items in concise form:
