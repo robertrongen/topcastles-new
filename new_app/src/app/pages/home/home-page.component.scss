@@ -321,7 +321,7 @@
   &__grid {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--tk-space-4) var(--tk-space-6);
+    gap: var(--tk-space-4) 3.5rem;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -331,7 +331,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--tk-space-1);
-    min-width: 100px;
+    min-width: 120px;
   }
 
   &__label {
@@ -343,7 +343,7 @@
   }
 
   &__value {
-    font-size: var(--tk-font-size-xl, 1.5rem);
+    font-size: var(--tk-font-size-lg, 1.15rem);
     font-weight: 700;
     font-variant-numeric: tabular-nums;
     color: var(--tk-text);
