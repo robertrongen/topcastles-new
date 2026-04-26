@@ -16,7 +16,7 @@
                      (error)="onImageError($event)" />
               }
               <span class="region-rank">#{{ i + 1 }}</span>
-              <h3>{{ summary.region }}</h3>
+              <h3><a [routerLink]="['/top1000']" [queryParams]="{ country: summary.country, region: summary.region }">{{ summary.region }}</a></h3>
               <p><a [routerLink]="['/countries', summary.country]">{{ summary.country }}</a></p>
               <p>{{ summary.castleCount }} castles &middot; score {{ summary.totalScore | number:'1.0-0' }}</p>
             </mat-card-content>
@@ -40,7 +40,7 @@
             @for (summary of summaries(); track summary.region; let i = $index) {
               <tr>
                 <td class="rank-col">{{ i + 1 }}</td>
-                <td class="name-col">{{ summary.region }}</td>
+                <td class="name-col"><a [routerLink]="['/top1000']" [queryParams]="{ country: summary.country, region: summary.region }">{{ summary.region }}</a></td>
                 <td class="map-col">
                   @if (summary.region_code) {
                     <img [src]="'/images/maps/' + summary.region_code + '.jpg'"
