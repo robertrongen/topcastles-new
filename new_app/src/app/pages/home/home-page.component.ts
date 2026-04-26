@@ -49,13 +49,13 @@ export class HomePageComponent implements OnInit {
 
   byPeriod = computed(() => {
     const castles = this.castleService.castles();
-    const map = new Map<number, { count: number; exampleCastle: { castle_code: string; castle_name: string } }>();
+    const map = new Map<number, { count: number; exampleCastle: { castle_code: string; castle_name: string; position: number | null } }>();
     let total = 0;
     for (const c of castles) {
       if (c.era == null) continue;
       total++;
       if (!map.has(c.era)) {
-        map.set(c.era, { count: 1, exampleCastle: { castle_code: c.castle_code, castle_name: c.castle_name } });
+        map.set(c.era, { count: 1, exampleCastle: { castle_code: c.castle_code, castle_name: c.castle_name, position: c.position ?? null } });
       } else {
         map.get(c.era)!.count++;
       }
