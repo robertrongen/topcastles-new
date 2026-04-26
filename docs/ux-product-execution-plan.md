@@ -7,7 +7,10 @@ This plan turns the approved UX and product improvement strategy into repo-execu
 This plan maps directly to these roadmap items:
 
 - **9.5 design refresh** [DONE]: Storybook-led design refresh, cleaner visual style, stronger typography hierarchy, better whitespace rhythm, consistent light/dark theme treatment, and improved table density for top countries and top regions. Routine shared-component and public-page UX refresh work is complete.
-- **9.6 homepage reference-atlas structure** [COMPLETED]: The approved homepage layout is now live in code — reference-atlas model with *From Today's Index* as anchor, *Distribution Map* before ranking, *Top 10* reference table with editor's note, visitor ranking section, and sidebar reference column. See [product-strategy-plan.md](product-strategy-plan.md) §1 for the full structure and [roadmap.md](roadmap.md) §9.6 for completion details. Polish items (By the Numbers strip, Top 10 Countries index, By Period index) are scheduled in roadmap items 9.6.1–9.6.3.
+- **9.6 homepage reference-atlas structure** [COMPLETED]: Full homepage layout including *From Today's Index*, *Distribution Map* with clickable atlas region callouts, *Top 10* reference table with editor's note, visitor ranking section, and sidebar reference column. See [product-strategy-plan.md](product-strategy-plan.md) §1 for the full structure.
+- **9.6.1 By the Numbers strip** [COMPLETED]: Static statistics row between *From Today's Index* and the map. See workstream 3.5.1.
+- **9.6.2 Top 10 Countries index** [COMPLETED]: Reference table with country, total score, best rank, and top-ranked castle. See workstream 3.5.2.
+- **9.6.3 By Period index** [COMPLETED]: Reference table with era, entries, share, and example castle. See workstream 3.5.3.
 - **10.3 PWA / service worker** [DEFERRED]: Angular PWA setup, service worker registration, offline caching for static assets and castle JSON, and web app manifest verification. Prerequisite: stable image-serving behavior. Requires Spec Kit planning.
 - **11.0 / 13.3 NAS image serving** [OPEN]: Single image access path, NAS-mounted image serving, cache-control and missing-file behavior, and eventual removal of bundled castle images if NAS serving becomes authoritative.
 - **14.1 complete login behavior**: Complete the remaining token validation login behavior while preserving the file-based user model. [DONE]
@@ -95,33 +98,17 @@ Design execution verified:
 - Section labels and editorial voice follow "medieval atlas" register.
 - Random elements are distinct and intentional: Top 100 for From Today's Index; positions 100–1000 for sidebar picker.
 
-### 3.5.1. Homepage Polish — By the Numbers Strip [BACKLOG]
+### 3.5.1. Homepage Polish — By the Numbers Strip [COMPLETED]
 
-Add concise site-wide statistics row:
-- Total castles: 1,000
-- Countries represented: 56
-- Visitor ratings collected: 63,800
-- Established: 2004
+Static `<dl>` flex grid between *From Today's Index* and *Distribution Map*: 1,000 castles · 56 countries · 63,800 visitor ratings · Est. 2004. No TS changes; values are compile-time constants; light/dark handled by `--tk-*` tokens.
 
-Placement: Between *From Today's Index* and *Distribution Map*.
+### 3.5.2. Homepage Polish — Top 10 Countries Index [COMPLETED]
 
-Design: Light, scannable row; should not dominate the page; support light/dark theme parity.
+Reference table after *Top by visitor rating*. Columns: rank, country (link to `/countries/:country`), total score (the sort key), best rank, top-ranked castle with rank in brackets (link to `/castles/:code`). Derived from `CastleService.getCountrySummaries()` via `top10Countries` computed signal in `HomePageComponent`.
 
-### 3.5.2. Homepage Polish — Top 10 Countries Index [BACKLOG]
+### 3.5.3. Homepage Polish — By Period Index [COMPLETED]
 
-Add structured geographic reference section:
-- Listing top 10 countries by castle count or ranking distribution.
-- Reference-style table or list layout (not cards).
-- Include country name, castle count, top-ranked castle, and link to country detail page.
-- Position after the main *Top 10* table or as a separate follow-up section.
-
-### 3.5.3. Homepage Polish — By Period Index [BACKLOG]
-
-Add structured historical reference section:
-- Grouping castles or counts by construction period (12th c., 13th c., etc.).
-- Reference-style table or list layout (not cards).
-- Include period label, castle count, and period-filter link to browse/top100 view.
-- Position after country index or as a separate section.
+Reference table after *Index of Top Countries*. Columns: period label (link to `/castles?era=N`), entries, share of era-tagged castles, example castle with rank in brackets. Derived from `castleService.castles()` grouped by `c.era` in `byPeriod` computed signal; null era excluded; sorted chronologically (9th–17th c.).
 
 ### 4. NAS Image Serving Hardening
 
@@ -149,7 +136,7 @@ Recommended initial backlog ordering:
 4. Improve top countries and top regions table layout density. [DONE]
 5. Refresh homepage and browse/top100 public UX surfaces. [DONE]
 6. Refresh castle detail, no-castle detail, and country detail UX surfaces. [DONE]
-7. Implement homepage polish items (9.6.1–9.6.3): By the Numbers strip, Top 10 Countries index, By Period index. See workstream 3.5.1–3.5.3.
+7. Implement homepage polish items (9.6.1–9.6.3): By the Numbers strip, Top 10 Countries index, By Period index. See workstream 3.5.1–3.5.3. [DONE]
 8. Harden NAS image serving and mounted-volume verification.
 9. Complete token login endpoint and client behavior. [DONE]
 10. Plan PWA/service worker implementation with Spec Kit.
@@ -241,13 +228,9 @@ Use fuller Spec Kit flow for:
 
 ## Next Execution Beads
 
-The routine UX refresh backlog and the homepage reference-atlas structure (9.6, workstream 3.5) are both complete. The next open UX items are the homepage polish additions (workstreams 3.5.1–3.5.3) — lightweight, not Spec Kit work:
+The routine UX refresh backlog, the homepage reference-atlas structure (9.6), and all three homepage polish additions (9.6.1–9.6.3) are complete. The homepage UX track is fully delivered.
 
-- **9.6.1 By the Numbers strip** — concise statistics row between *From Today's Index* and the map.
-- **9.6.2 Top 10 Countries index** — structured geographic reference section after the editorial Top 10.
-- **9.6.3 By Period index** — structured historical reference section grouping castles by era.
-
-After those, open architecture-sensitive roadmap tracks should be scheduled deliberately:
+Open architecture-sensitive roadmap tracks should now be scheduled deliberately:
 
 - Harden NAS image serving and mounted-volume verification.
 - Plan PWA/service worker implementation with Spec Kit.

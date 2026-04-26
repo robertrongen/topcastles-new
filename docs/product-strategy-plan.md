@@ -39,10 +39,10 @@ The homepage is the primary expression of this vision. The reference-atlas struc
 3. *Top 10 of the List* — the ranking signal; reference-table layout (not cards) showing rank, castle name, country, era, editorial score, and visitor rating. Includes editor's note explaining ranking methodology (architectural significance, preservation, historical importance, accessibility) with link to full methodology.
 4. *Top by visitor rating* — distinct from editorial ranking. Shows #1 visitor-rated castle as a featured lead, followed by a table of #2–#5. Includes context explaining visitor rating independence and historical era (2004–2021).
 
-**Remaining polish items** (scheduled for future roadmap items 9.6.1–9.6.3):
-- *By the Numbers* — a concise strip of site-wide statistics (1,000 castles, 56 countries, 63,800 ratings, 2004 established). To be positioned between *From Today's Index* and *Distribution Map*.
-- *Index of Top 10 Countries* — structured geographic reference listing top countries by castle count or ranking distribution.
-- *Index by Period* — structured historical reference grouping castles by construction period.
+**Polish items** (roadmap items 9.6.1–9.6.3, all implemented):
+- *By the Numbers* — static statistics strip between *From Today's Index* and *Distribution Map*: 1,000 castles · 56 countries · 63,800 ratings · Est. 2004.
+- *Index of Top 10 Countries* — reference table after visitor ranking: country, total score, best rank, top-ranked castle with link.
+- *Index by Period* — reference table after country index: period (9th–17th c.), entry count, share of era-tagged castles, example castle with rank.
 
 **Footer** — copyright, contact, methodology link, data sources.
 

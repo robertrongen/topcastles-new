@@ -87,23 +87,17 @@ This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeli
     6. Right sidebar (reference column) — "About this list" widget, "Discover the list" random castle picker (positions 100–1000), and "Tools" widget.
   - Design execution: no card-heavy layouts; reference-table structures used; section labels follow "medieval atlas" register; methodology reachable from every page.
 
-- **9.6.1: Homepage polish — By the Numbers strip** [BACKLOG]
-  - Add concise site-wide statistics row (total castles: 1,000, countries: 56, visitor ratings: 63,800, established: 2004).
-  - Position between *From Today's Index* and *Distribution Map*.
-  - Should scan quickly; minimal data dashboard aesthetic.
-  - Support light/dark theme parity.
+- **9.6.1: Homepage polish — By the Numbers strip** [COMPLETED]
+  - Static statistics row between *From Today's Index* and *Distribution Map*: 1,000 castles · 56 countries · 63,800 visitor ratings · Est. 2004.
+  - Implemented as a `<dl>` flex grid using `--tk-*` design tokens; no TS changes; light/dark via existing token system.
 
-- **9.6.2: Homepage polish — Top 10 Countries index** [BACKLOG]
-  - Add structured geographic reference section listing top 10 countries by castle count or ranking distribution.
-  - Use reference-style table or list layout (not cards).
-  - Include country name, castle count, and link to country detail page.
-  - Position after the main *Top 10* table or as a separate follow-up section.
+- **9.6.2: Homepage polish — Top 10 Countries index** [COMPLETED]
+  - Reference table after *Top by visitor rating*: rank, country (link to `/countries/:country`), total score (sorted), best rank + top-ranked castle (link to `/castles/:code`).
+  - Data derived from `CastleService.getCountrySummaries()` via a `top10Countries` computed signal in `HomePageComponent`. No new service methods.
 
-- **9.6.3: Homepage polish — By Period index** [BACKLOG]
-  - Add structured historical reference section grouping castles or counts by construction period (12th c., 13th c., etc.).
-  - Use reference-style table or list layout (not cards).
-  - Position after country index or as a separate section.
-  - Support period-filter links to browse/top100 view.
+- **9.6.3: Homepage polish — By Period index** [COMPLETED]
+  - Reference table after *Index of Top Countries*: period (link to `/castles?era=N`), entries count, share of era-tagged castles, top-ranked example castle (link to `/castles/:code`).
+  - Data derived from `castleService.castles()` grouped by `c.era` in a single `byPeriod` computed signal; null era values excluded; sorted chronologically.
 
 - **10.3: PWA / service worker** [DEFERRED]
   - Add `@angular/pwa`, generate `ngsw-config.json`, and register the service worker.
