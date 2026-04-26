@@ -137,4 +137,90 @@ describe('Top100PageComponent', () => {
     expect(top[1].castle_code).toBe('c2');
     expect(top[2].castle_code).toBe('c3');
   });
+
+  // ── Atlas pre-filtering ────────────────────────────────────────────────────
+
+  describe('atlas pre-filtering', () => {
+    const regionalCastles: Castle[] = [
+      makeCastle({ castle_code: 'rp1', region_code: 'rheinland-pfalz', country: 'germany' }),
+      makeCastle({ castle_code: 'he1', region_code: 'hessen',          country: 'germany' }),
+      makeCastle({ castle_code: 'idf', region_code: 'ile-de-france',   country: 'france'  }),
+      makeCastle({ castle_code: 'eng', region_code: 'kent',            country: 'England' }),
+      makeCastle({ castle_code: 'wal', region_code: 'gwynedd',         country: 'Wales'   }),
+    ];
+
+    beforeEach(() => {
+      TestBed.inject(CastleService).castles.set(regionalCastles);
+      component.atlasRegionCodes.set([]);
+      component.atlasCountries.set([]);
+    });
+
+    it('regionCodes filters to castles whose region_code is in the list', () => {
+      component.atlasRegionCodes.set(['rheinland-pfalz', 'hessen']);
+      expect(component.searchedCastles().map(c => c.castle_code)).toEqual(['rp1', 'he1']);
+    });
+
+    it('countries filters to castles whose country is in the list', () => {
+      component.atlasCountries.set(['England', 'Wales']);
+      expect(component.searchedCastles().map(c => c.castle_code)).toEqual(['eng', 'wal']);
+    });
+
+    it('returns all castles when both atlas signals are empty (existing behavior preserved)', () => {
+      expect(component.searchedCastles().length).toBe(5);
+    });
+
+    it('single country query param does not affect atlasCountries', fakeAsync(() => {
+      TestBed.resetTestingModule();
+      TestBed.configureTestingModule({
+        imports: [Top100PageComponent, NoopAnimationsModule],
+        providers: [
+          provideRouter([]),
+          provideHttpClient(),
+          provideHttpClientTesting(),
+          { provide: ActivatedRoute, useValue: createActivatedRouteMock({}, { country: 'france' }) },
+          { provide: PLATFORM_ID, useValue: 'server' },
+        ],
+      });
+      TestBed.inject(CastleService).castles.set(regionalCastles);
+      const f = TestBed.createComponent(Top100PageComponent);
+      f.detectChanges();
+      const c = f.componentInstance;
+      const http = TestBed.inject(HttpTestingController);
+      http.match('/api/user/register').forEach(r => r.flush({ token: 'test-token' }));
+      flushMicrotasks();
+      http.match('/api/user/favorites').forEach(r => r.flush([]));
+      flushMicrotasks();
+      expect(c.initialFilters()).toEqual({ country: 'france' });
+      expect(c.atlasCountries()).toEqual([]);
+      expect(c.atlasRegionCodes()).toEqual([]);
+      http.verify();
+    }));
+
+    it('single region query param does not affect atlasRegionCodes', fakeAsync(() => {
+      TestBed.resetTestingModule();
+      TestBed.configureTestingModule({
+        imports: [Top100PageComponent, NoopAnimationsModule],
+        providers: [
+          provideRouter([]),
+          provideHttpClient(),
+          provideHttpClientTesting(),
+          { provide: ActivatedRoute, useValue: createActivatedRouteMock({}, { region: 'Rhone' }) },
+          { provide: PLATFORM_ID, useValue: 'server' },
+        ],
+      });
+      TestBed.inject(CastleService).castles.set(regionalCastles);
+      const f = TestBed.createComponent(Top100PageComponent);
+      f.detectChanges();
+      const c = f.componentInstance;
+      const http = TestBed.inject(HttpTestingController);
+      http.match('/api/user/register').forEach(r => r.flush({ token: 'test-token' }));
+      flushMicrotasks();
+      http.match('/api/user/favorites').forEach(r => r.flush([]));
+      flushMicrotasks();
+      expect(c.initialFilters()).toEqual({ region: 'Rhone' });
+      expect(c.atlasRegionCodes()).toEqual([]);
+      expect(c.atlasCountries()).toEqual([]);
+      http.verify();
+    }));
+  });
 });

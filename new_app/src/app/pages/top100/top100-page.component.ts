@@ -1,4 +1,4 @@
-import { Component, computed, inject, NgZone, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -39,6 +39,8 @@ export class Top100PageComponent implements OnInit {
   showFavoritesOnly = signal(false);
   initialFilters = signal<Record<string, string>>({});
   initialSort = signal('');
+  atlasRegionCodes = signal<string[]>([]);
+  atlasCountries   = signal<string[]>([]);
 
   allCastles = computed(() => this.castleService.getAllByScore());
 
@@ -53,12 +55,15 @@ export class Top100PageComponent implements OnInit {
   toggleMap(): void { this.mapVisible.update(v => !v); }
 
   searchedCastles = computed(() => {
-    const q = this.searchQuery().trim().toLowerCase();
-    const base = q
-      ? this.allCastles().filter(c =>
-          c.search_text ? c.search_text.includes(q) : c.castle_name?.toLowerCase().includes(q)
-        )
-      : this.allCastles();
+    const rc = this.atlasRegionCodes();
+    const co = this.atlasCountries();
+    const q  = this.searchQuery().trim().toLowerCase();
+    let base = this.allCastles();
+    if (rc.length) base = base.filter(c => rc.includes(c.region_code ?? ''));
+    if (co.length) base = base.filter(c => co.includes(c.country ?? ''));
+    if (q) base = base.filter(c =>
+      c.search_text ? c.search_text.includes(q) : c.castle_name?.toLowerCase().includes(q)
+    );
     if (this.showFavoritesOnly()) {
       const codes = this.favoriteCodes();
       return base.filter(c => codes.has(c.castle_code));
@@ -114,6 +119,18 @@ export class Top100PageComponent implements OnInit {
       if (params['castleConcept']) filters['castle_concept'] = params['castleConcept'];
       if (params['condition'])     filters['condition']      = params['condition'];
       if (Object.keys(filters).length) this.initialFilters.set(filters);
+      if (params['regionCodes']) {
+        this.atlasRegionCodes.set(
+          params['regionCodes'].split(',').map((v: string) => v.trim()).filter(Boolean)
+        );
+        this.viewModeService.setMode('list');
+      }
+      if (params['countries']) {
+        this.atlasCountries.set(
+          params['countries'].split(',').map((v: string) => v.trim()).filter(Boolean)
+        );
+        this.viewModeService.setMode('list');
+      }
       if (params['sort']) {
         this.initialSort.set(params['sort']);
         this.viewModeService.setMode('list');

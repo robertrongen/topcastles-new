@@ -173,6 +173,41 @@ describe('HomePageComponent', () => {
     expect(a?.castle_code).toBe(b?.castle_code);
   });
 
+  // ── Atlas region links ─────────────────────────────────────────────────────
+
+  describe('atlas region links', () => {
+    it('renders three atlas callout anchors on the map', () => {
+      expect(fixture.nativeElement.querySelectorAll('.atlas-callout').length).toBe(3);
+    });
+
+    it('Rhine & Moselle callout href contains regionCodes with rheinland-pfalz', () => {
+      const el = fixture.nativeElement.querySelector('.atlas-callout--rhine') as HTMLAnchorElement;
+      expect(el).toBeTruthy();
+      expect(decodeURIComponent(el.href)).toContain('regionCodes');
+      expect(decodeURIComponent(el.href)).toContain('rheinland-pfalz');
+    });
+
+    it('Loire Valley callout href contains regionCodes with ile-de-france', () => {
+      const el = fixture.nativeElement.querySelector('.atlas-callout--loire') as HTMLAnchorElement;
+      expect(el).toBeTruthy();
+      expect(decodeURIComponent(el.href)).toContain('regionCodes');
+      expect(decodeURIComponent(el.href)).toContain('ile-de-france');
+    });
+
+    it('British Isles callout href contains countries with England and Wales', () => {
+      const el = fixture.nativeElement.querySelector('.atlas-callout--british') as HTMLAnchorElement;
+      expect(el).toBeTruthy();
+      expect(decodeURIComponent(el.href)).toContain('countries');
+      expect(decodeURIComponent(el.href)).toContain('England');
+      expect(decodeURIComponent(el.href)).toContain('Wales');
+    });
+
+    it('atlas note headings are wrapped in anchor links', () => {
+      const noteLinks = fixture.nativeElement.querySelectorAll('.atlas-note__region a') as NodeListOf<HTMLAnchorElement>;
+      expect(noteLinks.length).toBe(3);
+    });
+  });
+
   it('should cycle back to position 0 after 100 days', () => {
     const pool = makePool(100);
     castleService.castles.set(pool);
