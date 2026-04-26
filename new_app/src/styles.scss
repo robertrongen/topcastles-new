@@ -117,6 +117,20 @@ html {
   --mat-option-hover-state-layer-color: var(--tk-overlay-hover);
   --mat-option-focus-state-layer-color: var(--tk-overlay-active);
   --mat-option-selected-state-layer-color: var(--tk-overlay-active);
+
+  // ── List / nav-list MDC tokens ────────────────────────────────────────────
+  // mat.theme() uses theme-type:light, so MDC list text/icon defaults are dark.
+  // Override here with semantic tokens so both light and dark themes work.
+  --mdc-list-list-item-label-text-color:          var(--tk-text);
+  --mdc-list-list-item-supporting-text-color:     var(--tk-text-muted);
+  --mdc-list-list-item-leading-icon-color:        var(--tk-text-muted);
+  --mdc-list-list-item-trailing-icon-color:       var(--tk-text-muted);
+  --mdc-list-list-item-hover-label-text-color:    var(--tk-text);
+  --mdc-list-list-item-focus-label-text-color:    var(--tk-text);
+  --mat-list-active-indicator-color:              var(--tk-overlay-active);
+  --mat-list-list-item-hover-state-layer-color:   var(--tk-overlay-hover);
+  --mat-list-list-item-focus-state-layer-color:   var(--tk-overlay-active);
+  --mat-divider-color:                            var(--tk-divider);
 }
 
 // ── Base reset ──────────────────────────────────────────────────────────────
@@ -222,12 +236,20 @@ mat-sidenav.mat-sidenav {
 .mat-mdc-list-item {
   color: var(--tk-text) !important;
   font-weight: normal;
+
+  // Ensure MDC primary-text and icon spans inherit theme colours
+  .mdc-list-item__primary-text { color: var(--tk-text); }
+  mat-icon { color: var(--tk-text-muted); }
 }
 
-.mat-mdc-list-item.active,
+.mat-mdc-list-item.active {
+  background-color: var(--tk-overlay-active) !important;
+  .mdc-list-item__primary-text { color: var(--tk-link); }
+  mat-icon { color: var(--tk-link); }
+}
+
 .mat-mdc-list-item:hover {
-  background-color: var(--tk-link-hover) !important;
-  color: var(--tk-link) !important;
+  background-color: var(--tk-overlay-hover) !important;
 }
 
 // Section/feature h2 headers
