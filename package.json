@@ -34,6 +34,8 @@
     "context:resolve": "node scripts/resolve-context.js",
     "workflow:guide": "node scripts/workflow-guide.js",
 
+    "test:smoke": "node tests/server-smoke.test.js",
+
     "deploy": "bash deploy.sh"
   },
   "engines": {

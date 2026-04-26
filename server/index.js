@@ -161,11 +161,19 @@ app.get('*', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`TopCastles server listening on port ${PORT}`);
+
   console.log(`/castle-images mounted from ${CASTLE_IMAGE_ROOT}`);
-  const message = `[image-mount] ${CASTLE_IMAGE_MOUNT_STATUS.status}: ${CASTLE_IMAGE_MOUNT_STATUS.message} (${CASTLE_IMAGE_MOUNT_STATUS.path})`;
+  const imageMessage = `[image-mount] ${CASTLE_IMAGE_MOUNT_STATUS.status}: ${CASTLE_IMAGE_MOUNT_STATUS.message} (${CASTLE_IMAGE_MOUNT_STATUS.path})`;
   if (CASTLE_IMAGE_MOUNT_STATUS.available) {
-    console.log(message);
+    console.log(imageMessage);
   } else {
-    console.warn(message);
+    console.warn(imageMessage);
   }
+
+  const USERS_FILE = process.env.USERS_FILE || path.join(__dirname, '../data/users.json');
+  const usersExist = existsSync(USERS_FILE);
+  const dataMessage = usersExist
+    ? `[data-mount] ok: users.json present (${USERS_FILE})`
+    : `[data-mount] notice: users.json not yet created — will be written on first registration (${USERS_FILE})`;
+  console.log(dataMessage);
 });

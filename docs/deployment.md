@@ -208,6 +208,138 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 ```
 
+## Expected `/data` structure
+
+The container expects a single persistent volume mounted at `/data`. The NAS host
+path is `/volume1/docker/topcastles/data` (created by `deploy.sh` via `mkdir -p`
+before the container starts).
+
+```
+/data/
+├── users.json          # written on first user registration; absent until then
+└── castle-images/      # read-only bind mount (NAS source: images/castles/)
+    ├── <code>.jpg          # primary castle photo (e.g. 1.jpg)
+    ├── <code>2.jpg         # additional photos (e.g. 12.jpg)
+    ├── small/
+    │   └── <code>_small.jpg  # thumbnail used in list views
+    └── ...
+```
+
+**`/data/users.json`** is created lazily — the server does not write it at startup.
+The first call to `POST /api/user/register` creates the file. If the file is absent,
+`GET /api/user/login` and `GET /api/user/me` behave correctly (no users → 401).
+
+**`/data/castle-images`** is mounted read-only from the NAS. The server checks at
+startup whether the mount is available and contains image files. The result is logged
+to stdout and included in `GET /api/health` under the `imageMount` key.
+
+### Startup log reference
+
+On a healthy start you will see lines like:
+
+```
+TopCastles server listening on port 3000
+/castle-images mounted from /data/castle-images
+[image-mount] ok: image mount is available (/data/castle-images)
+[data-mount] ok: users.json present (/data/users.json)
+```
+
+On a fresh deployment (no prior registrations):
+
+```
+[data-mount] notice: users.json not yet created — will be written on first registration (/data/users.json)
+```
+
+On a missing or empty image mount:
+
+```
+[image-mount] warning: image mount is readable but no image files were found (/data/castle-images)
+```
+
+## Operational verification
+
+After deployment, run the following checks from a machine that can reach the NAS.
+
+### 1. Health endpoint
+
+```bash
+curl -s http://DS224plus.local:8082/api/health | python3 -m json.tool
+```
+
+Expected:
+
+```json
+{
+  "status": "ok",
+  "imageMount": {
+    "path": "/data/castle-images",
+    "available": true,
+    "status": "ok",
+    "message": "image mount is available"
+  }
+}
+```
+
+### 2. SPA shell
+
+```bash
+curl -s -o /dev/null -w "%{http_code}" http://DS224plus.local:8082/
+```
+
+Expected: `200`
+
+### 3. API data
+
+```bash
+curl -s -o /dev/null -w "%{http_code}" http://DS224plus.local:8082/api/index.json
+```
+
+Expected: `200`
+
+### 4. Image serving
+
+```bash
+# Replace 1.jpg with a known file in the NAS image directory
+curl -I http://DS224plus.local:8082/castle-images/1.jpg
+```
+
+Expected: `HTTP/1.1 200 OK` with `Cache-Control: public, max-age=86400`
+
+Missing file returns `404`:
+
+```bash
+curl -s -o /dev/null -w "%{http_code}" http://DS224plus.local:8082/castle-images/__nonexistent__.jpg
+```
+
+Expected: `404`
+
+### 5. Automated smoke tests
+
+Run the full suite against a live server:
+
+```bash
+npm run test:smoke -- http://DS224plus.local:8082
+```
+
+Or locally during development:
+
+```bash
+npm run dev:server &
+npm run test:smoke -- http://localhost:3000
+```
+
+The script exits 0 on pass, 1 on any failure. Checks covered:
+
+| Check | Expected |
+|---|---|
+| `GET /` | 200 |
+| `GET /api/health` | 200 + `{ status: "ok" }` |
+| `GET /api/index.json` | 200 |
+| Unknown route (`/this-route-does-not-exist-xyz`) | 200 + SPA HTML |
+| Deep link (`/castle/1`) | 200 |
+| Missing image (`/castle-images/__nonexistent__`) | 404 |
+| `GET /` with `Accept-Encoding: gzip` | gzip content-encoding |
+
 ## Related documentation
 
 - `README.md` — project overview and local commands
