@@ -10,7 +10,7 @@
             <a class="todays-index__image-link" [routerLink]="['/castles', castle.castle_code]">
               <img
                 class="todays-index__image"
-                [src]="'images/castles/' + castle.castle_code + '.jpg'"
+                [src]="imageService.castlePhotoUrl(castle.castle_code)"
                 [alt]="castle.castle_name"
                 loading="eager"
                 (error)="onImageError($event, castle.wikidata_image ?? castle.wikipedia_thumbnail)"
@@ -143,7 +143,7 @@
               <a class="visitor-lead__image-link" [routerLink]="['/castles', castle.castle_code]">
                 <img
                   class="visitor-lead__image"
-                  [src]="'images/castles/' + castle.castle_code + '.jpg'"
+                  [src]="imageService.castlePhotoUrl(castle.castle_code)"
                   [alt]="castle.castle_name"
                   loading="lazy"
                   (error)="onImageError($event, castle.wikidata_image ?? castle.wikipedia_thumbnail)"
@@ -208,7 +208,7 @@
             <a class="sidebar-castle__image-link" [routerLink]="['/castles', castle.castle_code]" tabindex="-1" aria-hidden="true">
               <img
                 class="sidebar-castle__image"
-                [src]="'images/castles/small/' + castle.castle_code + '_small.jpg'"
+                [src]="imageService.castleThumbnailUrl(castle.castle_code)"
                 [alt]="castle.castle_name"
                 width="110"
                 height="110"

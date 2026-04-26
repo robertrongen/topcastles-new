@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { DecimalPipe, TitleCasePipe } from '@angular/common';
 import { CastleService } from '../../services/castle.service';
 import { CastleMapComponent } from '../../components/castle-map/castle-map.component';
+import { ImageService } from '../../services/image.service';
 import { haversineKm } from '../../utils/distance';
 
 @Component({
@@ -16,6 +17,7 @@ export class HomePageComponent implements OnInit {
   private castleService = inject(CastleService);
   private router = inject(Router);
   private ngZone = inject(NgZone);
+  imageService = inject(ImageService);
 
   private surpriseIndex = signal(Math.floor(Math.random() * 900));
 
