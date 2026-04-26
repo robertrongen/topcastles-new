@@ -10,7 +10,7 @@
           <mat-card class="country-card">
             <mat-card-content>
               <span class="country-rank">#{{ i + 1 }}</span>
-              <h3>{{ summary.country }}</h3>
+              <h3><a [routerLink]="['/countries', summary.country]">{{ summary.country }}</a></h3>
               <p>{{ summary.castleCount }} castles &middot; score {{ summary.totalScore | number:'1.0-0' }}</p>
             </mat-card-content>
           </mat-card>

@@ -23,17 +23,9 @@
   <nav class="tk-toolbar-nav">
     <a mat-button routerLink="/" routerLinkActive="tk-nav-active">Home</a>
     <a mat-button routerLink="/top1000" routerLinkActive="tk-nav-active">Top 1000</a>
-
-    <button mat-button [matMenuTriggerFor]="backgroundMenu" class="tk-nav-menu-btn">
-      Background <mat-icon>arrow_drop_down</mat-icon>
-    </button>
-    <mat-menu #backgroundMenu="matMenu">
-      <a mat-menu-item routerLink="/background">Background</a>
-      <mat-divider />
-      <a mat-menu-item routerLink="/top-countries">Top Countries</a>
-      <a mat-menu-item routerLink="/top-regions">Top Regions</a>
-    </mat-menu>
-
+    <a mat-button routerLink="/top-countries" routerLinkActive="tk-nav-active">Top Countries</a>
+    <a mat-button routerLink="/top-regions" routerLinkActive="tk-nav-active">Top Regions</a>
+    <a mat-button routerLink="/background" routerLinkActive="tk-nav-active">Background</a>
     <a mat-button routerLink="/developer" routerLinkActive="tk-nav-active">Developer / API</a>
     <a mat-button routerLink="/favorites" routerLinkActive="tk-nav-active">
       <mat-icon>bookmark</mat-icon> Favorites
@@ -65,11 +57,6 @@
         <mat-icon matListItemIcon>leaderboard</mat-icon>
         <span matListItemTitle>Top 1000</span>
       </a>
-      <mat-divider />
-      <a mat-list-item routerLink="/background" routerLinkActive="active" (click)="sidenav.close()">
-        <mat-icon matListItemIcon>info</mat-icon>
-        <span matListItemTitle>Background</span>
-      </a>
       <a mat-list-item routerLink="/top-countries" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>emoji_flags</mat-icon>
         <span matListItemTitle>Top Countries</span>
@@ -77,6 +64,11 @@
       <a mat-list-item routerLink="/top-regions" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>map</mat-icon>
         <span matListItemTitle>Top Regions</span>
+      </a>
+      <mat-divider />
+      <a mat-list-item routerLink="/background" routerLinkActive="active" (click)="sidenav.close()">
+        <mat-icon matListItemIcon>info</mat-icon>
+        <span matListItemTitle>Background</span>
       </a>
       <mat-divider />
       <a mat-list-item routerLink="/developer" routerLinkActive="active" (click)="sidenav.close()">
