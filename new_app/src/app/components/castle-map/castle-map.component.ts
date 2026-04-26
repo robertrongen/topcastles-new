@@ -50,7 +50,7 @@ export class CastleMapComponent implements OnDestroy {
     const L = (leafletModule as any).default ?? leafletModule;
 
     if (!this.leafletMap) {
-      this.leafletMap = L.map(container, { scrollWheelZoom: true }).setView([48, 10], 4);
+      this.leafletMap = L.map(container, { scrollWheelZoom: true, zoomSnap: 0.5 }).setView([48, 10], 4);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         maxZoom: 19,
@@ -91,6 +91,7 @@ export class CastleMapComponent implements OnDestroy {
     if (this.autoFit() && withCoords.length > 0) {
       const bounds = (L as any).latLngBounds(withCoords.map((c: Castle) => [c.latitude!, c.longitude!]));
       this.leafletMap.fitBounds(bounds, { padding: [40, 40], maxZoom: 10 });
+      this.leafletMap.setZoom(this.leafletMap.getZoom() + 0.5);
     }
 
     this.labelsLayer.clearLayers();
