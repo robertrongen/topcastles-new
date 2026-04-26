@@ -210,6 +210,41 @@
         </p>
       </section>
 
+      @if (top10Countries().length) {
+        <section class="section">
+          <h2><a routerLink="/top-countries">Index of Top Countries</a></h2>
+          <table class="ref-table">
+            <thead>
+              <tr>
+                <th class="ref-table__col-rank">#</th>
+                <th class="ref-table__col-name">Country</th>
+                <th class="ref-table__col-score">Castles</th>
+                <th class="ref-table__col-name">Top-ranked castle</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (row of top10Countries(); track row.country; let i = $index) {
+                <tr>
+                  <td class="ref-table__col-rank">{{ i + 1 }}</td>
+                  <td><a [routerLink]="['/countries', row.country]">{{ row.country | titlecase }}</a></td>
+                  <td class="ref-table__col-score">{{ row.castleCount }}</td>
+                  <td>
+                    @if (row.topCastle) {
+                      <a [routerLink]="['/castles', row.topCastle.castle_code]">{{ row.topCastle.castle_name }}</a>
+                    } @else {
+                      —
+                    }
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+          <p class="section-footer">
+            <a routerLink="/top-countries">See all countries &rarr;</a>
+          </p>
+        </section>
+      }
+
     </main>
 
     <aside class="home-sidebar">

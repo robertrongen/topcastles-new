@@ -46,6 +46,17 @@ export class HomePageComponent implements OnInit {
 
   allCastles = this.castleService.castles;
   top10 = computed(() => this.castleService.getTopByScore(10));
+
+  top10Countries = computed(() => {
+    const summaries = this.castleService.getCountrySummaries().slice(0, 10);
+    const castles = this.castleService.castles();
+    const topByCountry = new Map<string, { castle_code: string; castle_name: string }>();
+    for (const c of castles) {
+      if (!c.country || topByCountry.has(c.country)) continue;
+      topByCountry.set(c.country, { castle_code: c.castle_code, castle_name: c.castle_name });
+    }
+    return summaries.map(s => ({ ...s, topCastle: topByCountry.get(s.country) ?? null }));
+  });
   topVisitors12 = computed(() => this.castleService.getTopByVisitors(12));
   topVisitorLead = computed(() => this.topVisitors12()[0] ?? null);
   topVisitorRunnersUp = computed(() => this.topVisitors12().slice(1, 5));
