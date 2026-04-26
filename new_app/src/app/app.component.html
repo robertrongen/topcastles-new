@@ -30,6 +30,13 @@
     <a mat-button routerLink="/favorites" routerLinkActive="tk-nav-active">
       <mat-icon>bookmark</mat-icon> Favorites
     </a>
+    <button type="button" mat-button
+            title="Find the top-ranked castle nearest to your current location"
+            [disabled]="nearMeState() === 'loading'"
+            (click)="goToNearestCastle()">
+      <mat-icon>near_me</mat-icon>
+      {{ nearMeState() === 'loading' ? 'Locating…' : 'Nearest Top Castle' }}
+    </button>
   </nav>
 
   <span class="tk-spacer"></span>
@@ -80,6 +87,14 @@
         <mat-icon matListItemIcon>bookmark</mat-icon>
         <span matListItemTitle>Favorites</span>
       </a>
+      <mat-divider />
+      <button mat-list-item
+              title="Find the top-ranked castle nearest to your current location"
+              [disabled]="nearMeState() === 'loading'"
+              (click)="goToNearestCastle(); sidenav.close()">
+        <mat-icon matListItemIcon>near_me</mat-icon>
+        <span matListItemTitle>{{ nearMeState() === 'loading' ? 'Locating…' : 'Nearest Top Castle' }}</span>
+      </button>
     </mat-nav-list>
   </mat-sidenav>
 

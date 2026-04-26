@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, inject, NgZone, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -12,6 +12,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ThemeService } from './services/theme.service';
 import { UserService } from './services/user.service';
 import { FavoritesService } from './services/favorites.service';
+import { CastleService } from './services/castle.service';
+import { haversineKm } from './utils/distance';
 
 @Component({
   selector: 'app-root',
@@ -33,6 +35,10 @@ export class AppComponent implements OnInit {
   private favoritesService = inject(FavoritesService);
   private snackBar = inject(MatSnackBar);
   private router = inject(Router);
+  private castleService = inject(CastleService);
+  private ngZone = inject(NgZone);
+
+  nearMeState = signal<'idle' | 'loading' | 'error'>('idle');
 
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
@@ -62,5 +68,34 @@ export class AppComponent implements OnInit {
   goToIndex(query: string): void {
     const params = query.trim() ? { name: query.trim() } : {};
     this.router.navigate(['/top1000'], { queryParams: params });
+  }
+
+  goToNearestCastle(): void {
+    if (!navigator.geolocation) { this.nearMeState.set('error'); return; }
+    this.nearMeState.set('loading');
+    navigator.geolocation.getCurrentPosition(
+      pos => this.ngZone.run(() => {
+        const { latitude: lat, longitude: lon } = pos.coords;
+        const nearest = [...this.castleService.castles()]
+          .filter(c => c.latitude != null && c.longitude != null)
+          .sort((a, b) =>
+            haversineKm(lat, lon, a.latitude!, a.longitude!) -
+            haversineKm(lat, lon, b.latitude!, b.longitude!)
+          )
+          .slice(0, 20)
+          .sort((a, b) =>
+            (a.position ?? Number.MAX_SAFE_INTEGER) -
+            (b.position ?? Number.MAX_SAFE_INTEGER)
+          )[0];
+        if (nearest) {
+          this.nearMeState.set('idle');
+          this.router.navigate(['/castles', nearest.castle_code]);
+        } else {
+          this.nearMeState.set('error');
+        }
+      }),
+      () => this.ngZone.run(() => this.nearMeState.set('error')),
+      { timeout: 8000 },
+    );
   }
 }
