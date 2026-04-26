@@ -22,7 +22,9 @@
 <mat-toolbar class="tk-masthead">
   <nav class="tk-toolbar-nav">
     <a mat-button routerLink="/" routerLinkActive="tk-nav-active">Home</a>
-    <a mat-button routerLink="/top1000" routerLinkActive="tk-nav-active">Top 1000</a>
+    <a mat-button routerLink="/top1000" routerLinkActive="tk-nav-active">
+      <mat-icon>workspace_premium</mat-icon> Top 1000
+    </a>
     <a mat-button routerLink="/top-countries" routerLinkActive="tk-nav-active">Top Countries</a>
     <a mat-button routerLink="/top-regions" routerLinkActive="tk-nav-active">Top Regions</a>
     <a mat-button routerLink="/background" routerLinkActive="tk-nav-active">Background</a>
@@ -61,7 +63,7 @@
       </a>
       <mat-divider />
       <a mat-list-item routerLink="/top1000" routerLinkActive="active" (click)="sidenav.close()">
-        <mat-icon matListItemIcon>leaderboard</mat-icon>
+        <mat-icon matListItemIcon>workspace_premium</mat-icon>
         <span matListItemTitle>Top 1000</span>
       </a>
       <a mat-list-item routerLink="/top-countries" routerLinkActive="active" (click)="sidenav.close()">
