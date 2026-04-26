@@ -13,7 +13,7 @@
                 [src]="'images/castles/' + castle.castle_code + '.jpg'"
                 [alt]="castle.castle_name"
                 loading="eager"
-                (error)="onImageError($event, castle.wikidata_image)"
+                (error)="onImageError($event, castle.wikidata_image ?? castle.wikipedia_thumbnail)"
               />
             </a>
             <div class="todays-index__content">
@@ -146,7 +146,7 @@
                   [src]="'images/castles/' + castle.castle_code + '.jpg'"
                   [alt]="castle.castle_name"
                   loading="lazy"
-                  (error)="onImageError($event, castle.wikidata_image)"
+                  (error)="onImageError($event, castle.wikidata_image ?? castle.wikipedia_thumbnail)"
                 />
               </a>
             </article>
@@ -213,7 +213,7 @@
                 width="110"
                 height="110"
                 loading="lazy"
-                (error)="onImageError($event, castle.wikidata_image)"
+                (error)="onImageError($event, castle.wikidata_image ?? castle.wikipedia_thumbnail)"
               />
             </a>
             <span class="sidebar-castle__rank">#{{ castle.position }}</span>
