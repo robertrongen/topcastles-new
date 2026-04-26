@@ -7,8 +7,8 @@ This plan turns the approved UX and product improvement strategy into repo-execu
 This plan maps directly to these roadmap items:
 
 - **9.5 design refresh** [DONE]: Storybook-led design refresh, cleaner visual style, stronger typography hierarchy, better whitespace rhythm, consistent light/dark theme treatment, and improved table density for top countries and top regions. Routine shared-component and public-page UX refresh work is complete.
-- **9.6 homepage reference-atlas structure** [OPEN]: Implement and validate the approved homepage layout — reference-atlas model with *From Today's Index* as anchor, *Distribution Map* before ranking, *Top 10* reference table, *By the Numbers* strip, country/period indexes, and sidebar reference column. See [product-strategy-plan.md](product-strategy-plan.md) §1 for the full structure and [roadmap.md](roadmap.md) §9.6 for implementation scope.
-- **10.3 PWA / service worker** [OPEN]: Angular PWA setup, service worker registration, offline caching for static assets and castle JSON, and web app manifest verification.
+- **9.6 homepage reference-atlas structure** [COMPLETED]: The approved homepage layout is now live in code — reference-atlas model with *From Today's Index* as anchor, *Distribution Map* before ranking, *Top 10* reference table with editor's note, visitor ranking section, and sidebar reference column. See [product-strategy-plan.md](product-strategy-plan.md) §1 for the full structure and [roadmap.md](roadmap.md) §9.6 for completion details. Polish items (By the Numbers strip, Top 10 Countries index, By Period index) are scheduled in roadmap items 9.6.1–9.6.3.
+- **10.3 PWA / service worker** [DEFERRED]: Angular PWA setup, service worker registration, offline caching for static assets and castle JSON, and web app manifest verification. Prerequisite: stable image-serving behavior. Requires Spec Kit planning.
 - **11.0 / 13.3 NAS image serving** [OPEN]: Single image access path, NAS-mounted image serving, cache-control and missing-file behavior, and eventual removal of bundled castle images if NAS serving becomes authoritative.
 - **14.1 complete login behavior**: Complete the remaining token validation login behavior while preserving the file-based user model. [DONE]
 - **15.1 to 15.7 admin API/UI workflow** [OPEN]: Admin auth, admin shell, castle edit/add flows, enrichment script execution, intro text editing, and rebuild trigger workflow.
@@ -71,25 +71,57 @@ Primary surfaces:
 - Top countries
 - Top regions
 
-### 3.5. Homepage Reference-Atlas Structure [OPEN]
+### 3.5. Homepage Reference-Atlas Structure [COMPLETED]
 
-Implement and validate the approved homepage layout as defined in [product-strategy-plan.md](product-strategy-plan.md) §1. This workstream is distinct from the general visual refresh: it is about structural correctness and reference-atlas identity, not typography or spacing.
+The approved homepage layout has been implemented and validated as defined in [product-strategy-plan.md](product-strategy-plan.md) §1. This workstream is distinct from the general visual refresh: it establishes structural correctness and reference-atlas identity.
 
-Concrete UX targets:
+Completed UX targets:
 
-- **From Today's Index**: random castle from Top 100, rendered as the primary content block on first paint. Must include castle name, country, score, and a link to the detail page. No static "featured" content — must be server-side or build-time random selection.
-- **By the Numbers strip**: concise statistics row (e.g. total castles, countries covered, top-ranked country). Should scan quickly; not a data dashboard.
-- **Distribution Map**: interactive or static map showing castle density by country or region. Must appear in document flow before the Top 10 table. Map interaction (hover/click) should lead to country or castle detail pages.
-- **Top 10 of the List**: reference-table layout displaying rank, castle name, country, and score. Not a card grid. Column headers must be present. Should link to individual castle detail pages and to the full top 1000.
-- **Index of Top 10 Countries**: structured list or table of countries with castle counts or top-ranked castle per country. Reference style, not promotional.
-- **Index by Period**: structured list grouping castles or counts by historical construction period. Consistent label style.
-- **Right sidebar**: narrow column; "About this list/site" description, random castle from positions 100–1000 (distinct from From Today's Index pool), tools or quick links. Should feel like a reference index panel, not a widget area.
-- **Footer**: copyright, contact, methodology link, data sources. Methodology link is required on every page.
+- **From Today's Index**: random castle from Top 100, rendered as the primary content block on first paint. Includes castle name, country, rank, place, era, type, condition, Wikipedia extract, editorial score, and visitor rating. Server-side random selection via deterministic daily algorithm.
+- **Distribution Map**: interactive map showing castle density by country with clickable markers and atlas region callouts. Includes "Plate I" caption and editorial annotations for Rhine & Moselle, Loire Valley, and British Isles. Map appears in document flow before the Top 10 table as intended.
+- **Top 10 of the List**: reference-table layout (not cards) displaying rank #, castle name, country, era, editorial score, and visitor rating. Includes column headers, links to individual castle detail pages, and link to full ranking.
+- **Editor's note**: positioned with Top 10 section; explains ranking methodology (architectural significance, preservation, historical importance, accessibility) and provides link to full methodology documentation.
+- **Top by visitor rating**: visitor lead card showing #1 visitor-rated castle with image, name, country, and visitor rating. Followed by table of #2–#5 visitor-rated castles (rank, name, country, rating). Distinct pool from editorial ranking; explains visitor rating independence.
+- **Right sidebar**: narrow reference column with three widgets:
+  - "About this list" widget: site description, history, visitor rating era context, links to methodology and selection criteria.
+  - "Discover the list" widget: random castle picker from positions 100–1000 (distinct pool from Top 100); positioned as deep-discovery entry point.
+  - "Tools" widget: "Top castle near me" geolocation button, links to favorites and data/API pages.
+- **Typography and spacing**: follows shared visual system refresh (workstream 2); reference-table layout density, sidebar reference-column styling, and section label consistency applied.
+- **Methodology link**: reachable from editor's note; link targets `/background` on every Top 10-adjacent section.
 
-Design constraints for this workstream:
+Design execution verified:
 - No card-heavy layouts on the homepage.
-- Section labels must follow the "medieval atlas" register (avoid "Discover," "Explore," "Featured").
-- Random elements must be distinct: Top 100 pool for From Today's Index; positions 100–1000 for sidebar random castle.
+- Reference-table structure used for rankings.
+- Section labels and editorial voice follow "medieval atlas" register.
+- Random elements are distinct and intentional: Top 100 for From Today's Index; positions 100–1000 for sidebar picker.
+
+### 3.5.1. Homepage Polish — By the Numbers Strip [BACKLOG]
+
+Add concise site-wide statistics row:
+- Total castles: 1,000
+- Countries represented: 56
+- Visitor ratings collected: 63,800
+- Established: 2004
+
+Placement: Between *From Today's Index* and *Distribution Map*.
+
+Design: Light, scannable row; should not dominate the page; support light/dark theme parity.
+
+### 3.5.2. Homepage Polish — Top 10 Countries Index [BACKLOG]
+
+Add structured geographic reference section:
+- Listing top 10 countries by castle count or ranking distribution.
+- Reference-style table or list layout (not cards).
+- Include country name, castle count, top-ranked castle, and link to country detail page.
+- Position after the main *Top 10* table or as a separate follow-up section.
+
+### 3.5.3. Homepage Polish — By Period Index [BACKLOG]
+
+Add structured historical reference section:
+- Grouping castles or counts by construction period (12th c., 13th c., etc.).
+- Reference-style table or list layout (not cards).
+- Include period label, castle count, and period-filter link to browse/top100 view.
+- Position after country index or as a separate section.
 
 ### 4. NAS Image Serving Hardening
 
@@ -117,7 +149,7 @@ Recommended initial backlog ordering:
 4. Improve top countries and top regions table layout density. [DONE]
 5. Refresh homepage and browse/top100 public UX surfaces. [DONE]
 6. Refresh castle detail, no-castle detail, and country detail UX surfaces. [DONE]
-7. Implement homepage reference-atlas structure (9.6): From Today's Index, By the Numbers, Distribution Map, Top 10 table, country/period indexes, sidebar reference column. See workstream 3.5.
+7. Implement homepage polish items (9.6.1–9.6.3): By the Numbers strip, Top 10 Countries index, By Period index. See workstream 3.5.1–3.5.3.
 8. Harden NAS image serving and mounted-volume verification.
 9. Complete token login endpoint and client behavior. [DONE]
 10. Plan PWA/service worker implementation with Spec Kit.

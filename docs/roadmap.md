@@ -76,25 +76,41 @@ This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeli
   - Storybook coverage expanded; shared components, typography, whitespace, and light/dark theme parity updated.
   - The approved design direction is the **reference-atlas model**: "Wikipedia meets Michelin Guide meets a medieval atlas." See [product-strategy-plan.md](product-strategy-plan.md) §1 for the rationale and homepage structure.
 
-- **9.6: Homepage reference-atlas structure** [OPEN]
-  - Implement and maintain the approved homepage layout as defined in [product-strategy-plan.md](product-strategy-plan.md) §1.
-  - Top section: title, subtitle, search bar, menu bar.
-  - Right sidebar (narrow reference column): "About this list/site," random castle from positions 100–1000, tools.
-  - Main content flows top to bottom:
-    1. *From Today's Index* — random castle from Top 100; homepage anchor; must be visible on first paint.
-    2. *By the Numbers* — concise site-wide statistics strip.
-    3. *Distribution Map* — geographic overview; must appear before ranking table.
-    4. *Top 10 of the List* — reference-table layout (not cards); ranking signal.
-    5. *Index of Top 10 Countries* — structured geographic reference.
-    6. *Index by Period* — structured historical reference.
-  - Footer: copyright, contact, methodology link, data sources.
-  - Design constraints: no card-heavy layouts on the homepage; reference-table structure preferred; section labels must match the "medieval atlas" register (avoid "Discover," "Explore," "Featured" patterns).
-  - Methodology must be reachable from the footer on every page.
+- **9.6: Homepage reference-atlas structure** [COMPLETED]
+  - The approved homepage layout has been implemented as defined in [product-strategy-plan.md](product-strategy-plan.md) §1.
+  - Completed sections:
+    1. *From Today's Index* — random castle from Top 100; homepage anchor; visible on first paint.
+    2. *Distribution Map* — geographic overview with "Plate I" caption and atlas notes (Rhine & Moselle, Loire Valley, British Isles); appears before ranking table.
+    3. *Top 10 of the List* — reference-table layout showing rank, castle name, country, era, editorial score, and visitor rating.
+    4. *Editor's note* — positioned with ranking methodology explanation and link to full methodology.
+    5. *Top by visitor rating* — visitor lead (#1) with featured castle card and table showing #2–#5 visitor-rated castles.
+    6. Right sidebar (reference column) — "About this list" widget, "Discover the list" random castle picker (positions 100–1000), and "Tools" widget.
+  - Design execution: no card-heavy layouts; reference-table structures used; section labels follow "medieval atlas" register; methodology reachable from every page.
 
-- **10.3: PWA / service worker**
+- **9.6.1: Homepage polish — By the Numbers strip** [BACKLOG]
+  - Add concise site-wide statistics row (total castles: 1,000, countries: 56, visitor ratings: 63,800, established: 2004).
+  - Position between *From Today's Index* and *Distribution Map*.
+  - Should scan quickly; minimal data dashboard aesthetic.
+  - Support light/dark theme parity.
+
+- **9.6.2: Homepage polish — Top 10 Countries index** [BACKLOG]
+  - Add structured geographic reference section listing top 10 countries by castle count or ranking distribution.
+  - Use reference-style table or list layout (not cards).
+  - Include country name, castle count, and link to country detail page.
+  - Position after the main *Top 10* table or as a separate follow-up section.
+
+- **9.6.3: Homepage polish — By Period index** [BACKLOG]
+  - Add structured historical reference section grouping castles or counts by construction period (12th c., 13th c., etc.).
+  - Use reference-style table or list layout (not cards).
+  - Position after country index or as a separate section.
+  - Support period-filter links to browse/top100 view.
+
+- **10.3: PWA / service worker** [DEFERRED]
   - Add `@angular/pwa`, generate `ngsw-config.json`, and register the service worker.
   - Cache `castles_enriched.json` and static assets for offline browsing.
   - Add or verify the web app manifest for mobile "Add to home screen".
+  - Prerequisite: stable image-serving behavior (workstream C/13.3).
+  - Requires Spec Kit planning before implementation.
 
 ## Infrastructure And Runtime Data
 

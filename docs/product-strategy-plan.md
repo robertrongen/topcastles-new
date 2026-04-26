@@ -25,23 +25,28 @@ The north star: **a reader should feel that the castles speak first, and the int
 
 ### Homepage as reference-atlas entry point
 
-The homepage is the primary expression of this vision. Its approved structure is:
+The homepage is the primary expression of this vision. The reference-atlas structure is now live in the code (as of April 2026).
 
-**Top section** — title, subtitle, search bar, menu bar.
+**Implemented structure:**
 
-**Right sidebar** (narrow reference column) — "About this list/site," random castle from positions 100–1000, tools. The sidebar signals that this is a reference, not a portal.
+**Top section** — title, menu bar (top-level navigation).
+
+**Right sidebar** (narrow reference column) — "About this list" widget with site description and methodology links, "Discover the list" widget with random castle picker from positions 100–1000, and "Tools" widget with location-based discovery and favorites link. The sidebar signals that this is a reference, not a portal.
 
 **Main content** (left, flowing top to bottom):
-1. *From Today's Index* — a randomly selected castle from the Top 100, shown on first paint. This is the homepage anchor: a castle speaks before any list or map appears.
-2. *By the Numbers* — a concise strip of site-wide statistics.
-3. *Distribution Map* — geographic overview; map precedes ranking in user flow to establish spatial authority before positional ranking.
-4. *Top 10 of the List* — the ranking signal; reference-table layout, not cards.
-5. *Index of Top 10 Countries* — structured geographic reference.
-6. *Index by Period* — structured historical reference.
+1. *From Today's Index* — a randomly selected castle from the Top 100, shown on first paint. This is the homepage anchor: a specific castle (not a banner or featured collection) speaks before any list or map appears. Includes castle name, rank, country, place, era, type, condition, Wikipedia extract, and both editorial and visitor scores.
+2. *Distribution Map* — interactive geographic overview showing all 1,000 castles with atlas region callouts (Rhine & Moselle, Loire Valley, British Isles) and editorial annotations. Includes "Plate I" caption. Appears in document flow before ranking to establish spatial authority before positional ranking.
+3. *Top 10 of the List* — the ranking signal; reference-table layout (not cards) showing rank, castle name, country, era, editorial score, and visitor rating. Includes editor's note explaining ranking methodology (architectural significance, preservation, historical importance, accessibility) with link to full methodology.
+4. *Top by visitor rating* — distinct from editorial ranking. Shows #1 visitor-rated castle as a featured lead, followed by a table of #2–#5. Includes context explaining visitor rating independence and historical era (2004–2021).
+
+**Remaining polish items** (scheduled for future roadmap items 9.6.1–9.6.3):
+- *By the Numbers* — a concise strip of site-wide statistics (1,000 castles, 56 countries, 63,800 ratings, 2004 established). To be positioned between *From Today's Index* and *Distribution Map*.
+- *Index of Top 10 Countries* — structured geographic reference listing top countries by castle count or ranking distribution.
+- *Index by Period* — structured historical reference grouping castles by construction period.
 
 **Footer** — copyright, contact, methodology link, data sources.
 
-This structure encodes the three core tensions deliberately: **random discovery** (From Today's Index) establishes the human dimension; **map** establishes geographic authority; **Top 10 table** establishes ranking authority. Methodology must be reachable from the footer on every page.
+This structure encodes the three core tensions deliberately: **random discovery** (*From Today's Index*) establishes the human dimension; **map** establishes geographic authority; **Top 10 table** establishes ranking authority. Methodology is reachable from the editor's note and will be reachable from the footer on every page once footer navigation is finalized.
 
 ---
 
