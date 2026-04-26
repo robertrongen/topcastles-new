@@ -47,6 +47,30 @@ export class HomePageComponent implements OnInit {
   allCastles = this.castleService.castles;
   top10 = computed(() => this.castleService.getTopByScore(10));
 
+  byPeriod = computed(() => {
+    const castles = this.castleService.castles();
+    const map = new Map<number, { count: number; exampleCastle: { castle_code: string; castle_name: string } }>();
+    let total = 0;
+    for (const c of castles) {
+      if (c.era == null) continue;
+      total++;
+      if (!map.has(c.era)) {
+        map.set(c.era, { count: 1, exampleCastle: { castle_code: c.castle_code, castle_name: c.castle_name } });
+      } else {
+        map.get(c.era)!.count++;
+      }
+    }
+    return [...map.entries()]
+      .sort(([a], [b]) => a - b)
+      .map(([era, { count, exampleCastle }]) => ({
+        era,
+        label: `${era}th c.`,
+        count,
+        share: total > 0 ? Math.round(count / total * 100) : 0,
+        exampleCastle,
+      }));
+  });
+
   top10Countries = computed(() => {
     const summaries = this.castleService.getCountrySummaries().slice(0, 10);
     const castles = this.castleService.castles();

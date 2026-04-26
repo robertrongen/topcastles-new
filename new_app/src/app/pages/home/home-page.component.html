@@ -248,6 +248,37 @@
         </section>
       }
 
+      @if (byPeriod().length) {
+        <section class="section">
+          <h2>Index by Period</h2>
+          <table class="ref-table">
+            <thead>
+              <tr>
+                <th>Period</th>
+                <th class="ref-table__col-total">Entries</th>
+                <th class="ref-table__col-total">Share</th>
+                <th class="ref-table__col-name">Example castle</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (row of byPeriod(); track row.era) {
+                <tr>
+                  <td><a [routerLink]="['/castles']" [queryParams]="{ era: row.era }">{{ row.label }}</a></td>
+                  <td class="ref-table__col-total">{{ row.count }}</td>
+                  <td class="ref-table__col-total">{{ row.share }}%</td>
+                  <td>
+                    <a [routerLink]="['/castles', row.exampleCastle.castle_code]">{{ row.exampleCastle.castle_name }}</a>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+          <p class="section-footer">
+            <a routerLink="/castles">Browse all castles &rarr;</a>
+          </p>
+        </section>
+      }
+
     </main>
 
     <aside class="home-sidebar">
