@@ -504,6 +504,10 @@
     text-align: left;
     text-transform: uppercase;
     white-space: nowrap;
+
+    &.ref-table__col-total { text-align: center; }
+    &.ref-table__col-score,
+    &.ref-table__col-visitors { text-align: right; }
   }
 
   td {
