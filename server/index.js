@@ -86,6 +86,9 @@ const CASTLE_IMAGE_MOUNT_STATUS = checkCastleImageMount(CASTLE_IMAGE_ROOT);
 const app = express();
 
 app.use(compression());
+// Admin routes are mounted before the global body parser so the route-level
+// express.json({ limit: '10mb' }) on POST /upload-enriched controls its own limit.
+app.use('/api/admin', adminRoutes);
 app.use(express.json());
 
 app.get('/api/health', (_req, res) => {
@@ -96,7 +99,6 @@ app.get('/api/health', (_req, res) => {
 });
 
 app.use('/api/user', userRoutes);
-app.use('/api/admin', adminRoutes);
 
 app.post('/mcp', async (req, res) => {
   const dataPath = API_CASTLES_PATHS.find(existsSync);
