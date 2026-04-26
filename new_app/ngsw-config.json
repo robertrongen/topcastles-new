@@ -28,12 +28,22 @@
       }
     },
     {
-      "name": "assets",
+      "name": "assets-fonts",
       "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/**/*.(svg|cur|jpg|jpeg|png|apng|webp|avif|gif|otf|ttf|woff|woff2)"
+          "/**/*.(svg|cur|otf|ttf|woff|woff2)"
+        ]
+      }
+    },
+    {
+      "name": "assets-icons",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/icons/*.png"
         ]
       }
     }

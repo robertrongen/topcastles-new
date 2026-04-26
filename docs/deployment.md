@@ -340,6 +340,39 @@ The script exits 0 on pass, 1 on any failure. Checks covered:
 | Missing image (`/castle-images/__nonexistent__`) | 404 |
 | `GET /` with `Accept-Encoding: gzip` | gzip content-encoding |
 
+## Service Worker
+
+The production build includes Angular's NGSW service worker (`ngsw-worker.js`). It is
+registered automatically via `provideServiceWorker` in `app.config.ts`, enabled only
+in production, with a 30-second stable-delay registration strategy.
+
+### What is cached
+
+| Asset group | Strategy | Content |
+|---|---|---|
+| `app` | Precache on install, update on SW version change | SPA shell, JS/CSS bundles, manifest, favicon |
+| `data` | Lazy cache on first use, re-fetch on SW update | `castles.json`, `castles_delta.json` |
+| `assets-icons` | Lazy cache | PWA icons (`/icons/*.png`) |
+| `assets-fonts` | Lazy cache | Font and SVG files from build output |
+
+### What is never cached by the SW
+
+- **`/castle-images/*`** — NAS-served photos are intentionally excluded from all NGSW
+  asset groups. The Node server's `Cache-Control: max-age=86400` header is the correct
+  caching mechanism. The service worker does not intercept these requests.
+- **`/api/*`** — All runtime API routes are network-only. The SW has no data group
+  for API traffic.
+
+### Cache invalidation
+
+The NGSW uses content hashes in `ngsw.json` (generated at build time). When a new
+Docker image is deployed with changed assets, the SW detects the updated `ngsw.json`
+on the next navigation and re-fetches changed files in the background. The new version
+activates on the subsequent navigation — no user action required.
+
+Content-only changes (data pipeline regeneration) do not propagate to browsers until
+a full Docker image rebuild and redeployment, consistent with ADR-010.
+
 ## Related documentation
 
 - `README.md` — project overview and local commands

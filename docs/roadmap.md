@@ -99,12 +99,18 @@ This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeli
   - Reference table after *Index of Top Countries*: period (link to `/castles?era=N`), entries count, share of era-tagged castles, top-ranked example castle (link to `/castles/:code`).
   - Data derived from `castleService.castles()` grouped by `c.era` in a single `byPeriod` computed signal; null era values excluded; sorted chronologically.
 
-- **10.3: PWA / service worker** [DEFERRED]
-  - Add `@angular/pwa`, generate `ngsw-config.json`, and register the service worker.
-  - Cache `castles_enriched.json` and static assets for offline browsing.
-  - Add or verify the web app manifest for mobile "Add to home screen".
-  - Prerequisite: stable image-serving behavior (workstream C/13.3).
-  - Requires Spec Kit planning before implementation.
+- **10.3: PWA baseline / production-safe service worker configuration** [COMPLETED]
+  - `@angular/service-worker` installed and registered via `provideServiceWorker` in `app.config.ts`.
+  - `ngsw-config.json` corrected: raster image globs (`jpg/png/webp/gif`) removed from all asset
+    groups to prevent the NAS-served `/castle-images/*` files from being absorbed into the SW
+    cache manifest. Production `ngsw.json` now contains 57 hashed entries (down from 6,777).
+  - Castle images remain network-only; the Node server's `max-age:1d` header is the cache layer.
+  - `manifest.webmanifest` and all 8 PWA icon sizes present and correct.
+  - SW cache strategy documented in `docs/deployment.md` — Service Worker section.
+  - Intentionally deferred (not part of this baseline):
+    - Install prompt UX
+    - Offline UX refinement beyond NGSW navigation fallback
+    - `skipWaiting` / update notification UI
 
 ## Infrastructure And Runtime Data
 
