@@ -10,6 +10,7 @@
  */
 
 const BASE = (process.argv[2] || 'http://localhost:3000').replace(/\/$/, '');
+const ADMIN_TOKEN = process.env.ADMIN_TOKEN || '';
 
 let passed = 0;
 let failed = 0;
@@ -111,6 +112,36 @@ async function run() {
     }
   } catch (e) {
     fail('GET / with Accept-Encoding: gzip returns gzip response', e.message);
+  }
+
+  // 8. /api/admin/health without token → 401
+  try {
+    const { status, body } = await get('/api/admin/health');
+    const json = JSON.parse(body);
+    if (status === 401 && json?.error === 'Unauthorized') {
+      ok('GET /api/admin/health without token returns 401 { error: "Unauthorized" }');
+    } else {
+      fail('GET /api/admin/health without token returns 401', `status=${status} body=${body.slice(0, 120)}`);
+    }
+  } catch (e) {
+    fail('GET /api/admin/health without token returns 401', e.message);
+  }
+
+  // 9. /api/admin/health with valid token → 200 (only when ADMIN_TOKEN is set)
+  if (ADMIN_TOKEN) {
+    try {
+      const { status, body } = await get('/api/admin/health', { 'Authorization': `Bearer ${ADMIN_TOKEN}` });
+      const json = JSON.parse(body);
+      if (status === 200 && json?.status === 'ok' && json?.auth === 'admin') {
+        ok('GET /api/admin/health with valid token returns 200 { status: "ok", auth: "admin" }');
+      } else {
+        fail('GET /api/admin/health with valid token returns 200', `status=${status} body=${body.slice(0, 120)}`);
+      }
+    } catch (e) {
+      fail('GET /api/admin/health with valid token returns 200', e.message);
+    }
+  } else {
+    ok('GET /api/admin/health with valid token — skipped (ADMIN_TOKEN not set in test env)');
   }
 
   console.log(`\n${passed + failed} checks: ${passed} passed, ${failed} failed\n`);

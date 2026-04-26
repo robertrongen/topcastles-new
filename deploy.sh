@@ -37,6 +37,14 @@ DATA_DIR="/volume1/docker/topcastles/data"
 IMAGE_DIR="/volume1/docker/topcastles/images/castles"
 IMAGE_MOUNT_TARGET="/data/castle-images"
 
+if [ -z "${ADMIN_TOKEN:-}" ]; then
+  echo ""
+  echo "  [admin-auth] WARNING: ADMIN_TOKEN is not configured."
+  echo "  Admin routes will return 401 until runtime env is set."
+  echo "  Set ADMIN_TOKEN in the Synology container environment before deploying."
+  echo ""
+fi
+
 echo "Building Angular application..."
 cd new_app
 npm run build

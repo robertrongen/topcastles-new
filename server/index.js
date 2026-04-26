@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import { accessSync, constants, existsSync, readdirSync, readFileSync, statSync } from 'fs';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import userRoutes from './routes/user.js';
+import adminRoutes from './routes/admin.js';
 import { createTopCastlesMcpServer } from './lib/topcastles-mcp.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -95,6 +96,7 @@ app.get('/api/health', (_req, res) => {
 });
 
 app.use('/api/user', userRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.post('/mcp', async (req, res) => {
   const dataPath = API_CASTLES_PATHS.find(existsSync);
@@ -161,6 +163,10 @@ app.get('*', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`TopCastles server listening on port ${PORT}`);
+
+  if (!process.env.ADMIN_TOKEN) {
+    console.warn('[admin-auth] WARNING: ADMIN_TOKEN is not configured. Admin routes will return 401 until runtime env is set.');
+  }
 
   console.log(`/castle-images mounted from ${CASTLE_IMAGE_ROOT}`);
   const imageMessage = `[image-mount] ${CASTLE_IMAGE_MOUNT_STATUS.status}: ${CASTLE_IMAGE_MOUNT_STATUS.message} (${CASTLE_IMAGE_MOUNT_STATUS.path})`;

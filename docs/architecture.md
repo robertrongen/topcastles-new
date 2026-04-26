@@ -124,6 +124,24 @@ Not all data is equal. The system enforces a strict boundary between build-time 
 
 Rule: runtime data must never directly mutate prerendered content. Content changes (castle data, enrichment) require a rebuild to take effect (ADR-007, ADR-010).
 
+### Admin API boundary enforcement
+
+The Admin API (`/api/admin/*`) is protected by `ADMIN_TOKEN` Bearer authentication. The token is injected at runtime via the deployment environment — it is never baked into the Docker image. If `ADMIN_TOKEN` is not set, all admin routes return 401.
+
+Allowed runtime writes through the Admin API:
+- `/data/users.json` — user accounts and favorites (existing)
+- Future runtime-safe JSON in `/data/` — e.g. content overrides, feature flags
+
+Requires a full rebuild (not writable at runtime):
+- `castles_enriched.json` and all source content
+- Pre-rendered HTML pages
+- JS/CSS bundles and Angular output
+- `/assets/data/*` — static JSON baked into the image
+- `sitemap.xml` and prerender routes
+- `ngsw.json` and service worker assets
+
+These are sealed inside the Docker image at build time and cannot be safely mutated at runtime without a rebuild and redeployment.
+
 ## Node server responsibilities
 
 The Node.js server is the single runtime entry point (ADR-008):

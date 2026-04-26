@@ -106,10 +106,14 @@ sudo docker rm topcastles || true
 mkdir -p /volume1/docker/topcastles/data
 sudo docker run -d --restart unless-stopped --name topcastles \
   -p 8082:3000 \
+  -e ADMIN_TOKEN=<your-secret-token> \
   -v /volume1/docker/topcastles/data:/data \
   -v /volume1/docker/topcastles/images/castles:/data/castle-images:ro \
   hobunror/topcastles:latest
 ```
+
+> **`ADMIN_TOKEN`** must be set at runtime — it is not baked into the Docker image.
+> If omitted, all `/api/admin/*` routes return 401. The server logs a warning at startup if the token is not configured.
 
 ## Resulting deployment topology
 
@@ -339,6 +343,48 @@ The script exits 0 on pass, 1 on any failure. Checks covered:
 | Deep link (`/castle/1`) | 200 |
 | Missing image (`/castle-images/__nonexistent__`) | 404 |
 | `GET /` with `Accept-Encoding: gzip` | gzip content-encoding |
+| `GET /api/admin/health` (no token) | 401 + `{ "error": "Unauthorized" }` |
+| `GET /api/admin/health` (valid token) | 200 + `{ "status": "ok", "auth": "admin" }` |
+
+### 6. Admin API authentication
+
+Verify the auth boundary is enforced:
+
+```bash
+# Without token → must return 401
+curl -s http://DS224plus.local:8082/api/admin/health
+```
+
+Expected:
+
+```json
+{"error":"Unauthorized"}
+```
+
+```bash
+# With valid token → must return 200
+curl -s -H "Authorization: Bearer <your-secret-token>" \
+  http://DS224plus.local:8082/api/admin/health
+```
+
+Expected:
+
+```json
+{"status":"ok","auth":"admin"}
+```
+
+If the first command returns 200 (no auth required), `ADMIN_TOKEN` is not set in the container environment — stop and fix before proceeding.
+
+## Runtime environment variables
+
+| Variable | Default | Description |
+|---|---|---|
+| `PORT` | `3000` | Server listen port |
+| `USERS_FILE` | `/data/users.json` | Path to user data file |
+| `CASTLE_IMAGE_PATH` | `/data/castle-images` | Path to castle image directory |
+| `ADMIN_TOKEN` | _(not set)_ | Bearer token for `/api/admin/*`. If unset, all admin routes return 401. |
+
+`ADMIN_TOKEN` is never baked into the Docker image. It must be injected at runtime via `-e ADMIN_TOKEN=<value>` or equivalent Synology Container Manager environment settings.
 
 ## Service Worker
 
