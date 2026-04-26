@@ -35,7 +35,7 @@ The homepage is the primary expression of this vision. The reference-atlas struc
 
 **Main content** (left, flowing top to bottom):
 1. *From Today's Index* — a randomly selected castle from the Top 100, shown on first paint. This is the homepage anchor: a specific castle (not a banner or featured collection) speaks before any list or map appears. Includes castle name, rank, country, place, era, type, condition, Wikipedia extract, and both editorial and visitor scores.
-2. *Distribution Map* — interactive geographic overview showing all 1,000 castles with atlas region callouts (Rhine & Moselle, Loire Valley, British Isles) and editorial annotations. Includes "Plate I" caption. Appears in document flow before ranking to establish spatial authority before positional ranking.
+2. *Distribution Map* — interactive geographic overview showing all 1,000 castles with clickable atlas region callouts (Rhine & Moselle, Loire Valley, British Isles) that link to filtered browse views, plus editorial annotations. Includes "Plate I" caption. Appears in document flow before ranking to establish spatial authority before positional ranking.
 3. *Top 10 of the List* — the ranking signal; reference-table layout (not cards) showing rank, castle name, country, era, editorial score, and visitor rating. Includes editor's note explaining ranking methodology (architectural significance, preservation, historical importance, accessibility) with link to full methodology.
 4. *Top by visitor rating* — distinct from editorial ranking. Shows #1 visitor-rated castle as a featured lead, followed by a table of #2–#5. Includes context explaining visitor rating independence and historical era (2004–2021).
 

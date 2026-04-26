@@ -80,7 +80,7 @@ This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeli
   - The approved homepage layout has been implemented as defined in [product-strategy-plan.md](product-strategy-plan.md) §1.
   - Completed sections:
     1. *From Today's Index* — random castle from Top 100; homepage anchor; visible on first paint.
-    2. *Distribution Map* — geographic overview with "Plate I" caption and atlas notes (Rhine & Moselle, Loire Valley, British Isles); appears before ranking table.
+    2. *Distribution Map* — geographic overview with "Plate I" caption and clickable atlas region callouts (Rhine & Moselle, Loire Valley, British Isles) linking to filtered browse views; appears before ranking table.
     3. *Top 10 of the List* — reference-table layout showing rank, castle name, country, era, editorial score, and visitor rating.
     4. *Editor's note* — positioned with ranking methodology explanation and link to full methodology.
     5. *Top by visitor rating* — visitor lead (#1) with featured castle card and table showing #2–#5 visitor-rated castles.

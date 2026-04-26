@@ -78,7 +78,7 @@ The approved homepage layout has been implemented and validated as defined in [p
 Completed UX targets:
 
 - **From Today's Index**: random castle from Top 100, rendered as the primary content block on first paint. Includes castle name, country, rank, place, era, type, condition, Wikipedia extract, editorial score, and visitor rating. Server-side random selection via deterministic daily algorithm.
-- **Distribution Map**: interactive map showing castle density by country with clickable markers and atlas region callouts. Includes "Plate I" caption and editorial annotations for Rhine & Moselle, Loire Valley, and British Isles. Map appears in document flow before the Top 10 table as intended.
+- **Distribution Map**: interactive map showing castle density by country with clickable markers and clickable atlas region callouts (Rhine & Moselle, Loire Valley, British Isles) that link to filtered browse views. Includes "Plate I" caption and editorial annotations for each region. Map appears in document flow before the Top 10 table as intended.
 - **Top 10 of the List**: reference-table layout (not cards) displaying rank #, castle name, country, era, editorial score, and visitor rating. Includes column headers, links to individual castle detail pages, and link to full ranking.
 - **Editor's note**: positioned with Top 10 section; explains ranking methodology (architectural significance, preservation, historical importance, accessibility) and provides link to full methodology documentation.
 - **Top by visitor rating**: visitor lead card showing #1 visitor-rated castle with image, name, country, and visitor rating. Followed by table of #2–#5 visitor-rated castles (rank, name, country, rating). Distinct pool from editorial ranking; explains visitor rating independence.
@@ -241,9 +241,13 @@ Use fuller Spec Kit flow for:
 
 ## Next Execution Beads
 
-The routine UX refresh backlog is complete. The next open UX workstream is the **homepage reference-atlas structure** (9.6, workstream 3.5 above) — this is lightweight, not Spec Kit work, and is the highest-priority remaining UX item.
+The routine UX refresh backlog and the homepage reference-atlas structure (9.6, workstream 3.5) are both complete. The next open UX items are the homepage polish additions (workstreams 3.5.1–3.5.3) — lightweight, not Spec Kit work:
 
-After that, open architecture-sensitive roadmap tracks should be scheduled deliberately:
+- **9.6.1 By the Numbers strip** — concise statistics row between *From Today's Index* and the map.
+- **9.6.2 Top 10 Countries index** — structured geographic reference section after the editorial Top 10.
+- **9.6.3 By Period index** — structured historical reference section grouping castles by era.
+
+After those, open architecture-sensitive roadmap tracks should be scheduled deliberately:
 
 - Harden NAS image serving and mounted-volume verification.
 - Plan PWA/service worker implementation with Spec Kit.
