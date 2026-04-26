@@ -55,3 +55,4 @@ data/
 data/users.json
 runtime/
 local/
+.claude/settings.json
