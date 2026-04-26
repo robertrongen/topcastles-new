@@ -50,10 +50,10 @@ export class HomePageComponent implements OnInit {
   top10Countries = computed(() => {
     const summaries = this.castleService.getCountrySummaries().slice(0, 10);
     const castles = this.castleService.castles();
-    const topByCountry = new Map<string, { castle_code: string; castle_name: string }>();
+    const topByCountry = new Map<string, { castle_code: string; castle_name: string; position: number | null }>();
     for (const c of castles) {
       if (!c.country || topByCountry.has(c.country)) continue;
-      topByCountry.set(c.country, { castle_code: c.castle_code, castle_name: c.castle_name });
+      topByCountry.set(c.country, { castle_code: c.castle_code, castle_name: c.castle_name, position: c.position ?? null });
     }
     return summaries.map(s => ({ ...s, topCastle: topByCountry.get(s.country) ?? null }));
   });
