@@ -221,6 +221,9 @@ before the container starts).
 ```
 /data/
 ├── users.json          # written on first user registration; absent until then
+├── pending/            # created on first upload-enriched call; absent until then
+│   ├── castles_enriched.json   # staged upload, consumed by developer machine
+│   └── meta.json               # upload metadata (recordCount, uploadedAt)
 └── castle-images/      # read-only bind mount (NAS source: images/castles/)
     ├── <code>.jpg          # primary castle photo (e.g. 1.jpg)
     ├── <code>2.jpg         # additional photos (e.g. 12.jpg)
@@ -345,6 +348,20 @@ The script exits 0 on pass, 1 on any failure. Checks covered:
 | `GET /` with `Accept-Encoding: gzip` | gzip content-encoding |
 | `GET /api/admin/health` (no token) | 401 + `{ "error": "Unauthorized" }` |
 | `GET /api/admin/health` (valid token) | 200 + `{ "status": "ok", "auth": "admin" }` |
+| `GET /api/admin/pending-status` | 200 or 404 (endpoint live) |
+| `POST /api/admin/upload-enriched` (no token) | 401 |
+| `POST /api/admin/upload-enriched` (wrong Content-Type) | 415 |
+| `POST /api/admin/upload-enriched` (empty array) | 400 |
+| `POST /api/admin/upload-enriched` (< 500 records) | 400 |
+| `POST /api/admin/upload-enriched` (missing `castle_code`) | 400 |
+| `POST /api/admin/upload-enriched` (duplicate `castle_code`) | 400 |
+| `POST /api/admin/upload-enriched` (invalid lat/lng) | 400 |
+| `POST /api/admin/upload-enriched` (unsorted `score_total`) | 400 |
+| `POST /api/admin/upload-enriched` (production-size payload) | 200 + `{ recordCount: N }` |
+| `GET /api/admin/pending-status` (after upload) | 200 + `{ recordCount: N, uploadedAt }` |
+
+When `ADMIN_TOKEN` is set in the test environment, the suite also runs the upload-enriched
+checks using the actual `new_app/src/assets/data/castles_enriched.json` as the payload.
 
 ### 6. Admin API authentication
 
@@ -382,6 +399,7 @@ If the first command returns 200 (no auth required), `ADMIN_TOKEN` is not set in
 | `PORT` | `3000` | Server listen port |
 | `USERS_FILE` | `/data/users.json` | Path to user data file |
 | `CASTLE_IMAGE_PATH` | `/data/castle-images` | Path to castle image directory |
+| `DATA_DIR` | `/data` | Root of the runtime data volume; pending uploads are written to `$DATA_DIR/pending/` |
 | `ADMIN_TOKEN` | _(not set)_ | Bearer token for `/api/admin/*`. If unset, all admin routes return 401. |
 
 `ADMIN_TOKEN` is never baked into the Docker image. It must be injected at runtime via `-e ADMIN_TOKEN=<value>` or equivalent Synology Container Manager environment settings.
@@ -418,6 +436,177 @@ activates on the subsequent navigation — no user action required.
 
 Content-only changes (data pipeline regeneration) do not propagate to browsers until
 a full Docker image rebuild and redeployment, consistent with ADR-010.
+
+## Admin upload flow (enriched castle data)
+
+The `/api/admin/upload-enriched` endpoint lets an admin stage a refreshed
+`castles_enriched.json` on the NAS without modifying any built asset in place.
+The developer machine then consumes the staged file and runs the normal pipeline
+and deploy.
+
+### When to use
+
+Use this flow when you have a new or corrected `castles_enriched.json` and want
+to push it to production without manually copying it to the developer machine
+first. Upload it through the API, verify it was staged, then pull it to your
+machine and proceed with the standard pipeline.
+
+> **Boundary rule:** The NAS runtime only stores the staged file. It never runs
+> `npm run data:regenerate`, `npm run build`, or `./deploy.sh`. All pipeline and
+> build work runs on the developer machine.
+
+### Step 1 — Verify the admin token is configured
+
+```bash
+curl -s http://DS224plus.local:8082/api/admin/health \
+  -H "Authorization: Bearer <your-secret-token>"
+```
+
+Expected: `{"status":"ok","auth":"admin"}`. If this returns 401, `ADMIN_TOKEN`
+is not set in the running container — fix the container environment before
+continuing.
+
+### Step 2 — Upload the enriched file
+
+```bash
+curl -s -X POST http://DS224plus.local:8082/api/admin/upload-enriched \
+  -H "Authorization: Bearer <your-secret-token>" \
+  -H "Content-Type: application/json" \
+  -d @new_app/src/assets/data/castles_enriched.json
+```
+
+Expected response:
+
+```json
+{"recordCount": 1000, "uploadedAt": "2026-04-26T12:00:00.000Z"}
+```
+
+The endpoint validates the payload before writing. It rejects uploads that:
+
+- are not a JSON array
+- contain fewer than 500 records (guards against accidental subset uploads)
+- have a missing or empty `castle_code` on any element
+- have duplicate `castle_code` values
+- have `latitude` or `longitude` that is neither a number nor `null`
+  (some castles legitimately have `null` coordinates)
+- are not sorted by `score_total` descending (required by the generation pipeline)
+
+On validation failure the server returns `400` with an error message and writes
+nothing to disk.
+
+### Step 3 — Confirm the pending upload
+
+```bash
+curl -s http://DS224plus.local:8082/api/admin/pending-status \
+  -H "Authorization: Bearer <your-secret-token>"
+```
+
+Expected:
+
+```json
+{"uploadedAt": "2026-04-26T12:00:00.000Z", "recordCount": 1000, "uploadedBy": "admin"}
+```
+
+If this returns `404`, no upload has been staged yet.
+
+### Step 4 — Pull the pending file to the developer machine
+
+Run on the **developer machine** (Git Bash):
+
+```bash
+scp robertron@DS224plus.local:/volume1/docker/topcastles/data/pending/castles_enriched.json \
+  new_app/src/assets/data/castles_enriched.json
+```
+
+This replaces the local `castles_enriched.json` with the staged upload. Inspect
+the diff before proceeding if you want to verify the changes:
+
+```bash
+git diff new_app/src/assets/data/castles_enriched.json
+```
+
+### Step 5 — Run the pipeline on the developer machine
+
+```bash
+npm run data:lean
+npm run data:api
+npm run data:sitemap
+npm run data:routes
+npm run build
+```
+
+Or use the canonical all-in-one command followed by build:
+
+```bash
+npm run data:regenerate
+npm run build
+```
+
+> `data:regenerate` re-runs conversion and enrichment scripts from the XLSX
+> source, which will overwrite the uploaded `castles_enriched.json` with a
+> freshly enriched version. Use the individual commands above if you want to
+> build from the uploaded file exactly as staged.
+
+### Step 6 — Deploy
+
+```bash
+bash deploy.sh
+```
+
+### Step 7 — Verify
+
+After the new container is running, confirm the content is live:
+
+```bash
+# Health check
+curl -s http://DS224plus.local:8082/api/health | python3 -m json.tool
+
+# Full smoke suite
+npm run test:smoke -- http://DS224plus.local:8082
+
+# Spot-check: record count in the static API matches the upload
+curl -s http://DS224plus.local:8082/api/castles.json | \
+  python3 -c "import sys,json; d=json.load(sys.stdin); print(len(d), 'records')"
+```
+
+### Step 8 — Archive or remove the pending file (optional)
+
+Once the deploy is confirmed, the pending file is no longer needed. Remove it
+from the NAS to avoid confusion:
+
+```bash
+ssh robertron@DS224plus.local \
+  "rm /volume1/docker/topcastles/data/pending/castles_enriched.json \
+      /volume1/docker/topcastles/data/pending/meta.json"
+```
+
+### Rollback procedure
+
+| Scenario | Action |
+|---|---|
+| Upload staged, pipeline not yet run | Do nothing. The pending file has no effect until pulled and built. |
+| Pipeline run, build failed | Fix the source data, re-run the pipeline, rebuild, and redeploy. The live container is untouched. |
+| Bad data deployed (new container is live) | `git checkout <previous-commit> -- new_app/src/assets/data/castles_enriched.json`, re-run pipeline, rebuild, and redeploy. |
+| Container crash during upload write | The endpoint uses an atomic write (`.tmp` + rename). A crash mid-write leaves a `.tmp` file; the target is not corrupted. The upload can be retried safely. |
+
+To find the previous enriched file:
+
+```bash
+git log --oneline new_app/src/assets/data/castles_enriched.json
+git checkout <sha> -- new_app/src/assets/data/castles_enriched.json
+```
+
+Then re-run the pipeline and deploy.
+
+### Pending file location on the NAS
+
+| File | Path |
+|---|---|
+| Staged enriched data | `/volume1/docker/topcastles/data/pending/castles_enriched.json` |
+| Upload metadata | `/volume1/docker/topcastles/data/pending/meta.json` |
+
+The `pending/` directory is created automatically by the server on the first
+upload. It is inside the `/data` volume and is not part of the built image.
 
 ## Related documentation
 
