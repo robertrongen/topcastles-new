@@ -4,12 +4,18 @@
       "Bash(node -e ' *)",
       "Bash(node_modules/.bin/ng build *)",
       "Bash(new_app/node_modules/.bin/ng build *)",
-      "Bash(node scripts/*",
       "Bash(git *)",
       "Bash(node scripts/enrich_wikipedia.js *)",
-      "Bash(python3 *",
       "Bash(bd *)",
-      "Bash(git -C c:/github/topcastles *)"
+      "Bash(git -C c:/github/topcastles *)",
+      "Bash(ADMIN_TOKEN=test-secret node server/index.js)",
+      "Bash(curl -s http://localhost:3000/api/admin/health)",
+      "Bash(curl -s -H \"Authorization: Bearer test-secret\" http://localhost:3000/api/admin/health)",
+      "Bash(curl -s -H \"Authorization: Bearer wrong\" http://localhost:3000/api/admin/health)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({'status':d.get\\('status'\\)}\\)\\)\")",
+      "Bash(ADMIN_TOKEN=test-secret node tests/server-smoke.test.js http://localhost:3000)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'{len\\(d\\)} records, fields: {list\\(d[0].keys\\(\\)\\)[:10]}'\\)\")",
+      "Read(//data/castle-images/small/**)"
     ]
   },
   "hooks": {
