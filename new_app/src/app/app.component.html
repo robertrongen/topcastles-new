@@ -27,8 +27,12 @@
     </a>
     <a mat-button routerLink="/top-countries" routerLinkActive="tk-nav-active">Top Countries</a>
     <a mat-button routerLink="/top-regions" routerLinkActive="tk-nav-active">Top Regions</a>
-    <a mat-button routerLink="/background" routerLinkActive="tk-nav-active">Background</a>
-    <a mat-button routerLink="/developer" routerLinkActive="tk-nav-active">Developer / API</a>
+    <a mat-button routerLink="/background" routerLinkActive="tk-nav-active">
+      <mat-icon>menu_book</mat-icon> Background
+    </a>
+    <a mat-button routerLink="/developer" routerLinkActive="tk-nav-active">
+      <mat-icon>api</mat-icon> Developer / API
+    </a>
     <a mat-button routerLink="/favorites" routerLinkActive="tk-nav-active">
       <mat-icon>bookmark</mat-icon> Favorites
     </a>
@@ -76,12 +80,12 @@
       </a>
       <mat-divider />
       <a mat-list-item routerLink="/background" routerLinkActive="active" (click)="sidenav.close()">
-        <mat-icon matListItemIcon>info</mat-icon>
+        <mat-icon matListItemIcon>menu_book</mat-icon>
         <span matListItemTitle>Background</span>
       </a>
       <mat-divider />
       <a mat-list-item routerLink="/developer" routerLinkActive="active" (click)="sidenav.close()">
-        <mat-icon matListItemIcon>code</mat-icon>
+        <mat-icon matListItemIcon>api</mat-icon>
         <span matListItemTitle>Developer / API</span>
       </a>
       <mat-divider />
