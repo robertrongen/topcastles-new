@@ -555,10 +555,17 @@
     font-variant-numeric: tabular-nums;
     text-align: right;
   }
+
+  &__col-total {
+    width: 7rem;
+    color: var(--tk-text);
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+  }
 }
 
 .top-castle-rank {
-  margin-left: 0.3em;
+  margin-left: 0.6em;
   color: var(--tk-text-muted);
   font-variant-numeric: tabular-nums;
 }
