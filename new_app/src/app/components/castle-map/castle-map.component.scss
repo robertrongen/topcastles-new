@@ -46,3 +46,44 @@
 :host ::ng-deep .leaflet-control-attribution a {
   color: var(--tk-link);
 }
+
+:host ::ng-deep .atlas-label {
+  pointer-events: none;
+  line-height: 1;
+}
+
+:host ::ng-deep .atlas-label__text {
+  pointer-events: auto;
+  display: inline-block;
+  padding: 2px 6px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.28);
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+  color: #2a2a2a;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+:host ::ng-deep .atlas-label__text:hover {
+  background: rgba(255, 255, 255, 1);
+  color: var(--tk-link, #005fcc);
+  text-decoration: underline;
+}
+
+:host-context([data-theme="dark"]) ::ng-deep .atlas-label__text {
+  background: rgba(18, 18, 28, 0.9);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(240, 240, 240, 0.9);
+}
+
+:host-context([data-theme="dark"]) ::ng-deep .atlas-label__text:hover {
+  background: rgba(18, 18, 28, 1);
+  color: var(--tk-link, #4da6ff);
+}

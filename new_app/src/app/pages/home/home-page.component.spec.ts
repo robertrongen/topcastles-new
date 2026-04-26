@@ -173,33 +173,30 @@ describe('HomePageComponent', () => {
     expect(a?.castle_code).toBe(b?.castle_code);
   });
 
-  // ── Atlas region links ─────────────────────────────────────────────────────
+  // ── Atlas region labels (Leaflet DivIcon) ─────────────────────────────────
 
   describe('atlas region links', () => {
-    it('renders three atlas callout anchors on the map', () => {
-      expect(fixture.nativeElement.querySelectorAll('.atlas-callout').length).toBe(3);
+    it('defines three region labels for the map', () => {
+      expect(component.regionLabels.length).toBe(3);
     });
 
-    it('Rhine & Moselle callout href contains regionCodes with rheinland-pfalz', () => {
-      const el = fixture.nativeElement.querySelector('.atlas-callout--rhine') as HTMLAnchorElement;
-      expect(el).toBeTruthy();
-      expect(decodeURIComponent(el.href)).toContain('regionCodes');
-      expect(decodeURIComponent(el.href)).toContain('rheinland-pfalz');
+    it('Rhine & Moselle label has regionCodes query param with rheinland-pfalz', () => {
+      const label = component.regionLabels.find(r => r.name === 'Rhine & Moselle');
+      expect(label).toBeTruthy();
+      expect(label!.queryParams?.['regionCodes']).toContain('rheinland-pfalz');
     });
 
-    it('Loire Valley callout href contains regionCodes with ile-de-france', () => {
-      const el = fixture.nativeElement.querySelector('.atlas-callout--loire') as HTMLAnchorElement;
-      expect(el).toBeTruthy();
-      expect(decodeURIComponent(el.href)).toContain('regionCodes');
-      expect(decodeURIComponent(el.href)).toContain('ile-de-france');
+    it('Loire Valley label has regionCodes query param with ile-de-france', () => {
+      const label = component.regionLabels.find(r => r.name === 'Loire Valley');
+      expect(label).toBeTruthy();
+      expect(label!.queryParams?.['regionCodes']).toContain('ile-de-france');
     });
 
-    it('British Isles callout href contains countries with England and Wales', () => {
-      const el = fixture.nativeElement.querySelector('.atlas-callout--british') as HTMLAnchorElement;
-      expect(el).toBeTruthy();
-      expect(decodeURIComponent(el.href)).toContain('countries');
-      expect(decodeURIComponent(el.href)).toContain('England');
-      expect(decodeURIComponent(el.href)).toContain('Wales');
+    it('British Isles label has countries query param with England and Wales', () => {
+      const label = component.regionLabels.find(r => r.name === 'British Isles');
+      expect(label).toBeTruthy();
+      expect(label!.queryParams?.['countries']).toContain('England');
+      expect(label!.queryParams?.['countries']).toContain('Wales');
     });
 
     it('atlas note headings are wrapped in anchor links', () => {

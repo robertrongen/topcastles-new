@@ -86,16 +86,7 @@
         <h2>Distribution</h2>
         <p class="map-section__caption">All 1,000 castles — click any marker to open the entry.</p>
         <div class="map-section__map">
-          <app-castle-map [castles]="allCastles()" [autoFit]="true" />
-          <a class="atlas-callout atlas-callout--british"
-             [routerLink]="['/top1000']"
-             [queryParams]="{ countries: 'England,Wales' }">British Isles</a>
-          <a class="atlas-callout atlas-callout--rhine"
-             [routerLink]="['/top1000']"
-             [queryParams]="{ regionCodes: 'rheinland-pfalz,hessen,baden-wurtenberg' }">Rhine &amp; Moselle</a>
-          <a class="atlas-callout atlas-callout--loire"
-             [routerLink]="['/top1000']"
-             [queryParams]="{ regionCodes: 'ile-de-france,centre' }">Loire Valley</a>
+          <app-castle-map [castles]="allCastles()" [autoFit]="true" [regionLabels]="regionLabels" />
         </div>
         <div class="map-section__plate">
           <span class="map-section__plate-label">Plate I.</span>

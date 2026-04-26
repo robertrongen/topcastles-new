@@ -2,7 +2,7 @@ import { Component, computed, inject, NgZone, OnInit, signal } from '@angular/co
 import { Router, RouterLink } from '@angular/router';
 import { DecimalPipe, TitleCasePipe } from '@angular/common';
 import { CastleService } from '../../services/castle.service';
-import { CastleMapComponent } from '../../components/castle-map/castle-map.component';
+import { CastleMapComponent, RegionLabel } from '../../components/castle-map/castle-map.component';
 import { ImageService } from '../../services/image.service';
 import { haversineKm } from '../../utils/distance';
 
@@ -91,6 +91,12 @@ export class HomePageComponent implements OnInit {
     { value: '56', label: 'countries' },
     { value: '63,800', label: 'visitor ratings' },
     { value: '2004', label: 'established' },
+  ];
+
+  readonly regionLabels: RegionLabel[] = [
+    { name: 'British Isles', lat: 52.8, lng: -2.4, path: ['/top1000'], queryParams: { countries: 'England,Wales' } },
+    { name: 'Rhine & Moselle', lat: 50.2, lng: 7.5, path: ['/top1000'], queryParams: { regionCodes: 'rheinland-pfalz,hessen,baden-wurtenberg' } },
+    { name: 'Loire Valley', lat: 47.6, lng: 0.9, path: ['/top1000'], queryParams: { regionCodes: 'ile-de-france,centre' } },
   ];
 
   onImageError(event: Event, fallbackSrc: string | null | undefined): void {

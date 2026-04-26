@@ -3,6 +3,14 @@ import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { Castle } from '../../models/castle.model';
 
+export interface RegionLabel {
+  name: string;
+  lat: number;
+  lng: number;
+  path?: string[];
+  queryParams?: Record<string, string>;
+}
+
 @Component({
   selector: 'app-castle-map',
   standalone: true,
@@ -15,24 +23,26 @@ export class CastleMapComponent implements OnDestroy {
   private router = inject(Router);
 
   castles = input<Castle[]>([]);
-  /** When true the map auto-fits bounds on every castles change. */
   autoFit = input(true);
+  regionLabels = input<RegionLabel[]>([]);
 
   mapContainer = viewChild<ElementRef<HTMLDivElement>>('castleMapContainer');
 
   private leafletMap: any = null;
   private markersLayer: any = null;
+  private labelsLayer: any = null;
 
   constructor() {
     effect(() => {
       const container = this.mapContainer();
       const castles = this.castles();
+      const regionLabels = this.regionLabels();
       if (!container || !isPlatformBrowser(this.platformId)) return;
-      this.initOrUpdate(castles);
+      this.initOrUpdate(castles, regionLabels);
     });
   }
 
-  private async initOrUpdate(castles: Castle[]): Promise<void> {
+  private async initOrUpdate(castles: Castle[], regionLabels: RegionLabel[]): Promise<void> {
     const container = this.mapContainer()?.nativeElement;
     if (!container) return;
 
@@ -46,6 +56,7 @@ export class CastleMapComponent implements OnDestroy {
         maxZoom: 19,
       }).addTo(this.leafletMap);
       this.markersLayer = L.layerGroup().addTo(this.leafletMap);
+      this.labelsLayer = L.layerGroup().addTo(this.leafletMap);
       setTimeout(() => this.leafletMap?.invalidateSize(), 0);
     }
 
@@ -80,6 +91,24 @@ export class CastleMapComponent implements OnDestroy {
     if (this.autoFit() && withCoords.length > 0) {
       const bounds = (L as any).latLngBounds(withCoords.map((c: Castle) => [c.latitude!, c.longitude!]));
       this.leafletMap.fitBounds(bounds, { padding: [40, 40], maxZoom: 10 });
+    }
+
+    this.labelsLayer.clearLayers();
+    for (const region of regionLabels) {
+      const icon = L.divIcon({
+        className: 'atlas-label',
+        html: `<span class="atlas-label__text">${region.name}</span>`,
+        iconSize: [0, 0],
+        iconAnchor: [0, 0],
+      });
+      const m = L.marker([region.lat, region.lng], { icon, interactive: !!region.path, zIndexOffset: 1000 });
+      if (region.path) {
+        m.on('click', (e: any) => {
+          L.DomEvent.stopPropagation(e);
+          this.router.navigate(region.path!, { queryParams: region.queryParams });
+        });
+      }
+      this.labelsLayer.addLayer(m);
     }
   }
 
