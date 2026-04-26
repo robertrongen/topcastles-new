@@ -3,6 +3,10 @@
 @use '@angular/material' as mat;
 @import 'leaflet/dist/leaflet.css';
 
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 1;
+}
+
 // ── Palette — light (default) ─────────────────────────────────────────────────
 
 :root, [data-theme="light"] {
