@@ -40,6 +40,46 @@ npm run deploy             # build image and deploy to Synology NAS
 
 When source content changes, update the canonical spreadsheet source, run `npm run data:regenerate`, then run `npm run build`. Do not hand-edit generated JSON, sitemap, or prerender-route artifacts except as an emergency that is immediately regenerated through the pipeline.
 
+## Installing as an App
+
+Topcastles supports installation as a standalone app on desktop and mobile.
+
+**Desktop (Chrome / Edge)**
+
+Open the site and look for the install icon (⊕) in the browser address bar, or
+open the browser menu and choose **Install Topcastles**. The app opens in its own
+window without browser chrome.
+
+**Android (Chrome)**
+
+Tap the browser menu → **Add to Home screen**. The app icon appears on your home
+screen and opens in standalone mode.
+
+**iOS (Safari)**
+
+Tap the Share button → **Add to Home Screen**. Safari does not show an install
+prompt automatically — the Share sheet is the only way.
+
+**What works offline**
+
+Once the app has been opened at least once, the following are available without
+a network connection:
+
+- All app pages (home, castle list, castle detail, countries, top 100, etc.)
+- The full castle dataset (`castles.json`)
+
+**What requires a network connection**
+
+- Castle photos — these are served from the NAS and are not cached by the app.
+  Photo areas will be blank when offline.
+- Favorites and user data — these are stored on the server and require network
+  access to load or save.
+
+**Updates**
+
+When a new version is deployed, the app updates itself silently in the background
+on the next visit. No reinstall or manual refresh is needed.
+
 ## Documentation
 
 - [docs/new-developer-onboarding.md](docs/new-developer-onboarding.md) - quick start workflow for new contributors in VS Code.

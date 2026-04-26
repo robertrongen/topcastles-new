@@ -437,6 +437,115 @@ activates on the subsequent navigation — no user action required.
 Content-only changes (data pipeline regeneration) do not propagate to browsers until
 a full Docker image rebuild and redeployment, consistent with ADR-010.
 
+### Post-deploy verification checklist
+
+Run these checks after each deployment to confirm the service worker and PWA are
+working correctly. Use Chrome or Edge (Chromium) for DevTools fidelity; Safari
+has independent SW tooling in the Develop menu.
+
+**1. Confirm files are served**
+
+```bash
+curl -sI https://topcastles.hobunror.synology.me/ngsw-worker.js | grep -i "content-type\|cache-control"
+curl -sI https://topcastles.hobunror.synology.me/ngsw.json      | grep -i "content-type\|cache-control"
+curl -sI https://topcastles.hobunror.synology.me/manifest.webmanifest | grep -i "content-type"
+```
+
+Expected: `ngsw-worker.js` and `ngsw.json` served as `application/javascript` /
+`application/json` with no aggressive long-lived caching (the Node server does not
+add `Cache-Control` to these files, so the browser revalidates on each navigation).
+
+**2. Confirm SW registers in DevTools**
+
+Open Chrome → DevTools → Application → Service Workers. After the first visit:
+
+- Status shows **activated and running**
+- Source shows `ngsw-worker.js`
+- No script errors in the Console
+
+**3. Confirm manifest is linked**
+
+DevTools → Application → Manifest:
+
+- Name: `Top 1000 Medieval Castles`
+- 8 icons listed (72 px – 512 px, `maskable`)
+- `display: standalone`, `start_url: /`
+- No "Add to Home Screen" eligibility errors
+
+**4. Confirm cache groups**
+
+DevTools → Application → Cache Storage — after loading the home page and at
+least one castle detail page you should see three populated caches:
+
+| Cache name pattern | Expected content |
+|---|---|
+| `ngsw:…:assets:app:cache` | SPA shell JS/CSS bundles, manifest, favicon |
+| `ngsw:…:assets:data:cache` | `castles.json`, `castles_delta.json` |
+| `ngsw:…:assets:assets-icons:cache` | 8 PWA icon PNGs |
+
+The `assets-fonts` group will be empty — there are no font files in the build
+output (Material Symbols uses the CDN path, not bundled files).
+
+**5. Confirm castle images are not cached by the SW**
+
+DevTools → Network tab, filter by `/castle-images/`. Images should show `200`
+(served from network or browser HTTP cache) but must **not** appear in the NGSW
+cache storage. The Node server's `Cache-Control: max-age=86400` header is the
+correct caching layer for these files.
+
+**6. Confirm offline navigation fallback**
+
+In DevTools → Application → Service Workers, check **Offline**. Reload any SPA
+route (e.g. `/castles`). The page should load from the SW cache. Castle photos
+will be blank (expected — they are network-only). Uncheck Offline when done.
+
+### Confirming SW update propagation
+
+NGSW detects a new version when `ngsw.json` changes between navigations. To
+verify that a fresh deploy is reaching clients:
+
+1. After deploying, open the site in Chrome with DevTools open.
+2. Application → Service Workers — if a **waiting** worker appears alongside
+   the active one, the update was detected. The waiting worker activates on the
+   next navigation (no `skipWaiting` is configured).
+3. Navigate to another route (e.g. `/castles` → `/`) — the waiting worker
+   should activate and the status should show **activated and running** for the
+   new version only.
+4. Verify the page reflects the new build (check bundle filename hash in
+   Network, or use the Console: `navigator.serviceWorker.controller.scriptURL`).
+
+### Stale-cache identification and recovery
+
+**Identifying stale-cache reports from users**
+
+A user sees outdated content if their SW is serving a cached version of
+`castles.json` that predates the latest deploy. Ask the user:
+
+- Which browser and version?
+- Does a hard reload (`Ctrl+Shift+R` / `Cmd+Shift+R`) fix it?
+- In DevTools → Application → Service Workers, what is the SW script URL and
+  install date?
+
+**Operator recovery steps**
+
+If users consistently report stale content after a deploy:
+
+1. Verify `ngsw.json` on the production host is actually the new version:
+   ```bash
+   curl -s https://topcastles.hobunror.synology.me/ngsw.json | python3 -m json.tool | grep "timestamp\|appData"
+   ```
+2. If the old `ngsw.json` is still being served, the Docker image may not have
+   been updated — confirm `docker ps` on the NAS shows the expected image digest.
+3. If the SW is stuck in **waiting** state for a specific user, ask them to
+   close all Topcastles tabs and reopen — this triggers SW activation without
+   needing a hard reload.
+4. Last resort: ask the user to go to DevTools → Application → Service Workers →
+   **Unregister**, then hard-reload. This clears all NGSW caches and forces a
+   fresh install of the new SW.
+5. If the issue is widespread, increment `appData.version` in `ngsw-config.json`
+   (a string like `"2"` → `"3"`) and redeploy — NGSW treats this as a forced
+   update even if asset hashes have not changed.
+
 ## Admin upload flow (enriched castle data)
 
 The `/api/admin/upload-enriched` endpoint lets an admin stage a refreshed
