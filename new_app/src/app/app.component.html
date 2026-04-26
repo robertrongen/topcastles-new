@@ -21,7 +21,7 @@
 
 <mat-toolbar class="tk-masthead">
   <nav class="tk-toolbar-nav">
-    <a mat-button routerLink="/" routerLinkActive="tk-nav-active">Home</a>
+    <a mat-button routerLink="/" routerLinkActive="tk-nav-active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
     <a mat-button routerLink="/top1000" routerLinkActive="tk-nav-active">
       <mat-icon fontSet="material-symbols-outlined">crown</mat-icon> Top 1000
     </a>
