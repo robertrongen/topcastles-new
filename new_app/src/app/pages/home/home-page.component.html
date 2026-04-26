@@ -231,7 +231,9 @@
       <div class="sidebar-widget">
         <h3 class="sidebar-widget__heading">Tools</h3>
         <nav class="sidebar-widget__links" aria-label="Tools">
-          <a [routerLink]="['/top1000']" [queryParams]="{ sort: 'near-me' }">Top castles near me</a>
+          <button type="button" class="sidebar-widget__refresh"
+                  [disabled]="nearMeState() === 'loading'"
+                  (click)="goToNearestCastle()">{{ nearMeState() === 'loading' ? 'Locating…' : nearMeState() === 'error' ? 'Location unavailable' : 'Top castle near me' }}</button>
           <a routerLink="/favorites">My favorites list</a>
           <a routerLink="/developer">Data &amp; API</a>
         </nav>

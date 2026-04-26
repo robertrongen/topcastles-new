@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { provideRouter, Router } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -185,5 +185,85 @@ describe('HomePageComponent', () => {
 
     expect(compDay0.todaysCastle()?.castle_code)
       .toBe(compDay100.todaysCastle()?.castle_code);
+  });
+
+  // ── goToNearestCastle ──────────────────────────────────────────────────────
+
+  describe('goToNearestCastle', () => {
+    let router: Router;
+    let navigateSpy: jasmine.Spy;
+
+    beforeEach(() => {
+      router = TestBed.inject(Router);
+      navigateSpy = spyOn(router, 'navigate');
+    });
+
+    it('navigates to /castles/:code of the nearest castle on geolocation success', async () => {
+      // c_near is at (51, 4) — close to user at (51, 4.01), best rank
+      // c_far is at (48, 2) — far from user, weaker rank
+      castleService.castles.set([
+        makeCastle({ castle_code: 'c_far',  position: 2,  latitude: 48,  longitude: 2 }),
+        makeCastle({ castle_code: 'c_near', position: 1,  latitude: 51,  longitude: 4 }),
+      ]);
+
+      spyOn(navigator.geolocation, 'getCurrentPosition').and.callFake(
+        (success: PositionCallback) => success({
+          coords: { latitude: 51, longitude: 4.01, accuracy: 1,
+                    altitude: null, altitudeAccuracy: null, heading: null, speed: null },
+          timestamp: 0,
+        } as GeolocationPosition)
+      );
+
+      component.goToNearestCastle();
+      fixture.detectChanges();
+
+      expect(navigateSpy).toHaveBeenCalledWith(['/castles', 'c_near']);
+    });
+
+    it('picks the highest-ranked castle among the 20 nearest, not just the closest', async () => {
+      // Castles at varying distances from (0, 0); positions reflect editorial rank
+      const nearby = Array.from({ length: 20 }, (_, i) =>
+        makeCastle({ castle_code: `near_${i}`, position: i + 2, latitude: 0.01 * (i + 1), longitude: 0 })
+      );
+      // Best-ranked castle is at position 1, slightly further than the closest
+      nearby.push(makeCastle({ castle_code: 'best_rank', position: 1, latitude: 0.15, longitude: 0 }));
+
+      castleService.castles.set(nearby);
+
+      spyOn(navigator.geolocation, 'getCurrentPosition').and.callFake(
+        (success: PositionCallback) => success({
+          coords: { latitude: 0, longitude: 0, accuracy: 1,
+                    altitude: null, altitudeAccuracy: null, heading: null, speed: null },
+          timestamp: 0,
+        } as GeolocationPosition)
+      );
+
+      component.goToNearestCastle();
+      fixture.detectChanges();
+
+      expect(navigateSpy).toHaveBeenCalledWith(['/castles', 'best_rank']);
+    });
+
+    it('sets nearMeState to error on geolocation failure and does not navigate', () => {
+      spyOn(navigator.geolocation, 'getCurrentPosition').and.callFake(
+        (_success: PositionCallback, error?: PositionErrorCallback | null) =>
+          error?.({ code: 1, message: 'denied', PERMISSION_DENIED: 1, POSITION_UNAVAILABLE: 2, TIMEOUT: 3 } as GeolocationPositionError)
+      );
+
+      component.goToNearestCastle();
+      fixture.detectChanges();
+
+      expect(component.nearMeState()).toBe('error');
+      expect(navigateSpy).not.toHaveBeenCalled();
+    });
+
+    it('does not use /top1000?sort=near-me', () => {
+      // The near-me entry must be a button, not an anchor pointing to /top1000?sort=near-me
+      const allBtns = Array.from(fixture.nativeElement.querySelectorAll('button.sidebar-widget__refresh')) as HTMLButtonElement[];
+      const nearMeBtn = allBtns.find(b => b.textContent?.includes('Top castle near me'));
+      expect(nearMeBtn).toBeTruthy();
+      const legacyLink: HTMLElement = fixture.nativeElement.querySelector('[href*="near-me"]');
+      expect(legacyLink).toBeNull();
+    });
   });
 });
