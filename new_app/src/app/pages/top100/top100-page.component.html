@@ -14,7 +14,18 @@
         <input matInput
                [ngModel]="searchQuery()"
                (ngModelChange)="searchQuery.set($event)"
+               [matAutocomplete]="searchAc"
                placeholder="Search all castle data..." />
+        <mat-autocomplete #searchAc (optionSelected)="searchQuery.set($event.option.value)">
+          @for (c of suggestions(); track c.castle_code) {
+            <mat-option [value]="c.castle_name">
+              {{ c.castle_name }}
+              @if (c.place || c.country) {
+                <span class="suggestion-context">{{ c.place ? c.place + ', ' : '' }}{{ c.country }}</span>
+              }
+            </mat-option>
+          }
+        </mat-autocomplete>
         @if (searchQuery()) {
           <button matSuffix mat-icon-button type="button" aria-label="Clear search"
                   (click)="searchQuery.set('')">

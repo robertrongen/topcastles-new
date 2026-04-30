@@ -1,6 +1,7 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -21,7 +22,7 @@ import { ViewModeService } from '../../services/view-mode.service';
   selector: 'app-top100-page',
   standalone: true,
   imports: [
-    FormsModule, MatCardModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatSlideToggleModule,
+    FormsModule, MatAutocompleteModule, MatCardModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatSlideToggleModule,
     CastleFilterComponent, CastleGridComponent, CastleTableComponent, CastleMapComponent, ViewToggleComponent,
   ],
   templateUrl: './top100-page.component.html',
@@ -43,6 +44,14 @@ export class Top100PageComponent implements OnInit {
   atlasCountries   = signal<string[]>([]);
 
   allCastles = computed(() => this.castleService.getAllByScore());
+
+  suggestions = computed(() => {
+    const q = this.searchQuery().trim().toLowerCase();
+    if (q.length < 2) return [];
+    return this.allCastles()
+      .filter(c => c.castle_name?.toLowerCase().includes(q))
+      .slice(0, 8);
+  });
 
   favoriteCodes = computed(() => {
     const sets = this.favoritesService.favorites();
