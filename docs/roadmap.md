@@ -15,6 +15,17 @@ Recent resolved Beads issues already delivered in this repo:
 
 Note: some umbrella phase issues remain open as coordination trackers even when sub-issues above are already completed.
 
+## Current Beads Snapshot (2026-04-30)
+
+`bd ready` currently exposes a small product backlog:
+
+- `topcastles-g3i` — Phase 11 umbrella for advanced and optional discovery work.
+- `topcastles-0b0` — castle name autocomplete. Current code and commit history indicate autocomplete already exists on the castles page (`1e097e1`), so this bead should be verified and closed or superseded rather than reimplemented.
+- `topcastles-uax` — castle comparison view.
+- `topcastles-wj4` — castle of the week on the homepage.
+
+`topcastles-pwa-install-help` is also in progress: it is the active follow-up to the completed PWA baseline and should focus on user-facing install guidance, not service worker scope changes.
+
 ## Known Baseline Issues
 
 - **TD-1: Fix pre-existing unit test failures / test runner reliability** [RESOLVED]
@@ -111,6 +122,7 @@ This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeli
     - Install prompt UX
     - Offline UX refinement beyond NGSW navigation fallback
     - `skipWaiting` / update notification UI
+  - Active follow-up: `topcastles-pwa-install-help` adds visible install/help UX and browser fallback instructions.
 
 ## Infrastructure And Runtime Data
 
@@ -138,14 +150,16 @@ This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeli
   - Use the embedded Node server in the single container; no sidecar or Synology Task Scheduler.
   - Auth via `ADMIN_TOKEN` and `Authorization: Bearer <token>`.
   - Preserve the architecture constraint: build-time content and runtime state stay separate, and prerendered/build artifacts are not mutated in place.
-  - Any implementation needs to reconcile data-only freshness with the artifact policy in [pipeline.md](pipeline.md).
+  - Done: `POST /api/admin/upload-enriched` stages a validated enriched JSON upload under `/data/pending/`, and `GET /api/admin/pending-status` reports staged state.
+  - Done: operator documentation for the staged upload flow lives in `docs/deployment.md`.
+  - Remaining admin UI and rebuild behavior belongs under the 15.x admin workflow; do not expand 11.5 further.
 
 ## User Accounts
 
 - **14.1: Complete login behavior**
   - Done: `POST /api/user/register` creates a user record in `/data/users.json` and returns `{ token }`.
   - Done: `GET /api/user/me` returns `{ id, favorites }` from the Bearer token.
-  - Remaining: `POST /api/user/login` to validate an existing token and return the user object.
+  - Done: `POST /api/user/login` validates an existing token and returns the user object.
   - Keep the ADR-009 file-based model: token is stored in `users.json`; all writes go through `json-store.js`.
 
 ## Admin UI
@@ -191,6 +205,7 @@ Web-based admin is still open. It should follow ADR-010: admin changes update JS
 - **11.1: Castle comparison view**
   - Select 2-3 castles and compare them side-by-side.
   - Use URL query params such as `/compare?codes=nl001,de023` for cross-page state.
+  - Bead: `topcastles-uax`.
 
 - **11.2: Structured data (JSON-LD)**
   - Add `schema.org/LandmarksOrHistoricalBuildings` JSON-LD to detail pages.
@@ -202,6 +217,7 @@ Web-based admin is still open. It should follow ADR-010: admin changes update JS
 
 - **11.4: Castle of the week**
   - Deterministic homepage feature based on ISO week number and year.
+  - Bead: `topcastles-wj4`.
 
 ## Dependency Notes
 

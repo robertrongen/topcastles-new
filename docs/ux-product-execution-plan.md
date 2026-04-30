@@ -11,10 +11,30 @@ This plan maps directly to these roadmap items:
 - **9.6.1 By the Numbers strip** [COMPLETED]: Static statistics row between *From Today's Index* and the map. See workstream 3.5.1.
 - **9.6.2 Top 10 Countries index** [COMPLETED]: Reference table with country, total score, best rank, and top-ranked castle. See workstream 3.5.2.
 - **9.6.3 By Period index** [COMPLETED]: Reference table with era, entries, share, and example castle. See workstream 3.5.3.
-- **10.3 PWA / service worker** [DEFERRED]: Angular PWA setup, service worker registration, offline caching for static assets and castle JSON, and web app manifest verification. Prerequisite: stable image-serving behavior. Requires Spec Kit planning.
+- **10.3 PWA baseline / service worker** [COMPLETED]: Angular PWA setup, service worker registration, production-safe cache scope, and manifest verification are complete. Castle images remain network-only by design. Active follow-up is user-facing install/help UX (`topcastles-pwa-install-help`).
 - **11.0 / 13.3 NAS image serving** [OPEN]: Single image access path, NAS-mounted image serving, cache-control and missing-file behavior, and eventual removal of bundled castle images if NAS serving becomes authoritative.
 - **14.1 complete login behavior**: Complete the remaining token validation login behavior while preserving the file-based user model. [DONE]
 - **15.1 to 15.7 admin API/UI workflow** [OPEN]: Admin auth, admin shell, castle edit/add flows, enrichment script execution, intro text editing, and rebuild trigger workflow.
+
+## Current Beads Snapshot
+
+As of 2026-04-30, the executable backlog is intentionally small:
+
+- `topcastles-pwa-install-help` [IN_PROGRESS]: add visible app-install help and browser fallback instructions without changing service worker scope.
+- `topcastles-g3i` [IN_PROGRESS]: Phase 11 umbrella for advanced/optional discovery work.
+- `topcastles-0b0` [OPEN]: castle name autocomplete. Current code and commit history (`1e097e1`) indicate this is already present on the castles page, so treat it as verification/bookkeeping unless the bead is re-scoped.
+- `topcastles-uax` [OPEN]: castle comparison view.
+- `topcastles-wj4` [OPEN]: castle of the week on the homepage.
+
+The next planning move is to finish or explicitly defer the PWA install-help follow-up, close or supersede the stale autocomplete bead after verification, then choose one lightweight discovery improvement before starting another architecture-sensitive track.
+
+Recent commit messages used for this snapshot:
+
+- `14ad697` and `6e88a0e`: PWA baseline landed, then service worker cache scope was corrected to exclude raster image globs.
+- `4cc6c1e`: operator verification checklist and user install guide were added to docs.
+- `3eb35d4`: token login behavior landed.
+- `269a35d`, `5d774c4`, and `a139925`: admin staged upload endpoint pair and operator guidance landed.
+- `1e097e1`: castle name autocomplete appears to have landed alongside dark mode toggle work.
 
 ## Strategy Summary
 
@@ -120,7 +140,9 @@ Complete the remaining user login behavior around the existing token model. This
 
 ### 6. PWA And Offline Browsing
 
-Add PWA/service worker support only after cache scope and image-serving behavior are clear. Treat this as Spec Kit work because caching can easily conflict with content freshness and static/runtime boundaries.
+The production-safe PWA baseline is complete: the service worker is registered, static app assets and build-time JSON are cached deliberately, and NAS-served castle images are excluded from the service worker cache. Remaining PWA work is product-facing rather than cache-architecture work: help users discover installation, explain browser-specific install paths, and set expectations that app shell and castle data can work offline while castle images require network.
+
+`topcastles-pwa-install-help` is the active follow-up. It should stay narrow: add an install/help entry to the existing header and mobile sidenav, use `beforeinstallprompt` where available, fall back to concise browser instructions, and avoid changing `ngsw-config.json` unless a separate Spec Kit pass justifies it.
 
 ### 7. Admin API And Admin UI Workflow
 
@@ -128,7 +150,7 @@ Build admin capabilities in strict sequence: auth, shell, edit/add content, enri
 
 ## Implementation Bead Backlog
 
-Recommended initial backlog ordering:
+Recommended backlog ordering:
 
 1. Expand Storybook coverage for UX refresh baseline. [DONE]
 2. Define theme tokens, typography scale, spacing rhythm, and dark theme parity. [DONE]
@@ -137,25 +159,25 @@ Recommended initial backlog ordering:
 5. Refresh homepage and browse/top100 public UX surfaces. [DONE]
 6. Refresh castle detail, no-castle detail, and country detail UX surfaces. [DONE]
 7. Implement homepage polish items (9.6.1–9.6.3): By the Numbers strip, Top 10 Countries index, By Period index. See workstream 3.5.1–3.5.3. [DONE]
-8. Harden NAS image serving and mounted-volume verification.
-9. Complete token login endpoint and client behavior. [DONE]
-10. Plan PWA/service worker implementation with Spec Kit.
-11. Implement PWA/service worker after cache scope review.
-12. Plan admin API/UI workflow with Spec Kit.
-13. Implement admin API auth.
+8. Complete token login endpoint and client behavior. [DONE]
+9. Complete PWA install/help UX (`topcastles-pwa-install-help`). [IN_PROGRESS]
+10. Verify and close or supersede `topcastles-0b0` because autocomplete appears already implemented in commit `1e097e1`.
+11. Choose one Phase 11 discovery feature: castle of the week (`topcastles-wj4`) is the lighter homepage slice; comparison (`topcastles-uax`) is larger and should wait for a design pass.
+12. Harden NAS image serving and mounted-volume verification before changing image delivery assumptions.
+13. Plan the remaining admin API/UI workflow with Spec Kit.
 14. Implement admin UI shell and token entry.
 15. Implement admin castle edit workflow.
 16. Implement admin add castle workflow.
 17. Implement admin enrichment log workflow.
 18. Implement admin intro text workflow only if deliberately activated.
-19. Implement admin rebuild trigger workflow.
+19. Implement admin rebuild trigger workflow only after a dedicated runtime/build-boundary plan.
 
 ## Dependencies And Sequencing
 
 - Storybook coverage should precede visual refresh implementation.
 - Theme, typography, spacing, and density decisions should precede page-by-page styling.
 - Shared table/grid/filter work should precede top countries and top regions layout refinements.
-- NAS image-serving behavior should be stable before PWA cache rules include image assumptions.
+- Castle images must remain outside the service worker cache unless a future Spec Kit pass changes the image-serving strategy deliberately.
 - Admin API auth must precede admin UI and content workflows.
 - Admin edit/add/enrichment/rebuild work must preserve the pipeline rule that prerendered content updates only after regeneration and build.
 
@@ -198,6 +220,7 @@ Recommended initial backlog ordering:
 - Static assets and castle JSON are cached deliberately for offline browsing.
 - Cache behavior does not obscure content freshness expectations.
 - Manifest supports mobile add-to-home-screen behavior.
+- Install/help UX explains when the browser install prompt is available and gives concise fallback instructions when it is not.
 
 ### Admin API/UI Workflow
 
@@ -230,14 +253,15 @@ Use fuller Spec Kit flow for:
 
 The routine UX refresh backlog, the homepage reference-atlas structure (9.6), and all three homepage polish additions (9.6.1–9.6.3) are complete. The homepage UX track is fully delivered.
 
-Open architecture-sensitive roadmap tracks should now be scheduled deliberately:
+Open work should now be scheduled deliberately:
 
-- Harden NAS image serving and mounted-volume verification.
-- Plan PWA/service worker implementation with Spec Kit.
-- Plan admin API/UI workflow with Spec Kit.
+- Finish `topcastles-pwa-install-help` to close the gap between PWA capability and user discovery.
+- Close or supersede `topcastles-0b0` after verifying the existing autocomplete behavior on `/castles`.
+- Use `topcastles-g3i` to decide whether Phase 11 should prioritize `topcastles-wj4` castle of the week or `topcastles-uax` comparison.
+- Schedule NAS hardening and the remaining admin UI/rebuild work only with explicit Spec Kit planning, because those still touch runtime/deployment boundaries.
 
 ## Roadmap Wording Gaps To Revisit Later
 
-- The roadmap already mentions NAS image serving, but current code may already contain part of the image-service and server-route baseline. A later docs-only pass could clarify remaining work versus completed baseline.
+- The roadmap already mentions NAS image serving, but current code contains part of the server-route baseline. A later docs-only pass could clarify remaining work versus completed baseline.
 - The roadmap lists Storybook as part of the design refresh, while `docs/storybook.md` already documents existing stories. A later docs-only pass could cross-link these once the execution backlog starts.
-- Admin item 11.5 and admin items 15.1 to 15.7 overlap around JSON content updates. A later docs-only pass could clarify whether 11.5 remains an umbrella or should defer fully to the 15.x admin workflow.
+- Admin item 11.5 now covers the staged upload endpoint pair; remaining admin UI and rebuild behavior belongs under 15.x.
