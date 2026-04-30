@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 1024 1024" 
+    width="1024" height="1024"
+    role="img" 
+    aria-label="Topcastles icon"
+    >
+    <rect 
+        width="1024" height="1024" 
+        rx="200" fill="#07185D"
+    />
+    <path d="M0 0 L0 1024 L1024 1024 Z"
+        fill="#FF8A00"
+    />
+    <path fill="#FFFFFF" d="M512 192
+        m-32 0 h64 v64 h64 v-64 h64 v128 h-64
+        v128 h-64 v-96 a32 32 0 0 0 -64 0
+        v96 h-64 v-128 h-64 v64 h-64 v-64 h64
+        v-128 h64 h-64z">
+        m-224 256 h64 v64 h64 v-128 h128 v128
+        h64 v-64 h64 v256 h-640 v-256 h64 v64z"
+    />
+</svg>
