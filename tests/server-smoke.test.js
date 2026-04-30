@@ -120,12 +120,20 @@ async function run() {
     fail('GET /castle/1 (deep link) returns 200', e.message);
   }
 
-  // 6. /castle-images/* missing file returns 404
+  // 6. /castle-images/* missing file returns 404 with no long-lived cache
   try {
-    const { status } = await get('/castle-images/__nonexistent_smoke_test_image__.jpg');
-    status === 404
-      ? ok('GET /castle-images/missing returns 404')
-      : fail('GET /castle-images/missing returns 404', `got ${status}`);
+    const { status, headers } = await get('/castle-images/__nonexistent_smoke_test_image__.jpg');
+    if (status !== 404) {
+      fail('GET /castle-images/missing returns 404', `got ${status}`);
+    } else {
+      ok('GET /castle-images/missing returns 404');
+      const cc = headers.get('cache-control') || '';
+      const maxAgeMatch = cc.match(/max-age=(\d+)/);
+      const maxAge = maxAgeMatch ? parseInt(maxAgeMatch[1], 10) : 0;
+      maxAge < 60
+        ? ok('GET /castle-images/missing: 404 not cached (max-age < 60s)')
+        : fail('GET /castle-images/missing: 404 not cached', `Cache-Control: ${cc}`);
+    }
   } catch (e) {
     fail('GET /castle-images/missing returns 404', e.message);
   }

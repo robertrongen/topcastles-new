@@ -144,12 +144,15 @@ app.all('/mcp', (_req, res) => {
   });
 });
 
+const IMAGE_CACHE_MAX_AGE = process.env.NODE_ENV === 'production' ? '1d' : 0;
+
 app.use('/castle-images', express.static(CASTLE_IMAGE_ROOT, {
   fallthrough: true,
-  maxAge: '1d',
+  maxAge: IMAGE_CACHE_MAX_AGE,
 }));
 
-app.use('/castle-images', (_req, res) => {
+app.use('/castle-images', (req, res) => {
+  console.warn(`[image] 404 — ${req.path}`);
   res.sendStatus(404);
 });
 
