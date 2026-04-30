@@ -1,4 +1,4 @@
-import { Component, inject, NgZone, OnInit, PLATFORM_ID, signal } from '@angular/core';
+import { Component, computed, inject, NgZone, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
 
@@ -6,6 +6,7 @@ interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
   readonly userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
 }
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -14,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Castle } from './models/castle.model';
 import { ThemeService } from './services/theme.service';
 import { UserService } from './services/user.service';
 import { FavoritesService } from './services/favorites.service';
@@ -24,6 +26,7 @@ import { haversineKm } from './utils/distance';
   selector: 'app-root',
   imports: [
     RouterOutlet, RouterLink, RouterLinkActive,
+    MatAutocompleteModule,
     MatToolbarModule, MatSidenavModule, MatListModule,
     MatIconModule, MatButtonModule, MatDividerModule,
     FormsModule,
@@ -33,7 +36,7 @@ import { haversineKm } from './utils/distance';
 })
 export class AppComponent implements OnInit {
   title = 'Top Castles';
-  searchQuery = '';
+  searchQuery = signal('');
   protected theme = inject(ThemeService);
   private platformId = inject(PLATFORM_ID);
   private userService = inject(UserService);
@@ -46,6 +49,14 @@ export class AppComponent implements OnInit {
   nearMeState = signal<'idle' | 'loading' | 'error'>('idle');
   canInstall = signal(false);
   private installPrompt: BeforeInstallPromptEvent | null = null;
+
+  mastheadSuggestions = computed(() => {
+    const q = this.searchQuery().trim().toLowerCase();
+    if (q.length < 2) return [];
+    return this.castleService.castles()
+      .filter(c => c.castle_name?.toLowerCase().includes(q))
+      .slice(0, 8);
+  });
 
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
@@ -82,6 +93,15 @@ export class AppComponent implements OnInit {
         this.userService.clearToken();
       }
     }
+  }
+
+  displayCastle(castle: Castle | null): string {
+    return castle?.castle_name ?? '';
+  }
+
+  onMastheadSelect(castle: Castle): void {
+    this.searchQuery.set('');
+    this.router.navigate(['/castles', castle.castle_code]);
   }
 
   goToIndex(query: string): void {

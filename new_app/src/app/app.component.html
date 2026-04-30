@@ -4,16 +4,28 @@
       <p class="tk-title">Topcastles</p>
       <p class="tk-subtitle">1,000 castles across 56 countries, ranked by visitors and literature.</p>
     </div>
-    <form class="tk-search" (ngSubmit)="goToIndex(searchQuery)" #searchForm="ngForm">
+    <form class="tk-search" (ngSubmit)="goToIndex(searchQuery())" #searchForm="ngForm">
       <input
         class="tk-search__input"
         type="search"
         name="q"
-        [(ngModel)]="searchQuery"
+        [ngModel]="searchQuery()"
+        (ngModelChange)="searchQuery.set($event)"
+        [matAutocomplete]="mastheadAc"
         placeholder="Search castles, countries, regions…"
         autocomplete="off"
         aria-label="Search the castle index"
       />
+      <mat-autocomplete #mastheadAc [displayWith]="displayCastle" (optionSelected)="onMastheadSelect($event.option.value)">
+        @for (c of mastheadSuggestions(); track c.castle_code) {
+          <mat-option [value]="c">
+            {{ c.castle_name }}
+            @if (c.place || c.country) {
+              <span class="suggestion-context">{{ c.place ? c.place + ', ' : '' }}{{ c.country }}</span>
+            }
+          </mat-option>
+        }
+      </mat-autocomplete>
       <button class="tk-search__btn" type="submit">Search index</button>
     </form>
   </div>

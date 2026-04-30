@@ -276,9 +276,16 @@ mat-sidenav.mat-sidenav {
 // ── Dropdown styles ───────────────────────────────────────────────────────────
 
 .mat-mdc-menu-panel,
-.mat-mdc-select-panel {
+.mat-mdc-select-panel,
+.mat-mdc-autocomplete-panel {
   background-color: var(--tk-overlay-bg) !important;
   color: var(--tk-overlay-text) !important;
+}
+
+.mat-mdc-autocomplete-panel .suggestion-context {
+  margin-left: 8px;
+  font-size: 0.8em;
+  color: var(--tk-overlay-muted);
 }
 
 .mat-mdc-menu-item,
