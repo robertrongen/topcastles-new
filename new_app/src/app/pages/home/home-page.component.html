@@ -280,6 +280,31 @@
         </nav>
       </div>
 
+      <div class="sidebar-widget sidebar-widget--cotw">
+        <h3 class="sidebar-widget__heading">Castle of the week</h3>
+        <p class="sidebar-widget__caption">{{ weekLabel }} — a deterministic pick from the full index</p>
+        @if (castleOfTheWeek(); as castle) {
+          <div class="sidebar-castle">
+            <a class="sidebar-castle__image-link" [routerLink]="['/castles', castle.castle_code]" tabindex="-1" aria-hidden="true">
+              <img
+                class="sidebar-castle__image"
+                [src]="imageService.castleThumbnailUrl(castle.castle_code)"
+                [alt]="castle.castle_name"
+                width="110"
+                height="110"
+                loading="lazy"
+                (error)="onImageError($event, castle.wikidata_image ?? castle.wikipedia_thumbnail)"
+              />
+            </a>
+            <span class="sidebar-castle__rank">#{{ castle.position }}</span>
+            <a class="sidebar-castle__name" [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
+            <span class="sidebar-castle__country">{{ castle.country | titlecase }}</span>
+          </div>
+        } @else {
+          <div class="sidebar-castle sidebar-castle--loading">Loading…</div>
+        }
+      </div>
+
       <div class="sidebar-widget sidebar-widget--discovery">
         <h3 class="sidebar-widget__heading">Discover the list</h3>
         <p class="sidebar-widget__caption">A castle from positions 100–1000 — beyond the famous names</p>

@@ -205,6 +205,46 @@ describe('HomePageComponent', () => {
     });
   });
 
+  // ── castleOfTheWeek: ISO-week deterministic selection ─────────────────────
+
+  describe('castleOfTheWeek', () => {
+    it('should return null when no castles are loaded', () => {
+      castleService.castles.set([]);
+      fixture.detectChanges();
+      expect(component.castleOfTheWeek()).toBeNull();
+    });
+
+    it('should return a castle from within the full pool', () => {
+      const pool = makePool(1000);
+      castleService.castles.set(pool);
+      fixture.detectChanges();
+      const castle = component.castleOfTheWeek();
+      expect(castle).toBeTruthy();
+      expect(castle!.position).toBeGreaterThanOrEqual(1);
+      expect(castle!.position).toBeLessThanOrEqual(1000);
+    });
+
+    it('should be stable across multiple reads (no randomness)', () => {
+      castleService.castles.set(makePool(100));
+      fixture.detectChanges();
+      expect(component.castleOfTheWeek()?.castle_code)
+        .toBe(component.castleOfTheWeek()?.castle_code);
+    });
+
+    it('two instances created in the same week return the same castle', () => {
+      const pool = makePool(100);
+      castleService.castles.set(pool);
+      const compA = TestBed.createComponent(HomePageComponent).componentInstance;
+      const compB = TestBed.createComponent(HomePageComponent).componentInstance;
+      expect(compA.castleOfTheWeek()?.castle_code)
+        .toBe(compB.castleOfTheWeek()?.castle_code);
+    });
+
+    it('weekLabel should follow W<week> <year> format', () => {
+      expect(component.weekLabel).toMatch(/^W\d{1,2} \d{4}$/);
+    });
+  });
+
   it('should cycle back to position 0 after 100 days', () => {
     const pool = makePool(100);
     castleService.castles.set(pool);

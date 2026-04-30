@@ -16,6 +16,27 @@ export class HomePageComponent implements OnInit {
   private castleService = inject(CastleService);
   imageService = inject(ImageService);
 
+  // ISO 8601 week number — week starts Monday, week 1 = week containing first Thursday
+  private static isoWeek(date: Date): { week: number; year: number } {
+    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    const day = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - day);
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    const week = Math.ceil((((d.getTime() - yearStart.getTime()) / 86_400_000) + 1) / 7);
+    return { week, year: d.getUTCFullYear() };
+  }
+
+  private readonly _cotw = HomePageComponent.isoWeek(new Date());
+  // Stable seed: combine year and week so it changes weekly and carries across years
+  private readonly weeklyIndex = (this._cotw.year * 53 + this._cotw.week);
+  readonly weekLabel = `W${this._cotw.week} ${this._cotw.year}`;
+
+  castleOfTheWeek = computed(() => {
+    const pool = this.castleService.castles();
+    if (!pool.length) return null;
+    return pool[this.weeklyIndex % pool.length];
+  });
+
   private surpriseIndex = signal(Math.floor(Math.random() * 900));
 
   deepSurpriseCastle = computed(() => {
