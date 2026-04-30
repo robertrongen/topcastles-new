@@ -1,6 +1,11 @@
 import { Component, inject, NgZone, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
+
+interface BeforeInstallPromptEvent extends Event {
+  prompt(): Promise<void>;
+  readonly userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
+}
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -39,9 +44,23 @@ export class AppComponent implements OnInit {
   private ngZone = inject(NgZone);
 
   nearMeState = signal<'idle' | 'loading' | 'error'>('idle');
+  canInstall = signal(false);
+  private installPrompt: BeforeInstallPromptEvent | null = null;
 
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      this.installPrompt = e as BeforeInstallPromptEvent;
+      this.canInstall.set(true);
+    });
+
+    window.addEventListener('appinstalled', () => {
+      this.installPrompt = null;
+      this.canInstall.set(false);
+    });
+
     const params = new URLSearchParams(window.location.search);
     const token = params.get('token');
     if (!token) return;
@@ -68,6 +87,19 @@ export class AppComponent implements OnInit {
   goToIndex(query: string): void {
     const params = query.trim() ? { name: query.trim() } : {};
     this.router.navigate(['/top1000'], { queryParams: params });
+  }
+
+  async triggerInstall(): Promise<void> {
+    if (this.installPrompt) {
+      await this.installPrompt.prompt();
+      const { outcome } = await this.installPrompt.userChoice;
+      if (outcome === 'accepted') {
+        this.installPrompt = null;
+        this.canInstall.set(false);
+      }
+    } else {
+      this.router.navigate(['/install']);
+    }
   }
 
   goToNearestCastle(): void {

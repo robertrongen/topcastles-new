@@ -47,6 +47,12 @@
 
   <span class="tk-spacer"></span>
 
+  <button type="button" mat-icon-button (click)="triggerInstall()"
+          [title]="canInstall() ? 'Install Topcastles as an app' : 'How to install Topcastles'"
+          aria-label="Install app">
+    <mat-icon>get_app</mat-icon>
+  </button>
+
   <button type="button" mat-icon-button (click)="theme.toggle()"
           [title]="theme.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
           aria-label="Toggle dark mode">
@@ -100,6 +106,13 @@
               (click)="goToNearestCastle(); sidenav.close()">
         <mat-icon matListItemIcon>near_me</mat-icon>
         <span matListItemTitle>{{ nearMeState() === 'loading' ? 'Locating…' : 'Nearest Top Castle' }}</span>
+      </button>
+      <mat-divider />
+      <button mat-list-item
+              [title]="canInstall() ? 'Install Topcastles as an app' : 'How to install Topcastles'"
+              (click)="triggerInstall(); sidenav.close()">
+        <mat-icon matListItemIcon>get_app</mat-icon>
+        <span matListItemTitle>{{ canInstall() ? 'Install app' : 'Install help' }}</span>
       </button>
     </mat-nav-list>
   </mat-sidenav>

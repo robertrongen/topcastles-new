@@ -1,0 +1,62 @@
+.install-page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 16px 0;
+  font-family: Verdana, Arial, sans-serif;
+
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+  }
+
+  .install-intro {
+    color: var(--tk-text-muted);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+}
+
+.install-section {
+  margin-bottom: 28px;
+  padding: 16px;
+  border: 1px solid var(--tk-divider);
+  border-radius: 6px;
+  background: var(--tk-surface);
+
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    margin: 0 0 12px 0;
+
+    mat-icon {
+      font-size: 20px;
+      height: 20px;
+      width: 20px;
+      color: var(--tk-orange);
+    }
+  }
+
+  ol {
+    margin: 0 0 12px 0;
+    padding-left: 20px;
+    line-height: 1.8;
+  }
+
+  .install-note {
+    font-size: 0.85rem;
+    color: var(--tk-text-muted);
+    margin: 0;
+    padding-top: 8px;
+    border-top: 1px solid var(--tk-divider);
+    line-height: 1.5;
+  }
+
+  &--offline {
+    p {
+      margin: 0;
+      line-height: 1.6;
+    }
+  }
+}
