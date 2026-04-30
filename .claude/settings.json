@@ -19,7 +19,9 @@
       "PowerShell(cd c:\\\\github\\\\topcastles-new; $env:ADMIN_TOKEN=\"test-secret\"; Start-Process -NoNewWindow -FilePath \"node\" -ArgumentList \"server/index.js\" -PassThru; Start-Sleep -Seconds 4; Invoke-RestMethod -Uri \"http://localhost:3000/api/health\" -Method Get | ConvertTo-Json)",
       "PowerShell(cd c:\\\\github\\\\topcastles-new; $env:ADMIN_TOKEN=\"test-secret\"; node tests/server-smoke.test.js http://localhost:3000)",
       "PowerShell(cd c:\\\\github\\\\topcastles-new; Stop-Process -Name \"node\" -ErrorAction SilentlyContinue; Start-Sleep -Seconds 1; $env:ADMIN_TOKEN=\"test-secret\"; Start-Process -NoNewWindow -FilePath \"node\" -ArgumentList \"server/index.js\" -PassThru | Out-Null; Start-Sleep -Seconds 3; node tests/server-smoke.test.js http://localhost:3000)",
-      "PowerShell(cd c:\\\\github\\\\topcastles-new; $env:ADMIN_TOKEN=\"test-secret\"; $proc = Start-Process -NoNewWindow -FilePath \"node\" -ArgumentList \"server/index.js\" -PassThru -Environment @{ADMIN_TOKEN=\"test-secret\"; PATH=$env:PATH; USERPROFILE=$env:USERPROFILE; HOME=$env:HOME}; Start-Sleep -Seconds 4; $r = Invoke-RestMethod -Uri \"http://localhost:3000/api/health\" -ErrorAction SilentlyContinue; $r | ConvertTo-Json)"
+      "PowerShell(cd c:\\\\github\\\\topcastles-new; $env:ADMIN_TOKEN=\"test-secret\"; $proc = Start-Process -NoNewWindow -FilePath \"node\" -ArgumentList \"server/index.js\" -PassThru -Environment @{ADMIN_TOKEN=\"test-secret\"; PATH=$env:PATH; USERPROFILE=$env:USERPROFILE; HOME=$env:HOME}; Start-Sleep -Seconds 4; $r = Invoke-RestMethod -Uri \"http://localhost:3000/api/health\" -ErrorAction SilentlyContinue; $r | ConvertTo-Json)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); urls=d.get\\('urls',d.get\\('assetGroups',[]\\)\\); print\\('hashTable entries:', len\\(d.get\\('hashTable', {}\\)\\)\\); [print\\(f\\\\\"  group '{g['name']}': {len\\(g.get\\('urls',[]\\)\\)} urls\\\\\"\\) for g in d.get\\('assetGroups',[]\\)]\")",
+      "Bash(python3 -c ' *)"
     ]
   },
   "hooks": {
