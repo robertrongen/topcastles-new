@@ -43,19 +43,24 @@ router.post('/upload-enriched', express.json({ limit: '10mb' }), async (req, res
     });
   }
 
-  const seenCodes = new Set();
+  const seenCodes = new Map();
   for (let i = 0; i < castles.length; i++) {
     const el = castles[i];
 
-    if (typeof el.castle_code !== 'string' || el.castle_code.length === 0) {
+    if (typeof el.castle_code !== 'string' || el.castle_code.trim().length === 0) {
       return res.status(400).json({ error: `element at index ${i} missing castle_code` });
     }
     if (seenCodes.has(el.castle_code)) {
-      return res.status(400).json({ error: `duplicate castle_code: ${el.castle_code}` });
+      return res.status(400).json({
+        error: `duplicate castle_code: ${el.castle_code} at index ${i} (first seen at index ${seenCodes.get(el.castle_code)})`,
+      });
     }
-    seenCodes.add(el.castle_code);
+    seenCodes.set(el.castle_code, i);
 
     const validCoord = (v) => v === null || typeof v === 'number';
+    if (!Object.prototype.hasOwnProperty.call(el, 'latitude') || !Object.prototype.hasOwnProperty.call(el, 'longitude')) {
+      return res.status(400).json({ error: `element at index ${i} missing latitude/longitude` });
+    }
     if (!validCoord(el.latitude) || !validCoord(el.longitude)) {
       return res.status(400).json({ error: `element at index ${i} has invalid latitude/longitude (must be number or null)` });
     }

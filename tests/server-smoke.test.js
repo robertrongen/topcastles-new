@@ -14,6 +14,15 @@ const path = require('path');
 
 const BASE = (process.argv[2] || 'http://localhost:3000').replace(/\/$/, '');
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN || '';
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, '../data');
+const isLocalBase = (() => {
+  try {
+    const { hostname } = new URL(BASE);
+    return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1';
+  } catch {
+    return false;
+  }
+})();
 
 const ENRICHED_PATH = path.join(__dirname, '../new_app/src/assets/data/castles_enriched.json');
 const enrichedCastles = existsSync(ENRICHED_PATH)
@@ -290,6 +299,20 @@ async function run() {
     }
 
     // 19. production-size payload → 200 (only when enriched file is available)
+    try {
+      const base = Array.from({ length: 500 }, (_, i) => ({
+        castle_code: `xx${i}`, latitude: 1.0, longitude: 1.0, score_total: 500 - i,
+      }));
+      base[5].longitude = '1.0';
+      const { status, body } = await post('/api/admin/upload-enriched', base, authHeader);
+      const json = JSON.parse(body);
+      status === 400 && json?.error?.includes('latitude/longitude')
+        ? ok('POST /api/admin/upload-enriched with non-numeric longitude returns 400')
+        : fail('POST /api/admin/upload-enriched with non-numeric longitude returns 400', `status=${status} body=${body.slice(0, 120)}`);
+    } catch (e) {
+      fail('POST /api/admin/upload-enriched with non-numeric longitude returns 400', e.message);
+    }
+
     if (enrichedCastles) {
       try {
         const { status, body } = await post('/api/admin/upload-enriched', enrichedCastles, authHeader);
@@ -304,6 +327,26 @@ async function run() {
       }
 
       // 20. pending-status after upload → 200 with correct recordCount
+      if (isLocalBase) {
+        try {
+          const pendingPath = path.join(DATA_DIR, 'pending', 'castles_enriched.json');
+          const staged = JSON.parse(readFileSync(pendingPath, 'utf-8'));
+          const stagedMatches =
+            Array.isArray(staged) &&
+            staged.length === enrichedCastles.length &&
+            staged[0]?.castle_code === enrichedCastles[0]?.castle_code &&
+            staged[staged.length - 1]?.castle_code === enrichedCastles[enrichedCastles.length - 1]?.castle_code;
+
+          stagedMatches
+            ? ok('POST /api/admin/upload-enriched writes pending castles_enriched.json')
+            : fail('POST /api/admin/upload-enriched writes pending castles_enriched.json', `path=${pendingPath}`);
+        } catch (e) {
+          fail('POST /api/admin/upload-enriched writes pending castles_enriched.json', e.message);
+        }
+      } else {
+        ok('pending castles_enriched.json file verification skipped (base URL is not local)');
+      }
+
       try {
         const { status, body } = await get('/api/admin/pending-status', authHeader);
         const json = JSON.parse(body);
@@ -317,6 +360,7 @@ async function run() {
       }
     } else {
       ok('POST /api/admin/upload-enriched production-size test — skipped (castles_enriched.json not found locally)');
+      ok('pending castles_enriched.json file verification skipped (castles_enriched.json not found locally)');
       ok('GET /api/admin/pending-status post-upload — skipped (castles_enriched.json not found locally)');
     }
   } else {
