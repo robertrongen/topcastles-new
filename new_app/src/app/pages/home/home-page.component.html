@@ -8,41 +8,38 @@
 
           <header class="dossier__header">
             <span class="dossier__section-label">From today's index</span>
-            <a class="dossier__archive-link" routerLink="/top1000">Archive ▸</a>
           </header>
 
           <div class="dossier__body">
 
-            <!-- Left: image -->
-            <figure class="dossier__figure">
-              <a class="dossier__image-link"
-                 [routerLink]="['/castles', castle.castle_code]"
-                 [attr.aria-label]="'View ' + castle.castle_name">
-                <img
-                  class="dossier__image"
-                  [src]="imageService.castlePhotoUrl(castle.castle_code)"
-                  [alt]="castle.castle_name"
-                  loading="eager"
-                  (error)="onImageError($event, castle.wikidata_image ?? castle.wikipedia_thumbnail)"
-                />
-              </a>
-              <div class="dossier__figure-bar">
-                <span class="dossier__plate">PLATE {{ todayPlate }} · {{ todayYear }}</span>
-                <figcaption class="dossier__caption">
-                  {{ castle.castle_name }}@if (castle.place) {, {{ castle.place }}}
-                </figcaption>
-              </div>
-            </figure>
+            <!-- Left: image + caption row -->
+            <div class="dossier__figure-group">
+              <figure class="dossier__figure">
+                <a class="dossier__image-link"
+                   [routerLink]="['/castles', castle.castle_code]"
+                   [attr.aria-label]="'View ' + castle.castle_name">
+                  <img
+                    class="dossier__image"
+                    [src]="imageService.castlePhotoUrl(castle.castle_code)"
+                    [alt]="castle.castle_name"
+                    loading="eager"
+                    (error)="onImageError($event, castle.wikidata_image ?? castle.wikipedia_thumbnail)"
+                  />
+                </a>
+                <div class="dossier__figure-bar">
+                  <span class="dossier__plate">Plate {{ todayEntryNumber }} · {{ todayYear }}</span>
+                </div>
+              </figure>
+              <figcaption class="dossier__figure-caption">
+                <span class="dossier__caption-name"><b>{{ castle.castle_name }}@if (castle.place) {, {{ castle.place }}.}</b></span>
+              </figcaption>
+            </div>
 
             <!-- Right: dossier content -->
             <article class="dossier__content">
 
-              <!-- Meta line -->
-              <p class="dossier__meta">
-                {{ todayDateLabel }} · Featured entry&nbsp;Nº&nbsp;<span
-                  [attr.aria-label]="'number ' + todayEntryNumber"
-                >{{ toRoman(todayEntryNumber) }}</span>
-              </p>
+              <!-- Kicker: single line, Arabic numbers -->
+              <p class="dossier__meta">{{ todayDateLabel }} · Featured entry · {{ todayEntryNumber }}</p>
 
               <!-- Title -->
               <a class="dossier__title" [routerLink]="['/castles', castle.castle_code]">
@@ -57,22 +54,34 @@
                 {{ castle.country | titlecase }}
               </p>
 
+              <!-- Metadata strip: Period / Type / Country -->
+              @if (castle.era || castle.castle_type || castle.castle_concept) {
+                <div class="dossier__meta-strip">
+                  @if (castle.era) {
+                    <span><b>Period</b> {{ castle.era }}th c.@if (castle.condition) { · {{ castle.condition }}}</span>
+                  }
+                  @if (castle.castle_type || castle.castle_concept) {
+                    <span><b>Type</b> {{ castle.castle_type || castle.castle_concept }}</span>
+                  }
+                  @if (castle.country) {
+                    <span><b>Country</b> {{ castle.country | titlecase }}</span>
+                  }
+                </div>
+              }
+
               <!-- Intro text -->
               @if (castle.wikipedia_extract) {
                 <p class="dossier__intro">{{ castle.wikipedia_extract }}</p>
               }
 
-              <!-- Fact card -->
+              <!-- Fact card: 2-cell (Editorial + Visitor) -->
               <dl class="dossier__facts">
                 <div class="dossier__fact">
                   <dt class="dossier__fact-label">Editorial</dt>
-                  <dd class="dossier__fact-value"
-                      [attr.aria-label]="castle.position != null ? 'Rank ' + castle.position + ' of 1000' : 'not ranked'">
-                    <span aria-hidden="true">
-                      @if (castle.position != null) {
-                        ★ {{ toRoman(castle.position) }}<span class="dossier__fact-denom"> /1000</span>
-                      } @else { — }
-                    </span>
+                  <dd class="dossier__fact-value">
+                    @if (castle.position != null) {
+                      ★ {{ castle.position }}<span class="dossier__fact-denom"> /1000</span>
+                    } @else { — }
                   </dd>
                   <dd class="dossier__fact-sub">scholarly rank</dd>
                 </div>
@@ -85,22 +94,12 @@
                   </dd>
                   <dd class="dossier__fact-sub">visitor rating</dd>
                 </div>
-                <div class="dossier__fact">
-                  <dt class="dossier__fact-label">Period</dt>
-                  <dd class="dossier__fact-value">{{ castle.era ? castle.era + 'th c.' : '—' }}</dd>
-                  <dd class="dossier__fact-sub">{{ castle.condition || '—' }}</dd>
-                </div>
-                <div class="dossier__fact">
-                  <dt class="dossier__fact-label">Type</dt>
-                  <dd class="dossier__fact-value">{{ castle.castle_type || '—' }}</dd>
-                  <dd class="dossier__fact-sub">{{ castle.castle_concept || '—' }}</dd>
-                </div>
               </dl>
 
               <!-- Editor's note -->
-              @if (castle.remarkable) {
+              @if (castle.remarkable || castle.description) {
                 <blockquote class="dossier__quote">
-                  <p class="dossier__quote-text">{{ castle.remarkable }}</p>
+                  <p class="dossier__quote-text">{{ castle.remarkable || castle.description }}</p>
                   <footer class="dossier__quote-footer">
                     <cite class="dossier__quote-attribution">
                       <span class="dossier__quote-name">The Editors</span>
@@ -110,11 +109,13 @@
                 </blockquote>
               }
 
-              <!-- Actions -->
+              <!-- Actions: primary left, secondary group right -->
               <nav class="dossier__actions" aria-label="Entry actions">
                 <a class="dossier__action-primary" [routerLink]="['/castles', castle.castle_code]">Read the full entry ▸</a>
-                <a class="dossier__action" routerLink="/favorites">★ Save</a>
-                <button class="dossier__action" type="button" (click)="refreshDeepSurprise()">↖ Surprise me</button>
+                <div class="dossier__actions-secondary">
+                  <a class="dossier__action" routerLink="/favorites">★ Save</a>
+                  <button class="dossier__action" type="button" (click)="goToSurpriseCastle()">↖ Surprise me</button>
+                </div>
               </nav>
 
             </article>
@@ -389,9 +390,6 @@
         } @else {
           <div class="sidebar-castle sidebar-castle--loading">Loading…</div>
         }
-        <button class="sidebar-widget__refresh" type="button" (click)="refreshDeepSurprise()">
-          Another castle &rarr;
-        </button>
       </div>
 
     </aside>

@@ -139,8 +139,6 @@
 
 
 
-@media (max-width: 767px) {
-}
 
 .section {
   padding-bottom: var(--tk-space-5);
@@ -192,16 +190,13 @@
   }
 }
 
-// ── Editorial dossier — Option A ────────────────────────────────────────────
+// ── Editorial dossier — Patch v1 ─────────────────────────────────────────────
 
 .dossier {
   border-bottom: 1px solid var(--tk-border, rgba(0 0 0 / 0.1));
 }
 
 .dossier__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
   padding-bottom: var(--tk-space-2);
   margin-bottom: var(--tk-space-4);
   border-bottom: 1px solid var(--tk-border, rgba(0 0 0 / 0.12));
@@ -215,16 +210,6 @@
   color: var(--tk-text-muted);
 }
 
-.dossier__archive-link {
-  font-size: var(--tk-font-size-xs, 0.72rem);
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  color: var(--accent-ochre);
-  text-decoration: none;
-
-  &:hover { text-decoration: underline; background: none; color: var(--accent-ochre); }
-}
-
 .dossier__body {
   display: grid;
   grid-template-columns: 500px 1fr;
@@ -232,7 +217,11 @@
   align-items: start;
 }
 
-// Image figure
+// Figure group: image + external caption
+.dossier__figure-group {
+  min-width: 0;
+}
+
 .dossier__figure {
   margin: 0;
   position: relative;
@@ -258,11 +247,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 40px 14px 12px;
-  background: linear-gradient(to top, rgba(0, 0, 0, .72), transparent);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  padding: 24px 14px 10px;
+  background: linear-gradient(to top, rgba(0, 0, 0, .6), transparent);
 }
 
 .dossier__plate {
@@ -273,10 +259,21 @@
   color: rgba(255, 255, 255, .55);
 }
 
-.dossier__caption {
+// Caption row beneath the image
+.dossier__figure-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 2px 0;
+  border-top: 1px solid var(--tk-border, rgba(0 0 0 / 0.1));
+}
+
+.dossier__caption-name {
   font-size: var(--tk-font-size-xs, 0.72rem);
-  line-height: 1.35;
-  color: rgba(255, 255, 255, .82);
+  color: var(--tk-text-muted);
+  font-style: italic;
+
+  b { font-style: normal; font-weight: 600; color: var(--tk-text); }
 }
 
 // Content (right column)
@@ -287,12 +284,13 @@
   min-width: 0;
 }
 
+// Kicker: single line, no uppercase transform
 .dossier__meta {
   margin: 0;
-  font-size: var(--tk-font-size-xs, 0.72rem);
+  font-size: 10.5px;
   font-weight: 600;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
   color: var(--mast-fg-2, var(--tk-text-muted));
 }
 
@@ -321,8 +319,30 @@
   font-style: italic;
   font-size: var(--tk-font-size-sm);
   color: var(--tk-text-muted);
+}
 
-  em { font-style: italic; }
+// Metadata strip: Period / Type / Country
+.dossier__meta-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 22px;
+  margin: 0;
+  padding: 8px 0 10px;
+  border-bottom: 1px dotted var(--tk-border);
+  font-family: "Source Serif 4", Georgia, serif;
+  font-style: italic;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--tk-text-muted);
+
+  b {
+    font-style: normal;
+    font: 600 10px "Inter", system-ui, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--tk-text-muted);
+    margin-right: 4px;
+  }
 }
 
 .dossier__intro {
@@ -336,23 +356,22 @@
   overflow: hidden;
 }
 
-// Fact card — 4-cell bordered container
+// Fact card: 2-cell with more breathing room
 .dossier__facts {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   margin: 0;
   padding: 0;
   border: 1px solid var(--tk-border, rgba(0 0 0 / 0.12));
   border-radius: 2px;
   overflow: hidden;
-  list-style: none;
 }
 
 .dossier__fact {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  padding: var(--tk-space-3);
+  gap: 4px;
+  padding: 14px 18px;
   border-right: 1px solid var(--tk-border, rgba(0 0 0 / 0.12));
   background: var(--tk-surface-soft, var(--tk-surface-alt));
 
@@ -369,7 +388,7 @@
 }
 
 .dossier__fact-value {
-  font-size: 1.05rem;
+  font-size: 1.375rem;
   font-weight: 700;
   color: var(--tk-text);
   font-variant-numeric: tabular-nums;
@@ -378,7 +397,7 @@
 }
 
 .dossier__fact-denom {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 500;
   color: var(--tk-text-muted);
 }
@@ -389,7 +408,7 @@
   margin: 0;
 }
 
-// Editor's note — ochre border + warm gradient background
+// Editor's note
 .dossier__quote {
   margin: 0;
   padding: var(--tk-space-3) var(--tk-space-4);
@@ -405,7 +424,7 @@
   line-height: 1.65;
   color: var(--tk-text-muted);
 
-  &::before { content: '\201C'; }
+  &::before { content: '\201C'; color: var(--accent-ochre); }
   &::after  { content: '\201D'; }
 }
 
@@ -419,7 +438,6 @@
   flex-direction: column;
   align-items: flex-end;
   font-style: normal;
-  gap: 1px;
 }
 
 .dossier__quote-name {
@@ -437,14 +455,21 @@
   color: var(--tk-text-muted);
 }
 
-// Entry actions
+// Actions: primary left, secondary group right
 .dossier__actions {
   display: flex;
   align-items: center;
-  gap: var(--tk-space-4);
-  flex-wrap: wrap;
+  justify-content: space-between;
   padding-top: var(--tk-space-2);
   border-top: 1px solid var(--tk-border, rgba(0 0 0 / 0.1));
+  gap: var(--tk-space-3);
+}
+
+.dossier__actions-secondary {
+  display: flex;
+  align-items: center;
+  gap: var(--tk-space-4);
+  flex-shrink: 0;
 }
 
 .dossier__action-primary {
@@ -478,6 +503,10 @@
   .dossier__image {
     height: 280px;
   }
+
+  .dossier__meta {
+    white-space: normal;
+  }
 }
 
 @media (max-width: 640px) {
@@ -486,11 +515,8 @@
   }
 
   .dossier__facts {
-    grid-template-columns: 1fr 1fr;
-
-    .dossier__fact:nth-child(2) { border-right: none; }
-    .dossier__fact:nth-child(1),
-    .dossier__fact:nth-child(2) { border-bottom: 1px solid var(--tk-border, rgba(0 0 0 / 0.12)); }
+    .dossier__fact { padding: var(--tk-space-3); }
+    .dossier__fact-value { font-size: 1.15rem; }
   }
 }
 
@@ -730,9 +756,6 @@
 
   &__content {
     order: 1;
-  }
-
-  &__content {
     display: flex;
     min-width: 0;
     flex-direction: column;
@@ -909,12 +932,6 @@
 
   .visitor-ranking {
     grid-template-columns: 1fr;
-  }
-
-  .stat-strip {
-    &__item {
-      padding: 4px var(--tk-space-2);
-    }
   }
 
   .ref-table {

@@ -1,5 +1,5 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { DecimalPipe, TitleCasePipe } from '@angular/common';
 import { CastleService } from '../../services/castle.service';
 import { CastleMapComponent, RegionLabel } from '../../components/castle-map/castle-map.component';
@@ -14,6 +14,7 @@ import { ImageService } from '../../services/image.service';
 })
 export class HomePageComponent implements OnInit {
   private castleService = inject(CastleService);
+  private router = inject(Router);
   imageService = inject(ImageService);
 
   // ISO 8601 week number — week starts Monday, week 1 = week containing first Thursday
@@ -51,8 +52,7 @@ export class HomePageComponent implements OnInit {
   readonly todayPlate = String(this.todayIndex + 1).padStart(2, '0');
   readonly todayYear = new Date().getFullYear();
   readonly todayDateLabel = new Date()
-    .toLocaleDateString('en-GB', { day: 'numeric', month: 'long' })
-    .toUpperCase();
+    .toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
 
   toRoman(n: number | null | undefined): string {
     if (n == null || n < 1 || n > 3999) return '—';
@@ -145,6 +145,12 @@ export class HomePageComponent implements OnInit {
 
   refreshDeepSurprise(): void {
     this.surpriseIndex.set(Math.floor(Math.random() * 900));
+  }
+
+  goToSurpriseCastle(): void {
+    this.refreshDeepSurprise();
+    const castle = this.deepSurpriseCastle();
+    if (castle) this.router.navigate(['/castles', castle.castle_code]);
   }
 
 }
