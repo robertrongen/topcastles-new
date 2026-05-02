@@ -17,19 +17,38 @@ Note: some umbrella phase issues remain open as coordination trackers even when 
 
 ## Current Beads Snapshot (2026-05-02)
 
-`bd ready` currently exposes a small product backlog:
+Work is structured in two explicit tracks. See [ux-product-execution-plan.md](ux-product-execution-plan.md) for full sequencing.
 
-- `topcastles-g3i` — Phase 11 umbrella for advanced and optional discovery work.
-- `topcastles-0b0` — castle name autocomplete. Current code and commit history indicate autocomplete already exists on the castles page (`1e097e1`), so this bead should be verified and closed or superseded rather than reimplemented.
-- `topcastles-uax` — castle comparison view.
-- `topcastles-wj4` — castle of the week on the homepage.
+**Track A — UX Modernization**: visual and editorial identity improvements following the reference-atlas model. Lightweight beads, high cadence.
 
-`topcastles-pwa-install-help` is also in progress: it is the active follow-up to the completed PWA baseline and should focus on user-facing install guidance, not service worker scope changes.
+**Track B — Editorial System**: editorial content overlay, admin UI, and pipeline/enrichment workflows. Architecture-sensitive; lower cadence.
 
-Design review items added 2026-05-02 (see [ux-product-execution-plan.md §3.6](ux-product-execution-plan.md) and [modernization-plan.md design review section](modernization-plan.md)):
+**Track A — current open beads (§3.6 polish):**
 
-- Items 1–3 confirmed done via git (`c285df7` masthead, `3a3cafc`/`61ba0c5` hero, `8baffe7`/`8643f78` atlas annotations).
-- New open items: "Top by visitor rating" layout fix, Top 1000 editorial band, Top Countries/Regions tile differentiation, Period table Editor's pick column, and a smaller polish batch (footer, sidebar dedup, nav underline, score units).
+- `topcastles-wft` — visitor rating layout fix.
+- `topcastles-chw` — Top 1000 editorial header band.
+- `topcastles-7kz` — Top Countries/Regions tile differentiation.
+- `topcastles-3e1` — Period table Editor's pick column.
+- `topcastles-eeb` — smaller polish batch (footer, sidebar dedup, nav underline, score labels).
+
+**Track A — upcoming (Phase A2–A4, Claude Design targets):**
+
+- Top Countries gazetteer table — dual rank, editor's note, defining tradition, Editor's Sleeper badge (§9.7).
+- Top Regions atlas cards — card layout with editorial description and Editor's Sleeper badge (§9.8).
+- "From Today's Index" editor's quote block — curated quote with attribution and manual override (§9.9).
+
+**Track B — upcoming:**
+
+- Define editorial JSON schema (`/data/editorial/`) for countries, regions, castle quotes, period picks (§B0).
+- Admin shell and token login — protected `/admin` route, token entry, `ADMIN_TOKEN` auth (§15.1–15.2).
+- Editorial editor UI — form-based editor for editorial overlay files (§15.8).
+
+**Deferred / Spec Kit required:**
+
+- `topcastles-uax` — castle comparison view (P4, needs design pass).
+- `topcastles-g3i` — Phase 11 umbrella.
+- NAS image serving hardening — needs Spec Kit before deployment changes.
+- Pipeline admin (15.3–15.7) — enrichment scripts, rebuild trigger; Spec Kit required.
 
 ## Known Baseline Issues
 
@@ -115,6 +134,28 @@ This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeli
   - Reference table after *Index of Top Countries*: period (link to `/castles?era=N`), entries count, share of era-tagged castles, top-ranked example castle (link to `/castles/:code`).
   - Data derived from `castleService.castles()` grouped by `c.era` in a single `byPeriod` computed signal; null era values excluded; sorted chronologically.
 
+- **9.7: Top Countries gazetteer table** [OPEN]
+  - Redesign the Top Countries page as a dual-rank gazetteer table.
+  - Columns: flag/code, country, editorial rank (★), visitor rank (with direction arrow), entries, mean score, defining tradition, editor's note, Editor's Sleeper badge, top entry.
+  - Sort toggle: by editorial rank / by visitor rank / by disagreement.
+  - Editor's notes and defining traditions sourced from `/data/editorial/countries.json`.
+  - "Editor's Sleeper" badge applied to high-editorial, low-visitor entries.
+  - Bead: `topcastles-ecg` (create).
+
+- **9.8: Top Regions atlas cards** [OPEN]
+  - Redesign Top Regions page as a card grid in atlas plate style.
+  - Each card: catalogue numeral (№ 01–08), editorial and visitor ranks with direction arrows, editorial description, Editor's Sleeper badge where applicable, entries count, mean score.
+  - SVG region glyphs deferred — cards use text-only layout initially.
+  - Region descriptions sourced from `/data/editorial/regions.json`.
+  - Bead: `topcastles-reg` (create).
+
+- **9.9: "From Today's Index" — editor's quote and manual override** [OPEN]
+  - Add a curated editor's quote block below the Wikipedia extract on the featured entry.
+  - Quote includes: pull-quote text, author name, author role (e.g. "Contributing Editor"), and date.
+  - Sourced from `/data/editorial/castle-quotes.json` keyed by castle code.
+  - Manual override: the editorial JSON can designate a specific castle as the featured entry for a given date range, overriding the deterministic daily algorithm.
+  - Bead: `topcastles-fqi` (create).
+
 - **10.3: PWA baseline / production-safe service worker configuration** [COMPLETED]
   - `@angular/service-worker` installed and registered via `provideServiceWorker` in `app.config.ts`.
   - `ngsw-config.json` corrected: raster image globs (`jpg/png/webp/gif`) removed from all asset
@@ -150,6 +191,18 @@ This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeli
   - Verify image serving from the mounted volume once image serving exists.
   - Verify gzip behavior with `Accept-Encoding: gzip`.
 
+- **Editorial Overlay (`/data/editorial/`)** [OPEN]
+  - Editor-owned JSON files that sit alongside pipeline-generated data without touching it.
+  - `castles_enriched.json` stays pipeline-owned; editorial voice stays editor-owned and never conflicts with enrichment scripts.
+  - File structure:
+    - `countries.json` — editor's note, defining tradition, top entry, Editor's Sleeper flag per country code.
+    - `regions.json` — editorial description, Editor's Sleeper flag per region.
+    - `castle-quotes.json` — editor's quote, author, role, date per castle code; optional featured-date override field.
+    - `period-picks.json` — editor's starred pick per era.
+  - App reads these at build time and merges with castle data. No pipeline involvement.
+  - Admin editorial editor (§15.8) writes only to these files; enrichment scripts never touch them.
+  - Mounted at `/data/editorial/` on the NAS volume alongside `/data/users.json`.
+
 - **11.5: Admin API for JSON content updates**
   - Original intent: upload refreshed `castles_enriched.json` to the live server without a full Docker image build.
   - Use the embedded Node server in the single container; no sidecar or Synology Task Scheduler.
@@ -167,20 +220,33 @@ This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeli
   - Done: `POST /api/user/login` validates an existing token and returns the user object.
   - Keep the ADR-009 file-based model: token is stored in `users.json`; all writes go through `json-store.js`.
 
-## Admin UI
+## Admin UI And Editorial Editor
 
-Web-based admin is still open. It should follow ADR-010: admin changes update JSON and trigger rebuild/regeneration where needed; runtime must not mutate prerendered content directly.
+The admin system has two distinct sub-tracks. **Track B1** covers the editorial content editor — lightweight, no pipeline involvement, can be built independently. **Track B2** covers the pipeline/enrichment admin — architecture-sensitive, Spec Kit required before implementation.
 
-- **15.1: Admin API auth**
+### Track B1 — Editorial Content Editor
+
+- **15.1: Admin API auth** [OPEN]
   - Protect `/api/admin/...` routes with `Authorization: Bearer <token>`.
   - Read token from `ADMIN_TOKEN` at server startup.
   - Return 401 for missing or invalid token.
 
-- **15.2: Admin UI shell**
+- **15.2: Admin UI shell** [OPEN]
   - Add protected `/admin` route.
-  - Add `/admin/login` token entry.
+  - Add `/admin/login` token entry form.
   - Store admin token in `localStorage`.
   - Hide admin navigation for regular users.
+
+- **15.8: Editorial overlay editor** [OPEN]
+  - Form-based editor UI for `/data/editorial/` files.
+  - Country editor: edit note, defining tradition, top entry, Editor's Sleeper flag.
+  - Region editor: editorial description, Editor's Sleeper flag.
+  - Castle quote editor: quote text, author, role, date; featured-date override field.
+  - Period picks editor: one starred pick per era.
+  - All writes go through `json-store.js`; no pipeline involvement.
+  - Changes take effect at next build (prerender refreshes editorial content from `/data/editorial/`).
+
+### Track B2 — Pipeline And Enrichment Admin (Spec Kit Required)
 
 - **15.3: Edit castle data**
   - `PUT /api/admin/castles/:code` updates fields in `castles_enriched.json`.
@@ -230,3 +296,5 @@ Web-based admin is still open. It should follow ADR-010: admin changes update JS
 - `json-store.js` is required for user and admin JSON write routes.
 - Phase 1 enrichment scripts already exist and are prerequisites for admin enrichment endpoints.
 - Rebuild/admin-trigger work depends on the prerender route and sitemap generation pipeline.
+- Editorial overlay (`/data/editorial/`) must be defined (§B0) before Track A Phase A2–A4 layouts can source real content; placeholder hardcoded content is acceptable during initial layout implementation.
+- Track B1 (editorial editor, §15.8) can be implemented independently of Track B2 (pipeline admin, §15.3–15.7) — do not block editorial editor on enrichment script work.
