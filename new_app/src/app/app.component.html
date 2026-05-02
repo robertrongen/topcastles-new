@@ -67,7 +67,6 @@
         <mat-icon matListItemIcon>home</mat-icon>
         <span matListItemTitle>Home</span>
       </a>
-      <mat-divider />
       <a mat-list-item routerLink="/top1000" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon fontSet="material-symbols-outlined">crown</mat-icon>
         <span matListItemTitle>Top 1000</span>
@@ -80,17 +79,14 @@
         <mat-icon matListItemIcon>map</mat-icon>
         <span matListItemTitle>Top Regions</span>
       </a>
-      <mat-divider />
       <a mat-list-item routerLink="/background" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>menu_book</mat-icon>
         <span matListItemTitle>Background</span>
       </a>
-      <mat-divider />
       <a mat-list-item routerLink="/developer" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>api</mat-icon>
         <span matListItemTitle>Developer / API</span>
       </a>
-      <mat-divider />
       <a mat-list-item routerLink="/favorites" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>bookmark</mat-icon>
         <span matListItemTitle>Favorites</span>
@@ -103,14 +99,12 @@
         <mat-icon matListItemIcon>near_me</mat-icon>
         <span matListItemTitle>{{ nearMeState() === 'loading' ? 'Locating…' : 'Nearest Top Castle' }}</span>
       </button>
-      <mat-divider />
       <button mat-list-item
               [title]="canInstall() ? 'Install Topcastles as an app' : 'How to install Topcastles'"
               (click)="triggerInstall(); sidenav.close()">
         <mat-icon matListItemIcon>get_app</mat-icon>
         <span matListItemTitle>{{ canInstall() ? 'Install app' : 'Install help' }}</span>
       </button>
-      <mat-divider />
       <button mat-list-item
               [title]="theme.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
               (click)="theme.toggle()">

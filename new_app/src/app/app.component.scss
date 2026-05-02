@@ -224,6 +224,17 @@ mat-sidenav {
   width: 260px;
   background-color: var(--tk-nav-bg) !important;
   border-right: 1px solid var(--tk-divider);
+
+  // Flatten button mat-list-items to match anchor mat-list-items.
+  // MDC applies border-radius to button ripple containers by default.
+  button.mat-mdc-list-item {
+    border-radius: 0 !important;
+
+    .mdc-list-item__ripple,
+    .mat-mdc-list-item-ripple {
+      border-radius: 0 !important;
+    }
+  }
 }
 
 .main-content {
