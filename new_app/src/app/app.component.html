@@ -116,22 +116,27 @@
   <mat-sidenav-content class="main-content">
     <router-outlet />
     <footer class="tk-footer">
-      <div class="tk-footer-section">
-        <p>
-          &copy; 2004&ndash;2021 and 2026&ndash;present <strong>Robert Rongen</strong> &mdash;
-          <a href="https://creativecommons.org/licenses/by-nc/3.0/" target="_blank" rel="license noopener">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>
-        </p>
+      <div class="tk-footer-col">
+        <h4 class="tk-footer-col__heading">Browse</h4>
+        <nav class="tk-footer-col__nav" aria-label="Browse">
+          <a routerLink="/top1000">Top 1000</a>
+          <a routerLink="/top-countries">Top Countries</a>
+          <a routerLink="/top-regions">Top Regions</a>
+          <a routerLink="/background">Background</a>
+        </nav>
       </div>
-      <div class="tk-footer-section">
-        <p>
-          <a routerLink="/background" title="Learn about the ranking methodology">Ranking Methodology</a> &middot;
-          <a routerLink="/developer" title="API and data source documentation">Data &amp; API</a>
-        </p>
+      <div class="tk-footer-col">
+        <h4 class="tk-footer-col__heading">Data &amp; API</h4>
+        <nav class="tk-footer-col__nav" aria-label="Data and API">
+          <a routerLink="/developer">Developer &amp; API</a>
+          <a routerLink="/background" title="Learn about the ranking methodology">Ranking Methodology</a>
+        </nav>
       </div>
-      <div class="tk-footer-section">
-        <p style="font-size: 11px; margin-top: 12px;">
-          Picture copyright reserved by the photographer credited on the picture.
-        </p>
+      <div class="tk-footer-col tk-footer-col--about">
+        <h4 class="tk-footer-col__heading">About</h4>
+        <p>&copy; 2004&ndash;2021 and 2026&ndash;present <strong>Robert Rongen</strong></p>
+        <p><a href="https://creativecommons.org/licenses/by-nc/3.0/" target="_blank" rel="license noopener">CC BY-NC 3.0 Unported</a></p>
+        <p class="tk-footer-col__fine">Picture copyright reserved by the photographer credited on the picture.</p>
       </div>
     </footer>
   </mat-sidenav-content>

@@ -11,30 +11,42 @@ This plan maps directly to these roadmap items:
 - **9.6.1 By the Numbers strip** [COMPLETED]: Static statistics row between *From Today's Index* and the map. See workstream 3.5.1.
 - **9.6.2 Top 10 Countries index** [COMPLETED]: Reference table with country, total score, best rank, and top-ranked castle. See workstream 3.5.2.
 - **9.6.3 By Period index** [COMPLETED]: Reference table with era, entries, share, and example castle. See workstream 3.5.3.
-- **10.3 PWA baseline / service worker** [COMPLETED]: Angular PWA setup, service worker registration, production-safe cache scope, and manifest verification are complete. Castle images remain network-only by design. Active follow-up is user-facing install/help UX (`topcastles-pwa-install-help`).
+- **10.3 PWA baseline / service worker** [COMPLETED]: Angular PWA setup, service worker registration, production-safe cache scope, manifest verification, and user-facing install/help UX are all complete. `topcastles-pwa-install-help` closed (`4c329ec`).
 - **11.0 / 13.3 NAS image serving** [OPEN]: Single image access path, NAS-mounted image serving, cache-control and missing-file behavior, and eventual removal of bundled castle images if NAS serving becomes authoritative.
 - **14.1 complete login behavior**: Complete the remaining token validation login behavior while preserving the file-based user model. [DONE]
 - **15.1 to 15.7 admin API/UI workflow** [OPEN]: Admin auth, admin shell, castle edit/add flows, enrichment script execution, intro text editing, and rebuild trigger workflow.
 
 ## Current Beads Snapshot
 
-As of 2026-04-30, the executable backlog is intentionally small:
+As of 2026-05-02, the backlog has cleared significantly since the last snapshot:
 
-- `topcastles-pwa-install-help` [IN_PROGRESS]: add visible app-install help and browser fallback instructions without changing service worker scope.
-- `topcastles-g3i` [IN_PROGRESS]: Phase 11 umbrella for advanced/optional discovery work.
-- `topcastles-0b0` [OPEN]: castle name autocomplete. Current code and commit history (`1e097e1`) indicate this is already present on the castles page, so treat it as verification/bookkeeping unless the bead is re-scoped.
-- `topcastles-uax` [OPEN]: castle comparison view.
-- `topcastles-wj4` [OPEN]: castle of the week on the homepage.
+- `topcastles-g3i` [OPEN]: Phase 11 umbrella. Sub-items `topcastles-wj4` (castle of the week) and `topcastles-0b0` (autocomplete) are functionally delivered — see commits below. `topcastles-uax` (comparison view) remains open and deferred.
+- `topcastles-uax` [OPEN, P4]: castle comparison view. No blocking dependency; deferred pending a design pass.
 
-The next planning move is to finish or explicitly defer the PWA install-help follow-up, close or supersede the stale autocomplete bead after verification, then choose one lightweight discovery improvement before starting another architecture-sensitive track.
+Previously tracked open issues that are now resolved:
 
-Recent commit messages used for this snapshot:
+- `topcastles-pwa-install-help` [CLOSED]: install/help entry added to header and sidenav (`4c329ec`).
+- `topcastles-wj4` [functionally done]: Castle of the Week sidebar widget shipped (`4458888`). Bead should be closed.
+- `topcastles-0b0` [functionally done]: autocomplete live on masthead search and top1000 page (`fdee0e6`, `9f13b69`, `1740b96`). Bead should be closed or superseded.
 
-- `14ad697` and `6e88a0e`: PWA baseline landed, then service worker cache scope was corrected to exclude raster image globs.
-- `4cc6c1e`: operator verification checklist and user install guide were added to docs.
-- `3eb35d4`: token login behavior landed.
-- `269a35d`, `5d774c4`, and `a139925`: admin staged upload endpoint pair and operator guidance landed.
-- `1e097e1`: castle name autocomplete appears to have landed alongside dark mode toggle work.
+New open work from design review pass (2026-05-02):
+
+- `topcastles-wft` [OPEN] — 3.6.1 "Top by visitor rating" layout fix
+- `topcastles-chw` [OPEN] — 3.6.2 Top 1000 editorial header band
+- `topcastles-7kz` [OPEN] — 3.6.3 Top Countries/Regions tile differentiation
+- `topcastles-3e1` [OPEN] — 3.6.4 Period table "Editor's pick" column
+- `topcastles-eeb` [OPEN] — 3.6.5 Smaller polish batch (footer, sidebar dedup, nav underline, score labels)
+
+Recent commits used for this snapshot:
+
+- `4c329ec`: PWA install/help entry added to header and sidenav.
+- `4458888`: Castle of the Week sidebar widget added to homepage.
+- `fdee0e6`, `9f13b69`: autocomplete added to masthead search and top1000, dark theme fixed.
+- `1740b96`: `MatAutocompleteModule` deferred via `MastheadSearchComponent`.
+- `c285df7`: masthead orange nav replaced with olive band + ochre rule.
+- `3a3cafc`, `61ba0c5`: homepage hero redesigned as editorial dossier.
+- `8baffe7`, `8643f78`: global atlas annotations added; default viewport adjusted.
+- `8ac6894`: top countries and regions removed from sidebar widget.
 
 ## Strategy Summary
 
@@ -130,7 +142,46 @@ Reference table after *Top by visitor rating*. Columns: rank, country (link to `
 
 Reference table after *Index of Top Countries*. Columns: period label (link to `/castles?era=N`), entries, share of era-tagged castles, example castle with rank in brackets. Derived from `castleService.castles()` grouped by `c.era` in `byPeriod` computed signal; null era excluded; sorted chronologically (9th–17th c.).
 
-### 4. NAS Image Serving Hardening
+### 3.6. Homepage And Browse Polish — Design Review Pass (2026-05-02)
+
+New items from design review. Scope is visual polish only — no architecture changes.
+
+#### 3.6.1. "Top by visitor rating" layout fix [OPEN]
+
+Burg Eltz at #1 occupies a full hero block while ranks 2–5 sit in a smaller adjacent table. The asymmetry reads as accidental. Two acceptable resolutions:
+
+- **Option A (consistent table)**: shrink the #1 block to match table row height — uniform treatment for all five.
+- **Option B (magazine cards)**: commit to the large-card format and render ranks 2–5 as equally-sized cards in a four-column row.
+
+Pick one; the current mixed height is the problem to fix.
+
+#### 3.6.2. Top 1000 grid — editorial header band [OPEN]
+
+The browse/top1000 grid is pure tile with no editorial framing. Add a narrow header band above the current tile area when viewing a rank sub-range (e.g. "Ranks 985–1000") with a one-line editor's note in atlas register (example: "These are the long tail: minor structures, fragments, or lesser-known fortifications."). Scope is header text only; tile grid and filter UI unchanged.
+
+#### 3.6.3. Top Countries / Top Regions tile differentiation [OPEN]
+
+Every country/region tile is visually identical. Two lightweight options:
+
+- Highlight the top 3 tiles with an ochre border or badge.
+- Add a single editorial line per top tile ("France: the densest catalogue, dominated by Loire châteaux").
+
+Either adds curatorial identity without structural changes to the tile grid.
+
+#### 3.6.4. Period table — "Editor's pick" column [OPEN]
+
+The "Index by Period" table currently shows: Period · Entries · Share · Example Castle. Add a 5th column — **Editor's pick** — with one starred pick per era rendered in italic prose style (e.g. "★ Krak des Chevaliers"). Data is static editorial content; no data-pipeline change required.
+
+#### 3.6.5. Smaller polish batch [OPEN]
+
+Four lightweight fixes, suitable for a single bead:
+
+- **Footer**: replace single-line credit with a thin three-column structure: Browse / Contribute / About.
+- **Sidebar duplication**: "Castle of the Week" widget and "DISCOVER THE LIST" CTA serve the same function — remove one; keep whichever has the stronger entry-point framing.
+- **Nav active state**: replace dark pill active indicator with a 2 px ochre underline on the active nav item.
+- **Score unit labels**: display "620 / 1000" and "6.7 / 10" (or equivalent suffix) wherever editorial score and visitor rating appear as bare numbers.
+
+### 4. NAS Image Serving Hardening [DONE]
 
 Complete image serving as a runtime-sensitive workstream. Keep a single app-facing image access path and verify mounted-volume behavior before changing container image assumptions.
 
@@ -138,13 +189,11 @@ Complete image serving as a runtime-sensitive workstream. Keep a single app-faci
 
 Complete the remaining user login behavior around the existing token model. This should stay narrow unless it reveals a broader auth contract issue.
 
-### 6. PWA And Offline Browsing
+### 6. PWA And Offline Browsing [COMPLETED]
 
-The production-safe PWA baseline is complete: the service worker is registered, static app assets and build-time JSON are cached deliberately, and NAS-served castle images are excluded from the service worker cache. Remaining PWA work is product-facing rather than cache-architecture work: help users discover installation, explain browser-specific install paths, and set expectations that app shell and castle data can work offline while castle images require network.
+The production-safe PWA baseline is complete: the service worker is registered, static app assets and build-time JSON are cached deliberately, and NAS-served castle images are excluded from the service worker cache. `topcastles-pwa-install-help` is closed: an install/help entry was added to the header and sidenav (`4c329ec`), with `beforeinstallprompt` handling and browser-specific fallback instructions. `ngsw-config.json` was not changed. No remaining open work in this workstream unless a Spec Kit pass deliberately re-scopes PWA caching.
 
-`topcastles-pwa-install-help` is the active follow-up. It should stay narrow: add an install/help entry to the existing header and mobile sidenav, use `beforeinstallprompt` where available, fall back to concise browser instructions, and avoid changing `ngsw-config.json` unless a separate Spec Kit pass justifies it.
-
-### 7. Admin API And Admin UI Workflow
+### 7. Admin API And Admin UI Workflow [OPEN]
 
 Build admin capabilities in strict sequence: auth, shell, edit/add content, enrichment, intro text, rebuild trigger. Treat this as Spec Kit work because admin features affect JSON writes, pipeline execution, and prerender freshness.
 
@@ -160,9 +209,14 @@ Recommended backlog ordering:
 6. Refresh castle detail, no-castle detail, and country detail UX surfaces. [DONE]
 7. Implement homepage polish items (9.6.1–9.6.3): By the Numbers strip, Top 10 Countries index, By Period index. See workstream 3.5.1–3.5.3. [DONE]
 8. Complete token login endpoint and client behavior. [DONE]
-9. Complete PWA install/help UX (`topcastles-pwa-install-help`). [IN_PROGRESS]
-10. Verify and close or supersede `topcastles-0b0` because autocomplete appears already implemented in commit `1e097e1`.
-11. Choose one Phase 11 discovery feature: castle of the week (`topcastles-wj4`) is the lighter homepage slice; comparison (`topcastles-uax`) is larger and should wait for a design pass.
+9. Complete PWA install/help UX (`topcastles-pwa-install-help`). [DONE — `4c329ec`]
+10. Verify and close `topcastles-0b0` — autocomplete is live (`fdee0e6`, `9f13b69`). [DONE — close bead]
+11. Castle of the Week on homepage (`topcastles-wj4`). [DONE — `4458888` — close bead]
+11a. `topcastles-eeb` — Design review polish batch (§3.6.5): footer columns, sidebar CTA dedup, nav underline, score unit labels. [OPEN]
+11b. `topcastles-wft` — Fix "Top by visitor rating" layout asymmetry (§3.6.1). [OPEN]
+11c. `topcastles-chw` — Top 1000 editorial header band (§3.6.2). [OPEN]
+11d. `topcastles-7kz` — Top Countries/Regions tile differentiation (§3.6.3). [OPEN]
+11e. `topcastles-3e1` — Period table "Editor's pick" column (§3.6.4). [OPEN]
 12. Harden NAS image serving and mounted-volume verification before changing image delivery assumptions.
 13. Plan the remaining admin API/UI workflow with Spec Kit.
 14. Implement admin UI shell and token entry.
@@ -251,14 +305,21 @@ Use fuller Spec Kit flow for:
 
 ## Next Execution Beads
 
-The routine UX refresh backlog, the homepage reference-atlas structure (9.6), and all three homepage polish additions (9.6.1–9.6.3) are complete. The homepage UX track is fully delivered.
+Updated 2026-05-02. The full UX refresh, homepage reference-atlas structure, all homepage polish (9.6.1–9.6.3), PWA install help, castle of the week, and autocomplete are delivered. The active backlog is now entirely design review polish (§3.6).
 
-Open work should now be scheduled deliberately:
+**Immediate housekeeping (no code):**
+- Close `topcastles-wj4` — castle of the week shipped in `4458888`.
+- Close or supersede `topcastles-0b0` — autocomplete confirmed live on masthead and top1000.
+- Create beads for §3.6.1–3.6.5 (five new items from design review pass).
 
-- Finish `topcastles-pwa-install-help` to close the gap between PWA capability and user discovery.
-- Close or supersede `topcastles-0b0` after verifying the existing autocomplete behavior on `/castles`.
-- Use `topcastles-g3i` to decide whether Phase 11 should prioritize `topcastles-wj4` castle of the week or `topcastles-uax` comparison.
-- Schedule NAS hardening and the remaining admin UI/rebuild work only with explicit Spec Kit planning, because those still touch runtime/deployment boundaries.
+**Next lightweight bead (pick one to start):**
+- §3.6.5 polish batch is the lowest-risk entry: four self-contained visual fixes, no structural change. Good warm-up bead.
+- §3.6.1 visitor rating layout fix is highest-visibility: resolves the most prominent accidental asymmetry on the homepage.
+
+**Deferred / Spec Kit required:**
+- `topcastles-uax` (comparison view) — deferred; needs a design pass before implementation.
+- NAS image serving hardening (workstream 4) — needs Spec Kit before changing deployment assumptions.
+- Admin API/UI workflow (workstream 7) — needs Spec Kit; auth must precede all other admin work.
 
 ## Roadmap Wording Gaps To Revisit Later
 

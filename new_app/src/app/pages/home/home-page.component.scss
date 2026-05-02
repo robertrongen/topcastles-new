@@ -408,6 +408,15 @@
   margin: 0;
 }
 
+// Unit denominators in table headers and visitor lead
+.col-unit,
+.visitor-unit {
+  font-size: 0.75em;
+  font-weight: 400;
+  color: var(--tk-text-muted);
+  opacity: 0.75;
+}
+
 // Editor's note
 .dossier__quote {
   margin: 0;

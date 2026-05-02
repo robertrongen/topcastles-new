@@ -15,7 +15,7 @@ Recent resolved Beads issues already delivered in this repo:
 
 Note: some umbrella phase issues remain open as coordination trackers even when sub-issues above are already completed.
 
-## Current Beads Snapshot (2026-04-30)
+## Current Beads Snapshot (2026-05-02)
 
 `bd ready` currently exposes a small product backlog:
 
@@ -25,6 +25,11 @@ Note: some umbrella phase issues remain open as coordination trackers even when 
 - `topcastles-wj4` — castle of the week on the homepage.
 
 `topcastles-pwa-install-help` is also in progress: it is the active follow-up to the completed PWA baseline and should focus on user-facing install guidance, not service worker scope changes.
+
+Design review items added 2026-05-02 (see [ux-product-execution-plan.md §3.6](ux-product-execution-plan.md) and [modernization-plan.md design review section](modernization-plan.md)):
+
+- Items 1–3 confirmed done via git (`c285df7` masthead, `3a3cafc`/`61ba0c5` hero, `8baffe7`/`8643f78` atlas annotations).
+- New open items: "Top by visitor rating" layout fix, Top 1000 editorial band, Top Countries/Regions tile differentiation, Period table Editor's pick column, and a smaller polish batch (footer, sidebar dedup, nav underline, score units).
 
 ## Known Baseline Issues
 
