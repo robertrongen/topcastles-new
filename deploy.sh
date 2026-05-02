@@ -6,6 +6,13 @@
 
 set -e
 
+# Load local .env file if present (contains ADMIN_TOKEN and other secrets)
+if [ -f ".env" ]; then
+  set -a
+  source .env
+  set +a
+fi
+
 # --autostart <policy>  Docker restart policy: unless-stopped (default), always, no
 RESTART_POLICY="unless-stopped"
 while [[ $# -gt 0 ]]; do
@@ -37,12 +44,23 @@ DATA_DIR="/volume1/docker/topcastles/data"
 IMAGE_DIR="/volume1/docker/topcastles/images/castles"
 IMAGE_MOUNT_TARGET="/data/castle-images"
 
+# Validate ADMIN_TOKEN is configured
 if [ -z "${ADMIN_TOKEN:-}" ]; then
   echo ""
-  echo "  [admin-auth] WARNING: ADMIN_TOKEN is not configured."
-  echo "  Admin routes will return 401 until runtime env is set."
-  echo "  Set ADMIN_TOKEN in the Synology container environment before deploying."
+  echo "❌ ERROR: ADMIN_TOKEN is not configured."
   echo ""
+  echo "Solution:"
+  echo "  1. Copy .env.example to .env:"
+  echo "     cp .env.example .env"
+  echo ""
+  echo "  2. Generate a long random token and add it to .env:"
+  echo "     node -e \"console.log(require('crypto').randomBytes(32).toString('hex'))\""
+  echo ""
+  echo "  3. Replace the token value in .env with the generated token"
+  echo ""
+  echo "Note: .env is gitignored and will not be committed."
+  echo ""
+  exit 1
 fi
 
 echo "Building Angular application..."
@@ -106,6 +124,7 @@ ssh "${NAS_USER}@${NAS_HOST}" << EOF
   mkdir -p "$DATA_DIR"
   sudo docker run -d --restart "$RESTART_POLICY" --name "$CONTAINER_NAME" \
     -p ${HOST_PORT}:${CONTAINER_PORT} \
+    -e ADMIN_TOKEN="$ADMIN_TOKEN" \
     -v ${DATA_DIR}:/data \
     -v ${IMAGE_DIR}:${IMAGE_MOUNT_TARGET}:ro \
     "$FULL_IMAGE_NAME"
