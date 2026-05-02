@@ -1,3 +1,10 @@
+// Load local .env file for development (if NODE_ENV is not production)
+// dotenv only reads .env if it exists; safe to call in any environment
+if (process.env.NODE_ENV !== 'production') {
+  const dotenv = await import('dotenv');
+  dotenv.config({ path: '.env' });
+}
+
 import express from 'express';
 import compression from 'compression';
 import path from 'path';
