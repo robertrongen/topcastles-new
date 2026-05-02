@@ -110,6 +110,13 @@
         <mat-icon matListItemIcon>get_app</mat-icon>
         <span matListItemTitle>{{ canInstall() ? 'Install app' : 'Install help' }}</span>
       </button>
+      <mat-divider />
+      <button mat-list-item
+              [title]="theme.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+              (click)="theme.toggle()">
+        <mat-icon matListItemIcon>{{ theme.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+        <span matListItemTitle>{{ theme.isDark() ? 'Light mode' : 'Dark mode' }}</span>
+      </button>
     </mat-nav-list>
   </mat-sidenav>
 

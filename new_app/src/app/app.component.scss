@@ -221,7 +221,7 @@
 }
 
 mat-sidenav {
-  width: 220px;
+  width: 260px;
   background-color: var(--tk-nav-bg) !important;
   border-right: 1px solid var(--tk-divider);
 }
@@ -233,8 +233,10 @@ mat-sidenav {
 }
 
 .active {
-  background-color: var(--tk-overlay-active) !important;
-  font-weight: bold;
+  border-left: 3px solid var(--accent-ochre) !important;
+  color: var(--accent-ochre) !important;
+  background-color: transparent !important;
+  font-weight: 600 !important;
 }
 
 // ── Footer ────────────────────────────────────────────────────────────────────
