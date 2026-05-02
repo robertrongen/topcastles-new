@@ -176,8 +176,8 @@ describe('HomePageComponent', () => {
   // ── Atlas region labels (Leaflet DivIcon) ─────────────────────────────────
 
   describe('atlas region links', () => {
-    it('defines three region labels for the map', () => {
-      expect(component.regionLabels.length).toBe(3);
+    it('defines five region labels for the map', () => {
+      expect(component.regionLabels.length).toBe(5);
     });
 
     it('Rhine & Moselle label has regionCodes query param with rheinland-pfalz', () => {
@@ -199,9 +199,24 @@ describe('HomePageComponent', () => {
       expect(label!.queryParams?.['countries']).toContain('Wales');
     });
 
+    it('Levant label has countries query param with Crusader States coverage', () => {
+      const label = component.regionLabels.find(r => r.name === 'Levant');
+      expect(label).toBeTruthy();
+      expect(label!.queryParams?.['countries']).toContain('Syria');
+      expect(label!.queryParams?.['countries']).toContain('Lebanon');
+      expect(label!.queryParams?.['countries']).toContain('Israel');
+      expect(label!.queryParams?.['countries']).toContain('Jordan');
+    });
+
+    it('Japan label has countries query param with Japan', () => {
+      const label = component.regionLabels.find(r => r.name === 'Japan');
+      expect(label).toBeTruthy();
+      expect(label!.queryParams?.['countries']).toContain('Japan');
+    });
+
     it('atlas note headings are wrapped in anchor links', () => {
       const noteLinks = fixture.nativeElement.querySelectorAll('.atlas-note__region a') as NodeListOf<HTMLAnchorElement>;
-      expect(noteLinks.length).toBe(3);
+      expect(noteLinks.length).toBe(5);
     });
   });
 

@@ -133,6 +133,8 @@ export class HomePageComponent implements OnInit {
     { name: 'British Isles', lat: 52.8, lng: -2.4, path: ['/top1000'], queryParams: { countries: 'England,Wales' } },
     { name: 'Rhine & Moselle', lat: 50.2, lng: 7.5, path: ['/top1000'], queryParams: { regionCodes: 'rheinland-pfalz,hessen,baden-wurtenberg' } },
     { name: 'Loire Valley', lat: 47.6, lng: 0.9, path: ['/top1000'], queryParams: { regionCodes: 'ile-de-france,centre' } },
+    { name: 'Levant', lat: 34.5, lng: 36.0, path: ['/top1000'], queryParams: { countries: 'Syria,Lebanon,Israel,Jordan' } },
+    { name: 'Japan', lat: 35.0, lng: 135.0, path: ['/top1000'], queryParams: { countries: 'Japan' } },
   ];
 
   onImageError(event: Event, fallbackSrc: string | null | undefined): void {
