@@ -1,70 +1,58 @@
-<div class="tk-masthead-area">
-  <div class="tk-masthead-content">
-    <div class="tk-title-section">
-      <p class="tk-title">Topcastles</p>
-      <p class="tk-subtitle">1,000 castles across 56 countries, ranked by visitors and literature.</p>
-    </div>
+<header class="site-mast">
+  <a class="site-mast__mark" routerLink="/">Topcastles<span class="site-mast__dot">.</span></a>
+  <p class="site-mast__tag">An editorial atlas of medieval fortifications, ranked by editors and visitors.</p>
+  <div class="site-mast__search-slot">
     @defer (on idle) {
       <app-masthead-search />
     } @placeholder {
-      <form class="tk-search" action="/top1000" method="get">
+      <form class="site-mast__search-form" role="search" action="/top1000" method="get">
         <input
-          class="tk-search__input"
           type="search"
           name="name"
-          placeholder="Search castles, countries, regions…"
-          aria-label="Search the castle index"
+          placeholder="Search 1,000 entries — name, country, region…"
+          aria-label="Search the index"
         />
-        <button class="tk-search__btn" type="submit">Search index</button>
+        <button type="submit">Search</button>
       </form>
     }
   </div>
-</div>
+</header>
 
-<mat-toolbar class="tk-masthead">
-  <nav class="tk-toolbar-nav">
-    <a mat-button routerLink="/" routerLinkActive="tk-nav-active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-    <a mat-button routerLink="/top1000" routerLinkActive="tk-nav-active">
-      <mat-icon fontSet="material-symbols-outlined">crown</mat-icon> Top 1000
+<nav class="site-nav" aria-label="Primary">
+  <a routerLink="/" routerLinkActive="site-nav--active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+  <a routerLink="/top1000" routerLinkActive="site-nav--active">Top 1000</a>
+  <a routerLink="/top-countries" routerLinkActive="site-nav--active">Top Countries</a>
+  <a routerLink="/top-regions" routerLinkActive="site-nav--active">Top Regions</a>
+  <a routerLink="/background" routerLinkActive="site-nav--active">Background</a>
+  <a routerLink="/developer" routerLinkActive="site-nav--active">Developer · API</a>
+  <div class="site-nav__icons">
+    <a routerLink="/favorites" routerLinkActive="site-nav--active" aria-label="Favorites">
+      <mat-icon>bookmark</mat-icon>
     </a>
-    <a mat-button routerLink="/top-countries" routerLinkActive="tk-nav-active">Top Countries</a>
-    <a mat-button routerLink="/top-regions" routerLinkActive="tk-nav-active">Top Regions</a>
-    <a mat-button routerLink="/background" routerLinkActive="tk-nav-active">
-      <mat-icon>menu_book</mat-icon> Background
-    </a>
-    <a mat-button routerLink="/developer" routerLinkActive="tk-nav-active">
-      <mat-icon>api</mat-icon> Developer / API
-    </a>
-    <a mat-button routerLink="/favorites" routerLinkActive="tk-nav-active">
-      <mat-icon>bookmark</mat-icon> Favorites
-    </a>
-    <button type="button" mat-button
-            title="Find the top-ranked castle nearest to your current location"
+    <button type="button"
+            [title]="nearMeState() === 'loading' ? 'Locating…' : 'Find the top-ranked castle nearest to you'"
             [disabled]="nearMeState() === 'loading'"
-            (click)="goToNearestCastle()">
+            (click)="goToNearestCastle()"
+            aria-label="Nearest top castle">
       <mat-icon>near_me</mat-icon>
-      {{ nearMeState() === 'loading' ? 'Locating…' : 'Nearest Top Castle' }}
     </button>
-  </nav>
-
-  <span class="tk-spacer"></span>
-
-  <button type="button" mat-icon-button (click)="triggerInstall()"
-          [title]="canInstall() ? 'Install Topcastles as an app' : 'How to install Topcastles'"
-          aria-label="Install app">
-    <mat-icon>get_app</mat-icon>
-  </button>
-
-  <button type="button" mat-icon-button (click)="theme.toggle()"
-          [title]="theme.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
-          aria-label="Toggle dark mode">
-    <mat-icon>{{ theme.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
-  </button>
-
-  <button type="button" mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle navigation">
-    <mat-icon>menu</mat-icon>
-  </button>
-</mat-toolbar>
+    <button type="button"
+            [title]="theme.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+            (click)="theme.toggle()"
+            aria-label="Toggle dark mode">
+      <mat-icon>{{ theme.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+    <button type="button"
+            [title]="canInstall() ? 'Install Topcastles as an app' : 'How to install Topcastles'"
+            (click)="triggerInstall()"
+            aria-label="Install app">
+      <mat-icon>get_app</mat-icon>
+    </button>
+    <button type="button" class="site-nav__hamburger" (click)="sidenav.toggle()" aria-label="Toggle navigation">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+</nav>
 
 <mat-sidenav-container class="app-container">
   <mat-sidenav #sidenav mode="over">

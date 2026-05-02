@@ -40,27 +40,27 @@ describe('AppComponent', () => {
 
 
 
-  it('should render primary nav links in the toolbar', () => {
+  it('should render primary nav links in the site-nav', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const nav = fixture.nativeElement.querySelector('.tk-toolbar-nav');
+    const nav = fixture.nativeElement.querySelector('.site-nav');
     expect(nav).toBeTruthy();
     expect(nav.textContent).toContain('Top 1000');
     expect(nav.textContent).toContain('Background');
   });
 
-  it('should have a navigation toggle button in the toolbar', () => {
+  it('should have a navigation toggle button in the site-nav', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const btn = fixture.nativeElement.querySelector('mat-toolbar button[aria-label="Toggle navigation"]');
+    const btn = fixture.nativeElement.querySelector('button[aria-label="Toggle navigation"]');
     expect(btn).toBeTruthy();
   });
 
-  it('should render Nearest Top Castle in the toolbar nav', () => {
+  it('should render nearest castle button in the site-nav icon group', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const nav = fixture.nativeElement.querySelector('.tk-toolbar-nav');
-    expect(nav.textContent).toContain('Nearest Top Castle');
+    const btn = fixture.nativeElement.querySelector('.site-nav__icons button[aria-label="Nearest top castle"]');
+    expect(btn).toBeTruthy();
   });
 
   // ── goToNearestCastle ──────────────────────────────────────────────────────

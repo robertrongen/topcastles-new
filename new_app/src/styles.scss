@@ -11,6 +11,26 @@
 
 :root, [data-theme="light"] {
   --tk-orange:      #FF9900;
+
+  /* ── masthead / nav tokens — Option A (light masthead per §7) ── */
+  --mast-bg:        #F8F4EA;
+  --mast-rule:      #CFC3A4;
+  --mast-fg:        #16130D;
+  --mast-fg-2:      #6E6450;
+  --mast-fg-dim:    #8E8467;
+  --input-bg:       #FFFCF3;
+  --input-border:   #A89A77;
+  --input-btn-bg:   #EDE4CC;
+
+  /* nav band stays dark in both themes */
+  --nav-bg:         #2D3526;
+  --nav-bg-hover:   rgba(255,255,255,.05);
+  --nav-bg-active:  rgba(201,134,63,.12);
+  --nav-fg:         #D8D4C2;
+  --nav-fg-active:  #F2EAD3;
+  --nav-divider:    rgba(255,255,255,.06);
+  --accent-ochre:   #C9863F;
+  --accent-ochre-2: #C9B98F;
   --tk-body-bg:     #00005C;
   --tk-content-bg:  #ffffff;
   --tk-surface:     #ffffff;
@@ -61,6 +81,16 @@
 
 [data-theme="dark"] {
   --tk-orange:      #CC7722;
+
+  /* ── masthead / nav tokens — Option A (dark masthead per §2) ── */
+  --mast-bg:        #0B101C;
+  --mast-rule:      #1F2840;
+  --mast-fg:        #F2EAD3;
+  --mast-fg-2:      #9AA8BD;
+  --mast-fg-dim:    #5E6A82;
+  --input-bg:       #0E1320;
+  --input-border:   #3A4663;
+  --input-btn-bg:   #1A2235;
   --tk-body-bg:     #080816;
   --tk-content-bg:  #151527;
   --tk-surface:     #1b1b31;

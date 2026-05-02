@@ -6,7 +6,6 @@ interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
   readonly userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
 }
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,7 +23,7 @@ import { MastheadSearchComponent } from './components/masthead-search/masthead-s
   selector: 'app-root',
   imports: [
     RouterOutlet, RouterLink, RouterLinkActive,
-    MatToolbarModule, MatSidenavModule, MatListModule,
+    MatSidenavModule, MatListModule,
     MatIconModule, MatButtonModule, MatDividerModule,
     MastheadSearchComponent,
   ],
