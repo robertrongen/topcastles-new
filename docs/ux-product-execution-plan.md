@@ -69,7 +69,7 @@ The approved homepage UX model remains the **reference-atlas structure** defined
 - Section labels must use the "medieval atlas" register.
 - Methodology must be reachable from the footer.
 
-The **editorial overlay** (`/data/editorial/`) is the new architectural concept that makes Track A Phase A2–A4 possible without touching the pipeline. It separates editor-owned content (notes, quotes, picks, sleeper flags) from pipeline-generated castle data. See workstream 8 for the full model.
+The **editorial overlay** (`/data/editorial/`) is the new architectural concept that makes Track A Phase A2–A4 possible without touching the pipeline. It separates editor-owned content (notes, quotes, picks, sleeper flags) from pipeline-generated castle data. See workstream 8 and [docs/editorial-overlay.md](editorial-overlay.md) for the full schema and merge model.
 
 All work must preserve the current architecture guardrails: JSON only, no database, no runtime mutation of prerendered content, single-container Node runtime, Angular Signals rather than NgRx, and the existing build-time content/runtime state split.
 
@@ -248,14 +248,15 @@ Build admin capabilities in strict sequence: auth, shell, edit/add content, enri
 
 The editorial overlay is a set of editor-owned JSON files that provide the content backing for Track A Phase A2–A4 layouts. These files are separate from and never overwritten by the data pipeline.
 
-**File structure at `/data/editorial/`:**
+**File structure at `/data/editorial/`** (full schema in [docs/editorial-overlay.md](editorial-overlay.md)):
 
-- `countries.json` — keyed by country code. Fields: `editorialNote` (short prose), `definingTradition` (short label), `topEntry` (castle code), `editorSleeper` (boolean).
-- `regions.json` — keyed by region slug. Fields: `description` (one sentence), `editorSleeper` (boolean).
-- `castle-quotes.json` — keyed by castle code. Fields: `quote` (prose), `author`, `role`, `date`; optional `featuredUntil` (ISO date string for manual featured-entry override).
+- `countries.json` — keyed by country code. Fields: `editorialNote`, `definingTradition`, `topEntry` (castle code), `editorSleeper` (boolean).
+- `regions.json` — keyed by region slug. Fields: `description`, `editorSleeper` (boolean).
+- `castle-quotes.json` — keyed by castle code. Fields: `quote`, `author`, `role`, `date`; optional `featuredUntil` (single ISO date for manual featured-entry override).
 - `period-picks.json` — keyed by era identifier. Fields: `pick` (castle name in display form), `castleCode`.
+- `browse-bands.json` — keyed by rank band label. Fields: `note` (one-line editorial note for the Top 1000 header band).
 
-**Merge strategy:** app reads editorial overlay at build time (Angular build step) and merges into computed signals or template bindings. No pipeline involvement. If an overlay file is missing or a key is absent, the UI degrades gracefully (omits the editorial column or quote).
+**Merge model:** Node serves overlay files at `GET /api/editorial/:file`; Angular reads them at runtime after hydration. Prerendered pages do not include overlay data — editorial content is supplementary and loads client-side. If an overlay file is missing or a key is absent, the UI degrades gracefully.
 
 **Admin editor (§15.8):** form-based UI in the protected `/admin` route. One section per overlay file. Writes via `PUT /api/admin/editorial/:file` through `json-store.js`. No rebuild required for editorial-only changes — but prerendered pages will not reflect them until the next build.
 

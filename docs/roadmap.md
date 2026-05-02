@@ -194,12 +194,14 @@ This roadmap is the execution layer for data pipeline work. [pipeline.md](pipeli
 - **Editorial Overlay (`/data/editorial/`)** [OPEN]
   - Editor-owned JSON files that sit alongside pipeline-generated data without touching it.
   - `castles_enriched.json` stays pipeline-owned; editorial voice stays editor-owned and never conflicts with enrichment scripts.
-  - File structure:
+  - File structure (see [docs/editorial-overlay.md](editorial-overlay.md) for full schema):
     - `countries.json` — editor's note, defining tradition, top entry, Editor's Sleeper flag per country code.
     - `regions.json` — editorial description, Editor's Sleeper flag per region.
-    - `castle-quotes.json` — editor's quote, author, role, date per castle code; optional featured-date override field.
+    - `castle-quotes.json` — editor's quote, author, role, date per castle code; optional `featuredUntil` override.
     - `period-picks.json` — editor's starred pick per era.
-  - App reads these at build time and merges with castle data. No pipeline involvement.
+    - `browse-bands.json` — one-line editorial note per rank band for the Top 1000 browse page.
+  - Served by Node at `GET /api/editorial/:file`; Angular reads at runtime. No build-time merge.
+  - Prerendered pages do not include overlay data — editorial content loads after hydration.
   - Admin editorial editor (§15.8) writes only to these files; enrichment scripts never touch them.
   - Mounted at `/data/editorial/` on the NAS volume alongside `/data/users.json`.
 
