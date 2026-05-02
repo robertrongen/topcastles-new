@@ -4,59 +4,120 @@
     <main class="home-main">
 
       @if (todaysCastleEnriched(); as castle) {
-        <section class="section todays-index">
-          <h2>From Today's Index</h2>
-          <div class="todays-index__body">
-            <a class="todays-index__image-link" [routerLink]="['/castles', castle.castle_code]">
-              <img
-                class="todays-index__image"
-                [src]="imageService.castlePhotoUrl(castle.castle_code)"
-                [alt]="castle.castle_name"
-                loading="eager"
-                (error)="onImageError($event, castle.wikidata_image ?? castle.wikipedia_thumbnail)"
-              />
-            </a>
-            <div class="todays-index__content">
-              <div class="todays-index__meta">
-                <span class="todays-index__rank">#{{ castle.position }}</span>
-                <span class="todays-index__separator">·</span>
-                <span>{{ castle.country | titlecase }}</span>
-                @if (castle.place) {
-                  <span class="todays-index__separator">·</span>
-                  <span>{{ castle.place }}</span>
-                }
-                @if (castle.era) {
-                  <span class="todays-index__separator">·</span>
-                  <span>{{ castle.era }}th c.</span>
-                }
-                @if (castle.castle_type) {
-                  <span class="todays-index__separator">·</span>
-                  <span>{{ castle.castle_type }}</span>
-                }
-                @if (castle.condition) {
-                  <span class="todays-index__separator">·</span>
-                  <span class="todays-index__condition">{{ castle.condition }}</span>
-                }
+        <section class="section dossier">
+
+          <header class="dossier__header">
+            <span class="dossier__section-label">From today's index</span>
+            <a class="dossier__archive-link" routerLink="/top1000">Archive ▸</a>
+          </header>
+
+          <div class="dossier__body">
+
+            <!-- Left: image -->
+            <figure class="dossier__figure">
+              <a class="dossier__image-link"
+                 [routerLink]="['/castles', castle.castle_code]"
+                 [attr.aria-label]="'View ' + castle.castle_name">
+                <img
+                  class="dossier__image"
+                  [src]="imageService.castlePhotoUrl(castle.castle_code)"
+                  [alt]="castle.castle_name"
+                  loading="eager"
+                  (error)="onImageError($event, castle.wikidata_image ?? castle.wikipedia_thumbnail)"
+                />
+              </a>
+              <div class="dossier__figure-bar">
+                <span class="dossier__plate">PLATE {{ todayPlate }} · {{ todayYear }}</span>
+                <figcaption class="dossier__caption">
+                  {{ castle.castle_name }}@if (castle.place) {, {{ castle.place }}}
+                </figcaption>
               </div>
-              <a class="todays-index__name" [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
+            </figure>
+
+            <!-- Right: dossier content -->
+            <article class="dossier__content">
+
+              <!-- Meta line -->
+              <p class="dossier__meta">
+                {{ todayDateLabel }} · Featured entry&nbsp;Nº&nbsp;<span
+                  [attr.aria-label]="'number ' + todayEntryNumber"
+                >{{ toRoman(todayEntryNumber) }}</span>
+              </p>
+
+              <!-- Title -->
+              <a class="dossier__title" [routerLink]="['/castles', castle.castle_code]">
+                {{ castle.castle_name }}<span class="dossier__title-dot" aria-hidden="true">.</span>
+              </a>
+
+              <!-- Location -->
+              <p class="dossier__location">
+                @if (castle.place || castle.region) {
+                  <em>{{ castle.place }}@if (castle.place && castle.region) {, }{{ castle.region }}</em> ·
+                }
+                {{ castle.country | titlecase }}
+              </p>
+
+              <!-- Intro text -->
               @if (castle.wikipedia_extract) {
-                <p class="todays-index__wikipedia">{{ castle.wikipedia_extract }}</p>
+                <p class="dossier__intro">{{ castle.wikipedia_extract }}</p>
               }
-              <div class="todays-index__scores">
-                @if (castle.score_total != null) {
-                  <span class="todays-index__score-item">
-                    <span class="todays-index__score-label">Editorial score</span>
-                    <span class="todays-index__score-value">{{ castle.score_total | number:'1.0-0' }}</span>
-                  </span>
-                }
-                @if (castle.score_visitors != null) {
-                  <span class="todays-index__score-item">
-                    <span class="todays-index__score-label">Visitor rating</span>
-                    <span class="todays-index__score-value">{{ castle.score_visitors | number:'1.1-1' }}</span>
-                  </span>
-                }
-              </div>
-            </div>
+
+              <!-- Fact card -->
+              <dl class="dossier__facts">
+                <div class="dossier__fact">
+                  <dt class="dossier__fact-label">Editorial</dt>
+                  <dd class="dossier__fact-value"
+                      [attr.aria-label]="castle.position != null ? 'Rank ' + castle.position + ' of 1000' : 'not ranked'">
+                    <span aria-hidden="true">
+                      @if (castle.position != null) {
+                        ★ {{ toRoman(castle.position) }}<span class="dossier__fact-denom"> /1000</span>
+                      } @else { — }
+                    </span>
+                  </dd>
+                  <dd class="dossier__fact-sub">scholarly rank</dd>
+                </div>
+                <div class="dossier__fact">
+                  <dt class="dossier__fact-label">Visitor</dt>
+                  <dd class="dossier__fact-value">
+                    @if (castle.score_visitors != null) {
+                      {{ castle.score_visitors | number:'1.2-2' }}<span class="dossier__fact-denom"> /5</span>
+                    } @else { — }
+                  </dd>
+                  <dd class="dossier__fact-sub">visitor rating</dd>
+                </div>
+                <div class="dossier__fact">
+                  <dt class="dossier__fact-label">Period</dt>
+                  <dd class="dossier__fact-value">{{ castle.era ? castle.era + 'th c.' : '—' }}</dd>
+                  <dd class="dossier__fact-sub">{{ castle.condition || '—' }}</dd>
+                </div>
+                <div class="dossier__fact">
+                  <dt class="dossier__fact-label">Type</dt>
+                  <dd class="dossier__fact-value">{{ castle.castle_type || '—' }}</dd>
+                  <dd class="dossier__fact-sub">{{ castle.castle_concept || '—' }}</dd>
+                </div>
+              </dl>
+
+              <!-- Editor's note -->
+              @if (castle.remarkable) {
+                <blockquote class="dossier__quote">
+                  <p class="dossier__quote-text">{{ castle.remarkable }}</p>
+                  <footer class="dossier__quote-footer">
+                    <cite class="dossier__quote-attribution">
+                      <span class="dossier__quote-name">The Editors</span>
+                      <span class="dossier__quote-role">Contributing editors</span>
+                    </cite>
+                  </footer>
+                </blockquote>
+              }
+
+              <!-- Actions -->
+              <nav class="dossier__actions" aria-label="Entry actions">
+                <a class="dossier__action-primary" [routerLink]="['/castles', castle.castle_code]">Read the full entry ▸</a>
+                <a class="dossier__action" routerLink="/favorites">★ Save</a>
+                <button class="dossier__action" type="button" (click)="refreshDeepSurprise()">↖ Surprise me</button>
+              </nav>
+
+            </article>
           </div>
         </section>
       }

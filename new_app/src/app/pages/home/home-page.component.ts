@@ -47,6 +47,24 @@ export class HomePageComponent implements OnInit {
 
   private readonly todayIndex = Math.floor(Date.now() / 86_400_000) % 100;
 
+  readonly todayEntryNumber = this.todayIndex + 1;
+  readonly todayPlate = String(this.todayIndex + 1).padStart(2, '0');
+  readonly todayYear = new Date().getFullYear();
+  readonly todayDateLabel = new Date()
+    .toLocaleDateString('en-GB', { day: 'numeric', month: 'long' })
+    .toUpperCase();
+
+  toRoman(n: number | null | undefined): string {
+    if (n == null || n < 1 || n > 3999) return '—';
+    const vals = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+    const syms = ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I'];
+    let result = '';
+    for (let i = 0; i < vals.length; i++) {
+      while (n >= vals[i]) { result += syms[i]; n -= vals[i]; }
+    }
+    return result;
+  }
+
   todaysCastle = computed(() => {
     const top100 = this.castleService.castles().slice(0, 100);
     return top100.length ? top100[this.todayIndex % top100.length] : null;
