@@ -26,29 +26,35 @@
   <a routerLink="/background" routerLinkActive="site-nav--active">Background</a>
   <a routerLink="/developer" routerLinkActive="site-nav--active">Developer · API</a>
   <div class="site-nav__icons">
-    <a routerLink="/favorites" routerLinkActive="site-nav--active" aria-label="Favorites">
+    <a routerLink="/favorites" routerLinkActive="site-nav--active" aria-label="Favorites" matTooltip="Favorites" matTooltipPosition="below">
       <mat-icon>bookmark</mat-icon>
     </a>
     <button type="button"
             [title]="nearMeState() === 'loading' ? 'Locating…' : 'Find the top-ranked castle nearest to you'"
             [disabled]="nearMeState() === 'loading'"
             (click)="goToNearestCastle()"
-            aria-label="Nearest top castle">
+            aria-label="Nearest top castle"
+            matTooltip="Nearest top castle"
+            matTooltipPosition="below">
       <mat-icon>near_me</mat-icon>
     </button>
     <button type="button"
             [title]="theme.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
             (click)="theme.toggle()"
-            aria-label="Toggle dark mode">
+            aria-label="Toggle dark mode"
+            matTooltip="Toggle dark mode"
+            matTooltipPosition="below">
       <mat-icon>{{ theme.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
     </button>
     <button type="button"
             [title]="canInstall() ? 'Install Topcastles as an app' : 'How to install Topcastles'"
             (click)="triggerInstall()"
-            aria-label="Install app">
+            aria-label="Install app"
+            matTooltip="Install app"
+            matTooltipPosition="below">
       <mat-icon>get_app</mat-icon>
     </button>
-    <button type="button" class="site-nav__hamburger" (click)="sidenav.toggle()" aria-label="Toggle navigation">
+    <button type="button" class="site-nav__hamburger" (click)="sidenav.toggle()" aria-label="Toggle navigation" matTooltip="Toggle navigation" matTooltipPosition="below">
       <mat-icon>menu</mat-icon>
     </button>
   </div>
