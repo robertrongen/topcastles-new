@@ -11,6 +11,11 @@ export interface RegionLabel {
   queryParams?: Record<string, string>;
 }
 
+export interface MapViewport {
+  center: [number, number];
+  zoom: number;
+}
+
 @Component({
   selector: 'app-castle-map',
   standalone: true,
@@ -25,6 +30,7 @@ export class CastleMapComponent implements OnDestroy {
   castles = input<Castle[]>([]);
   autoFit = input(true);
   regionLabels = input<RegionLabel[]>([]);
+  initialViewport = input<MapViewport | null>(null);
 
   mapContainer = viewChild<ElementRef<HTMLDivElement>>('castleMapContainer');
 
@@ -37,12 +43,13 @@ export class CastleMapComponent implements OnDestroy {
       const container = this.mapContainer();
       const castles = this.castles();
       const regionLabels = this.regionLabels();
+      const initialViewport = this.initialViewport();
       if (!container || !isPlatformBrowser(this.platformId)) return;
-      this.initOrUpdate(castles, regionLabels);
+      this.initOrUpdate(castles, regionLabels, initialViewport);
     });
   }
 
-  private async initOrUpdate(castles: Castle[], regionLabels: RegionLabel[]): Promise<void> {
+  private async initOrUpdate(castles: Castle[], regionLabels: RegionLabel[], initialViewport: MapViewport | null): Promise<void> {
     const container = this.mapContainer()?.nativeElement;
     if (!container) return;
 
@@ -88,7 +95,9 @@ export class CastleMapComponent implements OnDestroy {
       this.markersLayer.addLayer(marker);
     }
 
-    if (this.autoFit() && withCoords.length > 0) {
+    if (initialViewport) {
+      this.leafletMap.setView(initialViewport.center, initialViewport.zoom);
+    } else if (this.autoFit() && withCoords.length > 0) {
       const bounds = (L as any).latLngBounds(withCoords.map((c: Castle) => [c.latitude!, c.longitude!]));
       this.leafletMap.fitBounds(bounds, { padding: [40, 40], maxZoom: 10 });
       this.leafletMap.setZoom(this.leafletMap.getZoom() + 0.5);

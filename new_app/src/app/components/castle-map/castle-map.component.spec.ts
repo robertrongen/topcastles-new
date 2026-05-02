@@ -78,4 +78,10 @@ describe('CastleMapComponent', () => {
     fixture.detectChanges();
     expect(component.autoFit()).toBeFalse();
   });
+
+  it('should accept an initial viewport input', () => {
+    fixture.componentRef.setInput('initialViewport', { center: [43, 24], zoom: 4 });
+    fixture.detectChanges();
+    expect(component.initialViewport()).toEqual({ center: [43, 24], zoom: 4 });
+  });
 });

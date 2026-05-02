@@ -2,7 +2,7 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { DecimalPipe, TitleCasePipe } from '@angular/common';
 import { CastleService } from '../../services/castle.service';
-import { CastleMapComponent, RegionLabel } from '../../components/castle-map/castle-map.component';
+import { CastleMapComponent, MapViewport, RegionLabel } from '../../components/castle-map/castle-map.component';
 import { ImageService } from '../../services/image.service';
 
 @Component({
@@ -136,6 +136,7 @@ export class HomePageComponent implements OnInit {
     { name: 'Levant', lat: 34.5, lng: 36.0, path: ['/top1000'], queryParams: { countries: 'Syria,Lebanon,Israel,Jordan' } },
     { name: 'Japan', lat: 35.0, lng: 135.0, path: ['/top1000'], queryParams: { countries: 'Japan' } },
   ];
+  readonly atlasViewport: MapViewport = { center: [41.5, 24.0], zoom: 4 };
 
   onImageError(event: Event, fallbackSrc: string | null | undefined): void {
     const img = event.target as HTMLImageElement;

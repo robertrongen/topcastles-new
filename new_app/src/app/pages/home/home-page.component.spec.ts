@@ -180,6 +180,10 @@ describe('HomePageComponent', () => {
       expect(component.regionLabels.length).toBe(5);
     });
 
+    it('sets the atlas viewport to include Europe and the Levant by default', () => {
+      expect(component.atlasViewport).toEqual({ center: [41.5, 24], zoom: 4 });
+    });
+
     it('Rhine & Moselle label has regionCodes query param with rheinland-pfalz', () => {
       const label = component.regionLabels.find(r => r.name === 'Rhine & Moselle');
       expect(label).toBeTruthy();

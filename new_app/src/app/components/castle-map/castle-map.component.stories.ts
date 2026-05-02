@@ -32,6 +32,21 @@ export const Default: Story = {
   }),
 };
 
+export const FixedViewport: Story = {
+  args: {
+    castles: generateCastles(12),
+    initialViewport: { center: [41.5, 24], zoom: 4 },
+  },
+  render: args => ({
+    props: args,
+    template: `
+      <div style="height: 480px;">
+        <app-castle-map [castles]="castles" [initialViewport]="initialViewport"></app-castle-map>
+      </div>
+    `,
+  }),
+};
+
 export const DarkTheme: Story = {
   args: {
     castles: generateCastles(12),

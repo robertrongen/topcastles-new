@@ -127,7 +127,7 @@
         <h2>Distribution</h2>
         <p class="map-section__caption">All 1,000 castles — click any marker to open the entry.</p>
         <div class="map-section__map">
-          <app-castle-map [castles]="allCastles()" [autoFit]="true" [regionLabels]="regionLabels" />
+          <app-castle-map [castles]="allCastles()" [autoFit]="true" [regionLabels]="regionLabels" [initialViewport]="atlasViewport" />
         </div>
         <div class="map-section__plate">
           <span class="map-section__plate-label">Plate I.</span>
