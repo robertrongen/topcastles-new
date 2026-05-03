@@ -10,6 +10,14 @@ export interface CastleQuote {
   featuredUntil?: string;
 }
 
+export interface CountryEditorial {
+  editorialRank?: number;
+  editorialNote?: string;
+  definingTradition?: string;
+  topEntry?: string;
+  editorSleeper?: boolean;
+}
+
 @Injectable({ providedIn: 'root' })
 export class EditorialService {
   private http = inject(HttpClient);
@@ -18,12 +26,21 @@ export class EditorialService {
   private _castleQuotes = signal<Record<string, CastleQuote>>({});
   readonly castleQuotes = this._castleQuotes.asReadonly();
 
+  private _countries = signal<Record<string, CountryEditorial>>({});
+  readonly countries = this._countries.asReadonly();
+
   constructor() {
     // Editorial overlay is runtime-only — skip during SSR/prerender.
     if (isPlatformBrowser(this.platformId)) {
       this.http.get<Record<string, CastleQuote>>('/api/editorial/castle-quotes')
         .subscribe({
           next: data => this._castleQuotes.set(data ?? {}),
+          error: () => {},
+        });
+
+      this.http.get<Record<string, CountryEditorial>>('/api/editorial/countries')
+        .subscribe({
+          next: data => this._countries.set(data ?? {}),
           error: () => {},
         });
     }

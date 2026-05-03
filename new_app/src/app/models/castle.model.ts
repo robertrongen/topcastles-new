@@ -44,6 +44,20 @@ export interface CountrySummary {
   totalScore: number;
 }
 
+export interface CountryGazetteerRow {
+  country: string;
+  castleCount: number;
+  totalScore: number;
+  meanScore: number;
+  visitorRank: number;
+  editorialRank: number | null;
+  disagreement: number | null;
+  editorialNote?: string;
+  definingTradition?: string;
+  topEntry?: string;
+  editorSleeper: boolean;
+}
+
 export interface RegionSummary {
   region: string;
   country: string;
