@@ -4,7 +4,12 @@
   padding: 24px 16px;
 
   h1 {
-    margin-bottom: 16px;
+    font: 600 32px/1.15 var(--tk-font-serif);
+    letter-spacing: -.012em;
+    border-bottom: 2px solid var(--accent-ochre);
+    padding: 0 0 6px;
+    margin: 0 0 var(--tk-space-3);
+    color: var(--tk-text);
   }
 
   .tab-content {

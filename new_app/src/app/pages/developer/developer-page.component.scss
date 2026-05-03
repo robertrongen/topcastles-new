@@ -16,6 +16,15 @@
   --mat-sys-primary: var(--tk-link);
 }
 
+h1 {
+  font: 600 32px/1.15 var(--tk-font-serif);
+  letter-spacing: -.012em;
+  border-bottom: 2px solid var(--accent-ochre);
+  padding: 0 0 6px;
+  margin: 0 0 var(--tk-space-3);
+  color: var(--tk-text);
+}
+
 .page-intro {
   color: var(--tk-text-muted);
   font-size: 15px;

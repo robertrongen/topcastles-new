@@ -1,0 +1,103 @@
+<div class="login-wrap">
+  <!-- Left pane -->
+  <div class="login-left">
+    <span class="login-left__eyebrow">PLATE 00 · EDITORIAL ANNEX</span>
+
+    <div class="login-left__art" aria-hidden="true">
+      <svg viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="60" y="80" width="80" height="140"/>
+        <polyline points="60,80 60,60 75,60 75,70 85,70 85,60 100,60 100,70 115,70 115,60 125,60 125,70 140,70 140,60 140,80"/>
+        <rect x="92" y="130" width="16" height="28"/>
+        <path d="M92,130 Q100,118 108,130"/>
+        <rect x="85" y="185" width="30" height="35"/>
+        <path d="M85,185 Q100,170 115,185"/>
+        <line x1="100" y1="240" x2="100" y2="292"/>
+        <line x1="72" y1="266" x2="128" y2="266"/>
+        <line x1="80" y1="249" x2="120" y2="283"/>
+        <line x1="120" y1="249" x2="80" y2="283"/>
+        <text x="100" y="237" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="currentColor" stroke="none" style="fill:var(--text-6);opacity:0.35">N</text>
+      </svg>
+    </div>
+
+    <div class="login-left__plate">
+      <span class="login-left__vol">VOL. XXII · 2026</span>
+      <h1 class="login-left__heading">The editorial annex.</h1>
+      <p class="login-left__sub">A quiet room for curatorial work. The atlas is assembled here, out of public view.</p>
+    </div>
+
+    <p class="login-left__note">Overlay files are editor-owned. The data pipeline reads them but never writes them.</p>
+  </div>
+
+  <!-- Right pane -->
+  <div class="login-right">
+    <div class="login-right__top">
+      <span class="login-right__wordmark">Topcastles.</span>
+      <a class="login-right__atlas" routerLink="/">Public atlas →</a>
+    </div>
+
+    <div class="login-right__form-block">
+      <div class="login-right__heading-wrap">
+        <h2 class="login-right__heading"><span class="login-right__heading-text">Editor's sign in</span></h2>
+      </div>
+      <p class="login-right__lede">Sign in to the annex to review and annotate the editorial overlay.</p>
+
+      <form class="login-form" (ngSubmit)="submit()" #loginForm="ngForm" novalidate>
+        <div class="login-form__field">
+          <label class="login-form__label" for="admin-handle">Editor handle</label>
+          <input
+            id="admin-handle"
+            type="text"
+            class="login-form__input"
+            autocomplete="username"
+            [(ngModel)]="handle"
+            name="handle"
+            placeholder="e.g. R. Rongen"
+          />
+        </div>
+
+        <div class="login-form__field">
+          <label class="login-form__label" for="admin-passphrase">Passphrase</label>
+          <input
+            id="admin-passphrase"
+            type="password"
+            class="login-form__input"
+            autocomplete="current-password"
+            [(ngModel)]="passphrase"
+            name="passphrase"
+            (input)="onPassphraseInput()"
+            required
+          />
+          @if (error()) {
+            <p class="login-form__error" role="alert">{{ error() }}</p>
+          }
+        </div>
+
+        <div class="login-form__trust-row">
+          <label class="login-form__trust-label">
+            <span class="login-form__checkbox-wrap">
+              <input type="checkbox" class="login-form__checkbox-native" [(ngModel)]="trust" name="trust" />
+              <span class="login-form__checkbox" [class.login-form__checkbox--checked]="trust" aria-hidden="true">
+                @if (trust) { <span class="login-form__tick">✓</span> }
+              </span>
+            </span>
+            Trust this device for 7 days
+          </label>
+          <a class="login-form__reset" href="#">Reset →</a>
+        </div>
+
+        <button
+          type="submit"
+          class="login-form__submit"
+          [disabled]="loading()"
+        >{{ loading() ? 'Opening…' : 'Open the annex' }}</button>
+      </form>
+
+      <div class="login-right__last-session">
+        <div class="login-right__last-session-divider"></div>
+        <span class="login-right__last-session-label">Last session</span>: <span class="login-right__last-session-val">—</span>
+      </div>
+
+      <p class="login-right__foot">POST /api/admin/health</p>
+    </div>
+  </div>
+</div>

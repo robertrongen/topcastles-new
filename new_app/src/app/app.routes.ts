@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { adminAuthGuard } from './pages/admin/guards/admin-auth.guard';
+import { adminLoginGuard } from './pages/admin/guards/admin-login.guard';
 
 export const routes: Routes = [
   { path: '', loadComponent: () => import('./pages/home/home-page.component').then(m => m.HomePageComponent) },
@@ -18,5 +20,33 @@ export const routes: Routes = [
   { path: 'favorites', loadComponent: () => import('./pages/favorites/favorites-page.component').then(m => m.FavoritesPageComponent) },
   { path: 'favorites/:id', loadComponent: () => import('./pages/favorites-detail/favorites-detail-page.component').then(m => m.FavoritesDetailPageComponent) },
   { path: 'install', loadComponent: () => import('./pages/install/install-page.component').then(m => m.InstallPageComponent) },
+
+  // Admin — login is public; all other admin routes protected by adminAuthGuard
+  {
+    path: 'admin/login',
+    loadComponent: () => import('./pages/admin/login/admin-login.component').then(m => m.AdminLoginComponent),
+    canActivate: [adminLoginGuard],
+    data: { prerender: false },
+  },
+  {
+    path: 'admin',
+    loadComponent: () => import('./pages/admin/shell/admin-shell.component').then(m => m.AdminShellComponent),
+    canActivate: [adminAuthGuard],
+    data: { prerender: false },
+    children: [
+      { path: '', redirectTo: 'editorial', pathMatch: 'full' },
+      {
+        path: 'editorial',
+        loadComponent: () => import('./pages/admin/editorial-overview/admin-editorial-overview.component').then(m => m.AdminEditorialOverviewComponent),
+        data: { prerender: false },
+      },
+      {
+        path: 'editorial/:file',
+        loadComponent: () => import('./pages/admin/editorial-placeholder/admin-editorial-placeholder.component').then(m => m.AdminEditorialPlaceholderComponent),
+        data: { prerender: false },
+      },
+    ],
+  },
+
   { path: '**', redirectTo: '' },
 ];

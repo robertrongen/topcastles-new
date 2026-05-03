@@ -1,0 +1,182 @@
+<!-- Crumbs -->
+<nav class="crumbs" aria-label="Breadcrumb">
+  <span class="crumbs__seg">Editorial annex</span>
+  <span class="crumbs__chev">›</span>
+  <span class="crumbs__seg crumbs__seg--current">Overview</span>
+</nav>
+
+<!-- Page head -->
+<div class="page-head">
+  <div class="page-head__left">
+    <h1 class="page-head__title">Editorial overlay</h1>
+  </div>
+  <p class="page-head__meta">Five JSON files. Served at runtime. Not part of the prerendered build.</p>
+</div>
+
+<!-- Lede -->
+<p class="lede">
+  The editorial overlay supplements the atlas without entering the data pipeline.
+  Each file — <code class="mono-chip">countries</code>, <code class="mono-chip">regions</code>,
+  <code class="mono-chip">castle-quotes</code>, <code class="mono-chip">period-picks</code>,
+  <code class="mono-chip">browse-bands</code> — is read at runtime via the public
+  <code class="mono-chip">/api/editorial/:file</code> endpoint and merged into the page after hydration.
+</p>
+
+<!-- Prerender notice -->
+<aside class="prerender-notice" role="note" aria-label="Prerender publishing notice">
+  <div class="prerender-notice__left">
+    <span class="prerender-notice__eyebrow">PRERENDER NOTICE</span>
+    <p class="prerender-notice__body">
+      Changes to overlay files take effect immediately via the runtime API but do not appear in
+      prerendered pages until the next full build and deployment. Prerendered pages will continue
+      to show the previous state until then.
+    </p>
+  </div>
+  <div class="prerender-notice__right">
+    <span class="prerender-notice__last-label">LAST BUILD</span>
+    <span class="prerender-notice__date">{{ buildDate }}</span>
+  </div>
+</aside>
+
+<!-- Ledger strip -->
+<div class="ledger" aria-label="Overview statistics">
+  <div class="ledger__cell">
+    <span class="ledger__label">FILES</span>
+    <div class="ledger__value-row">
+      <span class="ledger__value">{{ loading() ? '—' : filesPresent() }}</span>
+      <span class="ledger__unit">/ 5 present</span>
+    </div>
+    <span class="ledger__sub">
+      @if (!loading() && filesPresent() === 5) { all five overlays initialised }
+      @else if (!loading()) { {{ 5 - filesPresent() }} file{{ (5 - filesPresent()) !== 1 ? 's' : '' }} missing }
+      @else { loading… }
+    </span>
+  </div>
+
+  <div class="ledger__cell">
+    <span class="ledger__label">KEYS RECORDED</span>
+    <div class="ledger__value-row">
+      <span class="ledger__value">{{ loading() ? '—' : totalKeys() }}</span>
+      <span class="ledger__unit">total</span>
+    </div>
+    <span class="ledger__sub">across countries, regions, quotes, picks, bands</span>
+  </div>
+
+  <div class="ledger__cell">
+    <span class="ledger__label">COVERAGE</span>
+    <div class="ledger__value-row">
+      <span class="ledger__value">{{ loading() ? '—' : coverage() }}</span>
+      <span class="ledger__unit">%</span>
+    </div>
+    <span class="ledger__sub">
+      @if (!loading() && coverage() === 0) { no editorial notes yet }
+      @else { of catalogued countries with editorial notes }
+    </span>
+  </div>
+
+  <div class="ledger__cell ledger__cell--last">
+    <span class="ledger__label">BACKUPS ON DISK</span>
+    <div class="ledger__value-row">
+      <span class="ledger__value">{{ loading() ? '—' : backupsCount() }}</span>
+    </div>
+    <span class="ledger__sub">
+      @if (!loading() && backupsCount() === 0) { no backups yet — first save will create one }
+      @else if (!loading() && oldestBackup()) { oldest {{ oldestBackup() }} · prune manually }
+      @else { — }
+    </span>
+  </div>
+</div>
+
+<!-- Files table -->
+<section class="sec">
+  <h2 class="sec-head">Files</h2>
+  <p class="sec-sub">Five editorial overlay files, served via the runtime API.</p>
+
+  <table class="files-table" aria-label="Editorial overlay files">
+    <thead>
+      <tr>
+        <th class="files-table__th files-table__th--num" scope="col">№</th>
+        <th class="files-table__th" scope="col">File</th>
+        <th class="files-table__th" scope="col">Editor's purpose</th>
+        <th class="files-table__th files-table__th--keys" scope="col">Keys</th>
+        <th class="files-table__th files-table__th--edited" scope="col">Last edited</th>
+        <th class="files-table__th files-table__th--open" scope="col"><span class="sr-only">Open</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of files(); track row.slug) {
+        <tr class="files-table__row" (click)="null" [attr.data-slug]="row.slug">
+          <td class="files-table__td files-table__td--num">{{ row.num }}</td>
+          <td class="files-table__td files-table__td--file">
+            <a class="files-table__name"
+               [routerLink]="['/admin/editorial', row.slug]">{{ row.name }}</a>
+            @if (row.keysCount === 0 && !row.error && !loading()) {
+              <span class="files-table__empty-badge">EMPTY</span>
+            }
+            <span class="files-table__path">{{ row.path }}</span>
+          </td>
+          <td class="files-table__td files-table__td--purpose">
+            <span [innerHTML]="row.purpose"></span>
+          </td>
+          <td class="files-table__td files-table__td--keys">
+            @if (row.error) {
+              <span class="files-table__fetch-error">FETCH ERROR</span>
+            } @else if (loading()) {
+              <span class="files-table__keys-val files-table__keys-val--muted">—</span>
+            } @else {
+              <span class="files-table__keys-val" [class.files-table__keys-val--muted]="row.keysCount === 0">{{ row.keysCount }}</span>
+              @if (row.denominator) {
+                <span class="files-table__keys-label">OF {{ row.denominator }}</span>
+              } @else {
+                <span class="files-table__keys-label">ENTRIES</span>
+              }
+            }
+          </td>
+          <td class="files-table__td files-table__td--edited">
+            @if (row.lastEdited) {
+              <span class="files-table__edited-date">{{ row.lastEdited }}</span>
+              <span class="files-table__edited-author">—</span>
+            } @else {
+              <span class="files-table__edited-none">—</span>
+            }
+          </td>
+          <td class="files-table__td files-table__td--open">
+            <a class="files-table__open" [routerLink]="['/admin/editorial', row.slug]">Open →</a>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</section>
+
+<!-- Recent edits -->
+<section class="sec">
+  <h2 class="sec-head">Recent edits</h2>
+  <p class="sec-sub">Last six entries from the per-file backup log.</p>
+
+  @if (!loading() && recentEdits().length === 0) {
+    <p class="recent-empty">No editorial edits yet. Open a file to begin.</p>
+  } @else {
+    <div class="recent-list" role="list" aria-label="Recent editorial edits">
+      @for (edit of recentEdits(); track edit.filename) {
+        <div class="recent-row" role="listitem">
+          <span class="recent-row__when">{{ fmtDate(edit.timestamp) }}</span>
+          <div class="recent-row__what">
+            <span class="recent-row__file-chip">{{ fileChip(edit.file) }}</span>
+            <span class="recent-row__verb">wrote backup of</span>
+          </div>
+          <span class="recent-row__who">—</span>
+          <div class="recent-row__action">
+            <a class="recent-row__open" href="#">Open backup →</a>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</section>
+
+<!-- Footer -->
+<footer class="overview-footer">
+  <span class="overview-footer__left">Editorial annex — unbound copy. Topcastles vol. XXII · 2026.</span>
+  <span class="overview-footer__right">/api/editorial</span>
+</footer>
