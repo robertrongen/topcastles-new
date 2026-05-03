@@ -96,8 +96,18 @@
                 </div>
               </dl>
 
-              <!-- Editor's note -->
-              @if (castle.remarkable || castle.description) {
+              <!-- Editor's note: editorial overlay quote takes priority; castle field is fallback -->
+              @if (todayCastleQuote(); as q) {
+                <blockquote class="dossier__quote dossier__quote--editorial">
+                  <p class="dossier__quote-text">{{ q.quote }}</p>
+                  <footer class="dossier__quote-footer">
+                    <cite class="dossier__quote-attribution">
+                      <span class="dossier__quote-name">{{ q.author }}</span>
+                      <span class="dossier__quote-role">{{ q.role }}</span>
+                    </cite>
+                  </footer>
+                </blockquote>
+              } @else if (castle.remarkable || castle.description) {
                 <blockquote class="dossier__quote">
                   <p class="dossier__quote-text">{{ castle.remarkable || castle.description }}</p>
                   <footer class="dossier__quote-footer">

@@ -2,6 +2,7 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { DecimalPipe, TitleCasePipe } from '@angular/common';
 import { CastleService } from '../../services/castle.service';
+import { EditorialService } from '../../services/editorial.service';
 import { CastleMapComponent, MapViewport, RegionLabel } from '../../components/castle-map/castle-map.component';
 import { ImageService } from '../../services/image.service';
 
@@ -14,6 +15,7 @@ import { ImageService } from '../../services/image.service';
 })
 export class HomePageComponent implements OnInit {
   private castleService = inject(CastleService);
+  private editorialService = inject(EditorialService);
   private router = inject(Router);
   imageService = inject(ImageService);
 
@@ -70,8 +72,35 @@ export class HomePageComponent implements OnInit {
     return top100.length ? top100[this.todayIndex % top100.length] : null;
   });
 
+  // If a castle-quotes entry has an active featuredUntil (>= today), it overrides
+  // the deterministic daily pick. When multiple entries qualify, the latest wins.
+  featuredCastle = computed(() => {
+    const quotes = this.editorialService.castleQuotes();
+    const today = new Date().toISOString().slice(0, 10);
+    let best: { code: string; until: string } | null = null;
+    for (const [code, q] of Object.entries(quotes)) {
+      if (q.featuredUntil && q.featuredUntil >= today) {
+        if (!best || q.featuredUntil > best.until) {
+          best = { code, until: q.featuredUntil };
+        }
+      }
+    }
+    if (best) {
+      const found = this.castleService.castles().find(c => c.castle_code === best!.code);
+      if (found) return found;
+    }
+    return this.todaysCastle();
+  });
+
+  // Quote for the featured castle (null when no entry exists in the overlay).
+  todayCastleQuote = computed(() => {
+    const castle = this.featuredCastle();
+    if (!castle) return null;
+    return this.editorialService.castleQuotes()[castle.castle_code] ?? null;
+  });
+
   todaysCastleEnriched = computed(() => {
-    const castle = this.todaysCastle();
+    const castle = this.featuredCastle();
     if (!castle) return null;
     return { ...castle, ...this.castleService.getEnrichedCastle(castle.castle_code) };
   });
