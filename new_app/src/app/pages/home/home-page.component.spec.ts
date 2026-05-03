@@ -262,6 +262,23 @@ describe('HomePageComponent', () => {
     it('weekLabel should follow W<week> <year> format', () => {
       expect(component.weekLabel).toMatch(/^W\d{1,2} \d{4}$/);
     });
+
+    it('should fall back from sidebar thumbnail to full castle photo', () => {
+      const pool = makePool(1000);
+      castleService.castles.set(pool);
+      fixture.detectChanges();
+
+      const castle = component.castleOfTheWeek()!;
+      const img = fixture.nativeElement.querySelector('.sidebar-castle__image') as HTMLImageElement;
+
+      expect(img.getAttribute('src')).toBe(`/castle-images/small/${castle.castle_code}_small.jpg`);
+
+      img.dispatchEvent(new Event('error'));
+      fixture.detectChanges();
+
+      const fallbackImg = fixture.nativeElement.querySelector('.sidebar-castle__image') as HTMLImageElement;
+      expect(fallbackImg.getAttribute('src')).toBe(`/castle-images/${castle.castle_code}.jpg`);
+    });
   });
 
   it('should cycle back to position 0 after 100 days', () => {

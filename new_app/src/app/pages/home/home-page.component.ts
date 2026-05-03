@@ -39,6 +39,15 @@ export class HomePageComponent implements OnInit {
     if (!pool.length) return null;
     return pool[this.weeklyIndex % pool.length];
   });
+  cotwFailedThumbnail = signal(new Set<string>());
+  cotwFailedPhoto = signal(new Set<string>());
+  cotwFailedWiki = signal(new Set<string>());
+
+  castleOfTheWeekEnriched = computed(() => {
+    const castle = this.castleOfTheWeek();
+    if (!castle) return null;
+    return { ...castle, ...this.castleService.getEnrichedCastle(castle.castle_code) };
+  });
 
   private surpriseIndex = signal(Math.floor(Math.random() * 900));
 
@@ -173,6 +182,18 @@ export class HomePageComponent implements OnInit {
       img.src = fallbackSrc;
     }
     img.onerror = null;
+  }
+
+  onCotwThumbnailError(code: string): void {
+    this.cotwFailedThumbnail.update(s => new Set(s).add(code));
+  }
+
+  onCotwPhotoError(code: string): void {
+    this.cotwFailedPhoto.update(s => new Set(s).add(code));
+  }
+
+  onCotwWikiError(code: string): void {
+    this.cotwFailedWiki.update(s => new Set(s).add(code));
   }
 
   refreshDeepSurprise(): void {
