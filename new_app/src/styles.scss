@@ -60,7 +60,14 @@
   --tk-overlay-muted:#4f4a5c;
 
   --tk-font-sans:   "Inter", "Segoe UI", Roboto, Arial, sans-serif;
-  --tk-font-serif:  "Times New Roman", "Times", serif;
+  --tk-font-serif:  "Source Serif 4", "Times New Roman", "Times", serif;
+
+  /* ── semantic delta colors (gazetteer dual-rank; muted, not stock-ticker) ── */
+  --delta-up:   #4f7a55;   /* visitors rank higher than editors — sage green */
+  --delta-down: #8a4a3a;   /* editors rank higher than visitors — terracotta */
+
+  /* ── sleeper highlight — light mode uses heraldic red, not ochre ── */
+  --sleeper-row-bg: linear-gradient(90deg, rgba(168,51,30,.04), transparent 70%);
   --tk-font-size-xs: 0.75rem;
   --tk-font-size-sm: 0.875rem;
   --tk-font-size-md: 1rem;
@@ -118,6 +125,13 @@
   --tk-overlay-active:#34345f;
   --tk-overlay-text: #f2f2fa;
   --tk-overlay-muted:#c9c6dc;
+
+  /* ── semantic delta colors — dark mode (muted sage / terracotta) ── */
+  --delta-up:   #7BA77A;
+  --delta-down: #A87968;
+
+  /* ── sleeper highlight — dark mode uses ochre wash ── */
+  --sleeper-row-bg: linear-gradient(90deg, rgba(201,134,63,.05), transparent 70%);
 }
 
 html {
