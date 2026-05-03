@@ -36,14 +36,17 @@
   <a routerLink="/top-countries" routerLinkActive="site-nav--active">Top Countries</a>
   <a routerLink="/top-regions" routerLinkActive="site-nav--active">Top Regions</a>
   <a routerLink="/background" routerLinkActive="site-nav--active">Background</a>
+  <a routerLink="/favorites" routerLinkActive="site-nav--active" aria-label="Favorites" matTooltip="Favorites" matTooltipPosition="below">
+    <!-- <mat-icon>bookmark</mat-icon> -->Favorites
+  </a>
   <a routerLink="/developer" routerLinkActive="site-nav--active">Developer · API</a>
-  @if (adminAuth.isAuthenticated()) {
+@if (adminAuth.isAuthenticated()) {
     <a routerLink="/admin/editorial" routerLinkActive="site-nav--active">Editorial</a>
   }
   <div class="site-nav__icons">
-    <a routerLink="/favorites" routerLinkActive="site-nav--active" aria-label="Favorites" matTooltip="Favorites" matTooltipPosition="below">
+    <!-- <a routerLink="/favorites" routerLinkActive="site-nav--active" aria-label="Favorites" matTooltip="Favorites" matTooltipPosition="below">
       <mat-icon>bookmark</mat-icon>
-    </a>
+    </a> -->
     <button type="button"
             [title]="nearMeState() === 'loading' ? 'Locating…' : 'Find the top-ranked castle nearest to you'"
             [disabled]="nearMeState() === 'loading'"
@@ -98,13 +101,13 @@
         <mat-icon matListItemIcon>menu_book</mat-icon>
         <span matListItemTitle>Background</span>
       </a>
-      <a mat-list-item routerLink="/developer" routerLinkActive="active" (click)="sidenav.close()">
-        <mat-icon matListItemIcon>api</mat-icon>
-        <span matListItemTitle>Developer / API</span>
-      </a>
       <a mat-list-item routerLink="/favorites" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>bookmark</mat-icon>
         <span matListItemTitle>Favorites</span>
+      </a>
+      <a mat-list-item routerLink="/developer" routerLinkActive="active" (click)="sidenav.close()">
+        <mat-icon matListItemIcon>api</mat-icon>
+        <span matListItemTitle>Developer / API</span>
       </a>
       <mat-divider />
       <button mat-list-item
