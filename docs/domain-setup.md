@@ -71,3 +71,95 @@ Use Synology DDNS (`*.synology.me`) as the stable endpoint.
 If your DNS provider supports it:
 
 #### Root domain
+
+## SSL Certificate (Critical Step)
+
+A correct SSL setup requires **two things**:
+1. Creating a certificate
+2. Explicitly assigning it to the correct hostname/service
+
+---
+
+### Step 1 — Create Let's Encrypt certificate
+
+Go to:
+
+Control Panel → Security → Certificate → Add
+
+Select:
+
+- "Add a new certificate"
+- "Get a certificate from Let's Encrypt"
+
+Fill in:
+
+
+Domain name: topcastles.eu
+Subject Alternative Name: www.topcastles.eu
+
+
+---
+
+### Step 2 — Assign the certificate (THIS IS REQUIRED)
+
+After creation, Synology will **NOT automatically use this certificate** for your domain.
+
+You must explicitly assign it:
+
+Go to:
+
+Control Panel → Security → Certificate → Settings
+
+You will see a list of services / hostnames.
+
+Find or set:
+
+
+topcastles.eu → [Your new Let's Encrypt certificate]
+www.topcastles.eu
+ → [Your new Let's Encrypt certificate]
+
+
+If not present:
+
+- Ensure your reverse proxy rule exists first (see below)
+- Then return to Certificate Settings
+
+---
+
+### Step 3 — Verify correct certificate is served
+
+Test in browser:
+
+
+https://topcastles.eu
+
+
+Expected:
+
+- No warning
+- Certificate issued for: topcastles.eu
+- Issuer: Let's Encrypt (e.g. E8)
+
+---
+
+### Common Failure Mode (What you experienced)
+
+If you skip Step 2:
+
+- Synology serves default certificate:
+  hobunror.synology.me
+- Browser error:
+  ERR_CERT_COMMON_NAME_INVALID
+
+This is NOT a DNS issue — it is a certificate assignment issue.
+
+---
+
+### Summary
+
+- Certificate must exist for your domain
+- Certificate must be explicitly assigned to that domain
+- Reverse proxy hostname must match the certificate
+
+Without all three, HTTPS will fail
