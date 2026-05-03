@@ -163,3 +163,9 @@ This is NOT a DNS issue — it is a certificate assignment issue.
 - Reverse proxy hostname must match the certificate
 
 Without all three, HTTPS will fail
+
+# DNS Records
+
+https://www.strato.nl/apps
+- A-Record: topcastles.eu to 84.80.47.69 (public IP ds224plus, curl ifconfig.me)
+- CNAME-record: www to topcastles.hobunror.synology.me
