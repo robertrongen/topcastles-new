@@ -70,16 +70,21 @@ export class CastleMapComponent implements OnDestroy {
     this.markersLayer.clearLayers();
 
     const withCoords = castles.filter(c => c.latitude != null && c.longitude != null);
+    const styles = getComputedStyle(container);
+    const ochre = styles.getPropertyValue('--ochre').trim();
+    const deltaDown = styles.getPropertyValue('--delta-down').trim();
+    const textOnDark = styles.getPropertyValue('--text-1').trim();
+    const textMuted = styles.getPropertyValue('--text-4').trim();
 
     for (const castle of withCoords) {
       const score = castle.score_total ?? 0;
       const radius = score > 800 ? 8 : score > 400 ? 6 : 5;
-      const color  = score > 800 ? '#d62728' : score > 400 ? '#FF9900' : '#1f77b4';
+      const color  = score > 800 ? deltaDown : score > 400 ? ochre : textMuted;
 
       const marker = L.circleMarker([castle.latitude!, castle.longitude!], {
         radius,
         fillColor: color,
-        color: '#fff',
+        color: textOnDark,
         weight: 1,
         opacity: 1,
         fillOpacity: 0.85,

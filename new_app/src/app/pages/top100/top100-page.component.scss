@@ -44,9 +44,8 @@
 .control-panel {
   margin-bottom: var(--tk-space-5);
   padding: var(--tk-space-4);
-  background: var(--tk-surface-alt);
-  border: 1px solid var(--tk-divider);
-  border-radius: var(--tk-radius-md);
+  background: linear-gradient(180deg, var(--ink-card) 0%, var(--ink-bg) 100%);
+  border: 1px solid var(--ink-line-2);
 
   --mat-sys-on-surface: var(--tk-text);
   --mat-sys-on-surface-variant: var(--tk-text-muted);
@@ -104,7 +103,6 @@
     padding: var(--tk-space-1);
     background: var(--tk-surface);
     border: 1px solid var(--tk-border);
-    border-radius: var(--tk-radius-sm);
   }
 
   app-view-toggle {
@@ -114,15 +112,15 @@
   button[mat-icon-button] {
     width: 40px;
     height: 40px;
-    background: var(--tk-surface);
-    border: 1px solid var(--tk-border);
+    background: var(--ink-card);
+    border: 1px solid var(--ink-line-2);
     color: var(--tk-link);
   }
 
   button[mat-icon-button]:hover,
   button[mat-icon-button].active {
-    background: var(--tk-link-hover);
-    color: var(--tk-text);
+    background: var(--ink-card);
+    color: var(--text-1);
   }
 }
 
@@ -155,26 +153,22 @@
   min-height: 420px;
   overflow: hidden;
   padding: var(--tk-space-2);
-  background: var(--tk-surface-alt);
-  border: 1px solid var(--tk-divider);
-  border-radius: var(--tk-radius-md);
-  box-shadow: var(--tk-shadow);
+  background: var(--ink-bg-2);
+  border: 1px solid var(--ink-line-2);
 
   app-castle-map {
     display: block;
     height: 100%;
     --tk-map-min-height: 0;
     overflow: hidden;
-    border-radius: var(--tk-radius-sm);
   }
 }
 
 .type-description {
   margin: 0 0 var(--tk-space-4);
-  background: var(--tk-surface);
-  color: var(--tk-text);
-  border: 1px solid var(--tk-border);
-  border-radius: var(--tk-radius-md);
+  background: linear-gradient(180deg, var(--ink-card) 0%, var(--ink-bg) 100%);
+  color: var(--text-3);
+  border: 1px solid var(--ink-line-2);
 
   h3 {
     margin: 0 0 var(--tk-space-2);
@@ -191,7 +185,7 @@
   display: block;
   max-width: 100%;
   margin-top: var(--tk-space-3);
-  border-radius: var(--tk-radius-sm);
+  border: 1px solid var(--ink-line-2);
 }
 
 .loading-state {

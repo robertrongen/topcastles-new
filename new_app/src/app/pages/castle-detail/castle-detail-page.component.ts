@@ -201,6 +201,9 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
 
     const leafletModule = await import('leaflet');
     const L = (leafletModule as any).default ?? leafletModule;
+    const styles = getComputedStyle(container);
+    const ochre = styles.getPropertyValue('--ochre').trim();
+    const textOnDark = styles.getPropertyValue('--text-1').trim();
 
     if (!this.leafletMap) {
       this.leafletMap = L.map(container, { scrollWheelZoom: false }).setView([lat, lon], 10);
@@ -236,8 +239,8 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
       if (castle.latitude == null || castle.longitude == null) continue;
       L.circleMarker([castle.latitude, castle.longitude], {
         radius: 7,
-        fillColor: '#ff7800',
-        color: '#fff',
+        fillColor: ochre,
+        color: textOnDark,
         weight: 1.5,
         opacity: 1,
         fillOpacity: 0.75,

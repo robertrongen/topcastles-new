@@ -2,7 +2,7 @@
   max-width: 680px;
   margin: 0 auto;
   padding: 16px 0;
-  font-family: Verdana, Arial, sans-serif;
+  font-family: var(--tk-font-serif);
 
   h1 {
     font-size: 1.6rem;
@@ -19,9 +19,8 @@
 .install-section {
   margin-bottom: 28px;
   padding: 16px;
-  border: 1px solid var(--tk-divider);
-  border-radius: 6px;
-  background: var(--tk-surface);
+  border: 1px solid var(--ink-line-2);
+  background: linear-gradient(180deg, var(--ink-card) 0%, var(--ink-bg) 100%);
 
   h2 {
     display: flex;

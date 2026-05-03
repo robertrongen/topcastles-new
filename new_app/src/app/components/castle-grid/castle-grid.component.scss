@@ -1,5 +1,5 @@
 $card-width: 130px;
-$card-height: 220px;
+$card-height: 230px;
 
 .castle-grid {
   display: grid;
@@ -21,19 +21,18 @@ $card-height: 220px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    text-align: left;
     cursor: pointer;
-    background: var(--tk-surface);
-    color: var(--tk-text);
-    border: 1px solid var(--tk-border);
-    border-radius: var(--tk-radius-md);
-    padding: var(--tk-space-2);
+    background: linear-gradient(180deg, var(--ink-card) 0%, var(--ink-bg) 100%);
+    color: var(--text-3);
+    border: 1px solid var(--ink-line-2);
+    padding: var(--tk-space-4);
     overflow: hidden;
     position: relative;
-    transition: box-shadow 0.2s;
+    transition: background-color 0.12s;
 
     &:hover {
-      box-shadow: var(--tk-shadow);
+      background: var(--ink-card);
     }
   }
 
@@ -51,7 +50,6 @@ $card-height: 220px;
     width: 110px;
     height: 110px;
     object-fit: cover;
-    border-radius: var(--tk-radius-sm);
   }
 
   .thumb-icon {
@@ -62,8 +60,8 @@ $card-height: 220px;
   }
 
   .castle-rank {
-    color: var(--tk-text-subtle);
-    font-size: var(--tk-font-size-xs);
+    color: var(--text-5);
+    font: 400 11px/1.5 var(--tk-font-sans);
     white-space: nowrap;
     margin-bottom: var(--tk-space-1);
 
@@ -77,10 +75,8 @@ $card-height: 220px;
   }
 
   .castle-name {
-    color: var(--tk-text);
-    font-weight: 650;
-    font-size: var(--tk-font-size-sm);
-    line-height: var(--tk-line-height-tight);
+    color: var(--text-1);
+    font: 600 14px/1.2 var(--tk-font-serif);
     margin-bottom: var(--tk-space-1);
     overflow: hidden;
     display: -webkit-box;
@@ -96,7 +92,7 @@ $card-height: 220px;
     width: 24px;
     height: 24px;
     line-height: 24px;
-    color: var(--mat-sys-error, #b00020);
+    color: var(--delta-down);
 
     mat-icon {
       font-size: 16px;
@@ -106,8 +102,8 @@ $card-height: 220px;
   }
 
   .castle-country {
-    color: var(--tk-text-muted);
-    font-size: var(--tk-font-size-xs);
+    color: var(--text-4);
+    font: 400 11px/1.5 var(--tk-font-sans);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

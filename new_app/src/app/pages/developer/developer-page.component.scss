@@ -34,8 +34,7 @@
   p { line-height: 1.65; }
   code {
     background: var(--tk-surface-alt);
-    border-radius: var(--tk-radius-xs);
-    font-family: monospace;
+    font-family: ui-monospace, monospace;
     font-size: var(--tk-font-size-sm);
     padding: 1px var(--tk-space-1);
   }
@@ -52,14 +51,14 @@
 
 .access-card {
   cursor: pointer;
-  transition: box-shadow 0.2s;
+  transition: background-color 0.12s;
   background: var(--tk-surface);
   color: var(--tk-text);
   border: 1px solid var(--tk-border);
-  border-radius: var(--tk-radius-md);
-  box-shadow: none;
 
-  &:hover { box-shadow: 0 4px 16px rgba(0,0,0,.15); }
+  &:hover {
+    background: var(--ink-card);
+  }
 
   mat-card-title {
     color: var(--tk-text);
@@ -73,13 +72,13 @@
   mat-icon[mat-card-avatar] {
     font-size: 28px; width: 40px; height: 40px;
     display: flex; align-items: center; justify-content: center;
-    border-radius: 8px; color: #fff;
+    color: var(--ink-bg);
   }
 
-  .icon-rest   { background: #1565c0; }
-  .icon-mcp    { background: #6a1b9a; }
-  .icon-schema { background: #2e7d32; }
-  .icon-ai     { background: #e65100; }
+  .icon-rest   { background: var(--text-4); }
+  .icon-mcp    { background: var(--text-5); }
+  .icon-schema { background: var(--delta-up); }
+  .icon-ai     { background: var(--ochre); }
 }
 
 .info-table {
@@ -96,9 +95,8 @@
 
 .code-block {
   position: relative;
-  background: #1e1e2e;
+  background: var(--ink-bg-2);
   border: 1px solid var(--tk-border);
-  border-radius: var(--tk-radius-md);
   margin: var(--tk-space-2) 0 var(--tk-space-4);
   overflow: hidden;
 
@@ -111,11 +109,10 @@
   code {
     background: none;
     padding: 0;
-    color: #cdd6f4;
-    font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    color: var(--text-3);
+    font-family: ui-monospace, monospace;
     font-size: var(--tk-font-size-sm);
     line-height: 1.55;
-    border-radius: 0;
   }
 
   &.small pre { padding: var(--tk-space-3) 48px var(--tk-space-3) var(--tk-space-3); }
@@ -125,9 +122,9 @@
   position: absolute;
   top: 6px;
   right: 6px;
-  color: rgba(255,255,255,.5);
+  color: var(--text-5);
 
-  &:hover { color: #fff; }
+  &:hover { color: var(--ink-bg); }
 
   mat-icon { font-size: 18px; width: 18px; height: 18px; }
 }
@@ -143,7 +140,6 @@
 
 .endpoint {
   border: 1px solid var(--tk-border);
-  border-radius: var(--tk-radius-md);
   padding: var(--tk-space-4);
   background: var(--tk-surface);
 
@@ -162,7 +158,6 @@
   font-size: 0.75em;
   font-weight: 700;
   padding: 2px 8px;
-  border-radius: 4px;
   letter-spacing: 0.5px;
 
   &.get { background: var(--tk-surface-alt); color: var(--tk-link); }
@@ -170,11 +165,10 @@
 
 .endpoint-path {
   font-size: var(--tk-font-size-sm);
-  font-family: monospace;
+  font-family: ui-monospace, monospace;
   background: var(--tk-surface-alt);
   color: var(--tk-text);
   padding: 2px var(--tk-space-2);
-  border-radius: var(--tk-radius-xs);
   overflow-wrap: anywhere;
 }
 
@@ -187,7 +181,6 @@
   margin: 8px 0 0;
   background: var(--tk-surface-alt);
   padding: 12px;
-  border-radius: 4px;
   font-size: 0.82em;
   overflow-x: auto;
 }
@@ -208,7 +201,7 @@ details > summary {
   gap: 8px;
   margin: 12px 0 24px;
 
-  mat-chip mat-icon { font-size: 16px; width: 16px; height: 16px; color: #2e7d32; margin-right: 4px; }
+  mat-chip mat-icon { font-size: 16px; width: 16px; height: 16px; color: var(--delta-up); margin-right: 4px; }
 }
 
 .setup-steps {
@@ -226,23 +219,56 @@ details > summary {
 
 :host ::ng-deep {
   .developer-page {
+    .mat-mdc-tab-group {
+      --mat-tab-header-active-label-text-color: var(--text-1);
+      --mat-tab-header-inactive-label-text-color: var(--text-4);
+      --mat-tab-header-active-focus-label-text-color: var(--text-1);
+      --mat-tab-header-active-hover-label-text-color: var(--text-1);
+      --mat-tab-header-inactive-focus-label-text-color: var(--text-1);
+      --mat-tab-header-inactive-hover-label-text-color: var(--text-1);
+      --mdc-tab-indicator-active-indicator-color: var(--ochre);
+      --mat-tab-header-active-ripple-color: transparent;
+      --mat-tab-header-inactive-ripple-color: transparent;
+    }
+
     .mat-mdc-tab .mdc-tab__text-label {
-      color: var(--tk-text-muted);
+      color: var(--text-4);
+      font: 500 13px/1 var(--tk-font-sans);
     }
 
     .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
-      color: var(--tk-text);
+      color: var(--text-1);
     }
 
     .mat-mdc-tab-header {
-      border-bottom: 1px solid var(--tk-border);
+      border-bottom: 1px solid var(--ink-line);
+      background: transparent;
+    }
+
+    .mat-mdc-tab-label-container,
+    .mat-mdc-tab-list {
+      background: transparent;
+    }
+
+    .mat-mdc-tab {
+      flex-grow: 0;
+      min-width: 128px;
+      padding: 0 28px;
+    }
+
+    .mat-mdc-tab-body-wrapper {
+      background: transparent;
+    }
+
+    .mdc-tab-indicator__content--underline {
+      border-color: var(--ochre);
+      border-top-width: 2px;
     }
 
     .mat-expansion-panel {
       background: var(--tk-surface);
       color: var(--tk-text);
       border: 1px solid var(--tk-border);
-      box-shadow: none;
     }
 
     .mat-expansion-panel-header-title,
@@ -275,9 +301,8 @@ details > summary {
 
 .prompt {
   background: var(--tk-surface-alt);
-  border-left: 3px solid var(--tk-link);
+  border-left: 2px solid var(--ochre);
   padding: 10px 14px;
-  border-radius: 0 6px 6px 0;
   font-style: italic;
   color: var(--tk-text-muted);
 }

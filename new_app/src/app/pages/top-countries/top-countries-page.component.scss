@@ -72,7 +72,7 @@ h1.page-head {
     &.on {
       background: var(--accent-ochre);
       border-color: var(--accent-ochre);
-      color: #16130D;
+      color: var(--ink-bg);
       font-weight: 600;
     }
   }
@@ -256,7 +256,7 @@ table.gazetteer {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .1em;
-  color: #16130D;
+  color: var(--ink-bg);
   background: var(--accent-ochre);
   padding: 2px 6px;
   margin-bottom: 4px;
@@ -265,7 +265,7 @@ table.gazetteer {
 // ── Legend strip ──────────────────────────────────────────────────────────────
 
 .legend {
-  margin-top: 14px;
+  margin-top: 16px;
   padding-top: 12px;
   border-top: 1px solid var(--tk-divider);
   display: flex;
@@ -283,7 +283,7 @@ table.gazetteer {
   .dot  { color: var(--tk-border); }
 
   .sleeper-tag-inline {
-    color: #16130D;
+    color: var(--ink-bg);
     background: var(--accent-ochre);
     padding: 1px 5px;
     font-size: 9px;

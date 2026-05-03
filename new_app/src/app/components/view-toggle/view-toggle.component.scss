@@ -13,9 +13,8 @@
 
 mat-button-toggle-group {
   overflow: hidden;
-  background: var(--tk-surface);
-  border: 1px solid var(--tk-border);
-  border-radius: var(--tk-radius-sm);
+  background: var(--ink-card);
+  border: 1px solid var(--ink-line-2);
 }
 
 mat-button-toggle {

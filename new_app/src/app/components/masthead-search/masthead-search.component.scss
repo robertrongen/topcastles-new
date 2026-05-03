@@ -11,7 +11,7 @@
   border: 0;
   color: var(--mast-fg);
   padding: 0 12px;
-  font: 400 13.5px/1 "Inter", system-ui, sans-serif;
+  font: 400 13.5px/1 var(--tk-font-sans);
   outline: none;
   min-width: 0;
 
@@ -21,7 +21,8 @@
   }
 
   &:focus {
-    box-shadow: inset 0 0 0 1px var(--accent-ochre);
+    outline: 2px solid var(--ochre);
+    outline-offset: -2px;
   }
 }
 
@@ -30,7 +31,7 @@
   border-left: 1px solid var(--input-border);
   background: var(--input-btn-bg);
   color: var(--mast-fg);
-  font: 600 11px/1 "Inter", system-ui, sans-serif;
+  font: 600 11px/1 var(--tk-font-sans);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   padding: 0 16px;

@@ -55,7 +55,7 @@ export const DarkTheme: Story = {
     props: args,
     template: `
       <div data-theme="dark" style="min-height: 560px; padding: 24px; background: var(--tk-body-bg); color: var(--tk-text);">
-        <div style="height: 480px; padding: 8px; background: var(--tk-surface-alt); border: 1px solid var(--tk-divider); border-radius: var(--tk-radius-md);">
+        <div style="height: 480px; padding: 8px; background: var(--tk-surface-alt); border: 1px solid var(--tk-divider);">
           <app-castle-map [castles]="castles"></app-castle-map>
         </div>
       </div>
@@ -73,7 +73,7 @@ export const CompactPanel: Story = {
   render: args => ({
     props: args,
     template: `
-      <div style="height: 420px; padding: 8px; background: var(--tk-surface-alt); border: 1px solid var(--tk-divider); border-radius: var(--tk-radius-md);">
+      <div style="height: 420px; padding: 8px; background: var(--tk-surface-alt); border: 1px solid var(--tk-divider);">
         <app-castle-map style="--tk-map-min-height: 0;" [castles]="castles"></app-castle-map>
       </div>
     `,

@@ -38,13 +38,13 @@
   gap: 8px;
   margin-bottom: 12px;
   padding: 8px 12px;
-  background: rgba(0, 0, 0, 0.03);
-  border-radius: 6px;
+  background: var(--ink-card);
+  border: 1px solid var(--ink-line);
 }
 
 .clear-all-btn {
   font-size: 0.85em;
-  color: rgba(0, 0, 0, 0.55);
+  color: var(--text-4);
   margin-left: auto;
 }
 
@@ -55,7 +55,7 @@
 
 .result-count {
   margin-bottom: 8px;
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--text-4);
   font-size: 0.9em;
 }
 

@@ -1,21 +1,20 @@
 .table-container {
-  overflow-x: auto;
+  overflow-x: visible;
 }
 
 .virtual-table {
-  min-width: max-content;
-  color: var(--tk-text);
-  border: 1px solid var(--tk-border);
-  border-radius: var(--tk-radius-md);
-  overflow: hidden;
-  background: var(--tk-surface);
+  color: var(--text-3);
+  border: 1px solid var(--ink-line-2);
+  overflow: visible;
+  background: transparent;
+  font-family: var(--tk-font-sans);
 }
 
 // ── Header ────────────────────────────────────────────────────────────────────
 .header-row {
   display: grid;
-  background: var(--tk-th-bg);
-  border-bottom: 1px solid var(--tk-border);
+  background: transparent;
+  border-bottom: 1px solid var(--ink-line-2);
 }
 
 .header-cell {
@@ -23,19 +22,18 @@
   align-items: center;
   gap: var(--tk-space-1);
   padding: 0 var(--tk-space-2);
-  height: 56px;
-  font-size: var(--tk-font-size-xs);
-  font-weight: 650;
-  color: var(--tk-text-muted);
+  height: 40px;
+  font: 600 10px/1 var(--tk-font-sans);
+  color: var(--text-5);
   text-transform: uppercase;
-  letter-spacing: 0;
+  letter-spacing: .09em;
   white-space: nowrap;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
 
-  &:hover { background: var(--tk-row-hover); }
-  &.sorted { color: var(--tk-text); }
+  &:hover { background: var(--ink-card); }
+  &.sorted { color: var(--text-1); }
 
   .sort-icon {
     font-size: 16px;
@@ -53,21 +51,20 @@
 // ── Body rows ─────────────────────────────────────────────────────────────────
 .body-row {
   display: grid;
-  border-bottom: 1px solid var(--tk-divider);
+  border-bottom: 1px solid var(--ink-line);
   box-sizing: border-box;
 
-  &:nth-child(even) { background: var(--tk-row-even); }
-  &:hover { background: var(--tk-row-hover); }
+  &:hover { background: var(--ink-card); }
 }
 
 .table-cell {
-  padding: var(--tk-space-2);
+  padding: 10px;
   overflow: hidden;
   display: flex;
   align-items: center;
-  color: var(--tk-text);
-  font-size: var(--tk-font-size-sm);
-  line-height: var(--tk-line-height);
+  color: var(--text-3);
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 // ── Images ────────────────────────────────────────────────────────────────────
@@ -75,7 +72,6 @@
   width: 110px;
   height: 110px;
   object-fit: cover;
-  border-radius: var(--tk-radius-sm);
   vertical-align: middle;
 }
 
@@ -96,12 +92,14 @@
 
 // ── Links ─────────────────────────────────────────────────────────────────────
 a {
-  color: var(--tk-link);
+  color: var(--text-1);
+  font: 600 14.5px/1.3 var(--tk-font-serif);
   text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
-    background-color: var(--tk-link-hover);
+    color: var(--ochre);
+    text-decoration: none;
+    background-color: transparent;
   }
 }
 

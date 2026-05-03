@@ -20,7 +20,7 @@
 }
 
 .site-mast__mark {
-  font-family: "Source Serif 4", "Charter", Georgia, serif;
+  font-family: var(--tk-font-serif);
   font-weight: 600;
   font-size: 38px;
   letter-spacing: -0.015em;
@@ -42,7 +42,7 @@
 }
 
 .site-mast__tag {
-  font-family: "Source Serif 4", Georgia, serif;
+  font-family: var(--tk-font-serif);
   font-style: italic;
   color: var(--mast-fg-2);
   font-size: 13.5px;
@@ -70,7 +70,7 @@
     border: 0;
     color: var(--mast-fg);
     padding: 0 12px;
-    font: 400 13.5px/1 "Inter", system-ui, sans-serif;
+    font: 400 13.5px/1 var(--tk-font-sans);
     outline: none;
 
     &::placeholder {
@@ -84,7 +84,7 @@
     border-left: 1px solid var(--input-border);
     background: var(--input-btn-bg);
     color: var(--mast-fg);
-    font: 600 11px/1 "Inter", system-ui, sans-serif;
+    font: 600 11px/1 var(--tk-font-sans);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     padding: 0 16px;
@@ -101,13 +101,13 @@
 .site-nav {
   position: relative;
   background: var(--nav-bg);
-  border-top: 1px solid rgba(201, 184, 143, 0.15);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  border-top: 1px solid color-mix(in srgb, var(--ochre-soft) 15%, transparent);
+  border-bottom: 1px solid var(--ink-line);
   padding: 0 32px;
   display: flex;
   align-items: center;
   height: 42px;
-  font: 500 13px/1 "Inter", system-ui, sans-serif;
+  font: 500 13px/1 var(--tk-font-sans);
   flex-shrink: 0;
 
   // Ochre gradient rule — the identity-bearing detail
@@ -151,7 +151,7 @@
       background: var(--nav-bg-active);
       color: var(--nav-fg-active);
       font-weight: 600;
-      box-shadow: inset 0 -2px 0 var(--accent-ochre);
+      border-bottom: 2px solid var(--accent-ochre);
     }
 
     &:focus-visible {
@@ -226,13 +226,12 @@ mat-sidenav {
   border-right: 1px solid var(--tk-divider);
 
   // Flatten button mat-list-items to match anchor mat-list-items.
-  // MDC applies border-radius to button ripple containers by default.
   button.mat-mdc-list-item {
-    border-radius: 0 !important;
+    --mdc-list-list-item-container-shape: 0;
 
     .mdc-list-item__ripple,
     .mat-mdc-list-item-ripple {
-      border-radius: 0 !important;
+      --mdc-list-list-item-container-shape: 0;
     }
   }
 }
@@ -257,7 +256,7 @@ mat-sidenav {
   padding: 28px 32px;
   border-top: 1px solid var(--tk-divider);
   background-color: var(--tk-footer-bg);
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: var(--tk-font-sans);
   font-size: 12px;
   color: var(--tk-footer-text);
   display: grid;
@@ -281,7 +280,7 @@ mat-sidenav {
 
 .tk-footer-col {
   &__heading {
-    font-family: "Inter", system-ui, sans-serif;
+    font-family: var(--tk-font-sans);
     font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;

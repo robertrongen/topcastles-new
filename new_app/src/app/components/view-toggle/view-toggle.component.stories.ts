@@ -56,7 +56,7 @@ export const DarkTheme: Story = {
     props: args,
     template: `
       <div data-theme="dark" style="min-height: 128px; padding: 24px; background: var(--tk-body-bg); color: var(--tk-text);">
-        <div style="display: flex; justify-content: flex-end; padding: 16px; background: var(--tk-surface-alt); border: 1px solid var(--tk-divider); border-radius: var(--tk-radius-md);">
+        <div style="display: flex; justify-content: flex-end; padding: 16px; background: var(--tk-surface-alt); border: 1px solid var(--tk-divider);">
           <app-view-toggle [hideMap]="hideMap"></app-view-toggle>
         </div>
       </div>

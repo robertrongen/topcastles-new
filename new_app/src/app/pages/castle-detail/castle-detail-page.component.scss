@@ -29,9 +29,8 @@
   gap: var(--tk-space-2) var(--tk-space-5);
   margin-bottom: var(--tk-space-4);
   padding: var(--tk-space-3);
-  background: var(--tk-surface-alt);
-  border: 1px solid var(--tk-border);
-  border-radius: var(--tk-radius-md);
+  background: var(--ink-bg-2);
+  border: 1px solid var(--ink-line-2);
 }
 
 .nav-group,
@@ -106,9 +105,8 @@ h1 {
 .aside-map-section,
 .featured-image-wrap,
 .nearby-tile {
-  background: var(--tk-surface);
-  border: 1px solid var(--tk-border);
-  border-radius: var(--tk-radius-md);
+  background: linear-gradient(180deg, var(--ink-card) 0%, var(--ink-bg) 100%);
+  border: 1px solid var(--ink-line-2);
 }
 
 .section-card {
@@ -139,7 +137,6 @@ h1 {
     vertical-align: middle;
   }
 
-  tr:nth-child(even) { background: var(--tk-row-even); }
   .label {
     width: 136px;
     color: var(--tk-text-muted);
@@ -181,7 +178,7 @@ h1 {
   float: right;
   width: 160px;
   margin: 0 0 var(--tk-space-3) var(--tk-space-3);
-  border-radius: var(--tk-radius-sm);
+  border: 1px solid var(--ink-line-2);
 }
 
 .aside-map-section {
@@ -198,7 +195,7 @@ h1 {
   width: 100%;
   height: 200px;
   background: var(--tk-surface-alt);
-  border-radius: var(--tk-radius-sm);
+  border: 1px solid var(--ink-line-2);
 }
 
 .badge-row {
@@ -222,17 +219,15 @@ h1 {
 .featured-image {
   display: block;
   width: 100%;
-  border-radius: var(--tk-radius-md);
 }
 
 .featured-fullscreen {
   position: absolute;
   right: var(--tk-space-2);
   bottom: var(--tk-space-2);
-  color: #fff;
-  background: rgba(0, 0, 0, 0.55);
+  color: var(--text-1);
+  background: color-mix(in srgb, var(--ink-bg) 68%, transparent);
   border: 0;
-  border-radius: var(--tk-radius-sm);
   min-width: 40px;
   min-height: 40px;
   opacity: 0.92;
@@ -261,7 +256,6 @@ h1 {
   overflow: hidden;
   background: var(--tk-surface);
   border: 0;
-  border-radius: var(--tk-radius-sm);
   cursor: pointer;
   outline: 2px solid transparent;
 
@@ -290,7 +284,7 @@ h1 {
   color: inherit;
   text-decoration: none;
 
-  &:hover { box-shadow: var(--tk-shadow); }
+  &:hover { background: var(--ink-card); }
 }
 
 .nearby-thumb {
@@ -365,7 +359,6 @@ h1 {
     padding: var(--tk-space-2);
     background: var(--tk-surface-alt);
     border: 1px solid var(--tk-divider);
-    border-radius: var(--tk-radius-sm);
   }
 
   .detail-table td {

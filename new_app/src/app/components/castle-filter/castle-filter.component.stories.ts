@@ -88,7 +88,7 @@ export const DarkTheme: Story = {
     props: args,
     template: `
       <div data-theme="dark" style="min-height: 240px; padding: 24px; background: var(--tk-body-bg); color: var(--tk-text);">
-        <div style="padding: 16px; background: var(--tk-surface-alt); border: 1px solid var(--tk-divider); border-radius: var(--tk-radius-md);">
+        <div style="padding: 16px; background: var(--tk-surface-alt); border: 1px solid var(--tk-divider);">
           <app-castle-filter [castles]="castles" [fields]="fields" [initialFilters]="initialFilters"></app-castle-filter>
         </div>
       </div>

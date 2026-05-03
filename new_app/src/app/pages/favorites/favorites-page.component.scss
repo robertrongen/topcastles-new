@@ -26,11 +26,9 @@ h1 {
 .share-card,
 .create-card {
   margin-bottom: var(--tk-space-5);
-  background: var(--tk-surface);
-  color: var(--tk-text);
-  border: 1px solid var(--tk-border);
-  box-shadow: none;
-  border-radius: var(--tk-radius-md);
+  background: linear-gradient(180deg, var(--ink-card) 0%, var(--ink-bg) 100%);
+  color: var(--text-3);
+  border: 1px solid var(--ink-line-2);
 
   mat-card-content {
     display: flex;
@@ -66,11 +64,9 @@ h1 {
 }
 
 .set-card {
-  background: var(--tk-surface);
-  color: var(--tk-text);
-  border: 1px solid var(--tk-border);
-  box-shadow: none;
-  border-radius: var(--tk-radius-md);
+  background: linear-gradient(180deg, var(--ink-card) 0%, var(--ink-bg) 100%);
+  color: var(--text-3);
+  border: 1px solid var(--ink-line-2);
 
   mat-card-header {
     align-items: center;
@@ -140,7 +136,7 @@ h1 {
 
     .mat-mdc-raised-button {
       --mdc-protected-button-container-color: var(--tk-orange);
-      --mdc-protected-button-label-text-color: #000000;
+      --mdc-protected-button-label-text-color: var(--ink-bg);
     }
   }
 }
