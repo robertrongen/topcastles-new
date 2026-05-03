@@ -244,7 +244,28 @@ td {
 // ── List bullets ─────────────────────────────────────────────────────────────
 
 ul {
-  list-style-image: url('/arrow.gif');
+  list-style: none;
+  padding-left: 0;
+}
+
+li.castle-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--tk-space-1);
+  margin-bottom: var(--tk-space-2);
+
+  mat-icon {
+    flex-shrink: 0;
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    margin-top: 3px;
+    color: var(--tk-text-muted);
+  }
+
+  span {
+    flex: 1;
+  }
 }
 
 // ── Angular Material overrides ───────────────────────────────────────────────

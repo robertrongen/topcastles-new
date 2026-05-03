@@ -1,11 +1,12 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-background-page',
   standalone: true,
-  imports: [MatTabsModule, RouterLink],
+  imports: [MatTabsModule, RouterLink, MatIconModule],
   templateUrl: './background-page.component.html',
   styleUrl: './background-page.component.scss',
 })
