@@ -10,15 +10,15 @@
           <mat-card class="region-card">
             <mat-card-content>
               @if (summary.region_code) {
-                <img [src]="'/images/maps/' + summary.region_code + '.jpg'"
-                     [alt]="summary.region"
-                     class="region-image"
-                     (error)="onImageError($event)" />
-              }
               <span class="region-rank">#{{ i + 1 }}</span>
               <h3><a [routerLink]="['/top1000']" [queryParams]="{ country: summary.country, region: summary.region }">{{ summary.region }}</a></h3>
               <p><a [routerLink]="['/countries', summary.country]">{{ summary.country }}</a></p>
               <p>{{ summary.castleCount }} castles &middot; score {{ summary.totalScore | number:'1.0-0' }}</p>
+              <img [src]="'/images/maps/' + summary.region_code + '.jpg'"
+                    [alt]="summary.region"
+                    class="region-image"
+                    (error)="onImageError($event)" />
+              }
             </mat-card-content>
           </mat-card>
         }
