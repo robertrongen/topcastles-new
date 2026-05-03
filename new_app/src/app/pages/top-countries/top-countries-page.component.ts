@@ -1,7 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
 import { CastleService } from '../../services/castle.service';
 import { EditorialService } from '../../services/editorial.service';
 import { CountryGazetteerRow } from '../../models/castle.model';
@@ -11,7 +10,7 @@ export type SortMode = 'overall' | 'editorial' | 'visitor' | 'disagreement';
 @Component({
   selector: 'app-top-countries-page',
   standalone: true,
-  imports: [RouterLink, DecimalPipe, MatTableModule],
+  imports: [RouterLink, DecimalPipe],
   templateUrl: './top-countries-page.component.html',
   styleUrl: './top-countries-page.component.scss',
 })
@@ -19,13 +18,7 @@ export class TopCountriesPageComponent {
   private castleService = inject(CastleService);
   private editorialService = inject(EditorialService);
 
-  readonly sortMode = signal<SortMode>('overall');
-
-  protected readonly columns = [
-    'overallRank', 'country', 'editorialRank', 'visitorRank',
-    'castleCount', 'meanEditorialScore', 'meanVisitorScore', 'sumVisitors',
-    'definingTradition', 'editorialNote', 'editorSleeper', 'topEntry',
-  ];
+  readonly sortMode = signal<SortMode>('editorial');
 
   readonly rows = computed((): CountryGazetteerRow[] => {
     const editorial = this.editorialService.countries();
@@ -119,6 +112,18 @@ export class TopCountriesPageComponent {
 
   setSort(mode: SortMode): void {
     this.sortMode.set(mode);
+  }
+
+  isSleeper(row: CountryGazetteerRow): boolean {
+    return row.editorSleeper || row.disagreement >= 15;
+  }
+
+  visitorAriaLabel(row: CountryGazetteerRow): string {
+    if (row.visitorRank < row.editorialRank)
+      return `Visitor rank ${row.visitorRank}, higher than editorial rank ${row.editorialRank}`;
+    if (row.visitorRank > row.editorialRank)
+      return `Visitor rank ${row.visitorRank}, lower than editorial rank ${row.editorialRank}`;
+    return `Visitor rank ${row.visitorRank}`;
   }
 }
 

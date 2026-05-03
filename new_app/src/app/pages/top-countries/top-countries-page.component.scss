@@ -1,159 +1,378 @@
 .top-countries-page {
-  .section {
-    max-width: 1280px;
+  padding: var(--tk-space-4);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+// ── Section heading ───────────────────────────────────────────────────────────
+
+h1.page-head {
+  background: none;
+  font-family: var(--tk-font-serif);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.005em;
+  color: var(--tk-text);
+  border-bottom: 2px solid var(--accent-ochre);
+  padding: 0 0 6px;
+  margin: 0 0 var(--tk-space-3);
+}
+
+.section-sub {
+  font-family: var(--tk-font-serif);
+  font-style: italic;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--tk-text-muted);
+  margin: 0 0 var(--tk-space-4);
+
+  .rank-label {
+    color: var(--accent-ochre);
+    font-style: italic;
   }
 }
 
-.sort-toggle {
+// ── Sort strip ────────────────────────────────────────────────────────────────
+
+.sort-strip {
   display: flex;
-  gap: var(--tk-space-2);
-  margin-bottom: var(--tk-space-4);
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 12px;
   flex-wrap: wrap;
 
+  .lbl {
+    margin-right: 4px;
+    font-family: var(--tk-font-sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--tk-text-subtle);
+  }
+
   button {
-    padding: var(--tk-space-1) var(--tk-space-3);
+    background: transparent;
     border: 1px solid var(--tk-border);
-    border-radius: var(--tk-radius-sm);
-    background: var(--tk-surface);
     color: var(--tk-text-muted);
-    font-size: var(--tk-font-size-sm);
+    font-family: var(--tk-font-sans);
+    font-size: 11.5px;
+    line-height: 1;
+    padding: 4px 12px;
     cursor: pointer;
+    transition: color .12s, background .12s, border-color .12s;
 
-    &.active {
-      background: var(--tk-accent, #4a6fa5);
-      color: #fff;
-      border-color: var(--tk-accent, #4a6fa5);
-    }
-
-    &:hover:not(.active) {
-      background: var(--tk-row-hover);
+    &:hover {
       color: var(--tk-text);
+      border-color: var(--accent-ochre-2);
+    }
+
+    &.on {
+      background: var(--accent-ochre);
+      border-color: var(--accent-ochre);
+      color: #16130D;
+      font-weight: 600;
+    }
+  }
+
+  .meta {
+    margin-left: auto;
+    color: var(--tk-text-subtle);
+    font-family: var(--tk-font-sans);
+    font-size: 11px;
+    line-height: 1;
+
+    b {
+      color: var(--accent-ochre-2);
+      font-weight: 600;
     }
   }
 }
 
-.table-container {
-  display: flex;
-  justify-content: center;
-  overflow-x: auto;
-}
+// ── Accessibility helper ──────────────────────────────────────────────────────
 
-.countries-table {
-  flex: 0 1 1200px;
-  width: min(100%, 1200px) !important;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
   overflow: hidden;
-  background: var(--tk-surface);
-  border: 1px solid var(--tk-border);
-  border-radius: var(--tk-radius-md);
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.countries-table th {
-  color: var(--tk-text-muted);
-  font-size: var(--tk-font-size-xs);
-  font-weight: 650;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
+// ── Gazetteer table ───────────────────────────────────────────────────────────
 
-.countries-table td {
-  color: var(--tk-text);
-  font-size: var(--tk-font-size-sm);
-}
+table.gazetteer {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--tk-font-sans);
+  font-size: 13px;
 
-.countries-table th,
-.countries-table td {
-  padding: var(--tk-space-2) var(--tk-space-3);
-}
+  thead th {
+    text-align: left;
+    font-family: var(--tk-font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    color: var(--tk-text-subtle);
+    background: none;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--tk-border);
+    white-space: nowrap;
 
-.countries-table tr:nth-child(even) td {
-  background: var(--tk-row-even);
-}
+    &.num, &.rk { text-align: right; }
+    &.ed-note-h { width: 360px; }
+  }
 
-.countries-table tr:hover td {
-  background: var(--tk-row-hover);
-}
+  tbody td {
+    padding: 10px;
+    border-bottom: 1px solid var(--tk-divider);
+    color: var(--tk-text-muted);
+    vertical-align: top;
+    background: none;
+  }
 
-.countries-table .mat-column-overallRank,
-.countries-table .mat-column-editorialRank,
-.countries-table .mat-column-visitorRank {
-  width: 64px;
-  text-align: center;
-  color: var(--tk-text-subtle);
-}
+  tbody tr:hover td {
+    background: var(--tk-surface);
+  }
 
-.countries-table .mat-column-country {
-  min-width: 160px;
-}
+  tbody tr.flagged {
+    background: var(--sleeper-row-bg);
+  }
 
-.countries-table .mat-column-castleCount,
-.countries-table .mat-column-meanEditorialScore,
-.countries-table .mat-column-meanVisitorScore,
-.countries-table .mat-column-sumVisitors {
-  width: 80px;
-  text-align: right;
-}
+  tbody tr.flagged:hover td {
+    background: var(--tk-surface-soft);
+  }
 
-.countries-table .mat-column-definingTradition {
-  min-width: 150px;
-  color: var(--tk-text-muted);
-}
+  // ── Cell styles ─────────────────────────────────────────────────────────────
 
-.countries-table .mat-column-editorialNote {
-  min-width: 180px;
-  max-width: 260px;
-}
+  td.idx {
+    color: var(--tk-text-subtle);
+    width: 26px;
+    font-size: 12px;
+    text-align: right;
+  }
 
-.countries-table .mat-column-editorSleeper {
-  width: 76px;
-}
+  td.country a {
+    font-family: var(--tk-font-serif);
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--tk-text);
+    text-decoration: none;
 
-.countries-table .mat-column-topEntry {
-  min-width: 140px;
-}
+    &:hover {
+      color: var(--accent-ochre);
+      text-decoration: none;
+      background-color: transparent;
+    }
+  }
 
-.countries-table a {
-  text-decoration: none;
-  color: inherit;
+  td.ed {
+    text-align: right;
+    font-family: var(--tk-font-serif);
+    font-size: 14px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent-ochre);
+    width: 56px;
 
-  &:hover {
-    text-decoration: underline;
+    .star { margin-right: 4px; }
+  }
+
+  td.vis {
+    text-align: right;
+    font-family: var(--tk-font-sans);
+    font-size: 13px;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    color: var(--tk-text-muted);
+    width: 56px;
+
+    &.higher { color: var(--delta-up); font-weight: 500; }
+    &.lower  { color: var(--delta-down); font-weight: 500; }
+
+    .micro-arrow { font-size: 10px; margin-left: 2px; opacity: .85; }
+  }
+
+  td.num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  td.mean {
+    font-family: var(--tk-font-serif);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--tk-text);
+  }
+
+  td.era {
+    font-family: var(--tk-font-serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--tk-text-muted);
+    line-height: 1.4;
+  }
+
+  td.ed-note {
+    font-family: var(--tk-font-serif);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--tk-text-muted);
+
+    .note-body { display: block; }
+  }
+
+  td.top a {
+    font-family: var(--tk-font-serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--accent-ochre-2);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--accent-ochre);
+      background-color: transparent;
+      text-decoration: none;
+    }
   }
 }
 
-.sleeper-badge {
+// ── Sleeper tag ───────────────────────────────────────────────────────────────
+
+.sleeper-tag {
   display: inline-block;
+  font-family: var(--tk-font-sans);
+  font-size: 9.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: #16130D;
+  background: var(--accent-ochre);
   padding: 2px 6px;
-  border-radius: var(--tk-radius-sm);
-  background: var(--tk-accent-subtle, #e8edf5);
-  color: var(--tk-accent, #4a6fa5);
-  font-size: var(--tk-font-size-xs);
-  font-weight: 650;
-  white-space: nowrap;
+  margin-bottom: 4px;
 }
 
-.editorial-note {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 260px;
-  color: var(--tk-text-muted);
+// ── Legend strip ──────────────────────────────────────────────────────────────
+
+.legend {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--tk-divider);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  font-family: var(--tk-font-sans);
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--tk-text-subtle);
+
+  .star { color: var(--accent-ochre); font-weight: 700; margin-right: 2px; }
+  .up   { color: var(--delta-up); }
+  .down { color: var(--delta-down); }
+  .dot  { color: var(--tk-border); }
+
+  .sleeper-tag-inline {
+    color: #16130D;
+    background: var(--accent-ochre);
+    padding: 1px 5px;
+    font-size: 9px;
+    letter-spacing: .1em;
+    font-weight: 600;
+  }
 }
 
-@media (max-width: 767px) {
-  .top-countries-page .section {
-    max-width: none;
+// ── Responsive ────────────────────────────────────────────────────────────────
+
+@media (max-width: 939px) {
+  .hide-940 { display: none; }
+  table.gazetteer thead th.ed-note-h { width: auto; max-width: 280px; }
+}
+
+@media (max-width: 719px) {
+  .hide-720 { display: none; }
+
+  .top-countries-page {
+    padding: var(--tk-space-3);
   }
 
-  .table-container {
-    justify-content: flex-start;
+  .sort-strip .meta {
+    margin-left: 0;
+    flex-basis: 100%;
+    margin-top: 4px;
   }
 
-  .countries-table {
-    min-width: 420px;
+  // Card stacking — both rank columns always visible
+  table.gazetteer,
+  table.gazetteer tbody {
+    display: block;
   }
 
-  .hide-narrow {
-    display: none;
+  table.gazetteer thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
   }
+
+  table.gazetteer tbody tr {
+    display: block;
+    position: relative;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--tk-divider);
+  }
+
+  table.gazetteer tbody tr.flagged {
+    background: var(--sleeper-row-bg);
+  }
+
+  table.gazetteer td {
+    display: block;
+    padding: 1px 0;
+    border: none;
+    vertical-align: initial;
+  }
+
+  table.gazetteer td.idx { display: none; }
+
+  // Country name: leave room on the right for both rank columns
+  table.gazetteer td.country {
+    padding-right: 120px;
+    margin-bottom: 4px;
+  }
+
+  // Pin editorial rank to top-right
+  table.gazetteer td.ed {
+    position: absolute;
+    top: 12px;
+    right: 62px;
+    width: 52px;
+    text-align: right;
+  }
+
+  // Pin visitor rank to far right
+  table.gazetteer td.vis {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    width: 56px;
+    text-align: right;
+  }
+
+  table.gazetteer td.num { text-align: left; }
+
+  table.gazetteer td.ed-note { margin-top: 4px; }
+
+  .legend { gap: 8px; }
 }

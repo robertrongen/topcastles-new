@@ -51,16 +51,16 @@ describe('TopCountriesPageComponent', () => {
   it('should create', () => expect(fixture.componentInstance).toBeTruthy());
 
   it('should display the heading', () => {
-    const h2 = fixture.nativeElement.querySelector('h2');
-    expect(h2?.textContent).toContain('countries with the most top castles');
+    const h1 = fixture.nativeElement.querySelector('h1');
+    expect(h1?.textContent).toContain('Top countries');
   });
 
   it('should render one row per country', () => {
-    const rows = fixture.nativeElement.querySelectorAll('tr.mat-mdc-row');
+    const rows = fixture.nativeElement.querySelectorAll('tbody tr');
     expect(rows.length).toBe(2);
   });
 
-  it('should default sort by overall rank — France first', () => {
+  it('should default sort by editorial rank — France first', () => {
     const first = fixture.componentInstance.rows()[0];
     expect(first.country).toBe('France');
     expect(first.overallRank).toBe(1);
@@ -128,9 +128,9 @@ describe('TopCountriesPageComponent', () => {
     http2.expectOne('/api/editorial/castle-quotes').flush({});
     http2.expectOne('/api/editorial/countries').flush({ 'Syria': { editorSleeper: true } });
     f2.detectChanges();
-    const badge = f2.nativeElement.querySelector('.sleeper-badge');
+    const badge = f2.nativeElement.querySelector('.sleeper-tag');
     expect(badge).toBeTruthy();
-    expect(badge.textContent.trim()).toBe('Sleeper');
+    expect(badge.textContent.trim()).toBe('EDITOR\'S SLEEPER');
     http2.verify();
   });
 

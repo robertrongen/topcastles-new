@@ -492,3 +492,20 @@ For each page, in order:
 12. Run Lighthouse a11y; fix anything < 95.
 
 If a page has its own structural spec (Masthead, Featured Hero, Top Countries), apply this guide *under* it: the per-page spec wins on layout, this guide wins on atoms.
+
+# Summary
+
+1. **Tokens** — single source of truth, dark + light. New colors must be tokens.
+2. **Typography** — Source Serif 4 + Inter only. Italic = editorial voice. Arabic numerals everywhere except entry  editorial rank.
+3. **Section heads** — 2 px ochre underline, italic sub, optional ochre more ▸ link (must point at a real page).
+4. **Tables** — one stylesheet for all. Dual rank columns, sage/terracotta deltas, no zebra striping, diffuse-ochre flagged rows.
+5. **Tags** — three styles, total. Accent (ochre solid), neutral (bordered), country flag tile.
+6. **Buttons & links** — square edges, never rounded.
+7. **Cards** — flat, square, top-to-bottom subtle gradient.
+8. **Hairlines** — the 2 px ochre section rule + 1 px hairlines are the layout grammar.
+9. **Spacing** — multiples of 4.
+10. **Iconography** — strict reservations: ★ = editorial rank only, ↑↓ = deltas, ▸ = nav, § = anchor, № = catalogue. No emoji.
+11. **Photos** — captions outside, plate stamp inside.
+12. **Accessibility** — floor requirements (Roman numerals need Arabic aria-labels, etc).
+13. **Anti-patterns** — explicit "do not ship" list.
+14. **Sweep checklist** — 12-step page-by-page audit Claude Code can run linearly.
