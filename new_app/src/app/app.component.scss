@@ -10,7 +10,7 @@
 
 .site-mast {
   background: var(--mast-bg);
-  padding: 28px 32px 22px;
+  padding: 18px 32px;
   border-bottom: 1px solid var(--mast-rule);
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -22,8 +22,8 @@
 .site-mast__mark {
   font-family: var(--tk-font-serif);
   font-weight: 600;
-  font-size: 38px;
-  letter-spacing: -0.015em;
+  font-size: 30px;
+  letter-spacing: -0.018em;
   line-height: 1;
   color: var(--mast-fg);
   text-decoration: none;
@@ -36,7 +36,7 @@
 }
 
 .site-mast__dot {
-  color: var(--accent-ochre);
+  color: inherit;
   font-style: italic;
   font-weight: 500;
 }
@@ -44,9 +44,9 @@
 .site-mast__tag {
   font-family: var(--tk-font-serif);
   font-style: italic;
-  color: var(--mast-fg-2);
+  color: var(--text-3);
   font-size: 13.5px;
-  padding: 0 0 5px 14px;
+  padding: 0 0 3px 14px;
   margin: 0 0 0 14px;
   border-left: 1px solid var(--mast-rule);
   align-self: end;
@@ -233,6 +233,12 @@ mat-sidenav {
     .mat-mdc-list-item-ripple {
       --mdc-list-list-item-container-shape: 0;
     }
+
+    .mdc-list-item__primary-text {
+      font: 500 12.5px/1 var(--tk-font-sans);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
   }
 }
 
@@ -335,7 +341,7 @@ mat-sidenav {
 
   .site-mast {
     grid-template-columns: auto 1fr auto;
-    padding: 16px 20px 14px;
+    padding: 16px 20px;
     gap: 20px;
   }
 

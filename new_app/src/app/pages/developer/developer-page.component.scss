@@ -18,10 +18,10 @@
 
 .page-intro {
   color: var(--tk-text-muted);
-  font-size: var(--tk-font-size-md);
-  line-height: var(--tk-line-height-normal);
+  font-size: 15px;
+  line-height: 1.6;
   margin-bottom: var(--tk-space-5);
-  max-width: 720px;
+  max-width: 64ch;
 }
 
 .tab-content {
@@ -31,7 +31,10 @@
   h3 { margin: var(--tk-space-4) 0 var(--tk-space-2); font-size: var(--tk-font-size-md); }
   h4 { margin: var(--tk-space-4) 0 var(--tk-space-2); font-size: var(--tk-font-size-sm); color: var(--tk-text-muted); }
 
-  p { line-height: 1.65; }
+  p {
+    max-width: 64ch;
+    font: 400 15px/1.6 var(--tk-font-serif);
+  }
   code {
     background: var(--tk-surface-alt);
     font-family: ui-monospace, monospace;
@@ -62,6 +65,8 @@
 
   mat-card-title {
     color: var(--tk-text);
+    font: 600 15px/1.25 var(--tk-font-serif);
+    letter-spacing: 0;
   }
 
   mat-card-subtitle,
@@ -69,16 +74,10 @@
     color: var(--tk-text-muted);
   }
 
-  mat-icon[mat-card-avatar] {
-    font-size: 28px; width: 40px; height: 40px;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--ink-bg);
+  mat-card-content {
+    font-size: 14px;
+    line-height: 1.55;
   }
-
-  .icon-rest   { background: var(--text-4); }
-  .icon-mcp    { background: var(--text-5); }
-  .icon-schema { background: var(--delta-up); }
-  .icon-ai     { background: var(--ochre); }
 }
 
 .info-table {

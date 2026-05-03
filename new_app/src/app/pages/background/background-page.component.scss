@@ -13,6 +13,11 @@
     h2 {
       margin-top: 24px;
       margin-bottom: 12px;
+      font: 600 22px/1.2 var(--tk-font-serif);
+      letter-spacing: -.008em;
+      width: fit-content;
+      min-width: min(100%, 320px);
+      max-width: 100%;
       &:first-child {
         margin-top: 0;
       }
@@ -29,17 +34,32 @@
     }
 
     blockquote {
-      margin: 12px 0;
-      padding: 16px 20px;
+      position: relative;
+      max-width: 60ch;
+      margin: 18px 0;
+      padding: 4px 22px;
       border-left: 2px solid var(--ochre);
-      background: linear-gradient(90deg, color-mix(in srgb, var(--heraldic-red) 6%, transparent), transparent 75%);
+      background: transparent;
       color: var(--text-2);
-      font: italic 400 14.5px/1.6 var(--tk-font-serif);
+      font: italic 400 16px/1.65 var(--tk-font-serif);
+      text-wrap: pretty;
+
+      &::before {
+        content: "\201C";
+        position: absolute;
+        left: 6px;
+        top: -5px;
+        color: var(--ochre);
+        font-size: 22px;
+        line-height: 1;
+      }
     }
 
     p {
+      max-width: 64ch;
       margin-bottom: 8px;
-      line-height: 1.6;
+      font: 400 15px/1.6 var(--tk-font-serif);
+      color: var(--text-3);
     }
 
     ul {
@@ -50,7 +70,8 @@
         position: relative;
         padding-left: 18px;
         margin-bottom: 4px;
-        font: 400 14.5px/1.6 var(--tk-font-serif);
+        max-width: 64ch;
+        font: 400 15px/1.6 var(--tk-font-serif);
         color: var(--text-3);
       }
 
@@ -169,6 +190,7 @@
     .mat-mdc-tab-header {
       border-bottom: 1px solid var(--ink-line);
       background: transparent;
+      margin: -8px 0 24px;
     }
 
     .mat-mdc-tab-label-container,
@@ -176,10 +198,18 @@
       background: transparent;
     }
 
+    .mat-mdc-tab-list {
+      gap: 28px;
+    }
+
     .mat-mdc-tab {
       flex-grow: 0;
-      min-width: 128px;
-      padding: 0 28px;
+      min-width: 0;
+      padding: 0;
+
+      .mdc-tab-indicator {
+        margin-bottom: -1px;
+      }
     }
 
     .mat-mdc-tab-body-wrapper {

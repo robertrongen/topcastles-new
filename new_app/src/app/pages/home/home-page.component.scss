@@ -40,7 +40,7 @@
   &__body {
     margin: 0 0 var(--tk-space-3);
     color: var(--tk-text-muted);
-    font-size: var(--tk-font-size-xs, 0.72rem);
+    font-size: 14px;
     line-height: 1.55;
   }
 
@@ -141,8 +141,8 @@
 
 
 .section {
-  padding-bottom: var(--tk-space-5);
-  margin-bottom: var(--tk-space-5);
+  padding-bottom: 0;
+  margin-bottom: 56px;
 
   &:last-child {
     padding-bottom: 0;
@@ -157,8 +157,8 @@
     background: transparent;
     border-bottom: 3px solid var(--tk-orange);
     color: var(--tk-text);
-    font-size: 1.35rem;
-    line-height: var(--tk-line-height-tight);
+    font: 600 22px/1.2 var(--tk-font-serif);
+    letter-spacing: -.008em;
 
     a {
       color: inherit;
@@ -173,10 +173,10 @@
   }
 
   p {
-    max-width: 860px;
+    max-width: 64ch;
     margin: 0 0 var(--tk-space-4);
     color: var(--tk-text-muted);
-    font-size: var(--tk-font-size-md);
+    font-size: 15px;
     line-height: 1.6;
 
     a {
@@ -198,7 +198,7 @@
 
 .dossier__header {
   padding-bottom: var(--tk-space-2);
-  margin-bottom: var(--tk-space-4);
+  margin-bottom: 24px;
   border-bottom: 1px solid var(--ink-line-2);
 }
 
@@ -295,10 +295,11 @@
 .dossier__title {
   display: block;
   font-family: var(--tk-font-serif);
-  font-size: 2rem;
+  font-size: 28px;
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.01em;
+  text-wrap: balance;
   color: var(--tk-text);
   text-decoration: none;
 
@@ -346,8 +347,8 @@
 .dossier__intro {
   margin: 0;
   color: var(--tk-text-muted);
-  font-size: var(--tk-font-size-sm);
-  line-height: 1.65;
+  font-size: 15px;
+  line-height: 1.55;
   display: -webkit-box;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
@@ -949,11 +950,11 @@
     margin-bottom: var(--tk-space-4);
 
     h2 {
-      font-size: var(--tk-font-size-lg);
+      font-size: 22px;
     }
 
     p {
-      font-size: var(--tk-font-size-sm);
+      font-size: 15px;
     }
   }
 }

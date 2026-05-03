@@ -2,6 +2,12 @@
   .section {
     max-width: 1280px;
   }
+
+  .sec-head {
+    font: 600 32px/1.15 var(--tk-font-serif);
+    letter-spacing: -.012em;
+    border-bottom-width: 2px;
+  }
 }
 
 .region-grid {
