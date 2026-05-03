@@ -14,21 +14,21 @@ npm run install:all
 
 ## Local Development
 
-Run the API server and Angular dev server in separate terminals:
+Run the API/image server and Angular dev server together:
 
 ```bash
-npm run dev:server
-npm run dev:app
+npm start
 ```
 
-Open <http://localhost:4200>. The Angular dev server proxies `/api/*` requests to the Node server on port 3000.
+Open <http://localhost:4200>. The Angular dev server proxies `/api/*` and `/castle-images/*` requests to the Node server on port 3000. For Angular-only UI work, use `npm run dev:app`.
 
 ## Key Commands
 
 ```bash
 npm run build              # Angular build and prerender output
-npm run start              # Angular dev server
+npm run start              # Node API/image server + Angular dev server
 npm run dev:server         # Node API/static runtime server
+npm run dev:app            # Angular dev server only
 npm test                   # Angular unit tests
 npm run data:regenerate    # canonical content pipeline; regenerates committed artifacts
 npm run build              # required after content changes to refresh prerendered output

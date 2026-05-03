@@ -24,14 +24,13 @@ npm run install:all
 
 ## Local Development
 
-Run the Node API server and Angular dev server in separate terminals:
+Run the Node API/image server and Angular dev server together:
 
 ```bash
-npm run dev:server
-npm run dev:app
+npm start
 ```
 
-Open <http://localhost:4200>. The Angular dev server proxies `/api/*` requests to the Node server on port 3000. For UI-only work, `npm start` is equivalent to `npm run dev:app`.
+Open <http://localhost:4200>. The Angular dev server proxies `/api/*` and `/castle-images/*` requests to the Node server on port 3000. For Angular-only UI work that does not need proxied APIs or images, use `npm run dev:app`.
 
 ## Build And Test
 

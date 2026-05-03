@@ -6,10 +6,10 @@
   "scripts": {
     "install:all": "npm install --prefix new_app && npm install --prefix scripts && npm install --prefix server",
 
-    "start": "npm start --prefix new_app",
+    "start": "node scripts/dev.js",
     "dev": "node scripts/dev.js",
     "dev:server": "node server/index.js",
-    "dev:app": "npm start --prefix new_app",
+    "dev:app": "npm run start:app --prefix new_app",
     "build": "npm run build --prefix new_app",
     "build:watch": "npm run watch --prefix new_app",
     "test": "npx --prefix new_app ng test --watch=false --browsers=ChromeHeadless",
