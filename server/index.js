@@ -1,8 +1,16 @@
 // Load local .env file for development (if NODE_ENV is not production)
-// dotenv only reads .env if it exists; safe to call in any environment
+// Use an absolute path anchored to this file so .env is found regardless of CWD.
 if (process.env.NODE_ENV !== 'production') {
-  const dotenv = await import('dotenv');
-  dotenv.config({ path: '.env' });
+  const { fileURLToPath } = await import('url');
+  const { dirname, join } = await import('path');
+  const { config } = await import('dotenv');
+  const envPath = join(dirname(fileURLToPath(import.meta.url)), '../.env');
+  const result = config({ path: envPath });
+  if (result.error) {
+    console.warn('[dotenv] failed to load .env:', result.error.message);
+  } else {
+    console.log('[dotenv] loaded from', envPath, '| ADMIN_TOKEN set:', !!process.env.ADMIN_TOKEN);
+  }
 }
 
 import express from 'express';

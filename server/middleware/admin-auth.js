@@ -1,6 +1,6 @@
-const ADMIN_TOKEN = process.env.ADMIN_TOKEN || '';
-
 export function adminAuth(req, res, next) {
+  const ADMIN_TOKEN = process.env.ADMIN_TOKEN || '';
+
   if (!ADMIN_TOKEN) {
     return res.status(401).json({ error: 'Unauthorized' });
   }

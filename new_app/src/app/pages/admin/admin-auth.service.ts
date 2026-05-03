@@ -28,10 +28,7 @@ export class AdminAuthService {
     if (!token) return false;
     if (!this.isBrowser) return false;
     const expiry = localStorage.getItem(ADMIN_EXPIRY_KEY);
-    if (expiry && Date.now() > parseInt(expiry, 10)) {
-      this.clearSession();
-      return false;
-    }
+    if (expiry && Date.now() > parseInt(expiry, 10)) return false;
     return true;
   });
 
