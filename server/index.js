@@ -13,6 +13,7 @@ import { accessSync, constants, existsSync, readdirSync, readFileSync, statSync 
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import userRoutes from './routes/user.js';
 import adminRoutes from './routes/admin.js';
+import editorialRoutes from './routes/editorial.js';
 import { createTopCastlesMcpServer } from './lib/topcastles-mcp.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -106,6 +107,7 @@ app.get('/api/health', (_req, res) => {
 });
 
 app.use('/api/user', userRoutes);
+app.use('/api/editorial', editorialRoutes);
 
 app.post('/mcp', async (req, res) => {
   const dataPath = API_CASTLES_PATHS.find(existsSync);
@@ -173,7 +175,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(DIST, 'index.html'));
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`TopCastles server listening on port ${PORT}`);
 
   if (!process.env.ADMIN_TOKEN) {
@@ -194,4 +196,13 @@ app.listen(PORT, () => {
     ? `[data-mount] ok: users.json present (${USERS_FILE})`
     : `[data-mount] notice: users.json not yet created — will be written on first registration (${USERS_FILE})`;
   console.log(dataMessage);
+});
+
+server.on('error', (error) => {
+  if (error && error.code === 'EADDRINUSE') {
+    console.error(`Port ${PORT} is already in use. If another TopCastles server is running, stop it first or set PORT to a free port.`);
+  } else {
+    console.error('Server error during startup:', error);
+  }
+  process.exit(1);
 });

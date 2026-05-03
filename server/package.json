@@ -6,7 +6,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "start:prod": "node index.js"
+    "start:prod": "node index.js",
+    "test": "node --test routes/editorial.test.js"
+  },
+  "devDependencies": {
+    "supertest": "^7.0.0"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
