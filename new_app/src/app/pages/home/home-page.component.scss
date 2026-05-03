@@ -225,8 +225,8 @@
 .dossier__figure {
   margin: 0;
   position: relative;
+  max-width: 500px;
   background: #0d1018;
-  overflow: hidden;
 }
 
 .dossier__image-link {
@@ -237,9 +237,7 @@
 .dossier__image {
   display: block;
   width: 100%;
-  height: 375px;
-  object-fit: cover;
-  object-position: center;
+  height: auto;
 }
 
 .dossier__figure-bar {
@@ -507,10 +505,6 @@
 @media (max-width: 960px) {
   .dossier__body {
     grid-template-columns: 1fr;
-  }
-
-  .dossier__image {
-    height: 280px;
   }
 
   .dossier__meta {
