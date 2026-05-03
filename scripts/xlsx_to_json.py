@@ -62,13 +62,15 @@ COLUMNS = {
     31: "score_total",
     32: "score_visitors",
     33: "visitors",
+    34: "position_ref",
+    35: "score_ref",
 }
 
 # Fields that should be integers
-INT_FIELDS = {"position", "era", "visitors"}
+INT_FIELDS = {"position", "era", "visitors", "position_ref"}
 
 # Fields that should be floats
-FLOAT_FIELDS = {"latitude", "longitude", "score_total", "score_visitors"}
+FLOAT_FIELDS = {"latitude", "longitude", "score_total", "score_visitors", "score_ref"}
 
 # No_Castles sheet (Sheet 2): column index → JSON field name (EN-only)
 # Uses data_only=True to resolve VLOOKUP formulas for castle_type, castle_concept,

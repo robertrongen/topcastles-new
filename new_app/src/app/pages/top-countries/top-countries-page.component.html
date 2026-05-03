@@ -3,53 +3,35 @@
     <h2>The countries with the most top castles</h2>
 
     <div class="sort-toggle" role="group" aria-label="Sort by">
-      <button
-        [class.active]="sortMode() === 'editorial'"
-        (click)="setSort('editorial')">Editorial rank</button>
-      <button
-        [class.active]="sortMode() === 'visitor'"
-        (click)="setSort('visitor')">Visitor rank</button>
-      <button
-        [class.active]="sortMode() === 'disagreement'"
-        (click)="setSort('disagreement')">Disagreement</button>
+      <button [class.active]="sortMode() === 'overall'"      (click)="setSort('overall')">Overall rank</button>
+      <button [class.active]="sortMode() === 'editorial'"    (click)="setSort('editorial')">Editorial rank</button>
+      <button [class.active]="sortMode() === 'visitor'"      (click)="setSort('visitor')">Visitor rank</button>
+      <button [class.active]="sortMode() === 'disagreement'" (click)="setSort('disagreement')">Disagreement</button>
     </div>
 
     <div class="table-container">
       <table mat-table class="countries-table" [dataSource]="rows()">
 
-        <ng-container matColumnDef="editorialRank">
-          <th mat-header-cell *matHeaderCellDef>★</th>
-          <td mat-cell *matCellDef="let row">
-            {{ row.editorialRank ?? '—' }}
-          </td>
+        <ng-container matColumnDef="overallRank">
+          <th mat-header-cell *matHeaderCellDef>#</th>
+          <td mat-cell *matCellDef="let row">{{ row.overallRank }}</td>
         </ng-container>
 
         <ng-container matColumnDef="country">
           <th mat-header-cell *matHeaderCellDef>Country</th>
           <td mat-cell *matCellDef="let row">
-            <a class="country-link" [routerLink]="['/countries', row.country]">
-              <span class="flag" aria-hidden="true">{{ getFlag(row.country) }}</span>
-              {{ row.country }}
-            </a>
+            <a [routerLink]="['/countries', row.country]">{{ row.country }}</a>
           </td>
         </ng-container>
 
+        <ng-container matColumnDef="editorialRank">
+          <th mat-header-cell *matHeaderCellDef>★ Ed.</th>
+          <td mat-cell *matCellDef="let row">{{ row.editorialRank }}</td>
+        </ng-container>
+
         <ng-container matColumnDef="visitorRank">
-          <th mat-header-cell *matHeaderCellDef>Visitors</th>
-          <td mat-cell *matCellDef="let row">
-            <span>{{ row.visitorRank }}</span>
-            @if (row.editorialRank != null) {
-              @if (row.editorialRank - row.visitorRank > 0) {
-                <span class="delta up" [title]="'Editors rank ' + (row.editorialRank - row.visitorRank) + ' places higher'">
-                  ▲{{ row.editorialRank - row.visitorRank }}
-                </span>
-              } @else if (row.visitorRank - row.editorialRank > 0) {
-                <span class="delta down" [title]="'Visitors rank ' + (row.visitorRank - row.editorialRank) + ' places higher'">
-                  ▼{{ row.visitorRank - row.editorialRank }}
-                </span>
-              }
-            }
-          </td>
+          <th mat-header-cell *matHeaderCellDef>Vis. rank</th>
+          <td mat-cell *matCellDef="let row">{{ row.visitorRank }}</td>
         </ng-container>
 
         <ng-container matColumnDef="castleCount">
@@ -57,9 +39,19 @@
           <td mat-cell *matCellDef="let row">{{ row.castleCount }}</td>
         </ng-container>
 
-        <ng-container matColumnDef="meanScore">
-          <th mat-header-cell *matHeaderCellDef>Mean</th>
-          <td mat-cell *matCellDef="let row">{{ row.meanScore | number:'1.1-1' }}</td>
+        <ng-container matColumnDef="meanEditorialScore">
+          <th mat-header-cell *matHeaderCellDef class="hide-narrow">Ed. score</th>
+          <td mat-cell *matCellDef="let row" class="hide-narrow">{{ row.meanEditorialScore | number:'1.1-1' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="meanVisitorScore">
+          <th mat-header-cell *matHeaderCellDef class="hide-narrow">Vis. score</th>
+          <td mat-cell *matCellDef="let row" class="hide-narrow">{{ row.meanVisitorScore | number:'1.2-2' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="sumVisitors">
+          <th mat-header-cell *matHeaderCellDef class="hide-narrow">Ratings</th>
+          <td mat-cell *matCellDef="let row" class="hide-narrow">{{ row.sumVisitors | number }}</td>
         </ng-container>
 
         <ng-container matColumnDef="definingTradition">
@@ -76,7 +68,7 @@
           <td mat-cell *matCellDef="let row" class="hide-narrow">
             @if (row.editorialNote) {
               <span class="editorial-note" [title]="row.editorialNote">
-                {{ row.editorialNote.length > 80 ? (row.editorialNote | slice:0:80) + '…' : row.editorialNote }}
+                {{ row.editorialNote.length > 80 ? row.editorialNote.substring(0, 80) + '…' : row.editorialNote }}
               </span>
             }
           </td>
@@ -94,10 +86,8 @@
         <ng-container matColumnDef="topEntry">
           <th mat-header-cell *matHeaderCellDef class="hide-narrow">Top entry</th>
           <td mat-cell *matCellDef="let row" class="hide-narrow">
-            @if (row.topEntry) {
-              <a [routerLink]="['/castles', row.topEntry]">{{ row.topEntry }}</a>
-            } @else {
-              <span class="empty">—</span>
+            @if (row.topCastleCode) {
+              <a [routerLink]="['/castles', row.topCastleCode]">{{ row.topCastleName }}</a>
             }
           </td>
         </ng-container>

@@ -11,10 +11,8 @@ export interface CastleQuote {
 }
 
 export interface CountryEditorial {
-  editorialRank?: number;
   editorialNote?: string;
   definingTradition?: string;
-  topEntry?: string;
   editorSleeper?: boolean;
 }
 
