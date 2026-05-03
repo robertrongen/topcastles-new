@@ -1,100 +1,94 @@
 <div class="top-countries-page">
-  <section class="section">
-    <h2>The countries with the most top castles</h2>
 
-    <div class="sort-toggle" role="group" aria-label="Sort by">
-      <button [class.active]="sortMode() === 'overall'"      (click)="setSort('overall')">Overall rank</button>
-      <button [class.active]="sortMode() === 'editorial'"    (click)="setSort('editorial')">Editorial rank</button>
-      <button [class.active]="sortMode() === 'visitor'"      (click)="setSort('visitor')">Visitor rank</button>
-      <button [class.active]="sortMode() === 'disagreement'" (click)="setSort('disagreement')">Disagreement</button>
-    </div>
+  <h1 class="page-head">Top countries</h1>
 
-    <div class="table-container">
-      <table mat-table class="countries-table" [dataSource]="rows()">
+  <p class="section-sub">
+    Two parallel rankings of the catalogue's best-represented countries:
+    the <span class="rank-label">editorial rank</span> reflects depth and significance
+    as judged by our editorial board; the <span class="rank-label">visitor rank</span>
+    is the aggregate of recorded visits. Where they disagree, the disagreement is itself instructive.
+  </p>
 
-        <ng-container matColumnDef="overallRank">
-          <th mat-header-cell *matHeaderCellDef>#</th>
-          <td mat-cell *matCellDef="let row">{{ row.overallRank }}</td>
-        </ng-container>
+  <div class="sort-strip" role="group" aria-label="Sort rows by">
+    <span class="lbl">Sort</span>
+    <button
+      [class.on]="sortMode() === 'editorial'"
+      [attr.aria-pressed]="sortMode() === 'editorial'"
+      (click)="setSort('editorial')">Editorial</button>
+    <button
+      [class.on]="sortMode() === 'visitor'"
+      [attr.aria-pressed]="sortMode() === 'visitor'"
+      (click)="setSort('visitor')">Visitor</button>
+    <button
+      [class.on]="sortMode() === 'disagreement'"
+      [attr.aria-pressed]="sortMode() === 'disagreement'"
+      (click)="setSort('disagreement')">By disagreement</button>
+    <!-- <span class="meta">Editorial ranks revised quarterly · last revision <b>Q1 2026</b></span> -->
+  </div>
 
-        <ng-container matColumnDef="country">
-          <th mat-header-cell *matHeaderCellDef>Country</th>
-          <td mat-cell *matCellDef="let row">
+  <table class="gazetteer">
+    <caption class="sr-only">Catalogue countries ranked by editorial and visitor measures, sortable.</caption>
+    <thead>
+      <tr>
+        <th class="num"></th>
+        <th>Country</th>
+        <th class="rk" title="Editorial rank — by the editorial board">★ Ed.</th>
+        <th class="rk" title="Visitor rank — by aggregate ratings">Vis.</th>
+        <th class="num">Entries</th>
+        <th class="num hide-940">Mean</th>
+        <th class="hide-720">Tradition</th>
+        <th class="ed-note-h">Editor's note</th>
+        <th class="hide-940">Top entry</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of rows(); track row.country; let i = $index) {
+        <tr [class.flagged]="isSleeper(row)">
+          <td class="num idx">{{ i + 1 }}</td>
+          <td class="country">
             <a [routerLink]="['/countries', row.country]">{{ row.country }}</a>
           </td>
-        </ng-container>
-
-        <ng-container matColumnDef="editorialRank">
-          <th mat-header-cell *matHeaderCellDef>★ Ed.</th>
-          <td mat-cell *matCellDef="let row">{{ row.editorialRank }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="visitorRank">
-          <th mat-header-cell *matHeaderCellDef>Vis. rank</th>
-          <td mat-cell *matCellDef="let row">{{ row.visitorRank }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="castleCount">
-          <th mat-header-cell *matHeaderCellDef>Entries</th>
-          <td mat-cell *matCellDef="let row">{{ row.castleCount }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="meanEditorialScore">
-          <th mat-header-cell *matHeaderCellDef class="hide-narrow">Ed. score</th>
-          <td mat-cell *matCellDef="let row" class="hide-narrow">{{ row.meanEditorialScore | number:'1.1-1' }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="meanVisitorScore">
-          <th mat-header-cell *matHeaderCellDef class="hide-narrow">Vis. score</th>
-          <td mat-cell *matCellDef="let row" class="hide-narrow">{{ row.meanVisitorScore | number:'1.2-2' }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="sumVisitors">
-          <th mat-header-cell *matHeaderCellDef class="hide-narrow">Ratings</th>
-          <td mat-cell *matCellDef="let row" class="hide-narrow">{{ row.sumVisitors | number }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="definingTradition">
-          <th mat-header-cell *matHeaderCellDef class="hide-narrow">Tradition</th>
-          <td mat-cell *matCellDef="let row" class="hide-narrow">
-            @if (row.definingTradition) {
-              <em>{{ row.definingTradition }}</em>
+          <td class="ed">
+            <span class="star" aria-hidden="true">★</span>{{ row.editorialRank }}
+          </td>
+          <td class="vis"
+              [class.higher]="row.visitorRank < row.editorialRank"
+              [class.lower]="row.visitorRank > row.editorialRank"
+              [attr.aria-label]="visitorAriaLabel(row)">
+            {{ row.visitorRank }}
+            @if (row.visitorRank !== row.editorialRank) {
+              <span class="micro-arrow" aria-hidden="true">{{ row.visitorRank < row.editorialRank ? '↑' : '↓' }}</span>
             }
           </td>
-        </ng-container>
-
-        <ng-container matColumnDef="editorialNote">
-          <th mat-header-cell *matHeaderCellDef class="hide-narrow">Note</th>
-          <td mat-cell *matCellDef="let row" class="hide-narrow">
+          <td class="num">{{ row.castleCount }}</td>
+          <td class="num mean hide-940">{{ row.meanEditorialScore | number:'1.2-2' }}</td>
+          <td class="era hide-720">{{ row.definingTradition ?? '' }}</td>
+          <td class="ed-note">
+            @if (isSleeper(row)) {
+              <span class="sleeper-tag" role="img" aria-label="Editor's sleeper">EDITOR'S SLEEPER</span>
+            }
             @if (row.editorialNote) {
-              <span class="editorial-note" [title]="row.editorialNote">
-                {{ row.editorialNote.length > 80 ? row.editorialNote.substring(0, 80) + '…' : row.editorialNote }}
-              </span>
+              <span class="note-body">{{ row.editorialNote }}</span>
             }
           </td>
-        </ng-container>
-
-        <ng-container matColumnDef="editorSleeper">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let row">
-            @if (row.editorSleeper) {
-              <span class="sleeper-badge">Sleeper</span>
-            }
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="topEntry">
-          <th mat-header-cell *matHeaderCellDef class="hide-narrow">Top entry</th>
-          <td mat-cell *matCellDef="let row" class="hide-narrow">
+          <td class="top hide-940">
             @if (row.topCastleCode) {
               <a [routerLink]="['/castles', row.topCastleCode]">{{ row.topCastleName }}</a>
             }
           </td>
-        </ng-container>
+        </tr>
+      }
+    </tbody>
+  </table>
 
-        <tr mat-header-row *matHeaderRowDef="columns"></tr>
-        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-      </table>
-    </div>
-  </section>
+  <div class="legend">
+    <span><b class="star">★</b> Editorial rank — by the editorial board</span>
+    <span class="dot">·</span>
+    <span><span class="up">↑</span> visitors rate higher than editors</span>
+    <span class="dot">·</span>
+    <span><span class="down">↓</span> editors rate higher than visitors</span>
+    <span class="dot">·</span>
+    <span><b class="sleeper-tag-inline">EDITOR'S SLEEPER</b> high editorial rank, low traffic</span>
+  </div>
+
 </div>
