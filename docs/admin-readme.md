@@ -10,9 +10,6 @@ The editorial annex is a protected section of the Topcastles site for managing t
 
 The passphrase is the value of `ADMIN_TOKEN` in the server's `.env` file. There is no username/password pair — the passphrase is the token.
 
-```
-ADMIN_TOKEN=cZzwZla3ODH/09SHmGGPmM928rzbUqkUNqJVRvtf3IbFJ0jfv9uv8Th8ciW++YZ0
-```
 
 ### Steps
 
