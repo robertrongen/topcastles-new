@@ -1,3 +1,15 @@
+@if (adminAuth.isAuthenticated()) {
+  <div class="admin-util-bar" role="banner" aria-label="Editorial annex status">
+    <div class="admin-util-bar__left">
+      <span class="admin-util-bar__badge">EDITOR</span>
+      <span class="admin-util-bar__label">Editorial annex — unbound copy</span>
+    </div>
+    <div class="admin-util-bar__right">
+      <span class="admin-util-bar__who">{{ adminAuth.handle() }}</span>
+    </div>
+  </div>
+}
+
 <header class="site-mast">
   <a class="site-mast__mark" routerLink="/">Topcastles<span class="site-mast__dot">.</span></a>
   <p class="site-mast__tag">An editorial atlas of medieval fortifications, ranked by editors and visitors.</p>
@@ -25,6 +37,9 @@
   <a routerLink="/top-regions" routerLinkActive="site-nav--active">Top Regions</a>
   <a routerLink="/background" routerLinkActive="site-nav--active">Background</a>
   <a routerLink="/developer" routerLinkActive="site-nav--active">Developer · API</a>
+  @if (adminAuth.isAuthenticated()) {
+    <a routerLink="/admin/editorial" routerLinkActive="site-nav--active">Editorial</a>
+  }
   <div class="site-nav__icons">
     <a routerLink="/favorites" routerLinkActive="site-nav--active" aria-label="Favorites" matTooltip="Favorites" matTooltipPosition="below">
       <mat-icon>bookmark</mat-icon>

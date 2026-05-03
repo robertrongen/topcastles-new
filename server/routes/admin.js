@@ -1,6 +1,7 @@
 import express, { Router } from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { readdir } from 'fs/promises';
 import { adminAuth } from '../middleware/admin-auth.js';
 import { readJson, writeJson } from '../lib/json-store.js';
 
@@ -97,6 +98,33 @@ router.get('/pending-status', async (_req, res) => {
     return res.status(404).json({ error: 'no pending upload' });
   }
   res.json(meta);
+});
+
+// GET /api/admin/backups
+// Returns metadata for editorial backup files, newest-first.
+router.get('/backups', async (_req, res) => {
+  const backupsDir = path.join(DATA_DIR, 'editorial', 'backups');
+  try {
+    const files = await readdir(backupsDir);
+    const entries = files
+      .filter(f => f.endsWith('.json'))
+      .map(f => {
+        const base = f.slice(0, -5); // strip .json
+        const lastDash = base.lastIndexOf('-');
+        if (lastDash === -1) return null;
+        const file = base.slice(0, lastDash);
+        const ts = parseInt(base.slice(lastDash + 1), 10);
+        if (!file || isNaN(ts)) return null;
+        return { file, timestamp: ts, filename: f };
+      })
+      .filter(Boolean)
+      .sort((a, b) => b.timestamp - a.timestamp);
+    res.json(entries);
+  } catch (err) {
+    if (err.code === 'ENOENT') return res.json([]);
+    console.error('[admin/backups] readdir failed:', err);
+    res.status(500).json({ error: 'Could not read backups directory' });
+  }
 });
 
 export default router;

@@ -1,3 +1,41 @@
+// ── Admin utility bar (global — shows above masthead when admin token present) ─
+
+.admin-util-bar {
+  height: 28px;
+  background: #08090A;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.admin-util-bar__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-util-bar__badge {
+  border: 1px solid var(--ochre);
+  padding: 2px 6px;
+  font: 600 10px/1 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--ochre);
+}
+
+.admin-util-bar__label {
+  font: 400 12px/1 var(--tk-font-sans);
+  color: var(--text-4);
+}
+
+.admin-util-bar__right {
+  font: 400 12px/1 var(--tk-font-sans);
+  color: var(--text-3);
+}
+
 // ── Host layout ──────────────────────────────────────────────────────────────
 
 :host {

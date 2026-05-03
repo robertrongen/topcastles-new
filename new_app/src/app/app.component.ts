@@ -1,6 +1,7 @@
 import { Component, inject, NgZone, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
+import { AdminAuthService } from './pages/admin/admin-auth.service';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
@@ -34,6 +35,7 @@ import { MastheadSearchComponent } from './components/masthead-search/masthead-s
 export class AppComponent implements OnInit {
   title = 'Top Castles';
   protected theme = inject(ThemeService);
+  protected adminAuth = inject(AdminAuthService);
   private platformId = inject(PLATFORM_ID);
   private userService = inject(UserService);
   private favoritesService = inject(FavoritesService);
