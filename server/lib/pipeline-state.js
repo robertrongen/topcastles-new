@@ -59,3 +59,33 @@ export async function createRebuildRequest(dataDir, { reason, requestedBy }) {
   await writeJson(rebuildHistoryPath(dataDir), [...history, entry]);
   return entry;
 }
+
+// ── Enrichment request ────────────────────────────────────────────────────────
+
+export const ENRICHMENT_TYPES = ['wikipedia', 'wikidata', 'coordinates', 'full'];
+
+export function enrichmentRequestPath(dataDir) {
+  return path.join(dataDir, 'pipeline', 'enrichment-request.json');
+}
+
+export function enrichmentHistoryPath(dataDir) {
+  return path.join(dataDir, 'pipeline', 'enrichment-history.json');
+}
+
+export async function readEnrichmentRequest(dataDir) {
+  return readJson(enrichmentRequestPath(dataDir));
+}
+
+export async function createEnrichmentRequest(dataDir, { type, reason, requestedBy }) {
+  const entry = {
+    requestedAt: new Date().toISOString(),
+    requestedBy,
+    type,
+    reason,
+    status: 'requested',
+  };
+  await writeJson(enrichmentRequestPath(dataDir), entry);
+  const history = (await readJson(enrichmentHistoryPath(dataDir))) ?? [];
+  await writeJson(enrichmentHistoryPath(dataDir), [...history, entry]);
+  return entry;
+}

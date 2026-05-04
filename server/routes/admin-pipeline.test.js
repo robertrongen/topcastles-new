@@ -6,7 +6,12 @@ import path from 'path';
 import express from 'express';
 import supertest from 'supertest';
 import { writeJson } from '../lib/json-store.js';
-import { updatePipelineMeta, readPipelineMeta, readRebuildRequest } from '../lib/pipeline-state.js';
+import {
+  updatePipelineMeta,
+  readPipelineMeta,
+  readRebuildRequest,
+  readEnrichmentRequest,
+} from '../lib/pipeline-state.js';
 
 const TOKEN = 'test-pipeline-token';
 
@@ -266,5 +271,179 @@ describe('POST /api/admin/pipeline/rebuild-request', () => {
     assert.ok(history.length >= 1);
     assert.equal(history.at(-1).status, 'requested');
     assert.equal(history.at(-1).requestedBy, 'Robert');
+  });
+});
+
+describe('GET /api/admin/pipeline/enrichment-request', () => {
+  let tmpDir;
+  let request;
+
+  before(async () => {
+    tmpDir = await mkdtemp(path.join(tmpdir(), 'enrichment-get-'));
+    request = await buildApp(tmpDir);
+  });
+
+  after(async () => {
+    await rm(tmpDir, { recursive: true, force: true });
+    delete process.env.DATA_DIR;
+    delete process.env.ADMIN_TOKEN;
+  });
+
+  it('missing token → 401', async () => {
+    const res = await request.get('/api/admin/pipeline/enrichment-request');
+    assert.equal(res.status, 401);
+  });
+
+  it('no request file → 404', async () => {
+    const res = await request
+      .get('/api/admin/pipeline/enrichment-request')
+      .set('Authorization', `Bearer ${TOKEN}`);
+    assert.equal(res.status, 404);
+  });
+});
+
+describe('POST /api/admin/pipeline/enrichment-request', () => {
+  let tmpDir;
+  let request;
+
+  before(async () => {
+    tmpDir = await mkdtemp(path.join(tmpdir(), 'enrichment-post-'));
+    request = await buildApp(tmpDir);
+  });
+
+  after(async () => {
+    await rm(tmpDir, { recursive: true, force: true });
+    delete process.env.DATA_DIR;
+    delete process.env.ADMIN_TOKEN;
+  });
+
+  it('missing token → 401', async () => {
+    const res = await request
+      .post('/api/admin/pipeline/enrichment-request')
+      .send({ type: 'wikidata', reason: 'test', requestedBy: 'Robert' });
+    assert.equal(res.status, 401);
+  });
+
+  it('invalid type → 400', async () => {
+    const res = await request
+      .post('/api/admin/pipeline/enrichment-request')
+      .set('Authorization', `Bearer ${TOKEN}`)
+      .send({ type: 'invalid', reason: 'test', requestedBy: 'Robert' });
+    assert.equal(res.status, 400);
+    assert.ok(res.body.error.includes('type'));
+  });
+
+  it('missing type → 400', async () => {
+    const res = await request
+      .post('/api/admin/pipeline/enrichment-request')
+      .set('Authorization', `Bearer ${TOKEN}`)
+      .send({ reason: 'test', requestedBy: 'Robert' });
+    assert.equal(res.status, 400);
+  });
+
+  it('missing reason → 400', async () => {
+    const res = await request
+      .post('/api/admin/pipeline/enrichment-request')
+      .set('Authorization', `Bearer ${TOKEN}`)
+      .send({ type: 'wikidata', requestedBy: 'Robert' });
+    assert.equal(res.status, 400);
+    assert.ok(res.body.error.includes('reason'));
+  });
+
+  it('empty reason → 400', async () => {
+    const res = await request
+      .post('/api/admin/pipeline/enrichment-request')
+      .set('Authorization', `Bearer ${TOKEN}`)
+      .send({ type: 'wikidata', reason: '  ', requestedBy: 'Robert' });
+    assert.equal(res.status, 400);
+  });
+
+  it('reason over 500 chars → 400', async () => {
+    const res = await request
+      .post('/api/admin/pipeline/enrichment-request')
+      .set('Authorization', `Bearer ${TOKEN}`)
+      .send({ type: 'wikidata', reason: 'x'.repeat(501), requestedBy: 'Robert' });
+    assert.equal(res.status, 400);
+  });
+
+  it('missing requestedBy → 400', async () => {
+    const res = await request
+      .post('/api/admin/pipeline/enrichment-request')
+      .set('Authorization', `Bearer ${TOKEN}`)
+      .send({ type: 'wikidata', reason: 'refresh missing fields' });
+    assert.equal(res.status, 400);
+    assert.ok(res.body.error.includes('requestedBy'));
+  });
+
+  it('valid payload (wikidata) → 201 with entry shape', async () => {
+    const res = await request
+      .post('/api/admin/pipeline/enrichment-request')
+      .set('Authorization', `Bearer ${TOKEN}`)
+      .send({ type: 'wikidata', reason: 'refresh missing fields', requestedBy: 'Robert' });
+    assert.equal(res.status, 201);
+    assert.equal(res.body.status, 'requested');
+    assert.equal(res.body.type, 'wikidata');
+    assert.equal(res.body.requestedBy, 'Robert');
+    assert.equal(res.body.reason, 'refresh missing fields');
+    assert.ok(typeof res.body.requestedAt === 'string');
+  });
+
+  it('valid request is readable via GET', async () => {
+    const get = await request
+      .get('/api/admin/pipeline/enrichment-request')
+      .set('Authorization', `Bearer ${TOKEN}`);
+    assert.equal(get.status, 200);
+    assert.equal(get.body.status, 'requested');
+    assert.equal(get.body.type, 'wikidata');
+  });
+
+  it('duplicate request while active → 409', async () => {
+    const res = await request
+      .post('/api/admin/pipeline/enrichment-request')
+      .set('Authorization', `Bearer ${TOKEN}`)
+      .send({ type: 'wikipedia', reason: 'another run', requestedBy: 'Robert' });
+    assert.equal(res.status, 409);
+    assert.ok(res.body.error.includes('pending'));
+  });
+
+  it('request is written to enrichment-request.json', async () => {
+    const req = await readEnrichmentRequest(tmpDir);
+    assert.ok(req !== null);
+    assert.equal(req.status, 'requested');
+    assert.equal(req.type, 'wikidata');
+  });
+
+  it('history entry is appended to enrichment-history.json', async () => {
+    const { readJson } = await import('../lib/json-store.js');
+    const history = await readJson(path.join(tmpDir, 'pipeline', 'enrichment-history.json'));
+    assert.ok(Array.isArray(history));
+    assert.ok(history.length >= 1);
+    assert.equal(history.at(-1).status, 'requested');
+    assert.equal(history.at(-1).type, 'wikidata');
+  });
+
+  it('all valid types are accepted', async () => {
+    for (const type of ['wikipedia', 'wikidata', 'coordinates', 'full']) {
+      // Use a fresh dir for each to avoid 409
+      const freshDir = await mkdtemp(path.join(tmpdir(), `enrichment-type-${type}-`));
+      try {
+        process.env.DATA_DIR = freshDir;
+        process.env.ADMIN_TOKEN = TOKEN;
+        const url = `./admin-pipeline.js?t=${Date.now()}-${type}`;
+        const { default: freshRoutes } = await import(url);
+        const freshApp = express();
+        freshApp.use('/api/admin/pipeline', freshRoutes);
+        const freshReq = supertest(freshApp);
+
+        const res = await freshReq
+          .post('/api/admin/pipeline/enrichment-request')
+          .set('Authorization', `Bearer ${TOKEN}`)
+          .send({ type, reason: 'test', requestedBy: 'Robert' });
+        assert.equal(res.status, 201, `type=${type} should return 201, got ${res.status}: ${JSON.stringify(res.body)}`);
+        assert.equal(res.body.type, type);
+      } finally {
+        await rm(freshDir, { recursive: true, force: true });
+      }
+    }
   });
 });

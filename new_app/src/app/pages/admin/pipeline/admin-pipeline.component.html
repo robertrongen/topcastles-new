@@ -149,6 +149,92 @@
     }
   </section>
 
+  <!-- Enrichment request -->
+  <section class="rebuild-section" aria-label="Enrichment request">
+    <div class="rebuild-section__eyebrow">ENRICHMENT REQUEST</div>
+
+    @if (enrichmentRequest(); as req) {
+      <!-- Pending request status -->
+      <div class="rebuild-card rebuild-card--pending">
+        <div class="rebuild-card__row">
+          <span class="rebuild-card__label">Status</span>
+          <span class="rebuild-card__badge rebuild-card__badge--requested">{{ req.status }}</span>
+        </div>
+        <div class="rebuild-card__row">
+          <span class="rebuild-card__label">Type</span>
+          <span class="rebuild-card__value">{{ req.type }}</span>
+        </div>
+        <div class="rebuild-card__row">
+          <span class="rebuild-card__label">Requested at</span>
+          <span class="rebuild-card__value">{{ formatDate(req.requestedAt) }}</span>
+        </div>
+        <div class="rebuild-card__row">
+          <span class="rebuild-card__label">Requested by</span>
+          <span class="rebuild-card__value">{{ req.requestedBy }}</span>
+        </div>
+        <div class="rebuild-card__row">
+          <span class="rebuild-card__label">Reason</span>
+          <span class="rebuild-card__value">{{ req.reason }}</span>
+        </div>
+      </div>
+
+      <!-- Operator instructions -->
+      <aside class="operator-instructions" role="note">
+        <span class="operator-instructions__eyebrow">OPERATOR INSTRUCTIONS</span>
+        <p class="operator-instructions__body">
+          An enrichment request (type: <code class="mono-chip">{{ req.type }}</code>) is staged at
+          <code class="mono-chip">/data/pipeline/enrichment-request.json</code>.
+          On a developer machine, run the appropriate enrichment script:
+        </p>
+        <pre class="operator-instructions__cmd">npm run data:enrich:{{ req.type === 'full' ? 'wikidata && npm run data:enrich:wikipedia' : req.type }}</pre>
+        <p class="operator-instructions__body">
+          Then run the pipeline to apply overrides and regenerate downstream artifacts:
+        </p>
+        <pre class="operator-instructions__cmd">npm run data:merge-overrides && npm run data:lean</pre>
+      </aside>
+
+    } @else {
+      <!-- Request form -->
+      <div class="rebuild-form">
+        <div class="rebuild-form__row">
+          <label class="rebuild-form__label" for="enrichment-type">Type</label>
+          <select
+            id="enrichment-type"
+            class="rebuild-form__select"
+            [ngModel]="enrichmentType()"
+            (ngModelChange)="enrichmentType.set($event)"
+            [disabled]="enrichSubmitting()"
+          >
+            @for (t of enrichmentTypes; track t) {
+              <option [value]="t">{{ t }}</option>
+            }
+          </select>
+        </div>
+        <label class="rebuild-form__label" for="enrichment-reason">Reason</label>
+        <textarea
+          id="enrichment-reason"
+          class="rebuild-form__textarea"
+          [ngModel]="enrichmentReason()"
+          (ngModelChange)="enrichmentReason.set($event)"
+          rows="2"
+          maxlength="500"
+          [disabled]="enrichSubmitting()"
+        ></textarea>
+        @if (enrichSubmitError()) {
+          <p class="rebuild-form__error" role="alert">{{ enrichSubmitError() }}</p>
+        }
+        <button
+          class="rebuild-form__btn"
+          type="button"
+          (click)="requestEnrichment()"
+          [disabled]="enrichSubmitting()"
+        >
+          {{ enrichSubmitting() ? 'Submitting…' : 'Request enrichment' }}
+        </button>
+      </div>
+    }
+  </section>
+
   <!-- Pipeline ledger -->
   <section class="ledger" aria-label="Pipeline ledger">
     <div class="ledger__eyebrow">PIPELINE LEDGER</div>

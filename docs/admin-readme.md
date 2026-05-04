@@ -135,6 +135,35 @@ This page is read-only except for requesting a rebuild.
 
 ---
 
+## Enrichment Requests
+
+An enrichment run can be requested from the pipeline page.
+
+Allowed types:
+
+| Type | Effect |
+|------|--------|
+| wikidata | Re-run Wikidata enrichment |
+| wikipedia | Re-run Wikipedia enrichment |
+| coordinates | Re-run coordinate enrichment |
+| full | Run all enrichment scripts |
+
+This creates:
+
+/data/pipeline/enrichment-request.json
+
+Only one active enrichment request is permitted at a time (status: requested).
+
+The runtime does not execute enrichment. To process a request, run on the developer machine:
+
+npm run data:enrich:wikidata
+
+or the appropriate enrichment script for the request type. Then apply overrides and regenerate:
+
+npm run data:merge-overrides && npm run data:lean
+
+---
+
 ## Rebuild Requests
 
 A rebuild can be requested from the pipeline page.
@@ -152,7 +181,7 @@ npm run pipeline:consume
 This script:
 
 - copies staged dataset
-- runs full pipeline regeneration
+- runs full pipeline regeneration (including merge-overrides)
 - builds the Angular app
 - updates metadata
 - writes logs
@@ -162,6 +191,29 @@ Logs:
 /data/pipeline/logs/<timestamp>-rebuild.log
 
 Deployment is a separate manual step.
+
+---
+
+## Castle Override Merge
+
+At build time (during data:regenerate), castle overrides are merged into the enriched dataset before the lean and API generation steps.
+
+Script:
+
+npm run data:merge-overrides
+
+This script:
+
+- reads /data/pipeline/castle-overrides.json
+- applies override fields to matching records (override wins)
+- appends new castle drafts with the next sequential position
+- writes merge-report.json with applied/added counts
+
+The enriched dataset at:
+
+new_app/src/assets/data/castles_enriched.json
+
+is the only write target. The source overrides file is not modified.
 
 ---
 
@@ -176,9 +228,12 @@ Files:
 | File | Purpose |
 |------|--------|
 | meta.json | Pipeline metadata |
-| rebuild-request.json | Current request |
-| rebuild-history.json | Request history |
+| rebuild-request.json | Current rebuild request |
+| rebuild-history.json | Rebuild request history |
+| enrichment-request.json | Current enrichment request |
+| enrichment-history.json | Enrichment request history |
 | castle-overrides.json | Admin data overrides |
+| merge-report.json | Last override merge diagnostics |
 | logs/*.log | Rebuild logs |
 
 ---
@@ -258,9 +313,11 @@ Authorization: Bearer <ADMIN_TOKEN>
 
 | Endpoint | Description |
 |--------|-------------|
-| GET /api/admin/pipeline/status | Pipeline status |
-| GET /api/admin/pipeline/rebuild-request | Current request |
-| POST /api/admin/pipeline/rebuild-request | Create request |
+| GET /api/admin/pipeline/status | Pipeline status and ledger |
+| GET /api/admin/pipeline/rebuild-request | Current rebuild request |
+| POST /api/admin/pipeline/rebuild-request | Create rebuild request |
+| GET /api/admin/pipeline/enrichment-request | Current enrichment request |
+| POST /api/admin/pipeline/enrichment-request | Create enrichment request |
 
 ## Castles
 
@@ -308,14 +365,32 @@ The runtime must never:
 
 # Typical Workflow
 
-1. Upload enriched dataset
-2. Verify in /admin/pipeline
-3. Request rebuild
-4. Run:
+## Rebuild after upload
+
+1. Upload enriched dataset via /admin
+2. Verify staged file in /admin/pipeline
+3. Apply any castle overrides via /admin/castles
+4. Request rebuild from /admin/pipeline
+5. On developer machine, run:
 
 npm run pipeline:consume
 
-5. Deploy manually
+(This copies the staged file, runs data:regenerate including merge-overrides, and builds.)
+
+6. Deploy manually
+
+## Enrichment refresh
+
+1. Request enrichment from /admin/pipeline (choose type)
+2. On developer machine, run the appropriate script:
+
+npm run data:enrich:wikidata
+
+3. Apply overrides and regenerate downstream artifacts:
+
+npm run data:merge-overrides && npm run data:lean
+
+4. If the output requires a rebuild, follow the rebuild workflow above.
 
 ---
 

@@ -288,11 +288,34 @@
   gap: 10px;
 }
 
+.rebuild-form__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 2px;
+}
+
 .rebuild-form__label {
   font: 600 11px/1.4 var(--tk-font-sans);
   text-transform: uppercase;
   letter-spacing: .08em;
   color: var(--text-5);
+}
+
+.rebuild-form__select {
+  font: 400 13px/1 var(--tk-font-sans);
+  color: var(--text-2);
+  background: var(--ink-bg-2);
+  border: 1px solid var(--ink-line-2);
+  padding: 5px 8px;
+  cursor: pointer;
+
+  &:focus {
+    outline: 2px solid var(--ochre);
+    outline-offset: 0;
+  }
+
+  &:disabled { opacity: .5; }
 }
 
 .rebuild-form__textarea {

@@ -5,7 +5,14 @@ import { stat } from 'fs/promises';
 import { adminAuth } from '../middleware/admin-auth.js';
 import express from 'express';
 import { readJson } from '../lib/json-store.js';
-import { readPipelineMeta, readRebuildRequest, createRebuildRequest } from '../lib/pipeline-state.js';
+import {
+  readPipelineMeta,
+  readRebuildRequest,
+  createRebuildRequest,
+  readEnrichmentRequest,
+  createEnrichmentRequest,
+  ENRICHMENT_TYPES,
+} from '../lib/pipeline-state.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, '../../data');
@@ -87,6 +94,50 @@ router.post('/rebuild-request', express.json(), async (req, res) => {
   } catch (err) {
     console.error('[rebuild-request] write failed:', err);
     res.status(500).json({ error: 'failed to write rebuild request' });
+  }
+});
+
+// GET /api/admin/pipeline/enrichment-request
+router.get('/enrichment-request', async (_req, res) => {
+  const request = await readEnrichmentRequest(DATA_DIR);
+  if (!request) return res.status(404).json({ error: 'no enrichment request' });
+  res.json(request);
+});
+
+// POST /api/admin/pipeline/enrichment-request
+router.post('/enrichment-request', express.json(), async (req, res) => {
+  const { type, reason, requestedBy } = req.body ?? {};
+
+  if (!ENRICHMENT_TYPES.includes(type)) {
+    return res.status(400).json({
+      error: `type must be one of: ${ENRICHMENT_TYPES.join(', ')}`,
+    });
+  }
+  if (typeof reason !== 'string' || reason.trim().length === 0) {
+    return res.status(400).json({ error: 'reason is required' });
+  }
+  if (reason.trim().length > 500) {
+    return res.status(400).json({ error: 'reason must be 500 characters or fewer' });
+  }
+  if (typeof requestedBy !== 'string' || requestedBy.trim().length === 0) {
+    return res.status(400).json({ error: 'requestedBy is required' });
+  }
+
+  const existing = await readEnrichmentRequest(DATA_DIR);
+  if (existing && existing.status === 'requested') {
+    return res.status(409).json({ error: 'an enrichment request is already pending' });
+  }
+
+  try {
+    const entry = await createEnrichmentRequest(DATA_DIR, {
+      type,
+      reason: reason.trim(),
+      requestedBy: requestedBy.trim(),
+    });
+    res.status(201).json(entry);
+  } catch (err) {
+    console.error('[enrichment-request] write failed:', err);
+    res.status(500).json({ error: 'failed to write enrichment request' });
   }
 });
 

@@ -36,6 +36,16 @@ export interface RebuildRequest {
   status: string;
 }
 
+export interface EnrichmentRequest {
+  requestedAt: string;
+  requestedBy: string;
+  type: string;
+  reason: string;
+  status: string;
+}
+
+export const ENRICHMENT_TYPES = ['wikipedia', 'wikidata', 'coordinates', 'full'] as const;
+
 @Component({
   selector: 'app-admin-pipeline',
   standalone: true,
@@ -57,10 +67,17 @@ export class AdminPipelineComponent implements OnInit {
   readonly submitting = signal(false);
   readonly submitError = signal<string | null>(null);
 
+  readonly enrichmentRequest = signal<EnrichmentRequest | null>(null);
+  readonly enrichmentType = signal<string>('wikidata');
+  readonly enrichmentReason = signal('refresh missing fields');
+  readonly enrichSubmitting = signal(false);
+  readonly enrichSubmitError = signal<string | null>(null);
+  readonly enrichmentTypes = ENRICHMENT_TYPES;
+
   async ngOnInit() {
     if (!isPlatformBrowser(this.platformId)) return;
     try {
-      const [statusData, rebuildData] = await Promise.allSettled([
+      const [statusData, rebuildData, enrichmentData] = await Promise.allSettled([
         firstValueFrom(
           this.http.get<PipelineStatus>('/api/admin/pipeline/status', {
             headers: this.auth.getAuthHeaders(),
@@ -68,6 +85,11 @@ export class AdminPipelineComponent implements OnInit {
         ),
         firstValueFrom(
           this.http.get<RebuildRequest>('/api/admin/pipeline/rebuild-request', {
+            headers: this.auth.getAuthHeaders(),
+          })
+        ),
+        firstValueFrom(
+          this.http.get<EnrichmentRequest>('/api/admin/pipeline/enrichment-request', {
             headers: this.auth.getAuthHeaders(),
           })
         ),
@@ -83,6 +105,11 @@ export class AdminPipelineComponent implements OnInit {
         this.rebuildRequest.set(rebuildData.value);
       }
       // 404 means no pending request — leave signal null, no error
+
+      if (enrichmentData.status === 'fulfilled') {
+        this.enrichmentRequest.set(enrichmentData.value);
+      }
+      // 404 means no pending enrichment request — leave signal null, no error
     } finally {
       this.loading.set(false);
     }
@@ -107,6 +134,32 @@ export class AdminPipelineComponent implements OnInit {
       this.submitError.set(msg);
     } finally {
       this.submitting.set(false);
+    }
+  }
+
+  async requestEnrichment() {
+    this.enrichSubmitError.set(null);
+    this.enrichSubmitting.set(true);
+    try {
+      const entry = await firstValueFrom(
+        this.http.post<EnrichmentRequest>(
+          '/api/admin/pipeline/enrichment-request',
+          {
+            type: this.enrichmentType(),
+            reason: this.enrichmentReason(),
+            requestedBy: this.auth.handle(),
+          },
+          { headers: this.auth.getAuthHeaders() }
+        )
+      );
+      this.enrichmentRequest.set(entry);
+    } catch (err) {
+      const msg = (err instanceof HttpErrorResponse && err.error?.error)
+        ? err.error.error
+        : 'Failed to submit enrichment request.';
+      this.enrichSubmitError.set(msg);
+    } finally {
+      this.enrichSubmitting.set(false);
     }
   }
 
