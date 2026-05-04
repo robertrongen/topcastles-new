@@ -1,0 +1,188 @@
+// ── Crumbs ─────────────────────────────────────────────────────────────────────
+
+.crumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.crumbs__seg {
+  font: 600 11px/1 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .10em;
+  color: var(--text-5);
+}
+
+.crumbs__seg--current {
+  color: var(--text-2);
+}
+
+.crumbs__chev {
+  font: 400 11px/1 var(--tk-font-sans);
+  color: var(--text-6);
+}
+
+// ── Page head ──────────────────────────────────────────────────────────────────
+
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--ochre);
+  margin-bottom: 28px;
+}
+
+.page-head__title {
+  font: 600 32px/1.15 var(--tk-font-serif);
+  letter-spacing: -.012em;
+  color: var(--text-1);
+  margin: 0;
+}
+
+.page-head__meta {
+  font: italic 400 13.5px/1.5 var(--tk-font-serif);
+  color: var(--text-4);
+  max-width: 380px;
+  text-align: right;
+  align-self: flex-end;
+  margin: 0;
+}
+
+// ── State messages ─────────────────────────────────────────────────────────────
+
+.state-msg {
+  font: italic 400 14px/1.5 var(--tk-font-serif);
+  color: var(--text-5);
+  margin: 0 0 16px;
+}
+
+// ── Error notice ───────────────────────────────────────────────────────────────
+
+.error-notice {
+  padding: 16px 20px;
+  background: var(--ink-card);
+  border: 1px solid var(--ink-line-2);
+  border-left: 3px solid var(--heraldic-red);
+  margin-bottom: 20px;
+}
+
+.error-notice__eyebrow {
+  display: block;
+  font: 600 10px/1 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--heraldic-red);
+  margin-bottom: 8px;
+}
+
+.error-notice__body {
+  font: 400 13.5px/1.55 var(--tk-font-serif);
+  color: var(--text-2);
+  margin: 0;
+}
+
+// ── Warnings ───────────────────────────────────────────────────────────────────
+
+.warning-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.warning-list__item {
+  font: 400 13px/1.6 var(--tk-font-sans);
+  color: var(--text-3);
+  padding: 8px 12px;
+  background: var(--ink-bg-2);
+  border-left: 2px solid var(--ochre);
+  margin-bottom: 6px;
+}
+
+// ── Status card ────────────────────────────────────────────────────────────────
+
+.status-card {
+  background: var(--ink-card);
+  border: 1px solid var(--ink-line-2);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+
+.status-card--staged {
+  border-left: 3px solid var(--ochre);
+}
+
+.status-card--empty {
+  border-left: 3px solid var(--ink-line-2);
+}
+
+.status-card__eyebrow {
+  display: block;
+  font: 600 10px/1 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--text-5);
+  margin-bottom: 16px;
+}
+
+.status-card__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.status-card__row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.status-card__label {
+  font: 600 11px/1.4 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-5);
+}
+
+.status-card__value {
+  font: 400 13.5px/1.4 var(--tk-font-serif);
+  color: var(--text-2);
+}
+
+.status-card__value--mono {
+  font-family: var(--tk-font-mono, 'JetBrains Mono', monospace);
+  font-size: 12px;
+}
+
+.status-card__empty-msg {
+  font: italic 400 14px/1.5 var(--tk-font-serif);
+  color: var(--text-5);
+  margin: 0;
+}
+
+// ── Build notice ───────────────────────────────────────────────────────────────
+
+.build-notice {
+  padding: 16px 20px;
+  background: var(--ink-card);
+  border: 1px solid var(--ink-line-2);
+  border-left: 3px solid var(--ink-line-3, var(--ink-line-2));
+  margin-bottom: 20px;
+}
+
+.build-notice__eyebrow {
+  display: block;
+  font: 600 10px/1 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--text-5);
+  margin-bottom: 8px;
+}
+
+.build-notice__body {
+  font: 400 13px/1.6 var(--tk-font-sans);
+  color: var(--text-3);
+  margin: 0;
+}

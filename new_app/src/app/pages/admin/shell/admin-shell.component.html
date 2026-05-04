@@ -16,6 +16,21 @@
 <!-- Admin layout: side nav + content -->
 <div class="admin-layout">
   <nav class="side-nav" aria-label="Editorial navigation">
+    <div class="side-nav__group">PIPELINE</div>
+
+    <a class="side-nav__row"
+       routerLink="/admin/pipeline"
+       routerLinkActive="side-nav__row--active">
+      <svg class="side-nav__glyph" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1.5" y="6.5" width="13" height="3"/>
+        <circle cx="4" cy="8" r="1.5" fill="currentColor"/>
+        <circle cx="12" cy="8" r="1.5" fill="currentColor"/>
+        <line x1="4" y1="8" x2="12" y2="8"/>
+      </svg>
+      <span class="side-nav__label">Status</span>
+    </a>
+
+    <div class="side-nav__divider"></div>
     <div class="side-nav__group">EDITORIAL OVERLAY</div>
 
     <a class="side-nav__row"

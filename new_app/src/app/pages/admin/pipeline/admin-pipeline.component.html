@@ -1,0 +1,82 @@
+<!-- Crumbs -->
+<nav class="crumbs" aria-label="Breadcrumb">
+  <span class="crumbs__seg">Pipeline admin</span>
+  <span class="crumbs__chev">›</span>
+  <span class="crumbs__seg crumbs__seg--current">Status</span>
+</nav>
+
+<!-- Page head -->
+<div class="page-head">
+  <div class="page-head__left">
+    <h1 class="page-head__title">Pipeline status</h1>
+  </div>
+  <p class="page-head__meta">Read-only view. No rebuild is triggered from this page.</p>
+</div>
+
+<!-- Loading -->
+@if (loading()) {
+  <p class="state-msg">Loading…</p>
+}
+
+<!-- Error -->
+@if (!loading() && error()) {
+  <aside class="error-notice" role="alert">
+    <span class="error-notice__eyebrow">ERROR</span>
+    <p class="error-notice__body">{{ error() }}</p>
+  </aside>
+}
+
+<!-- Loaded -->
+@if (!loading() && !error() && status()) {
+
+  <!-- Warnings -->
+  @if (status()!.warnings.length) {
+    <ul class="warning-list" aria-label="Pipeline warnings">
+      @for (w of status()!.warnings; track w) {
+        <li class="warning-list__item">{{ w }}</li>
+      }
+    </ul>
+  }
+
+  <!-- Pending upload card -->
+  @if (status()!.pendingUpload; as upload) {
+    <section class="status-card status-card--staged" aria-label="Pending upload">
+      <div class="status-card__eyebrow">PENDING UPLOAD</div>
+      <div class="status-card__grid">
+        <div class="status-card__row">
+          <span class="status-card__label">Staged at</span>
+          <span class="status-card__value">{{ formatDate(upload.uploadedAt) }}</span>
+        </div>
+        <div class="status-card__row">
+          <span class="status-card__label">Record count</span>
+          <span class="status-card__value">{{ upload.recordCount ?? '—' }}</span>
+        </div>
+        <div class="status-card__row">
+          <span class="status-card__label">File size</span>
+          <span class="status-card__value">{{ formatBytes(upload.fileSizeBytes) }}</span>
+        </div>
+        <div class="status-card__row">
+          <span class="status-card__label">Uploaded by</span>
+          <span class="status-card__value">{{ upload.uploadedBy ?? '—' }}</span>
+        </div>
+        <div class="status-card__row">
+          <span class="status-card__label">Checksum</span>
+          <span class="status-card__value status-card__value--mono">{{ upload.checksum ?? 'not recorded' }}</span>
+        </div>
+      </div>
+    </section>
+  } @else {
+    <section class="status-card status-card--empty" aria-label="No pending upload">
+      <div class="status-card__eyebrow">PENDING UPLOAD</div>
+      <p class="status-card__empty-msg">No enriched dataset is currently staged.</p>
+    </section>
+  }
+
+  <!-- Build notice -->
+  @if (status()!.buildNotice) {
+    <aside class="build-notice" role="note" aria-label="Build notice">
+      <span class="build-notice__eyebrow">BUILD NOTICE</span>
+      <p class="build-notice__body">{{ status()!.buildNotice }}</p>
+    </aside>
+  }
+}

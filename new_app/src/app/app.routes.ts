@@ -36,6 +36,11 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'editorial', pathMatch: 'full' },
       {
+        path: 'pipeline',
+        loadComponent: () => import('./pages/admin/pipeline/admin-pipeline.component').then(m => m.AdminPipelineComponent),
+        data: { prerender: false },
+      },
+      {
         path: 'editorial',
         loadComponent: () => import('./pages/admin/editorial-overview/admin-editorial-overview.component').then(m => m.AdminEditorialOverviewComponent),
         data: { prerender: false },
