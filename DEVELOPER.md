@@ -187,9 +187,11 @@ The deployment script builds the app, builds and pushes the Docker image, and re
 | [docs/decisions.md](docs/decisions.md) | Architectural Decision Records |
 | [docs/pipeline.md](docs/pipeline.md) | Artifact and generated-output policy |
 | [docs/roadmap.md](docs/roadmap.md) | Active forward-looking worklist |
+| [docs/product-strategy-plan.md](docs/product-strategy-plan.md) | Product direction and priority rationale |
 | [docs/context-pipeline.md](docs/context-pipeline.md) | Context bundle pipeline reference |
 | [docs/spec-kit.md](docs/spec-kit.md) | Higher-risk work policy |
 | [docs/deployment.md](docs/deployment.md) | Deployment script and NAS setup |
+| [docs/admin-readme.md](docs/admin-readme.md) | Protected editorial annex operator guide |
 | [docs/new-developer-onboarding.md](docs/new-developer-onboarding.md) | First-day VS Code workflow |
 | [docs/migration-report.md](docs/migration-report.md) | Historical modernization summary |
 | [docs/setup.md](docs/setup.md) | Stack and tooling reference |

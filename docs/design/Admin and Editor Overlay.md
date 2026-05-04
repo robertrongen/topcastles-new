@@ -1,7 +1,7 @@
 # Editorial Overlay System
 The "editor" layer is a set of JSON files at /data/editorial/ that add curated content on top of the data pipeline output. The pipeline never touches these files.
 
-Docs: docs/editorial-overlay.md
+Docs: [../editorial-overlay.md](../editorial-overlay.md)
 Service: new_app/src/app/services/editorial.service.ts
 
 ## The Five Editorial Files
@@ -39,7 +39,7 @@ The admin token validation and editorial read routes are the two main things you
 
 # Plan and build task
 - Goal: develop the Topcastles admin and editorial overlay system step-by-step, with approval gates before each implementation phase.
-- Context: editorial overlay files live in `/data/editorial/`, are editor-owned runtime JSON, and must never be written by the data pipeline. Public reads already exist at `/api/editorial/:file`; missing files return `{}`. The admin editor must show the prerender warning because overlay data appears after hydration, not in prerendered HTML. See `docs/editorial-overlay.md`. :contentReference[oaicite:0]{index=0}
+- Context: editorial overlay files live in `/data/editorial/`, are editor-owned runtime JSON, and must never be written by the data pipeline. Public reads already exist at `/api/editorial/:file`; missing files return `{}`. The admin editor must show the prerender warning because overlay data appears after hydration, not in prerendered HTML. See [../editorial-overlay.md](../editorial-overlay.md).
 - Current server reference: `server/routes/editorial.js` already whitelists the five public read endpoints and rejects unknown files. :contentReference[oaicite:1]{index=1}
 - Existing admin reference: `server/routes/admin.js` already protects `/api/admin/...` with `adminAuth` and contains staged upload endpoints. Extend this pattern, do not bypass it. :contentReference[oaicite:2]{index=2}
 

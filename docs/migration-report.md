@@ -136,6 +136,16 @@ This phase was originally written for an nginx static runtime. It is preserved h
 - Added token share/import flow via account links.
 - Added favorites detail route at `/favorites/:id`, reusing existing grid/table/list controls.
 
+### Phase 15: Admin Editorial Annex
+
+- Added protected admin login and shell using `ADMIN_TOKEN`.
+- Added `/admin/editorial` overview for the five editor-owned overlay files.
+- Added public `GET /api/editorial/:file` reads and protected `PUT /api/admin/editorial/:file` writes.
+- Added per-file editors for countries, regions, castle quotes, period picks, and browse bands.
+- Added castle lookup support for editor autocomplete controls.
+- Added editorial backups, publish status, and rebuild handoff messaging.
+- Kept pipeline/enrichment admin separate as future Spec Kit work.
+
 ## Historical Decisions
 
 | ADR | Decision |
@@ -145,5 +155,6 @@ This phase was originally written for an nginx static runtime. It is preserved h
 | ADR-003 | Static JSON from CSV; no database in build or production |
 | ADR-004 | Docker container deployed to Synology NAS via Docker Hub |
 | ADR-005 | Legacy brand palette applied via CSS overrides over M3 |
+| ADR-011 | Editor-owned editorial overlay under `/data/editorial/` |
 
 See [decisions.md](decisions.md) for the full ADR set.

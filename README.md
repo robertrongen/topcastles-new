@@ -83,6 +83,7 @@ on the next visit. No reinstall or manual refresh is needed.
 ## Documentation
 
 - [docs/new-developer-onboarding.md](docs/new-developer-onboarding.md) - quick start workflow for new contributors in VS Code.
+- [AGENTS.md](AGENTS.md) - mandatory machine-agent workflow contract.
 - [DEVELOPER.md](DEVELOPER.md) - contributor workflow, setup, commands, and tooling.
 - [docs/spec-kit.md](docs/spec-kit.md) - when to use lightweight workflow versus fuller Spec Kit discipline.
 - [docs/architecture.md](docs/architecture.md) - current system design and runtime model.
