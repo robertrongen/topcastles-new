@@ -2,7 +2,7 @@ import express, { Router } from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { createHash } from 'crypto';
-import { readdir, readFile } from 'fs/promises';
+import { readdir } from 'fs/promises';
 import { adminAuth } from '../middleware/admin-auth.js';
 import { readJson, writeJson } from '../lib/json-store.js';
 import { updatePipelineMeta } from '../lib/pipeline-state.js';
@@ -138,42 +138,6 @@ router.get('/backups', async (_req, res) => {
     if (err.code === 'ENOENT') return res.json([]);
     console.error('[admin/backups] readdir failed:', err);
     res.status(500).json({ error: 'Could not read backups directory' });
-  }
-});
-
-const CASTLES_ENRICHED_PATH = path.join(__dirname, '../../new_app/src/assets/data/castles_enriched.json');
-let _castlesCache = null;
-
-async function loadCastles() {
-  if (_castlesCache) return _castlesCache;
-  const raw = await readFile(CASTLES_ENRICHED_PATH, 'utf8');
-  const data = JSON.parse(raw);
-  const sorted = [...data].sort((a, b) => b.score_visitors - a.score_visitors);
-  const visitorRankMap = new Map(sorted.map((c, i) => [c.castle_code, i + 1]));
-  _castlesCache = data.map(c => ({
-    code: c.castle_code,
-    name: c.castle_name,
-    country: c.country,
-    editorialRank: c.position,
-    visitorRank: visitorRankMap.get(c.castle_code) ?? 9999,
-  }));
-  return _castlesCache;
-}
-
-// GET /api/admin/castles/lookup?q=<prefix>
-// Returns up to 12 castles matching the query by code or name prefix.
-router.get('/castles/lookup', async (req, res) => {
-  const q = String(req.query.q || '').toLowerCase().trim();
-  if (!q || q.length < 2) return res.json([]);
-  try {
-    const castles = await loadCastles();
-    const results = castles
-      .filter(c => c.code.toLowerCase().includes(q) || c.name.toLowerCase().includes(q))
-      .slice(0, 12);
-    res.json(results);
-  } catch (err) {
-    console.error('[admin/castles/lookup] failed:', err);
-    res.status(500).json({ error: 'lookup failed' });
   }
 });
 

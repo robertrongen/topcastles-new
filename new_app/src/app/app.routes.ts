@@ -41,6 +41,11 @@ export const routes: Routes = [
         data: { prerender: false },
       },
       {
+        path: 'castles',
+        loadComponent: () => import('./pages/admin/castles/admin-castles.component').then(m => m.AdminCastlesComponent),
+        data: { prerender: false },
+      },
+      {
         path: 'editorial',
         loadComponent: () => import('./pages/admin/editorial-overview/admin-editorial-overview.component').then(m => m.AdminEditorialOverviewComponent),
         data: { prerender: false },

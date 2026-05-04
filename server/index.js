@@ -23,6 +23,7 @@ import userRoutes from './routes/user.js';
 import adminRoutes from './routes/admin.js';
 import adminEditorialRoutes from './routes/admin-editorial.js';
 import adminPipelineRoutes from './routes/admin-pipeline.js';
+import adminCastlesRoutes from './routes/admin-castles.js';
 import editorialRoutes from './routes/editorial.js';
 import { createTopCastlesMcpServer } from './lib/topcastles-mcp.js';
 
@@ -108,6 +109,7 @@ app.use(compression());
 // express.json({ limit: '10mb' }) on POST /upload-enriched controls its own limit.
 app.use('/api/admin/editorial', adminEditorialRoutes);
 app.use('/api/admin/pipeline', adminPipelineRoutes);
+app.use('/api/admin/castles', adminCastlesRoutes);
 app.use('/api/admin', adminRoutes);
 app.use(express.json());
 

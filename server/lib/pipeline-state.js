@@ -31,6 +31,18 @@ export async function updatePipelineMeta(dataDir, patch) {
   await writeJson(pipelineMetaPath(dataDir), { ...current, ...patch });
 }
 
+export function castleOverridesPath(dataDir) {
+  return path.join(dataDir, 'pipeline', 'castle-overrides.json');
+}
+
+export async function readCastleOverrides(dataDir) {
+  return (await readJson(castleOverridesPath(dataDir))) ?? {};
+}
+
+export async function writeCastleOverrides(dataDir, overrides) {
+  return writeJson(castleOverridesPath(dataDir), overrides);
+}
+
 export async function readRebuildRequest(dataDir) {
   return readJson(rebuildRequestPath(dataDir));
 }

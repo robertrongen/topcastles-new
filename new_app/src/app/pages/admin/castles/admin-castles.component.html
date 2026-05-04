@@ -1,0 +1,193 @@
+<!-- Crumbs -->
+<nav class="crumbs" aria-label="Breadcrumb">
+  <span class="crumbs__seg">Pipeline admin</span>
+  <span class="crumbs__chev">›</span>
+  <span class="crumbs__seg crumbs__seg--current">Castle overrides</span>
+</nav>
+
+<!-- Page head -->
+<div class="page-head">
+  <div class="page-head__left">
+    <h1 class="page-head__title">Castle overrides</h1>
+  </div>
+  <p class="page-head__meta">
+    Corrections applied at build time. Does not mutate
+    <code class="mono-chip">castles_enriched.json</code> directly.
+  </p>
+</div>
+
+<!-- Rebuild notice -->
+@if (overrideCount() > 0) {
+  <aside class="rebuild-notice" role="note">
+    <span class="rebuild-notice__eyebrow">PIPELINE REBUILD REQUIRED</span>
+    <p class="rebuild-notice__body">
+      {{ overrideCount() }} override{{ overrideCount() !== 1 ? 's' : '' }} staged.
+      Run <code class="mono-chip">npm run pipeline:consume</code> on a developer machine
+      to apply them.
+    </p>
+  </aside>
+}
+
+<!-- Toolbar -->
+<div class="toolbar">
+  <div class="toolbar__search">
+    <input
+      class="toolbar__input"
+      type="search"
+      placeholder="Search by castle code or name…"
+      [value]="searchQuery()"
+      (input)="onSearchInput($any($event.target).value)"
+      aria-label="Search castles"
+    />
+    @if (searchResults().length) {
+      <ul class="search-results" role="listbox" aria-label="Search results">
+        @for (r of searchResults(); track r.code) {
+          <li class="search-results__item" role="option" (click)="selectCastle(r.code)">
+            <span class="search-results__code">{{ r.code }}</span>
+            <span class="search-results__name">{{ r.name }}</span>
+            <span class="search-results__country">{{ r.country }}</span>
+          </li>
+        }
+      </ul>
+    }
+  </div>
+  <button class="toolbar__new-btn" type="button" (click)="startNewCastle()">
+    + New castle draft
+  </button>
+</div>
+
+<!-- Edit panel — existing castle -->
+@if (mode() === 'edit') {
+  @if (loadingDetail()) {
+    <p class="state-msg">Loading…</p>
+  } @else if (selected()) {
+    <section class="edit-panel" aria-label="Castle override editor">
+      <div class="edit-panel__header">
+        <div class="edit-panel__title-row">
+          <h2 class="edit-panel__title">{{ selected()!.enriched?.['castle_name'] ?? selected()!.code }}</h2>
+          <code class="edit-panel__code">{{ selected()!.code }}</code>
+        </div>
+        @if (!selected()!.enriched) {
+          <span class="edit-panel__badge edit-panel__badge--draft">DRAFT</span>
+        }
+        <button class="edit-panel__close" type="button" (click)="clearSelection()" aria-label="Close">✕</button>
+      </div>
+
+      <div class="edit-panel__grid">
+        @for (f of editableFields; track f.key) {
+          <div class="field-row">
+            <label class="field-row__label" [for]="'field-' + f.key">{{ f.label }}</label>
+            <span class="field-row__current">{{ enrichedValue(f.key) }}</span>
+            @if (f.type === 'number') {
+              <input
+                class="field-row__input"
+                type="number"
+                [id]="'field-' + f.key"
+                [value]="editFields()[f.key] ?? ''"
+                (input)="setEditField(f.key, $any($event.target).value, 'number')"
+                [disabled]="saving()"
+              />
+            } @else {
+              <input
+                class="field-row__input"
+                type="text"
+                [id]="'field-' + f.key"
+                [value]="editFields()[f.key] ?? ''"
+                (input)="setEditField(f.key, $any($event.target).value, 'text')"
+                [disabled]="saving()"
+              />
+            }
+          </div>
+        }
+      </div>
+
+      @if (saveError()) {
+        <p class="form-error" role="alert">{{ saveError() }}</p>
+      }
+      @if (saveSuccess()) {
+        <p class="form-success">Override saved.</p>
+      }
+
+      <div class="edit-panel__actions">
+        <button
+          class="btn btn--primary"
+          type="button"
+          (click)="saveOverride()"
+          [disabled]="saving()"
+        >{{ saving() ? 'Saving…' : 'Save override' }}</button>
+      </div>
+    </section>
+  }
+}
+
+<!-- New castle panel -->
+@if (mode() === 'new') {
+  <section class="edit-panel" aria-label="New castle draft">
+    <div class="edit-panel__header">
+      <h2 class="edit-panel__title">New castle draft</h2>
+      <button class="edit-panel__close" type="button" (click)="clearSelection()" aria-label="Close">✕</button>
+    </div>
+
+    <div class="edit-panel__grid">
+      <div class="field-row">
+        <label class="field-row__label" for="new-castle-code">
+          Castle code <span class="field-row__required">*</span>
+        </label>
+        <span class="field-row__current">—</span>
+        <input
+          class="field-row__input"
+          type="text"
+          id="new-castle-code"
+          placeholder="e.g. ie042"
+          [value]="newCastleCode()"
+          (input)="newCastleCode.set($any($event.target).value)"
+          [disabled]="newSaving()"
+        />
+      </div>
+
+      @for (f of editableFields; track f.key) {
+        <div class="field-row">
+          <label class="field-row__label" [for]="'new-' + f.key">
+            {{ f.label }}
+            @if (newCastleRequired.has(f.key)) {
+              <span class="field-row__required">*</span>
+            }
+          </label>
+          <span class="field-row__current">—</span>
+          @if (f.type === 'number') {
+            <input
+              class="field-row__input"
+              type="number"
+              [id]="'new-' + f.key"
+              [value]="newCastleFields()[f.key] ?? ''"
+              (input)="setNewField(f.key, $any($event.target).value, 'number')"
+              [disabled]="newSaving()"
+            />
+          } @else {
+            <input
+              class="field-row__input"
+              type="text"
+              [id]="'new-' + f.key"
+              [value]="newCastleFields()[f.key] ?? ''"
+              (input)="setNewField(f.key, $any($event.target).value, 'text')"
+              [disabled]="newSaving()"
+            />
+          }
+        </div>
+      }
+    </div>
+
+    @if (newSaveError()) {
+      <p class="form-error" role="alert">{{ newSaveError() }}</p>
+    }
+
+    <div class="edit-panel__actions">
+      <button
+        class="btn btn--primary"
+        type="button"
+        (click)="saveNewCastle()"
+        [disabled]="newSaving()"
+      >{{ newSaving() ? 'Saving…' : 'Create draft' }}</button>
+    </div>
+  </section>
+}
