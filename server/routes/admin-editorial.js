@@ -1,7 +1,7 @@
 import express, { Router } from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { mkdir, readFile } from 'fs/promises';
+import { mkdir, readFile, readdir } from 'fs/promises';
 import { adminAuth } from '../middleware/admin-auth.js';
 import { readJson, writeJson } from '../lib/json-store.js';
 
@@ -93,6 +93,22 @@ async function validatePayload(file, data) {
   return errors;
 }
 
+// Matches backup filenames: <name>-YYYY-MM-DDTHH-MM-SS.json
+const BACKUP_STAMP_RE = /^.+-(\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2})\.json$/;
+
+async function newestBackupMs(backupsDir) {
+  const files = await readdir(backupsDir);
+  let newest = null;
+  for (const f of files) {
+    const m = f.match(BACKUP_STAMP_RE);
+    if (!m) continue;
+    const iso = m[1].replace(/(\d{2})-(\d{2})-(\d{2})$/, '$1:$2:$3') + 'Z';
+    const ts = Date.parse(iso);
+    if (!isNaN(ts) && (newest === null || ts > newest)) newest = ts;
+  }
+  return newest;
+}
+
 const router = Router();
 
 router.use(adminAuth);
@@ -149,6 +165,34 @@ async function handleWrite(req, res) {
     return res.status(500).json({ error: 'write failed' });
   }
 }
+
+// GET /api/admin/editorial/publish-status
+// Returns the publish state: lastEditAt (newest backup), lastBuildAt (BUILD_TIMESTAMP env),
+// needsRebuild flag, and deployCommand for operator clipboard copy.
+router.get('/publish-status', async (_req, res) => {
+  const dataDir = process.env.DATA_DIR || path.join(__dirname, '../../data');
+  const backupsDir = path.join(dataDir, 'editorial', 'backups');
+
+  let lastEditAt = null;
+  try {
+    const ts = await newestBackupMs(backupsDir);
+    if (ts !== null) lastEditAt = new Date(ts).toISOString();
+  } catch (err) {
+    if (err.code !== 'ENOENT') {
+      console.error('[admin/editorial/publish-status] backups scan failed:', err);
+    }
+  }
+
+  const lastBuildAt = process.env.BUILD_TIMESTAMP || null;
+
+  let needsRebuild = false;
+  if (lastEditAt && !lastBuildAt) needsRebuild = true;
+  else if (lastEditAt && lastBuildAt) needsRebuild = lastEditAt > lastBuildAt;
+
+  const deployCommand = process.env.ADMIN_DEPLOY_COMMAND || './deploy.sh';
+
+  res.json({ lastBuildAt, lastEditAt, needsRebuild, deployCommand });
+});
 
 // POST and PUT /api/admin/editorial/:file — whole-file replace
 router.post('/:file', handleWrite);

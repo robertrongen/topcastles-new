@@ -1,21 +1,43 @@
-import { Component, input } from '@angular/core';
+import { Component, input, computed } from '@angular/core';
+
+export interface EditorialPublishStatus {
+  lastBuildAt: string | null;
+  lastEditAt: string | null;
+  needsRebuild: boolean;
+  deployCommand: string;
+}
 
 @Component({
   selector: 'app-admin-prerender-notice',
   standalone: true,
   template: `
-    <aside class="prerender-notice" role="note" aria-label="Prerender publishing notice">
+    <aside
+      class="prerender-notice"
+      [class.prerender-notice--published]="publishStatus() !== null && !needsRebuild()"
+      role="note"
+      aria-label="Prerender publishing notice"
+    >
       <div class="prerender-notice__left">
         <span class="prerender-notice__eyebrow">PRERENDER NOTICE</span>
-        <p class="prerender-notice__body">
-          Changes to overlay files take effect immediately via the runtime API but do not appear in
-          prerendered pages until the next full build and deployment. Prerendered pages will continue
-          to show the previous state until then.
-        </p>
+        @if (publishStatus() === null) {
+          <p class="prerender-notice__body">
+            Changes to overlay files take effect immediately via the runtime API but do not appear in
+            prerendered pages until the next full build and deployment.
+          </p>
+        } @else if (needsRebuild()) {
+          <p class="prerender-notice__body">
+            Changes not yet published to prerendered pages. Prerendered pages will show
+            the previous state until the next full build and deployment.
+          </p>
+        } @else {
+          <p class="prerender-notice__body prerender-notice__body--ok">
+            Editorial overlay is fully published.
+          </p>
+        }
       </div>
       <div class="prerender-notice__right">
         <span class="prerender-notice__last-label">LAST BUILD</span>
-        <span class="prerender-notice__date">{{ buildDate() }}</span>
+        <span class="prerender-notice__date">{{ buildDateDisplay() }}</span>
       </div>
     </aside>
   `,
@@ -29,7 +51,10 @@ import { Component, input } from '@angular/core';
       background: var(--ink-card);
       border: 1px solid var(--ink-line-2);
       border-left: 3px solid var(--heraldic-red);
-      margin-bottom: 32px;
+      margin-bottom: 16px;
+    }
+    .prerender-notice--published {
+      border-left-color: var(--ochre);
     }
     .prerender-notice__eyebrow {
       display: block;
@@ -39,10 +64,16 @@ import { Component, input } from '@angular/core';
       color: var(--heraldic-red);
       margin-bottom: 8px;
     }
+    .prerender-notice--published .prerender-notice__eyebrow {
+      color: var(--ochre);
+    }
     .prerender-notice__body {
       font: 400 13px/1.6 var(--tk-font-sans);
       color: var(--text-3);
       margin: 0;
+    }
+    .prerender-notice__body--ok {
+      color: var(--text-4);
     }
     .prerender-notice__right {
       display: flex;
@@ -64,5 +95,15 @@ import { Component, input } from '@angular/core';
   `],
 })
 export class AdminPrerenderNoticeComponent {
-  readonly buildDate = input<string>('build date unknown');
+  readonly publishStatus = input<EditorialPublishStatus | null>(null);
+
+  readonly needsRebuild = computed(() => this.publishStatus()?.needsRebuild ?? false);
+
+  readonly buildDateDisplay = computed(() => {
+    const s = this.publishStatus();
+    if (!s?.lastBuildAt) return 'build date unknown';
+    const d = new Date(s.lastBuildAt);
+    if (isNaN(d.getTime())) return s.lastBuildAt;
+    return d.toUTCString().replace(/:\d{2} GMT$/, ' UTC');
+  });
 }

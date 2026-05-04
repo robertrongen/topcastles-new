@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node index.js",
     "start:prod": "node index.js",
-    "test": "node --test routes/editorial.test.js routes/admin-editorial.test.js"
+    "test": "node --test routes/editorial.test.js routes/admin-editorial.test.js routes/admin-publish.test.js"
   },
   "devDependencies": {
     "supertest": "^7.0.0"

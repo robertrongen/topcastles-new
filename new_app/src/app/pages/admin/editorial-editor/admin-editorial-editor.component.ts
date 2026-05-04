@@ -5,7 +5,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AdminAuthService } from '../admin-auth.service';
-import { AdminPrerenderNoticeComponent } from '../shared/prerender-notice/admin-prerender-notice.component';
+import { AdminPrerenderNoticeComponent, EditorialPublishStatus } from '../shared/prerender-notice/admin-prerender-notice.component';
 
 export interface CastleLookup {
   code: string;
@@ -148,6 +148,11 @@ export class AdminEditorialEditorComponent implements OnInit, OnDestroy {
   // Field-level validation errors (keyed by field name)
   readonly fieldErrors = signal<Record<string, string>>({});
 
+  // Publish status
+  readonly publishStatus = signal<EditorialPublishStatus | null>(null);
+  readonly copySuccess = signal(false);
+  private copyTimer: ReturnType<typeof setTimeout> | null = null;
+
   private castleQueryTimer: ReturnType<typeof setTimeout> | null = null;
   private unloadHandler: ((e: Event) => void) = () => {};
 
@@ -228,7 +233,27 @@ export class AdminEditorialEditorComponent implements OnInit, OnDestroy {
   readonly BROWSE_BANDS_KEYS = Object.keys(BROWSE_BANDS_DEFAULT);
   readonly fmtISODate = fmtISODate;
 
+  private loadPublishStatus(): void {
+    this.http.get<EditorialPublishStatus>('/api/admin/editorial/publish-status', {
+      headers: this.auth.getAuthHeaders(),
+    }).subscribe({
+      next: status => this.publishStatus.set(status),
+      error: () => { /* publish status is informational — fail silently */ },
+    });
+  }
+
+  copyDeployCommand(): void {
+    const cmd = this.publishStatus()?.deployCommand;
+    if (!cmd || !this.isBrowser) return;
+    navigator.clipboard.writeText(cmd).then(() => {
+      this.copySuccess.set(true);
+      if (this.copyTimer) clearTimeout(this.copyTimer);
+      this.copyTimer = setTimeout(() => this.copySuccess.set(false), 2000);
+    });
+  }
+
   ngOnInit(): void {
+    this.loadPublishStatus();
     this.route.params.subscribe(params => {
       const slug = params['file'] as string;
       if (!FILE_CONFIGS[slug]) {
@@ -255,6 +280,7 @@ export class AdminEditorialEditorComponent implements OnInit, OnDestroy {
       window.removeEventListener('beforeunload', this.unloadHandler as EventListener);
     }
     if (this.castleQueryTimer) clearTimeout(this.castleQueryTimer);
+    if (this.copyTimer) clearTimeout(this.copyTimer);
   }
 
   @HostListener('window:beforeunload', ['$event'])
@@ -487,6 +513,7 @@ export class AdminEditorialEditorComponent implements OnInit, OnDestroy {
       this.lastSavedTime.set(nowHHMM());
       this.saveSuccess.set({ key: savedKey, backup: result?.backupFilename ?? null });
       this.fieldErrors.set({});
+      this.loadPublishStatus();
     } catch (err: any) {
       const status = err?.status;
       if (status >= 400 && status < 500 && err?.error?.errors) {

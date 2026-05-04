@@ -21,7 +21,37 @@
 </div>
 
 <!-- Prerender notice -->
-<app-admin-prerender-notice />
+<app-admin-prerender-notice [publishStatus]="publishStatus()" />
+
+<!-- Publishing panel -->
+@if (publishStatus(); as ps) {
+  <section class="publish-panel" aria-label="Publishing">
+    <header class="publish-panel__head">
+      <span class="publish-panel__title">Publishing</span>
+      <span class="publish-panel__status" [class.publish-panel__status--pending]="ps.needsRebuild">
+        {{ ps.needsRebuild ? 'Rebuild required' : 'Published' }}
+      </span>
+    </header>
+    <dl class="publish-panel__meta">
+      <div class="publish-panel__row">
+        <dt>Last build</dt>
+        <dd>{{ ps.lastBuildAt ?? 'unknown' }}</dd>
+      </div>
+      <div class="publish-panel__row">
+        <dt>Last edit</dt>
+        <dd>{{ ps.lastEditAt ?? 'none recorded' }}</dd>
+      </div>
+    </dl>
+    @if (ps.needsRebuild) {
+      <div class="publish-panel__deploy">
+        <code class="publish-panel__cmd">{{ ps.deployCommand }}</code>
+        <button type="button" class="btn btn--ghost" (click)="copyDeployCommand()">
+          {{ copySuccess() ? 'Copied!' : 'Copy deploy command' }}
+        </button>
+      </div>
+    }
+  </section>
+}
 
 @if (loading()) {
   <p class="loading-note">Loading {{ cfg.displayName.toLowerCase() }}…</p>
@@ -110,7 +140,7 @@
     </div>
     <div class="save-bar__actions">
       @if (saveSuccess(); as ok) {
-        <span class="save-bar__success">✓ Saved.@if (ok.backup) { Backup written: {{ ok.backup }}.}</span>
+        <span class="save-bar__success">✓ Saved.@if (ok.backup) { Backup: {{ ok.backup }}.} Rebuild required to publish.</span>
       }
       @if (saveError()) {
         <span class="save-bar__error">{{ saveError() }}</span>
@@ -728,7 +758,8 @@
           @if (saveSuccess(); as ok) {
             <p class="save-bar__success">
               ✓ Saved {{ ok.key }}.
-              @if (ok.backup) { Backup written: {{ ok.backup }}.}
+              @if (ok.backup) { Backup: {{ ok.backup }}.}
+              Rebuild required to publish.
             </p>
           }
           @if (saveError()) {
