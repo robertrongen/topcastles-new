@@ -100,6 +100,22 @@ router.get('/pending-status', async (_req, res) => {
   res.json(meta);
 });
 
+// Matches backup filenames: <name>-YYYY-MM-DDTHH-MM-SS.json
+const ISO_STAMP_RE = /^(.+)-(\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2})$/;
+
+function parseBackupFilename(f) {
+  if (!f.endsWith('.json')) return null;
+  const base = f.slice(0, -5);
+  const m = base.match(ISO_STAMP_RE);
+  if (!m) return null;
+  const [, file, stamp] = m;
+  // Convert colon-free time back to ISO for Date parsing
+  const iso = stamp.replace(/(\d{2})-(\d{2})-(\d{2})$/, '$1:$2:$3') + 'Z';
+  const ts = Date.parse(iso);
+  if (!file || isNaN(ts)) return null;
+  return { file, timestamp: ts, filename: f };
+}
+
 // GET /api/admin/backups
 // Returns metadata for editorial backup files, newest-first.
 router.get('/backups', async (_req, res) => {
@@ -107,16 +123,7 @@ router.get('/backups', async (_req, res) => {
   try {
     const files = await readdir(backupsDir);
     const entries = files
-      .filter(f => f.endsWith('.json'))
-      .map(f => {
-        const base = f.slice(0, -5); // strip .json
-        const lastDash = base.lastIndexOf('-');
-        if (lastDash === -1) return null;
-        const file = base.slice(0, lastDash);
-        const ts = parseInt(base.slice(lastDash + 1), 10);
-        if (!file || isNaN(ts)) return null;
-        return { file, timestamp: ts, filename: f };
-      })
+      .map(parseBackupFilename)
       .filter(Boolean)
       .sort((a, b) => b.timestamp - a.timestamp);
     res.json(entries);
