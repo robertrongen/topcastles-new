@@ -25,6 +25,21 @@ Open beads from the design-review pass remain the immediate public UX queue:
 
 Next editorial-identity work should use the editor-owned overlay files in `/data/editorial/` rather than hardcoding long-lived prose in Angular components.
 
+UX constraints for this track:
+
+- The approved product model is the reference atlas: "Wikipedia meets Michelin Guide meets a medieval atlas."
+- Castles speak before the UI.
+- Ranking remains the moat; `score_total` ordering must stay explainable.
+- Public pages should favor reference tables, dense readable data, and editorial restraint over marketing layouts.
+- Editorial prose should come from `/data/editorial/` when it is intended to be editor-owned.
+- Storybook is the review anchor for shared UI and styling work.
+
+Execution sequence:
+
+1. Finish the five open Track A polish beads.
+2. Use overlay-backed content for Top Countries, Top Regions, homepage quote, period pick, and browse-band refinements.
+3. Keep pipeline admin separate from editorial UX; do not mix enrichment/rebuild execution into lightweight page polish.
+
 ### Track B1: Editorial Annex
 
 The lightweight editorial annex is implemented:
@@ -72,4 +87,4 @@ This track must preserve the rule that runtime endpoints do not mutate prerender
 
 ## Documentation Reduction Direction
 
-The roadmap should stay short. Completed phase narratives belong in [migration-report.md](migration-report.md); executable work belongs in beads; strategy rationale belongs in [product-strategy-plan.md](product-strategy-plan.md); detailed UX sequencing belongs in [ux-product-execution-plan.md](ux-product-execution-plan.md) until that document is merged into this roadmap or archived.
+The roadmap should stay short. Completed phase narratives belong in [migration-report.md](migration-report.md); executable work belongs in beads; strategy rationale belongs in [product-strategy-plan.md](product-strategy-plan.md). The former UX execution plan has been merged here.

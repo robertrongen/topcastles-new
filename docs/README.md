@@ -6,12 +6,12 @@
 - [decisions.md](decisions.md) - architectural decisions (ADRs)
 - [deployment.md](deployment.md) - Synology NAS deployment via `deploy.sh`
 - [admin-readme.md](admin-readme.md) - protected editorial annex operator guide
+- [design/README.md](design/README.md) - design specs, screenshots, and historical prompt artifacts
 - [new-developer-onboarding.md](new-developer-onboarding.md) - VS Code-first workflow for beads, Graphify, context pipeline, and verification
 - [pipeline.md](pipeline.md) - build and CI pipeline steps
 - [product-strategy-plan.md](product-strategy-plan.md) - product direction and priority rationale
 - [roadmap.md](roadmap.md) - active forward-looking worklist
 - [spec-kit.md](spec-kit.md) - when to use normal lightweight workflow vs fuller Spec Kit discipline
-- [ux-product-execution-plan.md](ux-product-execution-plan.md) - executable backlog plan for roadmap UX and product improvements
 - [prompts/adr-template.md](prompts/adr-template.md) - short prompt scaffold for architecture decision drafts
 - [prompts/bug-rca-template.md](prompts/bug-rca-template.md) - short prompt scaffold for non-trivial bug root-cause analysis
 - [prompts/deployment-smoke-check-template.md](prompts/deployment-smoke-check-template.md) - short prompt scaffold for runtime-sensitive deployment and smoke verification
@@ -19,7 +19,6 @@
 - [prompts/task-implementation-template.md](prompts/task-implementation-template.md) - reusable prompt scaffold for AI-assisted task implementation
 - [setup.md](setup.md) - stack and tooling reference
 - [migration-report.md](migration-report.md) - summary of the PHP-to-Angular migration
-- [modernization-plan.md](modernization-plan.md) - archive pointer only
 
 ## Documentation rules
 
@@ -41,8 +40,8 @@ The current documentation set can be reduced further without losing authority:
 | Keep as root authorities | `AGENTS.md`, `DEVELOPER.md` | Machine workflow and human workflow are now consolidated. |
 | Keep as architecture authorities | `architecture.md`, `decisions.md`, `pipeline.md`, `deployment.md` | These answer current runtime, ADR, artifact, and operations questions. |
 | Keep as active planning | `roadmap.md`, `product-strategy-plan.md` | Roadmap answers current work; strategy answers why and priority. |
-| Merge then archive | `ux-product-execution-plan.md` into `roadmap.md` | Once the current UX polish batch closes, the remaining notes fit naturally in the roadmap. |
+| Done | `ux-product-execution-plan.md` merged into `roadmap.md` | The remaining UX constraints and sequence now live in the roadmap. |
 | Keep as historical archive | `migration-report.md` | Completed migration history should stay out of active plans. |
-| Replace with pointer or delete later | `modernization-plan.md` | It is now only an archive pointer. Delete after external links are checked. |
+| Done | `modernization-plan.md` deleted | Active planning is in roadmap/strategy; history is in migration report. |
 | Consider merging | `setup.md` into `DEVELOPER.md` | Setup is short enough to live in the human guide if one fewer docs file is preferred. |
 | Keep specialized references | `admin-readme.md`, `storybook.md`, `context-pipeline.md`, `spec-kit.md` | These are still useful operator/process references. |
