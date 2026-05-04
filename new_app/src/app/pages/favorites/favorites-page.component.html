@@ -8,66 +8,52 @@
   } @else if (isBrowser && !hasFavoriteCastles()) {
     <section class="favorites-empty" aria-labelledby="favorites-empty-title">
       <h2 id="favorites-empty-title">You haven't saved any favorites yet.</h2>
-      <p>Tap the <span aria-label="star">★</span> on any castle in the index to start a list.</p>
-      <a routerLink="/top1000">Browse Top 1000 ▸</a>
+      <p>Tap the <span aria-label="star">&starf;</span> on any castle in the index to start a list.</p>
+      <a routerLink="/top1000">Browse Top 1000 &rsaquo;</a>
     </section>
   } @else {
-    <div class="favorites-layout">
-      <aside class="favorites-rail" aria-label="Favorite sets">
-        <div class="rail-head">
-          <span class="eyebrow">Sets</span>
-          <span class="rail-count">{{ favoritesService.favorites().length }} list{{ favoritesService.favorites().length !== 1 ? 's' : '' }}</span>
+    <section class="favorites-workspace" aria-label="Favorite sets">
+      <div class="sets-toolbar">
+        <p class="eyebrow">Favorites &middot; {{ favoritesService.favorites().length }} set{{ favoritesService.favorites().length !== 1 ? 's' : '' }}</p>
+        <div class="share-actions">
+          <button type="button" class="share-toggle" (click)="toggleShare()">Share these favorites</button>
+          <span aria-hidden="true">&middot;</span>
+          <details>
+            <summary>Where are these stored?</summary>
+            <p>Your favorites are stored for this browser account. Use the share link to load the same lists on another device.</p>
+          </details>
         </div>
+      </div>
 
-        <div class="set-list">
-          @for (set of favoritesService.favorites(); track set.id) {
-            @if (confirmDeleteSetId() === set.id) {
-              <div class="delete-strip" role="group" aria-label="Confirm set deletion">
-                <span>Delete set?</span>
-                <button type="button" class="text-action" (click)="cancelDelete()">Cancel</button>
-                <button type="button" class="text-action danger" (click)="deleteSet(set)">Delete</button>
-              </div>
-            } @else if (editingSetId() === set.id) {
-              <form class="rename-row" (submit)="$event.preventDefault(); saveRename(set)">
-                <label class="sr-only" [for]="'rename-' + set.id">Rename set</label>
-                <input
-                  [id]="'rename-' + set.id"
-                  type="text"
-                  [value]="editingSetName()"
-                  (input)="editingSetName.set($any($event.target).value)"
-                />
-                <button type="submit" class="text-action">Save</button>
-                <button type="button" class="text-action" (click)="cancelRename()">Cancel</button>
-              </form>
-            } @else {
-              <div class="fav-set-row" [attr.aria-current]="isSelected(set) ? 'true' : null">
-                <button type="button" class="set-selector" (click)="selectSet(set)" [attr.aria-label]="'Open favorites set ' + set.name">
-                  <span class="set-arrow" aria-hidden="true">▸</span>
-                  <span>
-                    <span class="name">{{ set.name }}</span>
-                    @if (isSelected(set)) {
-                      @if (setPreview(set); as preview) {
-                        <span class="preview" [class.preview--empty]="preview.empty">
-                          <span>{{ preview.text }}</span>
-                          @if (preview.moreCount > 0) {
-                            <span class="preview-more"> · +{{ preview.moreCount }} more</span>
-                          }
-                        </span>
-                      }
-                    }
-                  </span>
-                  <span class="count">{{ set.castleIds.length }}</span>
-                </button>
-                <div class="row-actions" aria-label="Set actions">
-                  <button type="button" class="row-action" (click)="startRename(set)" [attr.aria-label]="'Rename ' + set.name">Rename</button>
-                  <button type="button" class="row-action glyph danger" (click)="requestDelete(set)" [attr.aria-label]="'Delete ' + set.name">×</button>
-                </div>
-              </div>
-            }
+      @if (shareOpen()) {
+        <div class="share-popover">
+          <label for="favorites-share-link">Share link</label>
+          <div class="share-row">
+            <input id="favorites-share-link" type="text" readonly [value]="shareLink() ?? ''" />
+            <button type="button" class="btn-secondary" (click)="copyShareLink()">Copy</button>
+          </div>
+          @if (shareCopied()) {
+            <p class="copy-note" role="status">Copied.</p>
           }
         </div>
+      }
 
-        <div class="rail-new-set">
+      <div class="set-tabs" role="tablist" aria-label="Favorite sets">
+        @for (set of favoritesService.favorites(); track set.id) {
+          <button
+            type="button"
+            class="set-tab"
+            role="tab"
+            [class.set-tab--active]="isSelected(set)"
+            [attr.aria-selected]="isSelected(set)"
+            (click)="selectSet(set)"
+          >
+            <span class="set-tab__name">{{ set.name }}</span>
+            <span class="set-tab__count">{{ set.castleIds.length }} castle{{ set.castleIds.length !== 1 ? 's' : '' }}</span>
+          </button>
+        }
+
+        <div class="new-set-tab">
           @if (showNewSet()) {
             <form class="new-set-form" (submit)="$event.preventDefault(); createSet()">
               <label class="sr-only" for="new-set-name">New set name</label>
@@ -87,38 +73,43 @@
             </button>
           }
         </div>
-
-        <div class="rail-foot">
-          <button type="button" class="share-toggle" (click)="toggleShare()">Share these favorites ▸</button>
-          @if (shareOpen()) {
-            <div class="share-popover">
-              <label for="favorites-share-link">Share link</label>
-              <div class="share-row">
-                <input id="favorites-share-link" type="text" readonly [value]="shareLink() ?? ''" />
-                <button type="button" class="btn-secondary" (click)="copyShareLink()">Copy</button>
-              </div>
-              @if (shareCopied()) {
-                <p class="copy-note" role="status">Copied.</p>
-              }
-            </div>
-          }
-
-          <details>
-            <summary>Where are my favorites stored?</summary>
-            <p>Your favorites are stored for this browser account. Use the share link to load the same lists on another device.</p>
-          </details>
-        </div>
-      </aside>
+      </div>
 
       <section class="selected-set" aria-labelledby="selected-set-title">
         @if (selectedSet(); as set) {
-          <div class="selected-head">
-            <div>
-              <p class="eyebrow">Selected set</p>
-              <h2 id="selected-set-title">{{ set.name }}</h2>
+          @if (editingSetId() === set.id) {
+            <form class="rename-row selected-rename" (submit)="$event.preventDefault(); saveRename(set)">
+              <label class="sr-only" [for]="'rename-' + set.id">Rename set</label>
+              <input
+                [id]="'rename-' + set.id"
+                type="text"
+                [value]="editingSetName()"
+                (input)="editingSetName.set($any($event.target).value)"
+              />
+              <button type="submit" class="text-action">Save</button>
+              <button type="button" class="text-action" (click)="cancelRename()">Cancel</button>
+            </form>
+          } @else {
+            <div class="selected-head">
+              <div>
+                <h2 id="selected-set-title">{{ set.name }}</h2>
+                @if (selectedSetMeta(set); as meta) {
+                  <p class="selected-meta">{{ meta.countText }} &middot; {{ meta.previewText }}</p>
+                }
+              </div>
+              <div class="selected-ops" aria-label="Selected set actions">
+                @if (confirmDeleteSetId() === set.id) {
+                  <span>Delete set?</span>
+                  <button type="button" class="text-action" (click)="cancelDelete()">Cancel</button>
+                  <button type="button" class="text-action danger" (click)="deleteSet(set)">Delete</button>
+                } @else {
+                  <button type="button" class="text-action" (click)="startRename(set)">Rename</button>
+                  <button type="button" class="text-action" (click)="duplicateSet(set)">Duplicate</button>
+                  <button type="button" class="text-action danger" (click)="requestDelete(set)">Delete</button>
+                }
+              </div>
             </div>
-            <p class="set-total">{{ set.castleIds.length }} castle{{ set.castleIds.length !== 1 ? 's' : '' }}</p>
-          </div>
+          }
 
           @if (displayedCastles().length === 0) {
             <p class="set-empty">No castles in this set yet. Add castles from the index or a castle entry.</p>
@@ -138,7 +129,7 @@
                 @for (castle of displayedCastles(); track castle.castle_code) {
                   <tr>
                     <td class="num set-rank">{{ setRank(castle) }}</td>
-                    <td class="num global-rank"><span aria-label="Top 1000 rank">★</span> {{ castle.position }}</td>
+                    <td class="num global-rank"><span aria-label="Top 1000 rank">&starf;</span> {{ castle.position }}</td>
                     <td class="thumb-cell">
                       <a [routerLink]="['/castles', castle.castle_code]" class="thumb-link" [attr.aria-label]="'Open ' + castle.castle_name">
                         <img [src]="thumbnailUrl(castle)" [alt]="castle.castle_name" (error)="clearBrokenImage($event)" />
@@ -158,19 +149,19 @@
           <p class="favorites-actions">
             Sort:
             <a href="" [class.active]="sortKey() === 'rank'" (click)="setSort('rank', $event)">rank</a>
-            ·
+            &middot;
             <a href="" [class.active]="sortKey() === 'score'" (click)="setSort('score', $event)">score</a>
-            ·
+            &middot;
             <a href="" [class.active]="sortKey() === 'alpha'" (click)="setSort('alpha', $event)">alpha</a>
-            ·
+            &middot;
             <a href="" [class.active]="sortKey() === 'added'" (click)="setSort('added', $event)">added</a>
-            ·
+            &middot;
             <a href="" (click)="exportCsv($event)">Export CSV</a>
-            ·
+            &middot;
             <a href="" (click)="print($event)">Print</a>
           </p>
         }
       </section>
-    </div>
+    </section>
   }
 </main>

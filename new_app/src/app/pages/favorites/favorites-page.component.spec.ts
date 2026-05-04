@@ -116,8 +116,13 @@ describe('FavoritesPageComponent', () => {
     await setup();
 
     const text = fixture.nativeElement.textContent as string;
-    expect(text).toContain('Selected set');
+    const activeTab = fixture.nativeElement.querySelector('.set-tab--active') as HTMLElement;
+    expect(activeTab.textContent).toContain('My favorites');
     expect(text).toContain('My favorites');
+    expect(text).toContain('2 castles');
+    expect(text).toContain('Rename');
+    expect(text).toContain('Duplicate');
+    expect(text).toContain('Delete');
     expect(text).toContain('Castel Roncolo');
     expect(text).toContain('Krak des Chevaliers');
     expect(text).toContain('★ 77');

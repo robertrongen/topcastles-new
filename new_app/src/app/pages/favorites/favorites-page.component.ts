@@ -18,6 +18,11 @@ interface SetPreview {
   empty: boolean;
 }
 
+interface SelectedSetMeta {
+  countText: string;
+  previewText: string;
+}
+
 @Component({
   selector: 'app-favorites-page',
   standalone: true,
@@ -150,6 +155,18 @@ export class FavoritesPageComponent implements OnInit {
     };
   }
 
+  protected selectedSetMeta(set: FavoriteSet): SelectedSetMeta {
+    const preview = this.setPreview(set);
+    const countText = `${set.castleIds.length} castle${set.castleIds.length !== 1 ? 's' : ''}`;
+
+    if (preview.empty) {
+      return { countText, previewText: 'No castles yet' };
+    }
+
+    const moreText = preview.moreCount > 0 ? `, +${preview.moreCount} more` : '';
+    return { countText, previewText: `${preview.text}${moreText}` };
+  }
+
   protected toggleNewSet(): void {
     this.showNewSet.update((value) => !value);
     if (!this.showNewSet()) {
@@ -210,6 +227,24 @@ export class FavoritesPageComponent implements OnInit {
     await this.favoritesService.updateSet(set.id, name, set.castleIds);
     this.cancelRename();
     await this.selectSet({ ...set, name });
+  }
+
+  protected async duplicateSet(set: FavoriteSet): Promise<void> {
+    const existingNames = new Set(this.favoritesService.favorites().map((item) => item.name));
+    const baseName = `${set.name} copy`;
+    let name = baseName;
+    let copyNumber = 2;
+
+    while (existingNames.has(name)) {
+      name = `${baseName} ${copyNumber}`;
+      copyNumber += 1;
+    }
+
+    await this.favoritesService.createSet(name, [...set.castleIds]);
+    const duplicate = this.favoritesService.favorites().find((item) => item.name === name);
+    if (duplicate) {
+      await this.selectSet(duplicate);
+    }
   }
 
   protected requestDelete(set: FavoriteSet): void {
