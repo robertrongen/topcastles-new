@@ -1,0 +1,1 @@
+adhere to AGENTS.md contract

@@ -2,6 +2,36 @@
 
 Topcastles is an Angular 19 application served by a single Node.js runtime container on a Synology NAS. Architecture decisions are recorded in [decisions.md](decisions.md); artifact ownership is recorded in [pipeline.md](pipeline.md).
 
+## High-level Architecture
+
+```text
+┌──────────────────────────────────────────────────┐
+│                    Browser                       │
+│  Angular 19 SPA (SSR-prerendered for SEO)        │
+│  ┌─────────┐ ┌──────────┐ ┌───────────────┐      │
+│  │ Pages   │ │Components│ │ Angular       │      │
+│  │(routes) │ │(shared)  │ │ Material UI   │      │
+│  └────┬────┘ └─────┬────┘ └───────────────┘      │
+│       │            │                             │
+│       └─────┬──────┘                             │
+│             ▼                                    │
+│  ┌────────────────────┐                          │
+│  │    Services        │  ← inject() DI           │
+│  │  CastleService     │                          │
+│  │  UserService       │                          │
+│  │  FavoritesService  │                          │
+│  └──┬─────────────┬───┘                          │
+│     │             │ HTTP                         │
+│     ▼             ▼                              │
+│  ┌──────────┐  ┌──────────────────────────┐      │
+│  │  Static  │  │  Node.js server APIs     │      │
+│  │  JSON    │  │  /api/user               │      │
+│  │  /assets │  │  /api/editorial/:file    │      │
+│  └──────────┘  │  /api/admin/* (auth'd)   │      │
+│                └──────────────────────────┘      │
+└──────────────────────────────────────────────────┘
+```
+
 ## Runtime Model
 
 ```text
@@ -60,6 +90,32 @@ Runtime state lives on the NAS-mounted `/data` volume:
 
 All JSON writes go through the Node layer and `json-store.js`.
 
+## Component Hierarchy
+
+```text
+AppComponent (shell: toolbar + sidenav + router-outlet)
+├── HomePageComponent                      /
+├── Top100PageComponent                    /top1000
+│   ├── CastleFilterComponent
+│   ├── CastleTableComponent
+│   ├── CastleGridComponent
+│   ├── CastleMapComponent
+│   └── ViewToggleComponent
+├── CastleDetailPageComponent              /castles/:code
+├── CountryRedirectComponent               /countries/:country
+├── TopCountriesPageComponent              /top-countries
+├── TopRegionsPageComponent                /top-regions
+├── NoCastleDetailPageComponent            /nocastle/:code
+├── BackgroundPageComponent                /background
+├── DeveloperPageComponent                 /developer
+├── FavoritesPageComponent                 /favorites
+├── FavoritesDetailPageComponent           /favorites/:id
+├── AdminLoginComponent                    /admin/login
+└── AdminShellComponent                    /admin
+    ├── AdminEditorialOverviewComponent        /admin/editorial
+    └── AdminEditorialEditorComponent          /admin/editorial/:file
+```
+
 ## Admin And Editorial Boundaries
 
 The admin API is protected by `ADMIN_TOKEN` Bearer authentication. The token is supplied through the runtime environment and is never baked into the Docker image.
@@ -81,6 +137,40 @@ Higher-risk pipeline admin remains deferred:
 - rebuild trigger execution and log streaming
 
 Use Spec Kit before implementing those workflows.
+
+## Deployment Architecture
+
+```text
+┌──────────────────────────────────────────────┐
+│              Synology NAS                    │
+│  ┌────────────────────────────────────────┐  │
+│  │  Docker Container                      │  │
+│  │                                        │  │
+│  │  ┌──────────────────────────────────┐  │  │
+│  │  │  Node.js Server (entry point)    │  │  │
+│  │  │                                  │  │  │
+│  │  │  - Serves Angular SSR output     │  │  │
+│  │  │  - Static JSON API slices        │  │  │
+│  │  │  - User / favorites API          │  │  │
+│  │  │  - Editorial API                 │  │  │
+│  │  │  - Admin API (ADMIN_TOKEN auth)  │  │  │
+│  │  │  - Serves images (NAS mount)     │  │  │
+│  │  └──────────────┬───────────────────┘  │  │
+│  │                 │                      │  │
+│  │  ┌──────────────▼───────────────────┐  │  │
+│  │  │  Static assets (in image)        │  │  │
+│  │  │  - Pre-rendered HTML             │  │  │
+│  │  │  - JS/CSS bundles                │  │  │
+│  │  │  - JSON data (/assets/data)      │  │  │
+│  │  └──────────────────────────────────┘  │  │
+│  │                                        │  │
+│  │  Mounted volumes:                      │  │
+│  │  - /data  (users.json, editorial/)     │  │
+│  │  - /images (Synology NAS)              │  │
+│  │                                        │  │
+│  └────────────────────────────────────────┘  │
+└──────────────────────────────────────────────┘
+```
 
 ## Guardrails
 
