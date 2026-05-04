@@ -1,7 +1,8 @@
 import { Component, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
+import { FormsModule } from '@angular/forms';
 import { AdminAuthService } from '../admin-auth.service';
 
 export interface PendingUpload {
@@ -28,9 +29,17 @@ export interface PipelineStatus {
   ledger: PipelineLedger;
 }
 
+export interface RebuildRequest {
+  requestedAt: string;
+  requestedBy: string;
+  reason: string;
+  status: string;
+}
+
 @Component({
   selector: 'app-admin-pipeline',
   standalone: true,
+  imports: [FormsModule],
   templateUrl: './admin-pipeline.component.html',
   styleUrl: './admin-pipeline.component.scss',
 })
@@ -43,19 +52,61 @@ export class AdminPipelineComponent implements OnInit {
   readonly error = signal<string | null>(null);
   readonly status = signal<PipelineStatus | null>(null);
 
+  readonly rebuildRequest = signal<RebuildRequest | null>(null);
+  readonly rebuildReason = signal('staged enriched dataset ready');
+  readonly submitting = signal(false);
+  readonly submitError = signal<string | null>(null);
+
   async ngOnInit() {
     if (!isPlatformBrowser(this.platformId)) return;
     try {
-      const data = await firstValueFrom(
-        this.http.get<PipelineStatus>('/api/admin/pipeline/status', {
-          headers: this.auth.getAuthHeaders(),
-        })
-      );
-      this.status.set(data);
-    } catch {
-      this.error.set('Could not load pipeline status. Check your connection or token.');
+      const [statusData, rebuildData] = await Promise.allSettled([
+        firstValueFrom(
+          this.http.get<PipelineStatus>('/api/admin/pipeline/status', {
+            headers: this.auth.getAuthHeaders(),
+          })
+        ),
+        firstValueFrom(
+          this.http.get<RebuildRequest>('/api/admin/pipeline/rebuild-request', {
+            headers: this.auth.getAuthHeaders(),
+          })
+        ),
+      ]);
+
+      if (statusData.status === 'fulfilled') {
+        this.status.set(statusData.value);
+      } else {
+        this.error.set('Could not load pipeline status. Check your connection or token.');
+      }
+
+      if (rebuildData.status === 'fulfilled') {
+        this.rebuildRequest.set(rebuildData.value);
+      }
+      // 404 means no pending request — leave signal null, no error
     } finally {
       this.loading.set(false);
+    }
+  }
+
+  async requestRebuild() {
+    this.submitError.set(null);
+    this.submitting.set(true);
+    try {
+      const entry = await firstValueFrom(
+        this.http.post<RebuildRequest>(
+          '/api/admin/pipeline/rebuild-request',
+          { reason: this.rebuildReason(), requestedBy: this.auth.handle() },
+          { headers: this.auth.getAuthHeaders() }
+        )
+      );
+      this.rebuildRequest.set(entry);
+    } catch (err) {
+      const msg = (err instanceof HttpErrorResponse && err.error?.error)
+        ? err.error.error
+        : 'Failed to submit rebuild request.';
+      this.submitError.set(msg);
+    } finally {
+      this.submitting.set(false);
     }
   }
 

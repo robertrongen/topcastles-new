@@ -6,7 +6,7 @@ import path from 'path';
 import express from 'express';
 import supertest from 'supertest';
 import { writeJson } from '../lib/json-store.js';
-import { updatePipelineMeta, readPipelineMeta } from '../lib/pipeline-state.js';
+import { updatePipelineMeta, readPipelineMeta, readRebuildRequest } from '../lib/pipeline-state.js';
 
 const TOKEN = 'test-pipeline-token';
 
@@ -145,5 +145,126 @@ describe('GET /api/admin/pipeline/status', () => {
     } finally {
       await rm(freshDir, { recursive: true, force: true });
     }
+  });
+});
+
+describe('GET /api/admin/pipeline/rebuild-request', () => {
+  let tmpDir;
+  let request;
+
+  before(async () => {
+    tmpDir = await mkdtemp(path.join(tmpdir(), 'rebuild-request-get-'));
+    request = await buildApp(tmpDir);
+  });
+
+  after(async () => {
+    await rm(tmpDir, { recursive: true, force: true });
+    delete process.env.DATA_DIR;
+    delete process.env.ADMIN_TOKEN;
+  });
+
+  it('missing token → 401', async () => {
+    const res = await request.get('/api/admin/pipeline/rebuild-request');
+    assert.equal(res.status, 401);
+  });
+
+  it('no request file → 404', async () => {
+    const res = await request
+      .get('/api/admin/pipeline/rebuild-request')
+      .set('Authorization', `Bearer ${TOKEN}`);
+    assert.equal(res.status, 404);
+  });
+});
+
+describe('POST /api/admin/pipeline/rebuild-request', () => {
+  let tmpDir;
+  let request;
+
+  before(async () => {
+    tmpDir = await mkdtemp(path.join(tmpdir(), 'rebuild-request-post-'));
+    request = await buildApp(tmpDir);
+  });
+
+  after(async () => {
+    await rm(tmpDir, { recursive: true, force: true });
+    delete process.env.DATA_DIR;
+    delete process.env.ADMIN_TOKEN;
+  });
+
+  it('missing token → 401', async () => {
+    const res = await request
+      .post('/api/admin/pipeline/rebuild-request')
+      .send({ reason: 'test', requestedBy: 'Robert' });
+    assert.equal(res.status, 401);
+  });
+
+  it('missing reason → 400', async () => {
+    const res = await request
+      .post('/api/admin/pipeline/rebuild-request')
+      .set('Authorization', `Bearer ${TOKEN}`)
+      .send({ requestedBy: 'Robert' });
+    assert.equal(res.status, 400);
+    assert.ok(res.body.error.includes('reason'));
+  });
+
+  it('empty reason → 400', async () => {
+    const res = await request
+      .post('/api/admin/pipeline/rebuild-request')
+      .set('Authorization', `Bearer ${TOKEN}`)
+      .send({ reason: '   ', requestedBy: 'Robert' });
+    assert.equal(res.status, 400);
+  });
+
+  it('reason over 500 chars → 400', async () => {
+    const res = await request
+      .post('/api/admin/pipeline/rebuild-request')
+      .set('Authorization', `Bearer ${TOKEN}`)
+      .send({ reason: 'x'.repeat(501), requestedBy: 'Robert' });
+    assert.equal(res.status, 400);
+  });
+
+  it('missing requestedBy → 400', async () => {
+    const res = await request
+      .post('/api/admin/pipeline/rebuild-request')
+      .set('Authorization', `Bearer ${TOKEN}`)
+      .send({ reason: 'staged enriched dataset ready' });
+    assert.equal(res.status, 400);
+    assert.ok(res.body.error.includes('requestedBy'));
+  });
+
+  it('valid payload → 201 with entry shape', async () => {
+    const res = await request
+      .post('/api/admin/pipeline/rebuild-request')
+      .set('Authorization', `Bearer ${TOKEN}`)
+      .send({ reason: 'staged enriched dataset ready', requestedBy: 'Robert' });
+    assert.equal(res.status, 201);
+    assert.equal(res.body.status, 'requested');
+    assert.equal(res.body.requestedBy, 'Robert');
+    assert.equal(res.body.reason, 'staged enriched dataset ready');
+    assert.ok(typeof res.body.requestedAt === 'string');
+  });
+
+  it('valid request is readable via GET', async () => {
+    const get = await request
+      .get('/api/admin/pipeline/rebuild-request')
+      .set('Authorization', `Bearer ${TOKEN}`);
+    assert.equal(get.status, 200);
+    assert.equal(get.body.status, 'requested');
+    assert.equal(get.body.requestedBy, 'Robert');
+  });
+
+  it('request is written to rebuild-request.json', async () => {
+    const req = await readRebuildRequest(tmpDir);
+    assert.ok(req !== null);
+    assert.equal(req.status, 'requested');
+  });
+
+  it('history entry is appended to rebuild-history.json', async () => {
+    const { readJson } = await import('../lib/json-store.js');
+    const history = await readJson(path.join(tmpDir, 'pipeline', 'rebuild-history.json'));
+    assert.ok(Array.isArray(history));
+    assert.ok(history.length >= 1);
+    assert.equal(history.at(-1).status, 'requested');
+    assert.equal(history.at(-1).requestedBy, 'Robert');
   });
 });

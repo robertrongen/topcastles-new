@@ -10,7 +10,7 @@
   <div class="page-head__left">
     <h1 class="page-head__title">Pipeline status</h1>
   </div>
-  <p class="page-head__meta">Read-only view. No rebuild is triggered from this page.</p>
+  <p class="page-head__meta">Staged dataset status and rebuild handoff.</p>
 </div>
 
 <!-- Loading -->
@@ -79,6 +79,75 @@
       <p class="build-notice__body">{{ status()!.buildNotice }}</p>
     </aside>
   }
+
+  <!-- Rebuild request -->
+  <section class="rebuild-section" aria-label="Rebuild request">
+    <div class="rebuild-section__eyebrow">REBUILD REQUEST</div>
+
+    @if (rebuildRequest(); as req) {
+      <!-- Pending request status -->
+      <div class="rebuild-card rebuild-card--pending">
+        <div class="rebuild-card__row">
+          <span class="rebuild-card__label">Status</span>
+          <span class="rebuild-card__badge rebuild-card__badge--requested">{{ req.status }}</span>
+        </div>
+        <div class="rebuild-card__row">
+          <span class="rebuild-card__label">Requested at</span>
+          <span class="rebuild-card__value">{{ formatDate(req.requestedAt) }}</span>
+        </div>
+        <div class="rebuild-card__row">
+          <span class="rebuild-card__label">Requested by</span>
+          <span class="rebuild-card__value">{{ req.requestedBy }}</span>
+        </div>
+        <div class="rebuild-card__row">
+          <span class="rebuild-card__label">Reason</span>
+          <span class="rebuild-card__value">{{ req.reason }}</span>
+        </div>
+      </div>
+
+      <!-- Operator instructions -->
+      <aside class="operator-instructions" role="note">
+        <span class="operator-instructions__eyebrow">OPERATOR INSTRUCTIONS</span>
+        <p class="operator-instructions__body">
+          A rebuild request is staged at
+          <code class="mono-chip">/data/pipeline/rebuild-request.json</code>.
+          On a developer machine, run:
+        </p>
+        <pre class="operator-instructions__cmd">node scripts/consume-pipeline-rebuild-request.js</pre>
+        <p class="operator-instructions__body">
+          The script will validate the staged file, run
+          <code class="mono-chip">npm run data:regenerate</code> and
+          <code class="mono-chip">npm run build</code>, and write results back to the pipeline ledger.
+        </p>
+      </aside>
+
+    } @else {
+      <!-- Request form -->
+      <div class="rebuild-form">
+        <label class="rebuild-form__label" for="rebuild-reason">Reason</label>
+        <textarea
+          id="rebuild-reason"
+          class="rebuild-form__textarea"
+          [ngModel]="rebuildReason()"
+          (ngModelChange)="rebuildReason.set($event)"
+          rows="2"
+          maxlength="500"
+          [disabled]="submitting()"
+        ></textarea>
+        @if (submitError()) {
+          <p class="rebuild-form__error" role="alert">{{ submitError() }}</p>
+        }
+        <button
+          class="rebuild-form__btn"
+          type="button"
+          (click)="requestRebuild()"
+          [disabled]="submitting()"
+        >
+          {{ submitting() ? 'Submitting…' : 'Request rebuild' }}
+        </button>
+      </div>
+    }
+  </section>
 
   <!-- Pipeline ledger -->
   <section class="ledger" aria-label="Pipeline ledger">

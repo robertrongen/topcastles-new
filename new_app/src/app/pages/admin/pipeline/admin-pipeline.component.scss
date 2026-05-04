@@ -187,6 +187,169 @@
   margin: 0;
 }
 
+// ── Rebuild request ────────────────────────────────────────────────────────────
+
+.rebuild-section {
+  background: var(--ink-card);
+  border: 1px solid var(--ink-line-2);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+
+.rebuild-section__eyebrow {
+  display: block;
+  font: 600 10px/1 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--text-5);
+  margin-bottom: 16px;
+}
+
+.rebuild-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.rebuild-card--pending {
+  border-left: 3px solid var(--ochre);
+  padding-left: 12px;
+}
+
+.rebuild-card__row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.rebuild-card__label {
+  font: 600 11px/1.4 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-5);
+}
+
+.rebuild-card__value {
+  font: 400 13.5px/1.4 var(--tk-font-serif);
+  color: var(--text-2);
+}
+
+.rebuild-card__badge {
+  display: inline-block;
+  font: 600 10px/1 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: 3px 7px;
+  border: 1px solid;
+}
+
+.rebuild-card__badge--requested {
+  color: var(--ochre);
+  border-color: var(--ochre);
+}
+
+.operator-instructions {
+  padding: 14px 16px;
+  background: var(--ink-bg-2);
+  border: 1px solid var(--ink-line-2);
+  border-left: 2px solid var(--ink-line-3, var(--ink-line-2));
+}
+
+.operator-instructions__eyebrow {
+  display: block;
+  font: 600 10px/1 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--text-5);
+  margin-bottom: 10px;
+}
+
+.operator-instructions__body {
+  font: 400 13px/1.6 var(--tk-font-sans);
+  color: var(--text-3);
+  margin: 0 0 8px;
+}
+
+.operator-instructions__cmd {
+  font: 400 12px/1.5 var(--tk-font-mono, 'JetBrains Mono', monospace);
+  background: var(--ink-bg-3, var(--ink-bg-2));
+  border: 1px solid var(--ink-line-2);
+  padding: 8px 12px;
+  margin: 0 0 10px;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.rebuild-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rebuild-form__label {
+  font: 600 11px/1.4 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-5);
+}
+
+.rebuild-form__textarea {
+  font: 400 13px/1.5 var(--tk-font-sans);
+  color: var(--text-2);
+  background: var(--ink-bg-2);
+  border: 1px solid var(--ink-line-2);
+  padding: 8px 10px;
+  resize: vertical;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: 2px solid var(--ochre);
+    outline-offset: 0;
+  }
+
+  &:disabled {
+    opacity: .5;
+  }
+}
+
+.rebuild-form__error {
+  font: 400 12.5px/1.5 var(--tk-font-sans);
+  color: var(--heraldic-red);
+  margin: 0;
+}
+
+.rebuild-form__btn {
+  align-self: flex-start;
+  font: 600 12px/1 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-1);
+  background: var(--ink-bg-2);
+  border: 1px solid var(--ink-line-2);
+  padding: 9px 18px;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    background: var(--ink-bg-3, var(--ink-bg-2));
+    border-color: var(--ochre);
+  }
+
+  &:disabled {
+    opacity: .5;
+    cursor: default;
+  }
+}
+
+.mono-chip {
+  font: 400 12px/1 var(--tk-font-mono, 'JetBrains Mono', monospace);
+  background: var(--ink-bg-2);
+  border: 1px solid var(--ink-line-2);
+  padding: 1px 5px;
+}
+
 // ── Pipeline ledger ────────────────────────────────────────────────────────────
 
 .ledger {
