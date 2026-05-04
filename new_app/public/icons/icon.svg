@@ -1,22 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" 
-    viewBox="0 0 1024 1024" 
-    width="1024" height="1024"
-    role="img" 
-    aria-label="Topcastles icon"
-    >
-    <rect 
-        width="1024" height="1024" 
-        rx="200" fill="#07185D"
-    />
-    <path d="M0 0 L0 1024 L1024 1024 Z"
-        fill="#FF8A00"
-    />
-    <path fill="#FFFFFF" d="M512 192
-        m-32 0 h64 v64 h64 v-64 h64 v128 h-64
-        v128 h-64 v-96 a32 32 0 0 0 -64 0
-        v96 h-64 v-128 h-64 v64 h-64 v-64 h64
-        v-128 h64 h-64z">
-        m-224 256 h64 v64 h64 v-128 h128 v128
-        h64 v-64 h64 v256 h-640 v-256 h64 v64z"
-    />
+<svg xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1024 1024"
+  width="1024"
+  height="1024"
+  role="img"
+  aria-label="Topcastles icon">
+
+  <defs>
+    <clipPath id="icon-clip">
+      <rect width="1024" height="1024" rx="200"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#icon-clip)">
+    // Draw the background rectangle
+    <rect width="1024" height="1024" fill="#07185D"/>
+
+    // Draw the background triangle
+    <path
+      d="M0 0 L0 1024 L1024 1024 Z"
+      fill="#FF8A00"/>
+
+    // Draw the castle structure using a combination of rectangles and paths
+    <path
+      fill="#FFFFFF"
+      d="
+M 564 634 Q 519 525 473 633 V 701 H 223 L 224 448 M 481 266 V 244 H 544 V 305 H 607 V 241 H 670 V 354 L 607 373 V 448 H 539 V 403 A 32 32 0 0 0 488 403 V 448 H 419 V 373 L 353 350 V 244 H 416 V 305 H 481 Z M 224 448 H 267 V 492 H 313 V 448 H 358 V 490 H 402 V 448 H 621 V 452 V 491 H 664 V 449 H 714 V 490 H 756 V 448 H 804 V 704 H 564 V 634      "/>
+
+    // Add a base to the castle
+    <path
+      d="M416 704 V640 A96 96 0 0 1 608 640 V704 Z"
+      fill="#FF8A00"/>
+
+    // Add a door to the castle
+    <path
+      d="M480 448 V352 A32 32 0 0 1 544 352 V448 Z"
+      fill="#07185D"/>
+
+    // Add a flag on top of the castle
+    <rect x="512" y="128" width="24" height="96" fill="#FFFFFF"/>
+
+    // Add a flag banner
+    <path
+      d="M536 136
+         C580 116 615 164 672 136
+         V200
+         C615 228 580 180 536 200
+         Z"
+      fill="#FFFFFF"/>
+  </g>
 </svg>
