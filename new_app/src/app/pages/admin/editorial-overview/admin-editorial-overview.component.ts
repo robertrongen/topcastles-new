@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { forkJoin, catchError, of } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { AdminAuthService } from '../admin-auth.service';
-import { AdminPrerenderNoticeComponent } from '../shared/prerender-notice/admin-prerender-notice.component';
+import { AdminPrerenderNoticeComponent, EditorialPublishStatus } from '../shared/prerender-notice/admin-prerender-notice.component';
 
 export interface BackupEntry {
   file: string;
@@ -101,7 +101,12 @@ export class AdminEditorialOverviewComponent implements OnInit {
     return fmtDate(oldest.timestamp);
   });
   readonly recentEdits = computed(() => this.backups().slice(0, 6));
-  readonly buildDate = 'build date unknown';
+  readonly publishStatus = computed<EditorialPublishStatus | null>(() => ({
+    lastBuildAt: null,
+    lastEditAt: null,
+    needsRebuild: false,
+    deployCommand: 'npm run build && git push'
+  }));
 
   readonly EDITORIAL_FILES = EDITORIAL_FILES;
 
