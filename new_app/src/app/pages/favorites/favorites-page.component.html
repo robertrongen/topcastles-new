@@ -1,56 +1,167 @@
-<div class="favorites-page">
-  <h1>My Favorites</h1>
+<main class="favorites-page">
+  <h1 class="page-head">My Favorites</h1>
 
-  @if (favoritesService.loading()) {
-    <mat-spinner diameter="40" />
+  @if (loading()) {
+    <div class="loading-state" aria-label="Loading favorites">
+      <mat-spinner diameter="40" />
+    </div>
+  } @else if (!hasFavoriteCastles()) {
+    <section class="favorites-empty" aria-labelledby="favorites-empty-title">
+      <h2 id="favorites-empty-title">You haven't saved any favorites yet.</h2>
+      <p>Tap the <span aria-label="star">★</span> on any castle in the index to start a list.</p>
+      <a routerLink="/top1000">Browse Top 1000 ▸</a>
+    </section>
   } @else {
-    @if (shareLink(); as link) {
-      <mat-card class="share-card">
-        <mat-card-content>
-          <p>Your favorites are stored in this browser. To use them on another device, copy this share link.</p>
-          <mat-form-field appearance="outline">
-            <mat-label>Share link</mat-label>
-            <input matInput type="text" readonly [value]="link" />
-          </mat-form-field>
-          <button mat-stroked-button type="button" (click)="copyShareLink()">
-            <mat-icon>content_copy</mat-icon> Copy share link
-          </button>
-        </mat-card-content>
-      </mat-card>
-    }
+    <div class="favorites-layout">
+      <aside class="favorites-rail" aria-label="Favorite sets">
+        <div class="rail-head">
+          <span class="eyebrow">Sets</span>
+          <span class="rail-count">{{ favoritesService.favorites().length }} list{{ favoritesService.favorites().length !== 1 ? 's' : '' }}</span>
+        </div>
 
-    <mat-card class="create-card">
-      <mat-card-content>
-        <mat-form-field appearance="outline">
-          <mat-label>New set name</mat-label>
-          <input matInput [value]="newSetName()" (input)="newSetName.set($any($event.target).value)" (keyup.enter)="createSet()" />
-        </mat-form-field>
-        <button mat-raised-button color="primary" [disabled]="!newSetName().trim() || creating()" (click)="createSet()">
-          <mat-icon>add</mat-icon> Create set
-        </button>
-      </mat-card-content>
-    </mat-card>
+        <div class="set-list">
+          @for (set of favoritesService.favorites(); track set.id) {
+            @if (confirmDeleteSetId() === set.id) {
+              <div class="delete-strip" role="group" aria-label="Confirm set deletion">
+                <span>Delete set?</span>
+                <button type="button" class="text-action" (click)="cancelDelete()">Cancel</button>
+                <button type="button" class="text-action danger" (click)="deleteSet(set)">Delete</button>
+              </div>
+            } @else if (editingSetId() === set.id) {
+              <form class="rename-row" (submit)="$event.preventDefault(); saveRename(set)">
+                <label class="sr-only" [for]="'rename-' + set.id">Rename set</label>
+                <input
+                  [id]="'rename-' + set.id"
+                  type="text"
+                  [value]="editingSetName()"
+                  (input)="editingSetName.set($any($event.target).value)"
+                />
+                <button type="submit" class="text-action">Save</button>
+                <button type="button" class="text-action" (click)="cancelRename()">Cancel</button>
+              </form>
+            } @else {
+              <div class="fav-set-row" [attr.aria-current]="isSelected(set) ? 'true' : null">
+                <button type="button" class="set-selector" (click)="selectSet(set)" [attr.aria-label]="'Open favorites set ' + set.name">
+                  <span class="set-arrow" aria-hidden="true">▸</span>
+                  <span>
+                    <span class="name">{{ set.name }}</span>
+                    <span class="preview">{{ setPreview(set) }}</span>
+                  </span>
+                  <span class="count">{{ set.castleIds.length }}</span>
+                </button>
+                <div class="row-actions" aria-label="Set actions">
+                  <button type="button" class="row-action" (click)="startRename(set)" [attr.aria-label]="'Rename ' + set.name">Rename</button>
+                  <button type="button" class="row-action glyph danger" (click)="requestDelete(set)" [attr.aria-label]="'Delete ' + set.name">×</button>
+                </div>
+              </div>
+            }
+          }
+        </div>
 
-    @if (favoritesService.favorites().length === 0) {
-      <p class="empty-state">No favorite sets yet. Create one above.</p>
-    } @else {
-      <div class="sets-list">
-        @for (set of favoritesService.favorites(); track set.id) {
-          <mat-card class="set-card">
-            <mat-card-header>
-              <mat-card-title>
-              <a [routerLink]="['/favorites', set.id]">{{ set.name }}</a>
-            </mat-card-title>
-              <mat-card-subtitle>{{ set.castleIds.length }} castle{{ set.castleIds.length !== 1 ? 's' : '' }}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-actions>
-              <button mat-icon-button color="warn" (click)="deleteSet(set)" aria-label="Delete set">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </mat-card-actions>
-          </mat-card>
+        <div class="rail-new-set">
+          @if (showNewSet()) {
+            <form class="new-set-form" (submit)="$event.preventDefault(); createSet()">
+              <label class="sr-only" for="new-set-name">New set name</label>
+              <input
+                id="new-set-name"
+                type="text"
+                [value]="newSetName()"
+                (input)="newSetName.set($any($event.target).value)"
+                placeholder="New set name"
+              />
+              <button type="submit" class="btn-secondary" [disabled]="!newSetName().trim() || creating()">Create</button>
+              <button type="button" class="text-action" (click)="toggleNewSet()">Cancel</button>
+            </form>
+          } @else {
+            <button type="button" class="new-set-toggle" (click)="toggleNewSet()">
+              <span aria-hidden="true">+</span> New set
+            </button>
+          }
+        </div>
+
+        <div class="rail-foot">
+          <button type="button" class="share-toggle" (click)="toggleShare()">Share these favorites ▸</button>
+          @if (shareOpen()) {
+            <div class="share-popover">
+              <label for="favorites-share-link">Share link</label>
+              <div class="share-row">
+                <input id="favorites-share-link" type="text" readonly [value]="shareLink() ?? ''" />
+                <button type="button" class="btn-secondary" (click)="copyShareLink()">Copy</button>
+              </div>
+              @if (shareCopied()) {
+                <p class="copy-note" role="status">Copied.</p>
+              }
+            </div>
+          }
+
+          <details>
+            <summary>Where are my favorites stored?</summary>
+            <p>Your favorites are stored for this browser account. Use the share link to load the same lists on another device.</p>
+          </details>
+        </div>
+      </aside>
+
+      <section class="selected-set" aria-labelledby="selected-set-title">
+        @if (selectedSet(); as set) {
+          <div class="selected-head">
+            <div>
+              <p class="eyebrow">Selected set</p>
+              <h2 id="selected-set-title">{{ set.name }}</h2>
+            </div>
+            <p class="set-total">{{ set.castleIds.length }} castle{{ set.castleIds.length !== 1 ? 's' : '' }}</p>
+          </div>
+
+          @if (displayedCastles().length === 0) {
+            <p class="set-empty">No castles in this set yet. Add castles from the index or a castle entry.</p>
+          } @else {
+            <table class="tc-table favorites-table">
+              <thead>
+                <tr>
+                  <th scope="col">Rank</th>
+                  <th scope="col">★ Top-1000</th>
+                  <th scope="col" aria-label="Castle thumbnail"></th>
+                  <th scope="col">Castle</th>
+                  <th scope="col">Country</th>
+                  <th scope="col">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (castle of displayedCastles(); track castle.castle_code) {
+                  <tr>
+                    <td class="num">{{ setRank(castle) }}</td>
+                    <td class="num global-rank"><span aria-label="Top 1000 rank">★</span> {{ castle.position }}</td>
+                    <td class="thumb-cell">
+                      <a [routerLink]="['/castles', castle.castle_code]" class="thumb-link" [attr.aria-label]="'Open ' + castle.castle_name">
+                        <img [src]="thumbnailUrl(castle)" [alt]="castle.castle_name" (error)="clearBrokenImage($event)" />
+                      </a>
+                    </td>
+                    <td class="castle-cell">
+                      <a [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
+                    </td>
+                    <td>{{ castle.country }}</td>
+                    <td class="num">{{ castle.score_total | number: '1.1-1' }}</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          }
+
+          <p class="favorites-actions">
+            Sort:
+            <a href="" [class.active]="sortKey() === 'rank'" (click)="setSort('rank', $event)">rank</a>
+            ·
+            <a href="" [class.active]="sortKey() === 'score'" (click)="setSort('score', $event)">score</a>
+            ·
+            <a href="" [class.active]="sortKey() === 'alpha'" (click)="setSort('alpha', $event)">alpha</a>
+            ·
+            <a href="" [class.active]="sortKey() === 'added'" (click)="setSort('added', $event)">added</a>
+            ·
+            <a href="" (click)="exportCsv($event)">Export CSV</a>
+            ·
+            <a href="" (click)="print($event)">Print</a>
+          </p>
         }
-      </div>
-    }
+      </section>
+    </div>
   }
-</div>
+</main>
