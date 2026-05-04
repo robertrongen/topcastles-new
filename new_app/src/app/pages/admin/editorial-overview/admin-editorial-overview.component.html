@@ -23,20 +23,7 @@
 </p>
 
 <!-- Prerender notice -->
-<aside class="prerender-notice" role="note" aria-label="Prerender publishing notice">
-  <div class="prerender-notice__left">
-    <span class="prerender-notice__eyebrow">PRERENDER NOTICE</span>
-    <p class="prerender-notice__body">
-      Changes to overlay files take effect immediately via the runtime API but do not appear in
-      prerendered pages until the next full build and deployment. Prerendered pages will continue
-      to show the previous state until then.
-    </p>
-  </div>
-  <div class="prerender-notice__right">
-    <span class="prerender-notice__last-label">LAST BUILD</span>
-    <span class="prerender-notice__date">{{ buildDate }}</span>
-  </div>
-</aside>
+<app-admin-prerender-notice [buildDate]="buildDate" />
 
 <!-- Ledger strip -->
 <div class="ledger" aria-label="Overview statistics">

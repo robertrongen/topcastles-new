@@ -92,9 +92,9 @@ describe('POST /api/admin/editorial/:file', () => {
       .post('/api/admin/editorial/period-picks')
       .set('Authorization', `Bearer ${TOKEN}`)
       .set('Content-Type', 'application/json')
-      .send({ '9th c.': { pick: 'Something' } }); // missing castleCode
+      .send({ '9th c.': { name: 'Something' } }); // missing code
     assert.equal(res.status, 400);
-    assert.ok(res.body.errors.some(e => e.keyPath === '9th c..castleCode'));
+    assert.ok(res.body.errors.some(e => e.keyPath === '9th c..code'), `expected code error, got: ${JSON.stringify(res.body.errors)}`);
   });
 
   it('malformed browse-bands payload → 400', async () => {
@@ -184,5 +184,37 @@ describe('POST /api/admin/editorial/:file', () => {
     assert.ok(entry.filename, 'missing filename field');
     assert.ok(typeof entry.timestamp === 'number', 'timestamp must be a number');
     assert.ok(entry.filename.endsWith('.json'), 'filename must end in .json');
+  });
+
+  it('second write returns backupFilename in response', async () => {
+    const payload = { FR: { note: 'Another update.' } };
+    const res = await request
+      .post('/api/admin/editorial/countries')
+      .set('Authorization', `Bearer ${TOKEN}`)
+      .set('Content-Type', 'application/json')
+      .send(payload);
+    assert.equal(res.status, 200);
+    assert.ok(res.body.backupFilename, 'backupFilename should be present on second write');
+    assert.ok(res.body.backupFilename.startsWith('countries-'), 'backupFilename should start with file name');
+  });
+
+  it('PUT /api/admin/editorial/:file also works', async () => {
+    const payload = { ES: { note: 'Castles of Spain.' } };
+    const res = await request
+      .put('/api/admin/editorial/countries')
+      .set('Authorization', `Bearer ${TOKEN}`)
+      .set('Content-Type', 'application/json')
+      .send(payload);
+    assert.equal(res.status, 200);
+    assert.equal(res.body.success, true);
+    assert.equal(res.body.file, 'countries');
+  });
+
+  it('PUT without bearer → 401', async () => {
+    const res = await request
+      .put('/api/admin/editorial/countries')
+      .set('Content-Type', 'application/json')
+      .send({ ES: { note: 'test' } });
+    assert.equal(res.status, 401);
   });
 });

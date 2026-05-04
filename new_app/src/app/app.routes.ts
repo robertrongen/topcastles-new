@@ -42,7 +42,7 @@ export const routes: Routes = [
       },
       {
         path: 'editorial/:file',
-        loadComponent: () => import('./pages/admin/editorial-placeholder/admin-editorial-placeholder.component').then(m => m.AdminEditorialPlaceholderComponent),
+        loadComponent: () => import('./pages/admin/editorial-editor/admin-editorial-editor.component').then(m => m.AdminEditorialEditorComponent),
         data: { prerender: false },
       },
     ],

@@ -1,0 +1,753 @@
+@if (fileConfig(); as cfg) {
+
+<!-- Crumbs -->
+<nav class="crumbs" aria-label="Breadcrumb">
+  <span class="crumbs__seg">Editorial annex</span>
+  <span class="crumbs__chev">›</span>
+  <a class="crumbs__seg crumbs__seg--link" routerLink="/admin/editorial">Overview</a>
+  <span class="crumbs__chev">›</span>
+  <span class="crumbs__seg crumbs__seg--current">{{ cfg.displayName }}</span>
+</nav>
+
+<!-- Page head -->
+<div class="page-head">
+  <div class="page-head__left">
+    <h1 class="page-head__title">{{ cfg.displayName }}</h1>
+    <p class="page-head__subtitle">{{ cfg.subtitle }}</p>
+  </div>
+  <p class="page-head__meta">
+    <span class="page-head__keycount">{{ getKeyCount() }}</span>
+  </p>
+</div>
+
+<!-- Prerender notice -->
+<app-admin-prerender-notice />
+
+@if (loading()) {
+  <p class="loading-note">Loading {{ cfg.displayName.toLowerCase() }}…</p>
+} @else if (loadError()) {
+  <p class="load-error">Could not load file: {{ loadError() }}</p>
+} @else {
+
+<!-- ── Browse bands: full-width stack ─────────────────────────────── -->
+@if (isBrowseBands()) {
+  <p class="lede">
+    Three keys, one per band. There are no other bands; the band labels themselves are not
+    editable here — they come from the browse page's pagination configuration.
+  </p>
+
+  <div class="bands-stack">
+    @for (band of BROWSE_BANDS_KEYS; track band) {
+      <div class="band-card" [class.band-card--dirty]="isBandDirty(band)">
+        <div class="band-card__head">
+          <span class="band-card__range">{{ band }}</span>
+          <span class="band-card__name">{{ BROWSE_BAND_NAMES[band] }}</span>
+          @if (isBandDirty(band)) {
+            <span class="band-card__status band-card__status--unsaved">Unsaved</span>
+          } @else if (lastSavedTime()) {
+            <span class="band-card__status">Saved {{ lastSavedTime() }}</span>
+          } @else {
+            <span class="band-card__status band-card__status--clean">Saved</span>
+          }
+        </div>
+        <div class="band-card__body">
+          <div class="band-card__left">
+            <div class="form-field">
+              <div class="form-field__label-row">
+                <label [for]="'band-note-' + band" class="form-field__label">Editor's note</label>
+                <span class="form-field__required">Required</span>
+              </div>
+              <textarea
+                [id]="'band-note-' + band"
+                class="form-control form-control--prose"
+                rows="5"
+                [value]="getBandFormValue(band)"
+                (input)="updateBandNote(band, $any($event.target).value)"
+                [attr.aria-describedby]="'band-note-count-' + band"
+              ></textarea>
+              <div class="form-field__charcount-row">
+                <span
+                  [id]="'band-note-count-' + band"
+                  class="form-field__charcount"
+                  [class.form-field__charcount--over]="getBandFormValue(band).length > 240"
+                >{{ getBandFormValue(band).length }} / 240</span>
+              </div>
+            </div>
+          </div>
+          <div class="band-card__right">
+            <div class="preview-block">
+              <div class="preview-block__head">
+                <span class="preview-block__label">Preview</span>
+                <span class="preview-block__surface">Top 1000 browse · band {{ band }}</span>
+              </div>
+              <div class="preview-block__body">
+                <div class="preview-browse-band">
+                  <p class="preview-browse-band__note">{{ getBandFormValue(band) || '—' }}</p>
+                  <div class="preview-browse-band__rank">{{ band }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Browse bands save bar -->
+  <div class="save-bar" role="region" aria-label="Save status">
+    <div aria-live="polite" class="save-bar__status">
+      @if (anyDirty()) {
+        <span class="save-bar__dot" aria-hidden="true"></span>
+        <span class="save-bar__unsaved">
+          {{ dirtyBandsCount() }} of 3 band{{ dirtyBandsCount() !== 1 ? 's have' : ' has' }} unsaved changes
+        </span>
+      } @else {
+        <span class="save-bar__clean">Saved</span>
+      }
+      @if (lastSavedTime()) {
+        <span class="save-bar__time"> · last saved <em>{{ lastSavedTime() }}</em></span>
+      }
+    </div>
+    <div class="save-bar__actions">
+      @if (saveSuccess(); as ok) {
+        <span class="save-bar__success">✓ Saved.@if (ok.backup) { Backup written: {{ ok.backup }}.}</span>
+      }
+      @if (saveError()) {
+        <span class="save-bar__error">{{ saveError() }}</span>
+      }
+      <button type="button" class="btn btn--ghost" (click)="discard()" [disabled]="!anyDirty()">Discard band</button>
+      <button type="button" class="btn btn--primary" (click)="save()" [disabled]="saving()">
+        {{ saving() ? 'Saving…' : 'Save band' }}
+      </button>
+    </div>
+  </div>
+
+} @else {
+
+<!-- ── Two-pane editor ──────────────────────────────────────────── -->
+<div class="editor-pane">
+
+  <!-- Keys rail -->
+  <div class="keys-rail" role="region" aria-label="Keys">
+    <div class="keys-rail__head">
+      <span class="keys-rail__label">{{ cfg.railHeaderLabel }}</span>
+      <span class="keys-rail__count">{{ getKeyCount() }}</span>
+    </div>
+
+    @if (cfg.searchPlaceholder) {
+      <input
+        type="search"
+        class="keys-rail__search"
+        [placeholder]="cfg.searchPlaceholder"
+        [value]="searchQuery()"
+        (input)="searchQuery.set($any($event.target).value)"
+        aria-label="Filter keys"
+      />
+    }
+
+    <div class="keys-list" role="listbox" aria-label="Keys list">
+      @for (key of filteredKeys(); track key; let i = $index) {
+        <button
+          type="button"
+          class="key-row"
+          role="option"
+          [class.key-row--active]="activeKey() === key"
+          [class.key-row--dirty]="dirtyKeys().has(key)"
+          [class.key-row--empty]="!hasData(key)"
+          [attr.aria-selected]="activeKey() === key"
+          (click)="selectKey(key)"
+        >
+          <div class="key-row__inner">
+            <span class="key-row__primary">{{ getKeyPrimary(key) }}</span>
+            <span class="key-row__secondary">{{ getKeySecondary(key) }}</span>
+          </div>
+          <div class="key-row__right">
+            @if (getFlag(key); as flag) {
+              <span class="key-row__flag" [class.key-row__flag--ochre]="flag === 'Sleeper' || flag === 'Featured'">
+                {{ flag }}
+              </span>
+            }
+            @if (dirtyKeys().has(key)) {
+              <span class="key-row__dirty-dot" aria-label="Unsaved changes"></span>
+            }
+          </div>
+        </button>
+      }
+    </div>
+
+    @if (cfg.addButtonLabel) {
+      <div class="keys-rail__foot">
+        <button type="button" class="btn btn--add" (click)="addKey()">+ {{ cfg.addButtonLabel }}</button>
+      </div>
+    }
+  </div>
+
+  <!-- Form pane -->
+  <div class="form-pane">
+    @if (!activeKey()) {
+      <p class="form-empty">Choose a key to begin.</p>
+    } @else {
+
+      <!-- Form head -->
+      <div class="form-head">
+        <div class="form-head__left">
+          <h3 class="form-head__title">{{ activeKey() }}</h3>
+          <div class="form-head__chips">
+            <!-- File-specific chips below -->
+            @if (fileSlug() === 'countries') {
+              <span class="chip">{{ activeKey() }}</span>
+              <span class="chip">{{ getActiveKeyCount() }} entries</span>
+            } @else if (fileSlug() === 'regions') {
+              <span class="chip chip--mono">{{ activeKey() }}</span>
+              <span class="chip">{{ getActiveKeyCount() }} entries</span>
+            } @else if (fileSlug() === 'castle-quotes') {
+              <span class="chip chip--mono">{{ activeKey() }}</span>
+              @if ((serverData()[activeKey()!] ?? localEdits()[activeKey()!])?.country; as country) {
+                <span class="chip">{{ country }}</span>
+              }
+            } @else if (fileSlug() === 'period-picks') {
+              <span class="chip chip--mono">"{{ activeKey() }}"</span>
+            }
+          </div>
+        </div>
+        <div class="form-head__meta">
+          @if ((serverData()[activeKey()!])?.lastEdited; as lastEdited) {
+            <span class="form-head__last-edited">Last edited {{ lastEdited }}</span>
+          } @else {
+            <span class="form-head__last-edited">unsaved · new key</span>
+          }
+        </div>
+      </div>
+
+      <!-- Form grid -->
+      <div class="form-grid">
+
+        <!-- ── Countries ──────────────────────────────────────── -->
+        @if (fileSlug() === 'countries') {
+
+          <div class="form-field form-field--full" [class.form-field--error]="fieldErrors()['note']">
+            <div class="form-field__label-row">
+              <label for="f-note" class="form-field__label">Editorial note</label>
+              <span class="form-field__required">Required</span>
+            </div>
+            <textarea
+              id="f-note"
+              class="form-control form-control--prose"
+              rows="4"
+              [value]="formValues()['note'] ?? ''"
+              (input)="updateField('note', $any($event.target).value)"
+              aria-describedby="f-note-hint f-note-count"
+            ></textarea>
+            @if (fieldErrors()['note']) {
+              <p id="f-note-hint" class="form-field__error">{{ fieldErrors()['note'] }}</p>
+            } @else {
+              <p id="f-note-hint" class="form-field__hint">One short sentence characterising the country's tradition. Surfaced in the gazetteer table beside the country name.</p>
+            }
+            <span id="f-note-count" class="form-field__charcount" [class.form-field__charcount--over]="(formValues()['note'] ?? '').length > 220">
+              {{ (formValues()['note'] ?? '').length }} / 220
+            </span>
+          </div>
+
+          <div class="form-field" [class.form-field--error]="fieldErrors()['tradition']">
+            <div class="form-field__label-row">
+              <label for="f-tradition" class="form-field__label">Defining tradition</label>
+              <span class="form-field__required">Required</span>
+            </div>
+            <input
+              id="f-tradition"
+              type="text"
+              class="form-control form-control--prose"
+              [value]="formValues()['tradition'] ?? ''"
+              (input)="updateField('tradition', $any($event.target).value)"
+              aria-describedby="f-tradition-hint f-tradition-count"
+              maxlength="80"
+            />
+            @if (fieldErrors()['tradition']) {
+              <p id="f-tradition-hint" class="form-field__error">{{ fieldErrors()['tradition'] }}</p>
+            } @else {
+              <p id="f-tradition-hint" class="form-field__hint">Short label, <em>style · period</em>. Italic in the gazetteer.</p>
+            }
+            <span id="f-tradition-count" class="form-field__charcount" [class.form-field__charcount--over]="(formValues()['tradition'] ?? '').length > 60">
+              {{ (formValues()['tradition'] ?? '').length }} / 60
+            </span>
+          </div>
+
+          <div class="form-field" [class.form-field--error]="fieldErrors()['topEntryCode']">
+            <div class="form-field__label-row">
+              <label for="f-topEntry" class="form-field__label">Top entry castle code</label>
+              <span class="form-field__required">Required</span>
+            </div>
+            <div class="combobox" role="combobox" [attr.aria-expanded]="castleDropOpen()" aria-haspopup="listbox">
+              <input
+                id="f-topEntry"
+                type="text"
+                class="form-control form-control--mono"
+                [value]="formValues()['topEntryCode'] ?? ''"
+                (input)="onCastleInput($any($event.target).value)"
+                (keydown)="onCastleKeydown($event)"
+                autocomplete="off"
+                aria-controls="castle-drop"
+                [attr.aria-activedescendant]="castleDropActiveIdx() >= 0 ? 'castle-opt-' + castleDropActiveIdx() : null"
+              />
+              @if (castleDropOpen() && castleResults().length) {
+                <ul class="castle-drop" id="castle-drop" role="listbox">
+                  @for (r of castleResults(); track r.code; let i = $index) {
+                    <li
+                      [id]="'castle-opt-' + i"
+                      class="castle-drop__option"
+                      [class.castle-drop__option--active]="castleDropActiveIdx() === i"
+                      role="option"
+                      [attr.aria-selected]="castleDropActiveIdx() === i"
+                      (click)="selectCastle(r)"
+                      (mousedown)="$event.preventDefault()"
+                    >
+                      <span class="castle-drop__code">{{ r.code }}</span>
+                      <span class="castle-drop__info">
+                        <span class="castle-drop__name">{{ r.name }}</span>
+                        <span class="castle-drop__country">{{ r.country }}</span>
+                      </span>
+                      <span class="castle-drop__rank">★ {{ r.editorialRank }}</span>
+                    </li>
+                  }
+                </ul>
+              }
+            </div>
+            @if (castleResolved(); as r) {
+              <p class="castle-resolved"><span class="castle-resolved__tick">✓</span> {{ r.name }} · {{ r.country }} · ★ {{ r.editorialRank }} [vis {{ r.visitorRank }}]</p>
+            } @else if (castleError()) {
+              <p class="castle-resolved castle-resolved--error">no castle with that code</p>
+            } @else if (fieldErrors()['topEntryCode']) {
+              <p class="form-field__error">{{ fieldErrors()['topEntryCode'] }}</p>
+            }
+          </div>
+
+          <div class="form-field form-field--toggle">
+            <button
+              type="button"
+              class="toggle-row"
+              role="switch"
+              [attr.aria-checked]="formValues()['sleeper'] ?? false"
+              (click)="updateField('sleeper', !(formValues()['sleeper'] ?? false))"
+            >
+              <span class="toggle-switch" [class.toggle-switch--on]="formValues()['sleeper']">
+                <span class="toggle-thumb"></span>
+              </span>
+              <span class="toggle-text">
+                <span class="toggle-label">Editor's sleeper</span>
+                <span class="toggle-sub">High editorial rank, low visitor traffic. Triggers the EDITOR'S SLEEPER badge in the gazetteer row.</span>
+              </span>
+            </button>
+          </div>
+
+          <!-- Countries preview -->
+          <div class="form-field form-field--full">
+            <div class="preview-block">
+              <div class="preview-block__head">
+                <span class="preview-block__label">Preview</span>
+                <span class="preview-block__surface">Top countries gazetteer · row for {{ activeKey() }}</span>
+              </div>
+              <div class="preview-block__body">
+                <table class="preview-countries-table" aria-label="Preview row">
+                  <thead>
+                    <tr>
+                      <th scope="col">Country</th>
+                      <th scope="col">Tradition</th>
+                      <th scope="col">Editor's note</th>
+                      <th scope="col">Top entry</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <span class="preview-country-name">{{ activeKey() }}</span>
+                        <span class="preview-country-meta">★ — ed · — vis ↑</span>
+                      </td>
+                      <td><em>{{ formValues()['tradition'] || '—' }}</em></td>
+                      <td>
+                        <em>{{ formValues()['note'] || '—' }}</em>
+                        @if (formValues()['sleeper']) {
+                          <span class="preview-sleeper">EDITOR'S SLEEPER</span>
+                        }
+                      </td>
+                      <td>
+                        @if (castleResolved(); as r) {
+                          <a href="#">{{ r.name }}</a>
+                        } @else {
+                          <span class="preview-empty">{{ formValues()['topEntryCode'] || '—' }}</span>
+                        }
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        }<!-- /countries -->
+
+        <!-- ── Regions ────────────────────────────────────────── -->
+        @if (fileSlug() === 'regions') {
+
+          <div class="form-field form-field--full" [class.form-field--error]="fieldErrors()['description']">
+            <div class="form-field__label-row">
+              <label for="f-desc" class="form-field__label">Description</label>
+              <span class="form-field__required">Required</span>
+            </div>
+            <textarea
+              id="f-desc"
+              class="form-control form-control--prose"
+              rows="4"
+              [value]="formValues()['description'] ?? ''"
+              (input)="updateField('description', $any($event.target).value)"
+              aria-describedby="f-desc-hint f-desc-count"
+            ></textarea>
+            @if (fieldErrors()['description']) {
+              <p id="f-desc-hint" class="form-field__error">{{ fieldErrors()['description'] }}</p>
+            } @else {
+              <p id="f-desc-hint" class="form-field__hint">One sentence describing the region's architectural identity. Displayed on the Top Regions atlas card.</p>
+            }
+            <span id="f-desc-count" class="form-field__charcount" [class.form-field__charcount--over]="(formValues()['description'] ?? '').length > 200">
+              {{ (formValues()['description'] ?? '').length }} / 200
+            </span>
+          </div>
+
+          <div class="form-field form-field--toggle">
+            <button
+              type="button"
+              class="toggle-row"
+              role="switch"
+              [attr.aria-checked]="formValues()['sleeper'] ?? false"
+              (click)="updateField('sleeper', !(formValues()['sleeper'] ?? false))"
+            >
+              <span class="toggle-switch" [class.toggle-switch--on]="formValues()['sleeper']">
+                <span class="toggle-thumb"></span>
+              </span>
+              <span class="toggle-text">
+                <span class="toggle-label">Editor's sleeper</span>
+                <span class="toggle-sub">High editorial rank, low visitor traffic. Triggers the EDITOR'S SLEEPER badge on the Top Regions card.</span>
+              </span>
+            </button>
+          </div>
+
+          <!-- Regions preview -->
+          <div class="form-field form-field--full">
+            <div class="preview-block">
+              <div class="preview-block__head">
+                <span class="preview-block__label">Preview</span>
+                <span class="preview-block__surface">Top Regions atlas card · {{ activeKey() }}</span>
+              </div>
+              <div class="preview-block__body">
+                <div class="preview-region-card">
+                  @if (formValues()['sleeper']) {
+                    <span class="preview-sleeper">EDITOR'S SLEEPER</span>
+                  }
+                  <h4 class="preview-region-name">{{ activeKey() }}</h4>
+                  <p class="preview-region-desc">{{ formValues()['description'] || '—' }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        }<!-- /regions -->
+
+        <!-- ── Castle quotes ──────────────────────────────────── -->
+        @if (fileSlug() === 'castle-quotes') {
+
+          <div class="form-field" [class.form-field--error]="fieldErrors()['castle']">
+            <div class="form-field__label-row">
+              <label for="f-castle" class="form-field__label">Castle</label>
+              <span class="form-field__required">Required</span>
+            </div>
+            <div class="combobox" role="combobox" [attr.aria-expanded]="castleDropOpen()" aria-haspopup="listbox">
+              <input
+                id="f-castle"
+                type="text"
+                class="form-control form-control--mono"
+                [value]="formValues()['castle'] ?? ''"
+                (input)="onCastleInput($any($event.target).value)"
+                (keydown)="onCastleKeydown($event)"
+                autocomplete="off"
+                aria-controls="castle-drop-q"
+                [attr.aria-activedescendant]="castleDropActiveIdx() >= 0 ? 'cq-opt-' + castleDropActiveIdx() : null"
+              />
+              @if (castleDropOpen() && castleResults().length) {
+                <ul class="castle-drop" id="castle-drop-q" role="listbox">
+                  @for (r of castleResults(); track r.code; let i = $index) {
+                    <li [id]="'cq-opt-' + i" class="castle-drop__option"
+                      [class.castle-drop__option--active]="castleDropActiveIdx() === i"
+                      role="option" [attr.aria-selected]="castleDropActiveIdx() === i"
+                      (click)="selectCastle(r)" (mousedown)="$event.preventDefault()">
+                      <span class="castle-drop__code">{{ r.code }}</span>
+                      <span class="castle-drop__info">
+                        <span class="castle-drop__name">{{ r.name }}</span>
+                        <span class="castle-drop__country">{{ r.country }}</span>
+                      </span>
+                      <span class="castle-drop__rank">★ {{ r.editorialRank }}</span>
+                    </li>
+                  }
+                </ul>
+              }
+            </div>
+            @if (castleResolved(); as r) {
+              <p class="castle-resolved"><span class="castle-resolved__tick">✓</span> {{ r.name }} · {{ r.country }} · ★ {{ r.editorialRank }} [vis {{ r.visitorRank }}]</p>
+            } @else if (castleError()) {
+              <p class="castle-resolved castle-resolved--error">no castle with that code</p>
+            } @else if (!fieldErrors()['castle']) {
+              <p class="form-field__hint">Castle code from <em>castles_enriched.json</em>. Autocomplete by name or code.</p>
+            }
+            @if (fieldErrors()['castle']) {
+              <p class="form-field__error">{{ fieldErrors()['castle'] }}</p>
+            }
+          </div>
+
+          <div class="form-field form-field--full" [class.form-field--error]="fieldErrors()['quote']">
+            <div class="form-field__label-row">
+              <label for="f-quote" class="form-field__label">Quote</label>
+              <span class="form-field__required">Required</span>
+            </div>
+            <textarea
+              id="f-quote"
+              class="form-control form-control--prose form-control--tall"
+              rows="6"
+              [value]="formValues()['quote'] ?? ''"
+              (input)="updateField('quote', $any($event.target).value)"
+              aria-describedby="f-quote-hint f-quote-count"
+            ></textarea>
+            @if (fieldErrors()['quote']) {
+              <p id="f-quote-hint" class="form-field__error">{{ fieldErrors()['quote'] }}</p>
+            } @else {
+              <p id="f-quote-hint" class="form-field__hint">Plain prose, no markdown. Rendered italic below the Wikipedia extract on the featured entry.</p>
+            }
+            <span id="f-quote-count" class="form-field__charcount" [class.form-field__charcount--over]="(formValues()['quote'] ?? '').length > 480">
+              {{ (formValues()['quote'] ?? '').length }} / 480
+            </span>
+          </div>
+
+          <div class="form-field" [class.form-field--error]="fieldErrors()['author']">
+            <div class="form-field__label-row">
+              <label for="f-author" class="form-field__label">Author</label>
+              <span class="form-field__required">Required</span>
+            </div>
+            <input id="f-author" type="text" class="form-control form-control--prose"
+              [value]="formValues()['author'] ?? ''"
+              (input)="updateField('author', $any($event.target).value)"
+              aria-describedby="f-author-hint f-author-count" />
+            @if (fieldErrors()['author']) {
+              <p id="f-author-hint" class="form-field__error">{{ fieldErrors()['author'] }}</p>
+            } @else {
+              <p id="f-author-hint" class="form-field__hint">Byline as it should appear, e.g. <em>R. Rongen</em>.</p>
+            }
+            <span id="f-author-count" class="form-field__charcount" [class.form-field__charcount--over]="(formValues()['author'] ?? '').length > 60">{{ (formValues()['author'] ?? '').length }} / 60</span>
+          </div>
+
+          <div class="form-field" [class.form-field--error]="fieldErrors()['role']">
+            <div class="form-field__label-row">
+              <label for="f-role" class="form-field__label">Role</label>
+              <span class="form-field__required">Required</span>
+            </div>
+            <input id="f-role" type="text" class="form-control form-control--prose"
+              [value]="formValues()['role'] ?? ''"
+              (input)="updateField('role', $any($event.target).value)"
+              aria-describedby="f-role-count" />
+            @if (fieldErrors()['role']) {
+              <p class="form-field__error">{{ fieldErrors()['role'] }}</p>
+            }
+            <span id="f-role-count" class="form-field__charcount" [class.form-field__charcount--over]="(formValues()['role'] ?? '').length > 40">{{ (formValues()['role'] ?? '').length }} / 40</span>
+          </div>
+
+          <div class="form-field" [class.form-field--error]="fieldErrors()['date']">
+            <div class="form-field__label-row">
+              <label for="f-date" class="form-field__label">Date</label>
+              <span class="form-field__required">Required</span>
+            </div>
+            <input id="f-date" type="text" class="form-control form-control--mono"
+              placeholder="YYYY-MM-DD"
+              [value]="formValues()['date'] ?? ''"
+              (input)="updateField('date', $any($event.target).value)"
+              aria-describedby="f-date-hint" />
+            @if (fieldErrors()['date']) {
+              <p id="f-date-hint" class="form-field__error">{{ fieldErrors()['date'] }}</p>
+            }
+          </div>
+
+          <div class="form-field" [class.form-field--error]="fieldErrors()['featuredUntil']">
+            <div class="form-field__label-row">
+              <label for="f-featuredUntil" class="form-field__label">Featured until</label>
+              <span class="form-field__optional">Optional</span>
+            </div>
+            <input id="f-featuredUntil" type="text" class="form-control form-control--mono"
+              placeholder="YYYY-MM-DD"
+              [value]="formValues()['featuredUntil'] ?? ''"
+              (input)="updateField('featuredUntil', $any($event.target).value)"
+              aria-describedby="f-featured-hint" />
+            @if (fieldErrors()['featuredUntil']) {
+              <p id="f-featured-hint" class="form-field__error">{{ fieldErrors()['featuredUntil'] }}</p>
+            } @else {
+              <p id="f-featured-hint" class="form-field__hint"><em>If today ≤ this date</em>, this castle overrides the daily algorithm as homepage featured entry.</p>
+            }
+          </div>
+
+          <!-- Castle quotes preview -->
+          <div class="form-field form-field--full">
+            <div class="preview-block">
+              <div class="preview-block__head">
+                <span class="preview-block__label">Preview</span>
+                <span class="preview-block__surface">Featured entry · pull-quote block</span>
+              </div>
+              <div class="preview-block__body">
+                <div class="preview-quote">
+                  <p class="preview-quote__text">{{ formValues()['quote'] || '—' }}</p>
+                  <p class="preview-quote__byline">
+                    {{ formValues()['author'] || '—' }} · {{ formValues()['role'] || '—' }}
+                    @if (formValues()['date']) { · {{ fmtISODate(formValues()['date']) }} }
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        }<!-- /castle-quotes -->
+
+        <!-- ── Period picks ───────────────────────────────────── -->
+        @if (fileSlug() === 'period-picks') {
+
+          <div class="form-field" [class.form-field--error]="fieldErrors()['code']">
+            <div class="form-field__label-row">
+              <label for="f-pick-code" class="form-field__label">Castle pick</label>
+              <span class="form-field__required">Required</span>
+            </div>
+            <div class="combobox" role="combobox" [attr.aria-expanded]="castleDropOpen()" aria-haspopup="listbox">
+              <input
+                id="f-pick-code"
+                type="text"
+                class="form-control form-control--mono"
+                [value]="formValues()['code'] ?? ''"
+                (input)="onCastleInput($any($event.target).value)"
+                (keydown)="onCastleKeydown($event)"
+                autocomplete="off"
+                aria-controls="pick-drop"
+                [attr.aria-activedescendant]="castleDropActiveIdx() >= 0 ? 'pick-opt-' + castleDropActiveIdx() : null"
+              />
+              @if (castleDropOpen() && castleResults().length) {
+                <ul class="castle-drop castle-drop--open" id="pick-drop" role="listbox">
+                  @for (r of castleResults(); track r.code; let i = $index) {
+                    <li [id]="'pick-opt-' + i" class="castle-drop__option"
+                      [class.castle-drop__option--active]="castleDropActiveIdx() === i"
+                      role="option" [attr.aria-selected]="castleDropActiveIdx() === i"
+                      (click)="selectCastle(r)" (mousedown)="$event.preventDefault()">
+                      <span class="castle-drop__code">{{ r.code }}</span>
+                      <span class="castle-drop__info">
+                        <span class="castle-drop__name">{{ r.name }}</span>
+                        <span class="castle-drop__country">{{ r.country }}</span>
+                      </span>
+                      <span class="castle-drop__rank">★ {{ r.editorialRank }}</span>
+                    </li>
+                  }
+                </ul>
+              }
+            </div>
+            @if (castleResolved(); as r) {
+              <p class="castle-resolved"><span class="castle-resolved__tick">✓</span> {{ r.name }} · {{ r.country }} · ★ {{ r.editorialRank }} [vis {{ r.visitorRank }}]</p>
+            } @else if (castleError()) {
+              <p class="castle-resolved castle-resolved--error">no castle with that code</p>
+            } @else if (!fieldErrors()['code']) {
+              <p class="form-field__hint">Type castle code or name. Choose the entry; the display name will be filled automatically.</p>
+            }
+            @if (fieldErrors()['code']) {
+              <p class="form-field__error">{{ fieldErrors()['code'] }}</p>
+            }
+          </div>
+
+          <div class="form-field" [class.form-field--error]="fieldErrors()['name']">
+            <div class="form-field__label-row">
+              <label for="f-pick-name" class="form-field__label">Display name</label>
+              <span class="form-field__required">Required</span>
+            </div>
+            <input id="f-pick-name" type="text" class="form-control form-control--prose"
+              [value]="formValues()['name'] ?? ''"
+              (input)="updateField('name', $any($event.target).value)"
+              aria-describedby="f-pick-name-hint f-pick-name-count" />
+            @if (fieldErrors()['name']) {
+              <p id="f-pick-name-hint" class="form-field__error">{{ fieldErrors()['name'] }}</p>
+            } @else {
+              <p id="f-pick-name-hint" class="form-field__hint">Rendered as <em>★ {{ formValues()['name'] || 'name' }}</em> in the period gazetteer. Override only for stylised display (e.g. shorter form).</p>
+            }
+            <span id="f-pick-name-count" class="form-field__charcount" [class.form-field__charcount--over]="(formValues()['name'] ?? '').length > 60">{{ (formValues()['name'] ?? '').length }} / 60</span>
+          </div>
+
+          <!-- Period picks preview -->
+          <div class="form-field form-field--full">
+            <div class="preview-block">
+              <div class="preview-block__head">
+                <span class="preview-block__label">Preview</span>
+                <span class="preview-block__surface">Period gazetteer · row for {{ activeKey() }}</span>
+              </div>
+              <div class="preview-block__body">
+                <table class="preview-period-table" aria-label="Preview row">
+                  <thead><tr>
+                    <th scope="col">Era</th>
+                    <th scope="col">Entries</th>
+                    <th scope="col">Top scorer</th>
+                    <th scope="col">Editor's pick</th>
+                  </tr></thead>
+                  <tbody><tr>
+                    <td>{{ activeKey() }}</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>
+                      @if (formValues()['name']) {
+                        <span class="preview-pick-star">★</span> <em>{{ formValues()['name'] }}</em>
+                      } @else {
+                        <span class="preview-empty">no pick set</span>
+                      }
+                    </td>
+                  </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        }<!-- /period-picks -->
+
+      </div><!-- /form-grid -->
+
+      <!-- Save bar -->
+      <div class="save-bar" role="region" aria-label="Save status">
+        <div aria-live="polite" class="save-bar__status">
+          @if (isDirty()) {
+            <span class="save-bar__dot" aria-hidden="true"></span>
+            <span class="save-bar__unsaved">Unsaved changes</span>
+          } @else {
+            <span class="save-bar__clean">Saved</span>
+          }
+          @if (lastSavedTime()) {
+            <span class="save-bar__time"> · last saved <em>{{ lastSavedTime() }}</em></span>
+          }
+        </div>
+        <div class="save-bar__right">
+          @if (saveSuccess(); as ok) {
+            <p class="save-bar__success">
+              ✓ Saved {{ ok.key }}.
+              @if (ok.backup) { Backup written: {{ ok.backup }}.}
+            </p>
+          }
+          @if (saveError()) {
+            <p class="save-bar__error">{{ saveError() }}</p>
+          }
+          <div class="save-bar__actions">
+            <button type="button" class="btn btn--ghost" (click)="discard()" [disabled]="!isDirty()">Discard</button>
+            <button type="button" class="btn btn--primary" (click)="save()" [disabled]="saving()">
+              {{ saving() ? 'Saving…' : 'Save changes' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+    }<!-- /activeKey -->
+  </div><!-- /form-pane -->
+</div><!-- /editor-pane -->
+
+}<!-- /not browse-bands -->
+
+}<!-- /not loading -->
+}<!-- /fileConfig -->

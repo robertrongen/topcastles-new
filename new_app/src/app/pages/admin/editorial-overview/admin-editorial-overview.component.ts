@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { forkJoin, catchError, of } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { AdminAuthService } from '../admin-auth.service';
+import { AdminPrerenderNoticeComponent } from '../shared/prerender-notice/admin-prerender-notice.component';
 
 export interface BackupEntry {
   file: string;
@@ -70,7 +71,7 @@ const EDITORIAL_FILES: Pick<FileRow, 'num' | 'name' | 'slug' | 'path' | 'purpose
 
 @Component({
   selector: 'app-admin-editorial-overview',
-  imports: [RouterLink],
+  imports: [RouterLink, AdminPrerenderNoticeComponent],
   templateUrl: './admin-editorial-overview.component.html',
   styleUrl: './admin-editorial-overview.component.scss',
 })

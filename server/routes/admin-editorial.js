@@ -1,11 +1,26 @@
 import express, { Router } from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { mkdir } from 'fs/promises';
+import { mkdir, readFile } from 'fs/promises';
 import { adminAuth } from '../middleware/admin-auth.js';
 import { readJson, writeJson } from '../lib/json-store.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const CASTLES_PATH = path.join(__dirname, '../../new_app/src/assets/data/castles_enriched.json');
+let _castleCodesCache = null;
+
+async function getCastleCodes() {
+  if (_castleCodesCache) return _castleCodesCache;
+  try {
+    const raw = await readFile(CASTLES_PATH, 'utf8');
+    const data = JSON.parse(raw);
+    _castleCodesCache = new Set(data.map(c => c.castle_code));
+  } catch {
+    _castleCodesCache = new Set();
+  }
+  return _castleCodesCache;
+}
 
 export const EDITORIAL_FILES = new Set([
   'countries',
@@ -28,12 +43,16 @@ function backupStamp() {
   );
 }
 
-function validatePayload(file, data) {
+async function validatePayload(file, data) {
   if (typeof data !== 'object' || data === null || Array.isArray(data)) {
     return [{ keyPath: '.', message: 'payload must be a plain object' }];
   }
 
   const errors = [];
+  let castleCodes = null;
+  if (file === 'countries' || file === 'castle-quotes' || file === 'period-picks') {
+    castleCodes = await getCastleCodes();
+  }
 
   for (const [key, val] of Object.entries(data)) {
     if (typeof val !== 'object' || val === null || Array.isArray(val)) {
@@ -41,25 +60,34 @@ function validatePayload(file, data) {
       continue;
     }
 
-    if (file === 'castle-quotes') {
+    if (file === 'countries') {
+      if (val.topEntryCode && castleCodes && !castleCodes.has(val.topEntryCode)) {
+        errors.push({ keyPath: `${key}.topEntryCode`, message: `castle code '${val.topEntryCode}' not found in index` });
+      }
+    } else if (file === 'castle-quotes') {
       for (const field of ['quote', 'author', 'role', 'date']) {
         if (typeof val[field] !== 'string' || val[field].length === 0) {
           errors.push({ keyPath: `${key}.${field}`, message: `${field} is required` });
         }
       }
-    } else if (file === 'period-picks') {
-      if (typeof val.pick !== 'string' || val.pick.length === 0) {
-        errors.push({ keyPath: `${key}.pick`, message: 'pick is required' });
+      if (val.castle && castleCodes && !castleCodes.has(val.castle)) {
+        errors.push({ keyPath: `${key}.castle`, message: `castle code '${val.castle}' not found in index` });
       }
-      if (typeof val.castleCode !== 'string' || val.castleCode.length === 0) {
-        errors.push({ keyPath: `${key}.castleCode`, message: 'castleCode is required' });
+    } else if (file === 'period-picks') {
+      if (typeof val.code !== 'string' || val.code.length === 0) {
+        errors.push({ keyPath: `${key}.code`, message: 'code is required' });
+      } else if (castleCodes && !castleCodes.has(val.code)) {
+        errors.push({ keyPath: `${key}.code`, message: `castle code '${val.code}' not found in index` });
+      }
+      if (typeof val.name !== 'string' || val.name.length === 0) {
+        errors.push({ keyPath: `${key}.name`, message: 'name is required' });
       }
     } else if (file === 'browse-bands') {
       if (typeof val.note !== 'string' || val.note.length === 0) {
         errors.push({ keyPath: `${key}.note`, message: 'note is required' });
       }
     }
-    // countries and regions: values must be objects (already checked above)
+    // regions: values must be objects (already checked above)
   }
 
   return errors;
@@ -70,8 +98,7 @@ const router = Router();
 router.use(adminAuth);
 router.use(express.json({ limit: '256kb' }));
 
-// POST /api/admin/editorial/:file
-router.post('/:file', async (req, res) => {
+async function handleWrite(req, res) {
   const name = req.params.file;
 
   if (!EDITORIAL_FILES.has(name)) {
@@ -88,7 +115,7 @@ router.post('/:file', async (req, res) => {
     return res.status(400).json({ error: 'payload must be a plain object' });
   }
 
-  const errors = validatePayload(name, data);
+  const errors = await validatePayload(name, data);
   if (errors.length > 0) {
     return res.status(400).json({ errors });
   }
@@ -114,12 +141,17 @@ router.post('/:file', async (req, res) => {
       success: true,
       file: name,
       keys: Object.keys(data).length,
+      backupFilename,
       timestamp: new Date().toISOString(),
     });
   } catch (err) {
     console.error(`[admin/editorial] write failed for ${name}:`, err);
     return res.status(500).json({ error: 'write failed' });
   }
-});
+}
+
+// POST and PUT /api/admin/editorial/:file — whole-file replace
+router.post('/:file', handleWrite);
+router.put('/:file', handleWrite);
 
 export default router;

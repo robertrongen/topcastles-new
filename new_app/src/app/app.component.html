@@ -33,12 +33,12 @@
 <nav class="site-nav" aria-label="Primary">
   <a routerLink="/" routerLinkActive="site-nav--active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
   <a routerLink="/top1000" routerLinkActive="site-nav--active">Top 1000</a>
-  <a routerLink="/top-countries" routerLinkActive="site-nav--active">Top Countries</a>
-  <a routerLink="/top-regions" routerLinkActive="site-nav--active">Top Regions</a>
-  <a routerLink="/background" routerLinkActive="site-nav--active">Background</a>
   <a routerLink="/favorites" routerLinkActive="site-nav--active" aria-label="Favorites" matTooltip="Favorites" matTooltipPosition="below">
     <!-- <mat-icon>bookmark</mat-icon> -->Favorites
   </a>
+  <a routerLink="/top-countries" routerLinkActive="site-nav--active">Top Countries</a>
+  <a routerLink="/top-regions" routerLinkActive="site-nav--active">Top Regions</a>
+  <a routerLink="/background" routerLinkActive="site-nav--active">Background</a>
   <a routerLink="/developer" routerLinkActive="site-nav--active">Developer · API</a>
 @if (adminAuth.isAuthenticated()) {
     <a routerLink="/admin/editorial" routerLinkActive="site-nav--active">Editorial</a>
@@ -89,6 +89,10 @@
         <mat-icon matListItemIcon fontSet="material-symbols-outlined">crown</mat-icon>
         <span matListItemTitle>Top 1000</span>
       </a>
+      <a mat-list-item routerLink="/favorites" routerLinkActive="active" (click)="sidenav.close()">
+        <mat-icon matListItemIcon>bookmark</mat-icon>
+        <span matListItemTitle>Favorites</span>
+      </a>
       <a mat-list-item routerLink="/top-countries" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>emoji_flags</mat-icon>
         <span matListItemTitle>Top Countries</span>
@@ -100,10 +104,6 @@
       <a mat-list-item routerLink="/background" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>menu_book</mat-icon>
         <span matListItemTitle>Background</span>
-      </a>
-      <a mat-list-item routerLink="/favorites" routerLinkActive="active" (click)="sidenav.close()">
-        <mat-icon matListItemIcon>bookmark</mat-icon>
-        <span matListItemTitle>Favorites</span>
       </a>
       <a mat-list-item routerLink="/developer" routerLinkActive="active" (click)="sidenav.close()">
         <mat-icon matListItemIcon>api</mat-icon>
