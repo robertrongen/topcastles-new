@@ -226,27 +226,29 @@
             </article>
           }
 
-          <table class="visitor-list">
-            <caption>#2-#5 visitor-rated castles</caption>
-            <thead>
-              <tr>
-                <th class="visitor-list__rank">#</th>
-                <th>Castle</th>
-                <th>Country</th>
-                <th class="visitor-list__score">Rating</th>
-              </tr>
-            </thead>
-            <tbody>
-              @for (castle of topVisitorRunnersUp(); track castle.castle_code; let i = $index) {
-                <tr>
-                  <td class="visitor-list__rank">{{ i + 2 }}</td>
-                  <td><a [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a></td>
-                  <td>{{ castle.country | titlecase }}</td>
-                  <td class="visitor-list__score">{{ castle.score_visitors != null ? (castle.score_visitors | number:'1.1-1') : '—' }}</td>
-                </tr>
-              }
-            </tbody>
-          </table>
+          <ol class="visitor-card-grid" aria-label="#2-#5 visitor-rated castles">
+            @for (castle of topVisitorRunnersUp(); track castle.castle_code; let i = $index) {
+              <li class="visitor-card">
+                <a class="visitor-card__image-link" [routerLink]="['/castles', castle.castle_code]">
+                  <img
+                    class="visitor-card__image"
+                    [src]="imageService.castlePhotoUrl(castle.castle_code)"
+                    [alt]="castle.castle_name"
+                    loading="lazy"
+                    (error)="onImageError($event, castle.wikidata_image ?? castle.wikipedia_thumbnail)"
+                  />
+                </a>
+                <div class="visitor-card__content">
+                  <span class="visitor-card__rank">#{{ i + 2 }}</span>
+                  <a class="visitor-card__name" [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
+                  <div class="visitor-card__meta">
+                    <span>{{ castle.country | titlecase }}</span>
+                    <span>{{ castle.score_visitors != null ? (castle.score_visitors | number:'1.1-1') : '-' }}<span class="visitor-unit"> /10</span></span>
+                  </div>
+                </div>
+              </li>
+            }
+          </ol>
         </div>
         <p class="section-footer">
           <a [routerLink]="['/top1000']" [queryParams]="{ sort: 'score_visitors' }">See all visitor-rated castles &rarr;</a>

@@ -85,11 +85,11 @@ describe('HomePageComponent', () => {
     expect(rows.length).toBe(3);
   });
 
-  it('should render visitor ranking as a lead card and compact list', () => {
+  it('should render visitor ranking as a lead card and runner-up cards', () => {
     const lead = fixture.nativeElement.querySelector('.visitor-lead');
-    const rows = fixture.nativeElement.querySelectorAll('.visitor-list tbody tr');
+    const cards = fixture.nativeElement.querySelectorAll('.visitor-card-grid .visitor-card');
     expect(lead).toBeTruthy();
-    expect(rows.length).toBe(2);
+    expect(cards.length).toBe(2);
   });
 
   it('should not render the postponed country exploration section', () => {
