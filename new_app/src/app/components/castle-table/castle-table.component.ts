@@ -14,8 +14,8 @@ import { ImageService } from '../../services/image.service';
 
 export const COL_LABELS: Record<string, string> = {
   position:      'Pos',
-  score_total:   'Score',
-  score_visitors:'Visitors ★',
+  score_total:   'Score /1000',
+  score_visitors:'Visitors ★ /10',
   thumbnail:     '',
   castle_name:   'Castle',
   era:           'Era',

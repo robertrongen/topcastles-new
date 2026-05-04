@@ -24,7 +24,7 @@
         </div>
         @if (castle.position != null) {
           <div class="castle-rank">
-            {{ castle.position }} &mdash; {{ castle.score_total | number:'1.0-0' }} pts
+            {{ castle.position }} &mdash; {{ castle.score_total | number:'1.0-0' }} / 1000
             @if (isFavorite(castle.castle_code)) {
               <mat-icon class="fav-badge" matTooltip="In your favorites">bookmark</mat-icon>
             }
