@@ -7,7 +7,6 @@
 - [deployment.md](deployment.md) - Synology NAS deployment via `deploy.sh`
 - [new-developer-onboarding.md](new-developer-onboarding.md) - VS Code-first workflow for beads, Graphify, context pipeline, and verification
 - [pipeline.md](pipeline.md) - build and CI pipeline steps
-- [prompt-authoring-guide.md](prompt-authoring-guide.md) - how to write short, repo-native build prompts for Topcastles work
 - [spec-kit.md](spec-kit.md) - when to use normal lightweight workflow vs fuller Spec Kit discipline
 - [ux-product-execution-plan.md](ux-product-execution-plan.md) - executable backlog plan for roadmap UX and product improvements
 - [prompts/adr-template.md](prompts/adr-template.md) - short prompt scaffold for architecture decision drafts
@@ -27,4 +26,4 @@ When behavior, architecture, or operational assumptions change, update the relev
 - `pipeline.md` for build or deployment pipeline changes
 - `deployment.md` for operational changes to `deploy.sh` or the NAS setup
 - root `README.md` when the developer workflow changes
-- Keep prompts short by updating shared repo docs instead of repeating long instructions in prompt templates
+- Keep prompts short by referencing root [AGENTS.md](../AGENTS.md) instead of repeating long instructions in prompt templates

@@ -198,7 +198,7 @@ These constraints are non-negotiable. They are not revisited per feature — the
 | All JSON writes go through `json-store.js` | ADR-009 |
 | Admin changes require rebuild to affect prerendered pages | ADR-010 |
 | `/data` is runtime state; `/assets/data` is build-time content | architecture.md |
-| Architecture-sensitive work (PWA, NAS, admin) requires Spec Kit | agent-preflight.md §9 |
+| Architecture-sensitive work (PWA, NAS, admin) requires Spec Kit | [AGENTS.md](../AGENTS.md) |
 
 Proposing a change to any of these constraints requires an ADR, not a bead.
 

@@ -138,7 +138,7 @@ Good task prompts include:
 - task-specific constraints
 - required verification
 
-Prompt-authoring details remain in [docs/prompt-authoring-guide.md](docs/prompt-authoring-guide.md), but this root contract is the authority agents must follow.
+This section replaces older prompt-authoring checklists. If a prompt repeats long workflow text, collapse it to a reference to this file plus task-specific scope and verification.
 
 ## Verification
 
