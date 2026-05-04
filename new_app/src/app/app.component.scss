@@ -357,6 +357,11 @@ mat-sidenav {
   }
 }
 
+:host-context([data-theme="dark"]) .tk-footer-col__fine {
+  color: var(--text-5);
+  opacity: 1;
+}
+
 // ── Responsive ────────────────────────────────────────────────────────────────
 
 @media (max-width: 960px) {

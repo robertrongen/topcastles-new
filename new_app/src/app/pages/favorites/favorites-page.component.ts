@@ -12,6 +12,12 @@ import { UserService } from '../../services/user.service';
 
 type FavoritesSortKey = 'added' | 'rank' | 'score' | 'alpha';
 
+interface SetPreview {
+  text: string;
+  moreCount: number;
+  empty: boolean;
+}
+
 @Component({
   selector: 'app-favorites-page',
   standalone: true,
@@ -28,6 +34,7 @@ export class FavoritesPageComponent implements OnInit {
   private router = inject(Router);
   private platformId = inject(PLATFORM_ID);
 
+  protected isBrowser = isPlatformBrowser(this.platformId);
   protected newSetName = signal('');
   protected creating = signal(false);
   protected showNewSet = signal(false);
@@ -53,7 +60,7 @@ export class FavoritesPageComponent implements OnInit {
     const byName = query ? sets.find((set) => set.name === query) : null;
     if (byName) return byName;
 
-    return sets.find((set) => set.name.toLowerCase() === 'favs') ?? sets[0];
+    return sets.find((set) => set.id === 'favs' || set.name.toLowerCase() === 'my favorites') ?? sets[0];
   });
 
   protected selectedCastles = computed(() => {
@@ -127,13 +134,20 @@ export class FavoritesPageComponent implements OnInit {
     return this.selectedSet()?.id === set.id;
   }
 
-  protected setPreview(set: FavoriteSet): string {
+  protected setPreview(set: FavoriteSet): SetPreview {
     const names = set.castleIds
       .map((code) => this.castleService.getCastleByCode(code)?.castle_name)
       .filter((name): name is string => Boolean(name));
 
-    if (names.length === 0) return 'No castles yet';
-    return names.slice(0, 2).join(' · ');
+    if (set.castleIds.length === 0) {
+      return { text: 'Empty set', moreCount: 0, empty: true };
+    }
+
+    return {
+      text: names.slice(0, 2).join(', '),
+      moreCount: Math.max(0, set.castleIds.length - 2),
+      empty: false,
+    };
   }
 
   protected toggleNewSet(): void {

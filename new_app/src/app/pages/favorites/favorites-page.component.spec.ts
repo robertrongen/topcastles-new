@@ -65,7 +65,7 @@ class CastleServiceMock {
 class FavoritesServiceMock {
   favorites = signal<FavoriteSet[]>([
     { id: 'other', name: 'set1', castleIds: ['krak'] },
-    { id: 'favs', name: 'favs', castleIds: ['roncolo', 'krak'] },
+    { id: 'favs', name: 'My favorites', castleIds: ['roncolo', 'krak'] },
   ]);
   loading = signal(false);
   loadFavorites = jasmine.createSpy('loadFavorites').and.resolveTo();
@@ -112,17 +112,17 @@ describe('FavoritesPageComponent', () => {
     fixture.detectChanges();
   }
 
-  it('defaults to the favs set and renders castles with set and global ranks', async () => {
+  it('defaults to the My favorites set and renders castles with set and global ranks', async () => {
     await setup();
 
     const text = fixture.nativeElement.textContent as string;
     expect(text).toContain('Selected set');
-    expect(text).toContain('favs');
+    expect(text).toContain('My favorites');
     expect(text).toContain('Castel Roncolo');
     expect(text).toContain('Krak des Chevaliers');
     expect(text).toContain('★ 77');
     expect(router.navigate).toHaveBeenCalledWith([], jasmine.objectContaining({
-      queryParams: { set: 'favs' },
+      queryParams: { set: 'My favorites' },
       replaceUrl: true,
     }));
   });

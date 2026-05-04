@@ -5,7 +5,7 @@
     <div class="loading-state" aria-label="Loading favorites">
       <mat-spinner diameter="40" />
     </div>
-  } @else if (!hasFavoriteCastles()) {
+  } @else if (isBrowser && !hasFavoriteCastles()) {
     <section class="favorites-empty" aria-labelledby="favorites-empty-title">
       <h2 id="favorites-empty-title">You haven't saved any favorites yet.</h2>
       <p>Tap the <span aria-label="star">★</span> on any castle in the index to start a list.</p>
@@ -45,7 +45,16 @@
                   <span class="set-arrow" aria-hidden="true">▸</span>
                   <span>
                     <span class="name">{{ set.name }}</span>
-                    <span class="preview">{{ setPreview(set) }}</span>
+                    @if (isSelected(set)) {
+                      @if (setPreview(set); as preview) {
+                        <span class="preview" [class.preview--empty]="preview.empty">
+                          <span>{{ preview.text }}</span>
+                          @if (preview.moreCount > 0) {
+                            <span class="preview-more"> · +{{ preview.moreCount }} more</span>
+                          }
+                        </span>
+                      }
+                    }
                   </span>
                   <span class="count">{{ set.castleIds.length }}</span>
                 </button>
@@ -118,7 +127,7 @@
               <thead>
                 <tr>
                   <th scope="col">Rank</th>
-                  <th scope="col">★ Top-1000</th>
+                  <th scope="col">Top-1000</th>
                   <th scope="col" aria-label="Castle thumbnail"></th>
                   <th scope="col">Castle</th>
                   <th scope="col">Country</th>
@@ -128,7 +137,7 @@
               <tbody>
                 @for (castle of displayedCastles(); track castle.castle_code) {
                   <tr>
-                    <td class="num">{{ setRank(castle) }}</td>
+                    <td class="num set-rank">{{ setRank(castle) }}</td>
                     <td class="num global-rank"><span aria-label="Top 1000 rank">★</span> {{ castle.position }}</td>
                     <td class="thumb-cell">
                       <a [routerLink]="['/castles', castle.castle_code]" class="thumb-link" [attr.aria-label]="'Open ' + castle.castle_name">
