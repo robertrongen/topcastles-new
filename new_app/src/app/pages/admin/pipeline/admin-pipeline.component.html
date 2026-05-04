@@ -79,4 +79,27 @@
       <p class="build-notice__body">{{ status()!.buildNotice }}</p>
     </aside>
   }
+
+  <!-- Pipeline ledger -->
+  <section class="ledger" aria-label="Pipeline ledger">
+    <div class="ledger__eyebrow">PIPELINE LEDGER</div>
+    <div class="ledger__grid">
+      <div class="ledger__row">
+        <span class="ledger__label">Last staged</span>
+        <span class="ledger__value">{{ formatDate(status()!.ledger.lastStagedAt) }}</span>
+      </div>
+      <div class="ledger__row">
+        <span class="ledger__label">Staged hash</span>
+        <span class="ledger__value ledger__value--mono">{{ status()!.ledger.lastStagedHash ?? '—' }}</span>
+      </div>
+      <div class="ledger__row">
+        <span class="ledger__label">Last build</span>
+        <span class="ledger__value">{{ formatDate(status()!.ledger.lastBuildAt) }}</span>
+      </div>
+      <div class="ledger__row">
+        <span class="ledger__label">Last deploy</span>
+        <span class="ledger__value">{{ formatDate(status()!.ledger.lastDeployAt) }}</span>
+      </div>
+    </div>
+  </section>
 }

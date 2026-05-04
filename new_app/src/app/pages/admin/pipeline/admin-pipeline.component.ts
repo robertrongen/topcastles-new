@@ -13,10 +13,19 @@ export interface PendingUpload {
   checksum: string | null;
 }
 
+export interface PipelineLedger {
+  lastStagedAt: string | null;
+  lastStagedHash: string | null;
+  lastBuildAt: string | null;
+  lastDeployAt: string | null;
+  notes: string[];
+}
+
 export interface PipelineStatus {
   pendingUpload: PendingUpload | null;
   buildNotice: string | null;
   warnings: string[];
+  ledger: PipelineLedger;
 }
 
 @Component({

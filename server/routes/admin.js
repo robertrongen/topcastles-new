@@ -1,9 +1,11 @@
 import express, { Router } from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { createHash } from 'crypto';
 import { readdir, readFile } from 'fs/promises';
 import { adminAuth } from '../middleware/admin-auth.js';
 import { readJson, writeJson } from '../lib/json-store.js';
+import { updatePipelineMeta } from '../lib/pipeline-state.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, '../../data');
@@ -77,14 +79,19 @@ router.post('/upload-enriched', express.json({ limit: '10mb' }), async (req, res
   }
 
   try {
+    const serialised = JSON.stringify(castles);
+    const checksum = 'sha256:' + createHash('sha256').update(serialised).digest('hex');
     await writeJson(PENDING_ENRICHED, castles);
+    const now = new Date().toISOString();
     const meta = {
-      uploadedAt: new Date().toISOString(),
+      uploadedAt: now,
       recordCount: castles.length,
       uploadedBy: 'admin',
+      checksum,
     };
     await writeJson(PENDING_META, meta);
-    res.json({ recordCount: castles.length, uploadedAt: meta.uploadedAt });
+    await updatePipelineMeta(DATA_DIR, { lastStagedAt: now, lastStagedHash: checksum });
+    res.json({ recordCount: castles.length, uploadedAt: now, checksum });
   } catch (err) {
     console.error('[upload-enriched] write failed:', err);
     res.status(500).json({ error: 'failed to stage upload' });

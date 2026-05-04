@@ -186,3 +186,52 @@
   color: var(--text-3);
   margin: 0;
 }
+
+// ── Pipeline ledger ────────────────────────────────────────────────────────────
+
+.ledger {
+  background: var(--ink-card);
+  border: 1px solid var(--ink-line-2);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+
+.ledger__eyebrow {
+  display: block;
+  font: 600 10px/1 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--text-5);
+  margin-bottom: 16px;
+}
+
+.ledger__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ledger__row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.ledger__label {
+  font: 600 11px/1.4 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-5);
+}
+
+.ledger__value {
+  font: 400 13.5px/1.4 var(--tk-font-serif);
+  color: var(--text-2);
+}
+
+.ledger__value--mono {
+  font-family: var(--tk-font-mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  word-break: break-all;
+}

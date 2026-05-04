@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import { stat } from 'fs/promises';
 import { adminAuth } from '../middleware/admin-auth.js';
 import { readJson } from '../lib/json-store.js';
+import { readPipelineMeta } from '../lib/pipeline-state.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, '../../data');
@@ -18,13 +19,17 @@ router.use(adminAuth);
 
 // GET /api/admin/pipeline/status
 router.get('/status', async (_req, res) => {
-  const meta = await readJson(PENDING_META);
+  const [meta, ledger] = await Promise.all([
+    readJson(PENDING_META),
+    readPipelineMeta(DATA_DIR),
+  ]);
 
   if (!meta) {
     return res.json({
       pendingUpload: null,
       buildNotice: null,
       warnings: ['No pending upload is staged.'],
+      ledger,
     });
   }
 
@@ -47,6 +52,7 @@ router.get('/status', async (_req, res) => {
     },
     buildNotice: BUILD_NOTICE,
     warnings: [],
+    ledger,
   });
 });
 

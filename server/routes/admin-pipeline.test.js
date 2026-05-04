@@ -6,6 +6,7 @@ import path from 'path';
 import express from 'express';
 import supertest from 'supertest';
 import { writeJson } from '../lib/json-store.js';
+import { updatePipelineMeta, readPipelineMeta } from '../lib/pipeline-state.js';
 
 const TOKEN = 'test-pipeline-token';
 
@@ -60,11 +61,25 @@ describe('GET /api/admin/pipeline/status', () => {
     assert.ok(res.body.warnings.length > 0);
   });
 
+  it('no pending upload → ledger has default null fields', async () => {
+    const res = await request
+      .get('/api/admin/pipeline/status')
+      .set('Authorization', `Bearer ${TOKEN}`);
+    assert.equal(res.status, 200);
+    assert.ok(res.body.ledger !== undefined);
+    assert.equal(res.body.ledger.lastStagedAt, null);
+    assert.equal(res.body.ledger.lastStagedHash, null);
+    assert.equal(res.body.ledger.lastBuildAt, null);
+    assert.equal(res.body.ledger.lastDeployAt, null);
+    assert.deepEqual(res.body.ledger.notes, []);
+  });
+
   it('with pending upload meta → 200 with pendingUpload and buildNotice', async () => {
     const meta = {
       uploadedAt: '2026-05-04T12:00:00.000Z',
       recordCount: 1234,
       uploadedBy: 'admin',
+      checksum: 'sha256:abc123',
     };
     await writeJson(path.join(tmpDir, 'pending', 'meta.json'), meta);
 
@@ -77,18 +92,58 @@ describe('GET /api/admin/pipeline/status', () => {
     assert.equal(res.body.pendingUpload.uploadedAt, meta.uploadedAt);
     assert.equal(res.body.pendingUpload.recordCount, meta.recordCount);
     assert.equal(res.body.pendingUpload.uploadedBy, meta.uploadedBy);
-    assert.equal(res.body.pendingUpload.checksum, null);
+    assert.equal(res.body.pendingUpload.checksum, meta.checksum);
     assert.equal(typeof res.body.buildNotice, 'string');
     assert.ok(res.body.buildNotice.length > 0);
     assert.deepEqual(res.body.warnings, []);
   });
 
   it('meta present but enriched file missing → fileSizeBytes is null', async () => {
-    // meta already written in previous test; enriched file not staged
     const res = await request
       .get('/api/admin/pipeline/status')
       .set('Authorization', `Bearer ${TOKEN}`);
     assert.equal(res.status, 200);
     assert.equal(res.body.pendingUpload.fileSizeBytes, null);
+  });
+
+  it('pipeline meta written externally → status ledger reflects it', async () => {
+    await updatePipelineMeta(tmpDir, {
+      lastStagedAt: '2026-05-04T12:00:00.000Z',
+      lastStagedHash: 'sha256:abc123',
+    });
+
+    const res = await request
+      .get('/api/admin/pipeline/status')
+      .set('Authorization', `Bearer ${TOKEN}`);
+    assert.equal(res.status, 200);
+    assert.equal(res.body.ledger.lastStagedAt, '2026-05-04T12:00:00.000Z');
+    assert.equal(res.body.ledger.lastStagedHash, 'sha256:abc123');
+    assert.equal(res.body.ledger.lastBuildAt, null);
+  });
+
+  it('readPipelineMeta returns defaults when file absent', async () => {
+    const freshDir = await mkdtemp(path.join(tmpdir(), 'pipeline-state-test-'));
+    try {
+      const meta = await readPipelineMeta(freshDir);
+      assert.equal(meta.lastStagedAt, null);
+      assert.equal(meta.lastBuildAt, null);
+      assert.deepEqual(meta.notes, []);
+    } finally {
+      await rm(freshDir, { recursive: true, force: true });
+    }
+  });
+
+  it('updatePipelineMeta merges patch without losing other fields', async () => {
+    const freshDir = await mkdtemp(path.join(tmpdir(), 'pipeline-state-merge-'));
+    try {
+      await updatePipelineMeta(freshDir, { lastStagedAt: '2026-01-01T00:00:00.000Z' });
+      await updatePipelineMeta(freshDir, { lastBuildAt: '2026-01-02T00:00:00.000Z' });
+      const meta = await readPipelineMeta(freshDir);
+      assert.equal(meta.lastStagedAt, '2026-01-01T00:00:00.000Z');
+      assert.equal(meta.lastBuildAt, '2026-01-02T00:00:00.000Z');
+      assert.equal(meta.lastDeployAt, null);
+    } finally {
+      await rm(freshDir, { recursive: true, force: true });
+    }
   });
 });
