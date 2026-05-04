@@ -15,6 +15,7 @@ const steps = [
   { script: 'data:convert' },
   { script: 'data:enrich:wikipedia' },
   { script: 'data:enrich:wikidata' },
+  { script: 'data:merge-overrides' },
   { script: 'data:lean', allowRebuildSignal: true },
   { script: 'data:api' },
   { script: 'data:sitemap' },
