@@ -6,6 +6,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './home-page.component';
 import { CastleService } from '../../services/castle.service';
 import { Castle } from '../../models/castle.model';
+import { EditorialService } from '../../services/editorial.service';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
   return {
@@ -45,6 +46,7 @@ describe('HomePageComponent', () => {
   let fixture: ComponentFixture<HomePageComponent>;
   let component: HomePageComponent;
   let castleService: CastleService;
+  let editorialService: EditorialService;
 
   const castles: Castle[] = [
     makeCastle({ castle_code: 'c1', castle_name: 'Alpha', score_total: 100, score_visitors: 50, country: 'netherlands' }),
@@ -63,6 +65,7 @@ describe('HomePageComponent', () => {
     }).compileComponents();
 
     castleService = TestBed.inject(CastleService);
+    editorialService = TestBed.inject(EditorialService);
     castleService.castles.set(castles);
 
     fixture = TestBed.createComponent(HomePageComponent);
@@ -113,6 +116,38 @@ describe('HomePageComponent', () => {
   it('should derive the #1 visitor castle and #2-#5 runner-up list', () => {
     expect(component.topVisitorLead()?.castle_code).toBe('c3');
     expect(component.topVisitorRunnersUp().map(c => c.castle_code)).toEqual(['c2', 'c1']);
+  });
+
+  it('should map period picks by exact era label key only', () => {
+    (editorialService as any)._periodPicks.set({
+      '11th c.': { code: 'krak', name: 'Krak des Chevaliers' },
+    });
+
+    expect(component.periodPickByEra('11th c.')).toEqual({ code: 'krak', name: 'Krak des Chevaliers' });
+    expect(component.periodPickByEra('11 c.')).toBeNull();
+    expect(component.periodPickByEra('11th c')).toBeNull();
+  });
+
+  it('should leave Editor\'s pick cell empty when period pick key is missing', () => {
+    castleService.castles.set([
+      makeCastle({ castle_code: 'k11', castle_name: 'Castle Eleven', era: 11, position: 10 }),
+      makeCastle({ castle_code: 'k12', castle_name: 'Castle Twelve', era: 12, position: 20 }),
+    ]);
+    (editorialService as any)._periodPicks.set({
+      '11th c.': { code: 'k11', name: 'Castle Eleven' },
+    });
+
+    fixture.detectChanges();
+
+    const rows = fixture.nativeElement.querySelectorAll('section .ref-table tbody tr') as NodeListOf<HTMLTableRowElement>;
+    const periodRows = Array.from(rows).filter(r => r.cells.length === 5);
+    expect(periodRows.length).toBe(2);
+
+    const firstPickCell = periodRows[0].cells[4];
+    const secondPickCell = periodRows[1].cells[4];
+
+    expect(firstPickCell.textContent?.trim()).toContain('Castle Eleven');
+    expect(secondPickCell.textContent?.trim()).toBe('');
   });
 
   // ── todaysCastle: daily selection ──────────────────────────────────────────

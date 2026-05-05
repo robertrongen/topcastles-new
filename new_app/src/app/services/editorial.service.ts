@@ -16,6 +16,11 @@ export interface CountryEditorial {
   editorSleeper?: boolean;
 }
 
+export interface PeriodPick {
+  code: string;
+  name: string;
+}
+
 @Injectable({ providedIn: 'root' })
 export class EditorialService {
   private http = inject(HttpClient);
@@ -26,6 +31,9 @@ export class EditorialService {
 
   private _countries = signal<Record<string, CountryEditorial>>({});
   readonly countries = this._countries.asReadonly();
+
+  private _periodPicks = signal<Record<string, PeriodPick>>({});
+  readonly periodPicks = this._periodPicks.asReadonly();
 
   constructor() {
     // Editorial overlay is runtime-only — skip during SSR/prerender.
@@ -39,6 +47,12 @@ export class EditorialService {
       this.http.get<Record<string, CountryEditorial>>('/api/editorial/countries')
         .subscribe({
           next: data => this._countries.set(data ?? {}),
+          error: () => {},
+        });
+
+      this.http.get<Record<string, PeriodPick>>('/api/editorial/period-picks')
+        .subscribe({
+          next: data => this._periodPicks.set(data ?? {}),
           error: () => {},
         });
     }

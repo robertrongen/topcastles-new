@@ -31,6 +31,7 @@ describe('TopCountriesPageComponent', () => {
   function flushEditorial(data: Record<string, unknown> = {}): void {
     httpTesting.expectOne('/api/editorial/castle-quotes').flush({});
     httpTesting.expectOne('/api/editorial/countries').flush(data);
+    httpTesting.expectOne('/api/editorial/period-picks').flush({});
   }
 
   beforeEach(async () => {
@@ -127,6 +128,7 @@ describe('TopCountriesPageComponent', () => {
     f2.detectChanges();
     http2.expectOne('/api/editorial/castle-quotes').flush({});
     http2.expectOne('/api/editorial/countries').flush({ 'Syria': { editorSleeper: true } });
+    http2.expectOne('/api/editorial/period-picks').flush({});
     f2.detectChanges();
     const badge = f2.nativeElement.querySelector('.sleeper-tag');
     expect(badge).toBeTruthy();

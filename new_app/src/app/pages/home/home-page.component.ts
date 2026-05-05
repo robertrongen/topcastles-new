@@ -145,6 +145,11 @@ export class HomePageComponent implements OnInit {
       }));
   });
 
+  periodPickByEra(eraLabel: string) {
+    const pick = this.editorialService.periodPicks()[eraLabel] ?? null;
+    return pick;
+  }
+
   top10Countries = computed(() => {
     const summaries = this.castleService.getCountrySummaries().slice(0, 10);
     const castles = this.castleService.castles();
