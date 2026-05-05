@@ -11,6 +11,7 @@ interface RegionAtlasRow {
   region: string;
   country: string;
   slug: string;
+  legacyMapFormat: 'jpg' | 'png';
   castleCount: number;
   totalScore: number;
   sumScoreRef: number;
@@ -98,6 +99,7 @@ export class TopRegionsPageComponent {
       return {
         ...row,
         catalogueNumber: String(index + 1).padStart(2, '0'),
+        legacyMapFormat: 'jpg',
         meanScore: row.castleCount > 0 ? row.sumScoreRef / row.castleCount : 0,
         editorialRank,
         visitorRank,
@@ -119,10 +121,24 @@ export class TopRegionsPageComponent {
       return `Visitor rank ${row.visitorRank}, lower than editorial rank ${row.editorialRank}`;
     return `Visitor rank ${row.visitorRank}`;
   }
+
+  onRegionMapError(event: Event, row: RegionAtlasRow): void {
+    const img = event.target as HTMLImageElement;
+    if (img.dataset['fallbackApplied'] === 'true') {
+      img.hidden = true;
+      return;
+    }
+
+    img.dataset['fallbackApplied'] = 'true';
+    img.src = `/images/maps/${row.slug}.${row.legacyMapFormat}`;
+  }
 }
 
 function regionSlug(castle: Castle): string {
-  return (castle.region_code || castle.region)
+  const regionCode = castle.region_code?.trim();
+  if (regionCode) return regionCode.toLowerCase();
+
+  return castle.region
     .trim()
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')

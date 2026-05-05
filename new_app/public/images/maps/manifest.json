@@ -1,0 +1,3806 @@
+{
+  "abruzzi": {
+    "regionCode": "abruzzi",
+    "regions": [
+      "Abruzzi"
+    ],
+    "countries": [
+      "Italy"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "achaia": {
+    "regionCode": "achaia",
+    "regions": [
+      "Achaia"
+    ],
+    "countries": [
+      "Greece"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "algarve": {
+    "regionCode": "algarve",
+    "regions": [
+      "Algarve"
+    ],
+    "countries": [
+      "Portugal"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "alsace": {
+    "regionCode": "alsace",
+    "regions": [
+      "Elzas (Alsace)"
+    ],
+    "countries": [
+      "France"
+    ],
+    "castleCount": 12,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "andalucia": {
+    "regionCode": "andalucia",
+    "regions": [
+      "Andalucia"
+    ],
+    "countries": [
+      "Spain"
+    ],
+    "castleCount": 15,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "andhra-pradesh": {
+    "regionCode": "andhra-pradesh",
+    "regions": [
+      "Andhra Pradesh"
+    ],
+    "countries": [
+      "India"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "antrim": {
+    "regionCode": "antrim",
+    "regions": [
+      "Antrim"
+    ],
+    "countries": [
+      "Northern Ireland"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "antwerpen": {
+    "regionCode": "antwerpen",
+    "regions": [
+      "Antwerpen"
+    ],
+    "countries": [
+      "Belgium"
+    ],
+    "castleCount": 5,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "aosta": {
+    "regionCode": "aosta",
+    "regions": [
+      "Valle d'Aosta"
+    ],
+    "countries": [
+      "Italy"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "aquitaine": {
+    "regionCode": "aquitaine",
+    "regions": [
+      "Aquitaine"
+    ],
+    "countries": [
+      "France"
+    ],
+    "castleCount": 9,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "aragon": {
+    "regionCode": "aragon",
+    "regions": [
+      "Aragón"
+    ],
+    "countries": [
+      "Spain"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "ardennen": {
+    "regionCode": "ardennen",
+    "regions": [
+      "Ardennen"
+    ],
+    "countries": [
+      "Luxemburg"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "armenia": {
+    "regionCode": "armenia",
+    "regions": [
+      "Armenië"
+    ],
+    "countries": [
+      "Turkey"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "auvergne": {
+    "regionCode": "auvergne",
+    "regions": [
+      "Auvergne"
+    ],
+    "countries": [
+      "France"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "badajoz": {
+    "regionCode": "badajoz",
+    "regions": [
+      "Badajoz"
+    ],
+    "countries": [
+      "Spain"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "baden-wurtenberg": {
+    "regionCode": "baden-wurtenberg",
+    "regions": [
+      "Baden-Würtenberg"
+    ],
+    "countries": [
+      "Germany"
+    ],
+    "castleCount": 13,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "baleares": {
+    "regionCode": "baleares",
+    "regions": [
+      "Baleares"
+    ],
+    "countries": [
+      "Spain"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "basilicata": {
+    "regionCode": "basilicata",
+    "regions": [
+      "Basilicata (Lucania)"
+    ],
+    "countries": [
+      "Italy"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "baskenland": {
+    "regionCode": "baskenland",
+    "regions": [
+      "Pais Vasco (Baskenland)"
+    ],
+    "countries": [
+      "Spain"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "bayern": {
+    "regionCode": "bayern",
+    "regions": [
+      "Bayern"
+    ],
+    "countries": [
+      "Germany"
+    ],
+    "castleCount": 17,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "bornholm": {
+    "regionCode": "bornholm",
+    "regions": [
+      "Bornholm"
+    ],
+    "countries": [
+      "Denmark"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "bourgogne": {
+    "regionCode": "bourgogne",
+    "regions": [
+      "Bourgogne"
+    ],
+    "countries": [
+      "France"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "brabant": {
+    "regionCode": "brabant",
+    "regions": [
+      "Brabant"
+    ],
+    "countries": [
+      "Belgium"
+    ],
+    "castleCount": 6,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "bratislavsko": {
+    "regionCode": "bratislavsko",
+    "regions": [
+      "Bratislavsko"
+    ],
+    "countries": [
+      "Slovakia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "bretagne": {
+    "regionCode": "bretagne",
+    "regions": [
+      "Bretagne"
+    ],
+    "countries": [
+      "France"
+    ],
+    "castleCount": 11,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "burgenland": {
+    "regionCode": "burgenland",
+    "regions": [
+      "Burgenland"
+    ],
+    "countries": [
+      "Austria"
+    ],
+    "castleCount": 3,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "campanie": {
+    "regionCode": "campanie",
+    "regions": [
+      "Campanië"
+    ],
+    "countries": [
+      "Italy"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "castilla_y_leon": {
+    "regionCode": "castilla_y_leon",
+    "regions": [
+      "Castilla y León"
+    ],
+    "countries": [
+      "Spain"
+    ],
+    "castleCount": 12,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "castilla-la_mancha": {
+    "regionCode": "castilla-la_mancha",
+    "regions": [
+      "Castilla-La Mancha"
+    ],
+    "countries": [
+      "Spain"
+    ],
+    "castleCount": 13,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "catalunya": {
+    "regionCode": "catalunya",
+    "regions": [
+      "Catalunya"
+    ],
+    "countries": [
+      "Spain"
+    ],
+    "castleCount": 6,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "centraal": {
+    "regionCode": "centraal",
+    "regions": [
+      "Centraal"
+    ],
+    "countries": [
+      "Greece"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "central": {
+    "regionCode": "central",
+    "regions": [
+      "Central"
+    ],
+    "countries": [
+      "Scotland"
+    ],
+    "castleCount": 11,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "centre": {
+    "regionCode": "centre",
+    "regions": [
+      "Centre"
+    ],
+    "countries": [
+      "France"
+    ],
+    "castleCount": 8,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "clare": {
+    "regionCode": "clare",
+    "regions": [
+      "Clare"
+    ],
+    "countries": [
+      "Republic of Ireland"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "clwyd": {
+    "regionCode": "clwyd",
+    "regions": [
+      "Clwyd",
+      "Clywd"
+    ],
+    "countries": [
+      "Wales"
+    ],
+    "castleCount": 5,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "cork": {
+    "regionCode": "cork",
+    "regions": [
+      "Cork"
+    ],
+    "countries": [
+      "Republic of Ireland"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "dalmatia": {
+    "regionCode": "dalmatia",
+    "regions": [
+      "Dalmatia"
+    ],
+    "countries": [
+      "Croatia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "delalfold": {
+    "regionCode": "delalfold",
+    "regions": [
+      "Dél Alföld (Southern Great Plain)"
+    ],
+    "countries": [
+      "Hungary"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "deldunan": {
+    "regionCode": "deldunan",
+    "regions": [
+      "Dél Dunántúl (Southern Transdanubia)"
+    ],
+    "countries": [
+      "Hungary"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "dolnoslaskie": {
+    "regionCode": "dolnoslaskie",
+    "regions": [
+      "Dolnoslaskie (Silesia Inferior, Nederschlesien)"
+    ],
+    "countries": [
+      "Poland"
+    ],
+    "castleCount": 6,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "donegal": {
+    "regionCode": "donegal",
+    "regions": [
+      "Donegal"
+    ],
+    "countries": [
+      "Republic of Ireland"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "down": {
+    "regionCode": "down",
+    "regions": [
+      "Down"
+    ],
+    "countries": [
+      "Northern Ireland"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "dublin": {
+    "regionCode": "dublin",
+    "regions": [
+      "Dublin"
+    ],
+    "countries": [
+      "Republic of Ireland"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "dyfed": {
+    "regionCode": "dyfed",
+    "regions": [
+      "Dyfed"
+    ],
+    "countries": [
+      "Wales"
+    ],
+    "castleCount": 8,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "east": {
+    "regionCode": "east",
+    "regions": [
+      "East"
+    ],
+    "countries": [
+      "England"
+    ],
+    "castleCount": 6,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "east_midlands": {
+    "regionCode": "east_midlands",
+    "regions": [
+      "East Midlands"
+    ],
+    "countries": [
+      "England"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "edinburg_and_lothian": {
+    "regionCode": "edinburg_and_lothian",
+    "regions": [
+      "Edinburg and Lothian"
+    ],
+    "countries": [
+      "Scotland"
+    ],
+    "castleCount": 8,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "emilia_romagna": {
+    "regionCode": "emilia_romagna",
+    "regions": [
+      "Emilia-Romagna"
+    ],
+    "countries": [
+      "Italy"
+    ],
+    "castleCount": 10,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "erdemli": {
+    "regionCode": "erdemli",
+    "regions": [
+      "Erdemli"
+    ],
+    "countries": [
+      "Turkey"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "eszakalfold": {
+    "regionCode": "eszakalfold",
+    "regions": [
+      "Észak Alföld (Northern Great Plain)"
+    ],
+    "countries": [
+      "Hungary"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "eszakmagyar": {
+    "regionCode": "eszakmagyar",
+    "regions": [
+      "Észak Magyaroszág (Northern Hungary)"
+    ],
+    "countries": [
+      "Hungary"
+    ],
+    "castleCount": 10,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "extremadura": {
+    "regionCode": "extremadura",
+    "regions": [
+      "Extremadura"
+    ],
+    "countries": [
+      "Spain"
+    ],
+    "castleCount": 5,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "fyn": {
+    "regionCode": "fyn",
+    "regions": [
+      "Fyn (Funen)"
+    ],
+    "countries": [
+      "Denmark"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "galicia": {
+    "regionCode": "galicia",
+    "regions": [
+      "Galicia",
+      "Galilea"
+    ],
+    "countries": [
+      "Israel",
+      "Spain"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "galway": {
+    "regionCode": "galway",
+    "regions": [
+      "Galway"
+    ],
+    "countries": [
+      "Republic of Ireland"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "gelderland": {
+    "regionCode": "gelderland",
+    "regions": [
+      "Gelderland"
+    ],
+    "countries": [
+      "Netherlands"
+    ],
+    "castleCount": 11,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "genfersee": {
+    "regionCode": "genfersee",
+    "regions": [
+      "Genfersee"
+    ],
+    "countries": [
+      "Switzerland"
+    ],
+    "castleCount": 11,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "gibenet": {
+    "regionCode": "gibenet",
+    "regions": [
+      "Gibenet"
+    ],
+    "countries": [
+      "Turkey"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "glamorgan": {
+    "regionCode": "glamorgan",
+    "regions": [
+      "Glamorgan"
+    ],
+    "countries": [
+      "Wales"
+    ],
+    "castleCount": 3,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "gondar": {
+    "regionCode": "gondar",
+    "regions": [
+      "Gondar Region"
+    ],
+    "countries": [
+      "Ethiopia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "gorenjsko": {
+    "regionCode": "gorenjsko",
+    "regions": [
+      "Gorenjsko"
+    ],
+    "countries": [
+      "Slovenia"
+    ],
+    "castleCount": 3,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "gorisko": {
+    "regionCode": "gorisko",
+    "regions": [
+      "Gorisko und die Brda"
+    ],
+    "countries": [
+      "Slovenia"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "grampian": {
+    "regionCode": "grampian",
+    "regions": [
+      "Grampian"
+    ],
+    "countries": [
+      "Scotland"
+    ],
+    "castleCount": 10,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "grodno": {
+    "regionCode": "grodno",
+    "regions": [
+      "Grodno Region, Korelichi District"
+    ],
+    "countries": [
+      "Belarus"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "gwent": {
+    "regionCode": "gwent",
+    "regions": [
+      "Gwent"
+    ],
+    "countries": [
+      "Wales"
+    ],
+    "castleCount": 3,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "gwynedd": {
+    "regionCode": "gwynedd",
+    "regions": [
+      "Gwynedd"
+    ],
+    "countries": [
+      "Wales"
+    ],
+    "castleCount": 10,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "haryana": {
+    "regionCode": "haryana",
+    "regions": [
+      "Haryana"
+    ],
+    "countries": [
+      "India"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "henegouwen": {
+    "regionCode": "henegouwen",
+    "regions": [
+      "Henegouwen"
+    ],
+    "countries": [
+      "Belgium"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "hessen": {
+    "regionCode": "hessen",
+    "regions": [
+      "Hessen"
+    ],
+    "countries": [
+      "Germany"
+    ],
+    "castleCount": 13,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "highland": {
+    "regionCode": "highland",
+    "regions": [
+      "Highland"
+    ],
+    "countries": [
+      "Scotland"
+    ],
+    "castleCount": 8,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "hradec_kralove": {
+    "regionCode": "hradec_kralove",
+    "regions": [
+      "Hradeck Králové (Königgrätz)"
+    ],
+    "countries": [
+      "Czechia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "ile-de-france": {
+    "regionCode": "ile-de-france",
+    "regions": [
+      "Ile-de-France"
+    ],
+    "countries": [
+      "France"
+    ],
+    "castleCount": 11,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "istria": {
+    "regionCode": "istria",
+    "regions": [
+      "Istria"
+    ],
+    "countries": [
+      "Croatia"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "jylland": {
+    "regionCode": "jylland",
+    "regions": [
+      "Jylland"
+    ],
+    "countries": [
+      "Denmark"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "kaernten": {
+    "regionCode": "kaernten",
+    "regions": [
+      "Kärnten"
+    ],
+    "countries": [
+      "Austria"
+    ],
+    "castleCount": 5,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "karlovy_vary": {
+    "regionCode": "karlovy_vary",
+    "regions": [
+      "Karlovy Vary (Karlsbad)"
+    ],
+    "countries": [
+      "Czechia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "kerry": {
+    "regionCode": "kerry",
+    "regions": [
+      "Kerry"
+    ],
+    "countries": [
+      "Republic of Ireland"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "khmelnitskyi": {
+    "regionCode": "khmelnitskyi",
+    "regions": [
+      "Khmelnitskyi"
+    ],
+    "countries": [
+      "Ukraine"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "kozep": {
+    "regionCode": "kozep",
+    "regions": [
+      "Közép Magyarország (Central Hungary)"
+    ],
+    "countries": [
+      "Hungary"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "kozepdunan": {
+    "regionCode": "kozepdunan",
+    "regions": [
+      "Közép Dunántúl (Central Transdanubia)"
+    ],
+    "countries": [
+      "Hungary"
+    ],
+    "castleCount": 6,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "kozepmagyar": {
+    "regionCode": "kozepmagyar",
+    "regions": [
+      "Közép Magyarország (Central Hungary)"
+    ],
+    "countries": [
+      "Hungary"
+    ],
+    "castleCount": 5,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "kreta": {
+    "regionCode": "kreta",
+    "regions": [
+      "Kreta"
+    ],
+    "countries": [
+      "Greece"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "krka": {
+    "regionCode": "krka",
+    "regions": [
+      "Krka"
+    ],
+    "countries": [
+      "Slovenia"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "krocevsko": {
+    "regionCode": "krocevsko",
+    "regions": [
+      "Kocevsko und die Bela Krajina"
+    ],
+    "countries": [
+      "Slovenia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "kujawsko": {
+    "regionCode": "kujawsko",
+    "regions": [
+      "Kujawksko-Pomorskie"
+    ],
+    "countries": [
+      "Poland"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "languedoc-roussillon": {
+    "regionCode": "languedoc-roussillon",
+    "regions": [
+      "Languedoc-Roussillon"
+    ],
+    "countries": [
+      "France"
+    ],
+    "castleCount": 7,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "laois": {
+    "regionCode": "laois",
+    "regions": [
+      "Laois"
+    ],
+    "countries": [
+      "Republic of Ireland"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "lazio": {
+    "regionCode": "lazio",
+    "regions": [
+      "Lazio"
+    ],
+    "countries": [
+      "Italy"
+    ],
+    "castleCount": 5,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "liberec": {
+    "regionCode": "liberec",
+    "regions": [
+      "Liberec (Reichenberg)"
+    ],
+    "countries": [
+      "Czechia"
+    ],
+    "castleCount": 3,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "liguria": {
+    "regionCode": "liguria",
+    "regions": [
+      "Liguria"
+    ],
+    "countries": [
+      "Italy"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "limburg": {
+    "regionCode": "limburg",
+    "regions": [
+      "Limburg"
+    ],
+    "countries": [
+      "Netherlands"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "limerick": {
+    "regionCode": "limerick",
+    "regions": [
+      "Limerick"
+    ],
+    "countries": [
+      "Republic of Ireland"
+    ],
+    "castleCount": 3,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "limousin": {
+    "regionCode": "limousin",
+    "regions": [
+      "Limousin"
+    ],
+    "countries": [
+      "France"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "ljubljana": {
+    "regionCode": "ljubljana",
+    "regions": [
+      "Ljubljana"
+    ],
+    "countries": [
+      "Slovenia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "lodzkie": {
+    "regionCode": "lodzkie",
+    "regions": [
+      "Lodzkie (Central Poland)"
+    ],
+    "countries": [
+      "Poland"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "lombardia": {
+    "regionCode": "lombardia",
+    "regions": [
+      "Lombardije (Lombardia)"
+    ],
+    "countries": [
+      "Italy"
+    ],
+    "castleCount": 6,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "london": {
+    "regionCode": "london",
+    "regions": [
+      "London"
+    ],
+    "countries": [
+      "England"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "lubelskie": {
+    "regionCode": "lubelskie",
+    "regions": [
+      "Lubelskie (Lublin)"
+    ],
+    "countries": [
+      "Poland"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "lubovna": {
+    "regionCode": "lubovna",
+    "regions": [
+      "lubovna"
+    ],
+    "countries": [
+      "Slovakia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "luik": {
+    "regionCode": "luik",
+    "regions": [
+      "Luik"
+    ],
+    "countries": [
+      "Belgium"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "luxemburg": {
+    "regionCode": "luxemburg",
+    "regions": [
+      "Luxemburg"
+    ],
+    "countries": [
+      "Belgium"
+    ],
+    "castleCount": 3,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "madrid": {
+    "regionCode": "madrid",
+    "regions": [
+      "Madrid"
+    ],
+    "countries": [
+      "Spain"
+    ],
+    "castleCount": 3,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "maharashtra": {
+    "regionCode": "maharashtra",
+    "regions": [
+      "Maharashtra"
+    ],
+    "countries": [
+      "India"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "mal-karpaty": {
+    "regionCode": "mal-karpaty",
+    "regions": [
+      "Malé Karpaty"
+    ],
+    "countries": [
+      "Slovakia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "malopolskie": {
+    "regionCode": "malopolskie",
+    "regions": [
+      "Malopolskie (Lesser Poland)"
+    ],
+    "countries": [
+      "Poland"
+    ],
+    "castleCount": 7,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "marche": {
+    "regionCode": "marche",
+    "regions": [
+      "Marche"
+    ],
+    "countries": [
+      "Italy"
+    ],
+    "castleCount": 3,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "meath": {
+    "regionCode": "meath",
+    "regions": [
+      "Meath"
+    ],
+    "countries": [
+      "Republic of Ireland"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "mezbohemia": {
+    "regionCode": "mezbohemia",
+    "regions": [
+      "Stredo Ceský (Mittelböhmen)"
+    ],
+    "countries": [
+      "Czechia"
+    ],
+    "castleCount": 7,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "midi-pirenees": {
+    "regionCode": "midi-pirenees",
+    "regions": [
+      "Midi-Pyrénées"
+    ],
+    "countries": [
+      "France"
+    ],
+    "castleCount": 3,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "mittelland": {
+    "regionCode": "mittelland",
+    "regions": [
+      "Mittelland"
+    ],
+    "countries": [
+      "Switzerland"
+    ],
+    "castleCount": 11,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "moravia-silezia": {
+    "regionCode": "moravia-silezia",
+    "regions": [
+      "Moravia Slezský (Mährisch-Schlesien)"
+    ],
+    "countries": [
+      "Czechia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "murcia": {
+    "regionCode": "murcia",
+    "regions": [
+      "Murcia"
+    ],
+    "countries": [
+      "Spain"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "namen": {
+    "regionCode": "namen",
+    "regions": [
+      "Namen"
+    ],
+    "countries": [
+      "Belgium"
+    ],
+    "castleCount": 7,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "navarra": {
+    "regionCode": "navarra",
+    "regions": [
+      "Navarra"
+    ],
+    "countries": [
+      "Spain"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "niederoesterreich": {
+    "regionCode": "niederoesterreich",
+    "regions": [
+      "Niederöstenreich"
+    ],
+    "countries": [
+      "Austria"
+    ],
+    "castleCount": 17,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "noord_brabant": {
+    "regionCode": "noord_brabant",
+    "regions": [
+      "Noord Brabant"
+    ],
+    "countries": [
+      "Netherlands"
+    ],
+    "castleCount": 3,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "noord_holland": {
+    "regionCode": "noord_holland",
+    "regions": [
+      "Noord Holland"
+    ],
+    "countries": [
+      "Netherlands"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "nordrhein-westfalen": {
+    "regionCode": "nordrhein-westfalen",
+    "regions": [
+      "Nordrhein-Westfalen"
+    ],
+    "countries": [
+      "Germany"
+    ],
+    "castleCount": 6,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "nordwestschweiz": {
+    "regionCode": "nordwestschweiz",
+    "regions": [
+      "Nordwestschweiz"
+    ],
+    "countries": [
+      "Switzerland"
+    ],
+    "castleCount": 5,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "normandie": {
+    "regionCode": "normandie",
+    "regions": [
+      "Normandie"
+    ],
+    "countries": [
+      "France"
+    ],
+    "castleCount": 7,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "north_east": {
+    "regionCode": "north_east",
+    "regions": [
+      "North East"
+    ],
+    "countries": [
+      "England"
+    ],
+    "castleCount": 9,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "north_west": {
+    "regionCode": "north_west",
+    "regions": [
+      "North West"
+    ],
+    "countries": [
+      "England"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "notranjsko": {
+    "regionCode": "notranjsko",
+    "regions": [
+      "Notranjsko"
+    ],
+    "countries": [
+      "Slovenia"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "nyugatdunan": {
+    "regionCode": "nyugatdunan",
+    "regions": [
+      "Nyugat Dunántúl (Western Transdanubia)"
+    ],
+    "countries": [
+      "Hungary"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "oberoesterreich": {
+    "regionCode": "oberoesterreich",
+    "regions": [
+      "Oberösterreich"
+    ],
+    "countries": [
+      "Austria"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "olomouc": {
+    "regionCode": "olomouc",
+    "regions": [
+      "Olomouc"
+    ],
+    "countries": [
+      "Czechia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "oost_vlaanderen": {
+    "regionCode": "oost_vlaanderen",
+    "regions": [
+      "Oost Vlaanderen"
+    ],
+    "countries": [
+      "Belgium"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "opolskie": {
+    "regionCode": "opolskie",
+    "regions": [
+      "Opolskie (Silesia Superior, Oberschlesien)"
+    ],
+    "countries": [
+      "Poland"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "orava": {
+    "regionCode": "orava",
+    "regions": [
+      "Orava"
+    ],
+    "countries": [
+      "Slovakia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "ostra_mellansverige": {
+    "regionCode": "ostra_mellansverige",
+    "regions": [
+      "Östra Mellansverige (East Middle Sweden)"
+    ],
+    "countries": [
+      "Sweden"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "ostschweiz": {
+    "regionCode": "ostschweiz",
+    "regions": [
+      "Ostschweiz"
+    ],
+    "countries": [
+      "Switzerland"
+    ],
+    "castleCount": 11,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "overijssel": {
+    "regionCode": "overijssel",
+    "regions": [
+      "Overijssel"
+    ],
+    "countries": [
+      "Netherlands"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "pardubice": {
+    "regionCode": "pardubice",
+    "regions": [
+      "Pardubice"
+    ],
+    "countries": [
+      "Czechia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "pawlowo": {
+    "regionCode": "pawlowo",
+    "regions": [
+      "Pawlowo"
+    ],
+    "countries": [
+      "Russia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "pays-de-loire": {
+    "regionCode": "pays-de-loire",
+    "regions": [
+      "Pays de la Loire"
+    ],
+    "countries": [
+      "France"
+    ],
+    "castleCount": 8,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "peloponnisos": {
+    "regionCode": "peloponnisos",
+    "regions": [
+      "Peloponnisos"
+    ],
+    "countries": [
+      "Greece"
+    ],
+    "castleCount": 6,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "picardie": {
+    "regionCode": "picardie",
+    "regions": [
+      "Picardie"
+    ],
+    "countries": [
+      "France"
+    ],
+    "castleCount": 8,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "piemonte": {
+    "regionCode": "piemonte",
+    "regions": [
+      "Piemonte"
+    ],
+    "countries": [
+      "Italy"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "plzen": {
+    "regionCode": "plzen",
+    "regions": [
+      "Plzen (Pilsen)"
+    ],
+    "countries": [
+      "Czechia"
+    ],
+    "castleCount": 3,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "poitou-charentes": {
+    "regionCode": "poitou-charentes",
+    "regions": [
+      "Poitou-Charentes"
+    ],
+    "countries": [
+      "France"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "pomorsky": {
+    "regionCode": "pomorsky",
+    "regions": [
+      "Pomorsky (Pomerania, Pommern)"
+    ],
+    "countries": [
+      "Poland"
+    ],
+    "castleCount": 6,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "portalegre": {
+    "regionCode": "portalegre",
+    "regions": [
+      "Portalegre"
+    ],
+    "countries": [
+      "Portugal"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "powys": {
+    "regionCode": "powys",
+    "regions": [
+      "Powys"
+    ],
+    "countries": [
+      "Wales"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "prago": {
+    "regionCode": "prago",
+    "regions": [
+      "Hlavní město Praha"
+    ],
+    "countries": [
+      "Czechia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "provence": {
+    "regionCode": "provence",
+    "regions": [
+      "Provence-Alpes-Côte-d'Azur"
+    ],
+    "countries": [
+      "France"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "ptujsko": {
+    "regionCode": "ptujsko",
+    "regions": [
+      "Ptujsko Polje"
+    ],
+    "countries": [
+      "Slovenia"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "puglia": {
+    "regionCode": "puglia",
+    "regions": [
+      "Apulië (Puglia)"
+    ],
+    "countries": [
+      "Italy"
+    ],
+    "castleCount": 3,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "rajasthan": {
+    "regionCode": "rajasthan",
+    "regions": [
+      "Rajasthan"
+    ],
+    "countries": [
+      "India"
+    ],
+    "castleCount": 3,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "rheinland-pfalz": {
+    "regionCode": "rheinland-pfalz",
+    "regions": [
+      "Rheinland-Pfalz"
+    ],
+    "countries": [
+      "Germany"
+    ],
+    "castleCount": 32,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "rhone-alpes": {
+    "regionCode": "rhone-alpes",
+    "regions": [
+      "Rhône-Alpes"
+    ],
+    "countries": [
+      "France"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "roscommon": {
+    "regionCode": "roscommon",
+    "regions": [
+      "Roscommon"
+    ],
+    "countries": [
+      "Republic of Ireland"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "sachsen-anhalt": {
+    "regionCode": "sachsen-anhalt",
+    "regions": [
+      "Sachsen-Anhalt"
+    ],
+    "countries": [
+      "Germany"
+    ],
+    "castleCount": 6,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "salzburg": {
+    "regionCode": "salzburg",
+    "regions": [
+      "Salzburg"
+    ],
+    "countries": [
+      "Austria"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "sardegna": {
+    "regionCode": "sardegna",
+    "regions": [
+      "Sardegna (Sardinia)"
+    ],
+    "countries": [
+      "Italy"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "shkodra": {
+    "regionCode": "shkodra",
+    "regions": [
+      "Shkodra"
+    ],
+    "countries": [
+      "Albania"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "sicilia": {
+    "regionCode": "sicilia",
+    "regions": [
+      "Sicilië (Sicilia)"
+    ],
+    "countries": [
+      "Italy"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "sjaelland": {
+    "regionCode": "sjaelland",
+    "regions": [
+      "Sjælland"
+    ],
+    "countries": [
+      "Denmark"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "sligo": {
+    "regionCode": "sligo",
+    "regions": [
+      "Sligo"
+    ],
+    "countries": [
+      "Republic of Ireland"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "smaland": {
+    "regionCode": "smaland",
+    "regions": [
+      "Småland"
+    ],
+    "countries": [
+      "Sweden"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "south": {
+    "regionCode": "south",
+    "regions": [
+      "South"
+    ],
+    "countries": [
+      "Scotland"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "south_east": {
+    "regionCode": "south_east",
+    "regions": [
+      "South East"
+    ],
+    "countries": [
+      "England"
+    ],
+    "castleCount": 18,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "south_west": {
+    "regionCode": "south_west",
+    "regions": [
+      "South West"
+    ],
+    "countries": [
+      "England"
+    ],
+    "castleCount": 10,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "spis": {
+    "regionCode": "spis",
+    "regions": [
+      "Spiš"
+    ],
+    "countries": [
+      "Slovakia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "stajerska": {
+    "regionCode": "stajerska",
+    "regions": [
+      "Štajerska (Untersteiermark, Lower Styria)"
+    ],
+    "countries": [
+      "Slovenia"
+    ],
+    "castleCount": 8,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "steiermark": {
+    "regionCode": "steiermark",
+    "regions": [
+      "Steiermark"
+    ],
+    "countries": [
+      "Austria"
+    ],
+    "castleCount": 6,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "sudbohemia": {
+    "regionCode": "sudbohemia",
+    "regions": [
+      "Jiho Ceský (Südböhmen)"
+    ],
+    "countries": [
+      "Czechia"
+    ],
+    "castleCount": 7,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "sudmoravia": {
+    "regionCode": "sudmoravia",
+    "regions": [
+      "Jiho Moravia (Südmährien)"
+    ],
+    "countries": [
+      "Czechia"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "swietokrzyskie": {
+    "regionCode": "swietokrzyskie",
+    "regions": [
+      "Swietokrzyskie"
+    ],
+    "countries": [
+      "Poland"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "sydsverige": {
+    "regionCode": "sydsverige",
+    "regions": [
+      "Sydsverige (South Sweden)"
+    ],
+    "countries": [
+      "Sweden"
+    ],
+    "castleCount": 11,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "tessin": {
+    "regionCode": "tessin",
+    "regions": [
+      "Tessin"
+    ],
+    "countries": [
+      "Switzerland"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "thuringen": {
+    "regionCode": "thuringen",
+    "regions": [
+      "Thüringen"
+    ],
+    "countries": [
+      "Germany"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "tipperary": {
+    "regionCode": "tipperary",
+    "regions": [
+      "Tipperay"
+    ],
+    "countries": [
+      "Republic of Ireland"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "tirol": {
+    "regionCode": "tirol",
+    "regions": [
+      "Tirol"
+    ],
+    "countries": [
+      "Austria"
+    ],
+    "castleCount": 8,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "toscana": {
+    "regionCode": "toscana",
+    "regions": [
+      "Toscane (Toscana)"
+    ],
+    "countries": [
+      "Italy"
+    ],
+    "castleCount": 5,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "transylvania": {
+    "regionCode": "transylvania",
+    "regions": [
+      "Transylvanië (Siebenbürgen)"
+    ],
+    "countries": [
+      "Rumania"
+    ],
+    "castleCount": 5,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "trenciansko": {
+    "regionCode": "trenciansko",
+    "regions": [
+      "Trenciansko"
+    ],
+    "countries": [
+      "Slovakia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "trento": {
+    "regionCode": "trento",
+    "regions": [
+      "Trento (Zuid-Tirol, Trentino)"
+    ],
+    "countries": [
+      "Italy"
+    ],
+    "castleCount": 16,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "tripoli": {
+    "regionCode": "tripoli",
+    "regions": [
+      "Tripoli"
+    ],
+    "countries": [
+      "Lebanon"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "trnava": {
+    "regionCode": "trnava",
+    "regions": [
+      "Trnava"
+    ],
+    "countries": [
+      "Slovakia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "turks_cyprus": {
+    "regionCode": "turks_cyprus",
+    "regions": [
+      "Turks Cyprus"
+    ],
+    "countries": [
+      "Cyprus"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "umbria": {
+    "regionCode": "umbria",
+    "regions": [
+      "Umbrië (Umbria)"
+    ],
+    "countries": [
+      "Italy"
+    ],
+    "castleCount": 3,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "usti_nad_labem": {
+    "regionCode": "usti_nad_labem",
+    "regions": [
+      "Ústi nad Labem (Aussig)"
+    ],
+    "countries": [
+      "Czechia"
+    ],
+    "castleCount": 5,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "utrecht": {
+    "regionCode": "utrecht",
+    "regions": [
+      "Utrecht"
+    ],
+    "countries": [
+      "Netherlands"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "valencia": {
+    "regionCode": "valencia",
+    "regions": [
+      "Valencia"
+    ],
+    "countries": [
+      "Spain"
+    ],
+    "castleCount": 5,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "vastsverige": {
+    "regionCode": "vastsverige",
+    "regions": [
+      "Västsverige (West Sweden)"
+    ],
+    "countries": [
+      "Sweden"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "venetia": {
+    "regionCode": "venetia",
+    "regions": [
+      "Veneto (Venetia)"
+    ],
+    "countries": [
+      "Italy"
+    ],
+    "castleCount": 3,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "voralberg": {
+    "regionCode": "voralberg",
+    "regions": [
+      "Voralberg"
+    ],
+    "countries": [
+      "Austria"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "vysocina": {
+    "regionCode": "vysocina",
+    "regions": [
+      "Vysočina (Hochland)"
+    ],
+    "countries": [
+      "Czechia"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "wallon": {
+    "regionCode": "wallon",
+    "regions": [
+      "Waals Brabant"
+    ],
+    "countries": [
+      "Belgium"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "warminsko": {
+    "regionCode": "warminsko",
+    "regions": [
+      "Warmian-Masurian (Warminsko-Mazurskie)",
+      "Warminsko-Mazursky (Masuria)"
+    ],
+    "countries": [
+      "Poland"
+    ],
+    "castleCount": 4,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "west_midlands": {
+    "regionCode": "west_midlands",
+    "regions": [
+      "West Midlands"
+    ],
+    "countries": [
+      "England"
+    ],
+    "castleCount": 6,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "west_vlaanderen": {
+    "regionCode": "west_vlaanderen",
+    "regions": [
+      "West Vlaanderen"
+    ],
+    "countries": [
+      "Belgium"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "westmeath": {
+    "regionCode": "westmeath",
+    "regions": [
+      "Westmeath"
+    ],
+    "countries": [
+      "Republic of Ireland"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "wetzlar": {
+    "regionCode": "wetzlar",
+    "regions": [
+      "wetzlar"
+    ],
+    "countries": [
+      "Rumania"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "wexford": {
+    "regionCode": "wexford",
+    "regions": [
+      "Wexford"
+    ],
+    "countries": [
+      "Republic of Ireland"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "yorkshire": {
+    "regionCode": "yorkshire",
+    "regions": [
+      "Yorkshire and Humber"
+    ],
+    "countries": [
+      "England"
+    ],
+    "castleCount": 7,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "zachodnio": {
+    "regionCode": "zachodnio",
+    "regions": [
+      "Zachodnio-Pomorskie"
+    ],
+    "countries": [
+      "Poland"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "zagreb": {
+    "regionCode": "zagreb",
+    "regions": [
+      "Zagreb"
+    ],
+    "countries": [
+      "Croatia"
+    ],
+    "castleCount": 1,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "zasavje": {
+    "regionCode": "zasavje",
+    "regions": [
+      "Zasavje und Posavje"
+    ],
+    "countries": [
+      "Slovenia"
+    ],
+    "castleCount": 2,
+    "hasLegacyMap": false,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  },
+  "zuid_holland": {
+    "regionCode": "zuid_holland",
+    "regions": [
+      "Zuid Holland"
+    ],
+    "countries": [
+      "Netherlands"
+    ],
+    "castleCount": 3,
+    "hasLegacyMap": true,
+    "commons": "",
+    "highlightHueRGB": null,
+    "bgMode": "white",
+    "credit": "",
+    "license": "",
+    "sourceUrl": "",
+    "notes": "",
+    "candidates": []
+  }
+}

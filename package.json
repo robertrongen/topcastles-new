@@ -30,6 +30,11 @@
     "pipeline:consume": "node scripts/consume-pipeline-rebuild-request.js",
     "pipeline:consume:enrichment": "node scripts/consume-pipeline-enrichment-request.js",
     "pipeline:watch": "node scripts/watch-pipeline-requests.js",
+    "locators:inventory": "node scripts/prepare-region-locator-manifest.mjs",
+    "locators:check": "node scripts/check-region-locators.mjs",
+    "locators:fetch": "node scripts/fetch-locators.mjs",
+    "locators:build": "node scripts/build-locators.mjs",
+    "locators:test": "node scripts/region-locators.test.mjs",
     "mcp": "node scripts/mcp-server.js",
 
     "graph:build": "graphify build .",

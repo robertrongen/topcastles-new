@@ -117,6 +117,29 @@
   font: 600 12px/1.2 var(--tk-font-sans);
 }
 
+.region-locator {
+  display: grid;
+  place-items: center;
+  min-height: 132px;
+  margin: 0;
+  padding: 8px;
+  overflow: hidden;
+  border: 1px solid var(--ink-line-2);
+  background: #0b101c;
+
+  img {
+    display: block;
+    width: 78%;
+    height: 120px;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+  }
+
+  img[hidden] {
+    display: none;
+  }
+}
+
 .rank-pair {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

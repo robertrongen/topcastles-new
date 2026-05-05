@@ -26,6 +26,16 @@
 
           <a class="country-link" [routerLink]="['/countries', row.country]">{{ row.country }}</a>
 
+          <figure class="region-locator">
+            <img
+              [src]="'/images/maps/' + row.slug + '.png'"
+              [alt]="row.region + ' location map'"
+              width="320"
+              height="192"
+              loading="lazy"
+              (error)="onRegionMapError($event, row)" />
+          </figure>
+
           <dl class="rank-pair">
             <div>
               <dt>Editorial</dt>

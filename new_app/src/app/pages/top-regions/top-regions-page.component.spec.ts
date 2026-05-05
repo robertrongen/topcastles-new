@@ -22,6 +22,7 @@ const castles: Castle[] = [
   makeCastle({ castle_code: 'c1', country: 'France', region: 'Loire', region_code: 'loire', score_total: 100, score_ref: 80, visitors: 80 }),
   makeCastle({ castle_code: 'c2', country: 'France', region: 'Loire', region_code: 'loire', score_total: 90, score_ref: 70, visitors: 60 }),
   makeCastle({ castle_code: 'c3', country: 'Germany', region: 'Bavaria', region_code: 'bavaria', score_total: 80, score_ref: 90, visitors: 300 }),
+  makeCastle({ castle_code: 'c4', country: 'Spain', region: 'Castilla y León', region_code: 'castilla_y_leon', score_total: 10, score_ref: 10, visitors: 10 }),
 ];
 
 describe('TopRegionsPageComponent', () => {
@@ -59,7 +60,7 @@ describe('TopRegionsPageComponent', () => {
 
   it('should render one atlas card per country-scoped region', () => {
     const cards = fixture.nativeElement.querySelectorAll('mat-card.region-card');
-    expect(cards.length).toBe(2);
+    expect(cards.length).toBe(3);
   });
 
   it('should show catalogue numerals and rank pair data', () => {
@@ -67,6 +68,21 @@ describe('TopRegionsPageComponent', () => {
     expect(card.textContent).toContain('No. 01');
     expect(card.textContent).toContain('Editorial');
     expect(card.textContent).toContain('Visitor');
+  });
+
+  it('should try the generated png locator before falling back to the legacy jpg map', () => {
+    const img: HTMLImageElement = fixture.nativeElement.querySelector('.region-locator img');
+    expect(img.getAttribute('src')).toBe('/images/maps/loire.png');
+
+    img.dispatchEvent(new Event('error'));
+    fixture.detectChanges();
+
+    expect(img.getAttribute('src')).toBe('/images/maps/loire.jpg');
+  });
+
+  it('should use the exact region_code as the image filename', () => {
+    const images = [...fixture.nativeElement.querySelectorAll('.region-locator img')] as HTMLImageElement[];
+    expect(images.some(img => img.getAttribute('src') === '/images/maps/castilla_y_leon.png')).toBeTrue();
   });
 
   it('should compute editorial and visitor ranks independently', () => {
