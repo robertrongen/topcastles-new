@@ -39,7 +39,7 @@
             <article class="dossier__content">
 
               <!-- Kicker: single line, Arabic numbers -->
-              <p class="dossier__meta">{{ todayDateLabel }} · Featured entry · {{ todayEntryNumber }}</p>
+              <p class="dossier__meta">{{ todayDateLabel }} · Featured entry &#x2116;&nbsp;{{ todayEntryNumber }}</p>
 
               <!-- Title -->
               <a class="dossier__title" [routerLink]="['/castles', castle.castle_code]">
@@ -104,6 +104,7 @@
                     <cite class="dossier__quote-attribution">
                       <span class="dossier__quote-name">{{ q.author }}</span>
                       <span class="dossier__quote-role">{{ q.role }}</span>
+                      @if (q.date) {<span class="dossier__quote-date">{{ q.date }}</span>}
                     </cite>
                   </footer>
                 </blockquote>
@@ -123,7 +124,7 @@
               <nav class="dossier__actions" aria-label="Entry actions">
                 <a class="dossier__action-primary" [routerLink]="['/castles', castle.castle_code]">Read the full entry ▸</a>
                 <div class="dossier__actions-secondary">
-                  <a class="dossier__action" routerLink="/favorites">★ Save</a>
+                  <a class="dossier__action" routerLink="/favorites"><svg class="star-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg> Save</a>
                   <button class="dossier__action" type="button" (click)="goToSurpriseCastle()">↖ Surprise me</button>
                 </div>
               </nav>
@@ -304,6 +305,7 @@
                 <th class="ref-table__col-total">Entries</th>
                 <th class="ref-table__col-total">Share</th>
                 <th class="ref-table__col-name">Example castle</th>
+                <th class="ref-table__col-name">Editor's pick</th>
               </tr>
             </thead>
             <tbody>
@@ -316,6 +318,11 @@
                     <a [routerLink]="['/castles', row.exampleCastle.castle_code]">{{ row.exampleCastle.castle_name }}</a>
                     @if (row.exampleCastle.position != null) {
                       <span class="top-castle-rank">(#{{ row.exampleCastle.position }})</span>
+                    }
+                  </td>
+                  <td>
+                    @if (periodPickByEra(row.label); as pick) {
+                      <a [routerLink]="['/castles', pick.code]"><em>★ {{ pick.name }}</em></a>
                     }
                   </td>
                 </tr>

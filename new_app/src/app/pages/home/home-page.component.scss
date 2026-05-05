@@ -1,4 +1,4 @@
-.home-page {
+﻿.home-page {
   max-width: 1080px;
   margin: 0 auto;
   padding: var(--tk-space-4);
@@ -361,7 +361,8 @@
   grid-template-columns: repeat(2, 1fr);
   margin: 0;
   padding: 0;
-  border: 1px solid var(--ink-line-2);  overflow: hidden;
+  border: 1px solid var(--ochre-soft);
+  overflow: hidden;
 }
 
 .dossier__fact {
@@ -462,6 +463,12 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: var(--tk-text-muted);
+}
+
+.dossier__quote-date {
+  font-size: 10px;
+  letter-spacing: 0.04em;
   color: var(--tk-text-muted);
 }
 

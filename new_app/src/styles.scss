@@ -263,6 +263,16 @@ p, li, td, span, div {
   font-weight: normal;
 }
 
+// ── Canonical star icon — shared across masthead, read-more strip, favorites ──
+.star-icon {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  position: relative;
+  top: -1px;
+  &--filled { color: var(--accent-ochre); }
+}
+
 // ── Global link styles ──────────────────────────────────────────────────────
 
 a:link, a:visited, a:active {

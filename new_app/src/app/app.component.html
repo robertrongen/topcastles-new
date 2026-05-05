@@ -33,8 +33,8 @@
 <nav class="site-nav" aria-label="Primary">
   <a routerLink="/" routerLinkActive="site-nav--active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
   <a routerLink="/top1000" routerLinkActive="site-nav--active">Top 1000</a>
-  <a routerLink="/favorites" routerLinkActive="site-nav--active" aria-label="Favorites" matTooltip="Favorites" matTooltipPosition="below">
-    <!-- <mat-icon>bookmark</mat-icon> -->Favorites
+  <a routerLink="/favorites" routerLinkActive="site-nav--active" aria-label="Favorites">
+    <svg class="star-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg> Favorites
   </a>
   <a routerLink="/top-countries" routerLinkActive="site-nav--active">Top Countries</a>
   <a routerLink="/top-regions" routerLinkActive="site-nav--active">Top Regions</a>
@@ -44,9 +44,6 @@
     <a routerLink="/admin/editorial" routerLinkActive="site-nav--active">Editorial</a>
   }
   <div class="site-nav__icons">
-    <!-- <a routerLink="/favorites" routerLinkActive="site-nav--active" aria-label="Favorites" matTooltip="Favorites" matTooltipPosition="below">
-      <mat-icon>bookmark</mat-icon>
-    </a> -->
     <button type="button"
             [title]="nearMeState() === 'loading' ? 'Locating…' : 'Find the top-ranked castle nearest to you'"
             [disabled]="nearMeState() === 'loading'"
