@@ -302,7 +302,7 @@ td {
 }
 
 .h1 { font: 600 32px/1.15 var(--tk-font-serif); color: var(--text-1); }
-.h2, .sec-head { font: 600 22px/1.2 var(--tk-font-serif); letter-spacing: -.008em; color: var(--text-1); }
+.h2, .sec-head { font: 600 22px/1.2 var(--tk-font-serif); letter-spacing: 0; color: var(--text-1); }
 .h3 { font: 600 16px/1.3 var(--tk-font-serif); color: var(--text-1); }
 .h4 { font: 600 13px/1.3 var(--tk-font-serif); color: var(--text-1); }
 .body { font: 400 15px/1.62 var(--tk-font-serif); color: var(--text-3); }
@@ -577,7 +577,7 @@ mat-sidenav.mat-sidenav {
   border-bottom: 1px solid var(--ochre);
   margin-left: 0;
   font: 600 22px/1.2 var(--tk-font-serif);
-  letter-spacing: -.008em;
+  letter-spacing: 0;
   width: fit-content;
   min-width: min(100%, 320px);
   max-width: 100%;

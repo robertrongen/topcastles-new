@@ -45,8 +45,8 @@ describe('TopRegionsPageComponent', () => {
   it('should create', () => expect(fixture.componentInstance).toBeTruthy());
 
   it('should display the heading', () => {
-    const h2 = fixture.nativeElement.querySelector('h2');
-    expect(h2?.textContent).toContain('regions with the most top castles');
+    const h1 = fixture.nativeElement.querySelector('h1.sec-head');
+    expect(h1?.textContent).toContain('regions with the most top castles');
   });
 
   it('should render one row per region', () => {
