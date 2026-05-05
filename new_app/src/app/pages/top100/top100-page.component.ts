@@ -9,8 +9,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CastleService } from '../../services/castle.service';
+import { Castle } from '../../models/castle.model';
 import { FavoritesService } from '../../services/favorites.service';
 import { UserService } from '../../services/user.service';
+import { EditorialService } from '../../services/editorial.service';
 import { CastleFilterComponent, FilterField } from '../../components/castle-filter/castle-filter.component';
 import { CastleGridComponent } from '../../components/castle-grid/castle-grid.component';
 import { CastleTableComponent } from '../../components/castle-table/castle-table.component';
@@ -30,6 +32,7 @@ import { ViewModeService } from '../../services/view-mode.service';
 })
 export class Top100PageComponent implements OnInit {
   private castleService = inject(CastleService);
+  private editorialService = inject(EditorialService);
   private userService = inject(UserService);
   protected favoritesService = inject(FavoritesService);
   private route = inject(ActivatedRoute);
@@ -118,6 +121,7 @@ export class Top100PageComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.editorialService.loadBrowseBands();
     this.userService.ensureUser().then(() => this.favoritesService.loadFavorites());
 
     this.route.queryParams.subscribe(params => {
@@ -145,5 +149,48 @@ export class Top100PageComponent implements OnInit {
         this.viewModeService.setMode('list');
       }
     });
+  }
+
+  rankRangeLabel(castles: Castle[]): string {
+    const bounds = this.rankBounds(castles);
+    if (!bounds) {
+      return 'Ranks 0-0';
+    }
+    return `Ranks ${bounds.low}-${bounds.high}`;
+  }
+
+  browseBandNote(castles: Castle[]): string | null {
+    const key = this.browseBandKey(castles);
+    if (!key) {
+      return null;
+    }
+    const note = this.editorialService.browseBands()[key]?.note?.trim() ?? '';
+    return note.length ? note : null;
+  }
+
+  private browseBandKey(castles: Castle[]): '1-100' | '101-500' | '501-1000' | null {
+    const bounds = this.rankBounds(castles);
+    if (!bounds) {
+      return null;
+    }
+    if (bounds.high <= 100) {
+      return '1-100';
+    }
+    if (bounds.high <= 500) {
+      return '101-500';
+    }
+    return '501-1000';
+  }
+
+  private rankBounds(castles: Castle[]): { low: number; high: number } | null {
+    const positions = castles
+      .map(c => c.position)
+      .filter((pos): pos is number => typeof pos === 'number' && Number.isFinite(pos));
+
+    if (!positions.length) {
+      return null;
+    }
+
+    return { low: Math.min(...positions), high: Math.max(...positions) };
   }
 }

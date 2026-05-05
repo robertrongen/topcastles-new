@@ -104,6 +104,13 @@
     @if (loading()) {
       <p class="loading-state">Loading castles...</p>
     } @else {
+      <div class="browse-band" aria-label="Browse rank band">
+        <p class="browse-band__range">{{ rankRangeLabel(cf.filtered()) }}</p>
+        @if (browseBandNote(cf.filtered()); as note) {
+          <p class="browse-band__note">{{ note }}</p>
+        }
+      </div>
+
       <div class="content-layout" [class.map-open]="mapVisible()">
         <div class="content-area">
           @if (viewModeService.mode() === 'grid') {

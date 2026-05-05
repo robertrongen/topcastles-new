@@ -11,6 +11,7 @@ import { Top100PageComponent } from './top100-page.component';
 import { CastleService } from '../../services/castle.service';
 import { ViewModeService } from '../../services/view-mode.service';
 import { Castle } from '../../models/castle.model';
+import { EditorialService } from '../../services/editorial.service';
 import { createActivatedRouteMock } from '../../../testing/activated-route.mock';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
@@ -45,6 +46,7 @@ describe('Top100PageComponent', () => {
   let component: Top100PageComponent;
   let httpTesting: HttpTestingController;
   let viewModeService: ViewModeService;
+  let editorialService: EditorialService;
 
   const castles: Castle[] = [
     makeCastle({ castle_code: 'c1', castle_name: 'Alpha', position: 1, score_total: 100, country: 'france', place: 'Lyon', region: 'Rhone' }),
@@ -70,6 +72,7 @@ describe('Top100PageComponent', () => {
     httpTesting = TestBed.inject(HttpTestingController);
     // Pre-seed the service so no castles HTTP request is needed
     TestBed.inject(CastleService).castles.set(castles);
+    editorialService = TestBed.inject(EditorialService);
     viewModeService = TestBed.inject(ViewModeService);
     fixture = TestBed.createComponent(Top100PageComponent);
     component = fixture.componentInstance;
@@ -97,6 +100,38 @@ describe('Top100PageComponent', () => {
   it('should display the heading', () => {
     const heading = fixture.nativeElement.querySelector('h1');
     expect(heading?.textContent).toContain('1000');
+  });
+
+  it('should render browse rank label in header band', () => {
+    const range = fixture.nativeElement.querySelector('.browse-band__range');
+    expect(range).toBeTruthy();
+    expect(range.textContent).toContain('Ranks 1-3');
+  });
+
+  it('should show browse-band note when overlay has matching band', () => {
+    (editorialService as any)._browseBands.set({
+      '1-100': { note: 'The canonical hundred.' },
+    });
+
+    fixture.detectChanges();
+
+    const note = fixture.nativeElement.querySelector('.browse-band__note');
+    expect(note).toBeTruthy();
+    expect(note.textContent).toContain('The canonical hundred.');
+  });
+
+  it('should omit browse-band note when overlay has no matching band', () => {
+    (editorialService as any)._browseBands.set({
+      '501-1000': { note: 'The long tail.' },
+    });
+
+    fixture.detectChanges();
+
+    const range = fixture.nativeElement.querySelector('.browse-band__range');
+    const note = fixture.nativeElement.querySelector('.browse-band__note');
+    expect(range).toBeTruthy();
+    expect(range.textContent).toContain('Ranks 1-3');
+    expect(note).toBeNull();
   });
 
   it('should render the view toggle', () => {

@@ -195,6 +195,27 @@
   color: var(--tk-text-muted);
 }
 
+.browse-band {
+  margin: 0 0 var(--tk-space-3);
+  padding: var(--tk-space-2) var(--tk-space-3);
+  border: 1px solid var(--ink-line-2);
+  background: linear-gradient(180deg, var(--ink-card) 0%, var(--ink-bg) 100%);
+}
+
+.browse-band__range {
+  margin: 0;
+  font: 600 var(--tk-font-size-sm)/1.3 var(--tk-font-sans);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--tk-text-muted);
+}
+
+.browse-band__note {
+  margin: var(--tk-space-1) 0 0;
+  font: 400 var(--tk-font-size-sm)/1.5 var(--tk-font-serif);
+  color: var(--tk-text);
+}
+
 @media (max-width: 900px) {
   .top100-page {
     padding: var(--tk-space-3);

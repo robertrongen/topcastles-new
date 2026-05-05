@@ -21,6 +21,10 @@ export interface PeriodPick {
   name: string;
 }
 
+export interface BrowseBand {
+  note?: string;
+}
+
 @Injectable({ providedIn: 'root' })
 export class EditorialService {
   private http = inject(HttpClient);
@@ -34,6 +38,11 @@ export class EditorialService {
 
   private _periodPicks = signal<Record<string, PeriodPick>>({});
   readonly periodPicks = this._periodPicks.asReadonly();
+
+  private _browseBands = signal<Record<string, BrowseBand>>({});
+  readonly browseBands = this._browseBands.asReadonly();
+
+  private browseBandsLoaded = false;
 
   constructor() {
     // Editorial overlay is runtime-only — skip during SSR/prerender.
@@ -56,5 +65,18 @@ export class EditorialService {
           error: () => {},
         });
     }
+  }
+
+  loadBrowseBands(): void {
+    if (!isPlatformBrowser(this.platformId) || this.browseBandsLoaded) {
+      return;
+    }
+
+    this.browseBandsLoaded = true;
+    this.http.get<Record<string, BrowseBand>>('/api/editorial/browse-bands')
+      .subscribe({
+        next: data => this._browseBands.set(data ?? {}),
+        error: () => {},
+      });
   }
 }
