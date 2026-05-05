@@ -135,6 +135,36 @@ This page is read-only except for requesting a rebuild.
 
 ---
 
+## Pipeline Watcher
+
+The watcher is a developer-machine process that polls for pending requests and
+dispatches to the appropriate consumer script automatically.
+
+Usage:
+
+npm run pipeline:watch
+
+The watcher polls DATA_DIR/pipeline/ every 10 seconds (configurable via
+POLL_INTERVAL_MS env var). When a pending request is found and no job is
+currently running, it dispatches:
+
+| Request type | Consumer |
+|---|---|
+| rebuild (status: requested) | npm run pipeline:consume |
+| enrichment (status: requested) | npm run pipeline:consume:enrichment |
+
+Rebuild takes priority when both are pending. The watcher respects the single
+active job constraint by checking job files before dispatching.
+
+Useful flags:
+
+  --once      Poll once and exit
+  --dry-run   Log what would be dispatched without executing
+
+The watcher must NOT run inside the runtime container.
+
+---
+
 ## Enrichment Requests
 
 An enrichment run can be requested from the pipeline page.
