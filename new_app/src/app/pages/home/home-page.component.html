@@ -22,6 +22,7 @@
                     class="dossier__image"
                     [src]="imageService.castlePhotoUrl(castle.castle_code)"
                     [alt]="castle.castle_name"
+                    title="{{ castle.castle_name }}"
                     loading="eager"
                     (load)="onDossierImageLoad($event)"
                     (error)="onImageError($event, castle.wikidata_image ?? castle.wikipedia_thumbnail)"
@@ -250,6 +251,7 @@
                   class="visitor-lead__image"
                   [src]="imageService.castlePhotoUrl(castle.castle_code)"
                   [alt]="castle.castle_name"
+                  title="{{ castle.castle_name }}"
                   loading="lazy"
                   (error)="onImageError($event, castle.wikidata_image ?? castle.wikipedia_thumbnail)"
                 />
@@ -258,27 +260,26 @@
           }
 
           <ol class="visitor-card-grid" aria-label="#2-#5 visitor-rated castles">
-            @for (castle of topVisitorRunnersUp(); track castle.castle_code; let i = $index) {
-              <li class="visitor-card">
-                <a class="visitor-card__image-link" [routerLink]="['/castles', castle.castle_code]">
-                  <img
-                    class="visitor-card__image"
-                    [src]="imageService.castlePhotoUrl(castle.castle_code)"
-                    [alt]="castle.castle_name"
-                    loading="lazy"
-                    (error)="onImageError($event, castle.wikidata_image ?? castle.wikipedia_thumbnail)"
-                  />
-                </a>
-                <div class="visitor-card__content">
-                  <span class="visitor-card__rank">#{{ i + 2 }}</span>
-                  <a class="visitor-card__name" [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
-                  <div class="visitor-card__meta">
-                    <span>{{ castle.country | titlecase }}</span>
-                    <span>{{ castle.score_visitors != null ? (castle.score_visitors | number:'1.1-1') : '-' }}<span class="visitor-unit"> /10</span></span>
-                  </div>
+            <li class="visitor-card" *ngFor="let castle of topVisitorRunnersUp(); let i = index">
+              <a class="visitor-card__image-link" [routerLink]="['/castles', castle.castle_code]">
+                <img
+                  class="visitor-card__image"
+                  [src]="imageService.castlePhotoUrl(castle.castle_code)"
+                  [alt]="castle.castle_name"
+                  title="{{ castle.castle_name }}"
+                  loading="lazy"
+                  (error)="onImageError($event, castle.wikidata_image ?? castle.wikipedia_thumbnail)"
+                />
+              </a>
+              <div class="visitor-card__content">
+                <span class="visitor-card__rank">#{{ i + 2 }}</span>
+                <a class="visitor-card__name" [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
+                <div class="visitor-card__meta">
+                  <span>{{ castle.country | titlecase }}</span>
+                  <span>{{ castle.score_visitors != null ? (castle.score_visitors | number:'1.1-1') : '-' }}<span class="visitor-unit"> /10</span></span>
                 </div>
-              </li>
-            }
+              </div>
+            </li>
           </ol>
         </div>
         <p class="section-footer">
@@ -378,12 +379,10 @@
           The list has been maintained since 2004. 63,800 visitor ratings were collected 2004–2021 from 17,300 respondents.
         </p>
         <dl class="sidebar-stats">
-          @for (stat of stats; track stat.label) {
-            <div class="sidebar-stats__item">
-              <dt class="sidebar-stats__label">{{ stat.label }}</dt>
-              <dd class="sidebar-stats__value">{{ stat.value }}</dd>
-            </div>
-          }
+          <div class="sidebar-stats__item" *ngFor="let stat of stats">
+            <dt class="sidebar-stats__label">{{ stat.label }}</dt>
+            <dd class="sidebar-stats__value">{{ stat.value }}</dd>
+          </div>
         </dl>
         <nav class="sidebar-widget__links" aria-label="About">
           <a routerLink="/background">Ranking methodology</a>
@@ -402,6 +401,7 @@
                   class="sidebar-castle__image"
                   [src]="imageService.castleThumbnailUrl(castle.castle_code)"
                   [alt]="castle.castle_name"
+                  title="{{ castle.castle_name }}"
                   width="110"
                   height="110"
                   loading="lazy"
@@ -412,6 +412,7 @@
                   class="sidebar-castle__image"
                   [src]="imageService.castlePhotoUrl(castle.castle_code)"
                   [alt]="castle.castle_name"
+                  title="{{ castle.castle_name }}"
                   width="110"
                   height="110"
                   loading="lazy"
@@ -422,6 +423,7 @@
                   class="sidebar-castle__image"
                   [src]="castle.wikidata_image || castle.wikipedia_thumbnail"
                   [alt]="castle.castle_name"
+                  title="{{ castle.castle_name }}"
                   width="110"
                   height="110"
                   loading="lazy"

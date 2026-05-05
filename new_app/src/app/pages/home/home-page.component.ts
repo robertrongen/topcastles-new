@@ -1,6 +1,6 @@
 import { Component, computed, inject, OnDestroy, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
-import { DecimalPipe, isPlatformBrowser, TitleCasePipe } from '@angular/common';
+import { DecimalPipe, isPlatformBrowser, NgFor, TitleCasePipe } from '@angular/common';
 import { CastleService } from '../../services/castle.service';
 import { EditorialService } from '../../services/editorial.service';
 import { CastleMapComponent, MapViewport, RegionLabel } from '../../components/castle-map/castle-map.component';
@@ -9,7 +9,7 @@ import { ImageService } from '../../services/image.service';
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [RouterLink, DecimalPipe, TitleCasePipe, CastleMapComponent],
+  imports: [RouterLink, NgFor, DecimalPipe, TitleCasePipe, CastleMapComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })

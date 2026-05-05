@@ -251,7 +251,6 @@
   right: 0;
   padding: 24px 14px 10px;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
-  background: linear-gradient(to top, color-mix(in srgb, var(--ink-bg) 70%, transparent), transparent);
 }
 
 .dossier__plate {
@@ -260,7 +259,6 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--tk-text-muted);
-  color: color-mix(in srgb, var(--text-1) 55%, transparent);
 }
 
 // Caption row beneath the image
@@ -304,8 +302,6 @@
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.01em;
-  text-wrap: normal;
-  text-wrap: balance;
   color: var(--tk-text);
   text-decoration: none;
 
@@ -357,6 +353,7 @@
   line-height: 1.55;
   display: -webkit-box;
   -webkit-line-clamp: var(--extract-lines, 6);
+  line-clamp: var(--extract-lines, 6);
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -424,7 +421,6 @@
   padding: var(--tk-space-3) var(--tk-space-4);
   border-left: 2px solid var(--accent-ochre);
   background: transparent;
-  background: linear-gradient(90deg, color-mix(in srgb, var(--ochre) 8%, transparent), transparent 70%);
 }
 
 .dossier__quote-text {
@@ -436,6 +432,7 @@
   color: var(--tk-text-muted);
   display: -webkit-box;
   -webkit-line-clamp: 6;
+  line-clamp: 6;
   -webkit-box-orient: vertical;
   overflow: hidden;
 
@@ -824,6 +821,7 @@
     font-size: var(--tk-font-size-sm) !important;
     line-height: 1.55;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
   }
 }

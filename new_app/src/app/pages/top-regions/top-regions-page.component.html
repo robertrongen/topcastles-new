@@ -17,6 +17,7 @@
               <p>{{ summary.castleCount }} castles &middot; score {{ summary.totalScore | number:'1.0-0' }}</p>
               <img [src]="'/images/maps/' + summary.region_code + '.jpg'"
                     [alt]="summary.region"
+                  title="{{ summary.region }}"
                     class="region-image"
                     loading="lazy"
                     (error)="onImageError($event)" />
@@ -47,6 +48,7 @@
                   @if (summary.region_code) {
                     <img [src]="'/images/maps/' + summary.region_code + '.jpg'"
                          [alt]="summary.region"
+                      title="{{ summary.region }}"
                          class="region-thumbnail"
                          loading="lazy"
                          (error)="onImageError($event)" />
