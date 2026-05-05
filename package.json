@@ -20,6 +20,7 @@
     "data:convert": "python scripts/xlsx_to_json.py",
     "data:enrich:wikidata": "node scripts/enrich_wikidata.js",
     "data:enrich:wikipedia": "node scripts/enrich_wikipedia.js",
+    "data:enrich:coordinates": "node scripts/enrich_coordinates.js",
     "data:api": "node scripts/generate_api.js",
     "data:lean": "node scripts/generate_lean_castles.js",
     "data:sitemap": "node scripts/generate_sitemap.js",
@@ -27,6 +28,7 @@
     "data:merge-overrides": "node scripts/apply_castle_overrides.js",
     "data:regenerate": "node scripts/run_data_pipeline.js",
     "pipeline:consume": "node scripts/consume-pipeline-rebuild-request.js",
+    "pipeline:consume:enrichment": "node scripts/consume-pipeline-enrichment-request.js",
     "mcp": "node scripts/mcp-server.js",
 
     "graph:build": "graphify build .",
