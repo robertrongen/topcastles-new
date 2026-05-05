@@ -4,7 +4,7 @@
 A two-script pipeline that produces a ready-to-ship locator PNG for every region in `regions.json`. Designed to be run once per region added to the catalogue (or in bulk on a fresh checkout).
 
 ```
-   regions.json                    assets/locators/
+   regions.json                    new_app/public/images/maps/
         │                                ▲
         ▼                                │
   ┌──────────┐   ┌────────────┐   ┌────────────┐
@@ -31,7 +31,7 @@ We pull those, recolour them to the Topcastles palette (ochre highlight, slate c
 
 A flat JSON file that pins each region to its Wikimedia Commons file. Hand-curated once, machine-read forever. Keep it under version control.
 
-`assets/locators/manifest.json`:
+`new_app/public/images/maps/manifest.json`:
 
 ```json
 {
@@ -68,16 +68,16 @@ Pulls each manifest entry from Commons into a raw cache. Uses the public Special
 // scripts/fetch-locators.mjs
 // Run: node scripts/fetch-locators.mjs
 //
-// Fetches each manifest entry into assets/locators/_raw/.
+// Fetches each manifest entry into new_app/public/images/maps/_raw/.
 // Skips files already present unless --force is passed.
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const MANIFEST = JSON.parse(
-  await fs.readFile('assets/locators/manifest.json', 'utf8')
+  await fs.readFile('new_app/public/images/maps/manifest.json', 'utf8')
 );
-const RAW_DIR = 'assets/locators/_raw';
+const RAW_DIR = 'new_app/public/images/maps/_raw';
 const FORCE = process.argv.includes('--force');
 
 await fs.mkdir(RAW_DIR, { recursive: true });
@@ -123,24 +123,24 @@ node scripts/fetch-locators.mjs --force   # re-fetch everything
 
 ## 3. Recolour script — `scripts/build-locators.mjs`
 
-Reads each raw cache file and writes the final palette-shifted PNG to `assets/locators/`. Uses [`sharp`](https://sharp.pixelplumbing.com/) for raster work and a tiny home-grown palette function — no other deps.
+Reads each raw cache file and writes the final palette-shifted PNG to `new_app/public/images/maps/`. Uses [`sharp`](https://sharp.pixelplumbing.com/) for raster work and a tiny home-grown palette function — no other deps.
 
 ```js
 // scripts/build-locators.mjs
 // Run: node scripts/build-locators.mjs
 //
-// Reads assets/locators/_raw/*.{png,svg,jpg} and produces
-// assets/locators/<id>.png — recoloured into the Topcastles palette.
+// Reads new_app/public/images/maps/_raw/*.{png,svg,jpg} and produces
+// new_app/public/images/maps/<region_code>.png — recoloured into the Topcastles palette.
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
 
 const MANIFEST = JSON.parse(
-  await fs.readFile('assets/locators/manifest.json', 'utf8')
+  await fs.readFile('new_app/public/images/maps/manifest.json', 'utf8')
 );
-const RAW_DIR = 'assets/locators/_raw';
-const OUT_DIR = 'assets/locators';
+const RAW_DIR = 'new_app/public/images/maps/_raw';
+const OUT_DIR = 'new_app/public/images/maps';
 
 // Topcastles palette (Option A spec)
 const OCHRE     = [201, 134, 63];   //  #C9863F  highlighted region
@@ -246,17 +246,17 @@ npm i sharp
 node scripts/build-locators.mjs
 ```
 
-Outputs land in `assets/locators/middle-rhine.png` etc. — referenced from the React component as `<img src={`/assets/locators/${region.id}.png`} />`.
+Outputs replace the existing map images in `new_app/public/images/maps/`, named by `region_code` such as `middle-rhine.png`.
 
 ---
 
-## 4. Drop-in usage in the React component
+## 4. Drop-in usage in the Angular Top Regions card
 
 Replace the per-card glyph slot with a plain `<img>`. The transparent PNG sits cleanly on the dark card background; no extra wrapper styling needed.
 
 ```jsx
 <div className="rc-locator">
-  <img src={`/assets/locators/${region.id}.png`}
+  <img src={`/images/maps/${region.region_code}.png`}
        alt={`${region.name} location map`}
        loading="lazy"
        width="320" height="auto" />
@@ -331,7 +331,7 @@ For ten regions this is feasible to do once and cache as static SVG strings. For
 Wikimedia locator maps are typically **CC-BY-SA 3.0** or **public domain**. Two obligations:
 
 - **Attribute** the source map on a credits page (or per-region in the page footer if you prefer). The Commons file page lists the original author and licence; pull both into `manifest.json` as `credit` and `license` fields and render them in `/credits`.
-- **Share-alike** for CC-BY-SA: our recoloured derivatives must be released under the same licence. Add a `LICENSE` note in `assets/locators/`.
+- **Share-alike** for CC-BY-SA: our recoloured derivatives must be released under the same licence. Add a `LICENSE` note in `new_app/public/images/maps/`.
 
 Public-domain sources have no obligations but it's still good form to credit Wikimedia Commons.
 
@@ -339,8 +339,8 @@ Public-domain sources have no obligations but it's still good form to credit Wik
 
 ## 7. Definition of done
 
-- [ ] `manifest.json` covers every region currently in `regions.json` that has a Wikimedia locator (rest fall back to the existing hand-drawn glyph).
+- [ ] `new_app/public/images/maps/manifest.json` covers every current `region_code` that has a Wikimedia locator; generated PNGs replace existing files in `new_app/public/images/maps/<region_code>.png`.
 - [ ] `npm run locators:fetch` and `npm run locators:build` are wired in `package.json`.
 - [ ] CI runs `build-locators` on every PR that touches `manifest.json`; PNGs are committed (small enough — ~10–20 KB each).
 - [ ] `/credits` page lists the source + author + licence for every fetched map.
-- [ ] The React `<RegionCard>` accepts `<img src=…>` as the locator and falls back to `<RegionGlyph id=…>` when the file is missing.
+- [ ] The Angular Top Regions card loads `/images/maps/<region_code>.png` and gracefully falls back when the file is missing.
