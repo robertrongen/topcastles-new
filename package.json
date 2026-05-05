@@ -31,6 +31,7 @@
     "pipeline:consume:enrichment": "node scripts/consume-pipeline-enrichment-request.js",
     "pipeline:watch": "node scripts/watch-pipeline-requests.js",
     "locators:inventory": "node scripts/prepare-region-locator-manifest.mjs",
+    "locators:search": "node scripts/search-locators.mjs",
     "locators:check": "node scripts/check-region-locators.mjs",
     "locators:fetch": "node scripts/fetch-locators.mjs",
     "locators:build": "node scripts/build-locators.mjs",

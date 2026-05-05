@@ -31,7 +31,7 @@
       "Greece"
     ],
     "castleCount": 1,
-    "hasLegacyMap": false,
+    "hasLegacyMap": true,
     "commons": "PE Achaias in Greece.svg",
     "highlightHueRGB": [
       174,
@@ -54,7 +54,7 @@
       "Portugal"
     ],
     "castleCount": 1,
-    "hasLegacyMap": false,
+    "hasLegacyMap": true,
     "commons": "Algarve location map.png",
     "highlightHueRGB": [
       188,
@@ -85,7 +85,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Alsace region locator map.svg",
+      "Alsace in France (1789).svg",
+      "Alsace Lorraine departments evolution map-en.svg",
+      "Alsace-Champagne-Ardenne-Lorraine region locator map.svg",
+      "Alsace Lorraine departments evolution map-es.svg"
+    ]
   },
   "andalucia": {
     "regionCode": "andalucia",
