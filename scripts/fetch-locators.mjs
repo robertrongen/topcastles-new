@@ -19,6 +19,13 @@ const manifest = await readJson(MANIFEST_PATH, {});
 const entries = fetchableEntries(manifest).slice(0, Number.isFinite(limit) ? limit : undefined);
 const ua = process.env.WIKIMEDIA_USER_AGENT || 'TopcastlesLocatorFetcher/1.0 (https://topcastles.com; contact: configure WIKIMEDIA_USER_AGENT)';
 
+let sharp;
+try {
+  sharp = (await import('sharp')).default;
+} catch {
+  // sharp unavailable — dimension checks will be skipped
+}
+
 await fs.mkdir(RAW_DIR, { recursive: true });
 
 if (entries.length === 0) {
@@ -50,8 +57,33 @@ for (const [regionCode, entry] of entries) {
 
   const buf = Buffer.from(await res.arrayBuffer());
   await fs.writeFile(dest, buf);
-  console.log(`${(buf.length / 1024).toFixed(1)} KB`);
+  const kb = (buf.length / 1024).toFixed(1);
+  console.log(`${kb} KB`);
+
+  await validateFetched(dest, regionCode, buf.length);
+
   await new Promise(resolve => setTimeout(resolve, 1000));
+}
+
+async function validateFetched(filePath, regionCode, byteLength) {
+  const kb = byteLength / 1024;
+  if (kb < 5) {
+    console.warn(`[locators:fetch] WARN ${regionCode}: file looks like a thumbnail or error page (${kb.toFixed(1)} KB)`);
+    return;
+  }
+
+  if (!sharp) return;
+
+  try {
+    const meta = await sharp(filePath, { density: 72, limitInputPixels: false }).metadata();
+    const w = meta.width ?? 0;
+    const h = meta.height ?? 0;
+    if (w < 200 || h < 200) {
+      console.warn(`[locators:fetch] WARN ${regionCode}: file looks like a thumbnail or error page (${kb.toFixed(1)} KB, ${w}x${h})`);
+    }
+  } catch {
+    console.warn(`[locators:fetch] WARN ${regionCode}: could not read image metadata from fetched file`);
+  }
 }
 
 async function exists(filePath) {

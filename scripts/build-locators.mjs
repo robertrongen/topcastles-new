@@ -2,12 +2,15 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {
+  classifyPixels,
   configuredEntries,
+  detectBgMode,
+  detectHighlightHue,
   MANIFEST_PATH,
   MAPS_DIR,
+  paintPixels,
   RAW_DIR,
   readJson,
-  recolourLocatorPixels,
 } from './region-locators.mjs';
 
 const OUTPUT_MAX = 640;
@@ -39,7 +42,7 @@ const manifest = await readJson(MANIFEST_PATH, {});
 const entries = configuredEntries(manifest);
 
 if (entries.length === 0) {
-  console.log('[locators:build] No configured manifest entries. Fill commons + highlightHueRGB first.');
+  console.log('[locators:build] No configured manifest entries. Fill commons first.');
   process.exit(0);
 }
 
@@ -53,18 +56,39 @@ for (const [regionCode, entry] of entries) {
     continue;
   }
 
+  // Resolve hue and bgMode — prefer explicit manifest values, auto-detect when absent.
+  let highlightHueRGB = entry.highlightHueRGB;
+  let bgMode = entry.bgMode;
+
+  if (!highlightHueRGB || entry.autoDetectHue === true) {
+    highlightHueRGB = await detectHighlightHue(raw);
+    if (!highlightHueRGB) {
+      console.warn(`[locators:build] ${regionCode}: could not auto-detect highlight hue — skipping`);
+      continue;
+    }
+    console.log(`[locators:build] ${regionCode} auto-detected highlight = [${highlightHueRGB.join(', ')}]`);
+  }
+
+  if (!bgMode || entry.autoDetectBgMode === true) {
+    bgMode = await detectBgMode(raw);
+    console.log(`[locators:build] ${regionCode} auto-detected bgMode = ${bgMode}`);
+  }
+
+  const effectiveEntry = { ...entry, highlightHueRGB, bgMode };
+
   const { data, info } = await sharp(raw, { density: 300, limitInputPixels: false })
     .resize({ width: OUTPUT_MAX, height: OUTPUT_MAX, fit: 'inside', kernel: 'nearest' })
     .ensureAlpha()
     .raw()
     .toBuffer({ resolveWithObject: true });
 
+  // Classify once, paint twice — mask and confetti filter are shared across palettes.
   const px = new Uint8ClampedArray(data);
+  const mask = classifyPixels(px, effectiveEntry, info.width);
 
-  for (const [name, pal] of Object.entries(PALETTES)) {
-    // copy the raw pixel buffer fresh so the two passes don't compound
+  for (const [, pal] of Object.entries(PALETTES)) {
     const pxCopy = new Uint8ClampedArray(px);
-    recolourLocatorPixels(pxCopy, entry, pal);
+    paintPixels(pxCopy, mask, pal);
     await sharp(pxCopy, { raw: { width: info.width, height: info.height, channels: 4 } })
       .png({ compressionLevel: 9 })
       .toFile(path.join(MAPS_DIR, `${regionCode}${pal.suffix}.png`));
@@ -81,6 +105,15 @@ async function findRaw(regionCode) {
     const filePath = path.join(RAW_DIR, `${regionCode}.${ext}`);
     try {
       await fs.stat(filePath);
+      return filePath;
+    } catch {}
+  }
+  // Fallback: use existing legacy map from the maps output directory.
+  for (const ext of ['jpg', 'png']) {
+    const filePath = path.join(MAPS_DIR, `${regionCode}.${ext}`);
+    try {
+      await fs.stat(filePath);
+      console.log(`[locators:build] ${regionCode}: using legacy fallback ${regionCode}.${ext}`);
       return filePath;
     } catch {}
   }

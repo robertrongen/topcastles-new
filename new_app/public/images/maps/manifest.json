@@ -10,8 +10,12 @@
     "castleCount": 4,
     "hasLegacyMap": true,
     "commons": "Regione Abruzzo.svg",
-    "highlightHueRGB": [210, 100, 60],
-    "bgMode": "white",
+    "highlightHueRGB": [
+      199,
+      190,
+      151
+    ],
+    "bgMode": "pastel",
     "credit": "",
     "license": "",
     "sourceUrl": "",
@@ -28,13 +32,17 @@
     ],
     "castleCount": 1,
     "hasLegacyMap": false,
-    "commons": "Ancient Achaea locator map en.svg",
-    "highlightHueRGB": [200, 200, 200],
-    "bgMode": "white",
+    "commons": "PE Achaias in Greece.svg",
+    "highlightHueRGB": [
+      174,
+      209,
+      216
+    ],
+    "bgMode": "pastel",
     "credit": "",
     "license": "",
     "sourceUrl": "",
-    "notes": "",
+    "notes": "Updated from ancient Achaea map to modern PE Achaias locator.",
     "candidates": []
   },
   "algarve": {
@@ -48,8 +56,12 @@
     "castleCount": 1,
     "hasLegacyMap": false,
     "commons": "Algarve location map.png",
-    "highlightHueRGB": [150, 150, 150],
-    "bgMode": "white",
+    "highlightHueRGB": [
+      188,
+      41,
+      44
+    ],
+    "bgMode": "pastel",
     "credit": "",
     "license": "",
     "sourceUrl": "",
