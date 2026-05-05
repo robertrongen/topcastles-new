@@ -67,6 +67,7 @@ h1 {
   background: var(--tk-surface);
   color: var(--tk-text);
   border: 1px solid var(--tk-border);
+  border-left: 3px solid var(--accent-ochre);
 
   &:hover {
     background: var(--ink-card);
@@ -74,16 +75,20 @@ h1 {
 
   mat-card-title {
     color: var(--tk-text);
-    font: 600 15px/1.25 var(--tk-font-serif);
+    font: 600 17px/1.25 var(--tk-font-serif);
     letter-spacing: 0;
+    margin-bottom: 6px;
   }
 
-  mat-card-subtitle,
+  mat-card-subtitle {
+    color: var(--tk-text-muted);
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
   mat-card-content {
     color: var(--tk-text-muted);
-  }
-
-  mat-card-content {
     font-size: 14px;
     line-height: 1.55;
   }
