@@ -1,8 +1,8 @@
-import { Component, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { firstValueFrom, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
 import { AdminAuthService } from '../admin-auth.service';
 
@@ -47,7 +47,7 @@ const NEW_CASTLE_REQUIRED = new Set(['castle_code', 'castle_name', 'country', 'p
   templateUrl: './admin-castles.component.html',
   styleUrl: './admin-castles.component.scss',
 })
-export class AdminCastlesComponent implements OnInit {
+export class AdminCastlesComponent implements OnInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly http = inject(HttpClient);
   readonly auth = inject(AdminAuthService);
@@ -62,6 +62,7 @@ export class AdminCastlesComponent implements OnInit {
   readonly searchQuery = signal('');
   readonly searchResults = signal<CastleLookupResult[]>([]);
   private readonly searchInput$ = new Subject<string>();
+  private searchSubscription: any;
 
   // Selected castle
   readonly selected = signal<CastleDetail | null>(null);
@@ -83,12 +84,15 @@ export class AdminCastlesComponent implements OnInit {
   async ngOnInit() {
     if (!isPlatformBrowser(this.platformId)) return;
 
-    this.searchInput$.pipe(
+    this.searchSubscription = this.searchInput$.pipe(
       debounceTime(220),
-      distinctUntilChanged(),
     ).subscribe(q => this.runSearch(q));
 
     await this.loadOverrideCount();
+  }
+
+  ngOnDestroy() {
+    this.searchSubscription?.unsubscribe();
   }
 
   private async loadOverrideCount() {
