@@ -156,11 +156,11 @@ Only one active enrichment request is permitted at a time (status: requested).
 
 The runtime does not execute enrichment. To process a request, run on the developer machine:
 
-npm run data:enrich:wikidata
+npm run pipeline:consume:enrichment
 
-or the appropriate enrichment script for the request type. Then apply overrides and regenerate:
-
-npm run data:merge-overrides && npm run data:lean
+This script reads the enrichment request, runs the appropriate enrichment command for the
+request type (wikidata, wikipedia, coordinates, or all three for full), then applies overrides
+and regenerates downstream artefacts (merge-overrides → lean). It does not run a build.
 
 ---
 
@@ -234,6 +234,7 @@ Files:
 | enrichment-history.json | Enrichment request history |
 | castle-overrides.json | Admin data overrides |
 | merge-report.json | Last override merge diagnostics |
+| jobs/<id>.json | Individual job records |
 | logs/*.log | Rebuild logs |
 
 ---
@@ -318,6 +319,9 @@ Authorization: Bearer <ADMIN_TOKEN>
 | POST /api/admin/pipeline/rebuild-request | Create rebuild request |
 | GET /api/admin/pipeline/enrichment-request | Current enrichment request |
 | POST /api/admin/pipeline/enrichment-request | Create enrichment request |
+| GET /api/admin/pipeline/jobs | Job history (newest first) |
+| GET /api/admin/pipeline/jobs/:id | Single job record |
+| GET /api/admin/pipeline/jobs/:id/log | Job log (text/plain) |
 
 ## Castles
 
@@ -382,15 +386,11 @@ npm run pipeline:consume
 ## Enrichment refresh
 
 1. Request enrichment from /admin/pipeline (choose type)
-2. On developer machine, run the appropriate script:
+2. On developer machine, run:
 
-npm run data:enrich:wikidata
+npm run pipeline:consume:enrichment
 
-3. Apply overrides and regenerate downstream artifacts:
-
-npm run data:merge-overrides && npm run data:lean
-
-4. If the output requires a rebuild, follow the rebuild workflow above.
+3. If the output requires a rebuild, follow the rebuild workflow above.
 
 ---
 

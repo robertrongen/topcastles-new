@@ -421,3 +421,119 @@
   font-size: 11px;
   word-break: break-all;
 }
+
+// ── Job history ────────────────────────────────────────────────────────────────
+
+.job-list {
+  background: var(--ink-card);
+  border: 1px solid var(--ink-line-2);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+
+.job-list__eyebrow {
+  display: block;
+  font: 600 10px/1 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--text-5);
+  margin-bottom: 16px;
+}
+
+.job-list__empty {
+  font: italic 400 13.5px/1.5 var(--tk-font-serif);
+  color: var(--text-5);
+  margin: 0;
+}
+
+.job-table {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.job-row {
+  border-bottom: 1px solid var(--ink-line-2);
+
+  &:last-child { border-bottom: none; }
+  &--expanded { border-bottom: none; }
+}
+
+.job-row__summary {
+  display: grid;
+  grid-template-columns: 90px 100px 1fr 120px auto;
+  gap: 10px;
+  align-items: center;
+  padding: 7px 0;
+}
+
+.job-badge {
+  display: inline-block;
+  font: 600 9px/1 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .10em;
+  padding: 3px 6px;
+  border: 1px solid;
+
+  &--running    { color: var(--ochre);         border-color: var(--ochre); }
+  &--completed  { color: var(--text-4);         border-color: var(--ink-line-2); }
+  &--failed     { color: var(--heraldic-red);   border-color: var(--heraldic-red); }
+}
+
+.job-row__type {
+  font: 400 12px/1.4 var(--tk-font-mono, monospace);
+  color: var(--text-3);
+}
+
+.job-row__meta {
+  font: 400 12px/1.4 var(--tk-font-sans);
+  color: var(--text-5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.job-row__who {
+  font: 400 12px/1.4 var(--tk-font-sans);
+  color: var(--text-5);
+  white-space: nowrap;
+}
+
+.job-row__log-btn {
+  font: 600 10px/1 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-5);
+  background: none;
+  border: 1px solid var(--ink-line-2);
+  padding: 4px 9px;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover { border-color: var(--ochre); color: var(--text-2); }
+}
+
+.job-log {
+  border-top: 1px solid var(--ink-line-2);
+  margin-bottom: 8px;
+}
+
+.job-log__loading {
+  font: italic 400 12px/1.5 var(--tk-font-serif);
+  color: var(--text-5);
+  padding: 10px 0;
+  margin: 0;
+}
+
+.job-log__content {
+  font: 400 11px/1.6 var(--tk-font-mono, 'JetBrains Mono', monospace);
+  color: var(--text-3);
+  background: var(--ink-bg-2);
+  border: 1px solid var(--ink-line-2);
+  padding: 12px 14px;
+  margin: 10px 0 0;
+  overflow-x: auto;
+  white-space: pre;
+  max-height: 400px;
+  overflow-y: auto;
+}

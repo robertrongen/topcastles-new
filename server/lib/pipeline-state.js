@@ -1,4 +1,5 @@
 import path from 'path';
+import { readdir } from 'fs/promises';
 import { readJson, writeJson } from './json-store.js';
 
 const DEFAULT_META = {
@@ -58,6 +59,37 @@ export async function createRebuildRequest(dataDir, { reason, requestedBy }) {
   const history = (await readJson(rebuildHistoryPath(dataDir))) ?? [];
   await writeJson(rebuildHistoryPath(dataDir), [...history, entry]);
   return entry;
+}
+
+// ── Job queue ─────────────────────────────────────────────────────────────────
+
+export function jobsDir(dataDir) {
+  return path.join(dataDir, 'pipeline', 'jobs');
+}
+
+export async function listJobs(dataDir) {
+  const dir = jobsDir(dataDir);
+  let files;
+  try {
+    files = await readdir(dir);
+  } catch {
+    return [];
+  }
+  const jobs = [];
+  for (const file of files) {
+    if (!file.endsWith('.json')) continue;
+    const job = await readJson(path.join(dir, file));
+    if (job) jobs.push(job);
+  }
+  return jobs.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+}
+
+export async function readJob(dataDir, id) {
+  return readJson(path.join(jobsDir(dataDir), `${id}.json`));
+}
+
+export async function writeJob(dataDir, job) {
+  await writeJson(path.join(jobsDir(dataDir), `${job.id}.json`), job);
 }
 
 // ── Enrichment request ────────────────────────────────────────────────────────

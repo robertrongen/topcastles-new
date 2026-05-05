@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { stat } from 'fs/promises';
+import { stat, readFile } from 'fs/promises';
 import { adminAuth } from '../middleware/admin-auth.js';
 import express from 'express';
 import { readJson } from '../lib/json-store.js';
@@ -12,6 +12,8 @@ import {
   readEnrichmentRequest,
   createEnrichmentRequest,
   ENRICHMENT_TYPES,
+  listJobs,
+  readJob,
 } from '../lib/pipeline-state.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -96,6 +98,51 @@ router.post('/rebuild-request', express.json(), async (req, res) => {
     res.status(500).json({ error: 'failed to write rebuild request' });
   }
 });
+
+// ── Job queue ─────────────────────────────────────────────────────────────────
+
+const JOB_ID_RE = /^[a-zA-Z0-9_-]+$/;
+const LOGS_SUBPATH = ['pipeline', 'logs'].join(path.sep);
+
+// GET /api/admin/pipeline/jobs
+router.get('/jobs', async (_req, res) => {
+  const jobs = await listJobs(DATA_DIR);
+  res.json(jobs);
+});
+
+// GET /api/admin/pipeline/jobs/:id
+router.get('/jobs/:id', async (req, res) => {
+  const { id } = req.params;
+  if (!JOB_ID_RE.test(id)) return res.status(400).json({ error: 'invalid job id' });
+  const job = await readJob(DATA_DIR, id);
+  if (!job) return res.status(404).json({ error: 'job not found' });
+  res.json(job);
+});
+
+// GET /api/admin/pipeline/jobs/:id/log
+router.get('/jobs/:id/log', async (req, res) => {
+  const { id } = req.params;
+  if (!JOB_ID_RE.test(id)) return res.status(400).json({ error: 'invalid job id' });
+  const job = await readJob(DATA_DIR, id);
+  if (!job) return res.status(404).json({ error: 'job not found' });
+  if (!job.logFile) return res.status(404).json({ error: 'no log file for this job' });
+
+  const logsDir = path.resolve(path.join(DATA_DIR, 'pipeline', 'logs'));
+  const resolved = path.resolve(path.join(DATA_DIR, job.logFile));
+  if (resolved !== logsDir && !resolved.startsWith(logsDir + path.sep)) {
+    return res.status(400).json({ error: 'invalid log file path' });
+  }
+
+  try {
+    const content = await readFile(resolved, 'utf-8');
+    res.type('text/plain').send(content);
+  } catch (err) {
+    if (err.code === 'ENOENT') return res.status(404).json({ error: 'log file not found on disk' });
+    throw err;
+  }
+});
+
+// ── Enrichment request ────────────────────────────────────────────────────────
 
 // GET /api/admin/pipeline/enrichment-request
 router.get('/enrichment-request', async (_req, res) => {

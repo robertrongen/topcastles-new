@@ -184,13 +184,14 @@
         <p class="operator-instructions__body">
           An enrichment request (type: <code class="mono-chip">{{ req.type }}</code>) is staged at
           <code class="mono-chip">/data/pipeline/enrichment-request.json</code>.
-          On a developer machine, run the appropriate enrichment script:
+          On a developer machine, run:
         </p>
-        <pre class="operator-instructions__cmd">npm run data:enrich:{{ req.type === 'full' ? 'wikidata && npm run data:enrich:wikipedia' : req.type }}</pre>
+        <pre class="operator-instructions__cmd">npm run pipeline:consume:enrichment</pre>
         <p class="operator-instructions__body">
-          Then run the pipeline to apply overrides and regenerate downstream artifacts:
+          The script will run the appropriate enrichment command, apply overrides, and regenerate
+          downstream artefacts. If a rebuild is then required, run
+          <code class="mono-chip">npm run pipeline:consume</code> separately.
         </p>
-        <pre class="operator-instructions__cmd">npm run data:merge-overrides && npm run data:lean</pre>
       </aside>
 
     } @else {
@@ -256,5 +257,47 @@
         <span class="ledger__value">{{ formatDate(status()!.ledger.lastDeployAt) }}</span>
       </div>
     </div>
+  </section>
+
+  <!-- Job history -->
+  <section class="job-list" aria-label="Job history">
+    <div class="job-list__eyebrow">JOB HISTORY</div>
+
+    @if (jobsLoading()) {
+      <p class="state-msg">Loading jobs…</p>
+    } @else if (jobs().length === 0) {
+      <p class="job-list__empty">No jobs recorded. Jobs are created when a consumer script runs.</p>
+    } @else {
+      <div class="job-table">
+        @for (job of jobs(); track job.id) {
+          <div class="job-row" [class.job-row--expanded]="expandedJobId() === job.id">
+            <div class="job-row__summary">
+              <span class="job-badge" [class]="jobStatusClass(job.status)">{{ job.status }}</span>
+              <span class="job-row__type">{{ job.type }}</span>
+              <span class="job-row__meta">{{ formatDate(job.createdAt) }}</span>
+              <span class="job-row__who">{{ job.requestedBy ?? '—' }}</span>
+              @if (job.logFile) {
+                <button
+                  class="job-row__log-btn"
+                  type="button"
+                  (click)="toggleJobLog(job.id)"
+                  [attr.aria-expanded]="expandedJobId() === job.id"
+                >{{ expandedJobId() === job.id ? 'Hide log' : 'Log' }}</button>
+              }
+            </div>
+
+            @if (expandedJobId() === job.id) {
+              <div class="job-log" aria-label="Job log">
+                @if (expandedLogLoading()) {
+                  <p class="job-log__loading">Loading log…</p>
+                } @else {
+                  <pre class="job-log__content">{{ expandedLogContent() }}</pre>
+                }
+              </div>
+            }
+          </div>
+        }
+      </div>
+    }
   </section>
 }

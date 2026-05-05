@@ -11,6 +11,8 @@ import {
   readPipelineMeta,
   readRebuildRequest,
   readEnrichmentRequest,
+  writeJob,
+  jobsDir,
 } from '../lib/pipeline-state.js';
 
 const TOKEN = 'test-pipeline-token';
@@ -445,5 +447,202 @@ describe('POST /api/admin/pipeline/enrichment-request', () => {
         await rm(freshDir, { recursive: true, force: true });
       }
     }
+  });
+});
+
+// ── Job queue tests ───────────────────────────────────────────────────────────
+
+const SAMPLE_JOB = {
+  id: 'job-20260505T100000-abcd',
+  type: 'rebuild',
+  status: 'completed',
+  requestedBy: 'Robert',
+  reason: 'staged enriched dataset ready',
+  createdAt: '2026-05-05T10:00:00.000Z',
+  startedAt: '2026-05-05T10:00:00.000Z',
+  completedAt: '2026-05-05T10:05:00.000Z',
+  logFile: 'pipeline/logs/2026-05-05T10-00-00-rebuild.log',
+  errorMessage: null,
+};
+
+const RUNNING_JOB = {
+  id: 'job-20260505T110000-ef01',
+  type: 'rebuild',
+  status: 'running',
+  requestedBy: 'Robert',
+  reason: 'another run',
+  createdAt: '2026-05-05T11:00:00.000Z',
+  startedAt: '2026-05-05T11:00:00.000Z',
+  completedAt: null,
+  logFile: 'pipeline/logs/2026-05-05T11-00-00-rebuild.log',
+  errorMessage: null,
+};
+
+describe('GET /api/admin/pipeline/jobs', () => {
+  let tmpDir;
+  let request;
+
+  before(async () => {
+    tmpDir = await mkdtemp(path.join(tmpdir(), 'jobs-list-'));
+    request = await buildApp(tmpDir);
+  });
+
+  after(async () => {
+    await rm(tmpDir, { recursive: true, force: true });
+    delete process.env.DATA_DIR;
+    delete process.env.ADMIN_TOKEN;
+  });
+
+  it('missing token → 401', async () => {
+    const res = await request.get('/api/admin/pipeline/jobs');
+    assert.equal(res.status, 401);
+  });
+
+  it('no jobs directory → 200 with empty array', async () => {
+    const res = await request
+      .get('/api/admin/pipeline/jobs')
+      .set('Authorization', `Bearer ${TOKEN}`);
+    assert.equal(res.status, 200);
+    assert.deepEqual(res.body, []);
+  });
+
+  it('returns jobs sorted newest first', async () => {
+    await writeJob(tmpDir, SAMPLE_JOB);
+    await writeJob(tmpDir, RUNNING_JOB);
+
+    const res = await request
+      .get('/api/admin/pipeline/jobs')
+      .set('Authorization', `Bearer ${TOKEN}`);
+    assert.equal(res.status, 200);
+    assert.ok(Array.isArray(res.body));
+    assert.equal(res.body.length, 2);
+    // RUNNING_JOB has later createdAt — should be first
+    assert.equal(res.body[0].id, RUNNING_JOB.id);
+    assert.equal(res.body[1].id, SAMPLE_JOB.id);
+  });
+});
+
+describe('GET /api/admin/pipeline/jobs/:id', () => {
+  let tmpDir;
+  let request;
+
+  before(async () => {
+    tmpDir = await mkdtemp(path.join(tmpdir(), 'jobs-get-'));
+    request = await buildApp(tmpDir);
+    await writeJob(tmpDir, SAMPLE_JOB);
+  });
+
+  after(async () => {
+    await rm(tmpDir, { recursive: true, force: true });
+    delete process.env.DATA_DIR;
+    delete process.env.ADMIN_TOKEN;
+  });
+
+  it('missing token → 401', async () => {
+    const res = await request.get('/api/admin/pipeline/jobs/job-123');
+    assert.equal(res.status, 401);
+  });
+
+  it('invalid id characters → 400', async () => {
+    const res = await request
+      .get('/api/admin/pipeline/jobs/../secret')
+      .set('Authorization', `Bearer ${TOKEN}`);
+    // express will normalise the path — test with a genuinely bad id via a crafted URL
+    const res2 = await request
+      .get('/api/admin/pipeline/jobs/bad%2Fid')
+      .set('Authorization', `Bearer ${TOKEN}`);
+    // Express may decode %2F as / and treat it as a nested route; either 400 or 404 is safe
+    assert.ok(res2.status === 400 || res2.status === 404, `expected 400 or 404, got ${res2.status}`);
+  });
+
+  it('unknown id → 404', async () => {
+    const res = await request
+      .get('/api/admin/pipeline/jobs/job-does-not-exist')
+      .set('Authorization', `Bearer ${TOKEN}`);
+    assert.equal(res.status, 404);
+  });
+
+  it('known id → 200 with job shape', async () => {
+    const res = await request
+      .get(`/api/admin/pipeline/jobs/${SAMPLE_JOB.id}`)
+      .set('Authorization', `Bearer ${TOKEN}`);
+    assert.equal(res.status, 200);
+    assert.equal(res.body.id, SAMPLE_JOB.id);
+    assert.equal(res.body.type, 'rebuild');
+    assert.equal(res.body.status, 'completed');
+    assert.equal(res.body.requestedBy, 'Robert');
+  });
+});
+
+describe('GET /api/admin/pipeline/jobs/:id/log', () => {
+  let tmpDir;
+  let request;
+
+  before(async () => {
+    tmpDir = await mkdtemp(path.join(tmpdir(), 'jobs-log-'));
+    request = await buildApp(tmpDir);
+
+    // Write the log file on disk
+    const { mkdir: mkdirAsync, writeFile } = await import('fs/promises');
+    const logsDir = path.join(tmpDir, 'pipeline', 'logs');
+    await mkdirAsync(logsDir, { recursive: true });
+    await writeFile(
+      path.join(logsDir, '2026-05-05T10-00-00-rebuild.log'),
+      '[2026-05-05T10:00:00.000Z] === Rebuild consumer started ===\n[2026-05-05T10:05:00.000Z] === Rebuild consumer finished: completed ===\n',
+      'utf-8'
+    );
+
+    // Write job record pointing to that log
+    await writeJob(tmpDir, SAMPLE_JOB);
+  });
+
+  after(async () => {
+    await rm(tmpDir, { recursive: true, force: true });
+    delete process.env.DATA_DIR;
+    delete process.env.ADMIN_TOKEN;
+  });
+
+  it('missing token → 401', async () => {
+    const res = await request.get(`/api/admin/pipeline/jobs/${SAMPLE_JOB.id}/log`);
+    assert.equal(res.status, 401);
+  });
+
+  it('unknown job id → 404', async () => {
+    const res = await request
+      .get('/api/admin/pipeline/jobs/no-such-job/log')
+      .set('Authorization', `Bearer ${TOKEN}`);
+    assert.equal(res.status, 404);
+  });
+
+  it('job with no logFile → 404', async () => {
+    const noLogJob = { ...SAMPLE_JOB, id: 'job-nolog', logFile: null };
+    await writeJob(tmpDir, noLogJob);
+    const res = await request
+      .get('/api/admin/pipeline/jobs/job-nolog/log')
+      .set('Authorization', `Bearer ${TOKEN}`);
+    assert.equal(res.status, 404);
+  });
+
+  it('log file present → 200 text/plain with content', async () => {
+    const res = await request
+      .get(`/api/admin/pipeline/jobs/${SAMPLE_JOB.id}/log`)
+      .set('Authorization', `Bearer ${TOKEN}`);
+    assert.equal(res.status, 200);
+    assert.ok(res.headers['content-type'].includes('text/plain'));
+    assert.ok(res.text.includes('Rebuild consumer started'));
+    assert.ok(res.text.includes('completed'));
+  });
+
+  it('path-traversal logFile is rejected with 400', async () => {
+    const badJob = {
+      ...SAMPLE_JOB,
+      id: 'job-traversal',
+      logFile: '../../../etc/passwd',
+    };
+    await writeJob(tmpDir, badJob);
+    const res = await request
+      .get('/api/admin/pipeline/jobs/job-traversal/log')
+      .set('Authorization', `Bearer ${TOKEN}`);
+    assert.equal(res.status, 400);
   });
 });

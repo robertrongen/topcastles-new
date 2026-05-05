@@ -32,6 +32,7 @@ const PATHS = {
   pendingEnriched: path.join(DATA_DIR, 'pending', 'castles_enriched.json'),
   targetEnriched:  path.join(ROOT, 'new_app', 'src', 'assets', 'data', 'castles_enriched.json'),
   logsDir:         path.join(DATA_DIR, 'pipeline', 'logs'),
+  jobsDir:         path.join(DATA_DIR, 'pipeline', 'jobs'),
 };
 
 // ── File helpers ──────────────────────────────────────────────────────────────
@@ -102,6 +103,19 @@ async function appendHistory(entry) {
   await writeJsonFile(PATHS.rebuildHistory, [...existing, entry]);
 }
 
+// ── Job record ────────────────────────────────────────────────────────────────
+
+function generateJobId() {
+  const ts = new Date().toISOString().replace(/[-:.TZ]/g, '').slice(0, 15);
+  const rand = Math.random().toString(36).slice(2, 6);
+  return `job-${ts}-${rand}`;
+}
+
+async function writeJobFile(job) {
+  await mkdir(PATHS.jobsDir, { recursive: true });
+  await writeJsonFile(path.join(PATHS.jobsDir, `${job.id}.json`), job);
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -120,14 +134,31 @@ async function main() {
     process.exit(1);
   }
 
-  // 3. Open log file
+  // 3. Open log file and register job record
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
   const logFile = path.join(PATHS.logsDir, `${timestamp}-rebuild.log`);
   await mkdir(PATHS.logsDir, { recursive: true });
   const logStream = createWriteStream(logFile, { encoding: 'utf-8' });
   const log = createLogger(logStream);
 
+  const jobId = generateJobId();
+  const logFileRelative = path.relative(DATA_DIR, logFile).replace(/\\/g, '/');
+  const job = {
+    id: jobId,
+    type: 'rebuild',
+    status: 'running',
+    requestedBy: request.requestedBy ?? null,
+    reason: request.reason ?? null,
+    createdAt: new Date().toISOString(),
+    startedAt: new Date().toISOString(),
+    completedAt: null,
+    logFile: logFileRelative,
+    errorMessage: null,
+  };
+  await writeJobFile(job);
+
   log.write('=== Rebuild consumer started ===');
+  log.write(`Job: ${jobId}`);
   log.write(`Request: ${JSON.stringify(request)}`);
   log.write(`Staged file: ${PATHS.pendingEnriched}`);
   log.write(`Log: ${logFile}`);
@@ -169,7 +200,15 @@ async function main() {
     ...(errorMessage ? { errorMessage } : {}),
   });
 
-  // 8. Append completion entry to history
+  // 8a. Update job record with final status
+  await writeJobFile({
+    ...job,
+    status: resultStatus,
+    completedAt,
+    ...(errorMessage ? { errorMessage } : {}),
+  });
+
+  // 9. Append completion entry to history
   await appendHistory({
     requestedAt: request.requestedAt,
     requestedBy: request.requestedBy,
@@ -180,7 +219,7 @@ async function main() {
     ...(errorMessage ? { errorMessage } : {}),
   });
 
-  // 9. Update pipeline meta lastBuildAt on success
+  // 10. Update pipeline meta lastBuildAt on success
   if (success) {
     const meta = await readJsonFile(PATHS.pipelineMeta) ?? {};
     await writeJsonFile(PATHS.pipelineMeta, { ...meta, lastBuildAt: completedAt });

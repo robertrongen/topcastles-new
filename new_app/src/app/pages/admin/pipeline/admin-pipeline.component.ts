@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
@@ -46,6 +46,21 @@ export interface EnrichmentRequest {
 
 export const ENRICHMENT_TYPES = ['wikipedia', 'wikidata', 'coordinates', 'full'] as const;
 
+export interface PipelineJob {
+  id: string;
+  type: string;
+  status: 'running' | 'completed' | 'failed';
+  requestedBy: string | null;
+  reason: string | null;
+  createdAt: string;
+  startedAt: string | null;
+  completedAt: string | null;
+  logFile: string | null;
+  errorMessage: string | null;
+}
+
+const POLL_INTERVAL_MS = 5000;
+
 @Component({
   selector: 'app-admin-pipeline',
   standalone: true,
@@ -53,7 +68,7 @@ export const ENRICHMENT_TYPES = ['wikipedia', 'wikidata', 'coordinates', 'full']
   templateUrl: './admin-pipeline.component.html',
   styleUrl: './admin-pipeline.component.scss',
 })
-export class AdminPipelineComponent implements OnInit {
+export class AdminPipelineComponent implements OnInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly http = inject(HttpClient);
   readonly auth = inject(AdminAuthService);
@@ -73,6 +88,21 @@ export class AdminPipelineComponent implements OnInit {
   readonly enrichSubmitting = signal(false);
   readonly enrichSubmitError = signal<string | null>(null);
   readonly enrichmentTypes = ENRICHMENT_TYPES;
+
+  readonly jobs = signal<PipelineJob[]>([]);
+  readonly jobsLoading = signal(true);
+  readonly expandedJobId = signal<string | null>(null);
+  readonly expandedLogContent = signal<string | null>(null);
+  readonly expandedLogLoading = signal(false);
+
+  private pollTimer: ReturnType<typeof setInterval> | null = null;
+
+  ngOnDestroy() {
+    if (this.pollTimer !== null) {
+      clearInterval(this.pollTimer);
+      this.pollTimer = null;
+    }
+  }
 
   async ngOnInit() {
     if (!isPlatformBrowser(this.platformId)) return;
@@ -113,6 +143,67 @@ export class AdminPipelineComponent implements OnInit {
     } finally {
       this.loading.set(false);
     }
+
+    await this.loadJobs();
+    this.startPollingIfNeeded();
+  }
+
+  private async loadJobs() {
+    this.jobsLoading.set(true);
+    try {
+      const list = await firstValueFrom(
+        this.http.get<PipelineJob[]>('/api/admin/pipeline/jobs', {
+          headers: this.auth.getAuthHeaders(),
+        })
+      );
+      this.jobs.set(list);
+    } catch {
+      // non-fatal — jobs section just stays empty
+    } finally {
+      this.jobsLoading.set(false);
+    }
+  }
+
+  private startPollingIfNeeded() {
+    const hasRunning = this.jobs().some(j => j.status === 'running');
+    if (!hasRunning || this.pollTimer !== null) return;
+    this.pollTimer = setInterval(async () => {
+      await this.loadJobs();
+      if (!this.jobs().some(j => j.status === 'running')) {
+        clearInterval(this.pollTimer!);
+        this.pollTimer = null;
+      }
+    }, POLL_INTERVAL_MS);
+  }
+
+  async toggleJobLog(id: string) {
+    if (this.expandedJobId() === id) {
+      this.expandedJobId.set(null);
+      this.expandedLogContent.set(null);
+      return;
+    }
+    this.expandedJobId.set(id);
+    this.expandedLogContent.set(null);
+    this.expandedLogLoading.set(true);
+    try {
+      const text = await firstValueFrom(
+        this.http.get(`/api/admin/pipeline/jobs/${id}/log`, {
+          headers: this.auth.getAuthHeaders(),
+          responseType: 'text',
+        })
+      );
+      this.expandedLogContent.set(text);
+    } catch {
+      this.expandedLogContent.set('Log not available.');
+    } finally {
+      this.expandedLogLoading.set(false);
+    }
+  }
+
+  jobStatusClass(status: string): string {
+    if (status === 'completed') return 'job-badge--completed';
+    if (status === 'failed') return 'job-badge--failed';
+    return 'job-badge--running';
   }
 
   async requestRebuild() {
