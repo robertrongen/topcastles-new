@@ -129,6 +129,8 @@ export class AdminCastlesComponent implements OnInit, OnDestroy {
     this.saveSuccess.set(false);
     this.mode.set('edit');
     this.searchResults.set([]);
+    this.searchQuery.set('');
+    this.searchInput$.next('');
     try {
       const detail = await firstValueFrom(
         this.http.get<CastleDetail>(`/api/admin/castles/${code}`, {
@@ -230,6 +232,7 @@ export class AdminCastlesComponent implements OnInit, OnDestroy {
     this.selected.set(null);
     this.mode.set('none');
     this.searchQuery.set('');
+    this.searchInput$.next('');
   }
 
   enrichedValue(key: string): string {
