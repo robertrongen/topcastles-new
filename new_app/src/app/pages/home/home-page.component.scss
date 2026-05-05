@@ -149,7 +149,7 @@
     margin-bottom: 0;
   }
 
-  h2 {
+  .section-title {
     width: fit-content;
     max-width: 100%;
     padding: 0 0 var(--tk-space-2);
@@ -158,7 +158,7 @@
     border-bottom: 3px solid var(--tk-orange);
     color: var(--tk-text);
     font: 600 22px/1.2 var(--tk-font-serif);
-    letter-spacing: -.008em;
+    letter-spacing: 0;
 
     a {
       color: inherit;
@@ -190,6 +190,15 @@
   }
 }
 
+.micro-heading {
+  color: var(--tk-text-muted);
+  font-family: var(--tk-font-sans);
+  font-size: var(--tk-font-size-xs, 0.72rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 // ── Editorial dossier — Patch v1 ─────────────────────────────────────────────
 
 .dossier {
@@ -197,17 +206,11 @@
 }
 
 .dossier__header {
-  padding-bottom: var(--tk-space-2);
   margin-bottom: 24px;
-  border-bottom: 1px solid var(--ink-line-2);
 }
 
-.dossier__section-label {
-  font-size: var(--tk-font-size-xs, 0.72rem);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--tk-text-muted);
+.dossier__section-title {
+  margin-bottom: 0;
 }
 
 .dossier__body {
@@ -350,7 +353,7 @@
   font-size: 15px;
   line-height: 1.55;
   display: -webkit-box;
-  -webkit-line-clamp: 6;
+  -webkit-line-clamp: var(--extract-lines, 6);
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -377,11 +380,8 @@
 }
 
 .dossier__fact-label {
+  @extend .micro-heading;
   font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--tk-text-muted);
   margin: 0;
 }
 
@@ -459,11 +459,8 @@
 }
 
 .dossier__quote-role {
+  @extend .micro-heading;
   font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--tk-text-muted);
 }
 
 .dossier__quote-date {
@@ -472,14 +469,35 @@
   color: var(--tk-text-muted);
 }
 
-// Actions: primary left, secondary group right
+// Note: right column in medium regime
+.dossier__note {
+  grid-column: 2;
+  margin: 0;
+}
+
+// Band: full-width row; layout adapts per regime
+.dossier__band {
+  grid-column: 1 / -1;
+  padding-top: 18px;
+  border-top: 1px solid var(--ink-line-2);
+  display: grid;
+  column-gap: 36px;
+  align-items: start;
+}
+.dossier__body[data-regime="medium"] .dossier__band { grid-template-columns: 1fr; }
+.dossier__body[data-regime="short"]  .dossier__band { grid-template-columns: 2fr 1fr; }
+
+// Extract clamp depth per regime
+.dossier__body[data-regime="short"]  { --extract-lines: 4; }
+.dossier__body[data-regime="medium"] { --extract-lines: 6; }
+
+// Actions (border removed — band provides it)
 .dossier__actions {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: var(--tk-space-2);
-  border-top: 1px solid var(--ink-line-2);
   gap: var(--tk-space-3);
+  align-self: center;
 }
 
 .dossier__actions-secondary {
@@ -576,10 +594,6 @@
     display: block;
     margin-bottom: var(--tk-space-1);
     color: var(--tk-text);
-    font-size: var(--tk-font-size-xs, 0.72rem);
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
   }
 }
 
@@ -588,10 +602,6 @@
   margin: calc(-1 * var(--tk-space-2)) 0 var(--tk-space-3);
   padding: 2px 8px;
   border: 1px solid var(--tk-orange);  color: var(--tk-orange);
-  font-size: var(--tk-font-size-xs, 0.72rem);
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
 
   &--visitors {
     border-color: var(--tk-link);
@@ -601,15 +611,6 @@
 
 
 .map-section {
-  h2 {
-    border-bottom-color: var(--ink-line-2);
-    color: var(--tk-text-muted);
-    font-size: var(--tk-font-size-xs, 0.72rem);
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
   &__caption {
     margin: 0 0 var(--tk-space-3);
     color: var(--tk-text-muted);
@@ -772,11 +773,8 @@
   }
 
   &__eyebrow {
+    @extend .micro-heading;
     color: var(--tk-link);
-    font-size: var(--tk-font-size-xs, 0.72rem);
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
   }
 
   &__name {

@@ -7,10 +7,10 @@
         <section class="section dossier">
 
           <header class="dossier__header">
-            <span class="dossier__section-label">From today's index</span>
+            <h2 class="section-title dossier__section-title">From today's index</h2>
           </header>
 
-          <div class="dossier__body">
+          <div class="dossier__body" [attr.data-regime]="imageRegime()">
 
             <!-- Left: image + caption row -->
             <div class="dossier__figure-group">
@@ -23,6 +23,7 @@
                     [src]="imageService.castlePhotoUrl(castle.castle_code)"
                     [alt]="castle.castle_name"
                     loading="eager"
+                    (load)="onDossierImageLoad($event)"
                     (error)="onImageError($event, castle.wikidata_image ?? castle.wikipedia_thumbnail)"
                   />
                 </a>
@@ -35,7 +36,7 @@
               </figcaption>
             </div>
 
-            <!-- Right: dossier content -->
+            <!-- Right: dossier core (kicker → fact card only; note and actions moved out) -->
             <article class="dossier__content">
 
               <!-- Kicker: single line, Arabic numbers -->
@@ -96,9 +97,12 @@
                 </div>
               </dl>
 
-              <!-- Editor's note: editorial overlay quote takes priority; castle field is fallback -->
+            </article>
+
+            <!-- Note: medium → right column (grid-col 2); short → rendered inside .dossier__band -->
+            @if (imageRegime() !== 'short') {
               @if (todayCastleQuote(); as q) {
-                <blockquote class="dossier__quote dossier__quote--editorial">
+                <blockquote class="dossier__quote dossier__note dossier__quote--editorial">
                   <p class="dossier__quote-text">{{ q.quote }}</p>
                   <footer class="dossier__quote-footer">
                     <cite class="dossier__quote-attribution">
@@ -109,7 +113,7 @@
                   </footer>
                 </blockquote>
               } @else if (castle.remarkable || castle.description) {
-                <blockquote class="dossier__quote">
+                <blockquote class="dossier__quote dossier__note">
                   <p class="dossier__quote-text">{{ castle.remarkable || castle.description }}</p>
                   <footer class="dossier__quote-footer">
                     <cite class="dossier__quote-attribution">
@@ -119,8 +123,34 @@
                   </footer>
                 </blockquote>
               }
+            }
 
-              <!-- Actions: primary left, secondary group right -->
+            <!-- Band: full-width. Short → 2:1 grid (note left, actions right). Medium → 1-col (actions only). -->
+            <div class="dossier__band">
+              @if (imageRegime() === 'short') {
+                @if (todayCastleQuote(); as q) {
+                  <blockquote class="dossier__quote dossier__quote--editorial">
+                    <p class="dossier__quote-text">{{ q.quote }}</p>
+                    <footer class="dossier__quote-footer">
+                      <cite class="dossier__quote-attribution">
+                        <span class="dossier__quote-name">{{ q.author }}</span>
+                        <span class="dossier__quote-role">{{ q.role }}</span>
+                        @if (q.date) {<span class="dossier__quote-date">{{ q.date }}</span>}
+                      </cite>
+                    </footer>
+                  </blockquote>
+                } @else if (castle.remarkable || castle.description) {
+                  <blockquote class="dossier__quote">
+                    <p class="dossier__quote-text">{{ castle.remarkable || castle.description }}</p>
+                    <footer class="dossier__quote-footer">
+                      <cite class="dossier__quote-attribution">
+                        <span class="dossier__quote-name">The Editors</span>
+                        <span class="dossier__quote-role">Contributing editors</span>
+                      </cite>
+                    </footer>
+                  </blockquote>
+                }
+              }
               <nav class="dossier__actions" aria-label="Entry actions">
                 <a class="dossier__action-primary" [routerLink]="['/castles', castle.castle_code]">Read the full entry ▸</a>
                 <div class="dossier__actions-secondary">
@@ -128,14 +158,14 @@
                   <button class="dossier__action" type="button" (click)="goToSurpriseCastle()">↖ Surprise me</button>
                 </div>
               </nav>
+            </div>
 
-            </article>
           </div>
         </section>
       }
 
       <section class="section map-section">
-        <h2>Distribution</h2>
+        <h2 class="section-title">Distribution</h2>
         <p class="map-section__caption">All 1,000 castles — click any marker to open the entry.</p>
         <div class="map-section__map">
           <app-castle-map [castles]="allCastles()" [autoFit]="true" [regionLabels]="regionLabels" [initialViewport]="atlasViewport" />
@@ -154,10 +184,10 @@
       </section>
 
       <section class="section">
-        <h2><a routerLink="/top1000">The Top 10</a></h2>
-        <span class="ranking-label">Editorial ranking</span>
+        <h2 class="section-title"><a routerLink="/top1000">The Top 10</a></h2>
+        <span class="micro-heading ranking-label">Editorial ranking</span>
         <blockquote class="editor-note">
-          <strong>Editor's note</strong>
+          <strong class="micro-heading">Editor's note</strong>
           The ranking weighs architectural significance, state of preservation, historical importance, and accessibility. Castles that survive as ruins can still rank very highly if their historical context is exceptional. <a routerLink="/background">Read the methodology &rarr;</a>
         </blockquote>
         <table class="ref-table">
@@ -192,8 +222,8 @@
       </section>
 
       <section class="section">
-        <h2><a routerLink="/top1000">Top by visitor rating</a></h2>
-        <span class="ranking-label ranking-label--visitors">Visitor rating</span>
+        <h2 class="section-title"><a routerLink="/top1000">Top by visitor rating</a></h2>
+        <span class="micro-heading ranking-label ranking-label--visitors">Visitor rating</span>
         <p>
           Between 2004 and 2021, 17,300 visitors submitted 63,800 ratings for castles in the list.
           The visitor rating reflects audience enthusiasm and is independent of the editorial ranking above —
@@ -203,7 +233,7 @@
           @if (topVisitorLead(); as castle) {
             <article class="visitor-lead">
               <div class="visitor-lead__content">
-                <span class="visitor-lead__eyebrow">#1 visitor-rated castle</span>
+                <span class="micro-heading visitor-lead__eyebrow">#1 visitor-rated castle</span>
                 <a class="visitor-lead__name" [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
                 <div class="visitor-lead__meta">
                   <span>{{ castle.country | titlecase }}</span>
@@ -259,7 +289,7 @@
 
       @if (top10Countries().length) {
         <section class="section">
-          <h2><a routerLink="/top-countries">Index of Top Countries</a></h2>
+          <h2 class="section-title"><a routerLink="/top-countries">Index of Top Countries</a></h2>
           <table class="ref-table">
             <thead>
               <tr>
@@ -297,7 +327,7 @@
 
       @if (byPeriod().length) {
         <section class="section">
-          <h2>Index by Period</h2>
+          <h2 class="section-title">Index by Period</h2>
           <table class="ref-table">
             <thead>
               <tr>

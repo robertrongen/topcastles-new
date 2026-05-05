@@ -1,6 +1,6 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnDestroy, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
-import { DecimalPipe, TitleCasePipe } from '@angular/common';
+import { DecimalPipe, isPlatformBrowser, TitleCasePipe } from '@angular/common';
 import { CastleService } from '../../services/castle.service';
 import { EditorialService } from '../../services/editorial.service';
 import { CastleMapComponent, MapViewport, RegionLabel } from '../../components/castle-map/castle-map.component';
@@ -13,11 +13,33 @@ import { ImageService } from '../../services/image.service';
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, OnDestroy {
   private castleService = inject(CastleService);
   private editorialService = inject(EditorialService);
   private router = inject(Router);
+  private platformId = inject(PLATFORM_ID);
   imageService = inject(ImageService);
+
+  // Image-height regime: 'short' (≤360 px rendered) or 'medium' (>360 px).
+  readonly imageRegime = signal<'short' | 'medium'>('medium');
+  private _dossierImg: HTMLImageElement | null = null;
+  private _resizeObs: ResizeObserver | null = null;
+
+  onDossierImageLoad(event: Event): void {
+    const img = event.target as HTMLImageElement;
+    this._dossierImg = img;
+    this._applyRegime();
+    if (!this._resizeObs && typeof ResizeObserver !== 'undefined') {
+      this._resizeObs = new ResizeObserver(() => this._applyRegime());
+      this._resizeObs.observe(img);
+    }
+  }
+
+  private _applyRegime(): void {
+    const img = this._dossierImg;
+    if (!img) return;
+    this.imageRegime.set(img.offsetHeight > 0 && img.offsetHeight <= 360 ? 'short' : 'medium');
+  }
 
   // ISO 8601 week number — week starts Monday, week 1 = week containing first Thursday
   private static isoWeek(date: Date): { week: number; year: number } {
@@ -116,6 +138,10 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.castleService.loadEnrichedData();
+  }
+
+  ngOnDestroy(): void {
+    this._resizeObs?.disconnect();
   }
 
   allCastles = this.castleService.castles;
