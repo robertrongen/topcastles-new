@@ -38,7 +38,7 @@ for (const [regionCode, entry] of entries) {
     continue;
   }
 
-  const { data, info } = await sharp(raw, { density: 300 })
+  const { data, info } = await sharp(raw, { density: 300, limitInputPixels: false })
     .resize({ width: OUTPUT_MAX, height: OUTPUT_MAX, fit: 'inside', kernel: 'nearest' })
     .ensureAlpha()
     .raw()

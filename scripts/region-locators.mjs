@@ -104,6 +104,10 @@ export function configuredEntries(manifest) {
   return Object.entries(manifest).filter(([, entry]) => isConfigured(entry));
 }
 
+export function fetchableEntries(manifest) {
+  return Object.entries(manifest).filter(([, entry]) => isFetchable(entry));
+}
+
 export function isConfigured(entry) {
   return Boolean(
     clean(entry?.commons) &&
@@ -111,6 +115,10 @@ export function isConfigured(entry) {
     entry.highlightHueRGB.length === 3 &&
     entry.highlightHueRGB.every(n => Number.isInteger(n) && n >= 0 && n <= 255)
   );
+}
+
+export function isFetchable(entry) {
+  return Boolean(clean(entry?.commons));
 }
 
 export function manifestSummary(manifest) {

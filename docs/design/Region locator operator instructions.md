@@ -58,7 +58,7 @@ Open:
 new_app/public/images/maps/manifest.json
 ```
 
-For a small test, choose 2 or 3 regions and fill these fields:
+For a small test, choose 2 or 3 regions and fill at least the `commons` field:
 
 ```json
 {
@@ -72,9 +72,12 @@ For a small test, choose 2 or 3 regions and fill these fields:
 }
 ```
 
-Required fields for generation:
+Required fields for fetching:
 
 - `commons`: exact filename on Wikimedia Commons.
+
+Required fields for building (can be filled after fetching):
+
 - `highlightHueRGB`: RGB colour sampled from the highlighted region in the
   source locator image.
 - `bgMode`: usually `white`; use `pastel` only when the source has a light
@@ -88,7 +91,7 @@ Recommended fields before committing final generated images:
 
 ## 3. Small No-Download Test
 
-After curating a few rows, run:
+After curating a few rows with `commons`, run:
 
 ```bash
 npm run locators:check
@@ -103,7 +106,7 @@ Wikimedia asks automated clients to send a User-Agent with contact information.
 In PowerShell:
 
 ```powershell
-$env:WIKIMEDIA_USER_AGENT='TopcastlesLocatorFetcher/1.0 (https://topcastles.com; ops@example.com)'
+$env:WIKIMEDIA_USER_AGENT='TopcastlesLocatorFetcher/1.0 (https://topcastles.eu; robert@donron.eu)'
 ```
 
 Then fetch a small batch:
@@ -120,9 +123,11 @@ new_app/public/images/maps/_raw/
 
 The raw cache is ignored by Git and should not be committed.
 
+After fetching, open the raw images and sample the highlight color for each region to fill `highlightHueRGB`.
+
 ## 5. Build The PNGs
 
-Run:
+After filling `highlightHueRGB` for the fetched entries, run:
 
 ```bash
 npm run locators:build

@@ -3,7 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {
   commonsFilePathUrl,
-  configuredEntries,
+  fetchableEntries,
   MANIFEST_PATH,
   RAW_DIR,
   readJson,
@@ -16,13 +16,13 @@ const limitArg = args.find(arg => arg.startsWith('--limit='));
 const limit = limitArg ? Number(limitArg.split('=')[1]) : Infinity;
 
 const manifest = await readJson(MANIFEST_PATH, {});
-const entries = configuredEntries(manifest).slice(0, Number.isFinite(limit) ? limit : undefined);
+const entries = fetchableEntries(manifest).slice(0, Number.isFinite(limit) ? limit : undefined);
 const ua = process.env.WIKIMEDIA_USER_AGENT || 'TopcastlesLocatorFetcher/1.0 (https://topcastles.com; contact: configure WIKIMEDIA_USER_AGENT)';
 
 await fs.mkdir(RAW_DIR, { recursive: true });
 
 if (entries.length === 0) {
-  console.log('[locators:fetch] No configured manifest entries. Fill commons + highlightHueRGB first.');
+  console.log('[locators:fetch] No fetchable manifest entries. Fill commons first.');
   process.exit(0);
 }
 
