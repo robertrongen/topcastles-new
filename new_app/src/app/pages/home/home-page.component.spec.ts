@@ -88,6 +88,43 @@ describe('HomePageComponent', () => {
     expect(rows.length).toBe(3);
   });
 
+  it('should apply top-rank class to first 3 rows in Top 10 table', () => {
+    const sections = fixture.nativeElement.querySelectorAll('section');
+    const topTenSection = Array.from(sections).find((s: any) =>
+      (s as HTMLElement).textContent?.includes('The Top 10')
+    ) as HTMLElement | undefined;
+    if (topTenSection) {
+      const topRankRows = topTenSection.querySelectorAll('table.ref-table tbody tr.top-rank');
+      expect(topRankRows.length).toBe(3);
+    }
+  });
+
+  it('should apply top-rank class to first 3 rows in Index of Top Countries table', () => {
+    const sections = fixture.nativeElement.querySelectorAll('section');
+    const countriesSection = Array.from(sections).find((s: any) =>
+      (s as HTMLElement).textContent?.includes('Index of Top Countries')
+    ) as HTMLElement | undefined;
+    if (countriesSection) {
+      const topRankRows = countriesSection.querySelectorAll('table.ref-table tbody tr.top-rank');
+      const allRows = countriesSection.querySelectorAll('table.ref-table tbody tr');
+      // Apply top-rank to first 3 rows or to all rows if less than 3 exist
+      expect(topRankRows.length).toBe(Math.min(3, allRows.length));
+    }
+  });
+
+  it('should apply top-rank class to first 3 rows in Index by Period table', () => {
+    const sections = fixture.nativeElement.querySelectorAll('section');
+    const periodSection = Array.from(sections).find((s: any) =>
+      (s as HTMLElement).textContent?.includes('Index by Period')
+    ) as HTMLElement | undefined;
+    if (periodSection) {
+      const topRankRows = periodSection.querySelectorAll('table.ref-table tbody tr.top-rank');
+      const allRows = periodSection.querySelectorAll('table.ref-table tbody tr');
+      // Apply top-rank to first 3 rows or to all rows if less than 3 exist
+      expect(topRankRows.length).toBe(Math.min(3, allRows.length));
+    }
+  });
+
   it('should render visitor ranking as a lead card and runner-up cards', () => {
     const lead = fixture.nativeElement.querySelector('.visitor-lead');
     const cards = fixture.nativeElement.querySelectorAll('.visitor-card-grid .visitor-card');

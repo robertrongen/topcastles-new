@@ -40,7 +40,7 @@
     </thead>
     <tbody>
       @for (row of rows(); track row.country; let i = $index) {
-        <tr [class.flagged]="isSleeper(row)">
+        <tr [class.flagged]="isSleeper(row)" [class.top-rank]="i < 3">
           <td class="num idx">{{ i + 1 }}</td>
           <td class="country">
             <a [routerLink]="['/countries', row.country]">{{ row.country }}</a>

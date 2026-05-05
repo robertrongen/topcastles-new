@@ -148,6 +148,23 @@ table.gazetteer {
     background: var(--tk-surface-soft);
   }
 
+  tbody tr.top-rank {
+    border-left: 4px solid var(--accent-ochre);
+    background: rgba(var(--accent-ochre-rgb, 184 120 51), 0.04);
+  }
+
+  tbody tr.top-rank:hover td {
+    background: rgba(var(--accent-ochre-rgb, 184 120 51), 0.08);
+  }
+
+  tbody tr.top-rank.flagged {
+    background: rgba(var(--accent-ochre-rgb, 184 120 51), 0.06);
+  }
+
+  tbody tr.top-rank td {
+    padding-left: 8px;
+  }
+
   // ── Cell styles ─────────────────────────────────────────────────────────────
 
   td.idx {

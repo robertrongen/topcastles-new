@@ -140,4 +140,11 @@ describe('TopCountriesPageComponent', () => {
     const cell = fixture.nativeElement.querySelector('td a');
     expect(cell?.textContent?.trim()).toBe('France');
   });
+
+  it('should apply top-rank class to first 3 rows', () => {
+    const rows = fixture.nativeElement.querySelectorAll('tbody tr');
+    // We only have 2 countries in test data, so only those 2 should have class if i < 3 condition applies
+    const topRankRows = fixture.nativeElement.querySelectorAll('tbody tr.top-rank');
+    expect(topRankRows.length).toBe(Math.min(2, 3)); // min(2 actual rows, 3 top rank limit)
+  });
 });

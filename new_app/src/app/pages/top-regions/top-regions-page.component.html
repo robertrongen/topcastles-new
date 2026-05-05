@@ -8,7 +8,7 @@
     @if (viewModeService.mode() === 'grid') {
       <div class="region-grid">
         @for (summary of summaries(); track summary.region; let i = $index) {
-          <mat-card class="region-card">
+          <mat-card class="region-card" [class.top-rank]="i < 3">
             <mat-card-content>
               @if (summary.region_code) {
               <span class="region-rank">#{{ i + 1 }}</span>
@@ -39,7 +39,7 @@
           </thead>
           <tbody>
             @for (summary of summaries(); track summary.region; let i = $index) {
-              <tr>
+              <tr [class.top-rank]="i < 3">
                 <td class="rank-col">{{ i + 1 }}</td>
                 <td class="name-col"><a [routerLink]="['/top1000']" [queryParams]="{ country: summary.country, region: summary.region }">{{ summary.region }}</a></td>
                 <td class="map-col">

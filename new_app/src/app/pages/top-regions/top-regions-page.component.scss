@@ -25,15 +25,11 @@
   box-sizing: border-box;
   background: linear-gradient(180deg, var(--ink-card) 0%, var(--ink-bg) 100%);
   border: 1px solid var(--ink-line-2);
+  transition: box-shadow 0.2s, border-color 0.2s;
 
-  mat-card-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: left;
-    height: 100%;
-    padding: var(--tk-space-2);
-    gap: var(--tk-space-1);
+  &.top-rank {
+    border: 1px solid var(--accent-ochre);
+    box-shadow: 0 4px 12px rgba(var(--accent-ochre-rgb, 184 120 51), 0.15);
   }
 
   .region-image {
@@ -144,6 +140,19 @@
       &:hover {
         text-decoration: underline;
       }
+    }
+
+    tr.top-rank {
+      border-left: 4px solid var(--accent-ochre);
+      background: rgba(var(--accent-ochre-rgb, 184 120 51), 0.04);
+    }
+
+    tr.top-rank:hover td {
+      background: rgba(var(--accent-ochre-rgb, 184 120 51), 0.08);
+    }
+
+    tr.top-rank td {
+      padding-left: 8px;
     }
   }
 }

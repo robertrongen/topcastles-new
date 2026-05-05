@@ -66,4 +66,18 @@ describe('TopRegionsPageComponent', () => {
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('tbody')).toBeNull();
   });
+
+  it('should apply top-rank class to first 3 cards in grid mode', () => {
+    TestBed.inject(ViewModeService).setMode('grid');
+    fixture.detectChanges();
+    const topRankCards = fixture.nativeElement.querySelectorAll('mat-card.region-card.top-rank');
+    expect(topRankCards.length).toBe(Math.min(2, 3)); // 2 regions in test data, top-rank applied to i < 3
+  });
+
+  it('should apply top-rank class to first 3 rows in table mode', () => {
+    TestBed.inject(ViewModeService).setMode('list');
+    fixture.detectChanges();
+    const topRankRows = fixture.nativeElement.querySelectorAll('table tbody tr.top-rank');
+    expect(topRankRows.length).toBe(Math.min(2, 3)); // 2 regions in test data, top-rank applied to i < 3
+  });
 });

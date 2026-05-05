@@ -202,8 +202,8 @@
             </tr>
           </thead>
           <tbody>
-            @for (castle of top10(); track castle.castle_code) {
-              <tr>
+            @for (castle of top10(); track castle.castle_code; let i = $index) {
+              <tr [class.top-rank]="i < 3">
                 <td class="ref-table__col-rank">{{ castle.position }}</td>
                 <td class="ref-table__col-name">
                   <a [routerLink]="['/castles', castle.castle_code]">{{ castle.castle_name }}</a>
@@ -301,7 +301,7 @@
             </thead>
             <tbody>
               @for (row of top10Countries(); track row.country; let i = $index) {
-                <tr>
+                <tr [class.top-rank]="i < 3">
                   <td class="ref-table__col-rank">{{ i + 1 }}</td>
                   <td><a [routerLink]="['/countries', row.country]">{{ row.country | titlecase }}</a></td>
                   <td class="ref-table__col-total">{{ row.totalScore | number:'1.0-0' }}</td>
@@ -339,8 +339,8 @@
               </tr>
             </thead>
             <tbody>
-              @for (row of byPeriod(); track row.era) {
-                <tr>
+              @for (row of byPeriod(); track row.era; let i = $index) {
+                <tr [class.top-rank]="i < 3">
                   <td><a [routerLink]="['/castles']" [queryParams]="{ era: row.era }">{{ row.label }}</a></td>
                   <td class="ref-table__col-total">{{ row.count }}</td>
                   <td class="ref-table__col-total">{{ row.share }}%</td>

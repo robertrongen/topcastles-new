@@ -601,7 +601,8 @@
   display: inline-block;
   margin: calc(-1 * var(--tk-space-2)) 0 var(--tk-space-3);
   padding: 2px 8px;
-  border: 1px solid var(--tk-orange);  color: var(--tk-orange);
+  border: 1px solid var(--tk-orange);
+  color: var(--tk-orange);
 
   &--visitors {
     border-color: var(--tk-link);
@@ -658,7 +659,7 @@
   th {
     padding: var(--tk-space-2) var(--tk-space-2) var(--tk-space-2) 0;
     color: var(--tk-text-muted);
-    font-size: var(--tk-font-size-xs, 0.72rem);
+    font-size: var(--tk-font-size-sm, 0.9rem);
     font-weight: 700;
     letter-spacing: 0.05em;
     text-align: left;
@@ -683,6 +684,19 @@
 
   tbody tr:hover td {
     background: var(--ink-card);
+  }
+
+  tbody tr.top-rank {
+    border-left: 4px solid var(--accent-ochre);
+    background: rgba(var(--accent-ochre-rgb, 184 120 51), 0.04);
+  }
+
+  tbody tr.top-rank:hover td {
+    background: rgba(var(--accent-ochre-rgb, 184 120 51), 0.08);
+  }
+
+  tbody tr.top-rank td {
+    padding-left: 8px;
   }
 
   &__col-rank {
