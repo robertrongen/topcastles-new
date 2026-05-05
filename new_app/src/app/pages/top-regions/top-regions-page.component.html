@@ -1,67 +1,67 @@
 <div class="top-regions-page">
-  <section class="section">
-    <h1 class="sec-head">The regions with the most top castles</h1>
-    <p class="sec-sub">Regional groupings show where highly ranked castles cluster most densely in the catalogue.</p>
+  <section class="atlas-intro">
+    <p class="eyebrow">Regional atlas</p>
+    <h1 class="page-head">Top regions</h1>
+    <p class="section-sub">
+      Named castle landscapes ranked by editorial depth, with visitor rank shown beside the catalogue order.
+    </p>
+  </section>
 
-    <app-view-toggle />
-
-    @if (viewModeService.mode() === 'grid') {
-      <div class="region-grid">
-        @for (summary of summaries(); track summary.region; let i = $index) {
-          <mat-card class="region-card" [class.top-rank]="i < 3">
-            <mat-card-content>
-              @if (summary.region_code) {
-              <span class="region-rank">#{{ i + 1 }}</span>
-              <h3><a [routerLink]="['/top1000']" [queryParams]="{ country: summary.country, region: summary.region }">{{ summary.region }}</a></h3>
-              <p><a [routerLink]="['/countries', summary.country]">{{ summary.country }}</a></p>
-              <p>{{ summary.castleCount }} castles &middot; score {{ summary.totalScore | number:'1.0-0' }}</p>
-              <img [src]="'/images/maps/' + summary.region_code + '.jpg'"
-                    [alt]="summary.region"
-                  title="{{ summary.region }}"
-                    class="region-image"
-                    loading="lazy"
-                    (error)="onImageError($event)" />
-              }
-            </mat-card-content>
-          </mat-card>
-        }
-      </div>
-    } @else {
-      <div class="table-container">
-        <table class="tc-table region-table">
-          <thead>
-            <tr>
-              <th class="rank-col">#</th>
-              <th class="name-col">Region</th>
-              <th class="map-col">Map</th>
-              <th class="name-col">Country</th>
-              <th class="metric-col">Castles</th>
-              <th class="metric-col">Total Score</th>
-            </tr>
-          </thead>
-          <tbody>
-            @for (summary of summaries(); track summary.region; let i = $index) {
-              <tr [class.top-rank]="i < 3">
-                <td class="rank-col">{{ i + 1 }}</td>
-                <td class="name-col"><a [routerLink]="['/top1000']" [queryParams]="{ country: summary.country, region: summary.region }">{{ summary.region }}</a></td>
-                <td class="map-col">
-                  @if (summary.region_code) {
-                    <img [src]="'/images/maps/' + summary.region_code + '.jpg'"
-                         [alt]="summary.region"
-                      title="{{ summary.region }}"
-                         class="region-thumbnail"
-                         loading="lazy"
-                         (error)="onImageError($event)" />
-                  }
-                </td>
-                <td class="name-col"><a [routerLink]="['/countries', summary.country]">{{ summary.country }}</a></td>
-                <td class="metric-col">{{ summary.castleCount }}</td>
-                <td class="metric-col">{{ summary.totalScore | number:'1.0-0' }}</td>
-              </tr>
+  <section class="region-grid" aria-label="Top castle regions">
+    @for (row of rows(); track row.country + ':' + row.slug) {
+      <mat-card class="region-card" [class.sleeper]="isSleeper(row)">
+        <mat-card-content>
+          <div class="card-topline">
+            <span class="catalogue">No. {{ row.catalogueNumber }}</span>
+            @if (isSleeper(row)) {
+              <span class="sleeper-tag">EDITOR'S SLEEPER</span>
             }
-          </tbody>
-        </table>
-      </div>
+          </div>
+
+          <h2>
+            <a [routerLink]="['/top1000']" [queryParams]="{ country: row.country, region: row.region }">
+              {{ row.region }}
+            </a>
+          </h2>
+
+          <a class="country-link" [routerLink]="['/countries', row.country]">{{ row.country }}</a>
+
+          <dl class="rank-pair">
+            <div>
+              <dt>Editorial</dt>
+              <dd><span class="star" aria-hidden="true">★</span>{{ row.editorialRank }}</dd>
+            </div>
+            <div>
+              <dt>Visitor</dt>
+              <dd
+                class="visitor-rank"
+                [class.higher]="row.visitorRank < row.editorialRank"
+                [class.lower]="row.visitorRank > row.editorialRank"
+                [attr.aria-label]="visitorAriaLabel(row)">
+                {{ row.visitorRank }}
+                @if (row.visitorRank !== row.editorialRank) {
+                  <span class="micro-arrow" aria-hidden="true">{{ row.visitorRank < row.editorialRank ? '↑' : '↓' }}</span>
+                }
+              </dd>
+            </div>
+          </dl>
+
+          @if (row.description) {
+            <p class="editorial-note">{{ row.description }}</p>
+          }
+
+          <div class="metrics" aria-label="Region catalogue metrics">
+            <span>{{ row.castleCount }} entries</span>
+            <span>Mean {{ row.meanScore | number:'1.2-2' }}</span>
+          </div>
+        </mat-card-content>
+      </mat-card>
     }
   </section>
+
+  <p class="legend">
+    <span><b class="star">★</b> Editorial rank</span>
+    <span><span class="up">↑</span> visitors rank higher</span>
+    <span><span class="down">↓</span> editors rank higher</span>
+  </p>
 </div>
