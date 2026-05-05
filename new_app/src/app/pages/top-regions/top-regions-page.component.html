@@ -18,6 +18,7 @@
               <img [src]="'/images/maps/' + summary.region_code + '.jpg'"
                     [alt]="summary.region"
                     class="region-image"
+                    loading="lazy"
                     (error)="onImageError($event)" />
               }
             </mat-card-content>
@@ -47,6 +48,7 @@
                     <img [src]="'/images/maps/' + summary.region_code + '.jpg'"
                          [alt]="summary.region"
                          class="region-thumbnail"
+                         loading="lazy"
                          (error)="onImageError($event)" />
                   }
                 </td>

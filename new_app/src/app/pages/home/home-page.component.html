@@ -283,7 +283,7 @@
         </div>
         <p class="section-footer">
           <a [routerLink]="['/top1000']" [queryParams]="{ sort: 'score_visitors' }">See all visitor-rated castles &rarr;</a>
-          <em class="section-footer__note">*Ratings collected 2004–2021. Domains donated to Nederlandse Kastelenstichting in 2021 (<a href="https://topkastelen.com/" target="_blank">topkastelen.com</a>).</em>
+          <em class="section-footer__note">*Ratings collected 2004–2021. Domains donated to Nederlandse Kastelenstichting in 2021 (<a href="https://topkastelen.com/" target="_blank" rel="noopener noreferrer">topkastelen.com</a>).</em>
         </p>
       </section>
 
@@ -380,8 +380,8 @@
         <dl class="sidebar-stats">
           @for (stat of stats; track stat.label) {
             <div class="sidebar-stats__item">
-              <dd class="sidebar-stats__value">{{ stat.value }}</dd>
               <dt class="sidebar-stats__label">{{ stat.label }}</dt>
+              <dd class="sidebar-stats__value">{{ stat.value }}</dd>
             </div>
           }
         </dl>

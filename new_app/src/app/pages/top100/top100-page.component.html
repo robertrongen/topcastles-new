@@ -94,8 +94,8 @@
           @if (desc.image) {
             <img [src]="'/assets/images/drawings/' + desc.image"
                  [alt]="cf.getFilter('castle_concept')"
-                 [title]="cf.getFilter('castle_concept')"
-                 class="concept-image" />
+                 class="concept-image"
+                 loading="lazy" />
           }
         </mat-card-content>
       </mat-card>
