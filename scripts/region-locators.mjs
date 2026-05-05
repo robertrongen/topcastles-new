@@ -174,16 +174,16 @@ export function rgbToHsl(r, g, b) {
   return [h, s, l];
 }
 
-export function recolourLocatorPixels(px, entry) {
+export function recolourLocatorPixels(px, entry, pal) {
   const [hh] = rgbToHsl(...entry.highlightHueRGB);
   const bgMin = entry.bgMode === 'pastel' ? 0.94 : 0.92;
   const dh = entry.dh ?? 0.08;
   const sMin = entry.smin ?? 0.25;
   const lMax = entry.lmax ?? 0.70;
 
-  const ochre = [201, 134, 63];
-  const neighbour = [42, 53, 80];
-  const coast = [58, 66, 88];
+  const ochre = pal.OCHRE;
+  const neighbour = pal.NEIGHBOUR;
+  const coast = pal.COAST;
 
   for (let i = 0; i < px.length; i += 4) {
     const r = px[i], g = px[i + 1], b = px[i + 2];

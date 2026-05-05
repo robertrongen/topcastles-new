@@ -24,11 +24,22 @@ new_app/public/images/maps/_raw/
 Then it recolours the locator into the Topcastles palette and writes:
 
 ```text
-new_app/public/images/maps/<region_code>.png
+new_app/public/images/maps/<region_code>.dark.png
+new_app/public/images/maps/<region_code>.light.png
 ```
 
-The Angular Top Regions cards try the generated PNG first and gracefully fall
-back to the existing legacy JPG if a generated locator is missing.
+The Angular Top Regions cards use CSS to pick the appropriate variant based on the user's color scheme preference:
+
+```css
+.rc-locator img {
+  content: url("/images/maps/middle-rhine.dark.png");
+}
+@media (prefers-color-scheme: light) {
+  .rc-locator img {
+    content: url("/images/maps/middle-rhine.light.png");
+  }
+}
+```
 
 ## 1. Refresh The Manifest
 
@@ -136,7 +147,8 @@ npm run locators:build
 This writes configured locator images to:
 
 ```text
-new_app/public/images/maps/<region_code>.png
+new_app/public/images/maps/<region_code>.dark.png
+new_app/public/images/maps/<region_code>.light.png
 ```
 
 Review those PNGs visually. If a highlight is wrong, adjust
@@ -155,7 +167,8 @@ npm run locators:build
 Commit:
 
 - `new_app/public/images/maps/manifest.json`
-- generated `new_app/public/images/maps/*.png`
+- generated `new_app/public/images/maps/*.dark.png`
+- generated `new_app/public/images/maps/*.light.png`
 - `new_app/public/images/maps/LICENSE.locators.md`
 
 Do not commit:

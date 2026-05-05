@@ -65,10 +65,16 @@ describe('region locator helpers', () => {
       10, 10, 10, 255,
     ]);
 
+    const pal = {
+      OCHRE: [201, 134, 63],
+      NEIGHBOUR: [42, 53, 80],
+      COAST: [58, 66, 88],
+    };
+
     recolourLocatorPixels(pixels, {
       highlightHueRGB: [80, 110, 175],
       bgMode: 'pastel',
-    });
+    }, pal);
 
     assert.ok(pixels[0] > 150 && pixels[1] > 90 && pixels[2] < 100);
     assert.equal(pixels[7], 0);

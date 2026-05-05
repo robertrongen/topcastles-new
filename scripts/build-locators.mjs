@@ -12,6 +12,21 @@ import {
 
 const OUTPUT_MAX = 640;
 
+const PALETTES = {
+  dark: {
+    suffix: '.dark',
+    OCHRE:     [201, 134,  63],   // #C9863F
+    NEIGHBOUR: [ 42,  53,  80],   // #2a3550
+    COAST:     [ 58,  66,  88],   // #3a4258
+  },
+  light: {
+    suffix: '.light',
+    OCHRE:     [201, 134,  63],   // #C9863F  — keep
+    NEIGHBOUR: [231, 226, 214],   // #E7E2D6  parchment
+    COAST:     [168, 154, 120],   // #A89A78  ochre-grey
+  },
+};
+
 let sharp;
 try {
   sharp = (await import('sharp')).default;
@@ -45,11 +60,15 @@ for (const [regionCode, entry] of entries) {
     .toBuffer({ resolveWithObject: true });
 
   const px = new Uint8ClampedArray(data);
-  recolourLocatorPixels(px, entry);
 
-  await sharp(px, { raw: { width: info.width, height: info.height, channels: 4 } })
-    .png({ compressionLevel: 9 })
-    .toFile(path.join(MAPS_DIR, `${regionCode}.png`));
+  for (const [name, pal] of Object.entries(PALETTES)) {
+    // copy the raw pixel buffer fresh so the two passes don't compound
+    const pxCopy = new Uint8ClampedArray(px);
+    recolourLocatorPixels(pxCopy, entry, pal);
+    await sharp(pxCopy, { raw: { width: info.width, height: info.height, channels: 4 } })
+      .png({ compressionLevel: 9 })
+      .toFile(path.join(MAPS_DIR, `${regionCode}${pal.suffix}.png`));
+  }
 
   built++;
   console.log(`[locators:build] ${regionCode}.png ${info.width}x${info.height}`);
