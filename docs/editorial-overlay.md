@@ -170,7 +170,7 @@ Fields:
 |---|---|---|
 | `note` | string | One-line editor's note in atlas register. Displayed above the tile grid for the matching rank band on the browse page. |
 
-Band keys must match the rank ranges the browse page uses for pagination bands. The implementation bead (topcastles-chw) defines the exact key format.
+Band keys must match the rank ranges the browse page uses for pagination bands. The current Top 1000 implementation maps ranks to `1-100`, `101-500`, and `501-1000`.
 
 ---
 

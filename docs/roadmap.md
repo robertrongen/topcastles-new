@@ -2,7 +2,7 @@
 
 This is the active forward-looking worklist for Topcastles. Beads are the executable task authority; use `bd ready` for claimable work. Current runtime architecture is documented in [architecture.md](architecture.md), contributor workflow in [../DEVELOPER.md](../DEVELOPER.md), artifact policy in [pipeline.md](pipeline.md), and completed migration history in [migration-report.md](migration-report.md).
 
-## Snapshot: 2026-05-04
+## Snapshot: 2026-05-05
 
 Recent closed work reflected here:
 
@@ -10,18 +10,16 @@ Recent closed work reflected here:
 - The editorial write API, per-file editors, castle lookup, backups, publish status, and rebuild handoff UI are in place.
 - User/favorites, PWA baseline/install help, NAS image serving baseline, and server migration items are complete or documented as architecture constraints.
 - Agent/developer guidance was consolidated into root [../AGENTS.md](../AGENTS.md) and [../DEVELOPER.md](../DEVELOPER.md); obsolete agent prompt docs were removed in `0db1a0b` and `2568911`.
+- Track A public-UX polish shipped through `58ea676`, `39e858a`, `8343513`, `3a7dd21`, `aad3798`, `ecba82b`, and `5b967e1`: the featured entry patch/adaptive regime, period picks, Top 1000 browse-band header, top-rank visual treatment, and Edge Tools accessibility/CSS warnings are reflected in Beads.
 
 ## Active Tracks
 
 ### Track A: Public UX And Editorial Identity
 
-Open beads from the design-review pass remain the immediate public UX queue:
+The May 2 design-review polish pass is closed in Beads. Current ready Track A follow-ups are:
 
-- `topcastles-wft` - Top by visitor rating layout asymmetry.
-- `topcastles-chw` - Top 1000 editorial header band.
-- `topcastles-7kz` - Top Countries/Regions tile differentiation.
-- `topcastles-3e1` - Period table Editor's pick column.
-- `topcastles-eeb` - smaller polish batch: footer columns, sidebar deduplication, nav underline, and score unit labels.
+- `topcastles-bay` - generate draft editorial overlay for `countries.json`.
+- `topcastles-2jo` - Top Regions atlas cards.
 
 Next editorial-identity work should use the editor-owned overlay files in `/data/editorial/` rather than hardcoding long-lived prose in Angular components.
 
@@ -36,8 +34,8 @@ UX constraints for this track:
 
 Execution sequence:
 
-1. Finish the five open Track A polish beads.
-2. Use overlay-backed content for Top Countries, Top Regions, homepage quote, period pick, and browse-band refinements.
+1. Finish the remaining open Track A polish beads.
+2. Continue using overlay-backed content for Top Countries, Top Regions, homepage quote, period pick, and browse-band refinements.
 3. Keep pipeline admin separate from editorial UX; do not mix enrichment/rebuild execution into lightweight page polish.
 
 ### Track B1: Editorial Annex

@@ -4,7 +4,7 @@ Replaces the current fixed 2-column featured-entry layout with one that adapts t
 
 Source-of-truth mockup: `Topcastles Featured Adaptive Regimes.html`.
 
-Single bead `topcastles-featured-adaptive`.
+Implemented through the featured-entry bead trail: `topcastles-kfiz`, `topcastles-gi9e`, and `topcastles-j60a`. The adaptive regime landed in `8343513`.
 
 ---
 
@@ -161,7 +161,7 @@ Single column. Order: image → caption → dossier-core → editor's note → a
 4. Resize the window — extract reflow recomputes on resize and on image-load.
 5. `npm test`, `npm run build`, `npm run test:smoke`.
 
-Close `topcastles-featured-adaptive`, push, stop.
+The implementation is closed in Beads; keep this addendum as design history unless a new regression bead is opened.
 
 # Summary
 
