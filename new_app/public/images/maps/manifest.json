@@ -86,11 +86,7 @@
     "sourceUrl": "",
     "notes": "",
     "candidates": [
-      "Alsace region locator map.svg",
-      "Alsace in France (1789).svg",
-      "Alsace Lorraine departments evolution map-en.svg",
-      "Alsace-Champagne-Ardenne-Lorraine region locator map.svg",
-      "Alsace Lorraine departments evolution map-es.svg"
+      "Alsace region locator map.svg"
     ]
   },
   "andalucia": {
@@ -110,7 +106,9 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Andalucia in Spain.svg"
+    ]
   },
   "andhra-pradesh": {
     "regionCode": "andhra-pradesh",
@@ -129,7 +127,9 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "India locator map Andhra Pradesh.svg"
+    ]
   },
   "antrim": {
     "regionCode": "antrim",
@@ -148,7 +148,10 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Antrim (Northern Ireland Parliament constituency).svg",
+      "Antrim Borough (Northern Ireland Parliament constituency).svg"
+    ]
   },
   "antwerpen": {
     "regionCode": "antwerpen",
@@ -167,7 +170,11 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Antwerpen Antwerp Belgium Map.svg",
+      "Arrondissement Antwerpen Belgium Map.svg",
+      "Provincie Antwerpen in Belgium.svg"
+    ]
   },
   "aosta": {
     "regionCode": "aosta",
@@ -186,7 +193,12 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Regione Valle d'Aosta 3.svg",
+      "Regione Valle d'Aosta 2.svg",
+      "Regione Valle d'Aosta.svg",
+      "VF (region) IT-Valle d'Aosta.svg"
+    ]
   },
   "aquitaine": {
     "regionCode": "aquitaine",
@@ -205,7 +217,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Nouvelle-Aquitaine region locator map.svg",
+      "Aquitaine region locator map.svg",
+      "Nouvelle-Aquitaine in France 2016.svg",
+      "Aquitaine in France.svg",
+      "Nouvelle-Aquitaine region map (DPJ-2020).svg"
+    ]
   },
   "aragon": {
     "regionCode": "aragon",
@@ -224,7 +242,11 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Spain Aragon location map.svg",
+      "Aragón-loc.svg",
+      "Aragon in Spain.svg"
+    ]
   },
   "ardennen": {
     "regionCode": "ardennen",
@@ -262,7 +284,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Turkey location map Armenia.svg",
+      "Turkey Armenia location map.svg",
+      "Turkey Armenia locator map.svg",
+      "Turkey location map Armenia (PlaneMad edition).svg",
+      "Turkey location map Armenia (special marker).svg"
+    ]
   },
   "auvergne": {
     "regionCode": "auvergne",
@@ -281,7 +309,12 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Auvergne region locator map.svg",
+      "Auvergne-Rhône-Alpes region locator map.svg",
+      "Auvergne in France (1789).svg",
+      "Auvergne in France.svg"
+    ]
   },
   "badajoz": {
     "regionCode": "badajoz",
@@ -300,7 +333,11 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Badajoz in Spain.svg",
+      "Badajoz-loc.svg",
+      "Localización de la provincia de Badajoz.svg"
+    ]
   },
   "baden-wurtenberg": {
     "regionCode": "baden-wurtenberg",
@@ -338,7 +375,11 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Islas Baleares in Spain (including Canarias).svg",
+      "Islas Baleares in Spain.svg",
+      "Localización de las Islas Baleares.svg"
+    ]
   },
   "basilicata": {
     "regionCode": "basilicata",
@@ -357,7 +398,9 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Basilicata in Italy.svg"
+    ]
   },
   "baskenland": {
     "regionCode": "baskenland",
@@ -376,7 +419,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Pais Vasco in Spain (including Canarias).svg",
+      "Pais Vasco in Spain.svg",
+      "Localización del País Vasco 2.svg",
+      "País Vasco-loc.svg",
+      "Localización del País Vasco.svg"
+    ]
   },
   "bayern": {
     "regionCode": "bayern",
@@ -395,7 +444,9 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Locator map Bavaria in Germany.svg"
+    ]
   },
   "bornholm": {
     "regionCode": "bornholm",
@@ -414,7 +465,11 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Bornholm blank map.svg",
+      "Denmark location bornholm.svg",
+      "BornholmLoc.svg"
+    ]
   },
   "bourgogne": {
     "regionCode": "bourgogne",
@@ -433,7 +488,10 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Bourgogne region locator map.svg",
+      "Bourgogne in France.svg"
+    ]
   },
   "brabant": {
     "regionCode": "brabant",
@@ -452,7 +510,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Halle Flemish-Brabant Belgium Map.svg",
+      "Ramillies Brabant-Wallon Belgium Map.svg",
+      "Herne Flemish-Brabant Belgium Map.svg",
+      "Bever Flemish-Brabant Belgium Map.svg",
+      "Overijse Flemish-Brabant Belgium Map.svg"
+    ]
   },
   "bratislavsko": {
     "regionCode": "bratislavsko",
@@ -490,7 +554,10 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Bretagne region locator map.svg",
+      "Bretagne region locator map2.svg"
+    ]
   },
   "burgenland": {
     "regionCode": "burgenland",
@@ -509,7 +576,10 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Burgenland in Austria.svg",
+      "Austria Burgenland location map.svg"
+    ]
   },
   "campanie": {
     "regionCode": "campanie",
@@ -528,7 +598,9 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Campania region location map.svg"
+    ]
   },
   "castilla_y_leon": {
     "regionCode": "castilla_y_leon",
@@ -547,7 +619,12 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Castilla y Leon in Spain (including Canarias).svg",
+      "Castilla y León-loc.svg",
+      "Castilla y Leon in Spain.svg",
+      "Localización de Castilla y León.svg"
+    ]
   },
   "castilla-la_mancha": {
     "regionCode": "castilla-la_mancha",
@@ -566,7 +643,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Castilla-La Mancha in Spain (plus Canarias).svg",
+      "Castilla-La Mancha in Spain.svg",
+      "Castilla-La Mancha-loc.svg",
+      "Spain Castile-La Mancha location map.svg",
+      "Localización de Castilla-La Mancha.svg"
+    ]
   },
   "catalunya": {
     "regionCode": "catalunya",
@@ -585,7 +668,10 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "CatalunyaLoc.svg",
+      "Localización de Cataluña.svg"
+    ]
   },
   "centraal": {
     "regionCode": "centraal",
@@ -604,7 +690,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Greece location map Central Greece.svg",
+      "Greece Central Greece location map.svg",
+      "Greece Central Greece locator map.svg",
+      "Greece location map Central Greece (PlaneMad edition).svg",
+      "Greece location map Central Greece (special marker).svg"
+    ]
   },
   "central": {
     "regionCode": "central",
@@ -623,7 +715,11 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "STV Central 2015 locator map.svg",
+      "Central Scotland 2011 numbered.svg",
+      "Central Scotland 2011 (Scottish Parliament electoral region).svg"
+    ]
   },
   "centre": {
     "regionCode": "centre",
@@ -642,7 +738,12 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Centre region locator map.svg",
+      "Centre-Val de Loire region locator map.svg",
+      "Centre-Val de Loire in France.svg",
+      "Centre-Val de Loire in France 2016.svg"
+    ]
   },
   "clare": {
     "regionCode": "clare",
@@ -661,7 +762,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Island of Ireland location map Clare.svg",
+      "Clare Ireland (BI Sect 7).svg",
+      "Clare - British Isles.svg",
+      "Clare in Ireland.svg",
+      "Island of Ireland location map.svg"
+    ]
   },
   "clwyd": {
     "regionCode": "clwyd",
@@ -681,7 +788,10 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Clwyd Preserved County in Wales.svg",
+      "ClwydWest2007Constituency.svg"
+    ]
   },
   "cork": {
     "regionCode": "cork",
@@ -700,7 +810,11 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Island of Ireland location map Cork.svg",
+      "Cork Ireland (BI Sect 7).svg",
+      "Cork in Ireland.svg"
+    ]
   },
   "dalmatia": {
     "regionCode": "dalmatia",
@@ -719,7 +833,12 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Croatia location map, Split-Dalmatia county.svg",
+      "Croatia, Split-Dalmatia County.svg",
+      "Croatia - Split-Dalmatia County.svg",
+      "Croatia Split-Dalmatia County adm location map.svg"
+    ]
   },
   "delalfold": {
     "regionCode": "delalfold",
@@ -738,7 +857,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "DelAlfold in Hungary.svg",
+      "Hungary location map DelAlfold.svg",
+      "Hungary DelAlfold location map.svg",
+      "Hungary location map DelAlfold (PlaneMad edition).svg",
+      "Hungary location map DelAlfold (special marker).svg"
+    ]
   },
   "deldunan": {
     "regionCode": "deldunan",
@@ -776,7 +901,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Dolnoslaskie in Poland.svg",
+      "Polska podział admin dolnoslaskie.svg",
+      "POL Osiecznica (województwo dolnośląskie) map.svg",
+      "Location rail Zmigrod Wasosz.svg",
+      "Wikiekspedycja 2013 logo.svg"
+    ]
   },
   "donegal": {
     "regionCode": "donegal",
@@ -795,7 +926,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Donegal Ireland (BI Sect 7).svg",
+      "Island of Ireland location map Donegal.svg",
+      "Donegal in Ireland.svg",
+      "Donegal - British Isles.svg",
+      "Island of Ireland location map.svg"
+    ]
   },
   "down": {
     "regionCode": "down",
@@ -814,7 +951,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Down (Northern Ireland Parliament constituency).svg",
+      "Newry, Mourne and Down district in Northern Ireland.svg",
+      "Down in Northern Ireland.svg",
+      "Island of Ireland location map Down.svg",
+      "North Down in Northern Ireland.svg"
+    ]
   },
   "dublin": {
     "regionCode": "dublin",
@@ -833,7 +976,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Island of Ireland location map Dublin.svg",
+      "Dublin Ireland (BI Sect 7).svg",
+      "Ireland location map Dublin region.svg",
+      "Island of Ireland location map South Dublin.svg",
+      "Island of Ireland location map City of Dublin.svg"
+    ]
   },
   "dyfed": {
     "regionCode": "dyfed",
@@ -852,7 +1001,11 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Dyfed Preserved County in Wales.svg",
+      "DyfedParliamentaryConstituencies2007.svg",
+      "Preserved Counties Wales.svg"
+    ]
   },
   "east": {
     "regionCode": "east",
@@ -871,7 +1024,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "England locator map with North East England highlighted.svg",
+      "South East England Locator Map Coloured.svg",
+      "East of England in England.svg",
+      "South East Hampshire UK locator map.svg",
+      "North East Combined Authority among combined authorities in England map, 2021.svg"
+    ]
   },
   "east_midlands": {
     "regionCode": "east_midlands",
@@ -890,7 +1049,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "East Midlands in England.svg",
+      "England Region - East Midlands.svg",
+      "West Midlands UK location map.svg",
+      "West Midlands in England (zoom).svg",
+      "West Midlands in England.svg"
+    ]
   },
   "edinburg_and_lothian": {
     "regionCode": "edinburg_and_lothian",
@@ -928,7 +1093,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Map of Metropolitan city of Bologna (region Emilia-Romagna, Italy).svg",
+      "Emilia-Romagna in Italy.svg",
+      "Map of province of Reggio Emilia (region Emilia-Romagna, Italy).svg",
+      "Map of province of Piacenza (region Emilia-Romagna, Italy).svg",
+      "Map of province of Modena (region Emilia-Romagna, Italy).svg"
+    ]
   },
   "erdemli": {
     "regionCode": "erdemli",
@@ -947,7 +1118,9 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Mersin location Erdemli.svg"
+    ]
   },
   "eszakalfold": {
     "regionCode": "eszakalfold",
@@ -966,7 +1139,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Africa (orthographic projection).svg",
+      "Central African Republic (orthographic projection).svg",
+      "Guinea (orthographic projection).svg",
+      "Cameroon (orthographic projection).svg",
+      "Republic of the Congo (orthographic projection).svg"
+    ]
   },
   "eszakmagyar": {
     "regionCode": "eszakmagyar",
@@ -985,7 +1164,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Hungary in European Union.svg",
+      "Kingdom of Hungary 1097.svg",
+      "Hungary in Europe (-rivers -mini map).svg",
+      "Hungary in Europe (relief) (-mini map).svg",
+      "Hungary in Europe (natural) (-mini map).svg"
+    ]
   },
   "extremadura": {
     "regionCode": "extremadura",
@@ -1004,7 +1189,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Spain Extremadura location map.svg",
+      "Extremadura in Spain (including Canarias).svg",
+      "Extremadura in Spain.svg",
+      "Extremadura-loc.svg",
+      "DO Ribera del Guadiana locator map.svg"
+    ]
   },
   "fyn": {
     "regionCode": "fyn",
@@ -1023,7 +1214,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Denmark Funen location map.svg",
+      "Fyns Storkreds.svg",
+      "Location map Funen.svg",
+      "Map Funen.svg",
+      "Funen (Folketing constituency).svg"
+    ]
   },
   "galicia": {
     "regionCode": "galicia",
@@ -1044,7 +1241,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Galicia in Spain (including Canarias).svg",
+      "Galicia in Spain.svg",
+      "Almeria in Spain (+special marker).svg",
+      "A Coruna in Spain (plus Canarias).svg",
+      "Almeria in Spain (plus Canarias) (+special marker).svg"
+    ]
   },
   "galway": {
     "regionCode": "galway",
@@ -1063,7 +1266,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Island of Ireland location map Galway.svg",
+      "Galway Ireland (BI Sect 7).svg",
+      "Galway - British Isles.svg",
+      "Galway in Ireland.svg",
+      "Galway City in Ireland.svg"
+    ]
   },
   "gelderland": {
     "regionCode": "gelderland",
@@ -1082,7 +1291,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Gelderland in the Netherlands.svg",
+      "Gelderland in the Netherlands 2019.svg",
+      "Map - NL - Zaltbommel - Wijk 01 Brakel.svg",
+      "Map - NL - Scherpenzeel - Wijk 00.svg",
+      "Map - NL - Epe - Wijk 00 Epe.svg"
+    ]
   },
   "genfersee": {
     "regionCode": "genfersee",
@@ -1139,7 +1354,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Wales Vale of Glamorgan locator map.svg",
+      "Wales Historic Counties map Glamorgan.svg",
+      "Wales Vale of Glamorgan Community Llanfair map.svg",
+      "Wales Vale of Glamorgan Community Wick map.svg",
+      "Wales Vale of Glamorgan Community Sully map.svg"
+    ]
   },
   "gondar": {
     "regionCode": "gondar",
@@ -1158,7 +1379,9 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Gondar-Bahir Dar Offensive (July - August 2021).svg"
+    ]
   },
   "gorenjsko": {
     "regionCode": "gorenjsko",
@@ -1215,7 +1438,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "ITV regional map 1993.svg",
+      "ITV regional map 1965.svg",
+      "ITV regional map 1974.svg",
+      "ITV branding map 2002.svg",
+      "ITV regional map 1968.svg"
+    ]
   },
   "grodno": {
     "regionCode": "grodno",
@@ -1234,7 +1463,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Grodno region location map.svg",
+      "Grodno province Grodno.svg",
+      "Hrodna Voblast in Belarus.svg",
+      "Grodno province Ashmiany.svg",
+      "Grodno province Wavkavysk.svg"
+    ]
   },
   "gwent": {
     "regionCode": "gwent",
@@ -1253,7 +1488,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Wales Blaenau Gwent locator map.svg",
+      "2010 Wales Blaenau Gwent Community Cwm map.svg",
+      "2024 Wales Blaenau Gwent Community Cwm map.svg",
+      "2024 Wales Blaenau Gwent Community Beaufort map.svg",
+      "2010 Wales Blaenau Gwent Community Brynmawr map.svg"
+    ]
   },
   "gwynedd": {
     "regionCode": "gwynedd",
@@ -1272,7 +1513,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Wales Gwynedd locator map.svg",
+      "Gwynedd UK location map.svg",
+      "Wales Gwynedd Community Llanfair map.svg",
+      "Wales Gwynedd Community Llangelynin map.svg",
+      "Wales Gwynedd Community Bontnewydd map.svg"
+    ]
   },
   "haryana": {
     "regionCode": "haryana",
@@ -1291,7 +1538,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Nuh in Haryana (India).svg",
+      "India Haryana locator map.svg",
+      "India Haryana location map.svg",
+      "Gurugram in Haryana (India).svg",
+      "Haryana locator map.svg"
+    ]
   },
   "henegouwen": {
     "regionCode": "henegouwen",
@@ -1310,7 +1563,9 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Locator County of Hainaut (1350).svg"
+    ]
   },
   "hessen": {
     "regionCode": "hessen",
@@ -1329,7 +1584,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Locator map Hesse in Germany.svg",
+      "Locator map OF in Germany.svg",
+      "Locator map MKK in Germany.svg",
+      "Locator map HP in Germany.svg",
+      "Locator map HEF in Germany.svg"
+    ]
   },
   "highland": {
     "regionCode": "highland",
@@ -1348,7 +1609,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Highland UK parish map showing Tarbat parish.svg",
+      "Highland UK parish map (blank).svg",
+      "Highland UK blank map.svg",
+      "Highland UK location map.svg",
+      "Highland in Scotland.svg"
+    ]
   },
   "hradec_kralove": {
     "regionCode": "hradec_kralove",
@@ -1367,7 +1634,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Kralovehradecky kraj.svg",
+      "Map cz Hradec Králové kroton.svg",
+      "District Hradec kralove locator map.svg",
+      "Královéhradecký kraj in Czech Republic.svg",
+      "CZ-cleneni.svg"
+    ]
   },
   "ile-de-france": {
     "regionCode": "ile-de-france",
@@ -1386,7 +1659,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Ile de France departments 1969 evolution map-fr.svg",
+      "Ile-de-France in France (1789).svg",
+      "Île-de-France region locator map.svg",
+      "Ile de France departments 1968 evolution map-el.svg",
+      "Île-de-France region locator map2.svg"
+    ]
   },
   "istria": {
     "regionCode": "istria",
@@ -1405,7 +1684,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Croatia, Istria County.svg",
+      "Croatia - Istria County.svg",
+      "Croatia location map, Istria county.svg",
+      "Istarska županija in Croatia.svg",
+      "Croatia Istria County adm location map.svg"
+    ]
   },
   "jylland": {
     "regionCode": "jylland",
@@ -1424,7 +1709,10 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Denmark location jylland.svg",
+      "Jyllands-Ringen (Denmark) track map.svg"
+    ]
   },
   "kaernten": {
     "regionCode": "kaernten",
@@ -1443,7 +1731,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Kärnten in Austria.svg",
+      "Austria, administrative divisions - Nmbrs.svg",
+      "Austria, administrative divisions - de.svg",
+      "Austria, administrative divisions - en.svg",
+      "Carinthia East (National Council electoral district).svg"
+    ]
   },
   "karlovy_vary": {
     "regionCode": "karlovy_vary",
@@ -1462,7 +1756,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Karlovarsky kraj.svg",
+      "District Karlovy vary locator map.svg",
+      "Map cz Karlovy Vary kroton.svg",
+      "Karlovy Vary (CZE) - location map.svg",
+      "Czech parliament elections 2010 - districts, turnout.svg"
+    ]
   },
   "kerry": {
     "regionCode": "kerry",
@@ -1481,7 +1781,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Island of Ireland location map Kerry.svg",
+      "Island of Ireland location map.svg",
+      "Kerry in Ireland.svg",
+      "Wales Powys Community Kerry map.svg",
+      "Kerry - British Isles.svg"
+    ]
   },
   "khmelnitskyi": {
     "regionCode": "khmelnitskyi",
@@ -1519,7 +1825,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Illusztracio maininfo 2.svg",
+      "Hungary in European Union.svg",
+      "Kingdom of Hungary 1097.svg",
+      "Hungary in Europe (-rivers -mini map).svg",
+      "Hungary in Europe (relief) (-mini map).svg"
+    ]
   },
   "kozepdunan": {
     "regionCode": "kozepdunan",
@@ -1557,7 +1869,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Illusztracio maininfo 2.svg",
+      "Hungary in European Union.svg",
+      "Kingdom of Hungary 1097.svg",
+      "Hungary in Europe (-rivers -mini map).svg",
+      "Hungary in Europe (relief) (-mini map).svg"
+    ]
   },
   "kreta": {
     "regionCode": "kreta",
@@ -1576,7 +1894,11 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Kriti in Greece.svg",
+      "Crete integrated map-hu.svg",
+      "Venezianisches Kreta.svg"
+    ]
   },
   "krka": {
     "regionCode": "krka",
@@ -1595,7 +1917,10 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Balkan Peninsula in its region.svg",
+      "Krk.svg"
+    ]
   },
   "krocevsko": {
     "regionCode": "krocevsko",
@@ -1633,7 +1958,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Kujawsko-Pomorskie in Poland.svg",
+      "Polska podział admin kujawsko pomorskie.svg",
+      "Polska podział admin dolnoslaskie.svg",
+      "Locator map MOF Toruń in Kuyavian-Pomeranian Voivodeship.svg",
+      "Mapa konturowa wojewodztwa kuj-pom.svg"
+    ]
   },
   "languedoc-roussillon": {
     "regionCode": "languedoc-roussillon",
@@ -1652,7 +1983,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Languedoc-Roussillon region locator map.svg",
+      "Languedoc-Roussillon in France.svg",
+      "Rimex-France location Languedoc-Roussillon.svg",
+      "Languedoc-Roussillon-Midi-Pyrénées region locator map.svg",
+      "Occitanie in France 2016.svg"
+    ]
   },
   "laois": {
     "regionCode": "laois",
@@ -1671,7 +2008,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Island of Ireland location map Laois.svg",
+      "Laois in Ireland.svg",
+      "Island of Ireland location map.svg",
+      "Laois - British Isles.svg",
+      "Laois Ireland (BI Sect 7).svg"
+    ]
   },
   "lazio": {
     "regionCode": "lazio",
@@ -1690,7 +2033,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Map of Metropolitan city of Rome (region Lazio, Italy).svg",
+      "Map of province of Latina (region Lazio, Italy).svg",
+      "Map of province of Viterbo (region Lazio, Italy).svg",
+      "Map of province of Frosinone (region Lazio, Italy).svg",
+      "Map of province of Rieti (region Lazio, Italy).svg"
+    ]
   },
   "liberec": {
     "regionCode": "liberec",
@@ -1709,7 +2058,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Liberecky kraj.svg",
+      "District Liberec locator map.svg",
+      "Map cz Liberec kroton.svg",
+      "CZ-cleneni.svg",
+      "Liberec Region (CZE) - location map.svg"
+    ]
   },
   "liguria": {
     "regionCode": "liguria",
@@ -1728,7 +2083,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Map of Metropolitan city of Genoa (region Liguria, Italy).svg",
+      "Regio IX Liguria locator map.svg",
+      "Liguria in Italy.svg",
+      "Map of province of Imperia (region Liguria, Italy).svg",
+      "Map of province of Savona (region Liguria, Italy).svg"
+    ]
   },
   "limburg": {
     "regionCode": "limburg",
@@ -1747,7 +2108,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Limburg in the Netherlands 2019.svg",
+      "Low Countries Locator Brabant Limburg and Overmaas.svg",
+      "Limburg in the Netherlands.svg",
+      "Locator map LM in Germany.svg",
+      "Locator map LM in Hesse.svg"
+    ]
   },
   "limerick": {
     "regionCode": "limerick",
@@ -1766,7 +2133,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Island of Ireland location map Limerick.svg",
+      "Limerick in Ireland.svg",
+      "Limerick City in Ireland.svg",
+      "Island of Ireland location map.svg",
+      "Limerick City (Dáil Éireann constituency).svg"
+    ]
   },
   "limousin": {
     "regionCode": "limousin",
@@ -1785,7 +2158,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Limousin region locator map.svg",
+      "Limousin in France (1789).svg",
+      "Nouvelle-Aquitaine region locator map.svg",
+      "Limousin in France.svg",
+      "Rimex-France location Limousin.svg"
+    ]
   },
   "ljubljana": {
     "regionCode": "ljubljana",
@@ -1804,7 +2183,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Ljubljana in Slovenia.svg",
+      "Ljubljana Bežigrad (National Assembly constituency).svg",
+      "Ljubljana Center (National Assembly constituency).svg",
+      "Retreat of the 9th Slovenian Corps of the People's Liberation Army of Yugoslavia - ru.svg",
+      "Iasoru republic.svg"
+    ]
   },
   "lodzkie": {
     "regionCode": "lodzkie",
@@ -1823,7 +2208,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Lódzkie in Poland.svg",
+      "POL województwo łódzkie 1950.svg",
+      "POL województwo łódzkie 1946.svg",
+      "Polska podział admin lodzkie.svg",
+      "Poland Voivodeships adminstrative division 1938 Łódź Voivodeship.svg"
+    ]
   },
   "lombardia": {
     "regionCode": "lombardia",
@@ -1842,7 +2233,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Map of comune of Romano di Lombardia (province of Bergamo, region Lombardy, Italy).svg",
+      "Map of Locate Varesino (Province of Como, region Lombardy, Italy 2023).svg",
+      "Map of Locate Varesino (Province of Como, region Lombardy, Italy 2024).svg",
+      "Regione Lombardia 2.svg",
+      "Regione Lombardia 3.svg"
+    ]
   },
   "london": {
     "regionCode": "london",
@@ -1861,7 +2258,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Greater London UK locator map 2010.svg",
+      "Greater London in England (wo City of London) (zoom).svg",
+      "Greater London in England 2023-04-01.svg",
+      "Greater London in England (City of London hatched) (zoom).svg",
+      "Greater London in England (zoom).svg"
+    ]
   },
   "lubelskie": {
     "regionCode": "lubelskie",
@@ -1880,7 +2283,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Lubelskie in Poland.svg",
+      "POL Józefów (lubelskie) map.svg",
+      "POL województwo lubelskie 1950.svg",
+      "POL województwo lubelskie 1946.svg",
+      "POL Izbica (lubelskie) map.svg"
+    ]
   },
   "lubovna": {
     "regionCode": "lubovna",
@@ -1899,7 +2308,9 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Slovensko okres StaraLubovna.svg"
+    ]
   },
   "luik": {
     "regionCode": "luik",
@@ -1918,7 +2329,12 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Arrondissement Liège Belgium Map.svg",
+      "Low Countries Locator Prince-Bischopric of Liege.svg",
+      "District liège-01.svg",
+      "Diocese Liege and Prince-Bishopric of Liège.svg"
+    ]
   },
   "luxemburg": {
     "regionCode": "luxemburg",
@@ -1937,7 +2353,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "War of the Brabantian Succession (1355–1357) locator map.svg",
+      "Distrikt Luxemburg in Luxembourg.svg",
+      "Map of the European Union, Czech Republic.svg",
+      "Wisconsin municipalities 2.svg",
+      "Unia Europejska, Republika Czeska.svg"
+    ]
   },
   "madrid": {
     "regionCode": "madrid",
@@ -1956,7 +2378,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Spain Madrid location map.svg",
+      "Comunidad de Madrid in Spain (including Canarias).svg",
+      "Madrid in Spain (plus Canarias).svg",
+      "LocationMadrid, Spain.svg",
+      "LocationArroyomolinos (Madrid), Spain.svg"
+    ]
   },
   "maharashtra": {
     "regionCode": "maharashtra",
@@ -1975,7 +2403,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "India Maharashtra locator map (2013 scheme).svg",
+      "India Maharashtra locator map.svg",
+      "India Maharashtra location map.svg",
+      "Maharashtra locator map.svg",
+      "Palghar in Maharashtra (India).svg"
+    ]
   },
   "mal-karpaty": {
     "regionCode": "mal-karpaty",
@@ -2013,7 +2447,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Malopolskie in Poland.svg",
+      "POL województwo małopolskie map marked.svg",
+      "POL województwo małopolskie map.svg",
+      "Polska podział admin malopolskie.svg",
+      "Zasięg produkcji obwarzanka krakowskiego.svg"
+    ]
   },
   "marche": {
     "regionCode": "marche",
@@ -2032,7 +2472,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Map of province of Macerata (region Marche, Italy).svg",
+      "Map of province of Fermo (region Marche, Italy).svg",
+      "Map of province of Ancona (region Marche, Italy).svg",
+      "Map of province of Ascoli Piceno (region Marche, Italy).svg",
+      "Map of province of Pesaro and Urbino (region Marche, Italy).svg"
+    ]
   },
   "meath": {
     "regionCode": "meath",
@@ -2051,7 +2497,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Island of Ireland location map Meath.svg",
+      "Meath in Ireland.svg",
+      "Island of Ireland location map.svg",
+      "Meath - British Isles.svg",
+      "Meath Ireland (BI Sect 7).svg"
+    ]
   },
   "mezbohemia": {
     "regionCode": "mezbohemia",
@@ -2089,7 +2541,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Midi-Pyrénées region locator map.svg",
+      "Rimex-France location Midi-Pyrénées.svg",
+      "Midi-Pyrénées in France.svg",
+      "Languedoc-Roussillon-Midi-Pyrénées region locator map.svg",
+      "Occitanie in France 2016.svg"
+    ]
   },
   "mittelland": {
     "regionCode": "mittelland",
@@ -2127,7 +2585,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Map of the European Union, Czech Republic.svg",
+      "Unia Europejska, Republika Czeska.svg",
+      "Karte der Europäischen Union, Tschechische Republik.svg",
+      "Mapa Evropské unie, Česká republika.svg",
+      "Carte de l'Union européenne, République tchèque.svg"
+    ]
   },
   "murcia": {
     "regionCode": "murcia",
@@ -2146,7 +2610,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Spain Murcia location map.svg",
+      "Region de Murcia in Spain (including Canarias).svg",
+      "Murcia in Spain (plus Canarias).svg",
+      "Murcia - Mapa municipal.svg",
+      "Murcia in Spain.svg"
+    ]
   },
   "namen": {
     "regionCode": "namen",
@@ -2165,7 +2635,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Lincolnshire in England (+ceremonial areas solid).svg",
+      "Shropshire in England (+ceremonial areas solid).svg",
+      "Lancashire in England (+ceremonial areas).svg",
+      "Dorset in England (+ceremonial areas solid).svg",
+      "Somerset in England (+ceremonial areas).svg"
+    ]
   },
   "navarra": {
     "regionCode": "navarra",
@@ -2184,7 +2660,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "DO Navarra locator map.svg",
+      "Navarra in Spain (including Canarias).svg",
+      "Navarra and Basque Country in Spain (plus Canarias).svg",
+      "Navarra in Spain.svg",
+      "Navarra-loc.svg"
+    ]
   },
   "niederoesterreich": {
     "regionCode": "niederoesterreich",
@@ -2203,7 +2685,9 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Karte AT Niederoesterreich.svg"
+    ]
   },
   "noord_brabant": {
     "regionCode": "noord_brabant",
@@ -2222,7 +2706,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Noord-Brabant in the Netherlands 2019.svg",
+      "Noord-Brabant in the Netherlands.svg",
+      "Map - NL - Oosterhout - Wijk 09 Industrieterrein Noord - Buurt 02 Industrieterrein Weststad-Noord.svg",
+      "Map - NL - Oosterhout - Wijk 09 Industrieterrein Noord - Buurt 00 Industrieterrein Statendam.svg",
+      "Map - NL - Grave - Wijk 02 Velp - Buurt 02 Buitengebied-Noord inclusief rijksweg.svg"
+    ]
   },
   "noord_holland": {
     "regionCode": "noord_holland",
@@ -2241,7 +2731,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Noord-Holland in the Netherlands 2019.svg",
+      "Noord-Holland in the Netherlands.svg",
+      "Map - NL - Leiden - Binnenstad-Noord - De Waard.svg",
+      "Map - NL - Katwijk - Wijk 01 Katwijk Noord - Buurt 04 Hoornes-Oost.svg",
+      "Map - NL - Katwijk - Wijk 01 Katwijk Noord - Buurt 03 Hoornes-West.svg"
+    ]
   },
   "nordrhein-westfalen": {
     "regionCode": "nordrhein-westfalen",
@@ -2260,7 +2756,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Locator map LV Westfalen-Lippe in Germany.svg",
+      "Germany Laender Nordrhein-Westfalen.svg",
+      "Locator map BOT in Germany.svg",
+      "Locator map LV Westfalen-Lippe in North Rhine-Westphalia.svg",
+      "Locator map Westfalen in North Rhine-Westphalia.svg"
+    ]
   },
   "nordwestschweiz": {
     "regionCode": "nordwestschweiz",
@@ -2298,7 +2800,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Basse-Normandie region locator map.svg",
+      "Haute-Normandie region locator map.svg",
+      "Normandie in France (1789).svg",
+      "Normandie region locator map.svg",
+      "Basse-Normandie in France.svg"
+    ]
   },
   "north_east": {
     "regionCode": "north_east",
@@ -2317,7 +2825,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "England locator map with North East England highlighted.svg",
+      "North East Combined Authority among combined authorities in England map, 2021.svg",
+      "North East England - North Northumberland constituency.svg",
+      "North East England - Stockton North constituency.svg",
+      "North East England - North Durham constituency.svg"
+    ]
   },
   "north_west": {
     "regionCode": "north_west",
@@ -2336,7 +2850,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "North East England - Stockton West constituency.svg",
+      "North West England (European Parliament constituency).svg",
+      "North West England in England.svg",
+      "North East England - Newcastle upon Tyne Central and West constituency.svg",
+      "North West Leicestershire UK locator map.svg"
+    ]
   },
   "notranjsko": {
     "regionCode": "notranjsko",
@@ -2393,7 +2913,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Oberösterreich in Austria.svg",
+      "Gemeinden Oberösterreich.svg",
+      "Karte AT Oberoesterreich.svg",
+      "Austria Upper Austria location map.svg",
+      "Flag-map of Upper Austria.svg"
+    ]
   },
   "olomouc": {
     "regionCode": "olomouc",
@@ -2412,7 +2938,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Olomoucky kraj.svg",
+      "District Olomouc locator map.svg",
+      "Map cz Olomouc kroton.svg",
+      "Olomouc (CZE) - location map.svg",
+      "CZ-cleneni.svg"
+    ]
   },
   "oost_vlaanderen": {
     "regionCode": "oost_vlaanderen",
@@ -2431,7 +2963,10 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Provincie Oost-Vlaanderen in Belgium.svg",
+      "Belgium East Flanders location map with COA.svg"
+    ]
   },
   "opolskie": {
     "regionCode": "opolskie",
@@ -2450,7 +2985,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Opolskie in Poland (relief).svg",
+      "Opolskie in Poland (+rivers).svg",
+      "Opolskie in Poland (relief + less opacity).svg",
+      "Opolskie in Poland.svg",
+      "Malopolskie in Poland.svg"
+    ]
   },
   "orava": {
     "regionCode": "orava",
@@ -2469,7 +3010,9 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Orava.svg"
+    ]
   },
   "ostra_mellansverige": {
     "regionCode": "ostra_mellansverige",
@@ -2488,7 +3031,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Sweden 1789.svg",
+      "Kingdom of Sweden (1914).svg",
+      "Greater Middle East (orthographic projection).svg",
+      "Locator map Mittelfranken in Germany.svg",
+      "United Kingdoms of Sweden and Norway (1815).svg"
+    ]
   },
   "ostschweiz": {
     "regionCode": "ostschweiz",
@@ -2526,7 +3075,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Overijssel in the Netherlands 2019.svg",
+      "Overijssel in the Netherlands.svg",
+      "Locator Prince-Bishopric of Utrecht (1350).svg",
+      "Map NL - Ommen - Eerde.svg",
+      "Map - NL - Municipality code 0160 (2009).svg"
+    ]
   },
   "pardubice": {
     "regionCode": "pardubice",
@@ -2545,7 +3100,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Pardubicky kraj.svg",
+      "District Pardubice locator map.svg",
+      "Map cz Pardubice kroton.svg",
+      "Pardubice (CZE) - location.svg",
+      "CZ-cleneni.svg"
+    ]
   },
   "pawlowo": {
     "regionCode": "pawlowo",
@@ -2583,7 +3144,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Pays de la Loire region locator map.svg",
+      "Pays de la Loire region locator map new borders.svg",
+      "Pays de la Loire region locator map2.svg",
+      "Pays de la Loire Map.svg",
+      "Pays de la Loire in France 2016.svg"
+    ]
   },
   "peloponnisos": {
     "regionCode": "peloponnisos",
@@ -2602,7 +3169,10 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Peloponnisos in Greece.svg",
+      "Peloponnisos Dytiki Ellada ke Ionia Nisia in Greece.svg"
+    ]
   },
   "picardie": {
     "regionCode": "picardie",
@@ -2621,7 +3191,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Picardie region locator map.svg",
+      "Hauts-de-France region locator map.svg",
+      "Picardie in France (1789).svg",
+      "Picardie in France.svg",
+      "Picardie ancien régime.svg"
+    ]
   },
   "piemonte": {
     "regionCode": "piemonte",
@@ -2640,7 +3216,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Map of comune of Bagnolo Piemonte (province of Cuneo, region Piedmont, Italy).svg",
+      "Map of comune of Limone Piemonte (province of Cuneo, region Piedmont, Italy).svg",
+      "Map of comune of Caramagna Piemonte (province of Cuneo, region Piedmont, Italy).svg",
+      "Regione Piemonte 2.svg",
+      "Map of comune of Alba (province of Cuneo, region Piedmont, Italy).svg"
+    ]
   },
   "plzen": {
     "regionCode": "plzen",
@@ -2659,7 +3241,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Plzensky kraj.svg",
+      "Plzen-Rokycany locator map.svg",
+      "District Plzen-jih locator map.svg",
+      "District Plzen-mesto locator map.svg",
+      "District Plzen-sever locator map.svg"
+    ]
   },
   "poitou-charentes": {
     "regionCode": "poitou-charentes",
@@ -2678,7 +3266,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Poitou-Charentes region locator map.svg",
+      "Poitou-Charentes in France.svg",
+      "Rimex-France location Poitou-Charentes.svg",
+      "Nouvelle-Aquitaine region locator map.svg",
+      "Aquitaine-Limousin-Poitou-Charentes Map.svg"
+    ]
   },
   "pomorsky": {
     "regionCode": "pomorsky",
@@ -2697,7 +3291,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Pomerania 1914.svg",
+      "Mitteleuropa zur Zeit der Staufer.svg",
+      "Mecklenburg-Vorpommern Map Districts Border Mecklenburg Western Pomerania - Landkreise Grenzen Karte MV MeckPomm.svg",
+      "Map-Prussia-Pomerania.svg",
+      "German Empire - Prussia - Pomerania (1871).svg"
+    ]
   },
   "portalegre": {
     "regionCode": "portalegre",
@@ -2716,7 +3316,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Distrikt Portalegre in Portugal.svg",
+      "LocalDistritoPortalegre.svg",
+      "LocalDistritoEvoraComOlivença.svg",
+      "Brazil Rio Grande do Norte Portalegre location map.svg",
+      "RioGrandedoNorte Municip Portalegre.svg"
+    ]
   },
   "powys": {
     "regionCode": "powys",
@@ -2735,7 +3341,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Wales Powys locator map.svg",
+      "Wales Powys Community Cray map.svg",
+      "Wales Powys Community Llangynog map.svg",
+      "Wales Powys Community Montgomery map.svg",
+      "Wales Powys Community Llangattock map.svg"
+    ]
   },
   "prago": {
     "regionCode": "prago",
@@ -2754,7 +3366,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Kraj Hlavni mesto Praha.svg",
+      "Hlavní mesto Praha in Czech Republic.svg",
+      "Czech Republic, administrative divisions - de-.svg",
+      "Czech Republic, administrative divisions - de - colored.svg",
+      "Czech Republic, administrative divisions - de+.svg"
+    ]
   },
   "provence": {
     "regionCode": "provence",
@@ -2773,7 +3391,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Provence-Alpes-Côte d’Azur region locator map.svg",
+      "Provence-Alpes-Côte d'Azur in France 2016.svg",
+      "Provence-Alpes-Côte d'Azur region locator map2.svg",
+      "Provence-Alpes-Côte d'Azur Map.svg",
+      "Rimex-France location Provence-Alpes-Côte d'Azur.svg"
+    ]
   },
   "ptujsko": {
     "regionCode": "ptujsko",
@@ -2811,7 +3435,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Map of comune of Gravina in Puglia (metropolitan city of Bari, region Apulia, Italy).svg",
+      "Map of comune of Ruvo di Puglia (metropolitan city of Bari, region Apulia, Italy).svg",
+      "Map of comune of Canosa di Puglia (province of Barletta-Andria-Trani, region Apulia, Italy).svg",
+      "Map of comune of San Ferdinando di Puglia (province of Barletta-Andria-Trani, region Apulia, Italy).svg",
+      "Italian Region Puglia (non correct borders).svg"
+    ]
   },
   "rajasthan": {
     "regionCode": "rajasthan",
@@ -2830,7 +3460,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Rajasthan locator map.svg",
+      "India Rajasthan location map.svg",
+      "India Rajasthan locator map.svg",
+      "India Hadoti locator map.svg",
+      "Rajasthan in India (1951).svg"
+    ]
   },
   "rheinland-pfalz": {
     "regionCode": "rheinland-pfalz",
@@ -2849,7 +3485,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Germany Laender Rheinland-Pfalz.svg",
+      "Locator map RP in Germany.svg",
+      "Deutschland Lage von Rheinland-Pfalz Saarland.svg",
+      "Locator map Rhineland-Palatinate in Germany.svg",
+      "Locator map TR in Germany.svg"
+    ]
   },
   "rhone-alpes": {
     "regionCode": "rhone-alpes",
@@ -2868,7 +3510,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Rhône-Alpes region locator map.svg",
+      "Auvergne-Rhône-Alpes region locator map.svg",
+      "Auvergne-Rhône-Alpes in France 2016.svg",
+      "Auvergne-Rhône-Alpes Map.svg",
+      "Rhône-Alpes in France.svg"
+    ]
   },
   "roscommon": {
     "regionCode": "roscommon",
@@ -2887,7 +3535,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Island of Ireland location map Roscommon.svg",
+      "Roscommon in Ireland.svg",
+      "Island of Ireland location map.svg",
+      "Map of Michigan highlighting Roscommon County.svg",
+      "Roscommon - British Isles.svg"
+    ]
   },
   "sachsen-anhalt": {
     "regionCode": "sachsen-anhalt",
@@ -2906,7 +3560,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Locator map Saxony-Anhalt in Germany.svg",
+      "Deutschland Lage von Sachsen, Sachsen-Anhalt und Thüringen.svg",
+      "Germany Laender Sachsen-Anhalt.svg",
+      "Sachsen-Anhalt in German Democratic Republic 1949 - 1952.svg",
+      "Sachsen-Anhalt Kreise (nummeriert).svg"
+    ]
   },
   "salzburg": {
     "regionCode": "salzburg",
@@ -2925,7 +3585,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Austria Salzburg location map.svg",
+      "Austria salzburg mittersill.svg",
+      "Austria salzburg Wald.svg",
+      "Salzburg City (National Council electoral district).svg",
+      "Salzburg in Austria.svg"
+    ]
   },
   "sardegna": {
     "regionCode": "sardegna",
@@ -2944,7 +3610,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Sud Sardegna in Italy (2018).svg",
+      "Nord-Est Sardegna in Italy (2021).svg",
+      "South Sardinia in Italy (as of 2016).svg",
+      "Regione Sardegna 2.svg",
+      "Regione Sardegna 3.svg"
+    ]
   },
   "shkodra": {
     "regionCode": "shkodra",
@@ -2982,7 +3654,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Location of the Kingdom of the Two Sicilies-it.svg",
+      "Province duosiciliane con confronto.svg",
+      "Location of the Kingdom of the Two Sicilies-cs.svg",
+      "Two Sicilies at the time of The Leopard.svg",
+      "Via Valeria in Sicilia locator map.svg"
+    ]
   },
   "sjaelland": {
     "regionCode": "sjaelland",
@@ -3001,7 +3679,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Region Sjælland locator map.svg",
+      "Sjælland in Denmark.svg",
+      "Denmark location sjalland.svg",
+      "Denmark Zealand rel location map.svg",
+      "Sjællands Storkreds.svg"
+    ]
   },
   "sligo": {
     "regionCode": "sligo",
@@ -3020,7 +3704,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Sligo - British Isles.svg",
+      "Island of Ireland location map Sligo.svg",
+      "Sligo in Ireland.svg",
+      "Island of Ireland location map.svg",
+      "Sligo Ireland (BI Sect 7).svg"
+    ]
   },
   "smaland": {
     "regionCode": "smaland",
@@ -3039,7 +3729,9 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Sverigekarta-Landskap Småland.svg"
+    ]
   },
   "south": {
     "regionCode": "south",
@@ -3058,7 +3750,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "South Scotland (Scottish Parliament) - numbered.svg",
+      "South Ayrshire UK parish map (blank).svg",
+      "South Lanarkshire UK parish map (blank).svg",
+      "Midlothian South, Tweeddale and Lauderdale (Scottish Parliament constituency).svg",
+      "South Ayrshire UK blank map.svg"
+    ]
   },
   "south_east": {
     "regionCode": "south_east",
@@ -3077,7 +3775,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "South East Hampshire UK locator map.svg",
+      "South East England Locator Map Coloured.svg",
+      "South East England in England.svg",
+      "North East England - Middlesbrough South and East Cleveland constituency.svg",
+      "North East England - South Shields constituency.svg"
+    ]
   },
   "south_west": {
     "regionCode": "south_west",
@@ -3096,7 +3800,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "South West Hampshire UK locator map.svg",
+      "South West England in England.svg",
+      "England south west map- Cornwall to Berkshire.svg",
+      "South West Essex UK locator map.svg",
+      "England Region - South West.svg"
+    ]
   },
   "spis": {
     "regionCode": "spis",
@@ -3115,7 +3825,9 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Szepes county.svg"
+    ]
   },
   "stajerska": {
     "regionCode": "stajerska",
@@ -3153,7 +3865,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Duchy of Austria locator map (1250).svg",
+      "Steiermark in Austria.svg",
+      "Karte A Steiermark G (2015).svg",
+      "Gerichtsbezirke Steiermark 2012.svg",
+      "Karte A Steiermark BM (2015).svg"
+    ]
   },
   "sudbohemia": {
     "regionCode": "sudbohemia",
@@ -3210,7 +3928,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Swietokrzyskie in Poland (+rivers).svg",
+      "Swietokrzyskie powiaty.svg",
+      "Swietokrzyskie in Poland (relief).svg",
+      "Swietokrzyskie in Poland (relief + less opacity).svg",
+      "Swietokrzyskie powiaty bez opisu.svg"
+    ]
   },
   "sydsverige": {
     "regionCode": "sydsverige",
@@ -3229,7 +3953,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "South Korea–Sweden Locator.svg",
+      "Sweden 1789.svg",
+      "Locator map of South Jeolla Province, South Korea.svg",
+      "Sweden in Europe (natural) (-mini map).svg",
+      "Sweden in Europe (relief) (-mini map).svg"
+    ]
   },
   "tessin": {
     "regionCode": "tessin",
@@ -3248,7 +3978,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Kanton Tessin in Switzerland.svg",
+      "Airolo - connecting corridor numbered.svg",
+      "Airolo - connecting corridor-fr.svg",
+      "Airolo - connecting corridor-en.svg",
+      "Airolo - connecting corridor arrows.svg"
+    ]
   },
   "thuringen": {
     "regionCode": "thuringen",
@@ -3267,7 +4003,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Locator map Thuringia in Germany.svg",
+      "Locator map KYF in Germany.svg",
+      "Locator map GRZ in Germany.svg",
+      "Locator map WAK in Germany.svg",
+      "Locator map AP in Germany.svg"
+    ]
   },
   "tipperary": {
     "regionCode": "tipperary",
@@ -3286,7 +4028,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Island of Ireland location map Tipperary.svg",
+      "Island of Ireland location map South Tipperary.svg",
+      "Island of Ireland location map North Tipperary.svg",
+      "South Tipperary in Ireland.svg",
+      "Tipperary in Ireland.svg"
+    ]
   },
   "tirol": {
     "regionCode": "tirol",
@@ -3305,7 +4053,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Tirol in Austria and Italy.svg",
+      "Karte AT Tirol.svg",
+      "Tirol in Austria.svg",
+      "Karte A Tirol LA.svg",
+      "Austria Western Austria (Tyrol and Vorarlberg) location map.svg"
+    ]
   },
   "toscana": {
     "regionCode": "toscana",
@@ -3324,7 +4078,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Tuscany in Italy.svg",
+      "Italy Tuscany location map 3.svg",
+      "Italy Tuscany location map 2.svg",
+      "Medici Villas Location-it.svg",
+      "Medici Villas Location-fr.svg"
+    ]
   },
   "transylvania": {
     "regionCode": "transylvania",
@@ -3343,7 +4103,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Map Thirty Years War-it.svg",
+      "Harta jud Maramures.svg",
+      "Transylvania, Banat, Crisana and Maramures.svg",
+      "Romania 1930, Administrative Map.svg",
+      "Kingdom of Hungary 1000.svg"
+    ]
   },
   "trenciansko": {
     "regionCode": "trenciansko",
@@ -3381,7 +4147,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Map of comune of Ala (province of Trento, region Trentino-South Tyrol, Italy) 2018.svg",
+      "Map of comune of Trento (province of Trento, region Trentino-South Tyrol, Italy) 2023.svg",
+      "Map of comune of Trento (province of Trento, region Trentino-South Tyrol, Italy) 2018.svg",
+      "Map of comune of Tione di Trento (province of Trento, region Trentino-South Tyrol, Italy) 2023.svg",
+      "Map of province of Trento (region Trentino-Alto Adige-Südtirol, Italy).svg"
+    ]
   },
   "tripoli": {
     "regionCode": "tripoli",
@@ -3400,7 +4172,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Tripoli in Libya.svg",
+      "Map Crusader states 1102-ar.svg",
+      "2010 Dimos Tripolis.svg",
+      "De Tripolis.svg",
+      "DE Skiritidas.svg"
+    ]
   },
   "trnava": {
     "regionCode": "trnava",
@@ -3419,7 +4197,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Trnava Region - outline map.svg",
+      "Slovensko okres Trnava.svg",
+      "Slovensko okres Galanta.svg",
+      "Slovensko okres Skalica.svg",
+      "Slovensko okres Piestany.svg"
+    ]
   },
   "turks_cyprus": {
     "regionCode": "turks_cyprus",
@@ -3438,7 +4222,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Northern Cyprus (orthographic projection).svg",
+      "Turks and Caicos Islands in North America (-mini map -rivers).svg",
+      "United Kingdom in its region (Turks and Caicos Islands special).svg",
+      "Turks and Caicos Islands in North America.svg",
+      "Turks and Caicos Islands in United Kingdom.svg"
+    ]
   },
   "umbria": {
     "regionCode": "umbria",
@@ -3457,7 +4247,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Regio VI Umbria locator map.svg",
+      "Map of province of Perugia (region Umbria, Italy).svg",
+      "Map of province of Terni (region Umbria, Italy).svg",
+      "Italian Region Umbria (non correct borders).svg",
+      "Umbria in Italy.svg"
+    ]
   },
   "usti_nad_labem": {
     "regionCode": "usti_nad_labem",
@@ -3476,7 +4272,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Ustecky kraj.svg",
+      "Ústí nad Labem (CZE) - location map.svg",
+      "District Usti nad labem locator map.svg",
+      "Map cz Ústí nad Labem kroton.svg",
+      "Usti Region Location Map.svg"
+    ]
   },
   "utrecht": {
     "regionCode": "utrecht",
@@ -3495,7 +4297,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Utrecht in the Netherlands 2019.svg",
+      "Locator Prince-Bishopric of Utrecht (1350).svg",
+      "Utrecht in the Netherlands.svg",
+      "Map - NL - Utrecht - Wijk 08 Zuidwest.svg",
+      "Map - NL - Utrecht - Wijk 04 Noordoost.svg"
+    ]
   },
   "valencia": {
     "regionCode": "valencia",
@@ -3514,7 +4322,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Valencia in Spain (plus Canarias).svg",
+      "LocationValencia, Spain.svg",
+      "Venezuela - Carabobo - Valencia.svg",
+      "Valencia in Spain.svg",
+      "Parroquia Catedral - Municipio Valencia - Carabobo - Venezuela.svg"
+    ]
   },
   "vastsverige": {
     "regionCode": "vastsverige",
@@ -3533,7 +4347,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Sweden Gotland location map modified.svg",
+      "Sweden 1789.svg",
+      "Sweden in Europe (natural) (-mini map).svg",
+      "Sweden in Europe (relief) (-mini map).svg",
+      "Sweden in Europe (-rivers -mini map).svg"
+    ]
   },
   "venetia": {
     "regionCode": "venetia",
@@ -3552,7 +4372,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Map of Metropolitan city of Venice (region Veneto, Italy).svg",
+      "Map of province of Belluno (region Veneto, Italy).svg",
+      "Map of province of Treviso (region Veneto, Italy).svg",
+      "Map of province of Verona (region Veneto, Italy).svg",
+      "Map of province of Padua (region Veneto, Italy).svg"
+    ]
   },
   "voralberg": {
     "regionCode": "voralberg",
@@ -3590,7 +4416,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Kraj Vysocina.svg",
+      "Kraj Vysocina old colors.svg",
+      "Kraj Vysocina in Czech Republic.svg",
+      "CZ-cleneni.svg",
+      "Flag-map of Vysocina Region.svg"
+    ]
   },
   "wallon": {
     "regionCode": "wallon",
@@ -3609,7 +4441,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Ramillies Brabant-Wallon Belgium Map.svg",
+      "Municipalities Brabant-Wallon Belgium Map - Number.svg",
+      "Waterloo Brabant-Wallon Belgium Map.svg",
+      "Genappe Brabant-Wallon Belgium Map.svg",
+      "Wavre Brabant-Wallon Belgium Map.svg"
+    ]
   },
   "warminsko": {
     "regionCode": "warminsko",
@@ -3629,7 +4467,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Warmian-Masurian in Poland (+rivers).svg",
+      "Bartoszyce County (Warmian–Masurian Voivodeship).svg",
+      "Warmian-Masurian in Poland (relief).svg",
+      "Warmian-Masurian in Poland (relief + less opacity).svg",
+      "Braniewo County (Warmian–Masurian Voivodeship).svg"
+    ]
   },
   "west_midlands": {
     "regionCode": "west_midlands",
@@ -3648,7 +4492,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "West Midlands Combined Authority among combined authorities in England map, 2021.svg",
+      "West Midlands UK locator map 2010.svg",
+      "West Midlands UK location map.svg",
+      "West Midlands (county) in England 2023-04-01.svg",
+      "West Midlands in England.svg"
+    ]
   },
   "west_vlaanderen": {
     "regionCode": "west_vlaanderen",
@@ -3667,7 +4517,12 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Provincie West-Vlaanderen in Belgium.svg",
+      "Provincie Oost-Vlaanderen in Belgium.svg",
+      "Gemeentekaart West-Vlaanderen.svg",
+      "EgemLocation.svg"
+    ]
   },
   "westmeath": {
     "regionCode": "westmeath",
@@ -3686,7 +4541,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Island of Ireland location map Westmeath.svg",
+      "Westmeath in Ireland.svg",
+      "Island of Ireland location map.svg",
+      "Westmeath - British Isles.svg",
+      "Westmeath Ireland (BI Sect 7).svg"
+    ]
   },
   "wetzlar": {
     "regionCode": "wetzlar",
@@ -3705,7 +4566,9 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Map Landkreis Wetzlar in Hesse 1968.svg"
+    ]
   },
   "wexford": {
     "regionCode": "wexford",
@@ -3724,7 +4587,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Island of Ireland location map Wexford.svg",
+      "Wexford in Ireland.svg",
+      "Map of Michigan highlighting Wexford County.svg",
+      "Wexford - British Isles.svg",
+      "Wexford Ireland (BI Sect 7).svg"
+    ]
   },
   "yorkshire": {
     "regionCode": "yorkshire",
@@ -3743,7 +4612,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Yorkshire and the Humber - York Outer constituency.svg",
+      "Yorkshire and the Humber - York Central constituency.svg",
+      "Yorkshire and the Humber in England.svg",
+      "England Region - Yorkshire and Humber.svg",
+      "Northern England.svg"
+    ]
   },
   "zachodnio": {
     "regionCode": "zachodnio",
@@ -3781,7 +4656,13 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Croatia, Zagreb County.svg",
+      "Croatia, City of Zagreb County.svg",
+      "Croatia - Zagreb County.svg",
+      "Croatia - Grad Zagreb County.svg",
+      "Croatia location map, Zagreb county.svg"
+    ]
   },
   "zasavje": {
     "regionCode": "zasavje",
@@ -3819,6 +4700,12 @@
     "license": "",
     "sourceUrl": "",
     "notes": "",
-    "candidates": []
+    "candidates": [
+      "Zuid-Holland in the Netherlands 2019.svg",
+      "Zuid-Holland in the Netherlands.svg",
+      "Map NL - Korendijk - Zuid-Beijerland.svg",
+      "Map - NL - Leiden - Binnenstad-Zuid - Pieterswijk.svg",
+      "Map - NL - Heemstede - Wijk 01 Heemstede-Zuid - Buurt 00 De Glip.svg"
+    ]
   }
 }
