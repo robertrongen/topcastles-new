@@ -41,6 +41,19 @@ The Angular Top Regions cards use CSS to pick the appropriate variant based on t
 }
 ```
 
+# Search all unresolved (takes a few minutes — ~197 × 600ms delay)
+```bash
+npm run locators:search -- --limit=20    # start with a small batch
+```
+
+# Review the candidates array in manifest.json for each region,
+# set commons to the correct filename, then:
+```bash
+npm run locators:fetch
+npm run locators:build
+```
+For a region with a parenthetical name like "Elzas (Alsace)", the script tries both Elzas and Alsace as search terms automatically. Use `--region=<code>` to re-run a single region, `--force` to refresh existing candidates.
+
 ## 1. Refresh The Manifest
 
 Run:
