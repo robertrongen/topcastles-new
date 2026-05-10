@@ -26,6 +26,7 @@
     "data:sitemap": "node scripts/generate_sitemap.js",
     "data:routes": "node scripts/generate_prerender_routes.js",
     "data:merge-overrides": "node scripts/apply_castle_overrides.js",
+    "editorial:draft-countries": "node scripts/generate_country_editorial_draft.js",
     "data:regenerate": "node scripts/run_data_pipeline.js",
     "pipeline:consume": "node scripts/consume-pipeline-rebuild-request.js",
     "pipeline:consume:enrichment": "node scripts/consume-pipeline-enrichment-request.js",
