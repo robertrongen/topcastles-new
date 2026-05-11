@@ -89,7 +89,7 @@ describe('TopRegionsPageComponent', () => {
     expect(images.some(img => img.getAttribute('src') === '/images/maps/castilla_y_leon.dark.png')).toBeTrue();
   });
 
-  it('should resolve the Antwerp dark and light locator asset names', () => {
+  it('should resolve the Antwerpen dark and light locator asset names', () => {
     expect(fixture.componentInstance.regionMapSrc({ slug: 'antwerpen' }))
       .toBe('/images/maps/antwerpen.dark.png');
 
