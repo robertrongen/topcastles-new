@@ -187,6 +187,18 @@
   img[hidden] {
     display: none;
   }
+
+  &.missing::after {
+    content: "?";
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    color: var(--accent-ochre);
+    border: 1px solid rgba(var(--accent-ochre-rgb, 184 120 51), .45);
+    background: #1d2434;
+    font: 700 20px/1 var(--tk-font-serif);
+  }
 }
 
 .rank-pair {

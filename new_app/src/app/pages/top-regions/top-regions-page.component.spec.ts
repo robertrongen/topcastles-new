@@ -3,9 +3,11 @@ import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { signal } from '@angular/core';
 import { TopRegionsPageComponent } from './top-regions-page.component';
 import { Castle } from '../../models/castle.model';
 import { CastleService } from '../../services/castle.service';
+import { ThemeService } from '../../services/theme.service';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
   return {
@@ -28,6 +30,7 @@ const castles: Castle[] = [
 describe('TopRegionsPageComponent', () => {
   let fixture: ComponentFixture<TopRegionsPageComponent>;
   let httpTesting: HttpTestingController;
+  const isDark = signal(true);
 
   function flushEditorial(regions: Record<string, unknown> = {}): void {
     httpTesting.expectOne('/api/editorial/castle-quotes').flush({});
@@ -37,9 +40,15 @@ describe('TopRegionsPageComponent', () => {
   }
 
   beforeEach(async () => {
+    isDark.set(true);
     await TestBed.configureTestingModule({
       imports: [TopRegionsPageComponent, NoopAnimationsModule],
-      providers: [provideRouter([]), provideHttpClient(), provideHttpClientTesting()],
+      providers: [
+        provideRouter([]),
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        { provide: ThemeService, useValue: { isDark } },
+      ],
     }).compileComponents();
     httpTesting = TestBed.inject(HttpTestingController);
     TestBed.inject(CastleService).castles.set(castles);
@@ -70,14 +79,41 @@ describe('TopRegionsPageComponent', () => {
     expect(card.textContent).toContain('Visitor');
   });
 
-  it('should load region maps using the jpg format', () => {
+  it('should load themed region map pngs before legacy jpgs', () => {
     const img: HTMLImageElement = fixture.nativeElement.querySelector('.region-locator img');
-    expect(img.getAttribute('src')).toBe('/images/maps/loire.jpg');
+    expect(img.getAttribute('src')).toBe('/images/maps/loire.dark.png');
   });
 
   it('should use the exact region_code as the image filename', () => {
     const images = [...fixture.nativeElement.querySelectorAll('.region-locator img')] as HTMLImageElement[];
-    expect(images.some(img => img.getAttribute('src') === '/images/maps/castilla_y_leon.jpg')).toBeTrue();
+    expect(images.some(img => img.getAttribute('src') === '/images/maps/castilla_y_leon.dark.png')).toBeTrue();
+  });
+
+  it('should resolve the Antwerp dark and light locator asset names', () => {
+    expect(fixture.componentInstance.regionMapSrc({ slug: 'antwerpen' }))
+      .toBe('/images/maps/antwerpen.dark.png');
+
+    isDark.set(false);
+
+    expect(fixture.componentInstance.regionMapSrc({ slug: 'antwerpen' }))
+      .toBe('/images/maps/antwerpen.light.png');
+  });
+
+  it('should fall back from themed png to legacy jpg and then placeholder', () => {
+    const img: HTMLImageElement = fixture.nativeElement.querySelector('.region-locator img');
+    const figure: HTMLElement = fixture.nativeElement.querySelector('.region-locator');
+
+    img.dispatchEvent(new Event('error'));
+    fixture.detectChanges();
+
+    expect(img.getAttribute('src')).toBe('/images/maps/loire.jpg');
+    expect(img.hidden).toBeFalse();
+
+    img.dispatchEvent(new Event('error'));
+    fixture.detectChanges();
+
+    expect(img.hidden).toBeTrue();
+    expect(figure.classList).toContain('missing');
   });
 
   it('should compute editorial and visitor ranks independently', () => {
@@ -119,7 +155,12 @@ describe('TopRegionsPageComponent', () => {
   it('should render editorial descriptions and sleeper badges from regions overlay', async () => {
     await TestBed.resetTestingModule().configureTestingModule({
       imports: [TopRegionsPageComponent, NoopAnimationsModule],
-      providers: [provideRouter([]), provideHttpClient(), provideHttpClientTesting()],
+      providers: [
+        provideRouter([]),
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        { provide: ThemeService, useValue: { isDark } },
+      ],
     }).compileComponents();
 
     const http2 = TestBed.inject(HttpTestingController);

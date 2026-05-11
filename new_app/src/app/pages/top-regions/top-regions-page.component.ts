@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { CastleService } from '../../services/castle.service';
 import { Castle } from '../../models/castle.model';
 import { EditorialService } from '../../services/editorial.service';
+import { ThemeService } from '../../services/theme.service';
 
 interface RegionAtlasRow {
   catalogueNumber: string;
@@ -35,6 +36,7 @@ type SortMode = 'editorial' | 'visitor' | 'disagreement';
 export class TopRegionsPageComponent {
   private castleService = inject(CastleService);
   private editorialService = inject(EditorialService);
+  private theme = inject(ThemeService);
 
   readonly sortMode = signal<SortMode>('editorial');
 
@@ -130,8 +132,21 @@ export class TopRegionsPageComponent {
     return `Visitor rank ${row.visitorRank}`;
   }
 
-  onRegionMapError(event: Event): void {
-    (event.target as HTMLImageElement).hidden = true;
+  regionMapSrc(row: Pick<RegionAtlasRow, 'slug'>): string {
+    return `/images/maps/${row.slug}.${this.theme.isDark() ? 'dark' : 'light'}.png`;
+  }
+
+  onRegionMapError(event: Event, row: Pick<RegionAtlasRow, 'slug'>): void {
+    const img = event.target as HTMLImageElement;
+    const figure = img.closest('.region-locator');
+    if (img.dataset['fallback'] !== 'legacy-jpg') {
+      img.dataset['fallback'] = 'legacy-jpg';
+      img.src = `/images/maps/${row.slug}.jpg`;
+      return;
+    }
+
+    img.hidden = true;
+    figure?.classList.add('missing');
   }
 }
 

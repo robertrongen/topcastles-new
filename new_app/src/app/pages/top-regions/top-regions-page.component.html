@@ -45,13 +45,13 @@
 
           <figure class="region-locator">
             <img
-              [src]="'/images/maps/' + row.slug + '.jpg'"
+              [src]="regionMapSrc(row)"
               [alt]="'Map of ' + row.region"
               [title]="row.region"
               width="320"
               height="192"
               loading="lazy"
-              (error)="onRegionMapError($event)" />
+              (error)="onRegionMapError($event, row)" />
           </figure>
 
           <dl class="rank-pair">
