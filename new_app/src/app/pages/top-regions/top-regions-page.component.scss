@@ -174,7 +174,7 @@
   padding: 8px;
   overflow: hidden;
   border: 1px solid var(--ink-line-2);
-  background: #0b101c;
+  background: var(--region-locator-bg, var(--ink-bg-2));
 
   img {
     display: block;
@@ -199,6 +199,10 @@
     background: #1d2434;
     font: 700 20px/1 var(--tk-font-serif);
   }
+}
+
+:host-context([data-theme="dark"]) .region-locator {
+  --region-locator-bg: #0b101c;
 }
 
 .rank-pair {
