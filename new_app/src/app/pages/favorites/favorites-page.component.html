@@ -5,10 +5,26 @@
     <div class="loading-state" aria-label="Loading favorites">
       <mat-spinner diameter="40" />
     </div>
-  } @else if (isBrowser && !hasFavoriteCastles()) {
+  } @else if (isBrowser && !hasAnySets()) {
     <section class="favorites-empty" aria-labelledby="favorites-empty-title">
       <h2 id="favorites-empty-title">You haven't saved any favorites yet.</h2>
-      <p>Tap the <span aria-label="star">&starf;</span> on any castle in the index to start a list.</p>
+      <p>Create a set to start collecting castles, or browse the index to find ones you like.</p>
+      @if (showNewSet()) {
+        <form class="new-set-form empty-state-form" (submit)="$event.preventDefault(); createSet()">
+          <label class="sr-only" for="empty-new-set-name">New set name</label>
+          <input
+            id="empty-new-set-name"
+            type="text"
+            [value]="newSetName()"
+            (input)="newSetName.set($any($event.target).value)"
+            placeholder="Set name"
+          />
+          <button type="submit" class="btn-secondary" [disabled]="!newSetName().trim() || creating()">Create</button>
+          <button type="button" class="text-action" (click)="toggleNewSet()">Cancel</button>
+        </form>
+      } @else {
+        <button type="button" class="btn-create" (click)="toggleNewSet()">Create a favorites set</button>
+      }
       <a routerLink="/top1000">Browse Top 1000 &rsaquo;</a>
     </section>
   } @else {

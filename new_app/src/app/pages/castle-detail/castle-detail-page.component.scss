@@ -377,3 +377,44 @@ h1 {
     margin: 0 0 var(--tk-space-3);
   }
 }
+
+.create-panel {
+  margin-bottom: var(--tk-space-3);
+  padding: var(--tk-space-3);
+  background: var(--tk-surface);
+  border: 1px solid var(--tk-border);
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--tk-space-2);
+  }
+
+  input[type="text"] {
+    flex: 1 1 200px;
+    min-width: 0;
+    padding: 8px 10px;
+    border: 1px solid var(--tk-border);
+    background: var(--ink-bg);
+    color: var(--tk-text);
+    font: 500 14px/1.2 "Inter", sans-serif;
+
+    &:focus-visible {
+      outline: 2px solid var(--ochre);
+      outline-offset: 2px;
+    }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}

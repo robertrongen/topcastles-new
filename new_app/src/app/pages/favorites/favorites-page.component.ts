@@ -98,6 +98,8 @@ export class FavoritesPageComponent implements OnInit {
 
   protected hasFavoriteCastles = computed(() => this.totalFavoriteCount() > 0);
 
+  protected hasAnySets = computed(() => this.favoritesService.favorites().length > 0);
+
   protected shareLink = computed(() => {
     if (!isPlatformBrowser(this.platformId)) return null;
 

@@ -36,6 +36,10 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
 
   favoritesOpen = signal(false);
 
+  showCreatePanel = signal(false);
+  inlineNewSetName = signal('');
+  inlineCreating = signal(false);
+
   code = signal('');
   loading = this.castleService.loading;
 
@@ -277,6 +281,31 @@ export class CastleDetailPageComponent implements OnInit, OnDestroy {
 
   toggleFavorites(): void {
     this.favoritesOpen.update(v => !v);
+  }
+
+  openCreatePanel(): void {
+    this.inlineNewSetName.set('');
+    this.showCreatePanel.set(true);
+  }
+
+  cancelCreatePanel(): void {
+    this.showCreatePanel.set(false);
+    this.inlineNewSetName.set('');
+  }
+
+  async createSetAndAdd(): Promise<void> {
+    const name = this.inlineNewSetName().trim();
+    if (!name) return;
+
+    this.inlineCreating.set(true);
+    try {
+      await this.favoritesService.createSet(name, [this.code()]);
+      this.showCreatePanel.set(false);
+      this.inlineNewSetName.set('');
+      this.snackBar.open(`Added to "${name}"`, 'OK', { duration: 2000 });
+    } finally {
+      this.inlineCreating.set(false);
+    }
   }
 
   async addToSet(setId: string): Promise<void> {

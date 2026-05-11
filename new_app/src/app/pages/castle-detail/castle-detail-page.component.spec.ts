@@ -8,9 +8,10 @@ import {
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { Meta, Title } from '@angular/platform-browser';
-import { PLATFORM_ID } from '@angular/core';
+import { PLATFORM_ID, signal } from '@angular/core';
 import { CastleDetailPageComponent } from './castle-detail-page.component';
 import { CastleService } from '../../services/castle.service';
+import { FavoritesService, FavoriteSet } from '../../services/favorites.service';
 import { Castle } from '../../models/castle.model';
 import { createActivatedRouteMock } from '../../../testing/activated-route.mock';
 
@@ -233,6 +234,64 @@ describe('CastleDetailPageComponent', () => {
   it('should not show badge row when no enrichment data', () => {
     setupWithCode('krak');
     expect(fixture.nativeElement.querySelector('.badge-row')).toBeNull();
+  });
+
+  // ── Favorites create panel ─────────────────────────────────────────────────
+
+  it('showCreatePanel is false by default', () => {
+    setupWithCode('krak');
+    expect(component.showCreatePanel()).toBeFalse();
+    expect(fixture.nativeElement.querySelector('.create-panel')).toBeNull();
+  });
+
+  it('openCreatePanel sets showCreatePanel to true and renders the panel', () => {
+    setupWithCode('krak');
+    component.openCreatePanel();
+    fixture.detectChanges();
+
+    expect(component.showCreatePanel()).toBeTrue();
+    expect(fixture.nativeElement.querySelector('.create-panel')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('#create-panel-name')).toBeTruthy();
+  });
+
+  it('cancelCreatePanel hides the panel and resets the name', () => {
+    setupWithCode('krak');
+    component.openCreatePanel();
+    component.inlineNewSetName.set('My Set');
+    component.cancelCreatePanel();
+    fixture.detectChanges();
+
+    expect(component.showCreatePanel()).toBeFalse();
+    expect(component.inlineNewSetName()).toBe('');
+    expect(fixture.nativeElement.querySelector('.create-panel')).toBeNull();
+  });
+
+  it('createSetAndAdd calls createSet with name + castle code and hides the panel', async () => {
+    setupWithCode('krak');
+    const favoritesService = TestBed.inject(FavoritesService);
+    spyOn(favoritesService, 'createSet').and.resolveTo();
+
+    component.openCreatePanel();
+    component.inlineNewSetName.set('Favourite Crusader Castles');
+    await component.createSetAndAdd();
+    fixture.detectChanges();
+
+    expect(favoritesService.createSet).toHaveBeenCalledWith('Favourite Crusader Castles', ['krak']);
+    expect(component.showCreatePanel()).toBeFalse();
+    expect(component.inlineNewSetName()).toBe('');
+  });
+
+  it('createSetAndAdd does nothing when name is empty', async () => {
+    setupWithCode('krak');
+    const favoritesService = TestBed.inject(FavoritesService);
+    spyOn(favoritesService, 'createSet').and.resolveTo();
+
+    component.openCreatePanel();
+    component.inlineNewSetName.set('   ');
+    await component.createSetAndAdd();
+
+    expect(favoritesService.createSet).not.toHaveBeenCalled();
+    expect(component.showCreatePanel()).toBeTrue();
   });
 
   // ── Phase 4.1: breadcrumb ──────────────────────────────────────────────────

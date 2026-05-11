@@ -38,10 +38,33 @@
   }
 
   a {
+    display: block;
+    margin-top: 16px;
     color: var(--ochre);
     font: 700 13px/1.2 "Source Serif 4", serif;
     text-decoration: none;
   }
+}
+
+.btn-create {
+  padding: 10px 22px;
+  border: 2px solid var(--ochre);
+  background: transparent;
+  color: var(--ochre);
+  font: 700 13px/1 "Inter", sans-serif;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--ochre);
+    color: var(--ink-card);
+  }
+}
+
+.empty-state-form {
+  margin: 0 auto 0;
+  text-align: left;
 }
 
 .favorites-workspace {

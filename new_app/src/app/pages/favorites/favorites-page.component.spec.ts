@@ -74,6 +74,18 @@ class FavoritesServiceMock {
   deleteSet = jasmine.createSpy('deleteSet').and.resolveTo();
 }
 
+class EmptyFavoritesServiceMock {
+  favorites = signal<FavoriteSet[]>([]);
+  loading = signal(false);
+  loadFavorites = jasmine.createSpy('loadFavorites').and.resolveTo();
+  createSet = jasmine.createSpy('createSet').and.callFake(function(this: EmptyFavoritesServiceMock, name: string) {
+    this.favorites.set([{ id: 'new-set', name, castleIds: [] }]);
+    return Promise.resolve();
+  });
+  updateSet = jasmine.createSpy('updateSet').and.resolveTo();
+  deleteSet = jasmine.createSpy('deleteSet').and.resolveTo();
+}
+
 class UserServiceMock {
   ensureUser = jasmine.createSpy('ensureUser').and.resolveTo();
   importToken = jasmine.createSpy('importToken');
@@ -92,13 +104,13 @@ describe('FavoritesPageComponent', () => {
   let fixture: ComponentFixture<FavoritesPageComponent>;
   let router: Router;
 
-  async function setup(queryParams: Record<string, string> = {}): Promise<void> {
+  async function setup(queryParams: Record<string, string> = {}, favoritesServiceClass = FavoritesServiceMock): Promise<void> {
     await TestBed.configureTestingModule({
       imports: [FavoritesPageComponent, RouterTestingModule.withRoutes([])],
       providers: [
         { provide: ActivatedRoute, useValue: { queryParamMap: of(convertToParamMap(queryParams)), snapshot: { queryParamMap: convertToParamMap(queryParams) } } },
         { provide: CastleService, useClass: CastleServiceMock },
-        { provide: FavoritesService, useClass: FavoritesServiceMock },
+        { provide: FavoritesService, useClass: favoritesServiceClass },
         { provide: ImageService, useClass: ImageServiceMock },
         { provide: UserService, useClass: UserServiceMock },
       ],
@@ -142,5 +154,51 @@ describe('FavoritesPageComponent', () => {
 
     const component = fixture.componentInstance as unknown as { shareLink: () => string | null };
     expect(component.shareLink()).toBe('http://localhost/favorites?token=share-token&set=set1');
+  });
+
+  describe('empty state (no sets)', () => {
+    it('shows create-set button when no favorites sets exist', async () => {
+      await setup({}, EmptyFavoritesServiceMock);
+
+      const text = fixture.nativeElement.textContent as string;
+      expect(text).toContain("You haven't saved any favorites yet");
+      const createBtn = fixture.nativeElement.querySelector('button.btn-create') as HTMLElement | null;
+      expect(createBtn).withContext('create button should be present').toBeTruthy();
+      expect(createBtn!.textContent).toContain('Create a favorites set');
+    });
+
+    it('shows the create-set form when the create button is clicked', async () => {
+      await setup({}, EmptyFavoritesServiceMock);
+
+      const btn = fixture.nativeElement.querySelector('button.btn-create') as HTMLElement;
+      btn.click();
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('#empty-new-set-name')).withContext('name input').toBeTruthy();
+      expect(fixture.nativeElement.querySelector('button.btn-create')).withContext('create button hidden').toBeNull();
+    });
+
+    it('calls createSet with the entered name and shows workspace when a set is created', async () => {
+      await setup({}, EmptyFavoritesServiceMock);
+
+      const btn = fixture.nativeElement.querySelector('button.btn-create') as HTMLElement;
+      btn.click();
+      fixture.detectChanges();
+
+      const input = fixture.nativeElement.querySelector('#empty-new-set-name') as HTMLInputElement;
+      input.value = 'Crusader Castles';
+      input.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+
+      const favoritesService = TestBed.inject(FavoritesService) as unknown as EmptyFavoritesServiceMock;
+      const form = fixture.nativeElement.querySelector('form.empty-state-form') as HTMLFormElement;
+      form.dispatchEvent(new Event('submit'));
+      fixture.detectChanges();
+      await fixture.whenStable();
+      fixture.detectChanges();
+
+      expect(favoritesService.createSet).toHaveBeenCalledWith('Crusader Castles');
+      expect(fixture.nativeElement.querySelector('.favorites-workspace')).withContext('workspace visible after create').toBeTruthy();
+    });
   });
 });

@@ -67,7 +67,10 @@
       </button>
       <mat-menu #favMenu="matMenu">
         @if (favoritesService.favorites().length === 0) {
-          <button mat-menu-item disabled>No sets — create one on the Favorites page</button>
+          <button mat-menu-item (click)="openCreatePanel()">
+            <mat-icon>add_circle_outline</mat-icon>
+            Create a favorites set&hellip;
+          </button>
         } @else {
           @for (set of favoritesService.favorites(); track set.id) {
             <button mat-menu-item (click)="addToSet(set.id)" [disabled]="isInSet(set.id)">
@@ -78,6 +81,25 @@
         }
       </mat-menu>
     </div>
+
+    @if (showCreatePanel()) {
+      <div class="create-panel" role="region" aria-label="Create favorites set">
+        <form (submit)="$event.preventDefault(); createSetAndAdd()">
+          <label class="sr-only" for="create-panel-name">New set name</label>
+          <input
+            id="create-panel-name"
+            type="text"
+            [value]="inlineNewSetName()"
+            (input)="inlineNewSetName.set($any($event.target).value)"
+            placeholder="Set name"
+          />
+          <button type="submit" mat-stroked-button [disabled]="!inlineNewSetName().trim() || inlineCreating()">
+            Create &amp; add
+          </button>
+          <button type="button" mat-button (click)="cancelCreatePanel()">Cancel</button>
+        </form>
+      </div>
+    }
 
     @if (castle()!.heritage_status || castle()!.architectural_style) {
       <mat-chip-set class="badge-row" aria-label="Castle attributes">
