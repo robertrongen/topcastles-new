@@ -201,6 +201,10 @@
   }
 }
 
+:host-context([data-theme="light"]) .region-locator {
+  --region-locator-bg: var(--ink-bg-2);
+}
+
 :host-context([data-theme="dark"]) .region-locator {
   --region-locator-bg: #0b101c;
 }
