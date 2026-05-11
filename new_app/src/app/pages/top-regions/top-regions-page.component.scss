@@ -32,6 +32,55 @@
   font: italic 400 13.5px/1.5 var(--tk-font-serif);
 }
 
+.sort-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 12px;
+  flex-wrap: wrap;
+
+  .lbl {
+    margin-right: 4px;
+    color: var(--tk-text-subtle);
+    font: 600 10.5px/1 var(--tk-font-sans);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  button {
+    padding: 4px 12px;
+    border: 1px solid var(--tk-border);
+    color: var(--tk-text-muted);
+    background: transparent;
+    font: 400 11.5px/1 var(--tk-font-sans);
+    cursor: pointer;
+    transition: color .12s, background .12s, border-color .12s;
+
+    &:hover {
+      color: var(--tk-text);
+      border-color: var(--accent-ochre-2);
+    }
+
+    &.on {
+      color: var(--ink-bg);
+      border-color: var(--accent-ochre);
+      background: var(--accent-ochre);
+      font-weight: 600;
+    }
+  }
+
+  .meta {
+    margin-left: auto;
+    color: var(--tk-text-subtle);
+    font: 400 11px/1 var(--tk-font-sans);
+
+    b {
+      color: var(--accent-ochre-2);
+      font-weight: 600;
+    }
+  }
+}
+
 .region-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
@@ -231,6 +280,12 @@
 
   .region-grid {
     grid-template-columns: 1fr;
+  }
+
+  .sort-strip .meta {
+    margin-left: 0;
+    flex-basis: 100%;
+    margin-top: 4px;
   }
 
   .region-card h2 {

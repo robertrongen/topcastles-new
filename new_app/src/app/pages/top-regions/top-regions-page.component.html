@@ -7,8 +7,25 @@
     </p>
   </section>
 
+  <div class="sort-strip" role="group" aria-label="Sort rows by">
+    <span class="lbl">Sort</span>
+    <button
+      [class.on]="sortMode() === 'editorial'"
+      [attr.aria-pressed]="sortMode() === 'editorial'"
+      (click)="setSort('editorial')">Editorial</button>
+    <button
+      [class.on]="sortMode() === 'visitor'"
+      [attr.aria-pressed]="sortMode() === 'visitor'"
+      (click)="setSort('visitor')">Visitor</button>
+    <button
+      [class.on]="sortMode() === 'disagreement'"
+      [attr.aria-pressed]="sortMode() === 'disagreement'"
+      (click)="setSort('disagreement')">By disagreement</button>
+    <span class="meta">Editorial ranks revised quarterly &middot; last revision <b>Q1 2026</b></span>
+  </div>
+
   <section class="region-grid" aria-label="Top castle regions">
-    @for (row of rows(); track row.country + ':' + row.slug) {
+    @for (row of sortedRows(); track row.country + ':' + row.slug) {
       <mat-card class="region-card" [class.sleeper]="isSleeper(row)">
         <mat-card-content>
           <div class="card-topline">

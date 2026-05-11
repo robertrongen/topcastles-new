@@ -89,6 +89,28 @@ describe('TopRegionsPageComponent', () => {
     expect(loire.visitorRank).toBe(2);
   });
 
+  it('should default to editorial sort order', () => {
+    const firstCard = fixture.nativeElement.querySelector('mat-card.region-card');
+    expect(fixture.componentInstance.sortMode()).toBe('editorial');
+    expect(firstCard.textContent).toContain('Loire');
+  });
+
+  it('should sort cards by visitor rank', () => {
+    fixture.componentInstance.setSort('visitor');
+    fixture.detectChanges();
+
+    const firstCard = fixture.nativeElement.querySelector('mat-card.region-card');
+    expect(firstCard.textContent).toContain('Bavaria');
+  });
+
+  it('should sort cards by highest rank disagreement first', () => {
+    fixture.componentInstance.setSort('disagreement');
+    fixture.detectChanges();
+
+    const ordered = fixture.componentInstance.sortedRows();
+    expect(ordered[0].disagreement).toBeGreaterThanOrEqual(ordered[ordered.length - 1].disagreement);
+  });
+
   it('should gracefully omit editorial prose when the overlay is empty', () => {
     expect(fixture.nativeElement.querySelector('.editorial-note')).toBeNull();
     expect(fixture.nativeElement.textContent).toContain('2 entries');

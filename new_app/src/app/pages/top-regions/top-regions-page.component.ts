@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -23,6 +23,8 @@ interface RegionAtlasRow {
   editorSleeper: boolean;
 }
 
+type SortMode = 'editorial' | 'visitor' | 'disagreement';
+
 @Component({
   selector: 'app-top-regions-page',
   standalone: true,
@@ -33,6 +35,8 @@ interface RegionAtlasRow {
 export class TopRegionsPageComponent {
   private castleService = inject(CastleService);
   private editorialService = inject(EditorialService);
+
+  readonly sortMode = signal<SortMode>('editorial');
 
   constructor() {
     this.editorialService.loadRegions();
@@ -108,6 +112,12 @@ export class TopRegionsPageComponent {
     });
   });
 
+  readonly sortedRows = computed(() => sortRows(this.rows(), this.sortMode()));
+
+  setSort(mode: SortMode): void {
+    this.sortMode.set(mode);
+  }
+
   isSleeper(row: RegionAtlasRow): boolean {
     return row.editorSleeper || row.visitorRank - row.editorialRank >= 15;
   }
@@ -139,4 +149,14 @@ function regionSlug(castle: Castle): string {
 function cleanDescription(value: string | undefined): string | undefined {
   const trimmed = value?.trim();
   return trimmed ? trimmed : undefined;
+}
+
+function sortRows(rows: RegionAtlasRow[], sort: SortMode): RegionAtlasRow[] {
+  return [...rows].sort((a, b) => {
+    switch (sort) {
+      case 'editorial': return a.editorialRank - b.editorialRank;
+      case 'visitor': return a.visitorRank - b.visitorRank;
+      case 'disagreement': return b.disagreement - a.disagreement;
+    }
+  });
 }
