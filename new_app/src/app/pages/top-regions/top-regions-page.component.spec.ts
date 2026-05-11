@@ -70,19 +70,14 @@ describe('TopRegionsPageComponent', () => {
     expect(card.textContent).toContain('Visitor');
   });
 
-  it('should try the generated png locator before falling back to the legacy jpg map', () => {
+  it('should load region maps using the jpg format', () => {
     const img: HTMLImageElement = fixture.nativeElement.querySelector('.region-locator img');
-    expect(img.getAttribute('src')).toBe('/images/maps/loire.png');
-
-    img.dispatchEvent(new Event('error'));
-    fixture.detectChanges();
-
     expect(img.getAttribute('src')).toBe('/images/maps/loire.jpg');
   });
 
   it('should use the exact region_code as the image filename', () => {
     const images = [...fixture.nativeElement.querySelectorAll('.region-locator img')] as HTMLImageElement[];
-    expect(images.some(img => img.getAttribute('src') === '/images/maps/castilla_y_leon.png')).toBeTrue();
+    expect(images.some(img => img.getAttribute('src') === '/images/maps/castilla_y_leon.jpg')).toBeTrue();
   });
 
   it('should compute editorial and visitor ranks independently', () => {

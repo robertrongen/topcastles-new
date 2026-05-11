@@ -28,12 +28,13 @@
 
           <figure class="region-locator">
             <img
-              [src]="'/images/maps/' + row.slug + '.png'"
-              [alt]="row.region + ' location map'"
+              [src]="'/images/maps/' + row.slug + '.jpg'"
+              [alt]="'Map of ' + row.region"
+              [title]="row.region"
               width="320"
               height="192"
               loading="lazy"
-              (error)="onRegionMapError($event, row)" />
+              (error)="onRegionMapError($event)" />
           </figure>
 
           <dl class="rank-pair">
