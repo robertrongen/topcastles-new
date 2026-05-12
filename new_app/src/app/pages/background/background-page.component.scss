@@ -203,14 +203,10 @@
       background: transparent;
     }
 
-    .mat-mdc-tab-list {
-      gap: 28px;
-    }
-
     .mat-mdc-tab {
       flex-grow: 0;
-      min-width: 0;
-      padding: 0;
+      min-width: 128px;
+      padding: 0 28px;
 
       .mdc-tab-indicator {
         margin-bottom: -1px;
