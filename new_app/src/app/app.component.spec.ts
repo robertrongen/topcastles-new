@@ -6,6 +6,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppComponent } from './app.component';
 import { CastleService } from './services/castle.service';
+import { FavoritesService } from './services/favorites.service';
 import { Castle } from './models/castle.model';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
@@ -61,6 +62,34 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const btn = fixture.nativeElement.querySelector('.site-nav__icons button[aria-label="Nearest top castle"]');
     expect(btn).toBeTruthy();
+  });
+
+  it('shows outlined favorites icon in nav and side menu when empty', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const favoritesService = TestBed.inject(FavoritesService);
+    favoritesService.favorites.set([]);
+    fixture.detectChanges();
+
+    const navIcon = fixture.nativeElement.querySelector('.site-nav__favorites-link mat-icon');
+    const sideMenuIcon = fixture.nativeElement.querySelector('a[routerLink="/favorites"] mat-icon[matListItemIcon]');
+    const navLabel = fixture.nativeElement.querySelector('.site-nav__favorites-label');
+
+    expect(navIcon?.textContent?.trim()).toBe('bookmark_border');
+    expect(sideMenuIcon?.textContent?.trim()).toBe('bookmark_border');
+    expect(navLabel?.textContent?.trim()).toBe('Favorites');
+  });
+
+  it('shows filled favorites icon in nav and side menu when sets contain castles', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const favoritesService = TestBed.inject(FavoritesService);
+    favoritesService.favorites.set([{ id: 'set-1', name: 'My set', castleIds: ['krak'] }]);
+    fixture.detectChanges();
+
+    const navIcon = fixture.nativeElement.querySelector('.site-nav__favorites-link mat-icon');
+    const sideMenuIcon = fixture.nativeElement.querySelector('a[routerLink="/favorites"] mat-icon[matListItemIcon]');
+
+    expect(navIcon?.textContent?.trim()).toBe('bookmark');
+    expect(sideMenuIcon?.textContent?.trim()).toBe('bookmark');
   });
 
   // ── goToNearestCastle ──────────────────────────────────────────────────────

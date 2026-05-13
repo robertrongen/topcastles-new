@@ -33,8 +33,9 @@
 <nav class="site-nav" aria-label="Primary">
   <a routerLink="/" routerLinkActive="site-nav--active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
   <a routerLink="/top1000" routerLinkActive="site-nav--active">Top 1000</a>
-  <a routerLink="/favorites" routerLinkActive="site-nav--active" aria-label="Favorites">
-    <svg class="star-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg> Favorites
+  <a class="site-nav__favorites-link" routerLink="/favorites" routerLinkActive="site-nav--active" aria-label="Favorites">
+    <mat-icon aria-hidden="true">{{ hasFavorites() ? 'bookmark' : 'bookmark_border' }}</mat-icon>
+    <span class="site-nav__favorites-label">Favorites</span>
   </a>
   <a routerLink="/top-countries" routerLinkActive="site-nav--active">Top Countries</a>
   <a routerLink="/top-regions" routerLinkActive="site-nav--active">Top Regions</a>
@@ -87,7 +88,7 @@
         <span matListItemTitle>Top 1000</span>
       </a>
       <a mat-list-item routerLink="/favorites" routerLinkActive="active" (click)="sidenav.close()">
-        <mat-icon matListItemIcon>bookmark</mat-icon>
+        <mat-icon matListItemIcon>{{ hasFavorites() ? 'bookmark' : 'bookmark_border' }}</mat-icon>
         <span matListItemTitle>Favorites</span>
       </a>
       <a mat-list-item routerLink="/top-countries" routerLinkActive="active" (click)="sidenav.close()">

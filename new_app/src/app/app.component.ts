@@ -1,4 +1,4 @@
-import { Component, inject, NgZone, OnInit, PLATFORM_ID, signal } from '@angular/core';
+import { Component, computed, inject, NgZone, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { AdminAuthService } from './pages/admin/admin-auth.service';
@@ -46,6 +46,9 @@ export class AppComponent implements OnInit {
 
   nearMeState = signal<'idle' | 'loading' | 'error'>('idle');
   canInstall = signal(false);
+  protected hasFavorites = computed(() =>
+    this.favoritesService.favorites().some(set => set.castleIds.length > 0)
+  );
   private installPrompt: BeforeInstallPromptEvent | null = null;
 
   ngOnInit(): void {

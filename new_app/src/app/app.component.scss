@@ -198,6 +198,20 @@
   }
 }
 
+.site-nav__favorites-link {
+  gap: 6px;
+
+  .mat-icon {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+  }
+}
+
+.site-nav__favorites-label {
+  line-height: 1;
+}
+
 // Icon group (right-aligned)
 .site-nav__icons {
   margin-left: auto;
