@@ -32,8 +32,8 @@ done
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 
-IMAGE_NAME="hobunror/topcastles"
-IMAGE_TAG="latest"
+IMAGE_NAME="${DOCKER_IMAGE_NAME:-hobunror/topcastles}"
+IMAGE_TAG="${DOCKER_IMAGE_TAG:-latest}"
 FULL_IMAGE_NAME="${IMAGE_NAME}:${IMAGE_TAG}"
 NAS_HOST="DS224plus.local"
 NAS_USER="robertron"
@@ -71,8 +71,29 @@ cd ..
 echo "Building Docker image..."
 docker build -t "$FULL_IMAGE_NAME" .
 
+echo "Verifying Docker Hub authentication..."
+DOCKER_HUB_USERNAME="$(docker info --format '{{.Username}}' 2>/dev/null || true)"
+if [ -z "$DOCKER_HUB_USERNAME" ]; then
+  echo ""
+  echo "❌ ERROR: Docker is not logged in to Docker Hub or Docker Desktop is not running."
+  echo "Run 'docker login' and authenticate with the account that owns '$IMAGE_NAME'."
+  echo "If your account uses two-factor auth, use a Docker Hub access token instead of your password."
+  echo ""
+  exit 1
+fi
+
+echo "Docker Hub login detected: $DOCKER_HUB_USERNAME"
+
 echo "Pushing image to Docker Hub..."
-docker push "$FULL_IMAGE_NAME"
+if ! docker push "$FULL_IMAGE_NAME"; then
+  echo ""
+  echo "❌ ERROR: failed to push '$FULL_IMAGE_NAME' to Docker Hub."
+  echo "Verify the repository exists and the logged-in user has push access for '$IMAGE_NAME'."
+  echo "If you are deploying from a different Docker Hub account, set DOCKER_IMAGE_NAME to '<username>/<repo>'."
+  echo "Example: DOCKER_IMAGE_NAME=myuser/topcastles ./deploy.sh"
+  echo ""
+  exit 1
+fi
 
 echo "Connecting to Synology and deploying..."
 ssh "${NAS_USER}@${NAS_HOST}" << EOF

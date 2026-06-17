@@ -177,6 +177,14 @@ docker login
 
 Verify the repository `hobunror/topcastles` exists on Docker Hub and the account has push access.
 
+If you are publishing from a different Docker Hub account, override the image name before running the deployment script:
+
+```bash
+DOCKER_IMAGE_NAME=<username>/topcastles ./deploy.sh
+```
+
+If your Docker Hub account uses two-factor authentication, use a Docker Hub access token instead of your password when logging in.
+
 ### NAS image preflight fails
 
 Verify `/volume1/docker/topcastles/images/castles` exists on the NAS, contains
