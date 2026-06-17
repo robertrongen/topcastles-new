@@ -62,6 +62,8 @@ describe('AdminCastlesComponent', () => {
       tick(); // microtask for promise resolution
 
       expect(component.searchResults()).toEqual(mockLookupResults);
+      expect(component.searchMessage()).toBe(null);
+      expect(component.searchLoading()).toBeFalse();
     }));
 
     it('should not fetch results for queries shorter than 2 characters', fakeAsync(() => {
@@ -129,6 +131,23 @@ describe('AdminCastlesComponent', () => {
       tick(); // microtask for promise rejection
 
       expect(component.searchResults()).toEqual([]);
+      expect(component.searchMessage()).toBe('Lookup failed. Check your token or connection.');
+      expect(component.searchLoading()).toBeFalse();
+    }));
+
+    it('should show a helpful message when no castles match', fakeAsync(() => {
+      component.onSearchInput('missing');
+      tick(220);
+      tick();
+
+      const req = httpMock.expectOne((request) =>
+        request.url.includes('/api/admin/castles/lookup?q=missing')
+      );
+      req.flush([]);
+      tick();
+
+      expect(component.searchResults()).toEqual([]);
+      expect(component.searchMessage()).toBe('No castles matched "missing".');
     }));
 
     it('should update searchQuery signal when user types', () => {
@@ -138,6 +157,120 @@ describe('AdminCastlesComponent', () => {
       component.onSearchInput('paris');
       expect(component.searchQuery()).toBe('paris');
     });
+  });
+
+  describe('saveOverride', () => {
+    it('should keep success feedback and update selected override after save', fakeAsync(() => {
+      component.selected.set({
+        code: 'tower',
+        enriched: { castle_name: 'Tower of London', country: 'England' },
+        override: null,
+      });
+      component.editFields.set({ castle_name: 'Tower corrected' });
+      component.overrideCount.set(0);
+
+      component.saveOverride();
+
+      const req = httpMock.expectOne('/api/admin/castles/tower');
+      expect(req.request.method).toBe('PUT');
+      req.flush({ code: 'tower', override: { castle_name: 'Tower corrected' } });
+      tick();
+
+      expect(component.saveSuccess()).toBeTrue();
+      expect(component.selected()?.override).toEqual({ castle_name: 'Tower corrected' });
+      expect(component.overrideCount()).toBe(1);
+    }));
+  });
+
+  describe('saveNewCastle', () => {
+    it('should reject invalid castle codes before POSTing', fakeAsync(() => {
+      component.startNewCastle();
+      component.newCastleCode.set('UPPERCASE');
+      component.newCastleFields.set({
+        castle_name: 'New Castle',
+        country: 'Ireland',
+        place: 'Kilkenny',
+        latitude: 52.654,
+        longitude: -7.254,
+      });
+
+      component.saveNewCastle();
+      tick();
+
+      httpMock.expectNone('/api/admin/castles');
+      expect(component.newSaveError()).toBe('Castle code must be a lowercase slug using letters, digits, and hyphens.');
+      expect(component.newSaving()).toBeFalse();
+    }));
+
+    it('should reject missing required draft fields before POSTing', fakeAsync(() => {
+      component.startNewCastle();
+      component.newCastleCode.set('new-castle');
+      component.newCastleFields.set({
+        castle_name: 'New Castle',
+        country: 'Ireland',
+        latitude: 52.654,
+        longitude: -7.254,
+      });
+
+      component.saveNewCastle();
+      tick();
+
+      httpMock.expectNone('/api/admin/castles');
+      expect(component.newSaveError()).toBe('Place is required.');
+      expect(component.newSaving()).toBeFalse();
+    }));
+
+    it('should post a trimmed draft code and select the created castle', fakeAsync(() => {
+      component.startNewCastle();
+      component.overrideCount.set(0);
+      component.newCastleCode.set(' new-castle ');
+      component.newCastleFields.set({
+        castle_name: 'New Castle',
+        country: 'Ireland',
+        place: 'Kilkenny',
+        latitude: 52.654,
+        longitude: -7.254,
+      });
+
+      component.saveNewCastle();
+
+      const postReq = httpMock.expectOne('/api/admin/castles');
+      expect(postReq.request.method).toBe('POST');
+      expect(postReq.request.body.castle_code).toBe('new-castle');
+      postReq.flush({
+        code: 'new-castle',
+        override: {
+          castle_name: 'New Castle',
+          country: 'Ireland',
+          place: 'Kilkenny',
+          latitude: 52.654,
+          longitude: -7.254,
+        },
+      });
+      tick();
+
+      const detailReq = httpMock.expectOne('/api/admin/castles/new-castle');
+      expect(detailReq.request.method).toBe('GET');
+      detailReq.flush({
+        code: 'new-castle',
+        enriched: null,
+        override: {
+          castle_name: 'New Castle',
+          country: 'Ireland',
+          place: 'Kilkenny',
+          latitude: 52.654,
+          longitude: -7.254,
+        },
+      });
+      tick();
+
+      expect(component.mode()).toBe('edit');
+      expect(component.selected()?.code).toBe('new-castle');
+      expect(component.overrideCount()).toBe(1);
+      expect(component.saveSuccess()).toBeTrue();
+      expect(component.newSaveSuccess()).toBeTrue();
+      expect(component.newSaving()).toBeFalse();
+    }));
   });
 
   describe('clearSelection', () => {

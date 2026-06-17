@@ -22,7 +22,7 @@
     <span class="rebuild-notice__eyebrow">PIPELINE REBUILD REQUIRED</span>
     <p class="rebuild-notice__body">
       {{ overrideCount() }} override{{ overrideCount() !== 1 ? 's' : '' }} staged.
-      Run <code class="mono-chip">npm run pipeline:consume</code> on a developer machine
+      Run <code class="mono-chip">{{ rebuildCommand }}</code> on a developer machine
       to apply them.
     </p>
   </aside>
@@ -39,6 +39,11 @@
       (input)="onSearchInput($any($event.target).value)"
       aria-label="Search castles"
     />
+    @if (searchLoading()) {
+      <p class="toolbar__message">Searching castles...</p>
+    } @else if (searchMessage()) {
+      <p class="toolbar__message">{{ searchMessage() }}</p>
+    }
     @if (searchResults().length) {
       <ul class="search-results" role="listbox" aria-label="Search results">
         @for (r of searchResults(); track r.code) {
@@ -105,7 +110,7 @@
         <p class="form-error" role="alert">{{ saveError() }}</p>
       }
       @if (saveSuccess()) {
-        <p class="form-success">Override saved.</p>
+        <p class="form-success">Override saved. Rebuild required before public data changes.</p>
       }
 
       <div class="edit-panel__actions">
@@ -127,6 +132,11 @@
       <h2 class="edit-panel__title">New castle draft</h2>
       <button class="edit-panel__close" type="button" (click)="clearSelection()" aria-label="Close">✕</button>
     </div>
+
+    <p class="form-help">
+      Fields marked * are required. Drafts are saved to runtime JSON state only; public data updates after
+      <code class="mono-chip">{{ rebuildCommand }}</code> runs on a developer machine.
+    </p>
 
     <div class="edit-panel__grid">
       <div class="field-row">
@@ -179,6 +189,9 @@
 
     @if (newSaveError()) {
       <p class="form-error" role="alert">{{ newSaveError() }}</p>
+    }
+    @if (newSaveSuccess()) {
+      <p class="form-success">Draft saved. Rebuild required before public data changes.</p>
     }
 
     <div class="edit-panel__actions">

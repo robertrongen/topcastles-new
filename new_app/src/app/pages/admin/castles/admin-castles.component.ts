@@ -39,6 +39,8 @@ const EDITABLE_FIELDS: { key: string; label: string; type: 'text' | 'number' }[]
 ];
 
 const NEW_CASTLE_REQUIRED = new Set(['castle_code', 'castle_name', 'country', 'place', 'latitude', 'longitude']);
+const CASTLE_CODE_RE = /^[a-z0-9][a-z0-9-]*$/;
+const REBUILD_COMMAND = 'npm run pipeline:consume';
 
 @Component({
   selector: 'app-admin-castles',
@@ -54,6 +56,7 @@ export class AdminCastlesComponent implements OnInit, OnDestroy {
 
   readonly editableFields = EDITABLE_FIELDS;
   readonly newCastleRequired = NEW_CASTLE_REQUIRED;
+  readonly rebuildCommand = REBUILD_COMMAND;
 
   // Overrides summary
   readonly overrideCount = signal(0);
@@ -61,6 +64,8 @@ export class AdminCastlesComponent implements OnInit, OnDestroy {
   // Lookup
   readonly searchQuery = signal('');
   readonly searchResults = signal<CastleLookupResult[]>([]);
+  readonly searchLoading = signal(false);
+  readonly searchMessage = signal<string | null>(null);
   private readonly searchInput$ = new Subject<string>();
   private searchSubscription: any;
 
@@ -80,6 +85,7 @@ export class AdminCastlesComponent implements OnInit, OnDestroy {
   readonly newCastleFields = signal<Record<string, string | number | null>>({});
   readonly newSaving = signal(false);
   readonly newSaveError = signal<string | null>(null);
+  readonly newSaveSuccess = signal(false);
 
   async ngOnInit() {
     if (!isPlatformBrowser(this.platformId)) return;
@@ -112,21 +118,36 @@ export class AdminCastlesComponent implements OnInit, OnDestroy {
   }
 
   private async runSearch(q: string) {
-    if (q.length < 2) { this.searchResults.set([]); return; }
+    const query = q.trim();
+    if (query.length < 2) {
+      this.searchResults.set([]);
+      this.searchLoading.set(false);
+      this.searchMessage.set(null);
+      return;
+    }
+    this.searchLoading.set(true);
+    this.searchMessage.set(null);
     try {
       const results = await firstValueFrom(
-        this.http.get<CastleLookupResult[]>(`/api/admin/castles/lookup?q=${encodeURIComponent(q)}`, {
+        this.http.get<CastleLookupResult[]>(`/api/admin/castles/lookup?q=${encodeURIComponent(query)}`, {
           headers: this.auth.getAuthHeaders(),
         })
       );
       this.searchResults.set(results);
-    } catch { this.searchResults.set([]); }
+      this.searchMessage.set(results.length ? null : `No castles matched "${query}".`);
+    } catch {
+      this.searchResults.set([]);
+      this.searchMessage.set('Lookup failed. Check your token or connection.');
+    } finally {
+      this.searchLoading.set(false);
+    }
   }
 
   async selectCastle(code: string) {
     this.loadingDetail.set(true);
     this.saveError.set(null);
     this.saveSuccess.set(false);
+    this.newSaveSuccess.set(false);
     this.mode.set('edit');
     this.searchResults.set([]);
     this.searchQuery.set('');
@@ -168,15 +189,15 @@ export class AdminCastlesComponent implements OnInit, OnDestroy {
     }
 
     try {
-      await firstValueFrom(
+      const saved = await firstValueFrom(
         this.http.put(`/api/admin/castles/${detail.code}`, body, {
           headers: this.auth.getAuthHeaders(),
         })
-      );
+      ) as { code: string; override: Record<string, unknown> };
+      this.selected.set({ ...detail, override: saved.override });
+      this.editFields.set({ ...this.editFields() });
       this.saveSuccess.set(true);
       this.overrideCount.set(this.overrideCount() + (detail.override ? 0 : 1));
-      // Refresh detail
-      await this.selectCastle(detail.code);
     } catch (err) {
       const msg = (err instanceof HttpErrorResponse && err.error?.error)
         ? err.error.error
@@ -193,6 +214,7 @@ export class AdminCastlesComponent implements OnInit, OnDestroy {
     this.newCastleCode.set('');
     this.newCastleFields.set({});
     this.newSaveError.set(null);
+    this.newSaveSuccess.set(false);
   }
 
   setNewField(key: string, value: string, type: 'text' | 'number') {
@@ -202,9 +224,18 @@ export class AdminCastlesComponent implements OnInit, OnDestroy {
 
   async saveNewCastle() {
     this.newSaveError.set(null);
+    this.newSaveSuccess.set(false);
     this.newSaving.set(true);
 
-    const body: Record<string, unknown> = { castle_code: this.newCastleCode() };
+    const code = this.newCastleCode().trim();
+    const validationError = this.validateNewCastleDraft(code);
+    if (validationError) {
+      this.newSaveError.set(validationError);
+      this.newSaving.set(false);
+      return;
+    }
+
+    const body: Record<string, unknown> = { castle_code: code };
     for (const [k, v] of Object.entries(this.newCastleFields())) {
       if (v !== null && v !== '') body[k] = v;
     }
@@ -217,7 +248,9 @@ export class AdminCastlesComponent implements OnInit, OnDestroy {
       );
       this.overrideCount.update(n => n + 1);
       // Switch to edit view of the new draft
-      await this.selectCastle(this.newCastleCode());
+      await this.selectCastle(code);
+      this.saveSuccess.set(true);
+      this.newSaveSuccess.set(true);
     } catch (err) {
       const msg = (err instanceof HttpErrorResponse && err.error?.error)
         ? err.error.error
@@ -233,6 +266,38 @@ export class AdminCastlesComponent implements OnInit, OnDestroy {
     this.mode.set('none');
     this.searchQuery.set('');
     this.searchInput$.next('');
+    this.saveError.set(null);
+    this.saveSuccess.set(false);
+    this.newSaveError.set(null);
+    this.newSaveSuccess.set(false);
+  }
+
+  private validateNewCastleDraft(code: string): string | null {
+    if (!CASTLE_CODE_RE.test(code)) {
+      return 'Castle code must be a lowercase slug using letters, digits, and hyphens.';
+    }
+
+    const fields = this.newCastleFields();
+    for (const key of ['castle_name', 'country', 'place']) {
+      const value = fields[key];
+      if (typeof value !== 'string' || value.trim().length === 0) {
+        return `${this.fieldLabel(key)} is required.`;
+      }
+    }
+
+    for (const key of ['latitude', 'longitude']) {
+      const value = fields[key];
+      if (typeof value !== 'number' || !Number.isFinite(value)) {
+        return `${this.fieldLabel(key)} must be a number.`;
+      }
+    }
+
+    return null;
+  }
+
+  private fieldLabel(key: string): string {
+    if (key === 'castle_code') return 'Castle code';
+    return EDITABLE_FIELDS.find(f => f.key === key)?.label ?? key;
   }
 
   enrichedValue(key: string): string {

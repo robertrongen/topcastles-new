@@ -105,6 +105,12 @@
   }
 }
 
+.toolbar__message {
+  font: 400 12px/1.4 var(--tk-font-sans);
+  color: var(--text-5);
+  margin: 6px 0 0;
+}
+
 .search-results {
   position: absolute;
   top: 100%;
@@ -296,6 +302,12 @@
   font: 400 12.5px/1.5 var(--tk-font-sans);
   color: var(--ochre);
   margin: 0 0 12px;
+}
+
+.form-help {
+  font: 400 12.5px/1.5 var(--tk-font-sans);
+  color: var(--text-4);
+  margin: -8px 0 16px;
 }
 
 .state-msg {
