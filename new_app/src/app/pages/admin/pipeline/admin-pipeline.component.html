@@ -80,6 +80,27 @@
     </aside>
   }
 
+  <aside class="handoff-panel" role="note" aria-label="Developer-machine handoff">
+    <span class="handoff-panel__eyebrow">DEVELOPER-MACHINE HANDOFF</span>
+    @if (activeJob(); as job) {
+      <p class="handoff-panel__body">
+        Job <code class="mono-chip">{{ job.id }}</code> is currently running. Leave the runtime container alone and
+        watch the job log from this page or the developer machine.
+      </p>
+    } @else if (pendingRequestCount() > 0) {
+      <p class="handoff-panel__body">
+        {{ pendingRequestCount() }} request{{ pendingRequestCount() !== 1 ? 's' : '' }} staged in
+        <code class="mono-chip">/data/pipeline</code>. Process them outside the runtime container with
+        <code class="mono-chip">{{ watchCommand }}</code>, or run the specific command shown below.
+      </p>
+    } @else {
+      <p class="handoff-panel__body">
+        No pipeline request is currently staged. Runtime admin can create request JSON, but it does not run builds,
+        enrichment, or artifact mutation.
+      </p>
+    }
+  </aside>
+
   <!-- Rebuild request -->
   <section class="rebuild-section" aria-label="Rebuild request">
     <div class="rebuild-section__eyebrow">REBUILD REQUEST</div>
@@ -113,7 +134,7 @@
           <code class="mono-chip">/data/pipeline/rebuild-request.json</code>.
           On a developer machine, run:
         </p>
-        <pre class="operator-instructions__cmd">npm run pipeline:consume</pre>
+        <pre class="operator-instructions__cmd">{{ rebuildCommand }}</pre>
         <p class="operator-instructions__body">
           The script will validate the staged file, run
           <code class="mono-chip">npm run data:regenerate</code> and
@@ -141,7 +162,7 @@
           class="rebuild-form__btn"
           type="button"
           (click)="requestRebuild()"
-          [disabled]="submitting()"
+          [disabled]="submitting() || !hasRequestReason(rebuildReason())"
         >
           {{ submitting() ? 'Submitting…' : 'Request rebuild' }}
         </button>
@@ -186,11 +207,11 @@
           <code class="mono-chip">/data/pipeline/enrichment-request.json</code>.
           On a developer machine, run:
         </p>
-        <pre class="operator-instructions__cmd">npm run pipeline:consume:enrichment</pre>
+        <pre class="operator-instructions__cmd">{{ enrichmentCommand }}</pre>
         <p class="operator-instructions__body">
           The script will run the appropriate enrichment command, apply overrides, and regenerate
           downstream artefacts. If a rebuild is then required, run
-          <code class="mono-chip">npm run pipeline:consume</code> separately.
+          <code class="mono-chip">{{ rebuildCommand }}</code> separately.
         </p>
       </aside>
 
@@ -228,7 +249,7 @@
           class="rebuild-form__btn"
           type="button"
           (click)="requestEnrichment()"
-          [disabled]="enrichSubmitting()"
+          [disabled]="enrichSubmitting() || !hasRequestReason(enrichmentReason())"
         >
           {{ enrichSubmitting() ? 'Submitting…' : 'Request enrichment' }}
         </button>
@@ -265,6 +286,8 @@
 
     @if (jobsLoading()) {
       <p class="state-msg">Loading jobs…</p>
+    } @else if (jobsError()) {
+      <p class="job-list__error" role="alert">{{ jobsError() }}</p>
     } @else if (jobs().length === 0) {
       <p class="job-list__empty">No jobs recorded. Jobs are created when a consumer script runs.</p>
     } @else {
@@ -285,6 +308,16 @@
                 >{{ expandedJobId() === job.id ? 'Hide log' : 'Log' }}</button>
               }
             </div>
+            @if (job.reason || job.errorMessage) {
+              <div class="job-row__detail">
+                @if (job.reason) {
+                  <span>{{ job.reason }}</span>
+                }
+                @if (job.errorMessage) {
+                  <span class="job-row__error">{{ job.errorMessage }}</span>
+                }
+              </div>
+            }
 
             @if (expandedJobId() === job.id) {
               <div class="job-log" aria-label="Job log">

@@ -187,6 +187,29 @@
   margin: 0;
 }
 
+.handoff-panel {
+  padding: 16px 20px;
+  background: var(--ink-card);
+  border: 1px solid var(--ink-line-2);
+  border-left: 3px solid var(--ochre);
+  margin-bottom: 20px;
+}
+
+.handoff-panel__eyebrow {
+  display: block;
+  font: 600 10px/1 var(--tk-font-sans);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--ochre);
+  margin-bottom: 8px;
+}
+
+.handoff-panel__body {
+  font: 400 13px/1.6 var(--tk-font-sans);
+  color: var(--text-3);
+  margin: 0;
+}
+
 // ── Rebuild request ────────────────────────────────────────────────────────────
 
 .rebuild-section {
@@ -446,6 +469,12 @@
   margin: 0;
 }
 
+.job-list__error {
+  font: 400 12.5px/1.5 var(--tk-font-sans);
+  color: var(--heraldic-red);
+  margin: 0;
+}
+
 .job-table {
   display: flex;
   flex-direction: column;
@@ -497,6 +526,18 @@
   font: 400 12px/1.4 var(--tk-font-sans);
   color: var(--text-5);
   white-space: nowrap;
+}
+
+.job-row__detail {
+  display: flex;
+  gap: 10px;
+  padding: 0 0 8px 100px;
+  font: 400 12px/1.5 var(--tk-font-sans);
+  color: var(--text-4);
+}
+
+.job-row__error {
+  color: var(--heraldic-red);
 }
 
 .job-row__log-btn {

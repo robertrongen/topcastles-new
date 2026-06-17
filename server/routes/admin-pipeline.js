@@ -87,6 +87,11 @@ router.post('/rebuild-request', express.json(), async (req, res) => {
     return res.status(400).json({ error: 'requestedBy is required' });
   }
 
+  const existing = await readRebuildRequest(DATA_DIR);
+  if (existing && existing.status === 'requested') {
+    return res.status(409).json({ error: 'a rebuild request is already pending' });
+  }
+
   try {
     const entry = await createRebuildRequest(DATA_DIR, {
       reason: reason.trim(),

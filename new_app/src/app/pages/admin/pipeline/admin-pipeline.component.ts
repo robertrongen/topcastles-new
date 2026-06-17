@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, PLATFORM_ID, signal } from '@angular/core';
+import { Component, computed, inject, OnDestroy, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
@@ -60,6 +60,9 @@ export interface PipelineJob {
 }
 
 const POLL_INTERVAL_MS = 5000;
+const REBUILD_COMMAND = 'npm run pipeline:consume';
+const ENRICHMENT_COMMAND = 'npm run pipeline:consume:enrichment';
+const WATCH_COMMAND = 'npm run pipeline:watch';
 
 @Component({
   selector: 'app-admin-pipeline',
@@ -88,12 +91,22 @@ export class AdminPipelineComponent implements OnInit, OnDestroy {
   readonly enrichSubmitting = signal(false);
   readonly enrichSubmitError = signal<string | null>(null);
   readonly enrichmentTypes = ENRICHMENT_TYPES;
+  readonly rebuildCommand = REBUILD_COMMAND;
+  readonly enrichmentCommand = ENRICHMENT_COMMAND;
+  readonly watchCommand = WATCH_COMMAND;
 
   readonly jobs = signal<PipelineJob[]>([]);
   readonly jobsLoading = signal(true);
+  readonly jobsError = signal<string | null>(null);
   readonly expandedJobId = signal<string | null>(null);
   readonly expandedLogContent = signal<string | null>(null);
   readonly expandedLogLoading = signal(false);
+
+  readonly activeJob = computed(() => this.jobs().find(j => j.status === 'running') ?? null);
+  readonly pendingRequestCount = computed(() =>
+    (this.rebuildRequest()?.status === 'requested' ? 1 : 0) +
+    (this.enrichmentRequest()?.status === 'requested' ? 1 : 0)
+  );
 
   private pollTimer: ReturnType<typeof setInterval> | null = null;
 
@@ -150,6 +163,7 @@ export class AdminPipelineComponent implements OnInit, OnDestroy {
 
   private async loadJobs() {
     this.jobsLoading.set(true);
+    this.jobsError.set(null);
     try {
       const list = await firstValueFrom(
         this.http.get<PipelineJob[]>('/api/admin/pipeline/jobs', {
@@ -158,6 +172,8 @@ export class AdminPipelineComponent implements OnInit, OnDestroy {
       );
       this.jobs.set(list);
     } catch {
+      this.jobs.set([]);
+      this.jobsError.set('Could not load pipeline jobs.');
       // non-fatal — jobs section just stays empty
     } finally {
       this.jobsLoading.set(false);
@@ -208,12 +224,17 @@ export class AdminPipelineComponent implements OnInit, OnDestroy {
 
   async requestRebuild() {
     this.submitError.set(null);
+    const reason = this.rebuildReason().trim();
+    if (!reason) {
+      this.submitError.set('Reason is required.');
+      return;
+    }
     this.submitting.set(true);
     try {
       const entry = await firstValueFrom(
         this.http.post<RebuildRequest>(
           '/api/admin/pipeline/rebuild-request',
-          { reason: this.rebuildReason(), requestedBy: this.auth.handle() },
+          { reason, requestedBy: this.auth.handle() },
           { headers: this.auth.getAuthHeaders() }
         )
       );
@@ -230,6 +251,11 @@ export class AdminPipelineComponent implements OnInit, OnDestroy {
 
   async requestEnrichment() {
     this.enrichSubmitError.set(null);
+    const reason = this.enrichmentReason().trim();
+    if (!reason) {
+      this.enrichSubmitError.set('Reason is required.');
+      return;
+    }
     this.enrichSubmitting.set(true);
     try {
       const entry = await firstValueFrom(
@@ -237,7 +263,7 @@ export class AdminPipelineComponent implements OnInit, OnDestroy {
           '/api/admin/pipeline/enrichment-request',
           {
             type: this.enrichmentType(),
-            reason: this.enrichmentReason(),
+            reason,
             requestedBy: this.auth.handle(),
           },
           { headers: this.auth.getAuthHeaders() }
@@ -266,5 +292,9 @@ export class AdminPipelineComponent implements OnInit, OnDestroy {
     const d = new Date(iso);
     if (isNaN(d.getTime())) return iso;
     return d.toUTCString().replace(/:\d{2} GMT$/, ' UTC');
+  }
+
+  hasRequestReason(value: string): boolean {
+    return value.trim().length > 0;
   }
 }

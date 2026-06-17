@@ -260,6 +260,15 @@ describe('POST /api/admin/pipeline/rebuild-request', () => {
     assert.equal(get.body.requestedBy, 'Robert');
   });
 
+  it('duplicate request while active â†’ 409', async () => {
+    const res = await request
+      .post('/api/admin/pipeline/rebuild-request')
+      .set('Authorization', `Bearer ${TOKEN}`)
+      .send({ reason: 'another rebuild', requestedBy: 'Robert' });
+    assert.equal(res.status, 409);
+    assert.ok(res.body.error.includes('pending'));
+  });
+
   it('request is written to rebuild-request.json', async () => {
     const req = await readRebuildRequest(tmpDir);
     assert.ok(req !== null);
