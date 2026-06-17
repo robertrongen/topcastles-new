@@ -45,6 +45,7 @@ describe('CastlesPageComponent', () => {
     makeCastle({ position: 2, castle_code: 'carcassonne', castle_name: 'Carcassonne',          country: 'France',  score_total: 480 }),
     makeCastle({ position: 3, castle_code: 'malbork',     castle_name: 'Malbork Castle',       country: 'Poland',  score_total: 460 }),
     makeCastle({ position: 4, castle_code: 'bodiam',      castle_name: 'Bodiam Castle',        country: 'England', score_total: 300 }),
+    makeCastle({ position: 5, castle_code: 'harlech',     castle_name: 'Harlech Castle',       country: 'Wales',   region: 'Gwynedd', score_total: 290 }),
   ];
 
   function setup(queryParams: Record<string, string> = {}): void {
@@ -78,7 +79,7 @@ describe('CastlesPageComponent', () => {
 
   it('should display all castles with score > 0', () => {
     setup();
-    expect(component.filteredCastles().length).toBe(4);
+    expect(component.filteredCastles().length).toBe(5);
   });
 
   it('should display castle names as links', () => {
@@ -92,6 +93,13 @@ describe('CastlesPageComponent', () => {
     expect(component.filteredCastles().length).toBe(1);
   });
 
+  it('should filter by region from direct query params', () => {
+    setup({ region: 'Gwynedd' });
+    expect(component.region()).toBe('Gwynedd');
+    expect(component.filteredCastles().map(c => c.castle_code)).toEqual(['harlech']);
+    expect(fixture.nativeElement.textContent).toContain('1 castles found');
+  });
+
   it('should filter by name', () => {
     setup();
     component.name.set('malbork');
@@ -102,7 +110,7 @@ describe('CastlesPageComponent', () => {
   it('should show result count', () => {
     setup();
     fixture.detectChanges();
-    expect(fixture.nativeElement.textContent).toContain('4 castles found');
+    expect(fixture.nativeElement.textContent).toContain('5 castles found');
   });
 
   it('should show filtered result count', () => {

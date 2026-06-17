@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, fakeAsync, flushMicrotasks } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { provideRouter, ActivatedRoute } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import {
@@ -305,6 +306,15 @@ describe('CastleDetailPageComponent', () => {
     expect(text).toContain('Castles');
     expect(text).toContain('Syria');
     expect(text).toContain('Krak des Chevaliers');
+  });
+
+  it('should generate a filtered castles link for the castle region', () => {
+    setupWithCode('krak');
+    const regionLink = fixture.debugElement.queryAll(By.css('a'))
+      .find(link => (link.nativeElement.textContent ?? '').includes('Homs Governorate'));
+
+    expect(regionLink).toBeTruthy();
+    expect(regionLink!.nativeElement.getAttribute('href')).toBe('/castles?region=Homs%20Governorate');
   });
 
   // ── Phase 4.2: SEO meta tags ───────────────────────────────────────────────
