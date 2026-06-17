@@ -78,6 +78,22 @@ describe('AdminAuthService', () => {
       httpTesting.verify();
     });
 
+    it('clears an expired stored session on startup', () => {
+      const expiry = (Date.now() - 1000).toString();
+      const { service, httpTesting } = setup('browser', {
+        [ADMIN_TOKEN_KEY]:  'tok',
+        [ADMIN_HANDLE_KEY]: 'Robert',
+        [ADMIN_TIME_KEY]:   '12345',
+        [ADMIN_EXPIRY_KEY]: expiry,
+      });
+      expect(service.isAuthenticated()).toBe(false);
+      expect(localStorage.getItem(ADMIN_TOKEN_KEY)).toBeNull();
+      expect(localStorage.getItem(ADMIN_HANDLE_KEY)).toBeNull();
+      expect(localStorage.getItem(ADMIN_TIME_KEY)).toBeNull();
+      expect(localStorage.getItem(ADMIN_EXPIRY_KEY)).toBeNull();
+      httpTesting.verify();
+    });
+
     it('returns false on server platform even when a token is stored', () => {
       const { service, httpTesting } = setup('server', { [ADMIN_TOKEN_KEY]: 'tok' });
       expect(service.isAuthenticated()).toBe(false);
@@ -136,6 +152,15 @@ describe('AdminAuthService', () => {
     it('returns Authorization Bearer header when a token is stored', () => {
       const { service } = setup('browser', { [ADMIN_TOKEN_KEY]: 'my-token' });
       expect(service.getAuthHeaders()).toEqual({ Authorization: 'Bearer my-token' });
+    });
+
+    it('does not return Authorization header for an expired token', () => {
+      const { service } = setup('browser', {
+        [ADMIN_TOKEN_KEY]:  'my-token',
+        [ADMIN_EXPIRY_KEY]: (Date.now() - 1000).toString(),
+      });
+      expect(service.getAuthHeaders()).toEqual({});
+      expect(localStorage.getItem(ADMIN_TOKEN_KEY)).toBeNull();
     });
   });
 
@@ -264,6 +289,36 @@ describe('AdminAuthService', () => {
       expect(service.isAuthenticated()).toBe(true);
       service.clearSession();
       expect(service.isAuthenticated()).toBe(false);
+      httpTesting.verify();
+    });
+  });
+
+  describe('handleUnauthorized', () => {
+    it('clears the session for 401 and reports it handled', () => {
+      const { service, httpTesting } = setup('browser', {
+        [ADMIN_TOKEN_KEY]: 'tok',
+      });
+      expect(service.handleUnauthorized(401)).toBe(true);
+      expect(service.isAuthenticated()).toBe(false);
+      expect(localStorage.getItem(ADMIN_TOKEN_KEY)).toBeNull();
+      httpTesting.verify();
+    });
+
+    it('clears the session for 403 and reports it handled', () => {
+      const { service, httpTesting } = setup('browser', {
+        [ADMIN_TOKEN_KEY]: 'tok',
+      });
+      expect(service.handleUnauthorized(403)).toBe(true);
+      expect(service.isAuthenticated()).toBe(false);
+      httpTesting.verify();
+    });
+
+    it('leaves the session untouched for non-auth statuses', () => {
+      const { service, httpTesting } = setup('browser', {
+        [ADMIN_TOKEN_KEY]: 'tok',
+      });
+      expect(service.handleUnauthorized(500)).toBe(false);
+      expect(service.isAuthenticated()).toBe(true);
       httpTesting.verify();
     });
   });

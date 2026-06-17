@@ -19,18 +19,22 @@ export class AdminAuthService {
 
   constructor() {
     if (this.isBrowser) {
-      this._token.set(localStorage.getItem(ADMIN_TOKEN_KEY));
+      const token = localStorage.getItem(ADMIN_TOKEN_KEY);
+      if (token && this.isExpired()) {
+        this.clearStoredSession();
+      } else {
+        this._token.set(token);
+      }
     }
   }
 
-  readonly isAuthenticated = computed(() => {
+  isAuthenticated(): boolean {
     const token = this._token();
     if (!token) return false;
     if (!this.isBrowser) return false;
-    const expiry = localStorage.getItem(ADMIN_EXPIRY_KEY);
-    if (expiry && Date.now() > parseInt(expiry, 10)) return false;
+    if (this.isExpired()) return false;
     return true;
-  });
+  }
 
   readonly handle = computed(() =>
     this.isBrowser ? (localStorage.getItem(ADMIN_HANDLE_KEY) || 'Editor') : 'Editor'
@@ -43,12 +47,24 @@ export class AdminAuthService {
   });
 
   getToken(): string | null {
+    if (!this.isAuthenticated()) {
+      if (this.isExpired()) this.clearSession();
+      return null;
+    }
     return this._token();
   }
 
   getAuthHeaders(): { Authorization: string } | Record<string, never> {
-    const token = this._token();
+    const token = this.getToken();
     return token ? { Authorization: `Bearer ${token}` } : {};
+  }
+
+  handleUnauthorized(status: number | null | undefined): boolean {
+    if (status === 401 || status === 403) {
+      this.clearSession();
+      return true;
+    }
+    return false;
   }
 
   async signIn(passphrase: string, handle: string, trust: boolean): Promise<{ success: boolean; error?: string }> {
@@ -80,12 +96,24 @@ export class AdminAuthService {
   }
 
   clearSession(): void {
+    this.clearStoredSession();
+    this._token.set(null);
+  }
+
+  private isExpired(): boolean {
+    if (!this.isBrowser) return false;
+    const expiry = localStorage.getItem(ADMIN_EXPIRY_KEY);
+    if (!expiry) return false;
+    const timestamp = parseInt(expiry, 10);
+    return Number.isFinite(timestamp) && Date.now() > timestamp;
+  }
+
+  private clearStoredSession(): void {
     if (this.isBrowser) {
       localStorage.removeItem(ADMIN_TOKEN_KEY);
       localStorage.removeItem(ADMIN_HANDLE_KEY);
       localStorage.removeItem(ADMIN_TIME_KEY);
       localStorage.removeItem(ADMIN_EXPIRY_KEY);
     }
-    this._token.set(null);
   }
 }
