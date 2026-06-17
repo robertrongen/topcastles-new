@@ -23,7 +23,7 @@
 </p>
 
 <!-- Prerender notice -->
-<app-admin-prerender-notice />
+<app-admin-prerender-notice [publishStatus]="publishStatus()" />
 
 <!-- Ledger strip -->
 <div class="ledger" aria-label="Overview statistics">
@@ -150,11 +150,12 @@
           <span class="recent-row__when">{{ fmtDate(edit.timestamp) }}</span>
           <div class="recent-row__what">
             <span class="recent-row__file-chip">{{ fileChip(edit.file) }}</span>
-            <span class="recent-row__verb">wrote backup of</span>
+            <span class="recent-row__verb">{{ backupSummary(edit) }}</span>
+            <span class="recent-row__filename">{{ edit.filename }}</span>
           </div>
-          <span class="recent-row__who">—</span>
+          <span class="recent-row__who">system backup</span>
           <div class="recent-row__action">
-            <a class="recent-row__open" href="#">Open backup →</a>
+            <a class="recent-row__open" [routerLink]="['/admin/editorial', edit.file]">Open editor →</a>
           </div>
         </div>
       }

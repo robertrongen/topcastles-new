@@ -84,6 +84,7 @@ export class AdminEditorialOverviewComponent implements OnInit {
     EDITORIAL_FILES.map(f => ({ ...f, keysCount: 0, error: false, lastEdited: null }))
   );
   readonly backups = signal<BackupEntry[]>([]);
+  readonly publishStatus = signal<EditorialPublishStatus | null>(null);
   readonly loading = signal(true);
 
   readonly filesPresent = computed(() => this.files().filter(f => !f.error && f.keysCount > 0).length);
@@ -101,12 +102,6 @@ export class AdminEditorialOverviewComponent implements OnInit {
     return fmtDate(oldest.timestamp);
   });
   readonly recentEdits = computed(() => this.backups().slice(0, 6));
-  readonly publishStatus = computed<EditorialPublishStatus | null>(() => ({
-    lastBuildAt: null,
-    lastEditAt: null,
-    needsRebuild: false,
-    deployCommand: 'npm run build && git push'
-  }));
 
   readonly EDITORIAL_FILES = EDITORIAL_FILES;
 
@@ -123,6 +118,7 @@ export class AdminEditorialOverviewComponent implements OnInit {
       periodPicks:  this.http.get<Record<string, unknown>>('/api/editorial/period-picks').pipe(catchError(() => of(null))),
       browseBands:  this.http.get<Record<string, unknown>>('/api/editorial/browse-bands').pipe(catchError(() => of(null))),
       backups:      this.http.get<BackupEntry[]>('/api/admin/backups', { headers: authHeaders }).pipe(catchError(() => of([]))),
+      publishStatus: this.http.get<EditorialPublishStatus>('/api/admin/editorial/publish-status', { headers: authHeaders }).pipe(catchError(() => of(null))),
     }).subscribe(results => {
       const apiData: Record<string, Record<string, unknown> | null> = {
         'countries':    results.countries,
@@ -133,6 +129,7 @@ export class AdminEditorialOverviewComponent implements OnInit {
       };
       const backupList: BackupEntry[] = Array.isArray(results.backups) ? results.backups : [];
       this.backups.set(backupList);
+      this.publishStatus.set(results.publishStatus);
 
       this.files.update(rows => rows.map(row => {
         const data = apiData[row.slug];
@@ -148,6 +145,12 @@ export class AdminEditorialOverviewComponent implements OnInit {
 
   fmtDate = fmtDate;
   fileChip(slug: string): string { return slug.toUpperCase(); }
+  fileLabel(slug: string): string {
+    return EDITORIAL_FILES.find(f => f.slug === slug)?.name ?? slug;
+  }
+  backupSummary(edit: BackupEntry): string {
+    return `Snapshot saved before ${this.fileLabel(edit.file)} was overwritten`;
+  }
 }
 
 function getLastEdited(slug: string, backups: BackupEntry[]): string | null {

@@ -29,6 +29,9 @@ export interface EditorialPublishStatus {
             Changes not yet published to prerendered pages. Prerendered pages will show
             the previous state until the next full build and deployment.
           </p>
+          <p class="prerender-notice__handoff">
+            Developer handoff: <code>{{ deployCommand() }}</code>
+          </p>
         } @else {
           <p class="prerender-notice__body prerender-notice__body--ok">
             Editorial overlay is fully published.
@@ -38,6 +41,8 @@ export interface EditorialPublishStatus {
       <div class="prerender-notice__right">
         <span class="prerender-notice__last-label">LAST BUILD</span>
         <span class="prerender-notice__date">{{ buildDateDisplay() }}</span>
+        <span class="prerender-notice__last-label prerender-notice__last-label--edit">LAST EDIT</span>
+        <span class="prerender-notice__date">{{ editDateDisplay() }}</span>
       </div>
     </aside>
   `,
@@ -75,6 +80,18 @@ export interface EditorialPublishStatus {
     .prerender-notice__body--ok {
       color: var(--text-4);
     }
+    .prerender-notice__handoff {
+      margin: 8px 0 0;
+      font: 400 12px/1.5 var(--tk-font-sans);
+      color: var(--text-4);
+    }
+    .prerender-notice__handoff code {
+      font: 400 11px/1 var(--tk-font-mono, 'JetBrains Mono', monospace);
+      color: var(--text-2);
+      background: var(--ink-bg-2);
+      border: 1px solid var(--ink-line);
+      padding: 2px 5px;
+    }
     .prerender-notice__right {
       display: flex;
       flex-direction: column;
@@ -87,6 +104,9 @@ export interface EditorialPublishStatus {
       text-transform: uppercase;
       letter-spacing: .16em;
       color: var(--text-5);
+    }
+    .prerender-notice__last-label--edit {
+      margin-top: 8px;
     }
     .prerender-notice__date {
       font: 400 12px/1 var(--tk-font-mono, 'JetBrains Mono', monospace);
@@ -106,4 +126,14 @@ export class AdminPrerenderNoticeComponent {
     if (isNaN(d.getTime())) return s.lastBuildAt;
     return d.toUTCString().replace(/:\d{2} GMT$/, ' UTC');
   });
+
+  readonly editDateDisplay = computed(() => {
+    const s = this.publishStatus();
+    if (!s?.lastEditAt) return 'none recorded';
+    const d = new Date(s.lastEditAt);
+    if (isNaN(d.getTime())) return s.lastEditAt;
+    return d.toUTCString().replace(/:\d{2} GMT$/, ' UTC');
+  });
+
+  readonly deployCommand = computed(() => this.publishStatus()?.deployCommand || './deploy.sh');
 }
