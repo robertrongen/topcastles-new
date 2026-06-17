@@ -74,15 +74,23 @@ docker build -t "$FULL_IMAGE_NAME" .
 echo "Verifying Docker Hub authentication..."
 DOCKER_HUB_USERNAME="$(docker info --format '{{.Username}}' 2>/dev/null || true)"
 if [ -z "$DOCKER_HUB_USERNAME" ]; then
-  echo ""
-  echo "❌ ERROR: Docker is not logged in to Docker Hub or Docker Desktop is not running."
-  echo "Run 'docker login' and authenticate with the account that owns '$IMAGE_NAME'."
-  echo "If your account uses two-factor auth, use a Docker Hub access token instead of your password."
-  echo ""
-  exit 1
+  if docker info >/dev/null 2>&1; then
+    echo ""
+    echo "⚠️  Docker login user could not be detected from Docker info output."
+    echo "Proceeding to push; Docker push will validate authentication."
+    echo "If push fails, run 'docker login' and authenticate with the account that owns '$IMAGE_NAME'."
+    echo "If your account uses two-factor auth, use a Docker Hub access token instead of your password."
+    echo ""
+  else
+    echo ""
+    echo "❌ ERROR: Docker is not running or not reachable."
+    echo "Start Docker Desktop and try again."
+    echo ""
+    exit 1
+  fi
+else
+  echo "Docker Hub login detected: $DOCKER_HUB_USERNAME"
 fi
-
-echo "Docker Hub login detected: $DOCKER_HUB_USERNAME"
 
 echo "Pushing image to Docker Hub..."
 if ! docker push "$FULL_IMAGE_NAME"; then
