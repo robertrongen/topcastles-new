@@ -1,11 +1,9 @@
 <div class="top-regions-page">
-  <section class="atlas-intro">
-    <p class="eyebrow">Regional atlas</p>
-    <h1 class="page-head">Top regions</h1>
-    <p class="section-sub">
-      Named castle landscapes ranked by editorial depth, with visitor rank shown beside the catalogue order.
-    </p>
-  </section>
+  <h1 class="page-head">Top regions</h1>
+
+  <p class="section-sub">
+    Named castle landscapes ranked by <span class="rank-label">editorial rank</span> and <span class="rank-label">visitor rank</span>, grouped by their country.
+  </p>
 
   <div class="sort-strip" role="group" aria-label="Sort rows by">
     <span class="lbl">Sort</span>
@@ -24,72 +22,64 @@
     <span class="meta">Editorial ranks revised quarterly &middot; last revision <b>Q1 2026</b></span>
   </div>
 
-  <section class="region-grid" aria-label="Top castle regions">
-    @for (row of sortedRows(); track row.country + ':' + row.slug) {
-      <mat-card class="region-card" [class.sleeper]="isSleeper(row)">
-        <mat-card-content>
-          <div class="card-topline">
-            <span class="catalogue">No. {{ row.catalogueNumber }}</span>
-            @if (isSleeper(row)) {
-              <span class="sleeper-tag">EDITOR'S SLEEPER</span>
+  <table class="tc-table gazetteer">
+    <caption class="sr-only">Catalogue regions ranked by editorial and visitor measures, sortable.</caption>
+    <thead>
+      <tr>
+        <th class="num"></th>
+        <th>Region</th>
+        <th>Country</th>
+        <th class="rk" title="Editorial rank - by the editorial board">Ed.</th>
+        <th class="rk" title="Visitor rank - by aggregate ratings">Vis.</th>
+        <th class="num">Entries</th>
+        <th class="num hide-940">Mean</th>
+        <th class="ed-note-h">Editor's note</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of sortedRows(); track row.country + ':' + row.slug; let i = $index) {
+        <tr [class.flagged]="isSleeper(row)" [class.top-rank]="i < 3">
+          <td class="num idx">{{ i + 1 }}</td>
+          <td class="region">
+            <a [routerLink]="['/top1000']" [queryParams]="{ country: row.country, region: row.region }">{{ row.region }}</a>
+          </td>
+          <td class="country">
+            <a [routerLink]="['/countries', row.country]">{{ row.country }}</a>
+          </td>
+          <td class="ed">
+            <span class="star" aria-hidden="true">*</span>{{ row.editorialRank }}
+          </td>
+          <td class="vis"
+              [class.higher]="row.visitorRank < row.editorialRank"
+              [class.lower]="row.visitorRank > row.editorialRank"
+              [attr.aria-label]="visitorAriaLabel(row)">
+            {{ row.visitorRank }}
+            @if (row.visitorRank !== row.editorialRank) {
+              <span class="micro-arrow" aria-hidden="true">{{ row.visitorRank < row.editorialRank ? 'up' : 'down' }}</span>
             }
-          </div>
+          </td>
+          <td class="num">{{ row.castleCount }}</td>
+          <td class="num mean hide-940">{{ row.meanScore | number:'1.2-2' }}</td>
+          <td class="ed-note">
+            @if (isSleeper(row)) {
+              <span class="sleeper-tag" role="img" aria-label="Editor's sleeper">EDITOR'S SLEEPER</span>
+            }
+            @if (row.description) {
+              <span class="note-body">{{ row.description }}</span>
+            }
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
 
-          <h2>
-            <a [routerLink]="['/top1000']" [queryParams]="{ country: row.country, region: row.region }">
-              {{ row.region }}
-            </a>
-          </h2>
-
-          <a class="country-link" [routerLink]="['/countries', row.country]">{{ row.country }}</a>
-
-          <figure class="region-locator">
-            <img
-              [src]="regionMapSrc(row)"
-              [alt]="'Map of ' + row.region"
-              [title]="row.region"
-              width="320"
-              height="192"
-              loading="lazy"
-              (error)="onRegionMapError($event, row)" />
-          </figure>
-
-          <dl class="rank-pair">
-            <div>
-              <dt>Editorial</dt>
-              <dd><span class="star" aria-hidden="true">★</span>{{ row.editorialRank }}</dd>
-            </div>
-            <div>
-              <dt>Visitor</dt>
-              <dd
-                class="visitor-rank"
-                [class.higher]="row.visitorRank < row.editorialRank"
-                [class.lower]="row.visitorRank > row.editorialRank"
-                [attr.aria-label]="visitorAriaLabel(row)">
-                {{ row.visitorRank }}
-                @if (row.visitorRank !== row.editorialRank) {
-                  <span class="micro-arrow" aria-hidden="true">{{ row.visitorRank < row.editorialRank ? '↑' : '↓' }}</span>
-                }
-              </dd>
-            </div>
-          </dl>
-
-          @if (row.description) {
-            <p class="editorial-note">{{ row.description }}</p>
-          }
-
-          <div class="metrics" aria-label="Region catalogue metrics">
-            <span>{{ row.castleCount }} entries</span>
-            <span>Mean {{ row.meanScore | number:'1.2-2' }}</span>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    }
-  </section>
-
-  <p class="legend">
-    <span><b class="star">★</b> Editorial rank</span>
-    <span><span class="up">↑</span> visitors rank higher</span>
-    <span><span class="down">↓</span> editors rank higher</span>
-  </p>
+  <div class="legend">
+    <span><b class="star">*</b> Editorial rank - by the editorial board</span>
+    <span class="dot">·</span>
+    <span><span class="up">up</span> visitors rate higher than editors</span>
+    <span class="dot">·</span>
+    <span><span class="down">down</span> editors rate higher than visitors</span>
+    <span class="dot">·</span>
+    <span><b class="sleeper-tag-inline">EDITOR'S SLEEPER</b> high editorial rank, low traffic</span>
+  </div>
 </div>

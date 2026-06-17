@@ -1,14 +1,11 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
 import { CastleService } from '../../services/castle.service';
 import { Castle } from '../../models/castle.model';
 import { EditorialService } from '../../services/editorial.service';
-import { ThemeService } from '../../services/theme.service';
 
 interface RegionAtlasRow {
-  catalogueNumber: string;
   region: string;
   country: string;
   slug: string;
@@ -29,14 +26,13 @@ type SortMode = 'editorial' | 'visitor' | 'disagreement';
 @Component({
   selector: 'app-top-regions-page',
   standalone: true,
-  imports: [RouterLink, DecimalPipe, MatCardModule],
+  imports: [RouterLink, DecimalPipe],
   templateUrl: './top-regions-page.component.html',
   styleUrl: './top-regions-page.component.scss',
 })
 export class TopRegionsPageComponent {
   private castleService = inject(CastleService);
   private editorialService = inject(EditorialService);
-  private theme = inject(ThemeService);
 
   readonly sortMode = signal<SortMode>('editorial');
 
@@ -103,7 +99,6 @@ export class TopRegionsPageComponent {
       const visitorRank = visitorRankMap.get(key)!;
       return {
         ...row,
-        catalogueNumber: String(index + 1).padStart(2, '0'),
         meanScore: row.castleCount > 0 ? row.sumScoreRef / row.castleCount : 0,
         editorialRank,
         visitorRank,
@@ -130,23 +125,6 @@ export class TopRegionsPageComponent {
     if (row.visitorRank > row.editorialRank)
       return `Visitor rank ${row.visitorRank}, lower than editorial rank ${row.editorialRank}`;
     return `Visitor rank ${row.visitorRank}`;
-  }
-
-  regionMapSrc(row: Pick<RegionAtlasRow, 'slug'>): string {
-    return `/images/maps/${row.slug}.${this.theme.isDark() ? 'dark' : 'light'}.png`;
-  }
-
-  onRegionMapError(event: Event, row: Pick<RegionAtlasRow, 'slug'>): void {
-    const img = event.target as HTMLImageElement;
-    const figure = img.closest('.region-locator');
-    if (img.dataset['fallback'] !== 'legacy-jpg') {
-      img.dataset['fallback'] = 'legacy-jpg';
-      img.src = `/images/maps/${row.slug}.jpg`;
-      return;
-    }
-
-    img.hidden = true;
-    figure?.classList.add('missing');
   }
 }
 

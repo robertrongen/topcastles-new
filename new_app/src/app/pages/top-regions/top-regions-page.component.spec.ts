@@ -3,11 +3,9 @@ import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { signal } from '@angular/core';
 import { TopRegionsPageComponent } from './top-regions-page.component';
 import { Castle } from '../../models/castle.model';
 import { CastleService } from '../../services/castle.service';
-import { ThemeService } from '../../services/theme.service';
 
 function makeCastle(overrides: Partial<Castle> = {}): Castle {
   return {
@@ -30,7 +28,6 @@ const castles: Castle[] = [
 describe('TopRegionsPageComponent', () => {
   let fixture: ComponentFixture<TopRegionsPageComponent>;
   let httpTesting: HttpTestingController;
-  const isDark = signal(true);
 
   function flushEditorial(regions: Record<string, unknown> = {}): void {
     httpTesting.expectOne('/api/editorial/castle-quotes').flush({});
@@ -40,14 +37,12 @@ describe('TopRegionsPageComponent', () => {
   }
 
   beforeEach(async () => {
-    isDark.set(true);
     await TestBed.configureTestingModule({
       imports: [TopRegionsPageComponent, NoopAnimationsModule],
       providers: [
         provideRouter([]),
         provideHttpClient(),
         provideHttpClientTesting(),
-        { provide: ThemeService, useValue: { isDark } },
       ],
     }).compileComponents();
     httpTesting = TestBed.inject(HttpTestingController);
@@ -62,58 +57,39 @@ describe('TopRegionsPageComponent', () => {
 
   it('should create', () => expect(fixture.componentInstance).toBeTruthy());
 
-  it('should display the atlas heading', () => {
+  it('should display the heading', () => {
     const h1 = fixture.nativeElement.querySelector('h1.page-head');
     expect(h1?.textContent).toContain('Top regions');
   });
 
-  it('should render one atlas card per country-scoped region', () => {
-    const cards = fixture.nativeElement.querySelectorAll('mat-card.region-card');
-    expect(cards.length).toBe(3);
+  it('should render one table row per country-scoped region', () => {
+    const rows = fixture.nativeElement.querySelectorAll('tbody tr');
+    expect(rows.length).toBe(3);
   });
 
-  it('should show catalogue numerals and rank pair data', () => {
-    const card = fixture.nativeElement.querySelector('mat-card.region-card');
-    expect(card.textContent).toContain('No. 01');
-    expect(card.textContent).toContain('Editorial');
-    expect(card.textContent).toContain('Visitor');
+  it('should show rank columns and the added country column', () => {
+    const headers = [...fixture.nativeElement.querySelectorAll('thead th')]
+      .map((header: HTMLElement) => header.textContent?.trim());
+
+    expect(headers).toContain('Region');
+    expect(headers).toContain('Country');
+    expect(headers).toContain('Ed.');
+    expect(headers).toContain('Vis.');
   });
 
-  it('should load themed region map pngs before legacy jpgs', () => {
-    const img: HTMLImageElement = fixture.nativeElement.querySelector('.region-locator img');
-    expect(img.getAttribute('src')).toBe('/images/maps/loire.dark.png');
+  it('should link each region to the filtered ranking with country and region params', () => {
+    const loireLink: HTMLAnchorElement = [...fixture.nativeElement.querySelectorAll('td.region a')]
+      .find((link: HTMLAnchorElement) => link.textContent?.trim() === 'Loire')!;
+
+    expect(loireLink).toBeTruthy();
+    expect(loireLink.getAttribute('href')).toBe('/top1000?country=France&region=Loire');
   });
 
-  it('should use the exact region_code as the image filename', () => {
-    const images = [...fixture.nativeElement.querySelectorAll('.region-locator img')] as HTMLImageElement[];
-    expect(images.some(img => img.getAttribute('src') === '/images/maps/castilla_y_leon.dark.png')).toBeTrue();
-  });
+  it('should link each country to the matching country page', () => {
+    const countryLink: HTMLAnchorElement = fixture.nativeElement.querySelector('td.country a');
 
-  it('should resolve the Antwerpen dark and light locator asset names', () => {
-    expect(fixture.componentInstance.regionMapSrc({ slug: 'antwerpen' }))
-      .toBe('/images/maps/antwerpen.dark.png');
-
-    isDark.set(false);
-
-    expect(fixture.componentInstance.regionMapSrc({ slug: 'antwerpen' }))
-      .toBe('/images/maps/antwerpen.light.png');
-  });
-
-  it('should fall back from themed png to legacy jpg and then placeholder', () => {
-    const img: HTMLImageElement = fixture.nativeElement.querySelector('.region-locator img');
-    const figure: HTMLElement = fixture.nativeElement.querySelector('.region-locator');
-
-    img.dispatchEvent(new Event('error'));
-    fixture.detectChanges();
-
-    expect(img.getAttribute('src')).toBe('/images/maps/loire.jpg');
-    expect(img.hidden).toBeFalse();
-
-    img.dispatchEvent(new Event('error'));
-    fixture.detectChanges();
-
-    expect(img.hidden).toBeTrue();
-    expect(figure.classList).toContain('missing');
+    expect(countryLink.textContent?.trim()).toBe('France');
+    expect(countryLink.getAttribute('href')).toBe('/countries/France');
   });
 
   it('should compute editorial and visitor ranks independently', () => {
@@ -126,17 +102,17 @@ describe('TopRegionsPageComponent', () => {
   });
 
   it('should default to editorial sort order', () => {
-    const firstCard = fixture.nativeElement.querySelector('mat-card.region-card');
+    const firstRow = fixture.nativeElement.querySelector('tbody tr');
     expect(fixture.componentInstance.sortMode()).toBe('editorial');
-    expect(firstCard.textContent).toContain('Loire');
+    expect(firstRow.textContent).toContain('Loire');
   });
 
-  it('should sort cards by visitor rank', () => {
+  it('should sort rows by visitor rank', () => {
     fixture.componentInstance.setSort('visitor');
     fixture.detectChanges();
 
-    const firstCard = fixture.nativeElement.querySelector('mat-card.region-card');
-    expect(firstCard.textContent).toContain('Bavaria');
+    const firstRow = fixture.nativeElement.querySelector('tbody tr');
+    expect(firstRow.textContent).toContain('Bavaria');
   });
 
   it('should sort cards by highest rank disagreement first', () => {
@@ -148,8 +124,9 @@ describe('TopRegionsPageComponent', () => {
   });
 
   it('should gracefully omit editorial prose when the overlay is empty', () => {
-    expect(fixture.nativeElement.querySelector('.editorial-note')).toBeNull();
-    expect(fixture.nativeElement.textContent).toContain('2 entries');
+    expect(fixture.nativeElement.querySelector('.note-body')).toBeNull();
+    const firstEntriesCell: HTMLElement = fixture.nativeElement.querySelector('tbody tr:first-child td:nth-child(6)');
+    expect(firstEntriesCell.textContent?.trim()).toBe('2');
   });
 
   it('should render editorial descriptions and sleeper badges from regions overlay', async () => {
@@ -159,7 +136,6 @@ describe('TopRegionsPageComponent', () => {
         provideRouter([]),
         provideHttpClient(),
         provideHttpClientTesting(),
-        { provide: ThemeService, useValue: { isDark } },
       ],
     }).compileComponents();
 
@@ -178,7 +154,7 @@ describe('TopRegionsPageComponent', () => {
     });
     f2.detectChanges();
 
-    expect(f2.nativeElement.querySelector('.editorial-note')?.textContent)
+    expect(f2.nativeElement.querySelector('.note-body')?.textContent)
       .toContain('A river catalogue');
     expect(f2.nativeElement.querySelector('.sleeper-tag')?.textContent.trim())
       .toBe('EDITOR\'S SLEEPER');
