@@ -70,7 +70,11 @@ function createLogger(logStream) {
 function runStep(command, args, { log, cwd }) {
   return new Promise((resolve, reject) => {
     log.write(`> ${command} ${args.join(' ')}`);
-    const child = spawn(command, args, { cwd, stdio: ['ignore', 'pipe', 'pipe'] });
+    const child = spawn(command, args, {
+      cwd,
+      stdio: ['ignore', 'pipe', 'pipe'],
+      shell: process.platform === 'win32',
+    });
 
     child.stdout.on('data', (chunk) => {
       for (const line of chunk.toString().split('\n').filter(Boolean)) {

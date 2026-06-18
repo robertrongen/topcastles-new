@@ -29,6 +29,7 @@ const PATHS = {
   enrichmentRequest: path.join(DATA_DIR, 'pipeline', 'enrichment-request.json'),
   enrichmentHistory: path.join(DATA_DIR, 'pipeline', 'enrichment-history.json'),
   logsDir:           path.join(DATA_DIR, 'pipeline', 'logs'),
+  jobsDir:           path.join(DATA_DIR, 'pipeline', 'jobs'),
 };
 
 const ENRICHMENT_STEPS = {
@@ -73,7 +74,11 @@ function createLogger(logStream) {
 function runStep(command, args, { log, cwd }) {
   return new Promise((resolve, reject) => {
     log.write(`> ${command} ${args.join(' ')}`);
-    const child = spawn(command, args, { cwd, stdio: ['ignore', 'pipe', 'pipe'] });
+    const child = spawn(command, args, {
+      cwd,
+      stdio: ['ignore', 'pipe', 'pipe'],
+      shell: process.platform === 'win32',
+    });
 
     child.stdout.on('data', (chunk) => {
       for (const line of chunk.toString().split('\n').filter(Boolean)) {
@@ -106,6 +111,19 @@ async function appendHistory(entry) {
   await writeJsonFile(PATHS.enrichmentHistory, [...existing, entry]);
 }
 
+// ── Job record ─────────────────────────────────────────────────────────────────
+
+function generateJobId() {
+  const ts = new Date().toISOString().replace(/[-:.TZ]/g, '').slice(0, 15);
+  const rand = Math.random().toString(36).slice(2, 6);
+  return `job-${ts}-${rand}`;
+}
+
+async function writeJobFile(job) {
+  await mkdir(PATHS.jobsDir, { recursive: true });
+  await writeJsonFile(path.join(PATHS.jobsDir, `${job.id}.json`), job);
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -129,8 +147,26 @@ async function main() {
   await mkdir(PATHS.logsDir, { recursive: true });
   const logStream = createWriteStream(logFile, { encoding: 'utf-8' });
   const log = createLogger(logStream);
+  const jobId = generateJobId();
+  const logFileRelative = path.relative(DATA_DIR, logFile).replace(/\\/g, '/');
+  const startedAt = new Date().toISOString();
+  const job = {
+    id: jobId,
+    type: 'enrichment',
+    status: 'running',
+    requestedBy: request.requestedBy ?? null,
+    reason: request.reason ?? null,
+    createdAt: startedAt,
+    startedAt,
+    completedAt: null,
+    logFile: logFileRelative,
+    errorMessage: null,
+    enrichmentType: request.type ?? null,
+  };
+  await writeJobFile(job);
 
   log.write('=== Enrichment consumer started ===');
+  log.write(`Job: ${jobId}`);
   log.write(`Request: ${JSON.stringify(request)}`);
   log.write(`Log: ${logFile}`);
 
@@ -165,7 +201,14 @@ async function main() {
     ...request,
     status: resultStatus,
     completedAt,
-    logFile: path.relative(ROOT, logFile).replace(/\\/g, '/'),
+    logFile: logFileRelative,
+    ...(errorMessage ? { errorMessage } : {}),
+  });
+
+  await writeJobFile({
+    ...job,
+    status: resultStatus,
+    completedAt,
     ...(errorMessage ? { errorMessage } : {}),
   });
 
@@ -176,7 +219,7 @@ async function main() {
     reason: request.reason,
     status: resultStatus,
     completedAt,
-    logFile: path.relative(ROOT, logFile).replace(/\\/g, '/'),
+    logFile: logFileRelative,
     ...(errorMessage ? { errorMessage } : {}),
   });
 

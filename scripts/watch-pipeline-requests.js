@@ -82,7 +82,11 @@ function dispatch(npmScript) {
   }
   log(`Dispatching: npm run ${npmScript}`);
   return new Promise((resolve) => {
-    currentChild = spawn(NPM, ['run', npmScript], { cwd: ROOT, stdio: 'inherit' });
+    currentChild = spawn(NPM, ['run', npmScript], {
+      cwd: ROOT,
+      stdio: 'inherit',
+      shell: process.platform === 'win32',
+    });
     currentChild.on('error', (err) => {
       log(`Failed to spawn npm run ${npmScript}: ${err.message}`);
       currentChild = null;

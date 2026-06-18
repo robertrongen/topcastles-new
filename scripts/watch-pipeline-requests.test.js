@@ -7,7 +7,7 @@
 
 import { describe, it, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, rm, mkdir, writeFile } from 'fs/promises';
+import { mkdtemp, rm, mkdir, writeFile, readFile } from 'fs/promises';
 import { tmpdir } from 'os';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -27,6 +27,24 @@ function run(dataDir, extraArgs = []) {
 async function writeJson(filePath, data) {
   await mkdir(path.dirname(filePath), { recursive: true });
   await writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8');
+}
+
+async function writeFakeNpm(binDir, logFile) {
+  await mkdir(binDir, { recursive: true });
+  if (process.platform === 'win32') {
+    await writeFile(
+      path.join(binDir, 'npm.cmd'),
+      `@echo off\r\necho %*>>"${logFile}"\r\nexit /b 0\r\n`,
+      'utf-8'
+    );
+  } else {
+    const file = path.join(binDir, 'npm');
+    await writeFile(
+      file,
+      `#!/bin/sh\nprintf '%s\\n' "$*" >> "${logFile}"\nexit 0\n`,
+      { encoding: 'utf-8', mode: 0o755 }
+    );
+  }
 }
 
 describe('watch-pipeline-requests.js — idle behaviour', () => {
@@ -125,6 +143,37 @@ describe('watch-pipeline-requests.js — dispatch (--dry-run)', () => {
     assert.equal(result.status, 0, result.stderr);
     assert.ok(result.stdout.includes('robert-editor'), result.stdout);
     assert.ok(result.stdout.includes('new dataset uploaded'), result.stdout);
+  });
+
+  it('dispatches through npm in non-dry-run mode', async () => {
+    const tmpDir2 = await mkdtemp(path.join(tmpdir(), 'watcher-real-dispatch-'));
+    const fakeBinDir = await mkdtemp(path.join(tmpdir(), 'watcher-bin-'));
+    const fakeNpmLog = path.join(tmpDir2, 'fake-npm.log');
+    try {
+      await writeFakeNpm(fakeBinDir, fakeNpmLog);
+      await writeJson(path.join(tmpDir2, 'pipeline', 'rebuild-request.json'), {
+        status: 'requested', requestedBy: 'Robert', reason: 'real dispatch test',
+      });
+
+      const result = spawnSync(process.execPath, [SCRIPT, '--once'], {
+        env: {
+          ...process.env,
+          DATA_DIR: tmpDir2,
+          PATH: `${fakeBinDir}${path.delimiter}${process.env.PATH}`,
+          Path: `${fakeBinDir}${path.delimiter}${process.env.Path ?? process.env.PATH}`,
+        },
+        encoding: 'utf-8',
+        timeout: 10_000,
+      });
+
+      assert.equal(result.status, 0, result.stderr);
+      assert.ok(result.stdout.includes('pipeline:consume exited with code 0'), result.stdout);
+      const log = await readFile(fakeNpmLog, 'utf-8');
+      assert.ok(log.includes('run pipeline:consume'), log);
+    } finally {
+      await rm(tmpDir2, { recursive: true, force: true });
+      await rm(fakeBinDir, { recursive: true, force: true });
+    }
   });
 });
 
