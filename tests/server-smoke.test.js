@@ -181,6 +181,104 @@ async function run() {
     ok('GET /api/admin/health with valid token — skipped (ADMIN_TOKEN not set in test env)');
   }
 
+  // --- read-only admin section endpoint checks ---
+
+  try {
+    const { status } = await get('/api/admin/pipeline/status');
+    status === 401
+      ? ok('GET /api/admin/pipeline/status without token returns 401')
+      : fail('GET /api/admin/pipeline/status without token returns 401', `got ${status}`);
+  } catch (e) {
+    fail('GET /api/admin/pipeline/status without token returns 401', e.message);
+  }
+
+  try {
+    const { status } = await get('/api/admin/castles/lookup?q=krak');
+    status === 401
+      ? ok('GET /api/admin/castles/lookup without token returns 401')
+      : fail('GET /api/admin/castles/lookup without token returns 401', `got ${status}`);
+  } catch (e) {
+    fail('GET /api/admin/castles/lookup without token returns 401', e.message);
+  }
+
+  if (ADMIN_TOKEN) {
+    const authHeader = { 'Authorization': `Bearer ${ADMIN_TOKEN}` };
+
+    try {
+      const { status, body } = await get('/api/admin/pipeline/status', authHeader);
+      const json = JSON.parse(body);
+      if (status === 200 && json?.ledger && Array.isArray(json?.warnings)) {
+        ok('GET /api/admin/pipeline/status with valid token returns pipeline status');
+      } else {
+        fail('GET /api/admin/pipeline/status with valid token returns pipeline status', `status=${status} body=${body.slice(0, 120)}`);
+      }
+    } catch (e) {
+      fail('GET /api/admin/pipeline/status with valid token returns pipeline status', e.message);
+    }
+
+    try {
+      const { status, body } = await get('/api/admin/pipeline/jobs', authHeader);
+      const json = JSON.parse(body);
+      if (status === 200 && Array.isArray(json)) {
+        ok('GET /api/admin/pipeline/jobs with valid token returns job array');
+      } else {
+        fail('GET /api/admin/pipeline/jobs with valid token returns job array', `status=${status} body=${body.slice(0, 120)}`);
+      }
+    } catch (e) {
+      fail('GET /api/admin/pipeline/jobs with valid token returns job array', e.message);
+    }
+
+    try {
+      const { status, body } = await get('/api/admin/castles/lookup?q=krak', authHeader);
+      const json = JSON.parse(body);
+      if (status === 200 && Array.isArray(json)) {
+        ok('GET /api/admin/castles/lookup with valid token returns lookup array');
+      } else {
+        fail('GET /api/admin/castles/lookup with valid token returns lookup array', `status=${status} body=${body.slice(0, 120)}`);
+      }
+    } catch (e) {
+      fail('GET /api/admin/castles/lookup with valid token returns lookup array', e.message);
+    }
+
+    try {
+      const { status, body } = await get('/api/admin/castles', authHeader);
+      const json = JSON.parse(body);
+      if (status === 200 && json && typeof json === 'object' && !Array.isArray(json)) {
+        ok('GET /api/admin/castles with valid token returns overrides object');
+      } else {
+        fail('GET /api/admin/castles with valid token returns overrides object', `status=${status} body=${body.slice(0, 120)}`);
+      }
+    } catch (e) {
+      fail('GET /api/admin/castles with valid token returns overrides object', e.message);
+    }
+
+    try {
+      const { status, body } = await get('/api/admin/editorial/publish-status', authHeader);
+      const json = JSON.parse(body);
+      if (status === 200 && typeof json?.needsRebuild === 'boolean') {
+        ok('GET /api/admin/editorial/publish-status with valid token returns publish status');
+      } else {
+        fail('GET /api/admin/editorial/publish-status with valid token returns publish status', `status=${status} body=${body.slice(0, 120)}`);
+      }
+    } catch (e) {
+      fail('GET /api/admin/editorial/publish-status with valid token returns publish status', e.message);
+    }
+
+    try {
+      const { status, body } = await get('/api/admin/backups', authHeader);
+      const json = JSON.parse(body);
+      if (status === 200 && Array.isArray(json)) {
+        ok('GET /api/admin/backups with valid token returns backup array');
+      } else {
+        fail('GET /api/admin/backups with valid token returns backup array', `status=${status} body=${body.slice(0, 120)}`);
+      }
+    } catch (e) {
+      fail('GET /api/admin/backups with valid token returns backup array', e.message);
+    }
+  } else {
+    ok('admin section read-only endpoint checks with token skipped (ADMIN_TOKEN not set in test env)');
+  }
+
   // --- upload-enriched endpoint tests (only when ADMIN_TOKEN is set) ---
 
   if (ADMIN_TOKEN) {

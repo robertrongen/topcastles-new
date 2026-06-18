@@ -202,6 +202,8 @@ This creates:
 
 /data/pipeline/rebuild-request.json
 
+Only one active rebuild request is permitted at a time (status: requested).
+
 The runtime does not execute the rebuild.
 
 To process a request, run on the developer machine:
@@ -394,6 +396,43 @@ The runtime must never:
 - modify /dist
 - modify /public/api
 - mutate prerendered output
+
+---
+
+# Verification
+
+Run the final admin verification from a clean worktree before closing admin work:
+
+```bash
+node --test server/routes/admin-editorial.test.js server/routes/admin-castles.test.js server/routes/admin-pipeline.test.js server/routes/admin-publish.test.js
+npm test
+npm run build
+git diff --check
+```
+
+For runtime smoke checks, start the Node server with an admin token and a disposable local data directory:
+
+```bash
+ADMIN_TOKEN=smoke-token DATA_DIR=./data-smoke npm run dev:server
+npm run test:smoke -- http://localhost:3000
+```
+
+The smoke suite verifies public routes, SPA fallback, `/api/health`, admin auth, upload validation, and these read-only admin endpoints:
+
+| Endpoint | Expected |
+|---|---|
+| GET /api/admin/pipeline/status without token | 401 |
+| GET /api/admin/castles/lookup?q=krak without token | 401 |
+| GET /api/admin/pipeline/status with token | 200 + pipeline status |
+| GET /api/admin/pipeline/jobs with token | 200 + array |
+| GET /api/admin/castles/lookup?q=krak with token | 200 + array |
+| GET /api/admin/castles with token | 200 + overrides object |
+| GET /api/admin/editorial/publish-status with token | 200 + publish status |
+| GET /api/admin/backups with token | 200 + array |
+
+When `ADMIN_TOKEN` is not set, token-authenticated smoke checks are skipped by design. When the base URL is not local, direct filesystem verification of staged pending uploads is skipped because the test runner cannot inspect the remote `/data` volume.
+
+Storybook is not required for this admin completion pass because the changed admin surfaces are route-level pages, not shared UI components with existing stories.
 
 ---
 
