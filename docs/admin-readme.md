@@ -129,9 +129,12 @@ Displays:
 - staged enriched dataset
 - pipeline metadata
 - rebuild request status
+- enrichment request status
+- recent pipeline jobs and logs
 - operator instructions
 
-This page is read-only except for requesting a rebuild.
+This page is read-only except for requesting rebuild and enrichment handoff
+records. It does not execute pipeline scripts.
 
 ---
 
@@ -156,12 +159,18 @@ currently running, it dispatches:
 Rebuild takes priority when both are pending. The watcher respects the single
 active job constraint by checking job files before dispatching.
 
+The watcher waits for the dispatched consumer to exit before polling again. On
+Windows it runs the npm command through the shell so `npm.cmd` dispatch works the
+same way as Unix `npm` dispatch.
+
 Useful flags:
 
   --once      Poll once and exit
   --dry-run   Log what would be dispatched without executing
 
-The watcher must NOT run inside the runtime container.
+The watcher must NOT run inside the runtime container. Run it from a developer
+machine that has the repository checkout, dependencies, and intended `DATA_DIR`
+mounted or available.
 
 ---
 
@@ -192,6 +201,15 @@ This script reads the enrichment request, runs the appropriate enrichment comman
 request type (wikidata, wikipedia, coordinates, or all three for full), then applies overrides
 and regenerates downstream artefacts (merge-overrides → lean). It does not run a build.
 
+The enrichment consumer creates:
+
+- /data/pipeline/jobs/<job-id>.json
+- /data/pipeline/logs/<timestamp>-enrichment.log
+
+Those files are visible in /admin/pipeline through the job list and log viewer.
+The job record includes `type: "enrichment"` and `enrichmentType` for the
+requested enrichment mode.
+
 ---
 
 ## Rebuild Requests
@@ -221,6 +239,10 @@ This script:
 Logs:
 
 /data/pipeline/logs/<timestamp>-rebuild.log
+
+Job records:
+
+/data/pipeline/jobs/<job-id>.json
 
 Deployment is a separate manual step.
 
@@ -266,8 +288,9 @@ Files:
 | enrichment-history.json | Enrichment request history |
 | castle-overrides.json | Admin data overrides |
 | merge-report.json | Last override merge diagnostics |
-| jobs/<id>.json | Individual job records |
-| logs/*.log | Rebuild logs |
+| jobs/<id>.json | Individual rebuild or enrichment job records |
+| logs/*-rebuild.log | Rebuild logs |
+| logs/*-enrichment.log | Enrichment logs |
 
 ---
 
@@ -382,17 +405,21 @@ Runtime responsibilities:
 - accept uploads
 - store metadata
 - store overrides
-- record rebuild requests
+- record rebuild and enrichment requests
+- expose job records and logs written by developer-machine consumers
 
 Build responsibilities:
 - regenerate data
 - apply overrides
 - produce API files
 - prerender pages
+- run developer-machine consumers or watcher outside the runtime container
 
 The runtime must never:
 
 - run build scripts
+- run enrichment scripts
+- run the pipeline watcher
 - modify /dist
 - modify /public/api
 - mutate prerendered output
@@ -452,14 +479,29 @@ npm run pipeline:consume
 
 6. Deploy manually
 
+## Continuous handoff watcher
+
+1. Start the app and server normally, or use an already-running local server.
+2. On the developer machine, run:
+
+npm run pipeline:watch
+
+3. Request rebuild or enrichment from /admin/pipeline.
+4. Watch /admin/pipeline for the job row and log output.
+
+Use `DATA_DIR=/path/to/data npm run pipeline:watch` when the runtime data
+directory is outside the repository default. Use `--dry-run --once` to verify
+what would be dispatched without running consumers.
+
 ## Enrichment refresh
 
 1. Request enrichment from /admin/pipeline (choose type)
-2. On developer machine, run:
+2. On developer machine, either leave the watcher running or run:
 
 npm run pipeline:consume:enrichment
 
-3. If the output requires a rebuild, follow the rebuild workflow above.
+3. Check the enrichment job and log in /admin/pipeline.
+4. If the output requires a rebuild, follow the rebuild workflow above.
 
 ---
 

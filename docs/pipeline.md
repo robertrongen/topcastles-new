@@ -56,6 +56,9 @@ These are build or tooling outputs and must not be committed:
 Runtime state must not be committed:
 
 - `data/users.json`; this is runtime-like user/account/favorites state, not source content.
+- `data/pipeline/*.json`; pipeline admin requests, metadata, histories, job records, and
+  override state are runtime/operator state.
+- `data/pipeline/logs/*.log`; rebuild and enrichment logs are runtime/operator diagnostics.
 - `runtime/` and `local/`.
 - Any production data volume mounted into the container.
 
@@ -81,6 +84,8 @@ Commit the changed source data plus any generated-and-committed outputs that res
 - Do not hand-edit `new_app/src/assets/data/*.json`, `new_app/public/api/*.json`, `new_app/public/api/by-country/*.json`, `new_app/public/sitemap.xml`, or `new_app/prerender-routes.txt`; regenerate them from source content.
 - Run `npm run build` after regeneration before publishing or deploying. Prerendered HTML, bundles, and copied public files become effective only after the build.
 - Admin or rebuild-trigger flows may update build-time JSON and request regeneration/rebuild work, but they must not directly mutate prerendered HTML or runtime bundles in place.
+- `npm run pipeline:watch`, `npm run pipeline:consume`, and `npm run pipeline:consume:enrichment`
+  are developer-machine commands. Do not run them from the production runtime container.
 
 ## Rules for Contributors
 
