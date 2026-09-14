@@ -125,6 +125,7 @@ export class Top100PageComponent implements OnInit {
     this.userService.ensureUser().then(() => this.favoritesService.loadFavorites());
 
     this.route.queryParams.subscribe(params => {
+      if (params['name'])         this.searchQuery.set(params['name']);
       const filters: Record<string, string> = {};
       if (params['country'])       filters['country']        = params['country'];
       if (params['region'])        filters['region']         = params['region'];
