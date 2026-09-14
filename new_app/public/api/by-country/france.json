@@ -61,7 +61,6 @@
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Donjonvueg%C3%A9n%C3%A9rale.jpg?width=800",
     "wikidata_website": "https://www.nouvelle-normandie-tourisme.com/a-vivre-nouvelle-normandie/chateau-gaillard-le-medieval/",
     "significant_events": [
-      "Siege of Château Gaillard",
       "slighting"
     ]
   },
@@ -1063,7 +1062,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Landsburg.JPG/330px-Landsburg.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Landsberg_Castle_(Palatinate)",
     "wikidata_id": "Q1012826",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1200,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Landsburg.JPG?width=800"
   },
@@ -1532,8 +1531,7 @@
     "significant_events": [
       "construction",
       "Storming of the Bastille",
-      "demolition",
-      "Battle of the Faubourg St Antoine"
+      "demolition"
     ]
   },
   {
@@ -2279,7 +2277,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://chateaudelassay.fr/index.php/histoire/",
     "score_total": 304.30117,
     "score_visitors": 6.294118,
     "visitors": 16,
@@ -2289,7 +2287,8 @@
     "wikidata_id": "Q2969660",
     "heritage_status": "monument historique inscrit",
     "inception_year": 1458,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Lassay_21.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Lassay_21.JPG?width=800",
+    "wikidata_website": "https://chateaudelassay.fr/index.php/histoire/"
   },
   {
     "position": 888,

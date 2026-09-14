@@ -297,16 +297,7 @@
     "architect": "Francisco de Mora",
     "wikidata_website": "https://www.alcazardesegovia.com/",
     "significant_events": [
-      "Revolts in Segovia (1506)",
-      "Revolts in Segovia (1476)",
-      "Revolt of the Comuneros",
-      "Peninsular War",
-      "Carlist Wars",
-      "Reconquista",
-      "Concord of Segovia",
-      "Hundred Thousand Sons of Saint Louis",
-      "War of the Spanish Succession",
-      "War of the Castilian Succession"
+      "Concord of Segovia"
     ]
   },
   {
@@ -371,7 +362,7 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Eltz_Castle",
     "wikidata_id": "Q153426",
     "architectural_style": "Romanesque architecture",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wierschem%2C_Burg_Eltz%2C_2012-08_CN-01.jpg?width=800",
     "wikidata_website": "https://burg-eltz.de/"
   },
@@ -575,7 +566,6 @@
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Donjonvueg%C3%A9n%C3%A9rale.jpg?width=800",
     "wikidata_website": "https://www.nouvelle-normandie-tourisme.com/a-vivre-nouvelle-normandie/chateau-gaillard-le-medieval/",
     "significant_events": [
-      "Siege of Château Gaillard",
       "slighting"
     ]
   },
@@ -858,8 +848,6 @@
     "wikidata_website": "https://www.royalcollection.org.uk/visit/windsorcastle",
     "significant_events": [
       "construction",
-      "First Barons' War",
-      "English Civil War",
       "conflagration"
     ]
   },
@@ -1590,7 +1578,7 @@
     "wikidata_id": "Q486382",
     "heritage_status": "Italian national heritage",
     "inception_year": 139,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Engelsburg_und_Engelsbr%C3%BCcke_abends_(Zuschnitt).jpg?width=800",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castel_Sant'Angelo_at_Night.jpg?width=800",
     "architect": "Decriannus",
     "wikidata_website": "http://www.castelsantangelo.beniculturali.it/",
     "significant_events": [
@@ -1656,10 +1644,10 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Burg_Pfalzgrafenstein_2017.jpg/330px-Burg_Pfalzgrafenstein_2017.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Pfalzgrafenstein_Castle",
     "wikidata_id": "Q696951",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1326,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Pfalzgrafenstein_2017.jpg?width=800",
-    "wikidata_website": "http://www.burg-pfalzgrafenstein.dee/"
+    "wikidata_website": "http://burg-pfalzgrafenstein.de/"
   },
   {
     "position": 52,
@@ -1809,7 +1797,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Aerial_image_of_Trifels_Castle_%28view_from_the_southeast%29.jpg/330px-Aerial_image_of_Trifels_Castle_%28view_from_the_southeast%29.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Trifels_Castle",
     "wikidata_id": "Q559202",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_image_of_Trifels_Castle_(view_from_the_southeast).jpg?width=800",
     "wikidata_website": "http://www.trifelsland.de/de/region/burgen/trifels.html"
   },
@@ -1873,8 +1861,7 @@
       "siege",
       "siege",
       "architectural reconstruction",
-      "geophysical survey",
-      "Siege of Pembroke"
+      "geophysical survey"
     ]
   },
   {

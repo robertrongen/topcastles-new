@@ -119,7 +119,7 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Heidenreichstein",
     "wikidata_id": "Q661800",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pfarrkirche_Heidenreichstein.jpg?width=800",
-    "wikidata_website": "http://www.heidenreichstein.gv.at"
+    "wikidata_website": "https://www.heidenreichstein.gv.at"
   },
   {
     "position": 151,
@@ -579,7 +579,7 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Seebenstein",
     "wikidata_id": "Q281225",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Seebenstein_-_Kirche.JPG?width=800",
-    "wikidata_website": "http://www.seebenstein.gv.at"
+    "wikidata_website": "https://www.seebenstein.gv.at"
   },
   {
     "position": 509,
@@ -1252,7 +1252,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Schloss_Ebnet_%28Freiburg%29_1.jpg/330px-Schloss_Ebnet_%28Freiburg%29_1.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Schloss_Ebnet",
     "wikidata_id": "Q2240738",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Schloss_Ebnet_(Freiburg)_1.jpg?width=800"
   },
   {

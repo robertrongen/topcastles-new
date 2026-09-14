@@ -307,7 +307,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Citadel_of_Erzurum.JPG/330px-Citadel_of_Erzurum.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Erzurum_Castle",
     "wikidata_id": "Q107330417",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Erzurum%2C_la_cittadella%2C_02.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Citadel_of_Erzurum.JPG?width=800"
   },
   {
     "position": 591,
@@ -396,8 +396,7 @@
     "heritage_status": "World Heritage Site",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ani_seen_from_Armenia.jpg?width=800",
     "significant_events": [
-      "earthquake",
-      "Siege of Ani"
+      "earthquake"
     ]
   },
   {
