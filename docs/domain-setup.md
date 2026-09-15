@@ -128,13 +128,13 @@ As built on 2026-09-15: DSM firewall rules restrict direct origin web traffic.
   for NAS administration.
 - Cloudflare IPv4 ranges are allowed to TCP ports `80` and `443`.
 - All other sources are denied to TCP ports `80` and `443`.
+- Built-in Synology application allow rules for Web Station, HTTPS/reverse proxy,
+  and Package Portal were excluded because they also use ports `80` and `443` and
+  would otherwise bypass the explicit deny rule.
 - IPv6 Cloudflare ranges were not added because IPv6 is not used for this setup.
 
 Rule order is significant: LAN allow rules and Cloudflare allow rules must stay
 above the deny rule for ports `80` and `443`.
 
-Remaining security verification: direct origin access through
-`https://topcastles.hobunror.synology.me/` and the known origin IP still works
-from the allowed LAN. From an external network, those direct-origin paths should
-be blocked by the DSM firewall; if they still return the Topcastles site, the
-firewall profile, interface assignment, or rule order needs correction.
+Direct public-IP access from a remote network is now blocked. Direct access from
+the allowed LAN may still work by design for administration and local testing.
