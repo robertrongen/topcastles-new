@@ -9,10 +9,16 @@ This document describes how to configure the domain `topcastles.eu` to point to 
 ## Current Architecture
 
 - Public entrypoint:  
-  https://topcastles.hobunror.synology.me:440
+  https://topcastles.eu and https://www.topcastles.eu
+
+- Edge provider and authoritative DNS:
+  Cloudflare
+
+- Origin endpoint:
+  Synology NAS using `topcastles.hobunror.synology.me`
 
 - Synology Reverse Proxy:
-  https://topcastles.hobunror.synology.me:440 → http://localhost:8082
+  HTTPS `topcastles.eu` / `www.topcastles.eu` on port `443` -> `http://localhost:8082`
 
 - Application:
   Docker container running on port `8082`
@@ -22,23 +28,22 @@ This document describes how to configure the domain `topcastles.eu` to point to 
 
 ```mermaid
 flowchart LR
-    U[User Browser] --> D[topcastles.eu]
-    D --> DNS[DNS CNAME]
-    DNS --> DDNS[topcastles.hobunror.synology.me]
-    DDNS --> NAS[Synology NAS HTTPS 443]
-    NAS --> RP[Synology Reverse Proxy]
-    RP --> APP[Docker container<br/>http://localhost:8082]
+  U[User Browser] --> CF[Cloudflare proxy]
+  CF --> DNS[Cloudflare DNS]
+  DNS --> DDNS[topcastles.hobunror.synology.me]
+  DDNS --> NAS[Synology NAS HTTPS 443]
+  NAS --> RP[Synology Reverse Proxy]
+  RP --> APP[Docker container<br/>http://localhost:8082]
 
 ```
 
 ### Request Flow
 
 1. User opens: https://topcastles.eu
-1. DNS resolves: topcastles.eu
-→ topcastles.hobunror.synology.me
-→ current public IP of your home network
-1. Synology receives: HTTPS request on port 443
-1. Reverse proxy forwards: https://topcastles.eu → http://localhost:8082
+1. Cloudflare receives the request for the proxied hostname.
+1. Cloudflare connects to the Synology origin over HTTPS on port `443`.
+1. Synology receives the request only from Cloudflare IP ranges.
+1. Reverse proxy forwards: https://topcastles.eu -> http://localhost:8082
 1. Docker serves: Topcastles Angular/Node app
 
 ---
@@ -66,106 +71,70 @@ Use Synology DDNS (`*.synology.me`) as the stable endpoint.
 
 ## DNS Configuration
 
-### Preferred Option (CNAME)
+As built on 2026-09-15: Strato remains the registrar, and Cloudflare is the
+authoritative DNS provider. Public resolver checks now return the Cloudflare
+nameservers and Cloudflare proxy IP addresses for the public hostnames.
 
-If your DNS provider supports it:
+Configured Cloudflare nameservers:
 
-#### Root domain
+- `amanda.ns.cloudflare.com`
+- `harvey.ns.cloudflare.com`
 
-## SSL Certificate (Critical Step)
+Previous Strato nameservers:
 
-A correct SSL setup requires **two things**:
-1. Creating a certificate
-2. Explicitly assigning it to the correct hostname/service
+- `docks06.rzone.de`
+- `shades02.rzone.de`
 
----
+Configured Cloudflare DNS records:
 
-### Step 1 — Create Let's Encrypt certificate
+| Name            | Type    | Target / value                    | Proxy status | Notes                                             |
+| --------------- | ------- | --------------------------------- | ------------ | ------------------------------------------------- |
+| `topcastles.eu` | `CNAME` | `topcastles.hobunror.synology.me` | Proxied      | Cloudflare supports CNAME flattening at the root. |
+| `www`           | `CNAME` | `topcastles.hobunror.synology.me` | Proxied      | Serves `www.topcastles.eu`.                       |
 
-Go to:
+The previous direct public-IP `A` record for `84.80.47.69` is no longer part of
+the desired Cloudflare DNS state for the public website.
 
-Control Panel → Security → Certificate → Add
+SPF status: no SPF TXT record was visible during DNS verification. If the domain
+does not send email, the intended SPF value is `v=spf1 -all`.
 
-Select:
+Verified public DNS results on 2026-09-15:
 
-- "Add a new certificate"
-- "Get a certificate from Let's Encrypt"
+| Check | Result |
+| --- | --- |
+| `topcastles.eu` NS via `1.1.1.1` | `amanda.ns.cloudflare.com`, `harvey.ns.cloudflare.com` |
+| `topcastles.eu` A via `1.1.1.1`, `8.8.8.8`, `9.9.9.9` | Cloudflare IPs `104.21.36.7` and `172.67.182.173` |
+| `www.topcastles.eu` A via `1.1.1.1` | Cloudflare IPs `104.21.36.7` and `172.67.182.173` |
+| `topcastles.eu` TXT/SPF via `1.1.1.1` | No SPF TXT record visible during verification |
 
-Fill in:
+## SSL Certificate
 
+As built on 2026-09-15: Cloudflare SSL/TLS mode is **Full (strict)**. The
+Synology origin presents a valid certificate for `topcastles.eu` and
+`www.topcastles.eu`.
 
-Domain name: topcastles.eu
-Subject Alternative Name: www.topcastles.eu
+Cloudflare proxied HTTPS uses standard origin port `443`; the public site does
+not rely on `:440`.
 
+Verified HTTP results on 2026-09-15: `https://topcastles.eu/` and
+`https://www.topcastles.eu/` return Cloudflare headers including
+`Server: cloudflare`, `CF-RAY`, and `cf-cache-status`.
 
----
+## Synology NAS Firewall
 
-### Step 2 — Assign the certificate (THIS IS REQUIRED)
+As built on 2026-09-15: DSM firewall rules restrict direct origin web traffic.
 
-After creation, Synology will **NOT automatically use this certificate** for your domain.
+- The local LAN subnet `192.168.2.0` with subnet mask `255.255.255.0` is allowed
+  for NAS administration.
+- Cloudflare IPv4 ranges are allowed to TCP ports `80` and `443`.
+- All other sources are denied to TCP ports `80` and `443`.
+- IPv6 Cloudflare ranges were not added because IPv6 is not used for this setup.
 
-You must explicitly assign it:
+Rule order is significant: LAN allow rules and Cloudflare allow rules must stay
+above the deny rule for ports `80` and `443`.
 
-Go to:
-
-Control Panel → Security → Certificate → Settings
-
-You will see a list of services / hostnames.
-
-Find or set:
-
-
-topcastles.eu → [Your new Let's Encrypt certificate]
-www.topcastles.eu
- → [Your new Let's Encrypt certificate]
-
-
-If not present:
-
-- Ensure your reverse proxy rule exists first (see below)
-- Then return to Certificate Settings
-
----
-
-### Step 3 — Verify correct certificate is served
-
-Test in browser:
-
-
-https://topcastles.eu
-
-
-Expected:
-
-- No warning
-- Certificate issued for: topcastles.eu
-- Issuer: Let's Encrypt (e.g. E8)
-
----
-
-### Common Failure Mode (What you experienced)
-
-If you skip Step 2:
-
-- Synology serves default certificate:
-  hobunror.synology.me
-- Browser error:
-  ERR_CERT_COMMON_NAME_INVALID
-
-This is NOT a DNS issue — it is a certificate assignment issue.
-
----
-
-### Summary
-
-- Certificate must exist for your domain
-- Certificate must be explicitly assigned to that domain
-- Reverse proxy hostname must match the certificate
-
-Without all three, HTTPS will fail
-
-# DNS Records
-
-https://www.strato.nl/apps
-- A-Record: topcastles.eu to 84.80.47.69 (public IP ds224plus, curl ifconfig.me)
-- CNAME-record: www to topcastles.hobunror.synology.me
+Remaining security verification: direct origin access through
+`https://topcastles.hobunror.synology.me/` and the known origin IP still works
+from the allowed LAN. From an external network, those direct-origin paths should
+be blocked by the DSM firewall; if they still return the Topcastles site, the
+firewall profile, interface assignment, or rule order needs correction.
