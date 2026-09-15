@@ -297,16 +297,7 @@
     "architect": "Francisco de Mora",
     "wikidata_website": "https://www.alcazardesegovia.com/",
     "significant_events": [
-      "Revolts in Segovia (1506)",
-      "Revolts in Segovia (1476)",
-      "Revolt of the Comuneros",
-      "Peninsular War",
-      "Carlist Wars",
-      "Reconquista",
-      "Concord of Segovia",
-      "Hundred Thousand Sons of Saint Louis",
-      "War of the Spanish Succession",
-      "War of the Castilian Succession"
+      "Concord of Segovia"
     ]
   },
   {
@@ -371,7 +362,7 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Eltz_Castle",
     "wikidata_id": "Q153426",
     "architectural_style": "Romanesque architecture",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wierschem%2C_Burg_Eltz%2C_2012-08_CN-01.jpg?width=800",
     "wikidata_website": "https://burg-eltz.de/"
   },
@@ -575,7 +566,6 @@
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Donjonvueg%C3%A9n%C3%A9rale.jpg?width=800",
     "wikidata_website": "https://www.nouvelle-normandie-tourisme.com/a-vivre-nouvelle-normandie/chateau-gaillard-le-medieval/",
     "significant_events": [
-      "Siege of Château Gaillard",
       "slighting"
     ]
   },
@@ -858,8 +848,6 @@
     "wikidata_website": "https://www.royalcollection.org.uk/visit/windsorcastle",
     "significant_events": [
       "construction",
-      "First Barons' War",
-      "English Civil War",
       "conflagration"
     ]
   },
@@ -1590,7 +1578,7 @@
     "wikidata_id": "Q486382",
     "heritage_status": "Italian national heritage",
     "inception_year": 139,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Engelsburg_und_Engelsbr%C3%BCcke_abends_(Zuschnitt).jpg?width=800",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castel_Sant'Angelo_at_Night.jpg?width=800",
     "architect": "Decriannus",
     "wikidata_website": "http://www.castelsantangelo.beniculturali.it/",
     "significant_events": [
@@ -1656,10 +1644,10 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Burg_Pfalzgrafenstein_2017.jpg/330px-Burg_Pfalzgrafenstein_2017.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Pfalzgrafenstein_Castle",
     "wikidata_id": "Q696951",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1326,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Pfalzgrafenstein_2017.jpg?width=800",
-    "wikidata_website": "http://www.burg-pfalzgrafenstein.dee/"
+    "wikidata_website": "http://burg-pfalzgrafenstein.de/"
   },
   {
     "position": 52,
@@ -1808,7 +1796,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Aerial_image_of_Trifels_Castle_%28view_from_the_southeast%29.jpg/330px-Aerial_image_of_Trifels_Castle_%28view_from_the_southeast%29.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Trifels_Castle",
     "wikidata_id": "Q559202",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_image_of_Trifels_Castle_(view_from_the_southeast).jpg?width=800",
     "wikidata_website": "http://www.trifelsland.de/de/region/burgen/trifels.html"
   },
@@ -1872,8 +1860,7 @@
       "siege",
       "siege",
       "architectural reconstruction",
-      "geophysical survey",
-      "Siege of Pembroke"
+      "geophysical survey"
     ]
   },
   {
@@ -3737,7 +3724,7 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Heidelberg_Castle",
     "wikidata_id": "Q327265",
     "architectural_style": "Gothic architecture",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Heidelberg-Schlo%C3%9F.JPG?width=800",
     "wikidata_website": "http://www.schloss-heidelberg.de/"
   },
@@ -4006,7 +3993,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Burg_Rheinfels_Bild_1.jpg/330px-Burg_Rheinfels_Bild_1.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Rheinfels_Castle",
     "wikidata_id": "Q567643",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1245,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_rheinfels_2004.jpg?width=800",
     "significant_events": [
@@ -4040,7 +4027,7 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Rheinstein_Castle",
     "wikidata_id": "Q573635",
     "architectural_style": "Gothic architecture",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1316,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rheinstein.jpg?width=800",
     "wikidata_website": "http://www.burg-rheinstein.de/"
@@ -4256,7 +4243,10 @@
     "wikidata_id": "Q238",
     "inception_year": 301,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/View_of_Mount_Titano_-_San_Marino.jpg?width=800",
-    "wikidata_website": "https://www.gov.sm/"
+    "wikidata_website": "https://www.gov.sm/",
+    "significant_events": [
+      "Apostolic journey by Leo XIV to San Marino"
+    ]
   },
   {
     "position": 138,
@@ -4457,7 +4447,7 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Heidenreichstein",
     "wikidata_id": "Q661800",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pfarrkirche_Heidenreichstein.jpg?width=800",
-    "wikidata_website": "http://www.heidenreichstein.gv.at"
+    "wikidata_website": "https://www.heidenreichstein.gv.at"
   },
   {
     "position": 145,
@@ -6638,7 +6628,7 @@
     "wikidata_id": "Q2625461",
     "heritage_status": "Immovable Cultural Heritage of Exceptional Importance",
     "inception_year": 1335,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Golubac.JPG?width=800",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Golubac_Fortress_(%D0%B3%D1%80%D0%B0%D0%B4_%D0%93%D0%BE%D0%BB%D1%83%D0%B1%D0%B0%D1%86).jpg?width=800",
     "wikidata_website": "https://tvrdjavagolubackigrad.rs/"
   },
   {
@@ -8101,7 +8091,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Burg_maus.jpg/330px-Burg_maus.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Maus_Castle",
     "wikidata_id": "Q315120",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1353,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Maus_4.JPG?width=800"
   },
@@ -8759,7 +8749,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Burg_Katz%2C_St._Goarshausen%2C_West_view_20141002_1.jpg/330px-Burg_Katz%2C_St._Goarshausen%2C_West_view_20141002_1.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Katz_Castle",
     "wikidata_id": "Q567635",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1301,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg-Katz-JR-E-275-2010-06-05.jpg?width=800"
   },
@@ -8859,9 +8849,7 @@
     "wikidata_website": "https://bohusfastning.com",
     "significant_events": [
       "explosion",
-      "siege",
-      "Siege of Bohus Fortress",
-      "Bohus explosion"
+      "siege"
     ]
   },
   {
@@ -9725,7 +9713,7 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Lidzbark_Warmi%C5%84ski",
     "wikidata_id": "Q751123",
     "inception_year": 1201,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/646547_Lidzbark_Warmi%C5%84ski_zamek_krzy%C5%BCacki_01.JPG?width=800",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Lidzbark_Warmi%C5%84ski_-_stare_miasto.jpg?width=800",
     "wikidata_website": "http://www.lidzbarkwarminski.pl"
   },
   {
@@ -9880,7 +9868,8 @@
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kamianets-Podilskyi-2007.jpg?width=800",
     "wikidata_website": "http://kam-pod.gov.ua",
     "significant_events": [
-      "Siege of Kamenets"
+      "Siege of Kamenets",
+      "Siege of Kamianets-Podilskyi"
     ]
   },
   {
@@ -10118,7 +10107,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Burg_Alt-Dahn_0012a.jpg/330px-Burg_Alt-Dahn_0012a.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Grafendahn_Castle",
     "wikidata_id": "Q22583",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1287,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Grafendahn_-_Dahn_-_01.jpg?width=800",
     "significant_events": [
@@ -12160,7 +12149,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Stahleck_top.jpg/330px-Stahleck_top.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Stahleck_Castle",
     "wikidata_id": "Q449088",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Stahleck.jpg?width=800"
   },
   {
@@ -12786,7 +12775,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Berwartstein.JPG/330px-Berwartstein.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Berwartstein_Castle",
     "wikidata_id": "Q22573",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1101,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Berwartstein.JPG?width=800",
     "wikidata_website": "http://www.burgberwartstein.de/"
@@ -12954,7 +12943,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Burg_Lahneck_2010.jpg/330px-Burg_Lahneck_2010.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Lahneck_Castle",
     "wikidata_id": "Q564207",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1226,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Lahneck_2010.jpg?width=800",
     "wikidata_website": "http://www.burg-lahneck.de/"
@@ -13393,7 +13382,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Landsburg.JPG/330px-Landsburg.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Landsberg_Castle_(Palatinate)",
     "wikidata_id": "Q1012826",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1200,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Landsburg.JPG?width=800"
   },
@@ -13594,7 +13583,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Aerial_image_of_Steinsberg_Castle_%28view_from_the_southeast%29.jpg/330px-Aerial_image_of_Steinsberg_Castle_%28view_from_the_southeast%29.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Steinsberg_Castle",
     "wikidata_id": "Q1014121",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1109,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_image_of_Steinsberg_Castle_(view_from_the_southeast).jpg?width=800",
     "wikidata_website": "https://www.burg-steinsberg.de/"
@@ -13980,7 +13969,7 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Seebenstein",
     "wikidata_id": "Q281225",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Seebenstein_-_Kirche.JPG?width=800",
-    "wikidata_website": "http://www.seebenstein.gv.at"
+    "wikidata_website": "https://www.seebenstein.gv.at"
   },
   {
     "position": 466,
@@ -16514,7 +16503,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Burgruine_Hohenrechberg_im_Abendlicht.jpeg/330px-Burgruine_Hohenrechberg_im_Abendlicht.jpeg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Hohenrechberg_Castle",
     "wikidata_id": "Q2175310",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1200,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ruine-Hohenrechberg-Blick-von-Osten.jpg?width=800"
   },
@@ -16576,7 +16565,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/VistasDeMaqueda20120108165919P1140521.jpg/330px-VistasDeMaqueda20120108165919P1140521.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Maqueda",
     "wikidata_id": "Q1631202",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Maqueda_Ayuntamiento.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/VistasDeMaqueda20120108165919P1140521_(cropped).jpg?width=800"
   },
   {
     "position": 555,
@@ -16801,7 +16790,8 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Chateau_esch_sur_sure_1.jpg/330px-Chateau_esch_sur_sure_1.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Esch-sur-S%C3%BBre_Castle",
     "wikidata_id": "Q2968219",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chateau_esch_sur_sure_2.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chateau_esch_sur_sure_2.jpg?width=800",
+    "inception_year": 1200
   },
   {
     "position": 563,
@@ -17177,7 +17167,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://madenburg-pfalz.de/",
     "score_total": 383.056362,
     "score_visitors": 6.142857,
     "visitors": 6,
@@ -17186,7 +17176,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Madenburg_Castle",
     "wikidata_id": "Q1883297",
     "heritage_status": "cultural heritage monument in Rhineland-Palatinate",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Madenburg_Eberhardsbau.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Madenburg-1.jpg?width=800",
+    "wikidata_website": "https://madenburg-pfalz.de/"
   },
   {
     "position": 576,
@@ -17593,7 +17584,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Citadel_of_Erzurum.JPG/330px-Citadel_of_Erzurum.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Erzurum_Castle",
     "wikidata_id": "Q107330417",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Erzurum%2C_la_cittadella%2C_02.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Citadel_of_Erzurum.JPG?width=800"
   },
   {
     "position": 590,
@@ -18009,8 +18000,7 @@
     "heritage_status": "World Heritage Site",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ani_seen_from_Armenia.jpg?width=800",
     "significant_events": [
-      "earthquake",
-      "Siege of Ani"
+      "earthquake"
     ]
   },
   {
@@ -18101,13 +18091,12 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Burg_Nanstein_%22von_oben%22_-_panoramio.jpg/330px-Burg_Nanstein_%22von_oben%22_-_panoramio.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Nanstein_Castle",
     "wikidata_id": "Q1013198",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1152,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Nanstein_Kernburg.JPG?width=800",
     "wikidata_website": "https://www.landstuhl.de/en/tourism/worth-seeing/nanstein-castle/",
     "significant_events": [
       "construction",
-      "Siege of Nanstein Castle",
       "building implosion",
       "destruction"
     ]
@@ -18167,7 +18156,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Guttenberg_Bergfried_2012.JPG/330px-Guttenberg_Bergfried_2012.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Guttenberg_Castle_(Palatinate)",
     "wikidata_id": "Q1012125",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Guttenberg_Bergfried_2012.JPG?width=800"
   },
   {
@@ -18277,7 +18266,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Kasselburg_021x.jpg/330px-Kasselburg_021x.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Kasselburg",
     "wikidata_id": "Q1731932",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1100,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/KasselburgGesamtansicht.jpg?width=800"
   },
@@ -18401,8 +18390,7 @@
     "significant_events": [
       "construction",
       "Storming of the Bastille",
-      "demolition",
-      "Battle of the Faubourg St Antoine"
+      "demolition"
     ]
   },
   {
@@ -19424,7 +19412,7 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/La_Roche-en-Ardenne_Castle",
     "wikidata_id": "Q2969578",
     "heritage_status": "protected heritage property in Wallonia",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/2012-04-15_Ch%C3%A2teau_F%C3%A9odal_-_La_Roche-en-Ardenne.jpg?width=800",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/La_Roche-en-Ardenne_-_L'entr%C3%A9e.jpg?width=800",
     "wikidata_website": "http://www.chateaudelaroche.be"
   },
   {
@@ -19732,7 +19720,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Neuscharfeneck-80-von_Schildmauer-gje.jpg/330px-Neuscharfeneck-80-von_Schildmauer-gje.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Neuscharfeneck_Castle",
     "wikidata_id": "Q131998",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Neuscharfeneck.jpg?width=800"
   },
   {
@@ -19888,7 +19876,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Duurstede_Castle",
     "wikidata_id": "Q2478123",
     "heritage_status": "Rijksmonument",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wijk_bij_duurstede_kasteel1.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wijk_bij_duurstede_kasteel1.jpg?width=800",
+    "wikidata_website": "https://kasteelduurstede.nl/"
   },
   {
     "position": 669,
@@ -20274,7 +20263,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Hochburg_Grundriss.jpg/330px-Hochburg_Grundriss.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Hochburg",
     "wikidata_id": "Q885079",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1127,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hochburg_Panorama.jpg?width=800",
     "significant_events": [
@@ -20803,7 +20792,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Alken%2C_Burg_Thurant%2C_2012-08_CN-01.jpg/330px-Alken%2C_Burg_Thurant%2C_2012-08_CN-01.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Thurant_Castle",
     "wikidata_id": "Q1014241",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Alken%2C_Burg_Thurant%2C_2012-08_CN-01.jpg?width=800",
     "wikidata_website": "http://www.thurant.de"
   },
@@ -20949,7 +20938,7 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Dolwyddelan_Castle",
     "wikidata_id": "Q2369922",
     "heritage_status": "Grade I listed building",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_Dolwyddelan1.jpg?width=800",
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dolwyddelan_Castle%2C_Conwy%2C_Wales.jpg?width=800",
     "wikidata_founder": "Llywelyn ab Iorwerth",
     "wikidata_website": "https://cadw.gov.wales/visit/places-to-visit/dolwyddelan-castle"
   },
@@ -21251,7 +21240,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Genovevaburg_02.jpg/330px-Genovevaburg_02.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Genovevaburg",
     "wikidata_id": "Q1502536",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1201,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Genovevaburg_02.jpg?width=800"
   },
@@ -24902,7 +24891,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Burg_Neuleiningen_Bergfried.JPG/330px-Burg_Neuleiningen_Bergfried.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Neuleiningen_Castle",
     "wikidata_id": "Q1013302",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Neuleiningen_Bergfried.JPG?width=800"
   },
   {
@@ -25974,7 +25963,7 @@
     "condition": "",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://chateaudelassay.fr/index.php/histoire/",
     "score_total": 304.30117,
     "score_visitors": 6.294118,
     "visitors": 16,
@@ -25984,7 +25973,8 @@
     "wikidata_id": "Q2969660",
     "heritage_status": "monument historique inscrit",
     "inception_year": 1458,
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Lassay_21.JPG?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Lassay_21.JPG?width=800",
+    "wikidata_website": "https://chateaudelassay.fr/index.php/histoire/"
   },
   {
     "position": 882,
@@ -26908,8 +26898,7 @@
     "significant_events": [
       "1596 Fushimi earthquake",
       "disassembly",
-      "architectural reconstruction",
-      "Siege of Fushimi"
+      "architectural reconstruction"
     ]
   },
   {
@@ -27299,7 +27288,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Schloss_Ebnet_%28Freiburg%29_1.jpg/330px-Schloss_Ebnet_%28Freiburg%29_1.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Schloss_Ebnet",
     "wikidata_id": "Q2240738",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Schloss_Ebnet_(Freiburg)_1.jpg?width=800"
   },
   {
@@ -29128,7 +29117,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Burg-Falkenstein-Taunus-B-10a-JR-2001-08-16.jpg/330px-Burg-Falkenstein-Taunus-B-10a-JR-2001-08-16.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Falkenstein_Castle_(Taunus)",
     "wikidata_id": "Q1015280",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg-Falkenstein-Taunus-B-10a-JR-2001-08-16.jpg?width=800"
   },
   {

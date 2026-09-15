@@ -26,7 +26,7 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Eltz_Castle",
     "wikidata_id": "Q153426",
     "architectural_style": "Romanesque architecture",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wierschem%2C_Burg_Eltz%2C_2012-08_CN-01.jpg?width=800",
     "wikidata_website": "https://burg-eltz.de/"
   },
@@ -150,10 +150,10 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Burg_Pfalzgrafenstein_2017.jpg/330px-Burg_Pfalzgrafenstein_2017.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Pfalzgrafenstein_Castle",
     "wikidata_id": "Q696951",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1326,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Pfalzgrafenstein_2017.jpg?width=800",
-    "wikidata_website": "http://www.burg-pfalzgrafenstein.dee/"
+    "wikidata_website": "http://burg-pfalzgrafenstein.de/"
   },
   {
     "position": 56,
@@ -181,7 +181,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Aerial_image_of_Trifels_Castle_%28view_from_the_southeast%29.jpg/330px-Aerial_image_of_Trifels_Castle_%28view_from_the_southeast%29.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Trifels_Castle",
     "wikidata_id": "Q559202",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_image_of_Trifels_Castle_(view_from_the_southeast).jpg?width=800",
     "wikidata_website": "http://www.trifelsland.de/de/region/burgen/trifels.html"
   },
@@ -356,7 +356,7 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Heidelberg_Castle",
     "wikidata_id": "Q327265",
     "architectural_style": "Gothic architecture",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Heidelberg-Schlo%C3%9F.JPG?width=800",
     "wikidata_website": "http://www.schloss-heidelberg.de/"
   },
@@ -386,7 +386,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Burg_Rheinfels_Bild_1.jpg/330px-Burg_Rheinfels_Bild_1.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Rheinfels_Castle",
     "wikidata_id": "Q567643",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1245,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_rheinfels_2004.jpg?width=800",
     "significant_events": [
@@ -420,7 +420,7 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Rheinstein_Castle",
     "wikidata_id": "Q573635",
     "architectural_style": "Gothic architecture",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1316,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rheinstein.jpg?width=800",
     "wikidata_website": "http://www.burg-rheinstein.de/"
@@ -791,7 +791,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Burg_maus.jpg/330px-Burg_maus.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Maus_Castle",
     "wikidata_id": "Q315120",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1353,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Maus_4.JPG?width=800"
   },
@@ -821,7 +821,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Burg_Katz%2C_St._Goarshausen%2C_West_view_20141002_1.jpg/330px-Burg_Katz%2C_St._Goarshausen%2C_West_view_20141002_1.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Katz_Castle",
     "wikidata_id": "Q567635",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1301,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg-Katz-JR-E-275-2010-06-05.jpg?width=800"
   },
@@ -909,7 +909,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Burg_Alt-Dahn_0012a.jpg/330px-Burg_Alt-Dahn_0012a.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Grafendahn_Castle",
     "wikidata_id": "Q22583",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1287,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Grafendahn_-_Dahn_-_01.jpg?width=800",
     "significant_events": [
@@ -1109,7 +1109,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Stahleck_top.jpg/330px-Stahleck_top.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Stahleck_Castle",
     "wikidata_id": "Q449088",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Stahleck.jpg?width=800"
   },
   {
@@ -1197,7 +1197,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Berwartstein.JPG/330px-Berwartstein.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Berwartstein_Castle",
     "wikidata_id": "Q22573",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1101,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Berwartstein.JPG?width=800",
     "wikidata_website": "http://www.burgberwartstein.de/"
@@ -1228,7 +1228,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Burg_Lahneck_2010.jpg/330px-Burg_Lahneck_2010.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Lahneck_Castle",
     "wikidata_id": "Q564207",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1226,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Lahneck_2010.jpg?width=800",
     "wikidata_website": "http://www.burg-lahneck.de/"
@@ -1290,7 +1290,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Aerial_image_of_Steinsberg_Castle_%28view_from_the_southeast%29.jpg/330px-Aerial_image_of_Steinsberg_Castle_%28view_from_the_southeast%29.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Steinsberg_Castle",
     "wikidata_id": "Q1014121",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1109,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_image_of_Steinsberg_Castle_(view_from_the_southeast).jpg?width=800",
     "wikidata_website": "https://www.burg-steinsberg.de/"
@@ -1686,7 +1686,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Burgruine_Hohenrechberg_im_Abendlicht.jpeg/330px-Burgruine_Hohenrechberg_im_Abendlicht.jpeg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Hohenrechberg_Castle",
     "wikidata_id": "Q2175310",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1200,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ruine-Hohenrechberg-Blick-von-Osten.jpg?width=800"
   },
@@ -1737,7 +1737,7 @@
     "condition": "Ruined/Partly remained",
     "remarkable": "",
     "description": "",
-    "website": "",
+    "website": "https://madenburg-pfalz.de/",
     "score_total": 383.056362,
     "score_visitors": 6.142857,
     "visitors": 6,
@@ -1746,7 +1746,8 @@
     "wikipedia_url": "https://en.wikipedia.org/wiki/Madenburg_Castle",
     "wikidata_id": "Q1883297",
     "heritage_status": "cultural heritage monument in Rhineland-Palatinate",
-    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Madenburg_Eberhardsbau.jpg?width=800"
+    "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Madenburg-1.jpg?width=800",
+    "wikidata_website": "https://madenburg-pfalz.de/"
   },
   {
     "position": 605,
@@ -1836,13 +1837,12 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Burg_Nanstein_%22von_oben%22_-_panoramio.jpg/330px-Burg_Nanstein_%22von_oben%22_-_panoramio.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Nanstein_Castle",
     "wikidata_id": "Q1013198",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1152,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Nanstein_Kernburg.JPG?width=800",
     "wikidata_website": "https://www.landstuhl.de/en/tourism/worth-seeing/nanstein-castle/",
     "significant_events": [
       "construction",
-      "Siege of Nanstein Castle",
       "building implosion",
       "destruction"
     ]
@@ -1873,7 +1873,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Guttenberg_Bergfried_2012.JPG/330px-Guttenberg_Bergfried_2012.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Guttenberg_Castle_(Palatinate)",
     "wikidata_id": "Q1012125",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Guttenberg_Bergfried_2012.JPG?width=800"
   },
   {
@@ -1902,7 +1902,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Kasselburg_021x.jpg/330px-Kasselburg_021x.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Kasselburg",
     "wikidata_id": "Q1731932",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1100,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/KasselburgGesamtansicht.jpg?width=800"
   },
@@ -2041,7 +2041,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Neuscharfeneck-80-von_Schildmauer-gje.jpg/330px-Neuscharfeneck-80-von_Schildmauer-gje.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Neuscharfeneck_Castle",
     "wikidata_id": "Q131998",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Neuscharfeneck.jpg?width=800"
   },
   {
@@ -2099,7 +2099,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Hochburg_Grundriss.jpg/330px-Hochburg_Grundriss.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Hochburg",
     "wikidata_id": "Q885079",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1127,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hochburg_Panorama.jpg?width=800",
     "significant_events": [
@@ -2132,7 +2132,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Alken%2C_Burg_Thurant%2C_2012-08_CN-01.jpg/330px-Alken%2C_Burg_Thurant%2C_2012-08_CN-01.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Thurant_Castle",
     "wikidata_id": "Q1014241",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Alken%2C_Burg_Thurant%2C_2012-08_CN-01.jpg?width=800",
     "wikidata_website": "http://www.thurant.de"
   },
@@ -2193,7 +2193,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Genovevaburg_02.jpg/330px-Genovevaburg_02.jpg",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Genovevaburg",
     "wikidata_id": "Q1502536",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "inception_year": 1201,
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Genovevaburg_02.jpg?width=800"
   },
@@ -2449,7 +2449,7 @@
     "wikipedia_thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Burg_Neuleiningen_Bergfried.JPG/330px-Burg_Neuleiningen_Bergfried.JPG",
     "wikipedia_url": "https://en.wikipedia.org/wiki/Neuleiningen_Castle",
     "wikidata_id": "Q1013302",
-    "heritage_status": "cultural heritage monument in Germany",
+    "heritage_status": "Kulturdenkmal",
     "wikidata_image": "https://commons.wikimedia.org/wiki/Special:FilePath/Burg_Neuleiningen_Bergfried.JPG?width=800"
   },
   {
