@@ -127,7 +127,7 @@ sudo docker run -d --restart unless-stopped --name topcastles \
 | Castle image mount | `/volume1/docker/topcastles/images/castles` -> `/data/castle-images` (read-only) |
 | LAN URL | `http://DS224plus.local:8082` |
 | HTTPS LAN URL | via Synology Reverse Proxy (see below) |
-| Public URL | `https://topcastles.hobunror.synology.me` |
+| Public URLs | `https://topcastles.eu` and `https://www.topcastles.eu` (Cloudflare proxied) |
 
 ## Network and HTTPS setup
 
@@ -139,13 +139,17 @@ DSM → Control Panel → Application Portal → Reverse Proxy → Create:
 | --- | --- |
 | Description | topcastles |
 | Source protocol | HTTPS |
-| Source hostname | `topcastles.hobunror.synology.me` |
+| Source hostname | `topcastles.eu` (create a second rule for `www.topcastles.eu`) |
 | Source port | `443` |
 | Destination protocol | HTTP |
 | Destination hostname | `localhost` |
 | Destination port | `8082` |
 
-Synology's wildcard certificate covers `*.hobunror.synology.me` automatically.
+Assign an origin certificate valid for both public hostnames to these reverse-proxy
+rules. A Synology DDNS wildcard certificate does not cover `topcastles.eu` or
+`www.topcastles.eu`. Keep Cloudflare SSL/TLS mode at **Full (strict)**.
+
+See [domain setup](domain-setup.md) for DNS and the required DSM firewall rules.
 
 ### Router port forwarding
 
@@ -158,11 +162,31 @@ Forward these ports from your router to the NAS local IP:
 
 Find the NAS local IP in DSM → Control Panel → Network → Network Interface.
 
+The confirmed reserved NAS address is `192.168.2.14` (2026-10-15). Both forwarding
+rules must target that address. Do not forward public port `8082`: WAN HTTPS
+terminates at DSM on `443`, then proxies internally to `localhost:8082`.
+
 ### DDNS
 
 DSM → Control Panel → External Access → DDNS — verify `hobunror.synology.me` shows a green status and points to your current public IP.
 
 ## Troubleshooting
+
+### Cloudflare 522 while the app works on the LAN
+
+Check the [DSM Cloudflare source ranges and diagnostic procedure](domain-setup.md#cloudflare-522-diagnostics)
+before changing application or image-serving code. A healthy container or LAN
+response does not establish public availability. A direct external request may
+time out by design because the DSM firewall allows only Cloudflare sources.
+
+After deployment or firewall changes, verify these public URLs in a browser,
+including from mobile data or another external connection:
+
+- `https://www.topcastles.eu/api/health` returns healthy JSON with `imageMount.available=true`.
+- `https://www.topcastles.eu/top1000` loads.
+- `https://www.topcastles.eu/castle-images/small/boymont_small.jpg` displays an image.
+
+A Cloudflare bot challenge on command-line requests is separate from a 522.
 
 ### App does not load after container start
 
@@ -454,9 +478,9 @@ has independent SW tooling in the Develop menu.
 **1. Confirm files are served**
 
 ```bash
-curl -sI https://topcastles.hobunror.synology.me/ngsw-worker.js | grep -i "content-type\|cache-control"
-curl -sI https://topcastles.hobunror.synology.me/ngsw.json      | grep -i "content-type\|cache-control"
-curl -sI https://topcastles.hobunror.synology.me/manifest.webmanifest | grep -i "content-type"
+curl -sI https://www.topcastles.eu/ngsw-worker.js | grep -i "content-type\|cache-control"
+curl -sI https://www.topcastles.eu/ngsw.json      | grep -i "content-type\|cache-control"
+curl -sI https://www.topcastles.eu/manifest.webmanifest | grep -i "content-type"
 ```
 
 Expected: `ngsw-worker.js` and `ngsw.json` served as `application/javascript` /
@@ -540,7 +564,7 @@ If users consistently report stale content after a deploy:
 
 1. Verify `ngsw.json` on the production host is actually the new version:
    ```bash
-   curl -s https://topcastles.hobunror.synology.me/ngsw.json | python3 -m json.tool | grep "timestamp\|appData"
+   curl -s https://www.topcastles.eu/ngsw.json | python3 -m json.tool | grep "timestamp\|appData"
    ```
 2. If the old `ngsw.json` is still being served, the Docker image may not have
    been updated — confirm `docker ps` on the NAS shows the expected image digest.
